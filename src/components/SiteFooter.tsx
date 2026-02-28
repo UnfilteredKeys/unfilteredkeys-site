@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import KeyIcon from "./KeyIcon";
+import headshot from "@/assets/headshot.png";
 
 const SiteFooter = () => (
   <footer className="border-t border-border py-16 px-6 md:px-12">
@@ -16,9 +17,12 @@ const SiteFooter = () => (
             </span>
           </div>
         </div>
-        <p className="text-xs tracking-widest uppercase text-muted-foreground mt-3">
-          Founded by Shalanda Smith · NMLS# 554554
-        </p>
+        <div className="flex items-center gap-3 mt-3">
+          <img src={headshot} alt="Shalanda Smith" className="w-10 h-10 rounded-full object-cover" />
+          <p className="text-xs tracking-widest uppercase text-muted-foreground">
+            Founded by Shalanda Smith · NMLS# 554554
+          </p>
+        </div>
         <p className="text-xs text-muted-foreground mt-4 max-w-xs leading-relaxed">
           The Unfiltered Mortgage Standard™<br />
           The Structured Mortgage System™
