@@ -87,6 +87,48 @@ const Index = () => (
       </div>
     </section>
 
+    {/* How Structured Approval Works */}
+    <section className="py-24 md:py-32 px-6 md:px-12">
+      <div className="max-w-7xl mx-auto">
+        <p className="font-mono text-xs text-primary tracking-widest uppercase mb-4">Process</p>
+        <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-6">
+          How Structured Approval Works
+        </h2>
+        <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mb-16">
+          Most lenders collect documents and submit.<br />
+          We structure first, then submit.
+        </p>
+        <div className="grid md:grid-cols-3 gap-12">
+          {[
+            { num: "01", title: "Positioning", copy: "Income, assets, entitlement, and debt are evaluated strategically before a file is ever presented to underwriting." },
+            { num: "02", title: "Structuring", copy: "Loan program selection, documentation strategy, and timeline alignment are engineered intentionally — not reactively." },
+            { num: "03", title: "Submission", copy: "The file enters underwriting clean, deliberate, and prepared for confident approval." },
+          ].map((step) => (
+            <div key={step.num} className="border-t border-border pt-6">
+              <span className="font-mono text-primary text-2xl font-medium">{step.num}</span>
+              <h3 className="text-foreground font-medium text-sm tracking-wide uppercase mt-3 mb-3">{step.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">{step.copy}</p>
+            </div>
+          ))}
+        </div>
+        <div className="my-16 border-t border-border" />
+        <div className="text-center">
+          <p className="font-serif text-xl md:text-2xl text-foreground mb-3">
+            Complex files are welcome.
+          </p>
+          <p className="text-muted-foreground text-sm leading-relaxed max-w-xl mx-auto mb-10">
+            Layered income, multiple entities, prior events, portfolio holdings — structure creates clarity.
+          </p>
+          <Link
+            to="/apply"
+            className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium hover:opacity-90 transition-opacity"
+          >
+            Start Your Structured Application
+          </Link>
+        </div>
+      </div>
+    </section>
+
     {/* The Standard */}
     <section className="bg-card py-24 md:py-32 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
