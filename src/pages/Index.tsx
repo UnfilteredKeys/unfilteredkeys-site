@@ -112,13 +112,16 @@ const Index = () => (
           ))}
         </div>
         <div className="my-16 border-t border-border" />
+        <div className="text-center space-y-4 mb-12">
+          <p className="text-muted-foreground text-sm tracking-wide">Layered income.</p>
+          <p className="text-muted-foreground text-sm tracking-wide">Multiple entities.</p>
+          <p className="text-muted-foreground text-sm tracking-wide">Rebuilt credit history.</p>
+          <p className="text-muted-foreground text-sm tracking-wide">Portfolio holdings.</p>
+        </div>
+        <p className="text-center text-foreground font-serif text-xl md:text-2xl mb-12">
+          Structure creates clarity.
+        </p>
         <div className="text-center">
-          <p className="font-serif text-xl md:text-2xl text-foreground mb-3">
-            Complex files are welcome.
-          </p>
-          <p className="text-muted-foreground text-sm leading-relaxed max-w-xl mx-auto mb-10">
-            Layered income, multiple entities, prior events, portfolio holdings — structure creates clarity.
-          </p>
           <Link
             to="/apply"
             className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium hover:opacity-90 transition-opacity"
