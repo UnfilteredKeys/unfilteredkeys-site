@@ -1,11 +1,22 @@
 import { Link } from "react-router-dom";
+import KeyIcon from "./KeyIcon";
 
 const SiteFooter = () => (
   <footer className="border-t border-border py-16 px-6 md:px-12">
     <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-12">
       <div>
-        <p className="font-serif text-lg text-foreground">Unfiltered Keys™</p>
-        <p className="text-xs tracking-widest uppercase text-muted-foreground mt-1">
+        <div className="flex items-center gap-3 mb-2">
+          <KeyIcon size={20} color="hsl(var(--primary))" />
+          <div className="flex flex-col leading-[0.88]">
+            <span style={{ fontFamily: "'Bebas Neue', sans-serif" }} className="text-[16px] tracking-wider text-foreground">
+              UNFILTERED
+            </span>
+            <span style={{ fontFamily: "'Bebas Neue', sans-serif" }} className="text-[16px] tracking-wider text-primary">
+              KEYS
+            </span>
+          </div>
+        </div>
+        <p className="text-xs tracking-widest uppercase text-muted-foreground mt-3">
           Founded by Shalanda Smith · NMLS# 554554
         </p>
         <p className="text-xs text-muted-foreground mt-4 max-w-xs leading-relaxed">
