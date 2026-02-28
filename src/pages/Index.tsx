@@ -27,8 +27,7 @@ const Index = () => (
           <span className="text-primary">Strategy.</span>
         </h1>
         <p className="mt-8 text-muted-foreground text-lg md:text-xl max-w-2xl leading-relaxed">
-          Every file is personally reviewed. Every approval is deliberate.
-          You hear from me within hours — not days.
+          Where every file is structured with intention — before it is ever submitted.
         </p>
         <div className="mt-12 flex flex-col sm:flex-row gap-4">
           <Link
@@ -38,12 +37,18 @@ const Index = () => (
             Start Your Structured Application
           </Link>
           <Link
-            to="/system"
+            to="/apply"
             className="inline-flex items-center justify-center border border-border text-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium hover:border-muted-foreground transition-colors"
           >
-            See The System
+            Schedule a Strategy Call
           </Link>
         </div>
+        <Link
+          to="/system"
+          className="mt-6 inline-flex text-muted-foreground text-sm tracking-wide hover:text-foreground transition-colors underline underline-offset-4"
+        >
+          See How The System Works
+        </Link>
       </div>
     </section>
 
