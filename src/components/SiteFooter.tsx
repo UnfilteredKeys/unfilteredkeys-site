@@ -4,9 +4,9 @@ const SiteFooter = () => (
   <footer className="border-t border-border py-16 px-6 md:px-12">
     <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-12">
       <div>
-        <p className="font-serif text-lg text-foreground">Shalanda Smith</p>
+        <p className="font-serif text-lg text-foreground">Unfiltered Keys™</p>
         <p className="text-xs tracking-widest uppercase text-muted-foreground mt-1">
-          Founder of Unfiltered Keys™
+          Founded by Shalanda Smith · NMLS# 554554
         </p>
         <p className="text-xs text-muted-foreground mt-4 max-w-xs leading-relaxed">
           The Unfiltered Mortgage Standard™<br />
