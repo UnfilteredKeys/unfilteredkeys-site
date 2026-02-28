@@ -1,0 +1,61 @@
+import { Link } from "react-router-dom";
+import SiteLayout from "@/components/SiteLayout";
+
+const areas = [
+  "Credit positioning and timeline expectations",
+  "Income documentation and verification strategy",
+  "Savings structure and down payment clarity",
+  "Debt-to-income awareness",
+  "Market orientation and rate context",
+  "Application readiness assessment",
+];
+
+const Framework = () => (
+  <SiteLayout>
+    <section className="py-24 md:py-32 px-6 md:px-12">
+      <div className="max-w-3xl mx-auto">
+        <p className="font-mono text-xs text-primary tracking-widest uppercase mb-4">Free Resource</p>
+        <h1 className="font-serif text-4xl md:text-6xl text-foreground leading-tight">
+          Prepared Buyer Framework
+        </h1>
+        <p className="mt-8 text-muted-foreground text-lg leading-relaxed max-w-2xl">
+          A self-paced course addressing the six areas responsible for most buyer hesitation.
+          This is preparation — not a replacement for a structured application.
+        </p>
+      </div>
+    </section>
+
+    <section className="bg-card py-24 md:py-32 px-6 md:px-12">
+      <div className="max-w-3xl mx-auto">
+        <h2 className="font-serif text-2xl text-foreground mb-10">What the Framework covers:</h2>
+        <div className="space-y-6">
+          {areas.map((area, i) => (
+            <div key={i} className="flex gap-6 items-start border-b border-border pb-6 last:border-0">
+              <span className="font-mono text-primary text-sm mt-0.5">{String(i + 1).padStart(2, "0")}</span>
+              <p className="text-foreground leading-relaxed">{area}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section className="py-24 md:py-32 px-6 md:px-12">
+      <div className="max-w-3xl mx-auto flex flex-col sm:flex-row gap-4">
+        <Link
+          to="/apply"
+          className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium hover:opacity-90 transition-opacity"
+        >
+          Access The Framework
+        </Link>
+        <Link
+          to="/apply"
+          className="inline-flex items-center justify-center border border-border text-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium hover:border-muted-foreground transition-colors"
+        >
+          Or Begin Structured Review
+        </Link>
+      </div>
+    </section>
+  </SiteLayout>
+);
+
+export default Framework;
