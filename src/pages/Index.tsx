@@ -31,12 +31,14 @@ const Index = () => (
           Where every file is structured with intention — before it is ever submitted.
         </p>
         <div className="mt-12 flex flex-col sm:flex-row gap-4">
-          <Link
-            to="/apply"
+          <a
+            href="https://scl.my1003app.com/554554/register"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium hover:opacity-90 transition-opacity"
           >
             Start Your Structured Application
-          </Link>
+          </a>
           <Link
             to="/apply"
             className="inline-flex items-center justify-center border border-border text-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium hover:border-muted-foreground transition-colors"
@@ -123,12 +125,14 @@ const Index = () => (
           Structure creates clarity.
         </p>
         <div className="text-center">
-          <Link
-            to="/apply"
+          <a
+            href="https://scl.my1003app.com/554554/register"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium hover:opacity-90 transition-opacity"
           >
             Start Your Structured Application
-          </Link>
+          </a>
         </div>
       </div>
     </section>
@@ -199,12 +203,14 @@ const Index = () => (
             <p className="text-muted-foreground text-sm leading-relaxed mb-8">
               If you are actively shopping, under contract, or purchasing within the next three months, your structure should already be in place.
             </p>
-            <Link
-              to="/apply"
+            <a
+              href="https://scl.my1003app.com/554554/register"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium hover:opacity-90 transition-opacity"
             >
               Begin Structured Application
-            </Link>
+            </a>
           </div>
           <div className="border-t border-border pt-8">
             <h3 className="text-foreground font-medium text-sm tracking-wide uppercase mb-4">Planning Ahead</h3>
@@ -297,12 +303,14 @@ const Index = () => (
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="font-serif text-3xl md:text-4xl text-foreground">Move Deliberately.</h2>
         <p className="text-muted-foreground mt-4 text-lg">Begin Structured Review.</p>
-        <Link
-          to="/apply"
+        <a
+          href="https://scl.my1003app.com/554554/register"
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium mt-10 hover:opacity-90 transition-opacity"
         >
           Begin Structured Review
-        </Link>
+        </a>
       </div>
     </section>
   </SiteLayout>
