@@ -237,29 +237,34 @@ const Index = () => (
         <div className="flex items-start gap-6 mb-8">
           <img src={headshot} alt="Shalanda Smith" className="w-14 h-14 rounded-full object-cover mt-1 hidden md:block" />
           <div>
-            <p className="font-mono text-xs text-primary tracking-widest uppercase mb-4">Authority</p>
+            <p className="font-sans text-xs text-primary tracking-widest uppercase mb-4">Authority</p>
             <h2 className="font-serif text-3xl md:text-5xl text-foreground">
               Founded on Structure.<br />Built for Control.
             </h2>
           </div>
         </div>
         <div className="max-w-3xl space-y-6 mt-12">
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            Unfiltered Keys was built after two decades inside banking, builder finance, and national retail lending.
+          <p className="font-sans text-muted-foreground text-lg leading-relaxed">
+            Unfiltered Keys was built after two decades inside major banks, national builders, and large retail lenders.
           </p>
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            I've seen capable borrowers accept unnecessary limits — not because they lacked qualification, but because the structure available to them was constrained.
+          <p className="font-sans text-muted-foreground text-lg leading-relaxed">
+            I've operated within the institutions that shape mortgage approvals.
           </p>
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            This platform was built to expand what was possible within the right structure.
+          <p className="font-sans text-muted-foreground text-lg leading-relaxed">
+            I've also seen how capable borrowers are limited — not by qualification, but by structure.
+          </p>
+          <p className="font-sans text-muted-foreground text-lg leading-relaxed">
+            This platform was built to expand what's possible within the right structure.
+          </p>
+          <p className="font-sans text-muted-foreground text-lg leading-relaxed">
+            Every structured approval reflects institutional experience — without institutional constraints.
           </p>
         </div>
         <div className="my-12 border-t border-border" />
-        <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl">
-          Every structured approval reflects experience from inside the institutions that shape lending — without the institutional constraints that limit it.
-        </p>
         <div className="mt-12 space-y-4 max-w-3xl">
-          <p className="text-foreground text-sm tracking-wide">No call centers. No layered managers. No file passed around.</p>
+          <p className="font-sans text-foreground text-sm tracking-wide">No call centers.</p>
+          <p className="font-sans text-foreground text-sm tracking-wide">No layered managers.</p>
+          <p className="font-sans text-foreground text-sm tracking-wide">No file passed around.</p>
           <p className="font-serif text-xl md:text-2xl text-foreground mt-8">
             Your strategy is built deliberately.
           </p>
