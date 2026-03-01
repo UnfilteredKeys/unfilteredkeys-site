@@ -74,9 +74,9 @@ const Strategy = () => {
             Structured Strategy Call
           </h1>
           <p className="text-muted-foreground text-lg leading-relaxed mb-4">
-            This call is for borrowers who require intentional structuring
-            before entering application. If you are under contract or actively
-            shopping within the next 90 days, begin the{" "}
+            This call is reserved for borrowers who require intentional
+            structuring before entering application. If you are under contract
+            or actively shopping within the next 90 days, begin the{" "}
             <Link
               to="/apply"
               className="text-primary underline underline-offset-4 hover:opacity-80 transition-opacity"
