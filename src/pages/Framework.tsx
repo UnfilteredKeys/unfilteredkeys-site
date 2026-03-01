@@ -41,7 +41,7 @@ const Framework = () => (
     <section className="py-24 md:py-32 px-6 md:px-12">
       <div className="max-w-3xl mx-auto text-center">
         <p className="font-serif text-xl md:text-2xl text-foreground mb-6">
-          When structure is in place, execution becomes simple.
+          When structure is in place, execution becomes efficient.
         </p>
         <a
           href="https://scl.my1003app.com/554554/register"
