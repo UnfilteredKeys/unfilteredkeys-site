@@ -242,15 +242,15 @@ const Index = () => (
             Unfiltered Keys was built after two decades inside banking, builder finance, and national retail lending.
           </p>
           <p className="text-muted-foreground text-lg leading-relaxed">
-            I've seen approvals delayed, files mispositioned, and capable borrowers accept unnecessary limits — not because they lacked qualification, but because no one structured the file correctly.
+            I've seen capable borrowers accept unnecessary limits — not because they lacked qualification, but because the structure available to them was constrained.
           </p>
           <p className="text-muted-foreground text-lg leading-relaxed">
-            This platform was built to replace reactive lending with deliberate approval design.
+            This platform was built to expand what was possible within the right structure.
           </p>
         </div>
         <div className="my-12 border-t border-border" />
         <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl">
-          Every structured approval reflects experience from inside the institutions that shape lending — without the institutional constraints that slow it down.
+          Every structured approval reflects experience from inside the institutions that shape lending — without the institutional constraints that limit it.
         </p>
         <div className="mt-12 space-y-4 max-w-3xl">
           <p className="text-foreground text-sm tracking-wide">No call centers. No layered managers. No file passed around.</p>
