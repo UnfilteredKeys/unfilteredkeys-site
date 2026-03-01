@@ -248,16 +248,16 @@ const Index = () => (
             Unfiltered Keys was built after two decades inside major banks, national builders, and large retail lenders.
           </p>
           <p className="font-sans text-muted-foreground text-lg leading-relaxed">
-            I've operated within the institutions that shape mortgage approvals.
+            I've operated within the institutions that shape mortgage approvals — and the policies that limit them.
           </p>
           <p className="font-sans text-muted-foreground text-lg leading-relaxed">
-            I've also seen how capable borrowers are limited — not by qualification, but by structure.
+            I've seen capable borrowers constrained by channel restrictions, not qualification.
           </p>
           <p className="font-sans text-muted-foreground text-lg leading-relaxed">
-            This platform was built to expand what's possible within the right structure.
+            This platform expands what the right structure makes possible.
           </p>
           <p className="font-sans text-muted-foreground text-lg leading-relaxed">
-            Every structured approval reflects institutional experience — without institutional constraints.
+            Every approval reflects institutional experience — without institutional constraints.
           </p>
         </div>
         <div className="my-12 border-t border-border" />
