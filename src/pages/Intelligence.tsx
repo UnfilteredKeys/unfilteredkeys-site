@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import SiteLayout from "@/components/SiteLayout";
 
 const Intelligence = () => (
@@ -86,12 +85,14 @@ const Intelligence = () => (
     <section className="py-24 md:py-32 px-6 md:px-12">
       <div className="max-w-3xl mx-auto text-center">
         <h2 className="font-serif text-3xl text-foreground">Structure Your Position.</h2>
-        <Link
-          to="/apply"
+        <a
+          href="https://scl.my1003app.com/554554/register"
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium mt-10 hover:opacity-90 transition-opacity"
         >
           Begin Structured Review
-        </Link>
+        </a>
       </div>
     </section>
   </SiteLayout>

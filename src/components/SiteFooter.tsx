@@ -34,7 +34,7 @@ const SiteFooter = () => (
         <Link to="/intelligence" className="text-xs tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors">Intelligence</Link>
         <Link to="/framework" className="text-xs tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors">Framework</Link>
         <Link to="/agents" className="text-xs tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors">For Agents</Link>
-        <Link to="/apply" className="text-xs tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors">Apply</Link>
+        <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" className="text-xs tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors">Apply</a>
       </div>
     </div>
     <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-border">

@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import SiteLayout from "@/components/SiteLayout";
 
 const steps = [
@@ -43,12 +42,14 @@ const System = () => (
           "If I back your file, I've reviewed it."
         </p>
         <div className="mt-12">
-          <Link
-            to="/apply"
+          <a
+            href="https://scl.my1003app.com/554554/register"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium hover:opacity-90 transition-opacity"
           >
             Begin Structured Review
-          </Link>
+          </a>
         </div>
       </div>
     </section>
