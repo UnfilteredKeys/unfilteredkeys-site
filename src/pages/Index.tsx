@@ -260,7 +260,7 @@ const Index = () => (
         </div>
         <div className="mt-12">
           <Link
-            to="/apply"
+            to="/strategy"
             className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium hover:opacity-90 transition-opacity"
           >
             Work Directly With Me
