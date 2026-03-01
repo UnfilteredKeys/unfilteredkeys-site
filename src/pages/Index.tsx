@@ -196,7 +196,7 @@ const Index = () => (
           <div className="border-t border-border pt-8">
             <h3 className="text-foreground font-medium text-sm tracking-wide uppercase mb-4">Closing Within 90 Days</h3>
             <p className="text-muted-foreground text-sm leading-relaxed mb-8">
-              If you are actively shopping, under contract, or planning to purchase within the next three months, your structure should be finalized now.
+              If you are actively shopping, under contract, or purchasing within the next three months, your structure should already be in place.
             </p>
             <Link
               to="/apply"
