@@ -37,7 +37,7 @@ const Index = () => (
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium hover:opacity-90 transition-opacity"
           >
-            Start Your Structured Application
+            Begin Structured Application
           </a>
           <Link
             to="/strategy"
@@ -131,7 +131,7 @@ const Index = () => (
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium hover:opacity-90 transition-opacity"
           >
-            Start Your Structured Application
+            Begin Structured Application
           </a>
         </div>
       </div>
