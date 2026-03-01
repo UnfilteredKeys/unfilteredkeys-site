@@ -130,8 +130,8 @@ const Strategy = () => {
               )}
             </div>
 
-            {/* Purchasing within 90 days */}
-            <div>
+            {/* Purchasing within 90 days — extra spacing above */}
+            <div className="pt-4">
               <p className={labelClass}>
                 Are you purchasing within the next 90 days?
               </p>
