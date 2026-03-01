@@ -182,8 +182,50 @@ const Index = () => (
       </div>
     </section>
 
-    {/* Final CTA */}
+    {/* Timing Matters */}
     <section className="py-24 md:py-32 px-6 md:px-12">
+      <div className="max-w-7xl mx-auto">
+        <p className="font-mono text-xs text-primary tracking-widest uppercase mb-4">Timing</p>
+        <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-6">
+          Timing Matters
+        </h2>
+        <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mb-16">
+          Every approval timeline is different. The strategy depends on when you plan to move.
+        </p>
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="border-t border-border pt-8">
+            <h3 className="text-foreground font-medium text-sm tracking-wide uppercase mb-4">Closing Within 90 Days</h3>
+            <p className="text-muted-foreground text-sm leading-relaxed mb-8">
+              If you are actively shopping, under contract, or planning to purchase within the next three months, your structure should be finalized now.
+            </p>
+            <Link
+              to="/apply"
+              className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium hover:opacity-90 transition-opacity"
+            >
+              Begin Structured Application
+            </Link>
+          </div>
+          <div className="border-t border-border pt-8">
+            <h3 className="text-foreground font-medium text-sm tracking-wide uppercase mb-4">Planning Ahead</h3>
+            <p className="text-muted-foreground text-sm leading-relaxed mb-8">
+              If your purchase is six to twelve months out, strategic preparation today creates stronger positioning when you're ready.
+            </p>
+            <Link
+              to="/framework"
+              className="inline-flex items-center justify-center border border-border text-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium hover:border-muted-foreground transition-colors"
+            >
+              Access Planning Framework
+            </Link>
+          </div>
+        </div>
+        <p className="text-center text-muted-foreground text-sm tracking-wide mt-16">
+          The difference between stress and control is preparation.
+        </p>
+      </div>
+    </section>
+
+    {/* Final CTA */}
+    <section className="bg-card py-24 md:py-32 px-6 md:px-12">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="font-serif text-3xl md:text-4xl text-foreground">Move Deliberately.</h2>
         <p className="text-muted-foreground mt-4 text-lg">Begin Structured Review.</p>
