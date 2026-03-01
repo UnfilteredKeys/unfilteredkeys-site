@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import SiteLayout from "@/components/SiteLayout";
+import headshot from "@/assets/headshot.png";
 
 const principles = [
   "Approvals are backed by review.",
@@ -221,6 +222,50 @@ const Index = () => (
         <p className="text-center text-muted-foreground text-sm tracking-wide mt-16">
           The difference between stress and control is preparation.
         </p>
+      </div>
+    </section>
+
+    {/* Founded on Structure */}
+    <section className="py-24 md:py-32 px-6 md:px-12">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex items-start gap-6 mb-8">
+          <img src={headshot} alt="Shalanda Smith" className="w-14 h-14 rounded-full object-cover mt-1 hidden md:block" />
+          <div>
+            <p className="font-mono text-xs text-primary tracking-widest uppercase mb-4">Authority</p>
+            <h2 className="font-serif text-3xl md:text-5xl text-foreground">
+              Founded on Structure.<br />Built for Control.
+            </h2>
+          </div>
+        </div>
+        <div className="max-w-3xl space-y-6 mt-12">
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            Unfiltered Keys was built after two decades inside banking, builder finance, and national retail lending.
+          </p>
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            I've seen approvals delayed, files mispositioned, and capable borrowers accept unnecessary limits — not because they lacked qualification, but because no one structured the file correctly.
+          </p>
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            This platform was built to replace reactive lending with deliberate approval design.
+          </p>
+        </div>
+        <div className="my-12 border-t border-border" />
+        <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl">
+          Every structured approval reflects experience from inside the institutions that shape lending — without the institutional constraints that slow it down.
+        </p>
+        <div className="mt-12 space-y-4 max-w-3xl">
+          <p className="text-foreground text-sm tracking-wide">No call centers. No layered managers. No file passed around.</p>
+          <p className="font-serif text-xl md:text-2xl text-foreground mt-8">
+            Your strategy is built deliberately.
+          </p>
+        </div>
+        <div className="mt-12">
+          <Link
+            to="/apply"
+            className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium hover:opacity-90 transition-opacity"
+          >
+            Work Directly With Me
+          </Link>
+        </div>
       </div>
     </section>
 
