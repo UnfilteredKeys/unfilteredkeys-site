@@ -10,6 +10,7 @@ import Intelligence from "./pages/Intelligence";
 import Framework from "./pages/Framework";
 import Agents from "./pages/Agents";
 import Apply from "./pages/Apply";
+import Strategy from "./pages/Strategy";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/framework" element={<Framework />} />
           <Route path="/agents" element={<Agents />} />
           <Route path="/apply" element={<Apply />} />
+          <Route path="/strategy" element={<Strategy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
