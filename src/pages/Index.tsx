@@ -40,7 +40,7 @@ const Index = () => (
             Start Your Structured Application
           </a>
           <Link
-            to="/apply"
+            to="/strategy"
             className="inline-flex items-center justify-center border border-border text-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium hover:border-muted-foreground transition-colors"
           >
             Schedule a Strategy Call
