@@ -269,6 +269,29 @@ const Index = () => (
       </div>
     </section>
 
+    {/* Professional Standards */}
+    <section className="py-24 md:py-32 px-6 md:px-12">
+      <div className="max-w-7xl mx-auto">
+        <p className="font-mono text-xs text-primary tracking-widest uppercase mb-4">Compliance</p>
+        <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-16">
+          Professional Standards
+        </h2>
+        <div className="grid md:grid-cols-4 gap-8">
+          {[
+            { title: "Licensed & Regulated", copy: "NMLS #554554\nEqual Housing Lender" },
+            { title: "Experience", copy: "20+ years inside banking, builder finance, and national retail lending." },
+            { title: "Access", copy: "Broker channel access across conventional, FHA, USDA, VA, non-QM, and portfolio solutions." },
+            { title: "Structure", copy: "Every file personally reviewed and positioned before submission." },
+          ].map((block) => (
+            <div key={block.title} className="border-t border-border pt-6">
+              <h3 className="text-foreground font-medium text-xs tracking-widest uppercase mb-3">{block.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed whitespace-pre-line">{block.copy}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
     {/* Final CTA */}
     <section className="bg-card py-24 md:py-32 px-6 md:px-12">
       <div className="max-w-7xl mx-auto text-center">
