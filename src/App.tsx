@@ -12,6 +12,7 @@ import Framework from "./pages/Framework";
 import Agents from "./pages/Agents";
 
 import Strategy from "./pages/Strategy";
+import ThankYou from "./pages/ThankYou";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/agents" element={<Agents />} />
           
           <Route path="/strategy" element={<Strategy />} />
+          <Route path="/thank-you" element={<ThankYou />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
