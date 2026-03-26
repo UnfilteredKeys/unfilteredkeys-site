@@ -9,7 +9,8 @@ const Strategy = () => {
             Central Texas Mortgage Strategy
           </p>
           <h1 className="font-serif text-4xl md:text-6xl text-foreground leading-[1.15] md:leading-[1.2] mb-8">
-            Your Mortgage Should Be Built.<br />
+            Your Mortgage Should Be Built<span className="text-foreground">.</span>
+            <br />
             <span className="text-primary font-bold">Not Quoted.</span>
           </h1>
           <p className="text-muted-foreground text-lg leading-relaxed mb-3 max-w-2xl">
