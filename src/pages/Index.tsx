@@ -137,6 +137,62 @@ const Index = () => (
       </div>
     </section>
 
+    {/* How We Structure Your Loan */}
+    <section className="bg-card py-24 md:py-32 px-6 md:px-12">
+      <div className="max-w-7xl mx-auto">
+        <p className="font-mono text-xs text-primary tracking-widest uppercase mb-4">Loan Programs</p>
+        <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-6">
+          How We Structure Your Loan<br />(Not Just Pick One)
+        </h2>
+        <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mb-4">
+          Most lenders push products. We build the structure first, then choose the loan that actually fits.
+        </p>
+        <p className="text-muted-foreground text-sm tracking-wide italic mb-16">
+          Every loan type is a tool. The strategy is what makes it work.
+        </p>
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            {
+              title: "VA Home Loan",
+              body: "Built for eligible service members who want to maximize buying power without a down payment. We structure VA loans to avoid common appraisal, entitlement, and timeline issues that slow other lenders down.",
+              tag: "$0 Down • No PMI",
+            },
+            {
+              title: "FHA Loan",
+              body: "Best for buyers building or rebuilding credit. We structure FHA loans to manage mortgage insurance, payment stability, and long-term refinance strategy from day one.",
+              tag: "3.5% Down • Flexible Credit",
+            },
+            {
+              title: "Conventional Loan",
+              body: "For buyers with stronger credit who want flexibility and lower long-term costs. We structure conventional loans to optimize rate, reserves, and future investment potential.",
+              tag: "From 3% Down",
+            },
+            {
+              title: "Jumbo Loan",
+              body: "For higher-priced properties that exceed conforming limits. We structure jumbo loans to balance liquidity, reserves, and approval strength — not just rate.",
+              tag: "Above Conforming Limits",
+            },
+            {
+              title: "USDA Loan",
+              body: "100% financing in eligible rural areas. We verify property eligibility early so you don't waste time on homes that won't qualify.",
+              tag: "Zero Down • Rural Eligible",
+            },
+            {
+              title: "Refinance",
+              body: "Used to lower your rate, access equity, or restructure your loan. We only recommend refinancing when it actually improves your financial position — not just because rates moved.",
+              tag: "Rate • Cash-Out • VA IRRRL",
+            },
+          ].map((card) => (
+            <div key={card.title} className="border border-border p-6">
+              <h3 className="text-foreground font-medium text-sm tracking-wide uppercase mb-3">{card.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-4">{card.body}</p>
+              <span className="text-primary text-xs tracking-widest uppercase font-medium">{card.tag}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
     {/* The Standard */}
     <section className="bg-card py-24 md:py-32 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
