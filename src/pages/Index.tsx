@@ -23,35 +23,43 @@ const Index = () => (
     {/* Hero */}
     <section className="min-h-[90vh] flex items-center px-6 md:px-12">
       <div className="max-w-7xl mx-auto w-full py-24 md:py-32">
-        <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-foreground leading-[1.05] max-w-4xl">
-          Structured Mortgage<br />
-          <span className="text-primary">Strategy.</span>
-        </h1>
-        <p className="mt-8 text-muted-foreground text-lg md:text-xl max-w-2xl leading-relaxed">
-          Where every file is structured with intention — before it is ever submitted.
+        <p className="font-mono text-xs text-primary tracking-widest uppercase mb-6">
+          Central Texas Mortgage Strategy
         </p>
-        <div className="mt-12 flex flex-col sm:flex-row gap-4">
+        <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl text-foreground leading-[1.15] md:leading-[1.2] mb-12">
+          Your Mortgage Should Be Built<span className="text-foreground">.</span>
+          <br />
+          <span className="text-primary font-bold">Not Quoted.</span>
+        </h1>
+        <p className="text-muted-foreground text-lg leading-relaxed mb-3 max-w-2xl">
+          VA, FHA, Conventional &amp; Jumbo loans structured for Texas buyers who want real numbers before they shop.
+        </p>
+        <p className="text-muted-foreground text-lg leading-relaxed mb-16 max-w-2xl">
+          No guesswork. No surprises. No deals falling apart at the finish line.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4 mb-8">
           <a
             href="https://scl.my1003app.com/554554/register"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium hover:opacity-90 transition-opacity"
           >
-            Begin Structured Application
+            Start Your Pre-Approval
           </a>
-          <Link
-            to="/strategy"
-            className="inline-flex items-center justify-center border border-border text-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium hover:border-muted-foreground transition-colors"
+          <a
+            href="https://calendly.com/shalanda-securechoicelending/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center border border-border text-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium hover:bg-muted transition-colors"
           >
-            Schedule a Strategy Call
-          </Link>
+            See Your Real Buying Power
+          </a>
         </div>
-        <Link
-          to="/system"
-          className="mt-6 inline-flex text-muted-foreground text-sm tracking-wide hover:text-foreground transition-colors underline underline-offset-4"
-        >
-          See How The System Works
-        </Link>
+
+        <p className="text-muted-foreground text-xs tracking-widest uppercase">
+          VA-focused. Texas-based. Trusted when the deal actually has to close.
+        </p>
       </div>
     </section>
 
