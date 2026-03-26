@@ -40,7 +40,7 @@ const Strategy = () => {
           </div>
 
           <p className="text-muted-foreground text-xs tracking-widest uppercase">
-            VA-focused. Texas-based. Known for clean closings.
+            VA-focused. Texas-based. Trusted when the deal actually has to close.
           </p>
         </div>
       </section>
