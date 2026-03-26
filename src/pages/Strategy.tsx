@@ -4,69 +4,42 @@ const Strategy = () => {
   return (
     <SiteLayout>
       <section className="px-6 md:px-12 py-24 md:py-32">
-        <div className="max-w-4xl mx-auto">
-          <p className="font-mono text-xs text-primary tracking-widest uppercase mb-4">
-            Strategy
+        <div className="max-w-4xl">
+          <p className="font-mono text-xs text-primary tracking-widest uppercase mb-6">
+            Central Texas Mortgage Strategy
           </p>
-          <h1 className="font-serif text-4xl md:text-5xl text-foreground leading-[1.1] mb-8">
-            Start With the Right<br />Mortgage Strategy.
+          <h1 className="font-serif text-4xl md:text-6xl text-foreground leading-[1.15] md:leading-[1.2] mb-8">
+            Your Mortgage Should Be Built<br />
+            <span className="text-primary font-bold">Not Quoted.</span>
           </h1>
-          <p className="text-muted-foreground text-lg leading-relaxed mb-4 max-w-2xl">
-            Structured guidance for Texas homebuyers who want clarity before they commit. Every approval starts with structure.
+          <p className="text-muted-foreground text-lg leading-relaxed mb-3 max-w-2xl">
+            VA, FHA, Conventional &amp; Jumbo loans structured for Texas buyers who want real numbers before they start shopping.
           </p>
-          <p className="text-muted-foreground text-lg leading-relaxed mb-4 max-w-2xl">
-            If you're under contract or actively shopping, begin your application.
-          </p>
-          <p className="text-muted-foreground text-lg leading-relaxed mb-4 max-w-2xl">
-            If you're planning ahead, schedule a strategy call and position it correctly from the start.
-          </p>
-          <p className="text-muted-foreground text-sm leading-relaxed mb-12 max-w-2xl tracking-wide">
-            Serving Texas buyers with specialized strategy for VA, physician, and complex income loans.
+          <p className="text-muted-foreground text-lg leading-relaxed mb-12 max-w-2xl">
+            No guesswork. No surprises. No last-minute problems at closing.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
-            {/* Left block */}
-            <div className="border border-border p-8 flex flex-col">
-              <p className="font-mono text-xs text-primary tracking-widest uppercase mb-4">
-                Closing Within 90 Days
-              </p>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-8 flex-1">
-                If you are under contract or actively shopping, your file
-                should already be structured and submitted.
-              </p>
-              <a
-                href="https://scl.my1003app.com/554554/register"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium hover:opacity-90 transition-opacity"
-              >
-                Begin Structured Application
-              </a>
-            </div>
-
-            {/* Right block */}
-            <div className="border border-border p-8 flex flex-col">
-              <p className="font-mono text-xs text-primary tracking-widest uppercase mb-4">
-                Planning Ahead
-              </p>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-8 flex-1">
-                If you are structuring income, rebuilding credit, or
-                positioning for purchase in the next 6–12 months, schedule a
-                Strategy Call.
-              </p>
-              <a
-                href="https://calendly.com/shalanda-securechoicelending/30min"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center border border-border text-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium hover:bg-muted transition-colors"
-              >
-                Schedule Strategy Call
-              </a>
-            </div>
+          <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <a
+              href="https://scl.my1003app.com/554554/register"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium hover:opacity-90 transition-opacity"
+            >
+              Start Your Pre-Approval
+            </a>
+            <a
+              href="https://calendly.com/shalanda-securechoicelending/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center border border-border text-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium hover:bg-muted transition-colors"
+            >
+              See What You Can Actually Afford
+            </a>
           </div>
 
-          <p className="text-center text-muted-foreground text-xs tracking-widest uppercase">
-            Structure first. Then speed.
+          <p className="text-muted-foreground text-xs tracking-widest uppercase">
+            VA-focused. Texas-based. Known for clean closings.
           </p>
         </div>
       </section>
