@@ -177,16 +177,16 @@ const Index = () => (
     </section>
 
     {/* How We Structure Your Loan */}
-    <section className="bg-[hsl(60,10%,95%)] py-24 md:py-32 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto">
-        <p className="font-mono text-xs text-primary tracking-widest uppercase mb-4">Loan Programs</p>
-        <h2 className="font-serif text-3xl md:text-5xl text-[hsl(0,0%,10%)] mb-6">
+    <section className="bg-[#EFEDE7] py-24 md:py-32 px-6 md:px-12 border-t border-[#E0DDD5]">
+      <div className="max-w-[1200px] mx-auto px-4 md:px-10">
+        <p className="font-mono text-xs text-[#6B7A3D] tracking-widest uppercase mb-4">Loan Programs</p>
+        <h2 className="font-serif text-3xl md:text-5xl text-[#1C1C1C] mb-6">
           How We Structure Your Loan<br />(Not Just Pick One)
         </h2>
-        <p className="text-[hsl(0,0%,30%)] text-lg leading-relaxed max-w-3xl mb-4">
+        <p className="text-[#4A4A4A] text-lg leading-relaxed max-w-3xl mb-4">
           Most lenders push products. We build the structure first, then choose the loan that actually fits.
         </p>
-        <p className="text-[hsl(0,0%,40%)] text-sm tracking-wide italic mb-16">
+        <p className="text-[#4A4A4A] text-sm tracking-wide italic mb-16">
           Every loan type is a tool. The strategy is what makes it work.
         </p>
         <div className="grid md:grid-cols-3 gap-8">
@@ -222,10 +222,10 @@ const Index = () => (
               tag: "Rate • Cash-Out • VA IRRRL",
             },
           ].map((card) => (
-            <div key={card.title} className="bg-white border border-[hsl(0,0%,88%)] shadow-sm p-6">
-              <h3 className="text-[hsl(0,0%,10%)] font-medium text-sm tracking-wide uppercase mb-3">{card.title}</h3>
-              <p className="text-[hsl(0,0%,35%)] text-sm leading-relaxed mb-4">{card.body}</p>
-              <span className="text-primary text-xs tracking-widest uppercase font-medium">{card.tag}</span>
+            <div key={card.title} className="bg-white border border-[#E5E2DA] rounded-xl p-6">
+              <h3 className="text-[#1C1C1C] font-medium text-sm tracking-wide uppercase mb-3">{card.title}</h3>
+              <p className="text-[#4A4A4A] text-sm leading-relaxed mb-4">{card.body}</p>
+              <span className="text-[#6B7A3D] text-xs tracking-widest uppercase font-medium">{card.tag}</span>
             </div>
           ))}
         </div>
