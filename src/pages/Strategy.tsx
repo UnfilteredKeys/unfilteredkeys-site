@@ -17,7 +17,7 @@ const Strategy = () => {
             VA, FHA, Conventional &amp; Jumbo loans structured for Texas buyers who want real numbers before they start shopping.
           </p>
           <p className="text-muted-foreground text-lg leading-relaxed mb-12 max-w-2xl">
-            No guesswork. No surprises. No last-minute problems at closing.
+            No guesswork. No surprises. No deals falling apart at the finish line.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
