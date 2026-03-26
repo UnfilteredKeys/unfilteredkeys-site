@@ -17,8 +17,11 @@ const Strategy = () => {
           <p className="text-muted-foreground text-lg leading-relaxed mb-4 max-w-2xl">
             If you're under contract or actively shopping, begin your application.
           </p>
-          <p className="text-muted-foreground text-lg leading-relaxed mb-12 max-w-2xl">
+          <p className="text-muted-foreground text-lg leading-relaxed mb-4 max-w-2xl">
             If you're planning ahead, schedule a strategy call and position it correctly from the start.
+          </p>
+          <p className="text-muted-foreground text-sm leading-relaxed mb-12 max-w-2xl tracking-wide">
+            Serving Texas buyers with specialized strategy for VA, physician, and complex income loans.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6 mb-12">
