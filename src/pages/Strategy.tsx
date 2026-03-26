@@ -14,7 +14,7 @@ const Strategy = () => {
             <span className="text-primary font-bold">Not Quoted.</span>
           </h1>
           <p className="text-muted-foreground text-lg leading-relaxed mb-3 max-w-2xl">
-            VA, FHA, Conventional &amp; Jumbo loans structured for Texas buyers who want real numbers before they start shopping.
+            VA, FHA, Conventional &amp; Jumbo loans structured for Texas buyers who want real numbers before they shop.
           </p>
           <p className="text-muted-foreground text-lg leading-relaxed mb-12 max-w-2xl">
             No guesswork. No surprises. No deals falling apart at the finish line.
