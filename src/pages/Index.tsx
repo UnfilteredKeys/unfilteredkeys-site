@@ -63,38 +63,55 @@ const Index = () => (
       </div>
     </section>
 
-    {/* Who This Is Built For */}
+    {/* Why Most Mortgage Experiences Fall Apart */}
     <section className="bg-card py-24 md:py-32 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
-        <p className="font-mono text-xs text-primary tracking-widest uppercase mb-4">Clients</p>
+        <p className="font-mono text-xs text-primary tracking-widest uppercase mb-4">The Difference</p>
         <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-6">
-          Who This Is Built For
+          Why Most Mortgage Experiences Fall Apart
         </h2>
-        <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mb-16">
-          This is for borrowers who understand that the structure behind the approval matters as much as the rate — whether it's your first purchase or your fifth.
+        <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mb-4">
+          It's not the loan. It's how it's structured.
         </p>
-        <div className="grid md:grid-cols-5 gap-8">
+        <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mb-16">
+          Here's what we do differently so your deal doesn't break under pressure.
+        </p>
+        <div className="grid md:grid-cols-3 gap-10">
           {[
-            { title: "Veterans", copy: "VA entitlement planning, multi-property strategy, and long-term positioning beyond a basic approval." },
-            { title: "Investors", copy: "DSCR structuring, portfolio leverage, and underwriting built around asset performance." },
-            { title: "Self-Employed", copy: "Bank statement analysis, income strategy, and documentation clarity designed for non-traditional earners." },
-            { title: "Move-Up & Complex Buyers", copy: "Layered income, asset transitions, contingent scenarios, and precision timing." },
-            { title: "First Purchase", copy: "Structured preparation and confident guidance for buyers stepping into their first contract with clarity and control." },
-          ].map((col) => (
-            <div key={col.title} className="border-t border-border pt-6">
-              <h3 className="text-foreground font-medium text-sm tracking-wide uppercase mb-3">{col.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{col.copy}</p>
+            {
+              title: "We Run Your Numbers Before You Shop",
+              body: "Most lenders give you a pre-qual and send you out looking. We build your full affordability first — including taxes, insurance, and payment structure — so you don't fall in love with a house you can't actually keep.",
+            },
+            {
+              title: "We Build Around Your Timeline, Not Ours",
+              body: "Whether you're PCS'ing, relocating, or buying on a deadline, we structure your loan timeline backward from your closing date so nothing gets rushed or missed at the end.",
+            },
+            {
+              title: "We Compare Options, Not Push One",
+              body: "Builder lender, VA, FHA, Conventional, or non-QM. We show you side-by-side numbers so you understand the real cost before you commit to anything.",
+            },
+            {
+              title: "We Know This Market Beyond the Zip Code",
+              body: "Killeen, Temple, Copperas Cove, Round Rock, Georgetown. We know how property taxes, insurance, and local trends affect your payment — not just the purchase price.",
+            },
+            {
+              title: "We Surface Problems Early",
+              body: "Credit, appraisal, income, or property issues. We identify and address them upfront so they don't show up two days before closing.",
+            },
+            {
+              title: "No Hidden Fees. No Last-Minute Changes.",
+              body: "If it's on your Loan Estimate, we can explain it clearly. If we can't explain it, it doesn't belong there. You'll know your numbers from day one.",
+            },
+          ].map((card) => (
+            <div key={card.title} className="border border-border p-8">
+              <h3 className="text-foreground font-semibold text-sm tracking-wide uppercase mb-4">{card.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">{card.body}</p>
             </div>
           ))}
         </div>
-        <div className="text-center mt-16">
-          <Link
-            to="/framework"
-            className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium hover:opacity-90 transition-opacity"
-          >
-            Explore The Framework
-          </Link>
-        </div>
+        <p className="text-center text-foreground font-serif text-xl md:text-2xl mt-16">
+          Anyone can quote a rate. Very few can structure a loan that actually closes clean.
+        </p>
       </div>
     </section>
 
