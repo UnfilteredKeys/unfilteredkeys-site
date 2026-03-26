@@ -9,13 +9,16 @@ const Strategy = () => {
             Strategy
           </p>
           <h1 className="font-serif text-4xl md:text-5xl text-foreground leading-[1.1] mb-8">
-            Structured Strategy Call
+            Start With the Right<br />Mortgage Strategy.
           </h1>
+          <p className="text-muted-foreground text-lg leading-relaxed mb-4 max-w-2xl">
+            Every approval starts with structure.
+          </p>
+          <p className="text-muted-foreground text-lg leading-relaxed mb-4 max-w-2xl">
+            If you're under contract or actively shopping, begin your application.
+          </p>
           <p className="text-muted-foreground text-lg leading-relaxed mb-12 max-w-2xl">
-            This page routes you to the right next step based on timing. If
-            you're under contract or actively shopping, start the Structured
-            Application. If you're planning ahead and need positioning,
-            schedule a Strategy Call.
+            If you're planning ahead, schedule a strategy call and position it correctly from the start. Serving buyers across Texas with specialized strategy for VA, physician, and complex income borrowers.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6 mb-12">
