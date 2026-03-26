@@ -98,40 +98,54 @@ const Index = () => (
       </div>
     </section>
 
-    {/* How Structured Approval Works */}
+    {/* Three Steps */}
     <section className="py-24 md:py-32 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         <p className="font-mono text-xs text-primary tracking-widest uppercase mb-4">Process</p>
         <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-6">
-          How Structured Approval Works
+          Three Steps. No Surprises at Closing.
         </h2>
         <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mb-16">
-          Most lenders collect documents and submit.<br />
-          We structure first, then submit.
+          We don't wing this. Every step is structured so you know your numbers, your timeline, and exactly what happens next.
         </p>
-        <div className="grid md:grid-cols-3 gap-12">
+        <div className="grid md:grid-cols-3 gap-16">
           {[
-            { num: "01", title: "Positioning", copy: "Income, assets, entitlement, and debt are evaluated strategically before a file is ever presented to underwriting." },
-            { num: "02", title: "Structuring", copy: "Loan program selection, documentation strategy, and timeline alignment are engineered intentionally — not reactively." },
-            { num: "03", title: "Submission", copy: "The file enters underwriting clean, deliberate, and prepared for confident approval." },
+            {
+              num: "01",
+              title: "Strategy Call",
+              body: "We review your income, credit, and goals to build your buying strategy before you shop. You leave knowing exactly what you can afford — not a rough estimate that changes later.",
+              tag: "15 Min • No Obligation",
+            },
+            {
+              num: "02",
+              title: "Pre-Approval",
+              body: "We verify your documents, run the numbers, and issue a fully underwritten pre-approval. This is the kind that holds up with sellers and agents — not one that falls apart in underwriting.",
+              tag: "24–48 Hours • Fully Reviewed",
+            },
+            {
+              num: "03",
+              title: "Close & Move In",
+              body: "We manage the loan from contract to closing with clear communication and no last-minute surprises. You know where your file stands every step of the way.",
+              tag: "Average: 21 Days to Close",
+            },
           ].map((step) => (
-            <div key={step.num} className="border-t border-border pt-6">
-              <span className="font-mono text-primary text-2xl font-medium">{step.num}</span>
-              <h3 className="text-foreground font-medium text-sm tracking-wide uppercase mt-3 mb-3">{step.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{step.copy}</p>
+            <div key={step.num} className="border-t border-border pt-8">
+              <span className="font-mono text-muted-foreground text-sm tracking-widest">{step.num}</span>
+              <h3 className="text-foreground font-medium text-base tracking-wide uppercase mt-4 mb-4">{step.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-5">{step.body}</p>
+              <span className="text-primary text-xs tracking-widest uppercase font-medium">{step.tag}</span>
             </div>
           ))}
         </div>
         <div className="my-16 border-t border-border" />
-        <div className="text-center space-y-4 mb-12">
-          <p className="text-muted-foreground text-sm tracking-wide">Layered income.</p>
-          <p className="text-muted-foreground text-sm tracking-wide">Multiple entities.</p>
-          <p className="text-muted-foreground text-sm tracking-wide">Rebuilt credit history.</p>
-          <p className="text-muted-foreground text-sm tracking-wide">Portfolio holdings.</p>
+        <div className="max-w-2xl mx-auto text-center mb-12">
+          <p className="text-foreground font-serif text-xl md:text-2xl leading-relaxed">
+            Most loan issues don't show up at application.<br />They show up at closing.
+          </p>
+          <p className="text-muted-foreground text-sm tracking-wide mt-4">
+            We structure everything upfront so that doesn't happen.
+          </p>
         </div>
-        <p className="text-center text-foreground font-serif text-xl md:text-2xl mb-12">
-          Structure creates clarity.
-        </p>
         <div className="text-center">
           <a
             href="https://scl.my1003app.com/554554/register"
@@ -139,7 +153,7 @@ const Index = () => (
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium hover:opacity-90 transition-opacity"
           >
-            Begin Structured Application
+            Start Your Pre-Approval
           </a>
         </div>
       </div>
