@@ -35,7 +35,7 @@ const Strategy = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center border border-border text-foreground px-8 py-4 text-sm tracking-widest uppercase font-medium hover:bg-muted transition-colors"
             >
-              See What You Can Actually Afford
+              See Your Real Buying Power
             </a>
           </div>
 
