@@ -17,8 +17,14 @@ const Strategy = () => {
           <p className="text-muted-foreground text-lg leading-relaxed mb-4 max-w-2xl">
             If you're under contract or actively shopping, begin your application.
           </p>
+          <p className="text-muted-foreground text-lg leading-relaxed mb-4 max-w-2xl">
+            If you're planning ahead, schedule a strategy call and position it correctly from the start. Serving Texas buyers with specialized strategy for VA, physician, and complex income loans.
+          </p>
+          <p className="text-muted-foreground text-lg leading-relaxed mb-4 max-w-2xl">
+            If you're actively shopping or already under contract, your file should be structured and submitted now.
+          </p>
           <p className="text-muted-foreground text-lg leading-relaxed mb-12 max-w-2xl">
-            If you're planning ahead, schedule a strategy call and position it correctly from the start. Serving buyers across Texas with specialized strategy for VA, physician, and complex income borrowers.
+            Structured guidance for Texas homebuyers who want clarity before they commit.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6 mb-12">
