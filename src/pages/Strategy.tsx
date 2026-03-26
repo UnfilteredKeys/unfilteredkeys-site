@@ -8,7 +8,7 @@ const Strategy = () => {
           <p className="font-mono text-xs text-primary tracking-widest uppercase mb-6">
             Central Texas Mortgage Strategy
           </p>
-          <h1 className="font-serif text-4xl md:text-6xl text-foreground leading-[1.15] md:leading-[1.2] mb-8">
+          <h1 className="font-serif text-4xl md:text-6xl text-foreground leading-[1.15] md:leading-[1.2] mb-12">
             Your Mortgage Should Be Built<span className="text-foreground">.</span>
             <br />
             <span className="text-primary font-bold">Not Quoted.</span>
@@ -16,7 +16,7 @@ const Strategy = () => {
           <p className="text-muted-foreground text-lg leading-relaxed mb-3 max-w-2xl">
             VA, FHA, Conventional &amp; Jumbo loans structured for Texas buyers who want real numbers before they shop.
           </p>
-          <p className="text-muted-foreground text-lg leading-relaxed mb-12 max-w-2xl">
+          <p className="text-muted-foreground text-lg leading-relaxed mb-16 max-w-2xl">
             No guesswork. No surprises. No deals falling apart at the finish line.
           </p>
 
