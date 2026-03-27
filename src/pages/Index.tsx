@@ -24,7 +24,7 @@ const Index = () => (
     <section className="min-h-[90vh] flex items-center px-6 md:px-12">
       <div className="max-w-7xl mx-auto w-full py-24 md:py-32">
         <p className="font-mono text-xs text-primary tracking-widest uppercase mb-6">
-          Central Texas Mortgage Strategy
+          Texas Mortgage Strategy
         </p>
         <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl text-foreground leading-[1.15] md:leading-[1.2] mb-12">
           Your Mortgage Should Be Built<span className="text-foreground">.</span>
