@@ -1780,7 +1780,7 @@ const pageHTML = `
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             Get Pre-Approved
           </a>
-          <a href="/calculators/" class="btn-outline">
+          <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" class="btn-outline">
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
             See Today's Rates
           </a>
@@ -1938,7 +1938,7 @@ const pageHTML = `
         </div>
         <div class="cta-pair" style="margin-top:28px; margin-bottom:0;">
           <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" class="btn-primary">Get Pre-Approved →</a>
-          <a href="/schedule/" class="btn-outline" style="border-color:var(--border); color:var(--text-secondary);">📅 Book a Strategy Call</a>
+          <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" class="btn-outline" style="border-color:var(--border); color:var(--text-secondary);">📅 Book a Strategy Call</a>
         </div>
       </div>
     </div>
@@ -2060,7 +2060,7 @@ const pageHTML = `
 
     <div class="nonqm-disclaimer" style="margin-top:36px; background:var(--bg-soft); border-left:3px solid var(--copper); padding:16px 22px; border-radius:var(--radius-sm); font-size:12.5px; color:var(--text-muted); line-height:1.75;">
       <strong style="color:var(--text-primary);">Not sure which program fits?</strong> That's exactly what the strategy call is for. We've placed borrowers who were turned down by three banks. Non-QM products carry different rate and term structures than agency loans — we'll show you a side-by-side comparison so you know exactly what you're choosing and why.
-      <a href="/apply/" style="color:var(--copper); font-weight:600; white-space:nowrap;"> Start the conversation →</a>
+      <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" style="color:var(--copper); font-weight:600; white-space:nowrap;"> Start the conversation →</a>
     </div>
   </div>
 </section>
@@ -2201,8 +2201,8 @@ const pageHTML = `
     </div>
 
     <div style="margin-top:32px; text-align:center;">
-      <a href="/apply/" class="btn-primary" style="display:inline-flex; margin-right:12px;">Start a Construction Loan →</a>
-      <a href="/schedule/" class="btn-outline" style="display:inline-flex; border-color:var(--border); color:var(--text-secondary);">📐 Discuss My Project</a>
+      <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display:inline-flex; margin-right:12px;">Start a Construction Loan →</a>
+      <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" class="btn-outline" style="display:inline-flex; border-color:var(--border); color:var(--text-secondary);">📐 Discuss My Project</a>
     </div>
 
   </div>
@@ -2330,7 +2330,7 @@ const pageHTML = `
       </div>
     </div>
     <div style="margin-top:32px; text-align:center;">
-      <a href="/apply/" class="btn-primary" style="display:inline-flex;">
+      <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display:inline-flex;">
         Start Your Pre-Approval →
       </a>
     </div>
@@ -2571,7 +2571,7 @@ const pageHTML = `
       <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:16px; padding:16px 32px;">
         Get Pre-Approved Today →
       </a>
-      <a href="/schedule/" class="btn-outline" style="border:1.5px solid rgba(240,237,230,0.25); color:rgba(240,237,230,0.85);">
+      <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" class="btn-outline" style="border:1.5px solid rgba(240,237,230,0.25); color:rgba(240,237,230,0.85);">
         📅 Book a Strategy Call
       </a>
     </div>
@@ -2661,7 +2661,7 @@ const pageHTML = `
         <ul>
           <li><a href="/calculators/">Calculators</a></li>
           <li><a href="/texas-down-payment-assistance/">TX Down Payment Help</a></li>
-          <li><a href="/schedule/">Book Strategy Call</a></li>
+          <li><a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer">Book Strategy Call</a></li>
           <li><a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer">Apply Now</a></li>
           <li><a href="/about/">About Us</a></li>
           <li><a href="/blog/">Blog</a></li>
@@ -2699,7 +2699,7 @@ const pageHTML = `
     <span aria-hidden="true">📞</span>
     Call
   </a>
-  <a href="/apply/" class="mob-btn apply" aria-label="Apply for a mortgage">
+  <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" class="mob-btn apply" aria-label="Apply for a mortgage">
     <span aria-hidden="true">📋</span>
     Apply
   </a>
