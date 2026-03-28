@@ -2729,8 +2729,9 @@ export default function Index() {
 
     // Mobile nav toggle
   const hamburger = document.querySelector('.hamburger');
-  const navLinks = document.querySelector('.nav-links');
+  const navLinks = document.querySelector('.nav-links') as HTMLElement | null;
   hamburger?.addEventListener('click', () => {
+    if (!navLinks) return;
     const isOpen = navLinks.style.display === 'flex';
     navLinks.style.display = isOpen ? 'none' : 'flex';
     navLinks.style.flexDirection = 'column';
@@ -2750,13 +2751,13 @@ export default function Index() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(el => {
         if (el.isIntersecting) {
-          el.target.style.animationPlayState = 'running';
+          (el.target as HTMLElement).style.animationPlayState = 'running';
           observer.unobserve(el.target);
         }
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.program-card, .city-card, .step, .diff-item, .review-card, details').forEach(el => {
-      el.style.animationPlayState = 'paused';
+      (el as HTMLElement).style.animationPlayState = 'paused';
       observer.observe(el);
     });
   }
