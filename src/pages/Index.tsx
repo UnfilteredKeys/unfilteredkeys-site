@@ -2419,7 +2419,7 @@ const pageHTML = `
         </ul>
       </div>
       <div class="dpa-cta-wrap">
-        <a href="/texas-down-payment-assistance/" class="btn-white-solid">See If I Qualify</a>
+        <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" class="btn-white-solid">See If I Qualify</a>
         <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" class="btn-copper-outline">Get Pre-Approved</a>
       </div>
     </div>
