@@ -1839,7 +1839,7 @@ const pageHTML = `
           </div>
           <div class="rate-val">~6.55%</div>
         </div>
-        <a href="/calculators/" class="rate-card-cta">Personalize My Rate →</a>
+        <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" class="rate-card-cta">Personalize My Rate →</a>
         <p class="rate-disclaimer">Rates shown are approximate averages. Your rate depends on credit, down payment, and loan details. Contact us for a personalized quote.</p>
       </div>
     </div>
