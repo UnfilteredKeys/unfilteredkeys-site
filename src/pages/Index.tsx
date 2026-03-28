@@ -2448,29 +2448,26 @@ const pageHTML = `
       </div>
     </div>
     <div class="reviews-grid" role="list">
-      <!-- PLACEHOLDER: Replace these with your real Google reviews -->
       <div class="review-card" role="listitem">
         <div class="review-stars" aria-label="5 stars">★★★★★</div>
-        <p class="review-text">"We were PCSing to Fort Hood with 60 days to close. [Name] had our VA pre-approval in 24 hours and we closed 3 days before my report date. Nobody else even came close on speed."</p>
+        <p class="review-text">"Shalandra helped us purchase our home and later refinance to better fit our budget, always making sure we clearly understood every step. Her great communication skills meant we never felt alone, and she was always ready to answer our questions. I'd highly recommend her to anyone."</p>
         <div class="review-meta">
-          <div class="review-avatar" aria-hidden="true">S</div>
+          <div class="review-avatar" aria-hidden="true">G</div>
           <div>
-            <div class="review-name">SSG Rodriguez</div>
-            <div class="review-city">Killeen, TX</div>
+            <div class="review-name">Gardenia Balbaneda</div>
+            <div class="review-city">Verified Google Review</div>
           </div>
-          <span class="review-badge va">VA Loan</span>
         </div>
       </div>
       <div class="review-card" role="listitem">
         <div class="review-stars" aria-label="5 stars">★★★★★</div>
-        <p class="review-text">"Moving from Austin to Round Rock, I shopped four lenders. Unfiltered Keys gave me the most honest Loan Estimate — no teaser rate that changed later. Closed at exactly the number they quoted me on Day 1."</p>
+        <p class="review-text">"I had such an amazing experience working with Shalanda. She was extremely detailed in her responses and always made sure I had all the information I needed throughout the process. Everything was explained clearly, and she was quick to respond whenever I had a question. The entire process was smooth from start to finish, and I felt supported every step of the way."</p>
         <div class="review-meta">
           <div class="review-avatar" aria-hidden="true">M</div>
           <div>
-            <div class="review-name">Marcus T.</div>
-            <div class="review-city">Round Rock, TX</div>
+            <div class="review-name">Moya Thomas</div>
+            <div class="review-city">Verified Google Review</div>
           </div>
-          <span class="review-badge conv">Conventional</span>
         </div>
       </div>
       <div class="reviews-placeholder" role="listitem" style="text-align:center;">
