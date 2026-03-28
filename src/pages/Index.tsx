@@ -2454,7 +2454,7 @@ const pageHTML = `
         <div class="review-meta">
           <div class="review-avatar" aria-hidden="true">G</div>
           <div>
-            <div class="review-name">Gardenia Balbaneda</div>
+            <div class="review-name">G. Balbaneda</div>
             <div class="review-city">Verified Google Review</div>
           </div>
         </div>
@@ -2465,7 +2465,7 @@ const pageHTML = `
         <div class="review-meta">
           <div class="review-avatar" aria-hidden="true">M</div>
           <div>
-            <div class="review-name">Moya Thomas</div>
+            <div class="review-name">M. Thomas</div>
             <div class="review-city">Verified Google Review</div>
           </div>
         </div>
