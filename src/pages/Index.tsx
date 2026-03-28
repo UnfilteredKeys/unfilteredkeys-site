@@ -2473,9 +2473,9 @@ const pageHTML = `
           <span class="review-badge conv">Conventional</span>
         </div>
       </div>
-      <div class="reviews-placeholder" role="listitem">
-        <strong>📢 Your Review Goes Here</strong>
-        After your first few closings, ask clients for a Google review at this link: <a href="https://g.page/r/CbNEnAzp2zG9EBM/review" style="color:var(--copper)">[Your Google Review Link]</a>. Target 25 reviews in the first 30 days. Embed them here via <a href="https://trustindex.io" style="color:var(--copper)">Trustindex.io</a> (free plan available).
+      <div class="reviews-placeholder" role="listitem" style="text-align:center;">
+        <strong>⭐ Leave Us a Google Review</strong>
+        <p style="margin-top:8px; color:var(--text-secondary); font-size:15px; line-height:1.6;">Had a great experience? We'd love to hear from you. Your review helps other Texas veterans and homebuyers find the honest mortgage guidance they deserve. <a href="https://g.page/r/CbNEnAzp2zG9EBM/review" style="color:var(--copper); font-weight:700;">Click here to leave a review →</a></p>
       </div>
     </div>
   </div>
