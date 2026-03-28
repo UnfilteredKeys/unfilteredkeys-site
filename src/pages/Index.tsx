@@ -1776,7 +1776,7 @@ const pageHTML = `
           Real strategy. Honest numbers. Fast closings — statewide.
         </p>
         <div class="cta-pair anim anim-4">
-          <a href="/apply/" class="btn-primary">
+          <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" class="btn-primary">
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             Get Pre-Approved
           </a>
@@ -1937,7 +1937,7 @@ const pageHTML = `
           </div>
         </div>
         <div class="cta-pair" style="margin-top:28px; margin-bottom:0;">
-          <a href="/apply/" class="btn-primary">Get Pre-Approved →</a>
+          <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" class="btn-primary">Get Pre-Approved →</a>
           <a href="/schedule/" class="btn-outline" style="border-color:var(--border); color:var(--text-secondary);">📅 Book a Strategy Call</a>
         </div>
       </div>
@@ -2420,7 +2420,7 @@ const pageHTML = `
       </div>
       <div class="dpa-cta-wrap">
         <a href="/texas-down-payment-assistance/" class="btn-white-solid">See If I Qualify</a>
-        <a href="/apply/" class="btn-copper-outline">Get Pre-Approved</a>
+        <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" class="btn-copper-outline">Get Pre-Approved</a>
       </div>
     </div>
   </div>
@@ -2568,7 +2568,7 @@ const pageHTML = `
       15 minutes. We'll tell you your real buying power, which loan product fits your situation, and exactly what to do next. No commitment. No sales pressure.
     </p>
     <div class="cta-pair" style="justify-content:center">
-      <a href="/apply/" class="btn-primary" style="font-size:16px; padding:16px 32px;">
+      <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:16px; padding:16px 32px;">
         Get Pre-Approved Today →
       </a>
       <a href="/schedule/" class="btn-outline" style="border:1.5px solid rgba(240,237,230,0.25); color:rgba(240,237,230,0.85);">
