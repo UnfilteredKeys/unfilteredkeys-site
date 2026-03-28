@@ -1750,7 +1750,7 @@ const pageHTML = `
         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
         <span>(254) 935-9331</span>
       </a>
-      <a href="/apply/" class="nav-cta">Apply Now</a>
+      <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" class="nav-cta">Apply Now</a>
       <button class="hamburger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -2662,7 +2662,7 @@ const pageHTML = `
           <li><a href="/calculators/">Calculators</a></li>
           <li><a href="/texas-down-payment-assistance/">TX Down Payment Help</a></li>
           <li><a href="/schedule/">Book Strategy Call</a></li>
-          <li><a href="/apply/">Apply Now</a></li>
+          <li><a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer">Apply Now</a></li>
           <li><a href="/about/">About Us</a></li>
           <li><a href="/blog/">Blog</a></li>
         </ul>
