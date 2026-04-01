@@ -2000,7 +2000,7 @@ const pageHTML = `
           <a href="/itin-loan-texas/" class="program-card itin" role="listitem">
             <div class="prog-icon" aria-hidden="true">🌐</div>
             <div class="prog-title">ITIN Loan</div>
-            <div class="prog-desc">Homeownership for borrowers without a Social Security number. Qualify using your Individual Taxpayer Identification Number. Available across all Texas markets.</div>
+            <div class="prog-desc">Homeownership without a Social Security number. Qualify using your Individual Taxpayer Identification Number across all Texas markets.</div>
             <span class="prog-badge">No SSN Required</span>
           </a>
           <a href="/profit-loss-loan-texas/" class="program-card bankst" role="listitem">
