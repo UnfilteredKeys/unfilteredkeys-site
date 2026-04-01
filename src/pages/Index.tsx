@@ -1771,7 +1771,7 @@ const pageHTML = `
           We build your full strategy first — real payment with Texas
           property taxes included, the right loan product for your
           situation, and a pre-approval that actually holds up when
-          it matters. <strong>VA specialists. Texas statewide.</strong>
+          it matters.
         </p>
         <div class="cta-pair anim anim-4">
           <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" class="btn-primary">
