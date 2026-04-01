@@ -1703,14 +1703,10 @@ const pageHTML = `
 <div class="utility-bar">
   <div class="container">
     <div class="util-left">
-      <span>NMLS# <strong style="color:rgba(255,255,255,0.85)">554554</strong></span>
-      <span class="util-divider">|</span>
-      <span>Licensed Statewide · Texas SML · NMLS# 554554</span>
+      <span>Texas Licensed Mortgage Broker · Statewide</span>
     </div>
     <div class="util-right">
-      <a href="https://g.page/r/CbNEnAzp2zG9EBM/review">⭐ 5.0 · Google Reviews</a>
-      <span class="util-divider">|</span>
-      <a href="tel:+12549359331">📞 (254) 935-9331</a>
+      <span>VA · FHA · Conventional · Jumbo · Non-QM · Physician</span>
     </div>
   </div>
 </div>
