@@ -1761,7 +1761,7 @@ const pageHTML = `
   <div class="container">
     <div class="hero-inner">
       <div>
-        <div class="hero-eyebrow anim anim-1">Texas Mortgage Broker</div>
+        <div class="hero-eyebrow anim anim-1">VA Loan Specialist · Texas Mortgage Broker</div>
         <h1 id="hero-heading" class="anim anim-2">
           Your Texas Mortgage,<br>
           <em>Structured Around<br>You</em> — Not a Quota.
