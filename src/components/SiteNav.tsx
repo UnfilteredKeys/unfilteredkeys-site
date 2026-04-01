@@ -5,11 +5,6 @@ import KeyIcon from "./KeyIcon";
 
 const navItems: { label: string; path: string; external?: boolean }[] = [
   { label: "Home", path: "/" },
-  { label: "The Standard", path: "/standard" },
-  { label: "The System", path: "/system" },
-  { label: "Intelligence", path: "/intelligence" },
-  { label: "Framework", path: "/framework" },
-  { label: "For Agents", path: "/agents" },
   { label: "Apply", path: "https://scl.my1003app.com/554554/register", external: true },
 ];
 
