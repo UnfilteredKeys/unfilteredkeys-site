@@ -2273,7 +2273,7 @@ const pageHTML = `
           <li><strong>SETH 5 Star Texas Advantage</strong> — Up to 5% down payment assistance. No first-time buyer requirement. Available statewide — layerable with FHA 203(k) for purchase + renovation. <span class="dpa-score-tag">640 min credit</span></li>
           <li><strong>SETH GoldStar Program</strong> — Forgivable grant. Stay 3 years = zero repayment. Works with FHA, VA, USDA, and Conventional. Income limits by county. <span class="dpa-score-tag">620 min credit</span></li>
           <li><strong>Chenoa Fund</strong> — FHA-paired down payment assistance covering the 3.5% requirement. Repayable or forgivable options. Available statewide with no income limits on the repayable version. <span class="dpa-score-tag">600 min credit</span></li>
-          <li><strong>Investor DPA Programs</strong> — As a broker, we have access to multiple investor-backed DPA products not available at retail banks. Options that go to 580 credit, allow higher debt-to-income ratios, and work across purchase and renovation transactions. Ask us what's available for your scenario.</li>
+          <li><strong>Investor-Backed DPA</strong> — Access to programs not available at retail banks. Options to 580 credit, higher DTI tolerance, available on purchase and renovation transactions. Ask us what fits your scenario.</li>
         </ul>
       </div>
       <div class="dpa-cta-wrap">
