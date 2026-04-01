@@ -2162,9 +2162,8 @@ const pageHTML = `
 <section class="section section-parchment" aria-labelledby="process-heading">
   <div class="container">
     <p class="section-tag">The Process</p>
-    <h2 class="section-title" id="process-heading">Start → Build → Close</h2>
+    <h2 class="section-title" id="process-heading">How It Works — From First Call to Closing Day</h2>
     <p class="section-sub">Most lenders lose control after pre-approval. This is where we don't.</p>
-    <p style="font-size:14px; color:var(--text-muted); margin-top:8px; font-style:italic; border-left:2px solid var(--copper); padding-left:12px;">No jargon. No last-minute surprises. No deals falling apart at the finish line.</p>
     <div class="steps-grid" role="list">
       <div class="step" role="listitem">
         <div class="step-number" aria-hidden="true">01</div>
