@@ -1896,10 +1896,10 @@ const pageHTML = `
           <span style="font-style:italic; color:var(--copper); font-family:var(--font-display);">Structured Results.</span>
         </h2>
         <p class="broker-bio">
-          I started Unfiltered Keys because I got tired of watching buyers get handed a pre-qual number and sent out shopping — with no real strategy, no honest numbers, and no one in their corner when things got complicated.
+          Unfiltered Keys was built for buyers who deserve more than a pre-qual number and a pat on the back — because real strategy, honest numbers, and someone actually in your corner when things get complicated shouldn't be optional.
         </p>
         <p class="broker-bio">
-          I work with first-time buyers, veterans PCSing to Fort Hood or Fort Bliss, physicians relocating to Houston Medical Center or Baylor Scott &amp; White, relocators landing in Round Rock and Georgetown, and move-up buyers across the state. Every client gets a full affordability picture upfront — not a guess, not a teaser rate.
+          First-time buyers, veterans PCSing to Fort Hood or Fort Bliss, physicians relocating to Houston Medical Center or Baylor Scott &amp; White, relocators landing in Leander and Georgetown, move-up buyers across the state — every client gets a full affordability picture upfront. Not a guess. Not a teaser rate.
         </p>
         <p class="broker-bio" style="font-weight:600; color:var(--text-primary);">
           VA-focused. Texas-based. Trusted when the deal actually has to close.
