@@ -1982,43 +1982,43 @@ const pageHTML = `
           <a href="/dscr-loan-texas/" class="program-card dscr" role="listitem">
             <div class="prog-icon" aria-hidden="true">🏢</div>
             <div class="prog-title">DSCR Loan</div>
-            <div class="prog-desc">Qualify on rental income — not your personal income or tax returns. Ideal for investors in Houston, DFW, San Antonio, and the Central Texas corridor. No W-2 required.</div>
+            <div class="prog-desc">Qualify on rental income — not W-2s or tax returns. The go-to product for Texas investors across Houston, DFW, San Antonio, and Central Texas.</div>
             <span class="prog-badge">Investor · No W-2 Needed</span>
           </a>
           <a href="/bank-statement-loan-texas/" class="program-card bankst" role="listitem">
             <div class="prog-icon" aria-hidden="true">📊</div>
             <div class="prog-title">Bank Statement Loan</div>
-            <div class="prog-desc">12–24 months of bank statements instead of tax returns. Built for self-employed business owners, contractors, and 1099 earners whose write-offs make traditional qualifying impossible.</div>
+            <div class="prog-desc">12–24 months of deposits in place of tax returns. Built for self-employed borrowers whose write-offs make traditional qualifying impossible.</div>
             <span class="prog-badge">Self-Employed · 1099</span>
           </a>
           <a href="/asset-depletion-loan-texas/" class="program-card asset" role="listitem">
             <div class="prog-icon" aria-hidden="true">💼</div>
             <div class="prog-title">Asset Depletion</div>
-            <div class="prog-desc">Convert liquid assets — retirement accounts, brokerage, savings — into qualifying income. Ideal for retirees, high-net-worth buyers, and those with wealth but low reportable income.</div>
+            <div class="prog-desc">Convert liquid assets — retirement accounts, brokerage, savings — into qualifying income. Ideal for retirees and high-net-worth buyers with low reportable income.</div>
             <span class="prog-badge">Retirees · High Net Worth</span>
           </a>
           <a href="/itin-loan-texas/" class="program-card itin" role="listitem">
             <div class="prog-icon" aria-hidden="true">🌐</div>
             <div class="prog-title">ITIN Loan</div>
-            <div class="prog-desc">Homeownership for borrowers without a Social Security number. Qualify using your Individual Taxpayer Identification Number. Available across all Texas markets.</div>
+            <div class="prog-desc">Homeownership without a Social Security number. Qualify using your Individual Taxpayer Identification Number across all Texas markets.</div>
             <span class="prog-badge">No SSN Required</span>
           </a>
           <a href="/profit-loss-loan-texas/" class="program-card bankst" role="listitem">
             <div class="prog-icon" aria-hidden="true">📈</div>
             <div class="prog-title">P&amp;L Only Loan</div>
-            <div class="prog-desc">Qualify using a CPA-prepared Profit &amp; Loss statement — no tax returns, no bank statements. Designed for business owners with complex financials and strong recent revenue.</div>
+            <div class="prog-desc">Qualify using a CPA-prepared Profit &amp; Loss statement — no tax returns, no bank statements. Designed for business owners with strong recent revenue.</div>
             <span class="prog-badge">CPA Letter · No Returns</span>
           </a>
           <a href="/foreign-national-loan-texas/" class="program-card foreign" role="listitem">
             <div class="prog-icon" aria-hidden="true">✈️</div>
             <div class="prog-title">Foreign National Loan</div>
-            <div class="prog-desc">Financing for non-US citizens and non-permanent residents purchasing Texas investment or second home properties. No US credit history required in most cases.</div>
+            <div class="prog-desc">Financing for non-US citizens purchasing Texas investment or second home properties. No US credit history required in most cases.</div>
             <span class="prog-badge">Non-US Citizens · Investors</span>
           </a>
           <a href="/non-qm-loan-texas/" class="program-card nonqm" role="listitem">
             <div class="prog-icon" aria-hidden="true">🔑</div>
             <div class="prog-title">Other Non-QM</div>
-            <div class="prog-desc">Recent bankruptcy or foreclosure? Non-warrantable condo? Unique property or income structure? We work with non-QM lenders across Texas who solve problems traditional banks walk away from.</div>
+            <div class="prog-desc">Recent bankruptcy? Non-warrantable condo? Unique income structure? We work with non-QM lenders who solve problems traditional banks walk away from.</div>
             <span class="prog-badge">Hard Cases Welcome</span>
           </a>
         </div>
