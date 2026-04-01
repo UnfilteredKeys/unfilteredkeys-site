@@ -1904,36 +1904,6 @@ const pageHTML = `
         <p class="broker-bio" style="font-weight:600; color:var(--text-primary);">
           VA-focused. Texas-based. Trusted when the deal actually has to close.
         </p>
-        <div class="broker-creds" role="list" aria-label="Credentials">
-          <div class="broker-cred" role="listitem">
-            <div class="cred-icon" aria-hidden="true">🎖️</div>
-            <div>
-              <div class="cred-label">VA Specialist</div>
-              <div class="cred-note">PCS · BAH · COE · IRRRL</div>
-            </div>
-          </div>
-          <div class="broker-cred" role="listitem">
-            <div class="cred-icon" aria-hidden="true">📍</div>
-            <div>
-              <div class="cred-label">Texas Statewide</div>
-              <div class="cred-note">Fort Hood · Fort Bliss · JBSA · Houston · DFW</div>
-            </div>
-          </div>
-          <div class="broker-cred" role="listitem">
-            <div class="cred-icon" aria-hidden="true">⭐</div>
-            <div>
-              <div class="cred-label">5.0 Google Rating</div>
-              <div class="cred-note"><a href="https://g.page/r/CbNEnAzp2zG9EBM/review" target="_blank" rel="noopener" style="color:var(--copper);">Read Reviews →</a></div>
-            </div>
-          </div>
-          <div class="broker-cred" role="listitem">
-            <div class="cred-icon" aria-hidden="true">📞</div>
-            <div>
-              <div class="cred-label">Direct Line</div>
-              <div class="cred-note"><a href="tel:+12549359331" style="color:var(--copper);">(254) 935-9331</a></div>
-            </div>
-          </div>
-        </div>
         <div class="cta-pair" style="margin-top:28px; margin-bottom:0;">
           <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" class="btn-primary">Get Pre-Approved →</a>
           <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" class="btn-outline" style="border-color:var(--border); color:var(--text-secondary);">📅 Book a Strategy Call</a>
