@@ -2423,7 +2423,7 @@ const pageHTML = `
     <p class="section-tag" style="justify-content:center">Get Started</p>
     <h2 class="section-title" id="final-cta-heading" style="margin:0 auto 14px">Ready to Talk Strategy?</h2>
     <p style="font-size:17px; color:rgba(240,237,230,0.7); line-height:1.65; margin-bottom:32px;">
-      15 minutes. We'll tell you your real buying power, which loan product fits your situation, and exactly what to do next. No commitment. No sales pressure.
+      15 minutes. We'll tell you your real buying power, which loan product fits your situation, and exactly what to do next.
     </p>
     <div class="cta-pair" style="justify-content:center">
       <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:16px; padding:16px 32px;">
@@ -2461,7 +2461,7 @@ const pageHTML = `
           <!-- Tagline -->
           <text x="56" y="65" font-family="Fira Mono,Courier New,monospace" font-size="7.5" fill="rgba(240,237,230,0.4)" letter-spacing="1.8">STRUCTURED MORTGAGE STRATEGY</text>
         </svg>
-        <p style="font-style:italic; color:rgba(240,237,230,0.7); font-size:14px; margin-bottom:16px;">Stop Getting Processed. Start Getting Informed.</p>
+        <p style="font-style:italic; color:rgba(240,237,230,0.7); font-size:14px; margin-bottom:16px;">Unfiltered Advice. Structured Results. Texas Statewide.</p>
         <p>Texas mortgage broker licensed statewide. VA, FHA, Conventional, Jumbo, USDA and Physician loans — serving Houston, DFW, San Antonio, El Paso, Killeen, Temple, Round Rock, Georgetown, and all Texas military corridors. Honest advice. Fast closings.</p>
         <div class="footer-nmls">
           <div style="margin-bottom:6px;">
