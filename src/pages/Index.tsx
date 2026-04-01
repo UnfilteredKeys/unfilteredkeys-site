@@ -1988,7 +1988,7 @@ const pageHTML = `
           <a href="/bank-statement-loan-texas/" class="program-card bankst" role="listitem">
             <div class="prog-icon" aria-hidden="true">📊</div>
             <div class="prog-title">Bank Statement Loan</div>
-            <div class="prog-desc">12–24 months of bank statements instead of tax returns. Built for self-employed business owners, contractors, and 1099 earners whose write-offs make traditional qualifying impossible.</div>
+            <div class="prog-desc">12–24 months of deposits in place of tax returns. Built for self-employed borrowers whose write-offs make traditional qualifying impossible.</div>
             <span class="prog-badge">Self-Employed · 1099</span>
           </a>
           <a href="/asset-depletion-loan-texas/" class="program-card asset" role="listitem">
