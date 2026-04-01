@@ -2006,7 +2006,7 @@ const pageHTML = `
           <a href="/profit-loss-loan-texas/" class="program-card bankst" role="listitem">
             <div class="prog-icon" aria-hidden="true">📈</div>
             <div class="prog-title">P&amp;L Only Loan</div>
-            <div class="prog-desc">Qualify using a CPA-prepared Profit &amp; Loss statement — no tax returns, no bank statements. Designed for business owners with complex financials and strong recent revenue.</div>
+            <div class="prog-desc">Qualify using a CPA-prepared Profit &amp; Loss statement — no tax returns, no bank statements. Designed for business owners with strong recent revenue.</div>
             <span class="prog-badge">CPA Letter · No Returns</span>
           </a>
           <a href="/foreign-national-loan-texas/" class="program-card foreign" role="listitem">
