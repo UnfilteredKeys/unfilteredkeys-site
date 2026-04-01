@@ -2175,7 +2175,7 @@ const pageHTML = `
       <div class="step" role="listitem">
         <div class="step-number" aria-hidden="true">02</div>
         <div class="step-icon" aria-hidden="true">📋</div>
-        <h3 class="step-title">Pre-Approval</h3>
+        <h3 class="step-title">Fully Underwritten Pre-Approval</h3>
         <p class="step-body">We gather your documents, run the numbers, and deliver a fully underwritten pre-approval letter — the kind that actually holds up with sellers and agents.</p>
         <span class="step-time">24–48 hrs · Fully Underwritten</span>
       </div>
