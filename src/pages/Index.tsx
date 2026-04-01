@@ -1853,16 +1853,16 @@ const pageHTML = `
         <div class="stat-label-b">Day Average Close</div>
       </div>
       <div class="stat-block" role="listitem">
-        <div class="stat-number">75%</div>
-        <div class="stat-label-b">VA Loan Volume</div>
+        <div class="stat-number">20+</div>
+        <div class="stat-label-b">Years Experience</div>
       </div>
       <div class="stat-block" role="listitem">
-        <div class="stat-number">5★</div>
-        <div class="stat-label-b">Google Rating</div>
+        <div class="stat-number">50+</div>
+        <div class="stat-label-b">Lender Network</div>
       </div>
       <div class="stat-block" role="listitem">
-        <div class="stat-number">$0</div>
-        <div class="stat-label-b">Down on VA Loans</div>
+        <div class="stat-number">1</div>
+        <div class="stat-label-b">Dedicated Loan Advisor</div>
       </div>
     </div>
   </div>
