@@ -2345,7 +2345,7 @@ const pageHTML = `
       <div>
         <div class="lm-tag">Free Download</div>
         <h2 class="lm-title" id="lm-heading">The Texas Homebuyer's<br>90-Day Mortgage Strategy Playbook</h2>
-        <p class="lm-sub">The unfiltered guide to buying a home in Texas — property taxes, loan programs, DPA, and exactly what to do 90 days before you apply. Free. No spam.</p>
+        <p class="lm-sub">The unfiltered guide to buying a home in Texas — property taxes, loan programs, DPA, and exactly what to do 90 days before you apply.</p>
       </div>
       <form class="lm-form" aria-label="Download the free Texas Mortgage Playbook">
         <input type="text" name="first_name" placeholder="First Name" autocomplete="given-name" aria-label="First Name" required>
