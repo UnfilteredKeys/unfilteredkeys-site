@@ -1767,9 +1767,11 @@ const pageHTML = `
           <em>Structured Around<br>You</em> — Not a Quota.
         </h1>
         <p class="hero-sub anim anim-3">
-          <strong>VA, FHA, Conventional, Jumbo &amp; Physician loans</strong> for Texas homebuyers and professionals.
-          Killeen · Houston · Dallas-Fort Worth · San Antonio · El Paso · Round Rock · Georgetown.
-          Real strategy. Honest numbers. Fast closings — statewide.
+          Most lenders hand you a number and send you shopping.
+          We build your full strategy first — real payment with Texas
+          property taxes included, the right loan product for your
+          situation, and a pre-approval that actually holds up when
+          it matters. <strong>VA specialists. Texas statewide.</strong>
         </p>
         <div class="cta-pair anim anim-4">
           <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" class="btn-primary">
