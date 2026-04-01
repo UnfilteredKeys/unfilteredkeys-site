@@ -2040,139 +2040,30 @@ const pageHTML = `
 <!-- ═══════════════════════════════════════════
      CONSTRUCTION & RENOVATION LOANS
      ═══════════════════════════════════════════ -->
-<section class="section section-construction" aria-labelledby="constr-heading">
+<section class="section section-parchment" aria-labelledby="constr-heading">
   <div class="container">
     <p class="section-tag">Build It. Buy It. Fix It.</p>
-    <h2 class="section-title" id="constr-heading">Construction &amp; Renovation Loans — All Program Types</h2>
-    <p class="section-sub">One loan. One closing. Whether you're building from the ground up or transforming a dated property into your home — we structure it from day one.</p>
-
-    <!-- EXPLAINER CARDS -->
-    <div class="constr-explainer">
-      <div class="constr-explain-card">
-        <div class="constr-explain-title">🏗️ One-Time Close Construction (OTC)</div>
-        <div class="constr-explain-body">
-          <strong>One loan, one closing, one set of closing costs.</strong> Your construction loan converts automatically to your permanent mortgage when the build is complete — no second closing, no re-qualifying, no rate risk at completion. Available for VA, FHA, USDA, and Conventional programs. Lock your permanent rate before the first shovel hits the ground.
+    <h2 class="section-title" id="constr-heading">Building or Renovating? One Loan. One Closing.</h2>
+    <p class="section-sub">VA, FHA, USDA, and Conventional One-Time Close construction loans — plus FHA 203(k), HomeStyle, and VA Renovation financing. Lock your rate before the first shovel hits the ground.</p>
+    <div class="diff-grid" style="margin-top:36px;" role="list">
+      <div class="diff-item" role="listitem">
+        <div class="diff-icon-wrap" aria-hidden="true">🏗️</div>
+        <div>
+          <div class="diff-title">One-Time Close Construction</div>
+          <div class="diff-body">One closing, one set of costs, and your permanent rate locked before construction starts. Available for VA ($0 down), FHA (3.5% down), USDA (zero down), and Conventional programs. No re-qualification at completion.</div>
         </div>
       </div>
-      <div class="constr-explain-card reno">
-        <div class="constr-explain-title">🔨 Renovation Loans</div>
-        <div class="constr-explain-body">
-          <strong>Buy the property and fund the renovation in a single loan.</strong> Instead of a purchase + a personal loan + a HELOC, renovation financing rolls acquisition and improvement costs together — based on the after-improved value. Ideal for buyers who want to build equity immediately or sellers who need a bridge before listing.
+      <div class="diff-item" role="listitem">
+        <div class="diff-icon-wrap" aria-hidden="true">🔨</div>
+        <div>
+          <div class="diff-title">Renovation Loans</div>
+          <div class="diff-body">Buy the property and fund the improvements in a single loan — based on the after-improved value. FHA 203(k), Fannie Mae HomeStyle, and VA Renovation options available statewide.</div>
         </div>
       </div>
     </div>
-
-    <!-- PROGRAMS GRID -->
-    <div class="constr-programs-wrap">
-
-      <!-- ONE-TIME CLOSE -->
-      <div>
-        <div class="prog-category-label">One-Time Close Construction — OTC</div>
-        <div class="programs-grid" style="margin-top:0;">
-
-          <a href="/va-construction-loan-texas/" class="program-card otc-va">
-            <div class="prog-icon" aria-hidden="true">🎖️</div>
-            <div class="prog-title">VA One-Time Close</div>
-            <div class="prog-desc">Build with zero down using your VA benefit. Lock your permanent rate before construction starts. No re-qualification at completion. The most powerful construction tool for Texas veterans — rarely offered by most lenders.</div>
-            <span class="prog-badge">$0 Down · Veterans Only</span>
-          </a>
-
-          <a href="/fha-construction-loan-texas/" class="program-card otc-fha">
-            <div class="prog-icon" aria-hidden="true">🏠</div>
-            <div class="prog-title">FHA One-Time Close</div>
-            <div class="prog-desc">3.5% down construction-to-permanent financing backed by FHA. 580+ credit score. Single closing covers land, construction, and the 30-year mortgage. Available statewide including rural Texas counties.</div>
-            <span class="prog-badge">3.5% Down · 580 Credit</span>
-          </a>
-
-          <a href="/usda-construction-loan-texas/" class="program-card otc-usda">
-            <div class="prog-icon" aria-hidden="true">🌾</div>
-            <div class="prog-title">USDA One-Time Close</div>
-            <div class="prog-desc">100% financing to build in USDA-eligible rural areas. Zero down. One closing. Covers land purchase, site prep, and construction — all rolled into a 30-year USDA-guaranteed mortgage. Copperas Cove corridor &amp; Bell County eligible areas.</div>
-            <span class="prog-badge">Zero Down · Rural Eligible</span>
-          </a>
-
-          <a href="/conventional-construction-loan-texas/" class="program-card otc-conv">
-            <div class="prog-icon" aria-hidden="true">📐</div>
-            <div class="prog-title">Conventional OTC</div>
-            <div class="prog-desc">5–20% down. Higher loan limits. No upfront MIP. Ideal for custom builds in Georgetown, Round Rock, DFW, and Houston suburbs where home values exceed FHA limits. Fannie Mae and Freddie Mac compliant.</div>
-            <span class="prog-badge">From 5% Down · High Limits</span>
-          </a>
-
-        </div>
-      </div>
-
-      <!-- RENOVATION -->
-      <div>
-        <div class="prog-category-label">Renovation Loans — Purchase + Improve</div>
-        <div class="programs-grid" style="margin-top:0;">
-
-          <a href="/fha-203k-loan-texas/" class="program-card reno-203k">
-            <div class="prog-icon" aria-hidden="true">🔧</div>
-            <div class="prog-title">FHA 203(k) — Full</div>
-            <div class="prog-desc">Buy a fixer-upper and fund structural repairs, additions, and full rehab — all in one FHA loan. 3.5% down based on the after-improved value. Minimum $5,000 in work. Licensed contractor required. Best for major renovations.</div>
-            <span class="prog-badge">3.5% Down · Structural OK</span>
-          </a>
-
-          <a href="/fha-203k-streamline-texas/" class="program-card reno-203k">
-            <div class="prog-icon" aria-hidden="true">⚡</div>
-            <div class="prog-title">FHA 203(k) Streamline</div>
-            <div class="prog-desc">Simplified renovation financing for non-structural improvements up to $35,000. Flooring, paint, kitchen updates, HVAC, roofing. Faster than the full 203(k) with less paperwork. Available on purchase and refinance.</div>
-            <span class="prog-badge">Up to $35K · Non-Structural</span>
-          </a>
-
-          <a href="/homestyle-renovation-loan-texas/" class="program-card reno-style">
-            <div class="prog-icon" aria-hidden="true">🏡</div>
-            <div class="prog-title">Fannie Mae HomeStyle</div>
-            <div class="prog-desc">Conventional renovation financing up to 75% of the after-improved value. No minimum project size. Structural repairs, landscaping, pools, ADUs — all eligible. Lower MIP than FHA 203(k) for qualified borrowers.</div>
-            <span class="prog-badge">Conventional · No Min Project</span>
-          </a>
-
-          <a href="/va-renovation-loan-texas/" class="program-card reno-va">
-            <div class="prog-icon" aria-hidden="true">🎖️</div>
-            <div class="prog-title">VA Renovation Loan</div>
-            <div class="prog-desc">Use your VA benefit to purchase and improve simultaneously. Finance repairs, upgrades, and energy-efficient improvements with zero down — based on the completed appraised value. VA-eligible veterans and active-duty only.</div>
-            <span class="prog-badge">$0 Down · Veterans Only</span>
-          </a>
-
-        </div>
-      </div>
-
-    </div>
-
-    <!-- OTC PROCESS TIMELINE -->
-    <div class="otc-timeline">
-      <span class="otc-timeline-label" style="grid-column:1/-1">How One-Time Close Works — From Contract to Keys</span>
-      <div class="otc-step">
-        <div class="otc-step-num">Step 01</div>
-        <div class="otc-step-icon">📋</div>
-        <div class="otc-step-title">Pre-Approval &amp; Builder Contract</div>
-        <div class="otc-step-note">Qualify for the OTC loan. Select your builder and execute the construction contract.</div>
-      </div>
-      <div class="otc-step">
-        <div class="otc-step-num">Step 02</div>
-        <div class="otc-step-icon">🔒</div>
-        <div class="otc-step-title">Single Closing — Rate Locked</div>
-        <div class="otc-step-note">One set of closing costs. Your permanent rate is locked before construction begins.</div>
-      </div>
-      <div class="otc-step">
-        <div class="otc-step-num">Step 03</div>
-        <div class="otc-step-icon">🏗️</div>
-        <div class="otc-step-title">Construction Phase</div>
-        <div class="otc-step-note">Draw disbursements to builder. Interest-only payments during the build. No re-qualification.</div>
-      </div>
-      <div class="otc-step">
-        <div class="otc-step-num">Step 04</div>
-        <div class="otc-step-icon">🔑</div>
-        <div class="otc-step-title">Automatic Conversion</div>
-        <div class="otc-step-note">Certificate of Occupancy issued. Loan converts automatically to your permanent mortgage.</div>
-      </div>
-    </div>
-
     <div style="margin-top:32px; text-align:center;">
-      <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display:inline-flex; margin-right:12px;">Start a Construction Loan →</a>
-      <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" class="btn-outline" style="display:inline-flex; border-color:var(--border); color:var(--text-secondary);">📐 Discuss My Project</a>
+      <a href="/construction-renovation-loans-texas/" class="btn-primary" style="display:inline-flex;">Explore Construction &amp; Renovation Loans →</a>
     </div>
-
   </div>
 </section>
 
