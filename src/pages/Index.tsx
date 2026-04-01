@@ -2330,7 +2330,7 @@ const pageHTML = `
       </div>
       <div class="reviews-placeholder" role="listitem" style="text-align:center;">
         <strong>⭐ Leave Us a Google Review</strong>
-        <p style="margin-top:8px; color:var(--text-secondary); font-size:15px; line-height:1.6;">Had a great experience? We'd love to hear from you. Your review helps other Texas veterans and homebuyers find the honest mortgage guidance they deserve. <a href="https://g.page/r/CbNEnAzp2zG9EBM/review" style="color:var(--copper); font-weight:700;">Click here to leave a review →</a></p>
+        <p style="margin-top:8px; color:var(--text-secondary); font-size:15px; line-height:1.6;">Your review helps other Texas veterans and homebuyers find honest mortgage guidance they deserve. <a href="https://g.page/r/CbNEnAzp2zG9EBM/review" target="_blank" rel="noopener noreferrer" style="color:var(--copper); font-weight:700;">Click here to leave a review →</a></p>
       </div>
     </div>
   </div>
