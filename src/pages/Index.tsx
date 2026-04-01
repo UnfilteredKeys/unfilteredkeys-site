@@ -2018,7 +2018,7 @@ const pageHTML = `
           <a href="/non-qm-loan-texas/" class="program-card nonqm" role="listitem">
             <div class="prog-icon" aria-hidden="true">🔑</div>
             <div class="prog-title">Other Non-QM</div>
-            <div class="prog-desc">Recent bankruptcy or foreclosure? Non-warrantable condo? Unique property or income structure? We work with non-QM lenders across Texas who solve problems traditional banks walk away from.</div>
+            <div class="prog-desc">Recent bankruptcy? Non-warrantable condo? Unique income structure? We work with non-QM lenders who solve problems traditional banks walk away from.</div>
             <span class="prog-badge">Hard Cases Welcome</span>
           </a>
         </div>
