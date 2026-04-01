@@ -1735,10 +1735,7 @@ const pageHTML = `
       <ul class="nav-links" role="list">
         <li><a href="/buy/">Buy a Home</a></li>
         <li><a href="/refinance/">Refinance</a></li>
-        <li><a href="/va-loan-texas/">VA Loans</a></li>
         <li><a href="/loan-programs/">Programs</a></li>
-        <li><a href="/physician-loan-texas/">Physician</a></li>
-        <li><a href="/non-qm-loan-texas/">Non-QM</a></li>
         <li><a href="/calculators/">Calculators</a></li>
         <li><a href="/about/">About</a></li>
       </ul>
