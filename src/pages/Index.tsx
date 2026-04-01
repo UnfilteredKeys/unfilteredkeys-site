@@ -1994,7 +1994,7 @@ const pageHTML = `
           <a href="/asset-depletion-loan-texas/" class="program-card asset" role="listitem">
             <div class="prog-icon" aria-hidden="true">💼</div>
             <div class="prog-title">Asset Depletion</div>
-            <div class="prog-desc">Convert liquid assets — retirement accounts, brokerage, savings — into qualifying income. Ideal for retirees, high-net-worth buyers, and those with wealth but low reportable income.</div>
+            <div class="prog-desc">Convert liquid assets — retirement accounts, brokerage, savings — into qualifying income. Ideal for retirees and high-net-worth buyers with low reportable income.</div>
             <span class="prog-badge">Retirees · High Net Worth</span>
           </a>
           <a href="/itin-loan-texas/" class="program-card itin" role="listitem">
