@@ -1933,43 +1933,43 @@ const pageHTML = `
           <a href="/va-loan-texas/" class="program-card va" role="listitem">
             <div class="prog-icon" aria-hidden="true">🎖️</div>
             <div class="prog-title">VA Home Loan</div>
-            <div class="prog-desc">Zero down. No PMI. Competitive rates for veterans &amp; active-duty. Fort Hood, Fort Bliss, and JBSA specialists.</div>
+            <div class="prog-desc">Zero down. No PMI. Deep knowledge of BAH, COE pulls, and PCS timelines that most lenders don't have.</div>
             <span class="prog-badge">$0 Down · No PMI</span>
           </a>
           <a href="/fha-loan-texas/" class="program-card fha" role="listitem">
             <div class="prog-icon" aria-hidden="true">🏠</div>
             <div class="prog-title">FHA Loan</div>
-            <div class="prog-desc">3.5% down. 580 minimum credit score. The most accessible path to homeownership for first-time buyers statewide.</div>
+            <div class="prog-desc">3.5% down with a 580 credit score. Stackable with most Texas DPA programs for buyers who need both.</div>
             <span class="prog-badge">3.5% Down · 580 Credit</span>
           </a>
           <a href="/conventional-loan-texas/" class="program-card conv" role="listitem">
             <div class="prog-icon" aria-hidden="true">📋</div>
             <div class="prog-title">Conventional Loan</div>
-            <div class="prog-desc">3–20% down. No upfront MIP. Ideal for buyers with strong credit across Texas metros and suburbs.</div>
+            <div class="prog-desc">From 3% down with no upfront MIP. Best structure for buyers with strong credit who want to avoid FHA mortgage insurance long-term.</div>
             <span class="prog-badge">From 3% Down</span>
           </a>
           <a href="/usda-loan-texas/" class="program-card usda" role="listitem">
             <div class="prog-icon" aria-hidden="true">🌾</div>
             <div class="prog-title">USDA Loan</div>
-            <div class="prog-desc">100% financing for rural-eligible properties. Copperas Cove, parts of Bell County, and rural corridors statewide.</div>
+            <div class="prog-desc">100% financing in rural-eligible areas including Copperas Cove, parts of Bell County, and rural Texas corridors. Zero down — no military service required.</div>
             <span class="prog-badge">Zero Down · Rural Areas</span>
           </a>
           <a href="/jumbo-loan-texas/" class="program-card jumbo" role="listitem">
             <div class="prog-icon" aria-hidden="true">🏛️</div>
             <div class="prog-title">Jumbo Loan</div>
-            <div class="prog-desc">Financing above $806,500. Premium properties in Houston, Georgetown, DFW, and the Austin corridor.</div>
+            <div class="prog-desc">Financing above $806,500 for premium properties in Georgetown, Houston, DFW, and the Austin corridor. Custom structuring for high-value purchases.</div>
             <span class="prog-badge">Above Conforming Limit</span>
           </a>
           <a href="/physician-loan-texas/" class="program-card phys" role="listitem">
             <div class="prog-icon" aria-hidden="true">🩺</div>
             <div class="prog-title">Physician Loan</div>
-            <div class="prog-desc">0–5% down for MDs, DOs, DMDs, DVMs. High DTI tolerance for student debt. Houston Medical Center, Baylor S&amp;W, SAMMC.</div>
+            <div class="prog-desc">0–5% down for MDs, DOs, DMDs, and DVMs — with high DTI tolerance for student loan debt. Serving Houston Medical Center, Baylor S&amp;W, SAMMC, and Texas Health systems statewide.</div>
             <span class="prog-badge">0–5% Down · High DTI OK</span>
           </a>
           <a href="/refinance/" class="program-card refi" role="listitem">
             <div class="prog-icon" aria-hidden="true">🔄</div>
             <div class="prog-title">Refinance</div>
-            <div class="prog-desc">Lower your rate, shorten your term, or pull equity. VA IRRRL streamline. Cash-out up to 80% LTV in Texas.</div>
+            <div class="prog-desc">Lower your rate, shorten your term, or access equity. VA IRRRL streamlines. Cash-out up to 80% LTV in Texas.</div>
             <span class="prog-badge">Rate · Cash-Out · IRRRL</span>
           </a>
         </div>
