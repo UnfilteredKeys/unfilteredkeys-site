@@ -2406,7 +2406,7 @@ const pageHTML = `
       </details>
       <details role="listitem">
         <summary>What is a DSCR loan and who is it for?</summary>
-        <div class="faq-answer">DSCR stands for Debt Service Coverage Ratio. Instead of qualifying on your personal income, the loan qualifies based on the rental income the property generates. If the rent covers the mortgage payment (typically 1.0x–1.25x DSCR), you can qualify — regardless of how many properties you own or what your tax returns show. It's the go-to product for Texas real estate investors in Houston, DFW, San Antonio, and the Central Texas corridor.</div>
+        <div class="faq-answer">DSCR stands for Debt Service Coverage Ratio. Instead of qualifying on your personal income, the loan qualifies based on the rental income the property generates. If the rent covers the mortgage payment (typically 1.0x–1.25x DSCR), you can qualify — regardless of how many properties you own or what your tax returns show.</div>
       </details>
     </div>
   </div>
