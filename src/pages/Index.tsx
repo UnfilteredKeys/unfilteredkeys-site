@@ -2077,7 +2077,7 @@ const pageHTML = `
   <div class="container">
     <p class="section-tag">Service Areas</p>
     <h2 class="section-title" id="cities-heading">Texas Markets We Know Inside Out</h2>
-    <p class="section-sub">From Fort Hood to Houston Medical Center, Fort Bliss to DFW — real local knowledge across every Texas market we serve. Not a call center. Not a script.</p>
+    <p class="section-sub">Deep local knowledge across every Texas market we serve — military corridors, medical centers, tech suburbs, and high-growth new construction areas.</p>
     <div class="cities-grid cities-grid-wide" role="list">
 
       <!-- ── CENTRAL TEXAS ── -->
