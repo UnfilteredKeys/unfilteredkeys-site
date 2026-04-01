@@ -2461,7 +2461,7 @@ const pageHTML = `
           <!-- Tagline -->
           <text x="56" y="65" font-family="Fira Mono,Courier New,monospace" font-size="7.5" fill="rgba(240,237,230,0.4)" letter-spacing="1.8">STRUCTURED MORTGAGE STRATEGY</text>
         </svg>
-        <p style="font-style:italic; color:rgba(240,237,230,0.7); font-size:14px; margin-bottom:16px;">Stop Getting Processed. Start Getting Informed.</p>
+        <p style="font-style:italic; color:rgba(240,237,230,0.7); font-size:14px; margin-bottom:16px;">Unfiltered Advice. Structured Results. Texas Statewide.</p>
         <p>Texas mortgage broker licensed statewide. VA, FHA, Conventional, Jumbo, USDA and Physician loans — serving Houston, DFW, San Antonio, El Paso, Killeen, Temple, Round Rock, Georgetown, and all Texas military corridors. Honest advice. Fast closings.</p>
         <div class="footer-nmls">
           <div style="margin-bottom:6px;">
