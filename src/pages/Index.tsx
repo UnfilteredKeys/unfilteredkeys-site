@@ -2390,7 +2390,7 @@ const pageHTML = `
       </details>
       <details role="listitem">
         <summary>What makes Round Rock a better value than Austin in 2026?</summary>
-        <div class="faq-answer">Round Rock's median home price is about $390K — 29% below Austin's $549K — while offering comparable school quality (Round Rock ISD), identical commute access to Dell, Apple, and Amazon campuses, and more square footage per dollar. With homes at 92-day average days on market, buyers have real negotiating leverage right now.</div>
+        <div class="faq-answer">Round Rock's median home price is about $390K — 29% below Austin's $549K — while offering comparable school quality (Round Rock ISD), identical commute access to Dell, Apple, and Amazon campuses, and more square footage per dollar. Homes are sitting longer than during the 2021–22 peak, giving buyers real negotiating leverage right now.</div>
       </details>
       <details role="listitem">
         <summary>I'm self-employed. Can I still qualify for a mortgage in Texas?</summary>
