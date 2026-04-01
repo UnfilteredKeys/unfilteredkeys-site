@@ -2012,7 +2012,7 @@ const pageHTML = `
           <a href="/foreign-national-loan-texas/" class="program-card foreign" role="listitem">
             <div class="prog-icon" aria-hidden="true">✈️</div>
             <div class="prog-title">Foreign National Loan</div>
-            <div class="prog-desc">Financing for non-US citizens and non-permanent residents purchasing Texas investment or second home properties. No US credit history required in most cases.</div>
+            <div class="prog-desc">Financing for non-US citizens purchasing Texas investment or second home properties. No US credit history required in most cases.</div>
             <span class="prog-badge">Non-US Citizens · Investors</span>
           </a>
           <a href="/non-qm-loan-texas/" class="program-card nonqm" role="listitem">
