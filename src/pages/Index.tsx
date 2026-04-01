@@ -1853,8 +1853,8 @@ const pageHTML = `
         <div class="stat-label-b">Day Average Close</div>
       </div>
       <div class="stat-block" role="listitem">
-        <div class="stat-number">100%</div>
-        <div class="stat-label-b">Client Satisfaction</div>
+        <div class="stat-number">75%</div>
+        <div class="stat-label-b">VA Loan Volume</div>
       </div>
       <div class="stat-block" role="listitem">
         <div class="stat-number">5★</div>
