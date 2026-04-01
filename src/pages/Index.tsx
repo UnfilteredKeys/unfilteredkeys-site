@@ -1982,7 +1982,7 @@ const pageHTML = `
           <a href="/dscr-loan-texas/" class="program-card dscr" role="listitem">
             <div class="prog-icon" aria-hidden="true">🏢</div>
             <div class="prog-title">DSCR Loan</div>
-            <div class="prog-desc">Qualify on rental income — not your personal income or tax returns. Ideal for investors in Houston, DFW, San Antonio, and the Central Texas corridor. No W-2 required.</div>
+            <div class="prog-desc">Qualify on rental income — not W-2s or tax returns. The go-to product for Texas investors across Houston, DFW, San Antonio, and Central Texas.</div>
             <span class="prog-badge">Investor · No W-2 Needed</span>
           </a>
           <a href="/bank-statement-loan-texas/" class="program-card bankst" role="listitem">
