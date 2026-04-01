@@ -2204,8 +2204,8 @@ const pageHTML = `
 <section class="section section-forest" aria-labelledby="why-heading">
   <div class="container">
     <p class="section-tag">Why Us</p>
-    <h2 class="section-title" id="why-heading">Why Most Mortgage Experiences Fall Apart</h2>
-    <p class="section-sub">It's not the loan. It's how it's structured. Here's what we do differently so your deal doesn't break under pressure.</p>
+    <h2 class="section-title" id="why-heading">Retail Banks Have One Product Shelf. We Have 50+. That Difference Is Why Deals Close Here That Don't Close Elsewhere.</h2>
+    <p class="section-sub">As an independent broker we shop your loan across 50+ lenders to find the best rate, terms, and fit for your situation — not the best fit for our quota. More lenders. More options. Better outcomes.</p>
     <div class="diff-grid" role="list">
       <div class="diff-item" role="listitem">
         <div class="diff-icon-wrap" aria-hidden="true">🎯</div>
