@@ -2268,7 +2268,7 @@ const pageHTML = `
           Texas Has Serious Down<br>Payment Help Available.<br>Most Buyers Never Hear About It.
         </h2>
         <ul class="dpa-list" role="list" aria-label="Available DPA programs">
-          <li><strong>TDHCA My First Texas Home</strong> — Up to 5% as a silent second lien. <span class="dpa-score-tag">620 min credit</span> First-time buyers. Statewide. Combinable with FHA 203(k) renovation financing.</li>
+          <li><strong>TDHCA My First Texas Home</strong> — Up to 5% as a silent second lien. First-time buyers. Statewide. Combinable with FHA 203(k) renovation financing. <span class="dpa-score-tag">620 min credit</span></li>
           <li><strong>TSAHC Homes for Texas Heroes</strong> — Teachers, nurses, first responders, veterans, and correctional officers. Non-repayable grant or DPA second lien + Mortgage Credit Certificate. <span class="dpa-score-tag">620 min credit</span></li>
           <li><strong>SETH 5 Star Texas Advantage</strong> — Up to 5% down payment assistance. No first-time buyer requirement. Available statewide — layerable with FHA 203(k) for purchase + renovation. <span class="dpa-score-tag">640 min credit</span></li>
           <li><strong>SETH GoldStar Program</strong> — Forgivable grant. Stay 3 years = zero repayment. Works with FHA, VA, USDA, and Conventional. Income limits by county. <span class="dpa-score-tag">620 min credit</span></li>
