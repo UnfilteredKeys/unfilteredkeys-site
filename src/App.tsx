@@ -5,13 +5,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import Index from "./pages/Index";
-import Standard from "./pages/Standard";
-import System from "./pages/System";
-import Intelligence from "./pages/Intelligence";
-import Framework from "./pages/Framework";
-import Agents from "./pages/Agents";
-
-import Strategy from "./pages/Strategy";
 import ThankYou from "./pages/ThankYou";
 import NotFound from "./pages/NotFound";
 
@@ -26,13 +19,6 @@ const App = () => (
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/standard" element={<Standard />} />
-          <Route path="/system" element={<System />} />
-          <Route path="/intelligence" element={<Intelligence />} />
-          <Route path="/framework" element={<Framework />} />
-          <Route path="/agents" element={<Agents />} />
-          
-          <Route path="/strategy" element={<Strategy />} />
           <Route path="/thank-you" element={<ThankYou />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

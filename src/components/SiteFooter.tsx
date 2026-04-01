@@ -29,12 +29,8 @@ const SiteFooter = () => (
         </p>
       </div>
       <div className="flex flex-col gap-3">
-        <Link to="/standard" className="text-xs tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors">The Standard</Link>
-        <Link to="/system" className="text-xs tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors">The System</Link>
-        <Link to="/intelligence" className="text-xs tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors">Intelligence</Link>
-        <Link to="/framework" className="text-xs tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors">Framework</Link>
-        <Link to="/agents" className="text-xs tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors">For Agents</Link>
         <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" className="text-xs tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors">Apply</a>
+        <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" className="text-xs tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors">Schedule a Call</a>
       </div>
     </div>
     <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-border">
