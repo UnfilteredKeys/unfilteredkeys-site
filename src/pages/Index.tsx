@@ -1916,7 +1916,7 @@ const pageHTML = `
             <div class="cred-icon" aria-hidden="true">📍</div>
             <div>
               <div class="cred-label">Texas Statewide</div>
-              <div class="cred-note">Killeen · Temple · Round Rock · Georgetown</div>
+              <div class="cred-note">Fort Hood · Fort Bliss · JBSA · Houston · DFW</div>
             </div>
           </div>
           <div class="broker-cred" role="listitem">
