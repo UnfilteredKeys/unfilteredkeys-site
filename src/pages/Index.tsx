@@ -2390,7 +2390,7 @@ const pageHTML = `
       </details>
       <details role="listitem">
         <summary>What makes Round Rock a better value than Austin in 2026?</summary>
-        <div class="faq-answer">Round Rock's median home price is about $390K — 29% below Austin's $549K — while offering comparable school quality (Round Rock ISD), identical commute access to Dell, Apple, and Amazon campuses, and more square footage per dollar. With homes at 92-day average days on market, buyers have real negotiating leverage right now.</div>
+        <div class="faq-answer">Round Rock's median home price is about $390K — 29% below Austin's $549K — while offering comparable school quality (Round Rock ISD), identical commute access to Dell, Apple, and Amazon campuses, and more square footage per dollar. Homes are sitting longer than during the 2021–22 peak, giving buyers real negotiating leverage right now.</div>
       </details>
       <details role="listitem">
         <summary>I'm self-employed. Can I still qualify for a mortgage in Texas?</summary>
@@ -2406,7 +2406,7 @@ const pageHTML = `
       </details>
       <details role="listitem">
         <summary>What is a DSCR loan and who is it for?</summary>
-        <div class="faq-answer">DSCR stands for Debt Service Coverage Ratio. Instead of qualifying on your personal income, the loan qualifies based on the rental income the property generates. If the rent covers the mortgage payment (typically 1.0x–1.25x DSCR), you can qualify — regardless of how many properties you own or what your tax returns show. It's the go-to product for Texas real estate investors in Houston, DFW, San Antonio, and the Central Texas corridor.</div>
+        <div class="faq-answer">DSCR stands for Debt Service Coverage Ratio. Instead of qualifying on your personal income, the loan qualifies based on the rental income the property generates. If the rent covers the mortgage payment (typically 1.0x–1.25x DSCR), you can qualify — regardless of how many properties you own or what your tax returns show.</div>
       </details>
     </div>
   </div>
