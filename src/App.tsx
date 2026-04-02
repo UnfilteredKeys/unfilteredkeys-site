@@ -7,6 +7,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Index from "./pages/Index";
 import ThankYou from "./pages/ThankYou";
 import Guide from "./pages/Guide";
+import PlaybookPage from "./Playbook";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/thank-you" element={<ThankYou />} />
           <Route path="/guide" element={<Guide />} />
+          <Route path="/playbook" element={<PlaybookPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
