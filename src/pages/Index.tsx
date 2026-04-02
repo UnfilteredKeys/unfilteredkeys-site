@@ -1219,6 +1219,81 @@ footer {
 /* ── Warm Cream — soft, inviting, different from parchment ── */
 .section-cream { background: #f4efe5; }
 
+/* ── Free Resources Section ── */
+.section-resources {
+  background: #162030;
+  position: relative;
+}
+.section-resources::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 20% 50%, rgba(181,98,30,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.section-resources .section-tag { color: #e8b47d; }
+.section-resources .section-tag::before { color: rgba(255,255,255,0.15); }
+.section-resources .section-title { color: #f0ede6; }
+.section-resources .section-sub { color: rgba(240,237,230,0.6); }
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 40px;
+}
+@media (max-width: 700px) { .resources-grid { grid-template-columns: 1fr; } }
+
+.resource-card {
+  background: rgba(255,255,255,0.04);
+  border: 1.5px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  padding: 32px;
+  transition: all 0.25s;
+}
+.resource-card:hover {
+  border-color: rgba(181,98,30,0.4);
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+.resource-card-audience {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #e8b47d;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.resource-card-audience::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #e8b47d;
+}
+.resource-card h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: #f0ede6;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+.resource-card p {
+  font-size: 15px;
+  color: rgba(240,237,230,0.55);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+.resource-card .btn-primary {
+  font-size: 14px;
+  padding: 12px 22px;
+}
+
 /* ── Deep Slate — dark editorial, map-room authority ── */
 .section-slate {
   background: #1b2d40;
@@ -2060,6 +2135,35 @@ const pageHTML = `
     </div>
     <div style="margin-top:32px; text-align:center;">
       <a href="/construction-renovation-loans-texas/" class="btn-primary" style="display:inline-flex;">Explore Construction &amp; Renovation Loans →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EDITORIAL RULE ─── -->
+<hr class="section-rule" aria-hidden="true">
+
+<!-- ═══════════════════════════════════════════
+     FREE RESOURCES
+     ═══════════════════════════════════════════ -->
+<section class="section section-resources" aria-labelledby="resources-heading">
+  <div class="container">
+    <p class="section-tag">Free Resources</p>
+    <h2 class="section-title" id="resources-heading">Knowledge First. Application Second.</h2>
+    <p class="section-sub">Two free guides built for Texas buyers — whether you're just starting to research or 60–90 days from applying.</p>
+
+    <div class="resources-grid">
+      <a href="/guide" class="resource-card" style="text-decoration:none;">
+        <div class="resource-card-audience">Just starting to research</div>
+        <h3>Stop Getting Processed. Start Getting Informed.</h3>
+        <p>What every Texas buyer should understand before they apply — so you show up informed, not surprised.</p>
+        <span class="btn-primary">Get the Free Guide →</span>
+      </a>
+      <a href="/playbook" class="resource-card" style="text-decoration:none;">
+        <div class="resource-card-audience">Serious buyers · 60–90 days out</div>
+        <h3>The 90-Day Mortgage Strategy Playbook</h3>
+        <p>A week-by-week action plan for the 90 days before you apply — credit, cash, timelines, and exactly what to do.</p>
+        <span class="btn-primary">Get the Free Playbook →</span>
+      </a>
     </div>
   </div>
 </section>
