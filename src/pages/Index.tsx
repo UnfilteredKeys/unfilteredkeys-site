@@ -2143,6 +2143,35 @@ const pageHTML = `
 <hr class="section-rule" aria-hidden="true">
 
 <!-- ═══════════════════════════════════════════
+     FREE RESOURCES
+     ═══════════════════════════════════════════ -->
+<section class="section section-resources" aria-labelledby="resources-heading">
+  <div class="container">
+    <p class="section-tag">Free Resources</p>
+    <h2 class="section-title" id="resources-heading">Knowledge First. Application Second.</h2>
+    <p class="section-sub">Two free guides built for Texas buyers — whether you're just starting to research or 60–90 days from applying.</p>
+
+    <div class="resources-grid">
+      <a href="/guide" class="resource-card" style="text-decoration:none;">
+        <div class="resource-card-audience">Just starting to research</div>
+        <h3>Stop Getting Processed. Start Getting Informed.</h3>
+        <p>What every Texas buyer should understand before they apply — so you show up informed, not surprised.</p>
+        <span class="btn-primary">Get the Free Guide →</span>
+      </a>
+      <a href="/playbook" class="resource-card" style="text-decoration:none;">
+        <div class="resource-card-audience">Serious buyers · 60–90 days out</div>
+        <h3>The 90-Day Mortgage Strategy Playbook</h3>
+        <p>A week-by-week action plan for the 90 days before you apply — credit, cash, timelines, and exactly what to do.</p>
+        <span class="btn-primary">Get the Free Playbook →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EDITORIAL RULE ─── -->
+<hr class="section-rule" aria-hidden="true">
+
+<!-- ═══════════════════════════════════════════
      CITIES WE SERVE
      ═══════════════════════════════════════════ -->
 <section class="section section-slate" aria-labelledby="cities-heading">
