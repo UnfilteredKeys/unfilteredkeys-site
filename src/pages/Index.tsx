@@ -2148,7 +2148,7 @@ const pageHTML = `
 <section class="section section-resources" aria-labelledby="resources-heading">
   <div class="container">
     <p class="section-tag">Free Resources</p>
-    <h2 class="section-title" id="resources-heading">The mortgage industry wasn't built to educate you. This guide is.</h2>
+    <h2 class="section-title" id="resources-heading">Education is part of the strategy.</h2>
     <p class="section-sub">Two free guides built for Texas buyers — whether you're just starting to research or 60–90 days from applying.</p>
 
     <div class="resources-grid">
