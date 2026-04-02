@@ -2154,7 +2154,7 @@ const pageHTML = `
     <div class="resources-grid">
       <a href="/guide" class="resource-card" style="text-decoration:none;">
         <div class="resource-card-audience">Just starting to research</div>
-        <h3>Stop Getting Processed. Start Getting Informed.</h3>
+        <h3>The mortgage industry wasn't built to educate you. This guide is.</h3>
         <p>What every Texas buyer should understand before they apply — so you show up informed, not surprised.</p>
         <span class="btn-primary">Get the Free Guide →</span>
       </a>
