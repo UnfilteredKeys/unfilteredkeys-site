@@ -2149,7 +2149,7 @@ const pageHTML = `
   <div class="container">
     <p class="section-tag">Free Resources</p>
     <h2 class="section-title" id="resources-heading">Education is part of the strategy.</h2>
-    <p class="section-sub">Two free guides built for Texas buyers — whether you're just starting to research or 60–90 days from applying.</p>
+    <p class="section-sub">Built for Texas buyers who want to show up ready.</p>
 
     <div class="resources-grid">
       <a href="/guide" class="resource-card" style="text-decoration:none;">
