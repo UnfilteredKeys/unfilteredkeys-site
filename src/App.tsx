@@ -11,6 +11,7 @@ import PlaybookPage from "@/pages/Playbook";
 import BuyAHomePage from "@/pages/BuyAHome";
 import RefinancePage from "@/pages/Refinance";
 import LoanProgramsPage from "@/pages/LoanPrograms";
+import AboutPage from "@/pages/About";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
