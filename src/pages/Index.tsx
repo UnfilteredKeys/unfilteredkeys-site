@@ -1774,57 +1774,6 @@ const pageHTML = `
      ═══════════════════════════════════════════ -->
 
 
-<!-- ─── UTILITY BAR ─── -->
-<div class="utility-bar">
-  <div class="container">
-    <div class="util-left">
-      <span>Texas Licensed Mortgage Broker · Statewide</span>
-    </div>
-    <div class="util-right">
-      <span>VA · FHA · Conventional · Jumbo · Non-QM · Physician</span>
-    </div>
-  </div>
-</div>
-
-<!-- ─── STICKY NAV ─── -->
-<div class="nav-wrap">
-  <div class="container">
-    <nav class="nav" aria-label="Main navigation">
-      <a href="/" class="nav-logo" aria-label="Unfiltered Keys Home" style="display:flex;align-items:center;">
-        <svg viewBox="0 0 248 60" xmlns="http://www.w3.org/2000/svg" height="48" aria-hidden="true">
-          <!-- Key icon -->
-          <circle cx="16" cy="12" r="10.5" fill="none" stroke="#b5621e" stroke-width="2.2"/>
-          <circle cx="16" cy="12" r="5.2"  fill="none" stroke="#b5621e" stroke-width="1.4"/>
-          <rect x="12.8" y="21.5" width="6.2" height="24" rx="2"   fill="#b5621e"/>
-          <rect x="19"   y="31"   width="8.5" height="3.2" rx="1.4" fill="#b5621e"/>
-          <rect x="19"   y="37.5" width="6.8" height="3.2" rx="1.4" fill="#b5621e"/>
-          <!-- Divider -->
-          <line x1="38" y1="5" x2="38" y2="52" stroke="#ddd8cf" stroke-width="1"/>
-          <!-- Wordmark -->
-          <text x="49" y="22" font-family="Lora,Georgia,serif" font-style="italic" font-size="18" fill="#b5621e">Unfiltered</text>
-          <text x="49" y="43" font-family="Lora,Georgia,serif" font-weight="700" font-size="22" fill="#1a3a5c" letter-spacing="-0.3">Keys</text>
-          <!-- Tagline -->
-          <text x="49" y="55" font-family="Fira Mono,Courier New,monospace" font-size="6.8" fill="#8898aa" letter-spacing="1.6">STRUCTURED MORTGAGE STRATEGY</text>
-        </svg>
-      </a>
-      <ul class="nav-links" role="list">
-        <li><a href="/buy/">Buy a Home</a></li>
-        <li><a href="/refinance/">Refinance</a></li>
-        <li><a href="/loan-programs/">Programs</a></li>
-        <li><a href="/calculators/">Calculators</a></li>
-        <li><a href="/about/">About</a></li>
-      </ul>
-      <a href="tel:+12549359331" class="nav-phone" aria-label="Call us">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-        <span>(254) 935-9331</span>
-      </a>
-      <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" class="nav-cta">Apply Now</a>
-      <button class="hamburger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </nav>
-  </div>
-</div>
 
 <!-- ═══════════════════════════════════════════
      HERO
