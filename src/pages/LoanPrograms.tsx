@@ -137,8 +137,8 @@ const LoanProgramsPage = () => {
         { label: "TSAHC — Home Sweet Texas", value: "For buyers who don't qualify under the Heroes program. Same structure — 3–5% assistance, income limits apply.", link: "https://www.tsahc.org" },
         { label: "TDHCA — My First Texas Home", value: "30-year fixed-rate mortgage with down payment and closing cost assistance up to 5% of the loan amount. Income and purchase price limits apply.", link: "https://www.tdhca.state.tx.us" },
         { label: "SETH — Southeast Texas Housing", value: "Serves a wide range of Texas counties. Provides grants for down payment and closing costs with no repayment required on some programs.", link: "https://www.sethfc.com" },
-        { label: "Investor DPA Programs", value: "We also work with private investors who offer their own down payment assistance programs — sometimes with different eligibility criteria than government programs. Ask us what's available for your specific situation and county." },
-        { label: "Critical Note", value: "Eligibility doesn't guarantee access. Not every lender is enrolled in every program. If your lender isn't participating, those programs don't exist for your transaction — even if you qualify on paper." },
+        { label: "Investor DPA Programs", value: "We also work with private investors who offer their own down payment assistance programs — sometimes with different eligibility criteria than government programs. Ask us what&apos;s available for your specific situation and county." },
+        { label: "Critical Note", value: "Eligibility doesn&apos;t guarantee access. Not every lender is enrolled in every program. If your lender isn&apos;t participating, those programs don&apos;t exist for your transaction — even if you qualify on paper." },
       ]
     },
     {
@@ -438,9 +438,9 @@ const LoanProgramsPage = () => {
           <div className="lp-hero-inner">
             <div className="lp-tag">Loan Programs · Unfiltered Keys</div>
             <h1>The right loan depends on your file.<em>Not a preference.</em></h1>
-            <p className="lp-hero-sub">As a broker, we have access to programs retail banks can't offer. Every eligible scenario gets run side by side so you see the actual cost difference — not a recommendation based on what's easiest to sell.</p>
+            <p className="lp-hero-sub">As a broker, we have access to programs retail banks can&apos;t offer. Every eligible scenario gets run side by side so you see the actual cost difference — not a recommendation based on what&apos;s easiest to sell.</p>
             <div className="lp-hero-note">
-              <strong>Access matters as much as eligibility.</strong> Not every lender participates in every program. If your lender isn't enrolled, those programs don't exist for your transaction — even if you qualify on paper. We are enrolled in and actively originate all programs listed below.
+              <strong>Access matters as much as eligibility.</strong> Not every lender participates in every program. If your lender isn&apos;t enrolled, those programs don&apos;t exist for your transaction — even if you qualify on paper. We are enrolled in and actively originate all programs listed below.
             </div>
           </div>
         </section>
@@ -452,13 +452,12 @@ const LoanProgramsPage = () => {
           <div className="lp-programs-inner">
             <div className="lp-section-tag">All Programs</div>
             <h2 className="lp-heading">Select a program to see the full detail.</h2>
-            <p className="lp-subhead">Click any card to expand the specifics — requirements, who it's best for, and Texas-specific considerations.</p>
-
+            <p className="lp-subhead">Click any card to expand the specifics — requirements, who it&apos;s best for, and Texas-specific considerations.</p>
             <div className="lp-grid">
               {programs.map((program) => (
                 <div
                   key={program.id}
-                  className={`lp-card ${program.featured ? 'featured-card' : ''} ${activeProgram === program.id ? 'active' : ''}`}
+                  className={`lp-card${program.featured ? ' featured-card' : ''}${activeProgram === program.id ? ' active' : ''}`}
                   onClick={() => setActiveProgram(activeProgram === program.id ? null : program.id)}
                 >
                   <span className="lp-card-badge">{program.badge}</span>
@@ -494,17 +493,17 @@ const LoanProgramsPage = () => {
                     {program.details.map((detail, i) => (
                       <div key={i} className="lp-detail-row">
                         <span className="lp-detail-label">{detail.label}</span>
-                        <div className="lp-detail-value">
+                        <p className="lp-detail-value">
                           {detail.value}
                           {(detail as any).link && (
                             <> — <a href={(detail as any).link} target="_blank" rel="noopener noreferrer">Learn more →</a></>
                           )}
-                        </div>
+                        </p>
                       </div>
                     ))}
                   </div>
                   <div className="lp-detail-cta">
-                    <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" className="lp-btn">Book a Strategy Call →</a>
+                    <a href="https://calendly.com/shalanda-securechoicelending/30min" className="lp-btn" target="_blank" rel="noopener noreferrer">Book a Strategy Call →</a>
                     <a href="/guide" className="lp-btn-ghost">Get the Free Guide</a>
                   </div>
                 </div>
@@ -518,25 +517,19 @@ const LoanProgramsPage = () => {
         {/* CTA */}
         <section className="lp-cta">
           <div className="lp-cta-inner">
-            <h2>Not sure which program fits?<em>That's exactly what the call is for.</em></h2>
+            <h2>Not sure which program fits?<em>That&apos;s exactly what the call is for.</em></h2>
             <p>Thirty minutes. We look at your credit profile, income structure, down payment position, and goals — and tell you which programs are actually available for your file.</p>
-            <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" className="lp-cta-btn">Book a Strategy Call →</a>
+            <a href="https://calendly.com/shalanda-securechoicelending/30min" className="lp-cta-btn" target="_blank" rel="noopener noreferrer">Book a Strategy Call →</a>
           </div>
         </section>
 
         {/* FOOTER */}
         <footer className="lp-footer">
           <p>
-            This page is for educational purposes only and does not constitute a loan commitment, rate guarantee, or offer to lend. All loans subject to credit approval. Rates and terms subject to change without notice.
-          </p>
-          <p>
-            Shalanda Smith · NMLS #554554 · Unfiltered Keys · Powered by Secure Choice Lending · NMLS #1689518
-          </p>
-          <p>
-            Licensed by the Texas Department of Savings and Mortgage Lending · Equal Housing Lender
-          </p>
-          <p>
-            <a href="https://unfilteredkeys.com">unfilteredkeys.com</a> · 254.935.9331 · <a href="mailto:shalanda@securechoicelending.com">shalanda@securechoicelending.com</a>
+            This page is for educational purposes only and does not constitute a loan commitment, rate guarantee, or offer to lend. All loans subject to credit approval. Rates and terms subject to change without notice.<br />
+            Shalanda Smith · NMLS #554554 · Unfiltered Keys · Powered by Secure Choice Lending · NMLS #1689518<br />
+            Licensed by the Texas Department of Savings and Mortgage Lending · Equal Housing Lender<br />
+            <a href="https://unfilteredkeys.com">unfilteredkeys.com</a> · <a href="tel:2549359331">254.935.9331</a> · <a href="mailto:shalanda@securechoicelending.com">shalanda@securechoicelending.com</a>
           </p>
         </footer>
 
