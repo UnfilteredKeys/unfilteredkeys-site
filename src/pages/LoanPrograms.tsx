@@ -453,12 +453,21 @@ const LoanProgramsPage = () => {
             <div className="lp-section-tag">All Programs</div>
             <h2 className="lp-heading">Select a program to see the full detail.</h2>
             <p className="lp-subhead">Click any card to expand the specifics — requirements, who it&apos;s best for, and Texas-specific considerations.</p>
-            <div className="lp-grid">
+            <div className="lp-grid" id="lp-programs-grid">
               {programs.map((program) => (
                 <div
                   key={program.id}
                   className={`lp-card${program.featured ? ' featured-card' : ''}${activeProgram === program.id ? ' active' : ''}`}
-                  onClick={() => setActiveProgram(activeProgram === program.id ? null : program.id)}
+                  onClick={() => {
+                    const newActive = activeProgram === program.id ? null : program.id;
+                    setActiveProgram(newActive);
+                    if (newActive) {
+                      setTimeout(() => {
+                        const el = document.getElementById('lp-detail-panel');
+                        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      }, 50);
+                    }
+                  }}
                 >
                   <span className="lp-card-badge">{program.badge}</span>
                   <h3>{program.title}</h3>
@@ -472,46 +481,57 @@ const LoanProgramsPage = () => {
                 </div>
               ))}
             </div>
-
-            {/* DETAIL PANEL */}
-            {activeProgram && (() => {
-              const program = programs.find(p => p.id === activeProgram);
-              if (!program) return null;
-              return (
-                <div style={{ marginTop: '40px' }}>
-                  <div className="lp-rule" />
-                  <section className="lp-detail" style={{ padding: '40px 0' }}>
-                    <div className="lp-detail-inner" style={{ maxWidth: '100%' }}>
-                      <div className="lp-detail-header">
-                        <span className="lp-detail-badge">{program.badge}</span>
-                        <h2>{program.title}</h2>
-                        <p>{program.tagline}</p>
-                      </div>
-                      <div className="lp-detail-rows">
-                        {program.details.map((detail, i) => (
-                          <div key={i} className="lp-detail-row">
-                            <span className="lp-detail-label">{detail.label}</span>
-                            <p className="lp-detail-value">
-                              {detail.value}
-                              {(detail as any).link && (
-                                <> — <a href={(detail as any).link} target="_blank" rel="noopener noreferrer">Learn more →</a></>
-                              )}
-                            </p>
-                          </div>
-                        ))}
-                      </div>
-                      <div className="lp-detail-cta">
-                        <a href="https://calendly.com/shalanda-securechoicelending/30min" className="lp-btn" target="_blank" rel="noopener noreferrer">Book a Strategy Call →</a>
-                        <a href="/guide" className="lp-btn-ghost">Get the Free Guide</a>
-                      </div>
-                    </div>
-                  </section>
-                </div>
-              );
-            })()}
-
           </div>
         </section>
+
+        {/* DETAIL PANEL */}
+        {activeProgram && (() => {
+          const program = programs.find(p => p.id === activeProgram);
+          if (!program) return null;
+          return (
+            <>
+              <div className="lp-rule" />
+              <section className="lp-detail" id="lp-detail-panel">
+                <div className="lp-detail-inner">
+                  <div className="lp-detail-header">
+                    <span className="lp-detail-badge">{program.badge}</span>
+                    <h2>{program.title}</h2>
+                    <p>{program.tagline}</p>
+                  </div>
+                  <div className="lp-detail-rows">
+                    {program.details.map((detail, i) => (
+                      <div key={i} className="lp-detail-row">
+                        <span className="lp-detail-label">{detail.label}</span>
+                        <p className="lp-detail-value">
+                          {detail.value}
+                          {(detail as any).link && (
+                            <> — <a href={(detail as any).link} target="_blank" rel="noopener noreferrer">Learn more →</a></>
+                          )}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="lp-detail-cta">
+                    <a href="https://calendly.com/shalanda-securechoicelending/30min" className="lp-btn" target="_blank" rel="noopener noreferrer">Book a Strategy Call →</a>
+                    <a href="/guide" className="lp-btn-ghost">Get the Free Guide</a>
+                    <button
+                      onClick={() => {
+                        setActiveProgram(null);
+                        setTimeout(() => {
+                          const el = document.getElementById('lp-programs-grid');
+                          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }, 50);
+                      }}
+                      style={{background:'none',border:'none',cursor:'pointer',fontFamily:"'Fira Mono',monospace",fontSize:'11px',letterSpacing:'1px',textTransform:'uppercase',color:'#8898aa',textDecoration:'none',padding:'0'}}
+                    >
+                      ↑ Back to all programs
+                    </button>
+                  </div>
+                </div>
+              </section>
+            </>
+          );
+        })()}
 
         <div className="lp-rule" />
 
