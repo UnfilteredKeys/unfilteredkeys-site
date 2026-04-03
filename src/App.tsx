@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import ThankYou from "./pages/ThankYou";
 import Guide from "./pages/Guide";
 import PlaybookPage from "@/pages/Playbook";
+import BuyAHomePage from "@/pages/BuyAHome";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
