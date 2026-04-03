@@ -10,6 +10,7 @@ import Guide from "./pages/Guide";
 import PlaybookPage from "@/pages/Playbook";
 import BuyAHomePage from "@/pages/BuyAHome";
 import RefinancePage from "@/pages/Refinance";
+import LoanProgramsPage from "@/pages/LoanPrograms";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/playbook" element={<PlaybookPage />} />
           <Route path="/buy" element={<BuyAHomePage />} />
           <Route path="/refinance" element={<RefinancePage />} />
+          <Route path="/loan-programs" element={<LoanProgramsPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
