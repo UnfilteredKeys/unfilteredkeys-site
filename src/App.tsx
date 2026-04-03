@@ -9,6 +9,7 @@ import ThankYou from "./pages/ThankYou";
 import Guide from "./pages/Guide";
 import PlaybookPage from "@/pages/Playbook";
 import BuyAHomePage from "@/pages/BuyAHome";
+import RefinancePage from "@/pages/Refinance";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
