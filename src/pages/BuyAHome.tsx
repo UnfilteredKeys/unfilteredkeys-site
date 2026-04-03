@@ -545,6 +545,7 @@ const BuyAHomePage = () => {
       `}</style>
 
       <div className="bah-page">
+
         {/* HERO */}
         <section className="bah-hero">
           <div className="bah-hero-inner">
@@ -577,7 +578,7 @@ const BuyAHomePage = () => {
             <h2 className="bah-heading">How a Texas home purchase actually works.</h2>
             <p className="bah-subhead">From credit audit to closing day — here's what happens at each stage and what you need to have ready.</p>
             <div className="bah-steps">
-              <div className="bah-step">
+              <div className="bah-step bah-step-va">
                 <div className="bah-step-num">01</div>
                 <h3>Credit & Financial Audit</h3>
                 <p>Pull all three bureaus. Calculate your DTI. Assemble your document package. The 30 days before you apply determines everything that happens after.</p>
@@ -678,7 +679,7 @@ const BuyAHomePage = () => {
               <div className="bah-section-tag light">Why a Broker</div>
               <h2 className="bah-heading light">One lender's answer is not the only answer.</h2>
               <p className="bah-subhead light">A bank loan officer can only offer what their institution sells. A broker shops your file across 20+ wholesale lenders simultaneously — and matches it to the one whose guidelines and pricing best fit your situation.</p>
-              <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" className="bah-btn">Book a Strategy Call →</a>
+              <a href="https://calendly.com/shalanda-securechoicelending/30min" className="bah-btn" target="_blank" rel="noopener noreferrer">Book a Strategy Call →</a>
             </div>
             <div className="bah-compare">
               <div className="bah-compare-col highlight">
@@ -755,12 +756,12 @@ const BuyAHomePage = () => {
           <div className="bah-faq-inner">
             <div className="bah-section-tag">FAQ</div>
             <h2 className="bah-heading">Questions buyers ask before they apply.</h2>
-            <p className="bah-subhead">The answers your lender should give you upfront — but often doesn't.</p>
+            <p className="bah-subhead" style={{marginBottom: '36px'}}>The answers your lender should give you upfront — but often doesn't.</p>
             {faqs.map((faq, i) => (
               <div className="bah-faq-item" key={i}>
                 <button className="bah-faq-q" onClick={() => setOpenFaq(openFaq === i ? null : i)}>
                   {faq.q}
-                  <span className={`bah-faq-icon ${openFaq === i ? "open" : ""}`}>+</span>
+                  <span className={`bah-faq-icon${openFaq === i ? ' open' : ''}`}>+</span>
                 </button>
                 {openFaq === i && <div className="bah-faq-a">{faq.a}</div>}
               </div>
@@ -773,10 +774,10 @@ const BuyAHomePage = () => {
         {/* CTA */}
         <section className="bah-cta">
           <div className="bah-cta-inner">
-            <h2>Ready to look at your specific file?<br /><em>Let's build your strategy.</em></h2>
+            <h2>Ready to look at your specific file?<em>Let's build your strategy.</em></h2>
             <p>Thirty minutes. Your credit profile, income structure, loan options, and a realistic timeline — all mapped out before you make a single offer.</p>
             <div>
-              <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" className="bah-btn">Book a Strategy Call →</a>
+              <a href="https://calendly.com/shalanda-securechoicelending/30min" className="bah-btn" target="_blank" rel="noopener noreferrer">Book a Strategy Call →</a>
               <a href="/guide" className="bah-btn-outline">Get the Free Guide</a>
             </div>
           </div>
@@ -785,15 +786,13 @@ const BuyAHomePage = () => {
         {/* FOOTER */}
         <footer className="bah-footer">
           <p>
-            This page is for educational purposes only and does not constitute a loan commitment, rate guarantee, or offer to lend. All loans subject to credit approval.
-            <br />
-            Shalanda Smith · NMLS #554554 · Unfiltered Keys · Powered by Secure Choice Lending · NMLS #1689518
-            <br />
-            Licensed by the Texas Department of Savings and Mortgage Lending · Equal Housing Lender
-            <br />
+            This page is for educational purposes only and does not constitute a loan commitment, rate guarantee, or offer to lend. All loans subject to credit approval.<br />
+            Shalanda Smith · NMLS #554554 · Unfiltered Keys · Powered by Secure Choice Lending · NMLS #1689518<br />
+            Licensed by the Texas Department of Savings and Mortgage Lending · Equal Housing Lender<br />
             <a href="https://unfilteredkeys.com">unfilteredkeys.com</a> · <a href="tel:2549359331">254.935.9331</a> · <a href="mailto:shalanda@securechoicelending.com">shalanda@securechoicelending.com</a>
           </p>
         </footer>
+
       </div>
     </>
   );
