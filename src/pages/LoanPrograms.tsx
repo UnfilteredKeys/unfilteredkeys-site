@@ -137,24 +137,24 @@ const LoanProgramsPage = () => {
         { label: "TSAHC — Home Sweet Texas", value: "For buyers who don't qualify under the Heroes program. Same structure — 3–5% assistance, income limits apply.", link: "https://www.tsahc.org" },
         { label: "TDHCA — My First Texas Home", value: "30-year fixed-rate mortgage with down payment and closing cost assistance up to 5% of the loan amount. Income and purchase price limits apply.", link: "https://www.tdhca.state.tx.us" },
         { label: "SETH — Southeast Texas Housing", value: "Serves a wide range of Texas counties. Provides grants for down payment and closing costs with no repayment required on some programs.", link: "https://www.sethfc.com" },
-        { label: "Investor DPA Programs", value: "We also work with private investors who offer their own down payment assistance programs — sometimes with different eligibility criteria than government programs. Ask us what&apos;s available for your specific situation and county." },
-        { label: "Critical Note", value: "Eligibility doesn&apos;t guarantee access. Not every lender is enrolled in every program. If your lender isn&apos;t participating, those programs don&apos;t exist for your transaction — even if you qualify on paper." },
+        { label: "Investor DPA Programs", value: "We also work with private investors who offer their own down payment assistance programs — sometimes with different eligibility criteria than government programs. Ask us what's available for your specific situation and county." },
+        { label: "Critical Note", value: "Eligibility doesn't guarantee access. Not every lender is enrolled in every program. If your lender isn't participating, those programs don't exist for your transaction — even if you qualify on paper." },
       ]
     },
     {
       id: "construction",
       badge: "Build or Renovate",
       title: "Construction & Renovation Loans",
-      tagline: "Finance the build or the fix — sometimes with one loan, one close, one rate.",
+      tagline: "Finance the build or the renovation — one loan, one close, one rate.",
       featured: false,
-      highlights: ["One-time close available", "FHA 203(k) renovation", "New construction financing", "Lock your rate early"],
+      highlights: ["One-time close available", "VA Renovation up to $100K", "FHA 203(k)", "Lock your rate early"],
       details: [
-        { label: "One-Time Close Construction", value: "Combines the construction loan and permanent mortgage into a single transaction with one closing and one set of closing costs. You lock your rate upfront — no second close, no re-qualifying after construction." },
-        { label: "Two-Time Close Construction", value: "Separate construction loan and permanent mortgage. More flexibility during the build, but two closings and two sets of costs. Rate on the permanent loan is locked at the second close." },
+        { label: "One-Time Close Construction", value: "Combines the construction loan and permanent mortgage into a single transaction with one closing and one set of closing costs. You lock your rate upfront — no second close, no re-qualifying after construction completes. Available with VA, FHA, USDA, and Conventional financing." },
+        { label: "VA Renovation Loan", value: "Purchase or refinance a home and roll eligible renovation costs into a single VA loan — up to $100,000 in repairs. Think a new roof, full HVAC replacement, or mold remediation on a home that needs work before it's livable. No ARMs. Appraisal based on After Improved Value." },
+        { label: "Conventional Renovation", value: "Fannie Mae HomeStyle and Freddie Mac CHOICERenovation allow buyers to finance the purchase and renovation of a home with a single conventional loan. PMI is removable at 20% equity. Renovation costs can be up to 75% of the after-improved appraised value. Covers luxury improvements FHA 203(k) does not — including pools, landscaping, and outdoor living spaces." },
         { label: "FHA 203(k) — Standard", value: "Finances the purchase and renovation of a home in a single loan. Minimum $5,000 in repairs. Structural repairs, room additions, and major systems covered. Requires a HUD-approved consultant." },
-        { label: "FHA 203(k) — Limited (Streamline)", value: "For smaller renovation projects up to $35,000. Faster process than Standard 203(k). No structural changes. Cosmetic and non-structural repairs." },
-        { label: "203(k) + DPA", value: "In some cases, down payment assistance can be layered on top of a 203(k) loan — giving buyers access to renovation financing with reduced out-of-pocket costs. Not every lender can structure this." },
-        { label: "Best For", value: "Buyers purchasing a fixer-upper, homeowners renovating their current home, new construction buyers who want to lock a rate before the build is complete." },
+        { label: "FHA 203(k) — Limited (Streamline)", value: "For smaller renovation projects up to $35,000. Faster process than Standard 203(k). No structural changes. Cosmetic and non-structural repairs only." },
+        { label: "203(k) + DPA", value: "Down payment assistance can be layered on top of a 203(k) in some cases — giving buyers access to renovation financing with reduced out-of-pocket costs. Not every lender can structure this combination." },
       ]
     },
     {
@@ -438,9 +438,9 @@ const LoanProgramsPage = () => {
           <div className="lp-hero-inner">
             <div className="lp-tag">Loan Programs · Unfiltered Keys</div>
             <h1>The right loan depends on your file.<em>Not a preference.</em></h1>
-            <p className="lp-hero-sub">As a broker, we have access to programs retail banks can&apos;t offer. Every eligible scenario gets run side by side so you see the actual cost difference — not a recommendation based on what&apos;s easiest to sell.</p>
+            <p className="lp-hero-sub">As a broker, we have access to programs retail banks can't offer. Every eligible scenario gets run side by side so you see the actual cost difference — not a recommendation based on what's easiest to sell.</p>
             <div className="lp-hero-note">
-              <strong>Access matters as much as eligibility.</strong> Not every lender participates in every program. If your lender isn&apos;t enrolled, those programs don&apos;t exist for your transaction — even if you qualify on paper. We are enrolled in and actively originate all programs listed below.
+              <strong>Access matters as much as eligibility.</strong> Not every lender participates in every program. If your lender isn't enrolled, those programs don't exist for your transaction — even if you qualify on paper. We are enrolled in and actively originate all programs listed below.
             </div>
           </div>
         </section>
@@ -452,7 +452,7 @@ const LoanProgramsPage = () => {
           <div className="lp-programs-inner">
             <div className="lp-section-tag">All Programs</div>
             <h2 className="lp-heading">Select a program to see the full detail.</h2>
-            <p className="lp-subhead">Click any card to expand the specifics — requirements, who it&apos;s best for, and Texas-specific considerations.</p>
+            <p className="lp-subhead">Click any card to expand the specifics — requirements, who it's best for, and Texas-specific considerations.</p>
             <div className="lp-grid" id="lp-programs-grid">
               {programs.map((program) => (
                 <div
