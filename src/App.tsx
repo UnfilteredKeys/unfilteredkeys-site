@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import ThankYou from "./pages/ThankYou";
 import Guide from "./pages/Guide";
 import PlaybookPage from "@/pages/Playbook";
+import BuyAHomePage from "@/pages/BuyAHome";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/thank-you" element={<ThankYou />} />
           <Route path="/guide" element={<Guide />} />
           <Route path="/playbook" element={<PlaybookPage />} />
+          <Route path="/buy" element={<BuyAHomePage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
