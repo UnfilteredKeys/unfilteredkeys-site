@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { KeyIcon } from "./KeyIcon";
+import KeyIcon from "./KeyIcon";
 
 const SiteNav = () => {
   return (
