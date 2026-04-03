@@ -512,40 +512,6 @@ const LoanProgramsPage = () => {
 
           </div>
         </section>
-          const program = programs.find(p => p.id === activeProgram);
-          if (!program) return null;
-          return (
-            <>
-              <div className="lp-rule" />
-              <section className="lp-detail">
-                <div className="lp-detail-inner">
-                  <div className="lp-detail-header">
-                    <span className="lp-detail-badge">{program.badge}</span>
-                    <h2>{program.title}</h2>
-                    <p>{program.tagline}</p>
-                  </div>
-                  <div className="lp-detail-rows">
-                    {program.details.map((detail, i) => (
-                      <div key={i} className="lp-detail-row">
-                        <span className="lp-detail-label">{detail.label}</span>
-                        <p className="lp-detail-value">
-                          {detail.value}
-                          {(detail as any).link && (
-                            <> — <a href={(detail as any).link} target="_blank" rel="noopener noreferrer">Learn more →</a></>
-                          )}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="lp-detail-cta">
-                    <a href="https://calendly.com/shalanda-securechoicelending/30min" className="lp-btn" target="_blank" rel="noopener noreferrer">Book a Strategy Call →</a>
-                    <a href="/guide" className="lp-btn-ghost">Get the Free Guide</a>
-                  </div>
-                </div>
-              </section>
-            </>
-          );
-        })()}
 
         <div className="lp-rule" />
 
