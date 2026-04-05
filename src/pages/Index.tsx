@@ -2009,6 +2009,98 @@ const pageHTML = `
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════════
+     TEXAS MARKETS MAP
+     ═══════════════════════════════════════════ -->
+<section class="tx-map-section" aria-labelledby="tx-map-heading">
+  <div class="container">
+    <h2 class="tx-map-heading" id="tx-map-heading">Serving Veterans &amp; Buyers Across Texas</h2>
+    <p class="tx-map-subheading">Hover a market to see who we serve there</p>
+
+    <div class="tx-map-wrap" id="txMapWrap">
+      <svg class="tx-map-svg" viewBox="0 0 640 550" xmlns="http://www.w3.org/2000/svg" aria-label="Texas markets map">
+        <path class="tx-outline" d="M192,15 H321 V130 L370,128 L430,130 L500,133 L560,136 L591,140 L594,200 L596,295 L584,340 L560,358 L536,370 L510,390 L480,408 L455,428 L433,455 L430,520 L370,468 L340,450 L299,400 L282,368 L240,358 L175,352 L132,348 L90,310 L60,272 L42,242 L42,229 H192 V15 Z"/>
+
+        <!-- CURRENT MARKETS -->
+        <circle class="tx-dot-current" cx="452" cy="185" r="6" data-city="dfw"/>
+        <text class="tx-city-label" x="462" y="188">Dallas-Fort Worth</text>
+
+        <circle class="tx-dot-current" cx="412" cy="262" r="6" data-city="forthood"/>
+        <text class="tx-city-label" x="402" y="265" text-anchor="end">Fort Hood / Killeen</text>
+
+        <circle class="tx-dot-current" cx="432" cy="275" r="6" data-city="temple"/>
+        <text class="tx-city-label" x="442" y="278">Temple</text>
+
+        <circle class="tx-dot-current" cx="428" cy="292" r="6" data-city="roundrock"/>
+        <text class="tx-city-label" x="438" y="295">Round Rock</text>
+
+        <circle class="tx-dot-current" cx="414" cy="310" r="6" data-city="austin"/>
+        <text class="tx-city-label" x="404" y="313" text-anchor="end">Austin</text>
+
+        <circle class="tx-dot-current" cx="510" cy="318" r="6" data-city="woodlands"/>
+        <text class="tx-city-label" x="520" y="321">The Woodlands</text>
+
+        <circle class="tx-dot-current" cx="514" cy="350" r="6" data-city="houston"/>
+        <text class="tx-city-label" x="524" y="353">Houston</text>
+
+        <circle class="tx-dot-current" cx="380" cy="358" r="6" data-city="sanantonio"/>
+        <text class="tx-city-label" x="370" y="361" text-anchor="end">San Antonio</text>
+
+        <circle class="tx-dot-current" cx="57" cy="248" r="6" data-city="elpaso"/>
+        <text class="tx-city-label" x="67" y="251">El Paso</text>
+
+        <circle class="tx-dot-current" cx="436" cy="448" r="6" data-city="corpuschristi"/>
+        <text class="tx-city-label" x="446" y="451">Corpus Christi</text>
+
+        <!-- POTENTIAL EXPANSION -->
+        <circle class="tx-dot-expansion" cx="398" cy="138" r="6" data-city="wichitafalls"/>
+        <text class="tx-city-label" x="408" y="141">Wichita Falls</text>
+
+        <circle class="tx-dot-expansion" cx="325" cy="255" r="6" data-city="abilene"/>
+        <text class="tx-city-label" x="335" y="258">Abilene</text>
+
+        <circle class="tx-dot-expansion" cx="242" cy="158" r="6" data-city="lubbock"/>
+        <text class="tx-city-label" x="252" y="161">Lubbock</text>
+
+        <circle class="tx-dot-expansion" cx="248" cy="72" r="6" data-city="amarillo"/>
+        <text class="tx-city-label" x="258" y="75">Amarillo</text>
+
+        <circle class="tx-dot-expansion" cx="305" cy="300" r="6" data-city="sanangelo"/>
+        <text class="tx-city-label" x="315" y="303">San Angelo</text>
+
+        <circle class="tx-dot-expansion" cx="280" cy="398" r="6" data-city="delrio"/>
+        <text class="tx-city-label" x="270" y="401" text-anchor="end">Del Rio</text>
+
+        <circle class="tx-dot-expansion" cx="536" cy="210" r="6" data-city="tyler"/>
+        <text class="tx-city-label" x="546" y="213">Tyler</text>
+
+        <circle class="tx-dot-expansion" cx="400" cy="492" r="6" data-city="mcallen"/>
+        <text class="tx-city-label" x="390" y="495" text-anchor="end">McAllen / RGV</text>
+      </svg>
+      <div class="tx-map-tooltip" id="txMapTooltip"></div>
+    </div>
+
+    <div class="tx-map-legend">
+      <span class="tx-map-legend-item"><span class="tx-legend-dot-solid"></span> Current market</span>
+      <span class="tx-map-legend-item"><span class="tx-legend-dot-dashed"></span> Potential expansion</span>
+    </div>
+
+    <!-- Mobile fallback -->
+    <div class="tx-map-mobile-grid">
+      <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">Dallas-Fort Worth</span></div>
+      <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">Fort Hood / Killeen</span></div>
+      <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">Temple</span></div>
+      <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">Round Rock</span></div>
+      <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">Austin</span></div>
+      <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">The Woodlands</span></div>
+      <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">Houston</span></div>
+      <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">San Antonio</span></div>
+      <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">El Paso</span></div>
+      <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">Corpus Christi</span></div>
+    </div>
+  </div>
+</section>
+
 <!-- ─── STATS BAR ─── -->
 <div class="stats-bar" aria-label="Company statistics">
   <div class="container">
