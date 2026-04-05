@@ -1975,6 +1975,9 @@ const pageHTML = `
           situation, and a pre-approval structured to hold up when it counts.
         </p>
         <div class="cta-pair anim anim-4">
+          <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" class="btn-outline">
+            📅 Book a Strategy Call
+          </a>
           <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" class="btn-primary">
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             Get Pre-Approved
