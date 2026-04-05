@@ -2157,116 +2157,27 @@ const pageHTML = `
      LOAN PROGRAMS
      ═══════════════════════════════════════════ -->
 <section class="section section-white" aria-labelledby="programs-heading">
-  <div class="container">
-    <p class="section-tag">Loan Programs</p>
-    <h2 class="section-title" id="programs-heading">Every Loan Program Available in Texas</h2>
-    <p class="section-sub">Agency, non-QM, construction, or renovation — we match your situation to the right product. If the banks said no, the answer may still be yes.</p>
-    <div class="programs-two-col" role="list">
-
-      <!-- ── AGENCY / GOVERNMENT LOANS ── -->
-      <div>
-        <div class="prog-category-label">Agency &amp; Government Loans</div>
-        <div class="programs-grid" style="margin-top:0;" role="list">
-          <a href="/va-loan-texas/" class="program-card va" role="listitem">
-            <div class="prog-icon" aria-hidden="true">🎖️</div>
-            <div class="prog-title">VA Home Loan</div>
-            <div class="prog-desc">Zero down. No PMI. Deep knowledge of BAH, COE pulls, and PCS timelines that most lenders don't have.</div>
-            <span class="prog-badge">$0 Down · No PMI</span>
-          </a>
-          <a href="/fha-loan-texas/" class="program-card fha" role="listitem">
-            <div class="prog-icon" aria-hidden="true">🏠</div>
-            <div class="prog-title">FHA Loan</div>
-            <div class="prog-desc">3.5% down with a 580 credit score. Stackable with most Texas DPA programs for buyers who need both.</div>
-            <span class="prog-badge">3.5% Down · 580 Credit</span>
-          </a>
-          <a href="/conventional-loan-texas/" class="program-card conv" role="listitem">
-            <div class="prog-icon" aria-hidden="true">📋</div>
-            <div class="prog-title">Conventional Loan</div>
-            <div class="prog-desc">From 3% down with no upfront MIP. Best structure for buyers with strong credit who want to avoid FHA mortgage insurance long-term.</div>
-            <span class="prog-badge">From 3% Down</span>
-          </a>
-          <a href="/usda-loan-texas/" class="program-card usda" role="listitem">
-            <div class="prog-icon" aria-hidden="true">🌾</div>
-            <div class="prog-title">USDA Loan</div>
-            <div class="prog-desc">100% financing in rural-eligible areas including Copperas Cove, parts of Bell County, and rural Texas corridors. Zero down — no military service required.</div>
-            <span class="prog-badge">Zero Down · Rural Areas</span>
-          </a>
-          <a href="/jumbo-loan-texas/" class="program-card jumbo" role="listitem">
-            <div class="prog-icon" aria-hidden="true">🏛️</div>
-            <div class="prog-title">Jumbo Loan</div>
-            <div class="prog-desc">Financing above $806,500 for premium properties in Georgetown, Houston, DFW, and the Austin corridor. Custom structuring for high-value purchases.</div>
-            <span class="prog-badge">Above Conforming Limit</span>
-          </a>
-          <a href="/physician-loan-texas/" class="program-card phys" role="listitem">
-            <div class="prog-icon" aria-hidden="true">🩺</div>
-            <div class="prog-title">Physician Loan</div>
-            <div class="prog-desc">0–5% down for MDs, DOs, DMDs, and DVMs — with high DTI tolerance for student loan debt. Serving Houston Medical Center, Baylor S&amp;W, SAMMC, and Texas Health systems statewide.</div>
-            <span class="prog-badge">0–5% Down · High DTI OK</span>
-          </a>
-          <a href="/refinance/" class="program-card refi" role="listitem">
-            <div class="prog-icon" aria-hidden="true">🔄</div>
-            <div class="prog-title">Refinance</div>
-            <div class="prog-desc">Lower your rate, shorten your term, or access equity. VA IRRRL streamlines. Cash-out up to 80% LTV in Texas.</div>
-            <span class="prog-badge">Rate · Cash-Out · IRRRL</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- ── NON-QM / ALTERNATIVE LOANS ── -->
-      <div>
-        <div class="prog-category-label">Non-QM &amp; Alternative Lending</div>
-        <div class="programs-grid" style="margin-top:0;" role="list">
-          <a href="/dscr-loan-texas/" class="program-card dscr" role="listitem">
-            <div class="prog-icon" aria-hidden="true">🏢</div>
-            <div class="prog-title">DSCR Loan</div>
-            <div class="prog-desc">Qualify on rental income — not W-2s or tax returns. The go-to product for Texas investors across Houston, DFW, San Antonio, and Central Texas.</div>
-            <span class="prog-badge">Investor · No W-2 Needed</span>
-          </a>
-          <a href="/bank-statement-loan-texas/" class="program-card bankst" role="listitem">
-            <div class="prog-icon" aria-hidden="true">📊</div>
-            <div class="prog-title">Bank Statement Loan</div>
-            <div class="prog-desc">12–24 months of deposits in place of tax returns. Built for self-employed borrowers whose write-offs make traditional qualifying impossible.</div>
-            <span class="prog-badge">Self-Employed · 1099</span>
-          </a>
-          <a href="/asset-depletion-loan-texas/" class="program-card asset" role="listitem">
-            <div class="prog-icon" aria-hidden="true">💼</div>
-            <div class="prog-title">Asset Depletion</div>
-            <div class="prog-desc">Convert liquid assets — retirement accounts, brokerage, savings — into qualifying income. Ideal for retirees and high-net-worth buyers with low reportable income.</div>
-            <span class="prog-badge">Retirees · High Net Worth</span>
-          </a>
-          <a href="/itin-loan-texas/" class="program-card itin" role="listitem">
-            <div class="prog-icon" aria-hidden="true">🌐</div>
-            <div class="prog-title">ITIN Loan</div>
-            <div class="prog-desc">Homeownership without a Social Security number. Qualify using your Individual Taxpayer Identification Number across all Texas markets.</div>
-            <span class="prog-badge">No SSN Required</span>
-          </a>
-          <a href="/profit-loss-loan-texas/" class="program-card bankst" role="listitem">
-            <div class="prog-icon" aria-hidden="true">📈</div>
-            <div class="prog-title">P&amp;L Only Loan</div>
-            <div class="prog-desc">Qualify using a CPA-prepared Profit &amp; Loss statement — no tax returns, no bank statements. Designed for business owners with strong recent revenue.</div>
-            <span class="prog-badge">CPA Letter · No Returns</span>
-          </a>
-          <a href="/foreign-national-loan-texas/" class="program-card foreign" role="listitem">
-            <div class="prog-icon" aria-hidden="true">✈️</div>
-            <div class="prog-title">Foreign National Loan</div>
-            <div class="prog-desc">Financing for non-US citizens purchasing Texas investment or second home properties. No US credit history required in most cases.</div>
-            <span class="prog-badge">Non-US Citizens · Investors</span>
-          </a>
-          <a href="/non-qm-loan-texas/" class="program-card nonqm" role="listitem">
-            <div class="prog-icon" aria-hidden="true">🔑</div>
-            <div class="prog-title">Other Non-QM</div>
-            <div class="prog-desc">Recent bankruptcy? Non-warrantable condo? Unique income structure? We work with non-QM lenders who solve problems traditional banks walk away from.</div>
-            <span class="prog-badge">Hard Cases Welcome</span>
-          </a>
-        </div>
-      </div>
-
+  <div class="container" style="text-align:center; max-width:720px;">
+    <p class="section-tag" style="justify-content:center;">Loan Programs</p>
+    <h2 class="section-title" id="programs-heading" style="text-align:center;">Every Loan Product Available in Texas</h2>
+    <p class="section-sub" style="text-align:center; margin:0 auto 32px;">Agency, non-QM, physician, and beyond — if it exists, we can structure it.</p>
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-bottom:32px;">
+      <span style="background:var(--navy-light); color:var(--navy); font-size:13px; font-weight:600; padding:6px 16px; border-radius:20px;">VA</span>
+      <span style="background:var(--navy-light); color:var(--navy); font-size:13px; font-weight:600; padding:6px 16px; border-radius:20px;">FHA</span>
+      <span style="background:var(--navy-light); color:var(--navy); font-size:13px; font-weight:600; padding:6px 16px; border-radius:20px;">Conventional</span>
+      <span style="background:var(--navy-light); color:var(--navy); font-size:13px; font-weight:600; padding:6px 16px; border-radius:20px;">Jumbo</span>
+      <span style="background:var(--navy-light); color:var(--navy); font-size:13px; font-weight:600; padding:6px 16px; border-radius:20px;">USDA</span>
+      <span style="background:var(--copper-light); color:var(--copper); font-size:13px; font-weight:600; padding:6px 16px; border-radius:20px;">DSCR</span>
+      <span style="background:var(--copper-light); color:var(--copper); font-size:13px; font-weight:600; padding:6px 16px; border-radius:20px;">Bank Statement</span>
+      <span style="background:var(--copper-light); color:var(--copper); font-size:13px; font-weight:600; padding:6px 16px; border-radius:20px;">Asset Depletion</span>
+      <span style="background:var(--navy-light); color:var(--navy); font-size:13px; font-weight:600; padding:6px 16px; border-radius:20px;">Physician</span>
+      <span style="background:var(--copper-light); color:var(--copper); font-size:13px; font-weight:600; padding:6px 16px; border-radius:20px;">P&amp;L Only</span>
+      <span style="background:var(--copper-light); color:var(--copper); font-size:13px; font-weight:600; padding:6px 16px; border-radius:20px;">ITIN</span>
+      <span style="background:var(--copper-light); color:var(--copper); font-size:13px; font-weight:600; padding:6px 16px; border-radius:20px;">Foreign National</span>
+      <span style="background:var(--navy-light); color:var(--navy); font-size:13px; font-weight:600; padding:6px 16px; border-radius:20px;">Down Payment Assistance</span>
+      <span style="background:var(--navy-light); color:var(--navy); font-size:13px; font-weight:600; padding:6px 16px; border-radius:20px;">Refinance</span>
     </div>
-
-    <div class="nonqm-disclaimer" style="margin-top:36px; background:var(--bg-soft); border-left:3px solid var(--copper); padding:16px 22px; border-radius:var(--radius-sm); font-size:12.5px; color:var(--text-muted); line-height:1.75;">
-      <strong style="color:var(--text-primary);">Not sure which program fits?</strong> That's exactly what the strategy call is for. We've placed borrowers who were turned down by three banks. Non-QM products carry different rate and term structures than agency loans — we'll show you a side-by-side comparison so you know exactly what you're choosing and why.
-      <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" style="color:var(--copper); font-weight:600; white-space:nowrap;"> Start the conversation →</a>
-    </div>
+    <a href="/loan-programs" style="color:var(--copper); font-weight:600; font-size:15px;">Explore all programs →</a>
   </div>
 </section>
 
