@@ -116,7 +116,7 @@ const Apply = () => {
           </button>
         </form>
       </section>
-    </SiteLayout>
+    </>
   );
 };
 
