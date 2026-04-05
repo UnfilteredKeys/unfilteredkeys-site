@@ -1075,103 +1075,8 @@ details[open] summary::after { content: '−'; }
   line-height: 1.5;
 }
 
-/* ═══════════════════════════════════════════
-   FOOTER
-   ═══════════════════════════════════════════ */
-footer {
-  background: #1a3a5c;
-  color: rgba(250,248,244,0.65);
-  padding: 56px 0 32px;
-}
-.footer-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 40px;
-}
-.footer-top-links { display: flex; gap: 24px; }
-.footer-top-links a {
-  color: #faf8f4;
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.footer-top-links a:hover { color: #b5621e; }
-.footer-founder {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 40px;
-}
-.footer-founder-circle {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  border: 2px solid rgba(181,98,30,0.5);
-  background: rgba(250,248,244,0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  flex-shrink: 0;
-  color: #b5621e;
-}
-.footer-founder-text {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: rgba(250,248,244,0.6);
-}
-.footer-divider {
-  border: none;
-  border-top: 1px solid rgba(181,98,30,0.3);
-  margin-bottom: 32px;
-}
-.footer-compliance {
-  font-size: 11px;
-  color: rgba(250,248,244,0.45);
-  line-height: 1.75;
-  max-width: 800px;
-  margin-bottom: 32px;
-}
-.footer-compliance a {
-  color: #b5621e;
-  text-decoration: underline;
-}
-.footer-compliance a:hover { color: #d4782e; }
-.footer-bottom-row {
-  border-top: 1px solid rgba(250,248,244,0.08);
-  padding-top: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-.footer-bottom-legal {
-  font-size: 11px;
-  color: rgba(250,248,244,0.35);
-}
-.footer-bottom-legal a {
-  color: rgba(250,248,244,0.45);
-  text-decoration: underline;
-}
-.equal-housing {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-.equal-housing span {
-  font-size: 11px;
-  color: rgba(250,248,244,0.6);
-}
-@media (max-width: 640px) {
-  .footer-top { flex-direction: column; align-items: flex-start; gap: 16px; }
-  .footer-bottom-row { flex-direction: column; align-items: flex-start; }
-}
+
+
 
 /* ═══════════════════════════════════════════
    MOBILE STICKY BAR
@@ -1442,19 +1347,7 @@ footer {
 }
 .section-parchment .step-number { color: #e5dfd5; }
 
-/* ── Reviews on cream ── */
-.section-cream .review-card {
-  background: #fff;
-  border-color: #e8e0d2;
-}
-.section-cream .reviews-aggregate {
-  background: #fff;
-  border-color: #e8e0d2;
-}
-.section-cream .reviews-placeholder {
-  background: rgba(250,248,244,0.8);
-  border-color: #d4ccbf;
-}
+
 
 /* ── Lead magnet band — dark charcoal ── */
 .lm-band-dark {
@@ -1543,7 +1436,7 @@ footer {
 .program-card.phys .prog-icon { background: #e0f2fe; }
 .program-card.phys .prog-badge { background: #e0f2fe; color: #0e7490; }
 
-/* ── Footer city list expanded ── */
+
 
 .section-rule {
   height: 3px;
@@ -2528,63 +2421,6 @@ const pageHTML = `
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     FOOTER
-     ═══════════════════════════════════════════ -->
-<footer role="contentinfo">
-  <div class="container">
-    <!-- Top row: Logo + links -->
-    <div class="footer-top">
-      <svg viewBox="0 0 248 72" xmlns="http://www.w3.org/2000/svg" height="52" aria-label="Unfiltered Keys" style="display:block;">
-        <circle cx="18" cy="14" r="12" fill="none" stroke="#b5621e" stroke-width="2.5"/>
-        <circle cx="18" cy="14" r="6" fill="none" stroke="#b5621e" stroke-width="1.5"/>
-        <rect x="14.5" y="25" width="7" height="28" rx="2" fill="#b5621e"/>
-        <rect x="21.5" y="36" width="10" height="3.5" rx="1.5" fill="#b5621e"/>
-        <rect x="21.5" y="43.5" width="8" height="3.5" rx="1.5" fill="#b5621e"/>
-        <line x1="44" y1="6" x2="44" y2="60" stroke="rgba(250,248,244,0.15)" stroke-width="1"/>
-        <text x="56" y="27" font-family="Lora,Georgia,serif" font-style="italic" font-size="21" fill="#b5621e">Unfiltered</text>
-        <text x="56" y="52" font-family="Lora,Georgia,serif" font-weight="700" font-size="27" fill="#faf8f4" letter-spacing="-0.3">Keys</text>
-      </svg>
-      <div class="footer-top-links">
-        <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer">Apply</a>
-        <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer">Schedule a Call</a>
-      </div>
-    </div>
-
-    <!-- Middle row: Founder -->
-    <div class="footer-founder">
-      <div class="footer-founder-circle" aria-hidden="true">S</div>
-      <span class="footer-founder-text">Founded by Shalanda Smith · NMLS# 554554</span>
-    </div>
-
-    <!-- Divider -->
-    <hr class="footer-divider" aria-hidden="true">
-
-    <!-- Compliance -->
-    <div class="footer-compliance">
-      Unfiltered Keys is a brand of Shalanda Smith (NMLS #554554), operating under Secure Choice Lending (NMLS #1689518), licensed by the Texas Department of Savings and Mortgage Lending · 1650 Spruce St. Ste 500, Riverside, CA 92507<br><br>
-      <a href="https://www.sml.texas.gov" target="_blank" rel="noopener">Texas SML Website</a> · 
-      <a href="http://www.nmlsconsumeraccess.org" target="_blank" rel="noopener">NMLSConsumerAccess.org</a><br><br>
-      CONSUMERS WISHING TO FILE A COMPLAINT AGAINST A MORTGAGE BANKER OR LICENSED ORIGINATOR SHOULD CONTACT THE TEXAS DEPARTMENT OF SAVINGS AND MORTGAGE LENDING, 2601 NORTH LAMAR, SUITE 201, AUSTIN, TX 78705. TOLL-FREE HOTLINE: 1-877-276-5550. <a href="https://www.sml.texas.gov" target="_blank" rel="noopener">WWW.SML.TEXAS.GOV</a><br><br>
-      All loans subject to credit approval. Rates and terms subject to change without notice. Not a commitment to lend. Equal Housing Opportunity.
-    </div>
-
-    <!-- Bottom row -->
-    <div class="footer-bottom-row">
-      <div class="equal-housing" aria-label="Equal Housing Lender">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18" aria-hidden="true" fill="rgba(250,248,244,0.6)">
-          <path d="M12 2L2 10h2v10h6v-6h4v6h6V10h2L12 2z"/>
-          <rect x="7" y="11.5" width="10" height="1.5" rx="0.75" fill="#1a3a5c"/>
-          <rect x="7" y="14" width="10" height="1.5" rx="0.75" fill="#1a3a5c"/>
-        </svg>
-        <span>Equal Housing Lender</span>
-      </div>
-      <div class="footer-bottom-legal">
-        <a href="/privacy/">Privacy Policy</a> · <a href="/terms/">Terms of Use</a> · © 2026 Unfiltered Keys. All rights reserved.
-      </div>
-    </div>
-  </div>
-</footer>
 
 <!-- ─── MOBILE STICKY BAR ─── -->
 <div class="mobile-cta-bar" role="navigation" aria-label="Quick actions">
