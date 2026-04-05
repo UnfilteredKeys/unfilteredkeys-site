@@ -2887,6 +2887,64 @@ export default function Index() {
     hamburger.setAttribute('aria-expanded', String(!isOpen));
   });
 
+  // Texas Map tooltip
+  const txCityData: Record<string, {name:string,type:string,category:string,locations:string[]}> = {
+    dfw:{name:'Dallas-Fort Worth',type:'current',category:'Military & Medical',locations:['NAS Joint Reserve Base Fort Worth','Parkland Memorial Hospital','UT Southwestern Medical Center','Baylor Scott & White – Dallas','Medical City Dallas']},
+    forthood:{name:'Fort Hood / Killeen',type:'current',category:'Military Installation',locations:['Fort Hood','Carl R. Darnall Army Medical Center']},
+    temple:{name:'Temple',type:'current',category:'Medical Hub',locations:['Baylor Scott & White Medical Center (flagship)','Scott & White Memorial Hospital']},
+    roundrock:{name:'Round Rock',type:'current',category:'Medical Hub',locations:['Baylor Scott & White Round Rock','St. David\'s Round Rock Medical Center']},
+    austin:{name:'Austin',type:'current',category:'Military & Medical',locations:['Army Futures Command','Dell Seton Medical Center','St. David\'s Medical Center','Ascension Seton Medical Center']},
+    woodlands:{name:'The Woodlands',type:'current',category:'Medical Hub',locations:['Houston Methodist The Woodlands','Memorial Hermann The Woodlands']},
+    houston:{name:'Houston',type:'current',category:'Military & Medical',locations:['Ellington Field Joint Reserve Base','Texas Medical Center','MD Anderson Cancer Center','Houston Methodist Hospital','Memorial Hermann Hospital']},
+    sanantonio:{name:'San Antonio',type:'current',category:'Military & Medical',locations:['Joint Base San Antonio (JBSA)','Brooke Army Medical Center','Audie Murphy VA Hospital']},
+    elpaso:{name:'El Paso',type:'current',category:'Military & Medical',locations:['Fort Bliss','William Beaumont Army Medical Center']},
+    corpuschristi:{name:'Corpus Christi',type:'current',category:'Military Installation',locations:['Naval Air Station Corpus Christi','Corpus Christi Army Depot','NAS Kingsville (40 mi south)']},
+    wichitafalls:{name:'Wichita Falls',type:'expansion',category:'Military Installation',locations:['Sheppard Air Force Base','United Regional Health Care System']},
+    abilene:{name:'Abilene',type:'expansion',category:'Military & Medical',locations:['Dyess Air Force Base','Baylor Scott & White – Abilene','Hendrick Medical Center']},
+    lubbock:{name:'Lubbock',type:'expansion',category:'Medical Hub',locations:['Texas Tech Health Sciences Center','Covenant Medical Center','University Medical Center']},
+    amarillo:{name:'Amarillo',type:'expansion',category:'Medical Hub',locations:['BSA Health System','Northwest Texas Healthcare System','Texas Tech Physicians of Amarillo']},
+    sanangelo:{name:'San Angelo',type:'expansion',category:'Military Installation',locations:['Goodfellow Air Force Base']},
+    delrio:{name:'Del Rio',type:'expansion',category:'Military Installation',locations:['Laughlin Air Force Base']},
+    tyler:{name:'Tyler',type:'expansion',category:'Medical Hub',locations:['UT Health East Texas','Christus Mother Frances Hospital']},
+    mcallen:{name:'McAllen / Rio Grande Valley',type:'expansion',category:'Medical Hub',locations:['McAllen Medical Center','Doctors Hospital at Renaissance','South Texas Health System']},
+  };
+  const tooltip = document.getElementById('txMapTooltip');
+  const mapWrap = document.getElementById('txMapWrap');
+  const dots = document.querySelectorAll('.tx-dot-current, .tx-dot-expansion');
+  const dotHandlers: Array<{el:Element, enter:(e:MouseEvent)=>void, move:(e:MouseEvent)=>void, leave:()=>void}> = [];
+  dots.forEach(dot => {
+    const city = dot.getAttribute('data-city');
+    if (!city || !txCityData[city] || !tooltip || !mapWrap) return;
+    const d = txCityData[city];
+    const enter = () => {
+      (dot as SVGCircleElement).setAttribute('r', '9');
+      const badgeClass = d.type === 'current' ? 'current' : 'expansion';
+      const badgeText = d.type === 'current' ? 'Current Market' : 'Potential Expansion';
+      tooltip.innerHTML = '<div class="tx-map-tooltip-name">' + d.name + '</div>' +
+        '<span class="tx-map-tooltip-badge ' + badgeClass + '">' + badgeText + '</span>' +
+        '<div class="tx-map-tooltip-category">' + d.category + '</div>' +
+        '<ul class="tx-map-tooltip-list">' + d.locations.map(l => '<li>' + l + '</li>').join('') + '</ul>';
+      tooltip.classList.add('visible');
+    };
+    const move = (e: MouseEvent) => {
+      if (!tooltip || !mapWrap) return;
+      const rect = mapWrap.getBoundingClientRect();
+      let left = e.clientX - rect.left + 14;
+      const top = e.clientY - rect.top - 10;
+      if (left + 240 > rect.width) left = e.clientX - rect.left - 254;
+      tooltip.style.left = left + 'px';
+      tooltip.style.top = top + 'px';
+    };
+    const leave = () => {
+      (dot as SVGCircleElement).setAttribute('r', '6');
+      if (tooltip) { tooltip.classList.remove('visible'); }
+    };
+    dot.addEventListener('mouseenter', enter as any);
+    dot.addEventListener('mousemove', move as any);
+    dot.addEventListener('mouseleave', leave);
+    dotHandlers.push({el: dot, enter: enter as any, move: move as any, leave});
+  });
+
   // Intersection Observer for scroll animations
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
