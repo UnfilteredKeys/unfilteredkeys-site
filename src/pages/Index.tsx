@@ -1823,40 +1823,6 @@ const pageHTML = `
         </div>
       </div>
 
-      <!-- RATE CARD -->
-      <div class="rate-card anim anim-3" role="complementary" aria-label="Today's mortgage rates">
-        <div class="rate-card-label">Today's Rates</div>
-        <div class="rate-row">
-          <div>
-            <div class="rate-name">30-Year Fixed</div>
-            <div class="rate-note">Conventional</div>
-          </div>
-          <div class="rate-val">~6.45%</div>
-        </div>
-        <div class="rate-row">
-          <div>
-            <div class="rate-name">15-Year Fixed</div>
-            <div class="rate-note">Conventional</div>
-          </div>
-          <div class="rate-val">~6.02%</div>
-        </div>
-        <div class="rate-row">
-          <div>
-            <div class="rate-name">VA Home Loan</div>
-            <div class="rate-note">Zero Down · No PMI</div>
-          </div>
-          <div class="rate-val">~5.92%</div>
-        </div>
-        <div class="rate-row">
-          <div>
-            <div class="rate-name">FHA Loan</div>
-            <div class="rate-note">3.5% Min Down</div>
-          </div>
-          <div class="rate-val">~5.91%</div>
-        </div>
-        <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" class="rate-card-cta">Personalize My Rate →</a>
-        <p class="rate-disclaimer">Rates displayed represent average mortgage rates from the MND Daily Rate Index as of 4/1/26 · <a href="https://www.mortgagenewsdaily.com" target="_blank" rel="noopener noreferrer" style="color:var(--text-muted);">Mortgage News Daily</a>. Your rate depends on credit, down payment, and loan details. Contact us for a personalized quote.</p>
-      </div>
     </div>
   </div>
 </section>
