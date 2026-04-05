@@ -1,5 +1,4 @@
 import { useState } from "react";
-import SiteLayout from "@/components/SiteLayout";
 
 const Apply = () => {
   const [submitted, setSubmitted] = useState(false);
