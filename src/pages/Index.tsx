@@ -1436,7 +1436,7 @@ details[open] summary::after { content: '−'; }
 .program-card.phys .prog-icon { background: #e0f2fe; }
 .program-card.phys .prog-badge { background: #e0f2fe; color: #0e7490; }
 
-/* ── Footer city list expanded ── */
+
 
 .section-rule {
   height: 3px;
