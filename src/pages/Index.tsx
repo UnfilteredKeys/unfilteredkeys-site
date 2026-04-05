@@ -2390,19 +2390,19 @@ const pageHTML = `
     </div>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
       <div style="background:var(--navy); border-radius:12px; padding:32px;">
-        <p style="color:var(--ivory); font-size:16px; line-height:1.7; font-style:italic; margin:0 0 16px;">"She took time to teach and guide me through the overwhelming process of buying a house, making it super easy and stress-free."</p>
+        <p style="color:#faf8f4; font-size:16px; line-height:1.7; font-style:italic; margin:0 0 16px;">"She took time to teach and guide me through the overwhelming process of buying a house, making it super easy and stress-free."</p>
         <p style="color:var(--copper); font-weight:600; font-size:14px; margin:0;">— Yaniska W.</p>
       </div>
       <div style="background:var(--navy); border-radius:12px; padding:32px;">
-        <p style="color:var(--ivory); font-size:16px; line-height:1.7; font-style:italic; margin:0 0 16px;">"It was clear she genuinely cared about helping me make the right decisions, not just closing a deal."</p>
+        <p style="color:#faf8f4; font-size:16px; line-height:1.7; font-style:italic; margin:0 0 16px;">"It was clear she genuinely cared about helping me make the right decisions, not just closing a deal."</p>
         <p style="color:var(--copper); font-weight:600; font-size:14px; margin:0;">— Thomas S.</p>
       </div>
       <div style="background:var(--navy); border-radius:12px; padding:32px;">
-        <p style="color:var(--ivory); font-size:16px; line-height:1.7; font-style:italic; margin:0 0 16px;">"The entire process was smooth from start to finish, and I felt supported every step of the way."</p>
+        <p style="color:#faf8f4; font-size:16px; line-height:1.7; font-style:italic; margin:0 0 16px;">"The entire process was smooth from start to finish, and I felt supported every step of the way."</p>
         <p style="color:var(--copper); font-weight:600; font-size:14px; margin:0;">— Moya T.</p>
       </div>
       <div style="background:var(--navy); border-radius:12px; padding:32px;">
-        <p style="color:var(--ivory); font-size:16px; line-height:1.7; font-style:italic; margin:0 0 16px;">"She helped us purchase our home and later refinance to better fit our budget — we never felt alone."</p>
+        <p style="color:#faf8f4; font-size:16px; line-height:1.7; font-style:italic; margin:0 0 16px;">"She helped us purchase our home and later refinance to better fit our budget — we never felt alone."</p>
         <p style="color:var(--copper); font-weight:600; font-size:14px; margin:0;">— Gardenia B.</p>
       </div>
     </div>
