@@ -1799,10 +1799,6 @@ const pageHTML = `
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             Get Pre-Approved
           </a>
-          <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" class="btn-outline">
-            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-            See Today's Rates
-          </a>
         </div>
         <div class="hero-trust anim anim-5" role="list" aria-label="Trust signals">
           <span class="trust-item" role="listitem">
@@ -1827,40 +1823,6 @@ const pageHTML = `
         </div>
       </div>
 
-      <!-- RATE CARD -->
-      <div class="rate-card anim anim-3" role="complementary" aria-label="Today's mortgage rates">
-        <div class="rate-card-label">Today's Rates</div>
-        <div class="rate-row">
-          <div>
-            <div class="rate-name">30-Year Fixed</div>
-            <div class="rate-note">Conventional</div>
-          </div>
-          <div class="rate-val">~6.45%</div>
-        </div>
-        <div class="rate-row">
-          <div>
-            <div class="rate-name">15-Year Fixed</div>
-            <div class="rate-note">Conventional</div>
-          </div>
-          <div class="rate-val">~6.02%</div>
-        </div>
-        <div class="rate-row">
-          <div>
-            <div class="rate-name">VA Home Loan</div>
-            <div class="rate-note">Zero Down · No PMI</div>
-          </div>
-          <div class="rate-val">~5.92%</div>
-        </div>
-        <div class="rate-row">
-          <div>
-            <div class="rate-name">FHA Loan</div>
-            <div class="rate-note">3.5% Min Down</div>
-          </div>
-          <div class="rate-val">~5.91%</div>
-        </div>
-        <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" class="rate-card-cta">Personalize My Rate →</a>
-        <p class="rate-disclaimer">Rates displayed represent average mortgage rates from the MND Daily Rate Index as of 4/1/26 · <a href="https://www.mortgagenewsdaily.com" target="_blank" rel="noopener noreferrer" style="color:var(--text-muted);">Mortgage News Daily</a>. Your rate depends on credit, down payment, and loan details. Contact us for a personalized quote.</p>
-      </div>
     </div>
   </div>
 </section>
