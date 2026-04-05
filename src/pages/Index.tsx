@@ -1765,6 +1765,188 @@ footer {
   text-align: center;
   display: block;
 }
+
+/* ═══════════════════════════════════════════
+   TEXAS MARKETS MAP
+   ═══════════════════════════════════════════ */
+.tx-map-section {
+  background: #1a3a5c;
+  padding: 80px 0;
+  position: relative;
+}
+.tx-map-heading {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3.5vw, 38px);
+  font-weight: 700;
+  color: #faf8f4;
+  margin-bottom: 8px;
+  line-height: 1.15;
+}
+.tx-map-subheading {
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: #b5621e;
+  margin-bottom: 40px;
+}
+.tx-map-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+}
+.tx-map-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.tx-map-svg .tx-outline {
+  fill: rgba(26,58,92,0.2);
+  stroke: #b5621e;
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+}
+.tx-map-svg .tx-dot-current {
+  fill: #b5621e;
+  cursor: pointer;
+  transition: r 0.2s;
+}
+.tx-map-svg .tx-dot-expansion {
+  fill: none;
+  stroke: #b5621e;
+  stroke-width: 1.8;
+  stroke-dasharray: 3 2;
+  cursor: pointer;
+  transition: r 0.2s;
+}
+.tx-map-svg .tx-city-label {
+  font-family: var(--font-body);
+  font-size: 9px;
+  fill: #faf8f4;
+  pointer-events: none;
+}
+.tx-map-tooltip {
+  position: absolute;
+  background: #1a3a5c;
+  color: #faf8f4;
+  border-radius: 8px;
+  padding: 10px 14px;
+  pointer-events: none;
+  z-index: 50;
+  min-width: 200px;
+  max-width: 280px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  border: 1px solid rgba(181,98,30,0.3);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.tx-map-tooltip.visible { opacity: 1; }
+.tx-map-tooltip-name {
+  color: #e8a46a;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.tx-map-tooltip-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 3px;
+  margin-bottom: 6px;
+}
+.tx-map-tooltip-badge.current {
+  background: rgba(181,98,30,0.25);
+  color: #e8a46a;
+}
+.tx-map-tooltip-badge.expansion {
+  background: rgba(255,255,255,0.1);
+  color: rgba(250,248,244,0.6);
+}
+.tx-map-tooltip-category {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(250,248,244,0.5);
+  margin-bottom: 6px;
+}
+.tx-map-tooltip-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.tx-map-tooltip-list li {
+  font-size: 11.5px;
+  color: rgba(250,248,244,0.75);
+  padding: 2px 0;
+  line-height: 1.4;
+}
+.tx-map-tooltip-list li::before {
+  content: '•';
+  color: #b5621e;
+  margin-right: 6px;
+}
+.tx-map-legend {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 28px;
+}
+.tx-map-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba(250,248,244,0.55);
+}
+.tx-legend-dot-solid {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #b5621e;
+  flex-shrink: 0;
+}
+.tx-legend-dot-dashed {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px dashed #b5621e;
+  flex-shrink: 0;
+}
+/* Mobile: hide map, show card grid */
+.tx-map-mobile-grid {
+  display: none;
+}
+@media (max-width: 639px) {
+  .tx-map-wrap, .tx-map-legend { display: none; }
+  .tx-map-mobile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .tx-map-mobile-card {
+    background: rgba(255,255,255,0.06);
+    border-radius: 8px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .tx-map-mobile-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #b5621e;
+    flex-shrink: 0;
+  }
+  .tx-map-mobile-name {
+    font-size: 13px;
+    color: #faf8f4;
+    font-weight: 500;
+  }
+}
 `;
 
 const pageHTML = `
