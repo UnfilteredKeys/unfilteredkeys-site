@@ -5,7 +5,7 @@ import SiteFooter from "./SiteFooter";
 const SiteLayout = () => (
   <div className="min-h-screen bg-background">
     <SiteNav />
-    <main className="pt-16">
+    <main>
       <Outlet />
     </main>
     <SiteFooter />
