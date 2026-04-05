@@ -2380,49 +2380,30 @@ const pageHTML = `
 <hr class="section-rule" aria-hidden="true">
 
 <!-- ═══════════════════════════════════════════
-     REVIEWS
+     TESTIMONIALS
      ═══════════════════════════════════════════ -->
-<section class="section section-cream" aria-labelledby="reviews-heading">
-  <div class="container">
-    <div class="reviews-header">
-      <div>
-        <p class="section-tag">Client Reviews</p>
-        <h2 class="section-title" id="reviews-heading">What Our Clients Say</h2>
-      </div>
-      <div class="reviews-aggregate" aria-label="Overall rating: 5.0 stars">
-        <div class="agg-score" aria-hidden="true">5.0</div>
-        <div>
-          <div class="agg-stars" aria-label="5 stars">★★★★★</div>
-          <div class="agg-count">Google Reviews · Verified</div>
-        </div>
-      </div>
+<section class="section section-cream" aria-labelledby="testimonials-heading">
+  <div class="container" style="max-width:900px;">
+    <div style="text-align:center; margin-bottom:48px;">
+      <p class="section-tag" style="justify-content:center;">Client Testimonials</p>
+      <h2 class="section-title" id="testimonials-heading">What Clients Say</h2>
     </div>
-    <div class="reviews-grid" role="list">
-      <div class="review-card" role="listitem">
-        <div class="review-stars" aria-label="5 stars">★★★★★</div>
-        <p class="review-text">"Shalandra helped us purchase our home and later refinance to better fit our budget, always making sure we clearly understood every step. Her great communication skills meant we never felt alone, and she was always ready to answer our questions. I'd highly recommend her to anyone."</p>
-        <div class="review-meta">
-          <div class="review-avatar" aria-hidden="true">G</div>
-          <div>
-            <div class="review-name">G. Balbaneda</div>
-            <div class="review-city">Verified Google Review</div>
-          </div>
-        </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+      <div style="background:var(--navy); border-radius:12px; padding:32px;">
+        <p style="color:var(--ivory); font-size:16px; line-height:1.7; font-style:italic; margin:0 0 16px;">"She took time to teach and guide me through the overwhelming process of buying a house, making it super easy and stress-free."</p>
+        <p style="color:var(--copper); font-weight:600; font-size:14px; margin:0;">— Yaniska W.</p>
       </div>
-      <div class="review-card" role="listitem">
-        <div class="review-stars" aria-label="5 stars">★★★★★</div>
-        <p class="review-text">"I had such an amazing experience working with Shalanda. She was extremely detailed in her responses and always made sure I had all the information I needed throughout the process. Everything was explained clearly, and she was quick to respond whenever I had a question. The entire process was smooth from start to finish, and I felt supported every step of the way."</p>
-        <div class="review-meta">
-          <div class="review-avatar" aria-hidden="true">M</div>
-          <div>
-            <div class="review-name">M. Thomas</div>
-            <div class="review-city">Verified Google Review</div>
-          </div>
-        </div>
+      <div style="background:var(--navy); border-radius:12px; padding:32px;">
+        <p style="color:var(--ivory); font-size:16px; line-height:1.7; font-style:italic; margin:0 0 16px;">"It was clear she genuinely cared about helping me make the right decisions, not just closing a deal."</p>
+        <p style="color:var(--copper); font-weight:600; font-size:14px; margin:0;">— Thomas S.</p>
       </div>
-      <div class="reviews-placeholder" role="listitem" style="text-align:center;">
-        <strong>⭐ Leave Us a Google Review</strong>
-        <p style="margin-top:8px; color:var(--text-secondary); font-size:15px; line-height:1.6;">Your review helps other Texas veterans and homebuyers find honest mortgage guidance they deserve. <a href="https://g.page/r/CbNEnAzp2zG9EBM/review" target="_blank" rel="noopener noreferrer" style="color:var(--copper); font-weight:700;">Click here to leave a review →</a></p>
+      <div style="background:var(--navy); border-radius:12px; padding:32px;">
+        <p style="color:var(--ivory); font-size:16px; line-height:1.7; font-style:italic; margin:0 0 16px;">"The entire process was smooth from start to finish, and I felt supported every step of the way."</p>
+        <p style="color:var(--copper); font-weight:600; font-size:14px; margin:0;">— Moya T.</p>
+      </div>
+      <div style="background:var(--navy); border-radius:12px; padding:32px;">
+        <p style="color:var(--ivory); font-size:16px; line-height:1.7; font-style:italic; margin:0 0 16px;">"She helped us purchase our home and later refinance to better fit our budget — we never felt alone."</p>
+        <p style="color:var(--copper); font-weight:600; font-size:14px; margin:0;">— Gardenia B.</p>
       </div>
     </div>
   </div>
