@@ -1079,82 +1079,98 @@ details[open] summary::after { content: '−'; }
    FOOTER
    ═══════════════════════════════════════════ */
 footer {
-  background: var(--bg-footer);
-  color: rgba(240,237,230,0.65);
+  background: #1a3a5c;
+  color: rgba(250,248,244,0.65);
   padding: 56px 0 32px;
 }
-.footer-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 48px;
-  margin-bottom: 48px;
-}
-@media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
-@media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
-.footer-brand .brand {
-  font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--text-on-dark);
-  margin-bottom: 4px;
-}
-.footer-brand .tagline {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: rgba(240,237,230,0.4);
-  margin-bottom: 16px;
-}
-.footer-brand p { font-size: 13px; line-height: 1.65; max-width: 300px; }
-.footer-nmls {
-  margin-top: 16px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: rgba(240,237,230,0.4);
-  line-height: 1.7;
-}
-.footer-col h4 {
-  color: rgba(240,237,230,0.9);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-  margin-bottom: 14px;
-}
-.footer-col ul { list-style: none; padding: 0; }
-.footer-col li { margin-bottom: 8px; }
-.footer-col a { font-size: 13px; color: rgba(240,237,230,0.55); transition: color 0.2s; }
-.footer-col a:hover { color: rgba(240,237,230,0.9); }
-.footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.06);
-  padding-top: 28px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-.footer-legal { font-size: 11px; color: rgba(240,237,230,0.35); line-height: 1.75; max-width: 720px; }
-.footer-legal a { color: rgba(240,237,230,0.45); text-decoration: underline; }
-.equal-housing {
+.footer-top {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  color: rgba(240,237,230,0.4);
-  font-family: var(--font-mono);
-  white-space: nowrap;
+  justify-content: space-between;
+  margin-bottom: 40px;
 }
-.eh-icon {
-  width: 32px;
-  height: 32px;
-  border: 2px solid rgba(240,237,230,0.3);
-  border-radius: 4px;
+.footer-top-links { display: flex; gap: 24px; }
+.footer-top-links a {
+  color: #faf8f4;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-top-links a:hover { color: #b5621e; }
+.footer-founder {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.footer-founder-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid rgba(181,98,30,0.5);
+  background: rgba(250,248,244,0.08);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 22px;
   flex-shrink: 0;
+  color: #b5621e;
+}
+.footer-founder-text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(250,248,244,0.6);
+}
+.footer-divider {
+  border: none;
+  border-top: 1px solid rgba(181,98,30,0.3);
+  margin-bottom: 32px;
+}
+.footer-compliance {
+  font-size: 11px;
+  color: rgba(250,248,244,0.45);
+  line-height: 1.75;
+  max-width: 800px;
+  margin-bottom: 32px;
+}
+.footer-compliance a {
+  color: #b5621e;
+  text-decoration: underline;
+}
+.footer-compliance a:hover { color: #d4782e; }
+.footer-bottom-row {
+  border-top: 1px solid rgba(250,248,244,0.08);
+  padding-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-bottom-legal {
+  font-size: 11px;
+  color: rgba(250,248,244,0.35);
+}
+.footer-bottom-legal a {
+  color: rgba(250,248,244,0.45);
+  text-decoration: underline;
+}
+.equal-housing {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.equal-housing span {
+  font-size: 11px;
+  color: rgba(250,248,244,0.6);
+}
+@media (max-width: 640px) {
+  .footer-top { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .footer-bottom-row { flex-direction: column; align-items: flex-start; }
 }
 
 /* ═══════════════════════════════════════════
@@ -2517,108 +2533,54 @@ const pageHTML = `
      ═══════════════════════════════════════════ -->
 <footer role="contentinfo">
   <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <svg viewBox="0 0 248 72" xmlns="http://www.w3.org/2000/svg" height="58" aria-label="Unfiltered Keys" style="display:block;margin-bottom:12px;">
-          <!-- Key icon (warm gold on dark) -->
-          <circle cx="18" cy="14" r="12"  fill="none" stroke="#e8b47d" stroke-width="2.5"/>
-          <circle cx="18" cy="14" r="6"   fill="none" stroke="#e8b47d" stroke-width="1.5"/>
-          <rect x="14.5" y="25"   width="7"  height="28" rx="2"   fill="#e8b47d"/>
-          <rect x="21.5" y="36"   width="10" height="3.5" rx="1.5" fill="#e8b47d"/>
-          <rect x="21.5" y="43.5" width="8"  height="3.5" rx="1.5" fill="#e8b47d"/>
-          <!-- Divider -->
-          <line x1="44" y1="6" x2="44" y2="60" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-          <!-- Wordmark -->
-          <text x="56" y="27" font-family="Lora,Georgia,serif" font-style="italic" font-size="21" fill="#e8b47d">Unfiltered</text>
-          <text x="56" y="52" font-family="Lora,Georgia,serif" font-weight="700" font-size="27" fill="#f0ede6" letter-spacing="-0.3">Keys</text>
-          <!-- Tagline -->
-          <text x="56" y="65" font-family="Fira Mono,Courier New,monospace" font-size="7.5" fill="rgba(240,237,230,0.4)" letter-spacing="1.8">STRUCTURED MORTGAGE STRATEGY</text>
-        </svg>
-        <p style="font-style:italic; color:rgba(240,237,230,0.7); font-size:14px; margin-bottom:16px;">Unfiltered Advice. Structured Results. Texas Statewide.</p>
-        <p>Texas mortgage broker licensed statewide. VA, FHA, Conventional, Jumbo, USDA and Physician loans — serving Houston, DFW, San Antonio, El Paso, Killeen, Temple, Round Rock, Georgetown, and all Texas military corridors. Honest advice. Fast closings.</p>
-        <div class="footer-nmls">
-          <div style="margin-bottom:6px;">
-            🌐 <a href="https://unfilteredkeys.com" style="color:rgba(240,237,230,0.55)">unfilteredkeys.com</a>
-          </div>
-          <div style="margin-bottom:6px;">
-            ✉️ <a href="mailto:Shalanda@SecureChoiceLending.com" style="color:rgba(240,237,230,0.55)">Shalanda@SecureChoiceLending.com</a>
-          </div>
-          <div style="margin-bottom:14px;">
-            📞 <a href="tel:+12549359331" style="color:rgba(240,237,230,0.55)">254.935.9331</a>
-          </div>
-          <div style="margin-bottom:4px; color:rgba(240,237,230,0.5);">Shalanda Smith · NMLS #554554</div>
-          <div style="margin-bottom:4px; color:rgba(240,237,230,0.5);">Secure Choice Lending · NMLS #1689518</div>
-          <div style="color:rgba(240,237,230,0.5);">1650 Spruce St. Ste 500, Riverside, CA 92507</div>
-        </div>
-        <div style="margin-top:16px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.08);">
-          <span style="font-family:var(--font-mono); font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:rgba(240,237,230,0.35);">Powered by</span>
-          <span style="font-family:var(--font-mono); font-size:10px; letter-spacing:1px; color:rgba(240,237,230,0.55); margin-left:6px; font-weight:500;">Secure Choice Lending</span>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Loan Programs</h4>
-        <ul>
-          <li><a href="/va-loan-texas/">VA Home Loans</a></li>
-          <li><a href="/fha-loan-texas/">FHA Loans</a></li>
-          <li><a href="/conventional-loan-texas/">Conventional</a></li>
-          <li><a href="/jumbo-loan-texas/">Jumbo Loans</a></li>
-          <li><a href="/usda-loan-texas/">USDA Loans</a></li>
-          <li><a href="/physician-loan-texas/">Physician Loans</a></li>
-          <li><a href="/dscr-loan-texas/">DSCR / Investor</a></li>
-          <li><a href="/bank-statement-loan-texas/">Bank Statement</a></li>
-          <li><a href="/asset-depletion-loan-texas/">Asset Depletion</a></li>
-          <li><a href="/non-qm-loan-texas/">Other Non-QM</a></li>
-          <li><a href="/va-construction-loan-texas/">VA OTC Construction</a></li>
-          <li><a href="/fha-203k-loan-texas/">FHA 203(k) Renovation</a></li>
-          <li><a href="/homestyle-renovation-loan-texas/">HomeStyle Renovation</a></li>
-          <li><a href="/refinance/">Refinance</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Cities We Serve</h4>
-        <ul>
-          <li><a href="/houston-mortgage-broker/">Houston</a></li>
-          <li><a href="/dallas-fort-worth-mortgage-broker/">Dallas–Fort Worth</a></li>
-          <li><a href="/san-antonio-mortgage-broker/">San Antonio</a></li>
-          <li><a href="/el-paso-mortgage-broker/">El Paso</a></li>
-          <li><a href="/killeen-mortgage-broker/">Killeen</a></li>
-          <li><a href="/temple-tx-mortgage-broker/">Temple</a></li>
-          <li><a href="/round-rock-tx-mortgage-broker/">Round Rock</a></li>
-          <li><a href="/georgetown-tx-mortgage-broker/">Georgetown</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="/calculators/">Calculators</a></li>
-          <li><a href="/texas-down-payment-assistance/">TX Down Payment Help</a></li>
-          <li><a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer">Book Strategy Call</a></li>
-          <li><a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer">Apply Now</a></li>
-          <li><a href="/about/">About Us</a></li>
-          <li><a href="/blog/">Blog</a></li>
-        </ul>
+    <!-- Top row: Logo + links -->
+    <div class="footer-top">
+      <svg viewBox="0 0 248 72" xmlns="http://www.w3.org/2000/svg" height="52" aria-label="Unfiltered Keys" style="display:block;">
+        <circle cx="18" cy="14" r="12" fill="none" stroke="#b5621e" stroke-width="2.5"/>
+        <circle cx="18" cy="14" r="6" fill="none" stroke="#b5621e" stroke-width="1.5"/>
+        <rect x="14.5" y="25" width="7" height="28" rx="2" fill="#b5621e"/>
+        <rect x="21.5" y="36" width="10" height="3.5" rx="1.5" fill="#b5621e"/>
+        <rect x="21.5" y="43.5" width="8" height="3.5" rx="1.5" fill="#b5621e"/>
+        <line x1="44" y1="6" x2="44" y2="60" stroke="rgba(250,248,244,0.15)" stroke-width="1"/>
+        <text x="56" y="27" font-family="Lora,Georgia,serif" font-style="italic" font-size="21" fill="#b5621e">Unfiltered</text>
+        <text x="56" y="52" font-family="Lora,Georgia,serif" font-weight="700" font-size="27" fill="#faf8f4" letter-spacing="-0.3">Keys</text>
+      </svg>
+      <div class="footer-top-links">
+        <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer">Apply</a>
+        <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer">Schedule a Call</a>
       </div>
     </div>
 
-    <div class="footer-bottom">
-      <div class="footer-legal">
-        <strong style="color:rgba(240,237,230,0.5); display:block; margin-bottom:6px;">Required Disclosures</strong>
-        Unfiltered Keys is a brand of Shalanda Smith (NMLS #554554), operating under Secure Choice Lending (NMLS #1689518), licensed by the Texas Department of Savings and Mortgage Lending. · 1650 Spruce St. Ste 500, Riverside, CA 92507<br>
-        <a href="https://www.sml.texas.gov" target="_blank" rel="noopener">Texas SML Website</a> · 
-        <a href="http://www.nmlsconsumeraccess.org" target="_blank" rel="noopener">NMLSConsumerAccess.org</a><br>
-        CONSUMERS WISHING TO FILE A COMPLAINT AGAINST A MORTGAGE BANKER OR LICENSED ORIGINATOR SHOULD CONTACT THE TEXAS DEPARTMENT OF SAVINGS AND MORTGAGE LENDING, 2601 NORTH LAMAR, SUITE 201, AUSTIN, TX 78705. TOLL-FREE HOTLINE: 1-877-276-5550. <a href="https://www.sml.texas.gov">WWW.SML.TEXAS.GOV</a><br>
-        All loans subject to credit approval. Rates and terms subject to change without notice. Not a commitment to lend. Equal Housing Opportunity.
-        <a href="/privacy/">Privacy Policy</a> · <a href="/terms/">Terms of Use</a> · © 2026 Unfiltered Keys. All rights reserved.
-      </div>
-      <div class="equal-housing" aria-label="Equal Housing Lender" style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(240,237,230,0.25);border-radius:6px;padding:8px 14px;">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18" aria-hidden="true" fill="rgba(240,237,230,0.75)">
-          <!-- House shape -->
+    <!-- Middle row: Founder -->
+    <div class="footer-founder">
+      <div class="footer-founder-circle" aria-hidden="true">S</div>
+      <span class="footer-founder-text">Founded by Shalanda Smith · NMLS# 554554</span>
+    </div>
+
+    <!-- Divider -->
+    <hr class="footer-divider" aria-hidden="true">
+
+    <!-- Compliance -->
+    <div class="footer-compliance">
+      Unfiltered Keys is a brand of Shalanda Smith (NMLS #554554), operating under Secure Choice Lending (NMLS #1689518), licensed by the Texas Department of Savings and Mortgage Lending · 1650 Spruce St. Ste 500, Riverside, CA 92507<br><br>
+      <a href="https://www.sml.texas.gov" target="_blank" rel="noopener">Texas SML Website</a> · 
+      <a href="http://www.nmlsconsumeraccess.org" target="_blank" rel="noopener">NMLSConsumerAccess.org</a><br><br>
+      CONSUMERS WISHING TO FILE A COMPLAINT AGAINST A MORTGAGE BANKER OR LICENSED ORIGINATOR SHOULD CONTACT THE TEXAS DEPARTMENT OF SAVINGS AND MORTGAGE LENDING, 2601 NORTH LAMAR, SUITE 201, AUSTIN, TX 78705. TOLL-FREE HOTLINE: 1-877-276-5550. <a href="https://www.sml.texas.gov" target="_blank" rel="noopener">WWW.SML.TEXAS.GOV</a><br><br>
+      All loans subject to credit approval. Rates and terms subject to change without notice. Not a commitment to lend. Equal Housing Opportunity.
+    </div>
+
+    <!-- Bottom row -->
+    <div class="footer-bottom-row">
+      <div class="equal-housing" aria-label="Equal Housing Lender">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18" aria-hidden="true" fill="rgba(250,248,244,0.6)">
           <path d="M12 2L2 10h2v10h6v-6h4v6h6V10h2L12 2z"/>
-          <!-- Equal sign overlaid in dark to show on filled house -->
-          <rect x="7" y="11.5" width="10" height="1.5" rx="0.75" fill="#1e2b3a"/>
-          <rect x="7" y="14"   width="10" height="1.5" rx="0.75" fill="#1e2b3a"/>
+          <rect x="7" y="11.5" width="10" height="1.5" rx="0.75" fill="#1a3a5c"/>
+          <rect x="7" y="14" width="10" height="1.5" rx="0.75" fill="#1a3a5c"/>
         </svg>
-        <span style="font-size:12px; color:rgba(240,237,230,0.75); white-space:nowrap;">Equal Housing Lender</span>
+        <span>Equal Housing Lender</span>
+      </div>
+      <div class="footer-bottom-legal">
+        <a href="/privacy/">Privacy Policy</a> · <a href="/terms/">Terms of Use</a> · © 2026 Unfiltered Keys. All rights reserved.
       </div>
     </div>
   </div>
