@@ -35,7 +35,7 @@ const Apply = () => {
   }
 
   return (
-    <SiteLayout>
+    <>
       <section className="py-24 md:py-32 px-6 md:px-12">
         <div className="max-w-3xl mx-auto">
           <p className="font-mono text-xs text-primary tracking-widest uppercase mb-4">Apply</p>
