@@ -1347,19 +1347,7 @@ details[open] summary::after { content: '−'; }
 }
 .section-parchment .step-number { color: #e5dfd5; }
 
-/* ── Reviews on cream ── */
-.section-cream .review-card {
-  background: #fff;
-  border-color: #e8e0d2;
-}
-.section-cream .reviews-aggregate {
-  background: #fff;
-  border-color: #e8e0d2;
-}
-.section-cream .reviews-placeholder {
-  background: rgba(250,248,244,0.8);
-  border-color: #d4ccbf;
-}
+
 
 /* ── Lead magnet band — dark charcoal ── */
 .lm-band-dark {
