@@ -2504,6 +2504,8 @@ export default function Index() {
     <>
       <style dangerouslySetInnerHTML={{ __html: pageStyles }} />
       <div dangerouslySetInnerHTML={{ __html: pageHTML }} />
+      <DownPaymentSection />
+      <div dangerouslySetInnerHTML={{ __html: pageHTMLAfterDPA }} />
     </>
   );
 }
