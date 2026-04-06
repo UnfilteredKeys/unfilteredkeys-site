@@ -6,19 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "postbuild": "react-snap",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest"
-  },
-  "reactSnap": {
-    "source": "dist",
-    "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"],
-    "crawl": true,
-    "inlineCss": false,
-    "saveDuration": 1000
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
