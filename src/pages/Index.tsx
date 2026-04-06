@@ -2218,7 +2218,7 @@ const pageHTML = `
       <div class="diff-item" role="listitem">
         <div class="diff-icon-wrap" aria-hidden="true">🎖️</div>
         <div>
-          <div class="diff-title">Fort Hood PCS Specialists</div>
+          <div class="diff-title">Military PCS Specialists</div>
           <div class="diff-body">We understand military pay, BAH calculations, COE pulls, and PCS timelines. If you have orders with a report date, we build your closing timeline backward from that deadline — not forward from when it's convenient for us.</div>
         </div>
       </div>
