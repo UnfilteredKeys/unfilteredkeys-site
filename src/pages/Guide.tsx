@@ -3,6 +3,8 @@ import { useEffect } from "react";
 const GuideePage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.title = "Free Mortgage Guide | What Lenders Won't Tell You | Unfiltered Keys";
+    document.querySelector('meta[name="description"]')?.setAttribute("content", "Download the free mortgage guide that covers what lenders won't tell you — credit strategy, loan types, and how to show up informed before you apply.");
     // Load Kit script
     const script = document.createElement('script');
     script.src = 'https://f.convertkit.com/ckjs/ck.5.js';

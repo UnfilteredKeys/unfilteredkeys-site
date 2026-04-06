@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 const BuyAHomePage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.title = "Buy a Home in Texas | VA & FHA Loans | Unfiltered Keys";
+    document.querySelector('meta[name="description"]')?.setAttribute("content", "Buy a home in Texas with VA, FHA, or conventional financing. Mortgage broker access, structured strategy, and real guidance from application to keys.");
   }, []);
 
   const [openFaq, setOpenFaq] = useState<number | null>(null);

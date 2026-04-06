@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 const RefinancePage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.title = "Refinance Your Texas Mortgage | VA IRRRL & Cash-Out | Unfiltered Keys";
+    document.querySelector('meta[name="description"]')?.setAttribute("content", "Refinance your Texas mortgage with VA IRRRL, cash-out, or rate-and-term options. Broker-level pricing and structured strategy from Shalanda Smith.");
   }, []);
 
   const [openFaq, setOpenFaq] = useState<number | null>(null);

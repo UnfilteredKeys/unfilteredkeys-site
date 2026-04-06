@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 const LoanProgramsPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.title = "Texas Loan Programs | VA, FHA, Conventional & Non-QM | Unfiltered Keys";
+    document.querySelector('meta[name="description"]')?.setAttribute("content", "Explore VA, FHA, conventional, USDA, jumbo, DSCR, and non-QM loan programs available in Texas. Compare options side by side with broker access.");
   }, []);
 
   const [activeProgram, setActiveProgram] = useState<string | null>(null);
