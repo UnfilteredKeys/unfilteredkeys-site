@@ -34,8 +34,8 @@ const App = () => (
             <Route path="/refinance" element={<RefinancePage />} />
             <Route path="/loan-programs" element={<LoanProgramsPage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
-          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
