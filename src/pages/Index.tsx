@@ -2119,9 +2119,6 @@ const pageHTML = `
         </div>
       </div>
     </div>
-    <div style="margin-top:32px; text-align:center;">
-      <a href="/construction-renovation-loans-texas/" class="btn-primary" style="display:inline-flex;">Explore Construction &amp; Renovation Loans →</a>
-    </div>
   </div>
 </section>
 
