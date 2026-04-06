@@ -40,18 +40,28 @@ function monthlyPI(principal: number, annualRate: number, years: number): number
   return principal * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
 }
 
-function fmt(n: number): string {
-  if (!isFinite(n) || isNaN(n)) return "$0";
-  return Math.round(n).toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+function fmtDec(n: number): string {
+  const safe = isFinite(n) && !isNaN(n) ? n : 0;
+  return safe.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
 }
 
-function fmtDec(n: number): string {
-  if (!isFinite(n) || isNaN(n)) return "$0.00";
-  return n.toLocaleString("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: 2 });
+function fmt(n: number): string {
+  const safe = isFinite(n) && !isNaN(n) ? n : 0;
+  return Math.round(safe).toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  });
 }
 
 function pct(n: number): string {
-  return n.toFixed(1) + "%";
+  const safe = isFinite(n) && !isNaN(n) ? n : 0;
+  return safe.toFixed(1) + "%";
 }
 
 // ── STYLES ────────────────────────────────────────────────────────────────────
