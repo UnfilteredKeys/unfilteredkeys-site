@@ -1230,7 +1230,7 @@ details[open] summary::after { content: '−'; }
 
 /* ── Deep Forest — authoritative, premium, serious ── */
 .section-forest {
-  background: #0c2f29;
+  background: #1a3a5c;
   position: relative;
 }
 .section-forest::before {
@@ -2207,7 +2207,7 @@ const pageHTML = `
     <p class="section-tag">Why Us</p>
     <h2 class="section-title" id="why-heading">Retail Banks Have One Product Shelf. We Have 50+. That Difference Is Why Deals Close Here That Don't Close Elsewhere.</h2>
     <p class="section-sub">As an independent broker we shop your loan across 50+ lenders to find the best rate, terms, and fit for your situation — not the best fit for our quota. More lenders. More options. Better outcomes.</p>
-    <div class="diff-grid" role="list">
+    <div class="diff-grid" role="list" style="grid-template-columns:repeat(3,1fr);">
       <div class="diff-item" role="listitem">
         <div class="diff-icon-wrap" aria-hidden="true">🎯</div>
         <div>
@@ -2220,27 +2220,6 @@ const pageHTML = `
         <div>
           <div class="diff-title">Fort Hood PCS Specialists</div>
           <div class="diff-body">We understand military pay, BAH calculations, COE pulls, and PCS timelines. If you have orders with a report date, we build your closing timeline backward from that deadline — not forward from when it's convenient for us.</div>
-        </div>
-      </div>
-      <div class="diff-item" role="listitem">
-        <div class="diff-icon-wrap" aria-hidden="true">🔍</div>
-        <div>
-          <div class="diff-title">We Compare Builder Lenders for Free</div>
-          <div class="diff-body">Buying new construction in Georgetown or Round Rock? Builder lenders push hard for your business — and their incentives often hide higher costs. We run a side-by-side Loan Estimate comparison before you commit to anything.</div>
-        </div>
-      </div>
-      <div class="diff-item" role="listitem">
-        <div class="diff-icon-wrap" aria-hidden="true">📍</div>
-        <div>
-          <div class="diff-title">Local Market Knowledge That's Actually Local</div>
-          <div class="diff-body">We know the difference between Harker Heights, Nolanville, Copperas Cove, and Killeen pricing. We know which Georgetown neighborhoods fall in Leander ISD. We've seen the flood zone maps in Temple. This isn't call-center knowledge.</div>
-        </div>
-      </div>
-      <div class="diff-item" role="listitem">
-        <div class="diff-icon-wrap" aria-hidden="true">📊</div>
-        <div>
-          <div class="diff-title">The Down Payment Assistance You Didn't Know About</div>
-          <div class="diff-body">TDHCA My First Texas Home (620). TSAHC Homes for Texas Heroes (620). SETH 5 Star (640) &amp; GoldStar (620). Chenoa Fund (600). And investor-backed DPA products that reach to 580 credit — including options layerable with FHA 203(k) renovation financing. Most borrowers who qualify never hear about these because their lender isn't enrolled.</div>
         </div>
       </div>
       <div class="diff-item" role="listitem">
