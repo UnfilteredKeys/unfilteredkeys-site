@@ -13,6 +13,7 @@ import BuyAHomePage from "@/pages/BuyAHome";
 import RefinancePage from "@/pages/Refinance";
 import LoanProgramsPage from "@/pages/LoanPrograms";
 import AboutPage from "@/pages/About";
+import CalculatorsPage from "@/pages/calculators";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
