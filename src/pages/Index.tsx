@@ -1230,7 +1230,7 @@ details[open] summary::after { content: '−'; }
 
 /* ── Deep Forest — authoritative, premium, serious ── */
 .section-forest {
-  background: #0c2f29;
+  background: #1a3a5c;
   position: relative;
 }
 .section-forest::before {
