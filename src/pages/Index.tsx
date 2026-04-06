@@ -2235,11 +2235,11 @@ const pageHTML = `
       Anyone can quote a rate. Very few can structure a loan that actually closes clean.
     </p>
   </div>
+  </div>
 </section>
+`;
 
-
-<DownPaymentSection />
-
+const pageHTMLAfterDPA = `
 <section class="section section-cream" aria-labelledby="testimonials-heading">
   <div class="container" style="max-width:900px;">
     <div style="text-align:center; margin-bottom:48px;">
