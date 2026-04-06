@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import DownPaymentSection from '@/components/DownPaymentSection';
 
 const pageStyles = `
 /* ═══════════════════════════════════════════
@@ -2236,33 +2237,10 @@ const pageHTML = `
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
+{/* ═══════════════════════════════════════════
      TEXAS DPA CALLOUT
-     ═══════════════════════════════════════════ -->
-<div class="dpa-band" aria-labelledby="dpa-heading">
-  <div class="container">
-    <div class="dpa-inner">
-      <div>
-        <div class="dpa-tag">Down Payment Assistance · Texas · All Credit Profiles</div>
-        <h2 class="dpa-title" id="dpa-heading">
-          Texas Has Serious Down<br>Payment Help Available.<br>Most Buyers Never Hear About It.
-        </h2>
-        <ul class="dpa-list" role="list" aria-label="Available DPA programs">
-          <li><strong>TDHCA My First Texas Home</strong> — Up to 5% as a silent second lien. First-time buyers. Statewide. Combinable with FHA 203(k) renovation financing. <span class="dpa-score-tag">620 min credit</span></li>
-          <li><strong>TSAHC Homes for Texas Heroes</strong> — Teachers, nurses, first responders, veterans, and correctional officers. Non-repayable grant or DPA second lien + Mortgage Credit Certificate. <span class="dpa-score-tag">620 min credit</span></li>
-          <li><strong>SETH 5 Star Texas Advantage</strong> — Up to 5% down payment assistance. No first-time buyer requirement. Available statewide — layerable with FHA 203(k) for purchase + renovation. <span class="dpa-score-tag">640 min credit</span></li>
-          <li><strong>SETH GoldStar Program</strong> — Forgivable grant. Stay 3 years = zero repayment. Works with FHA, VA, USDA, and Conventional. Income limits by county. <span class="dpa-score-tag">620 min credit</span></li>
-          <li><strong>Chenoa Fund</strong> — FHA-paired down payment assistance covering the 3.5% requirement. Repayable or forgivable options. Available statewide with no income limits on the repayable version. <span class="dpa-score-tag">600 min credit</span></li>
-          <li><strong>Investor-Backed DPA</strong> — Access to programs not available at retail banks. Options to 580 credit, higher DTI tolerance, available on purchase and renovation transactions. Ask us what fits your scenario.</li>
-        </ul>
-      </div>
-      <div class="dpa-cta-wrap">
-        <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" class="btn-white-solid">See If I Qualify</a>
-        <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" class="btn-copper-outline">Get Pre-Approved</a>
-      </div>
-    </div>
-  </div>
-</div>
+     ═══════════════════════════════════════════ */}
+<DownPaymentSection />
 
 <!-- ─── EDITORIAL RULE ─── -->
 <hr class="section-rule" aria-hidden="true">
