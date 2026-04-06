@@ -41,10 +41,12 @@ function monthlyPI(principal: number, annualRate: number, years: number): number
 }
 
 function fmt(n: number): string {
-  return n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+  if (!isFinite(n) || isNaN(n)) return "$0";
+  return Math.round(n).toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 }
 
 function fmtDec(n: number): string {
+  if (!isFinite(n) || isNaN(n)) return "$0.00";
   return n.toLocaleString("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
