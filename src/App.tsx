@@ -15,6 +15,7 @@ import LoanProgramsPage from "@/pages/LoanPrograms";
 import AboutPage from "@/pages/About";
 import CalculatorsPage from "@/pages/calculators";
 import VALoanTexasPage from "@/pages/VALoanTexas";
+import PhysicianLoanTexasPage from "@/pages/PhysicianLoanTexas";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
