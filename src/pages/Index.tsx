@@ -2243,9 +2243,9 @@ const pageHTML = `
 <DownPaymentSection />
 
 
-<!-- ═══════════════════════════════════════════
+{/* ═══════════════════════════════════════════
      TESTIMONIALS
-     ═══════════════════════════════════════════ -->
+     ═══════════════════════════════════════════ */}
 <section class="section section-cream" aria-labelledby="testimonials-heading">
   <div class="container" style="max-width:900px;">
     <div style="text-align:center; margin-bottom:48px;">
