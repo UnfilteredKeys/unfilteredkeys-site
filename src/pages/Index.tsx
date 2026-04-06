@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import DownPaymentSection from '@/components/DownPaymentSection';
 
 const pageStyles = `
 /* ═══════════════════════════════════════════
