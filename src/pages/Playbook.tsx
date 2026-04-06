@@ -3,6 +3,8 @@ import { useEffect } from "react";
 const PlaybookPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.title = "90-Day Mortgage Playbook | Pre-Approval Prep | Unfiltered Keys";
+    document.querySelector('meta[name="description"]')?.setAttribute("content", "A week-by-week action plan for the 90 days before you apply — credit, cash, timelines, and exactly what to do to get mortgage-ready.");
     // Load Kit script
     const script = document.createElement('script');
     script.src = 'https://f.convertkit.com/ckjs/ck.5.js';
