@@ -2242,8 +2242,6 @@ const pageHTML = `
      ═══════════════════════════════════════════ */}
 <DownPaymentSection />
 
-<!-- ─── EDITORIAL RULE ─── -->
-<hr class="section-rule" aria-hidden="true">
 
 <!-- ═══════════════════════════════════════════
      TESTIMONIALS
