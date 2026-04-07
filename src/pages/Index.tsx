@@ -2103,22 +2103,7 @@ const pageHTML = `
     <p class="section-tag">Build It. Buy It. Fix It.</p>
     <h2 class="section-title" id="constr-heading">Building or Renovating? One Loan. One Closing.</h2>
     <p class="section-sub">VA, FHA, USDA, and Conventional One-Time Close construction loans — plus FHA 203(k), HomeStyle, and VA Renovation financing. Lock your rate before the first shovel hits the ground.</p>
-    <div class="diff-grid" style="margin-top:36px;" role="list">
-      <div class="diff-item" role="listitem">
-        <div class="diff-icon-wrap" aria-hidden="true">🏗️</div>
-        <div>
-          <div class="diff-title">One-Time Close Construction</div>
-          <div class="diff-body">One closing, one set of costs, and your permanent rate locked before construction starts. Available for VA ($0 down), FHA (3.5% down), USDA (zero down), and Conventional programs. No re-qualification at completion.</div>
-        </div>
-      </div>
-      <div class="diff-item" role="listitem">
-        <div class="diff-icon-wrap" aria-hidden="true">🔨</div>
-        <div>
-          <div class="diff-title">Renovation Loans</div>
-          <div class="diff-body">Buy the property and fund the improvements in a single loan — based on the after-improved value. FHA 203(k), Fannie Mae HomeStyle, and VA Renovation options available statewide.</div>
-        </div>
-      </div>
-    </div>
+    <a href="/loan-programs" style="color:#b5621e; font-size:15px; font-weight:600; text-decoration:none; border-bottom:1px solid rgba(181,98,30,0.4); padding-bottom:2px; margin-top:24px; display:inline-block;">See Construction &amp; Renovation Loans →</a>
   </div>
 </section>
 
