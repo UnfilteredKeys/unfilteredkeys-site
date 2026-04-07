@@ -1,32 +1,5 @@
 import React from "react";
 
-const programs = [
-  {
-    name: "TSAHC Homes for Texas Heroes",
-    description:
-      "Non-repayable grant for teachers, nurses, veterans, and first responders. No payback required. Statewide.",
-    credit: "620 min credit",
-  },
-  {
-    name: "SETH 5 Star Texas Advantage",
-    description:
-      "Up to 5% down payment assistance. No first-time buyer requirement. Stacks with FHA 203(k) for purchase + renovation.",
-    credit: "640 min credit",
-  },
-  {
-    name: "SETH GoldStar Program",
-    description:
-      "Forgivable grant — stay 3 years and keep it all. Works with FHA, VA, USDA, and Conventional. Income limits by county.",
-    credit: "620 min credit",
-  },
-];
-
-const additionalPrograms = [
-  "TDHCA My First Texas Home",
-  "Chenoa Fund",
-  "Investor-Backed DPA (580+ credit available)",
-];
-
 export default function DownPaymentSection() {
   return (
     <section
@@ -83,7 +56,7 @@ export default function DownPaymentSection() {
           in most often, and the credit floor that applies to each.
         </p>
 
-        {/* Two-column layout: programs left, CTAs right */}
+        {/* Two-column layout: CTA left, action buttons right */}
         <div
           style={{
             display: "grid",
@@ -92,119 +65,32 @@ export default function DownPaymentSection() {
             alignItems: "start",
           }}
         >
-          {/* Featured programs */}
+          {/* Single CTA button */}
           <div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "0px",
-              }}
-            >
-              {programs.map((p, i) => (
-                <div
-                  key={i}
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "20px 1fr auto",
-                    gap: "0 18px",
-                    alignItems: "start",
-                    padding: "22px 0",
-                    borderBottom: "1px solid rgba(255,255,255,0.1)",
-                  }}
-                >
-                  <span
-                    style={{
-                      color: "#b5621e",
-                      fontSize: "18px",
-                      lineHeight: "1.5",
-                      marginTop: "1px",
-                    }}
-                    aria-hidden="true"
-                  >
-                    →
-                  </span>
-                  <div>
-                    <p
-                      style={{
-                        fontWeight: 700,
-                        fontSize: "15px",
-                        marginBottom: "4px",
-                        lineHeight: 1.4,
-                      }}
-                    >
-                      {p.name}
-                    </p>
-                    <p
-                      style={{
-                        fontSize: "14px",
-                        color: "rgba(255,255,255,0.68)",
-                        lineHeight: 1.6,
-                        margin: 0,
-                      }}
-                    >
-                      {p.description}
-                    </p>
-                  </div>
-                  <span
-                    style={{
-                      display: "inline-block",
-                      border: "1px solid rgba(255,255,255,0.3)",
-                      borderRadius: "4px",
-                      padding: "4px 10px",
-                      fontSize: "11px",
-                      letterSpacing: "0.04em",
-                      color: "rgba(255,255,255,0.65)",
-                      whiteSpace: "nowrap",
-                      marginTop: "2px",
-                    }}
-                  >
-                    {p.credit}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            {/* Also available line */}
-            <div style={{ marginTop: "24px" }}>
-              <p
-                style={{
-                  fontSize: "13px",
-                  color: "rgba(255,255,255,0.5)",
-                  marginBottom: "10px",
-                  letterSpacing: "0.05em",
-                  textTransform: "uppercase",
-                }}
-              >
-                Also available
-              </p>
-              <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.65)", margin: 0 }}>
-                {additionalPrograms.join(" · ")}
-              </p>
-            </div>
-
-            {/* Subpage link */}
             <a
               href="/loan-programs"
               style={{
                 display: "inline-block",
-                marginTop: "24px",
-                fontSize: "14px",
-                color: "#b5621e",
+                backgroundColor: "transparent",
+                color: "#ffffff",
+                padding: "16px 32px",
+                borderRadius: "6px",
+                fontWeight: 700,
+                fontSize: "15px",
                 textDecoration: "none",
-                borderBottom: "1px solid rgba(181,98,30,0.4)",
-                paddingBottom: "2px",
-                transition: "border-color 0.2s",
+                border: "1px solid rgba(255,255,255,0.35)",
+                transition: "background-color 0.2s, border-color 0.2s",
               }}
-              onMouseEnter={(e) =>
-                ((e.target as HTMLElement).style.borderColor = "#b5621e")
-              }
-              onMouseLeave={(e) =>
-                ((e.target as HTMLElement).style.borderColor =
-                  "rgba(181,98,30,0.4)")
-              }
+              onMouseEnter={(e) => {
+                (e.target as HTMLElement).style.backgroundColor = "rgba(255,255,255,0.08)";
+                (e.target as HTMLElement).style.borderColor = "rgba(255,255,255,0.6)";
+              }}
+              onMouseLeave={(e) => {
+                (e.target as HTMLElement).style.backgroundColor = "transparent";
+                (e.target as HTMLElement).style.borderColor = "rgba(255,255,255,0.35)";
+              }}
             >
-              View all Texas DPA programs →
+              See All Texas DPA Programs →
             </a>
           </div>
 
