@@ -5,7 +5,7 @@ export default function DownPaymentSection() {
     <section
       aria-label="Texas Down Payment Assistance Programs"
       style={{
-        backgroundColor: "#1a3a5c",
+        backgroundColor: "#162030",
         color: "#ffffff",
         padding: "80px 24px",
         fontFamily: "'Outfit', sans-serif",
