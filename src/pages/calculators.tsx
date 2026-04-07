@@ -830,6 +830,7 @@ export default function Calculators() {
     { id: "va", label: "VA Loan" },
     { id: "compare", label: "FHA vs. Conventional" },
     { id: "budget", label: "Budget & Affordability" },
+    { id: "bah", label: "BAH & Buying Power" },
   ];
 
   return (
