@@ -704,6 +704,7 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 680px) { .steps-grid { grid-template-columns: 1fr; } }
 .step {
   padding: 36px 30px;
+  border-top: 3px solid #b5621e;
   border-right: 1px solid var(--border);
   position: relative;
 }
@@ -2151,21 +2152,18 @@ const pageHTML = `
     <div class="steps-grid" role="list">
       <div class="step" role="listitem">
         <div class="step-number" aria-hidden="true">01</div>
-        <div class="step-icon" aria-hidden="true">🗺️</div>
         <h3 class="step-title">Strategy Call</h3>
-        <p class="step-body">15 minutes. We review your goals, income, credit range, and timeline. You leave knowing your real buying power — not a rough estimate.</p>
-        <span class="step-time">15 min · Free · No Obligation</span>
+        <p class="step-body">30 minutes. We review your goals, income, credit range, and timeline. You leave knowing your real buying power — not a rough estimate.</p>
+        <span class="step-time">30 min · Free · No Obligation</span>
       </div>
       <div class="step" role="listitem">
         <div class="step-number" aria-hidden="true">02</div>
-        <div class="step-icon" aria-hidden="true">📋</div>
         <h3 class="step-title">Fully Underwritten Pre-Approval</h3>
         <p class="step-body">We gather your documents, run the numbers, and deliver a fully underwritten pre-approval letter — the kind that actually holds up with sellers and agents.</p>
         <span class="step-time">24–48 hrs · Fully Underwritten</span>
       </div>
       <div class="step" role="listitem">
         <div class="step-number" aria-hidden="true">03</div>
-        <div class="step-icon" aria-hidden="true">🔑</div>
         <h3 class="step-title">Close &amp; Move In</h3>
         <p class="step-body">We handle the loan from application to funding. No disappearing acts. No last-minute surprises. You'll know where your file is every step of the way.</p>
         <span class="step-time">Average: 21 Days to Close</span>
