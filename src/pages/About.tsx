@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import AboutSidebar from "@/components/AboutSidebar";
 
 const AboutPage = () => {
   useEffect(() => {
@@ -368,22 +369,7 @@ const AboutPage = () => {
               </div>
             </div>
             <div className="ab-sidebar">
-              <div className="ab-stat-card">
-                <div className="ab-stat-num">50+</div>
-                <div className="ab-stat-label">Wholesale lenders in our network — shopped on your behalf for every file</div>
-              </div>
-              <div className="ab-stat-card">
-                <div className="ab-stat-num">21</div>
-                <div className="ab-stat-label">Day average close — from contract to keys without the runaround</div>
-              </div>
-              <div className="ab-stat-card">
-                <div className="ab-stat-num">5.0</div>
-                <div className="ab-stat-label">Google rating — built on referrals and repeat clients, not paid leads</div>
-              </div>
-              <div className="ab-stat-card">
-                <div className="ab-stat-num">TX</div>
-                <div className="ab-stat-label">Statewide — El Paso to Houston, serving all of Texas</div>
-              </div>
+              <AboutSidebar />
             </div>
           </div>
         </section>
