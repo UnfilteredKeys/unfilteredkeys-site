@@ -850,6 +850,7 @@ export default function Calculators() {
         {tab === "va" && <VALoanCalc />}
         {tab === "compare" && <FHAvsConvCalc />}
         {tab === "budget" && <BudgetCalc />}
+        {tab === "bah" && <BAHCalc />}
         <div style={{ textAlign: "center" as const, marginTop: "48px" }}>
           <p style={{ fontFamily: "'Lora', serif", fontSize: "20px", color: navy, marginBottom: "8px" }}>Numbers look right? <em>Let's make them official.</em></p>
           <p style={{ color: muted, fontSize: "14px", marginBottom: "20px" }}>A 30-minute strategy call turns estimates into a real pre-approval.</p>
