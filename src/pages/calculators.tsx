@@ -594,9 +594,228 @@ function BudgetCalc() {
   );
 }
 
+// ── BAH DATA ──────────────────────────────────────────────────────────────────
+
+const BAH_DATA: Record<string, Record<string, { w: number; wo: number }>> = {
+  "Fort Hood (Killeen / Bell County)": {
+    "E1–E4": { w: 1662, wo: 1374 }, "E5": { w: 1695, wo: 1530 }, "E6": { w: 1920, wo: 1626 },
+    "E7": { w: 2070, wo: 1668 }, "E8": { w: 2238, wo: 1746 }, "E9": { w: 2409, wo: 1806 },
+    "W1": { w: 1938, wo: 1665 }, "W2": { w: 2139, wo: 1743 }, "W3": { w: 2346, wo: 1812 },
+    "W4": { w: 2433, wo: 1950 }, "W5": { w: 2544, wo: 2109 },
+    "O1E": { w: 2100, wo: 1692 }, "O2E": { w: 2313, wo: 1788 }, "O3E": { w: 2451, wo: 1908 },
+    "O1": { w: 1731, wo: 1623 }, "O2": { w: 1917, wo: 1689 }, "O3": { w: 2340, wo: 1833 },
+    "O4": { w: 2577, wo: 2076 }, "O5": { w: 2748, wo: 2169 }, "O6": { w: 2769, wo: 2325 },
+  },
+  "Fort Bliss (El Paso)": {
+    "E1–E4": { w: 1665, wo: 1302 }, "E5": { w: 1809, wo: 1437 }, "E6": { w: 2148, wo: 1611 },
+    "E7": { w: 2172, wo: 1668 }, "E8": { w: 2187, wo: 1881 }, "E9": { w: 2241, wo: 1977 },
+    "W1": { w: 2169, wo: 1626 }, "W2": { w: 2178, wo: 1878 }, "W3": { w: 2205, wo: 1992 },
+    "W4": { w: 2256, wo: 2148 }, "W5": { w: 2334, wo: 2169 },
+    "O1E": { w: 2175, wo: 1806 }, "O2E": { w: 2196, wo: 1956 }, "O3E": { w: 2268, wo: 2142 },
+    "O1": { w: 1857, wo: 1518 }, "O2": { w: 2145, wo: 1764 }, "O3": { w: 2202, wo: 2022 },
+    "O4": { w: 2352, wo: 2157 }, "O5": { w: 2466, wo: 2172 }, "O6": { w: 2484, wo: 2178 },
+  },
+  "Fort Sam Houston (San Antonio / JBSA)": {
+    "E1–E4": { w: 1728, wo: 1359 }, "E5": { w: 1869, wo: 1500 }, "E6": { w: 2094, wo: 1596 },
+    "E7": { w: 2112, wo: 1731 }, "E8": { w: 2121, wo: 1920 }, "E9": { w: 2157, wo: 1977 },
+    "W1": { w: 2109, wo: 1692 }, "W2": { w: 2118, wo: 1917 }, "W3": { w: 2130, wo: 1986 },
+    "W4": { w: 2178, wo: 2085 }, "W5": { w: 2280, wo: 2097 },
+    "O1E": { w: 2115, wo: 1866 }, "O2E": { w: 2124, wo: 1965 }, "O3E": { w: 2196, wo: 2082 },
+    "O1": { w: 1905, wo: 1584 }, "O2": { w: 2091, wo: 1827 }, "O3": { w: 2127, wo: 2007 },
+    "O4": { w: 2307, wo: 2088 }, "O5": { w: 2457, wo: 2100 }, "O6": { w: 2475, wo: 2103 },
+  },
+};
+
+const BAH_RANKS = [
+  "E1–E4", "E5", "E6", "E7", "E8", "E9",
+  "W1", "W2", "W3", "W4", "W5",
+  "O1E", "O2E", "O3E",
+  "O1", "O2", "O3", "O4", "O5", "O6",
+];
+
+const BAH_INSTALLATIONS = Object.keys(BAH_DATA);
+
+const BAH_COUNTY_RATES: Record<string, number> = {
+  "Fort Hood (Killeen / Bell County)": 0.0193,
+  "Fort Bliss (El Paso)": 0.0198,
+  "Fort Sam Houston (San Antonio / JBSA)": 0.0200,
+};
+
+const BAH_MEDIAN_RENTS: Record<string, number> = {
+  "Fort Hood (Killeen / Bell County)": 1350,
+  "Fort Bliss (El Paso)": 1250,
+  "Fort Sam Houston (San Antonio / JBSA)": 1550,
+};
+
+function BAHCalc() {
+  const [installation, setInstallation] = useState(BAH_INSTALLATIONS[0]);
+  const [rank, setRank] = useState("E5");
+  const [hasDeps, setHasDeps] = useState(true);
+  const [rate, setRate] = useState("5.92");
+  const [insurance, setInsurance] = useState("1800");
+
+  const rankData = BAH_DATA[installation]?.[rank] ?? { w: 0, wo: 0 };
+  const bah = hasDeps ? rankData.w : rankData.wo;
+  const countyTaxRate = BAH_COUNTY_RATES[installation] ?? 0.019;
+  const annualRate = parseFloat(rate) || 0;
+  const monthlyIns = (parseFloat(insurance) || 0) / 12;
+
+  function maxPriceFromBAH(targetPayment: number): number {
+    let price = targetPayment * 200;
+    for (let i = 0; i < 60; i++) {
+      const pi = monthlyPI(price, annualRate, 30);
+      const tax = (price * countyTaxRate) / 12;
+      const total = pi + tax + monthlyIns;
+      const err = total - targetPayment;
+      if (Math.abs(err) < 1) break;
+      price -= err * 130;
+    }
+    return Math.max(0, price);
+  }
+
+  const maxPrice = maxPriceFromBAH(bah);
+  const pi = monthlyPI(maxPrice, annualRate, 30);
+  const monthlyTax = (maxPrice * countyTaxRate) / 12;
+  const totalPayment = pi + monthlyTax + monthlyIns;
+  const surplus = bah - totalPayment;
+  const medianRent = BAH_MEDIAN_RENTS[installation] ?? 1400;
+  const rentSurplus = bah - medianRent;
+
+  return (
+    <div style={S.card}>
+      <div style={S.cardHeader}>
+        <h2 style={S.cardTitle}>BAH & Buying Power Calculator</h2>
+        <p style={S.cardSub}>2026 verified rates · Fort Hood, Fort Bliss, Fort Sam Houston · VA loan 0% down</p>
+      </div>
+      <div style={S.cardBody}>
+        <div style={S.grid2}>
+          <div>
+            <label style={S.label}>Installation</label>
+            <select style={S.select} value={installation} onChange={e => setInstallation(e.target.value)}>
+              {BAH_INSTALLATIONS.map(i => <option key={i} value={i}>{i}</option>)}
+            </select>
+          </div>
+          <div>
+            <label style={S.label}>Pay Grade / Rank</label>
+            <select style={S.select} value={rank} onChange={e => setRank(e.target.value)}>
+              {BAH_RANKS.map(r => <option key={r} value={r}>{r}</option>)}
+            </select>
+          </div>
+          <div>
+            <label style={S.label}>Dependency Status</label>
+            <select style={S.select} value={hasDeps ? "yes" : "no"} onChange={e => setHasDeps(e.target.value === "yes")}>
+              <option value="yes">With Dependents</option>
+              <option value="no">Without Dependents</option>
+            </select>
+          </div>
+          <div>
+            <label style={S.label}>VA Loan Rate (%)</label>
+            <input style={S.input} type="number" value={rate} onChange={e => setRate(e.target.value)} min="1" max="15" step="0.05" />
+          </div>
+          <div>
+            <label style={S.label}>Annual Insurance ($)</label>
+            <input style={S.input} type="number" value={insurance} onChange={e => setInsurance(e.target.value)} min="500" step="100" />
+          </div>
+          <div style={{ display: "flex", flexDirection: "column" as const, justifyContent: "flex-end" }}>
+            <div style={{ fontSize: "13px", color: muted, lineHeight: 1.6 }}>
+              County tax rate: {(countyTaxRate * 100).toFixed(2)}%/yr<br />
+              Loan type: VA (0% down, no PMI)<br />
+              Term: 30-year fixed
+            </div>
+          </div>
+        </div>
+
+        <hr style={S.divider} />
+
+        {/* BAH result row */}
+        <div style={{ backgroundColor: copper, borderRadius: "10px", padding: "20px 24px", marginBottom: "24px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap" as const, gap: "16px" }}>
+          <div>
+            <div style={{ fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.7)", marginBottom: "4px" }}>
+              2026 BAH — {rank} · {installation.split("(")[0].trim()} · {hasDeps ? "With Dependents" : "Without Dependents"}
+            </div>
+            <div style={{ fontFamily: "'Lora', serif", fontSize: "32px", fontWeight: 700, color: white }}>{fmt(bah)}<span style={{ fontSize: "16px", fontWeight: 400, marginLeft: "4px" }}>/mo</span></div>
+          </div>
+          <div style={{ fontSize: "13px", color: "rgba(255,255,255,0.75)", lineHeight: 1.6 }}>
+            Tax-free · Paid monthly with LES<br />
+            Grossed up by most VA lenders for DTI
+          </div>
+        </div>
+
+        {/* Buying power breakdown */}
+        <div style={S.resultsGrid}>
+          <ResultBox label="Est. Home Price (VA 0% Down)" value={fmt(maxPrice)} />
+          <ResultBox label="Monthly P&I" value={fmtDec(pi)} />
+          <ResultBox label="Property Tax / Mo" value={fmtDec(monthlyTax)} />
+          <ResultBox label="Insurance / Mo" value={fmtDec(monthlyIns)} />
+          <ResultBox label="Total PITI / Mo" value={fmtDec(totalPayment)} highlight />
+        </div>
+
+        {/* Surplus / shortfall */}
+        {surplus >= 0 ? (
+          <div style={{ backgroundColor: greenBg, borderRadius: "8px", padding: "16px 20px", borderLeft: `3px solid ${green}`, marginBottom: "20px" }}>
+            <div style={{ fontWeight: 700, color: green, marginBottom: "4px" }}>
+              BAH covers PITI — with {fmt(surplus)}/mo remaining
+            </div>
+            <div style={{ fontSize: "13px", color: "#1a5c1a", lineHeight: 1.6 }}>
+              At this rank and installation, your BAH is enough to fully cover a VA loan payment — including Texas property taxes and insurance. Any surplus stays in your pocket.
+            </div>
+          </div>
+        ) : (
+          <div style={{ backgroundColor: redBg, borderRadius: "8px", padding: "16px 20px", borderLeft: `3px solid ${red}`, marginBottom: "20px" }}>
+            <div style={{ fontWeight: 700, color: red, marginBottom: "4px" }}>
+              BAH is {fmt(Math.abs(surplus))}/mo short of full PITI coverage
+            </div>
+            <div style={{ fontSize: "13px", color: "#6b1a1a", lineHeight: 1.6 }}>
+              Your BAH doesn't fully cover PITI at this price point — but other income sources (base pay, special pay) count toward qualification.
+            </div>
+          </div>
+        )}
+
+        {/* Buy vs Rent */}
+        <div style={{ fontFamily: "'Lora', serif", fontSize: "16px", fontWeight: 700, color: navy, marginBottom: "16px" }}>Buy vs. Rent With Your BAH</div>
+        <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" as const, marginBottom: "24px" }}>
+          <div style={S.compareColHighlight}>
+            <div style={{ fontSize: "11px", textTransform: "uppercase" as const, letterSpacing: "0.1em", color: copper, fontWeight: 700, marginBottom: "12px" }}>Buy with VA Loan ★</div>
+            {[["Monthly Payment", fmtDec(totalPayment)], ["Down Payment", "$0"], ["Monthly PMI", "$0 — Ever"], ["Building Equity", "From day one"], ["BAH Covers It", surplus >= 0 ? "✓ Yes" : "Partially"]].map(([l, v]) => (
+              <div key={l} style={{ marginBottom: "10px" }}>
+                <div style={{ color: "rgba(255,255,255,0.5)", fontSize: "12px" }}>{l}</div>
+                <div style={{ fontWeight: 600, color: white, fontSize: "14px" }}>{v}</div>
+              </div>
+            ))}
+          </div>
+          <div style={S.compareCol}>
+            <div style={{ fontSize: "11px", textTransform: "uppercase" as const, letterSpacing: "0.1em", color: muted, fontWeight: 700, marginBottom: "12px" }}>Rent Off-Post</div>
+            {[["Est. Median Rent", fmt(medianRent) + "/mo"], ["Deposit", "Typically 1–2 months"], ["Monthly PMI", "N/A"], ["Building Equity", "None"], ["BAH Surplus", rentSurplus >= 0 ? fmt(rentSurplus) + "/mo" : "(" + fmt(Math.abs(rentSurplus)) + ") short"]].map(([l, v]) => (
+              <div key={l} style={{ marginBottom: "10px" }}>
+                <div style={{ fontSize: "12px", color: muted }}>{l}</div>
+                <div style={{ fontWeight: 600, color: navy, fontSize: "14px" }}>{v}</div>
+              </div>
+            ))}
+            <div style={{ fontSize: "11px", color: muted, marginTop: "8px" }}>Median rent estimates are approximate and vary by bedroom count and neighborhood.</div>
+          </div>
+        </div>
+
+        {/* Key insight */}
+        <div style={{ backgroundColor: navy, borderRadius: "8px", padding: "18px 20px", marginBottom: "20px" }}>
+          <div style={{ fontSize: "13px", color: "rgba(255,255,255,0.6)", marginBottom: "6px" }}>The VA loan advantage for PCS buyers</div>
+          <div style={{ fontSize: "14px", color: white, lineHeight: 1.7 }}>
+            BAH is tax-free, which means most VA lenders can "gross it up" — treating it as if it were a higher pre-tax amount for qualification purposes. Combined with 0% down and no PMI, your BAH often goes further toward a mortgage payment than toward rent.
+          </div>
+        </div>
+
+        <div style={S.disclaimer}>
+          BAH rates shown are 2026 DoD published rates, effective January 1, 2026. Rates are updated annually — verify current rates at <strong>militarypay.defense.gov</strong>. Home price estimates assume a 30-year VA loan with 0% down, no PMI, and the county property tax rate shown. This calculator is for educational purposes only and does not constitute a loan commitment or rate guarantee.<br /><br />
+          Shalanda Smith · NMLS #554554 · Unfiltered Keys · Powered by Secure Choice Lending · NMLS #1689518 · Licensed by the Texas Department of Savings and Mortgage Lending
+        </div>
+        <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" style={S.cta}>See My Full VA Buying Power →</a>
+      </div>
+    </div>
+  );
+}
+
 // ── MAIN PAGE ─────────────────────────────────────────────────────────────────
 
-type TabId = "texas" | "va" | "compare" | "budget";
+type TabId = "texas" | "va" | "compare" | "budget" | "bah";
 
 export default function Calculators() {
   useSEO({
