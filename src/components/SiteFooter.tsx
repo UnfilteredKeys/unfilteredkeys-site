@@ -107,7 +107,7 @@ const SiteFooter = () => (
           marginBottom: "32px",
         }}
       >
-        Keys by Shalanda is a brand of Shalanda Smith (NMLS #554554), operating under Secure Choice
+        Keys by Shalanda is the personal brand of Shalanda Smith (NMLS #554554), operating under Secure Choice
         Lending (NMLS #1689518), licensed by the Texas Department of Savings and Mortgage Lending ·
         1650 Spruce St. Ste 500, Riverside, CA 92507
         <br />
