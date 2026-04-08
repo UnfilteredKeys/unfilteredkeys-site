@@ -34,10 +34,10 @@ const SiteFooter = () => (
           <rect x="21.5" y="43.5" width="8" height="3.5" rx="1.5" fill="#b5621e" />
           <line x1="44" y1="6" x2="44" y2="60" stroke="rgba(250,248,244,0.15)" strokeWidth="1" />
           <text x="56" y="27" fontFamily="Lora,Georgia,serif" fontStyle="italic" fontSize="21" fill="#b5621e">
-            Unfiltered
+            Keys by
           </text>
           <text x="56" y="52" fontFamily="Lora,Georgia,serif" fontWeight="700" fontSize="27" fill="#faf8f4" letterSpacing="-0.3">
-            Keys
+            Shalanda
           </text>
         </svg>
         <div style={{ display: "flex", gap: "24px" }}>
