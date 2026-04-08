@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 // ── SEO + FAQ SCHEMA ──────────────────────────────────────────────────────────
 function useVASEO() {
   useEffect(() => {
-    document.title = "VA Loans Texas | VA Loan Specialist | Unfiltered Keys";
+    document.title = "VA Loans Texas | VA Loan Specialist | Keys by Shalanda";
 
     const setMeta = (name: string, content: string, prop = false) => {
       const attr = prop ? "property" : "name";
@@ -13,12 +13,12 @@ function useVASEO() {
     };
 
     setMeta("description", "Texas VA loan specialist helping veterans and active duty buy homes with 0% down, no PMI, and competitive rates. Serving Fort Hood, Killeen, DFW, San Antonio, Houston, and all of Texas.");
-    setMeta("og:title", "VA Loans Texas | VA Loan Specialist | Unfiltered Keys", true);
+    setMeta("og:title", "VA Loans Texas | VA Loan Specialist | Keys by Shalanda", true);
     setMeta("og:description", "Texas VA loan specialist. 0% down, no PMI, funding fee waived for disabled veterans. Serving Fort Hood, Killeen, and all of Texas.", true);
 
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) { canonical = document.createElement("link"); canonical.setAttribute("rel", "canonical"); document.head.appendChild(canonical); }
-    canonical.setAttribute("href", "https://unfilteredkeys.com/va-loan-texas");
+    canonical.setAttribute("href", "https://shalandasmith.com/va-loan-texas");
 
     // FAQ Schema
     const schema = {
@@ -172,7 +172,7 @@ export default function VALoanTexas() {
       <div style={S.hero}>
         <div style={S.heroInner}>
           <div>
-            <p style={S.eyebrow}>VA Loans · Texas · All Markets · Unfiltered Keys</p>
+            <p style={S.eyebrow}>VA Loans · Texas · All Markets · Keys by Shalanda</p>
             <h1 style={S.heroH1}>
               The Most Powerful<br />
               Home Loan Benefit<br />
@@ -418,7 +418,7 @@ export default function VALoanTexas() {
             Book a Strategy Call →
           </a>
           <div style={{ marginTop: "14px", fontSize: "13px", color: "rgba(255,255,255,0.6)" }}>
-            Or call/text 254.935.9331 · unfilteredkeys.com
+            Or call/text 254.935.9331 · shalandasmith.com
           </div>
         </div>
       </div>
@@ -429,10 +429,10 @@ export default function VALoanTexas() {
           This page is for educational purposes only and does not constitute a loan commitment, rate guarantee, or offer to lend. All loans subject to credit approval. Rates and terms subject to change without notice. VA funding fee percentages reflect current VA guidelines as of 2026. Property tax exemption eligibility is determined by the Texas Veterans Commission and county appraisal districts — consult your county for current requirements.
         </p>
         <p style={{ marginBottom: "8px" }}>
-          Shalanda Smith · NMLS #554554 · Unfiltered Keys · Powered by Secure Choice Lending · NMLS #1689518 · Licensed by the Texas Department of Savings and Mortgage Lending · Equal Housing Lender
+          Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Licensed by the Texas Department of Savings and Mortgage Lending · Equal Housing Lender
         </p>
         <p>
-          unfilteredkeys.com · 254.935.9331 · <a href="mailto:shalanda@securechoicelending.com" style={{ color: muted }}>shalanda@securechoicelending.com</a>
+          shalandasmith.com · 254.935.9331 · <a href="mailto:shalanda@securechoicelending.com" style={{ color: muted }}>shalanda@securechoicelending.com</a>
         </p>
       </div>
     </div>

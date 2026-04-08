@@ -24,7 +24,7 @@ const SiteFooter = () => (
           viewBox="0 0 248 72"
           xmlns="http://www.w3.org/2000/svg"
           height={52}
-          aria-label="Unfiltered Keys"
+          aria-label="Keys by Shalanda"
           style={{ display: "block" }}
         >
           <circle cx="18" cy="14" r="12" fill="none" stroke="#b5621e" strokeWidth="2.5" />
@@ -107,7 +107,7 @@ const SiteFooter = () => (
           marginBottom: "32px",
         }}
       >
-        Unfiltered Keys is a brand of Shalanda Smith (NMLS #554554), operating under Secure Choice
+        Keys by Shalanda is a brand of Shalanda Smith (NMLS #554554), operating under Secure Choice
         Lending (NMLS #1689518), licensed by the Texas Department of Savings and Mortgage Lending ·
         1650 Spruce St. Ste 500, Riverside, CA 92507
         <br />
@@ -161,7 +161,7 @@ const SiteFooter = () => (
           <a href="/terms/" style={{ color: "rgba(250,248,244,0.45)", textDecoration: "underline" }}>
             Terms of Use
           </a>{" "}
-          · © 2026 Unfiltered Keys. All rights reserved.
+          · © 2026 Keys by Shalanda. All rights reserved.
         </div>
       </div>
     </div>

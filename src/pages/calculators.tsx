@@ -219,7 +219,7 @@ function TexasPaymentCalc() {
         </div>
         {loanType === "fha" && <div style={{ fontSize: "13px", color: copper, marginBottom: "12px", fontWeight: 500 }}>⚠ FHA MIP stays for the life of the loan if you put less than 10% down.</div>}
         {loanType === "va" && <div style={{ fontSize: "13px", color: copper, marginBottom: "12px", fontWeight: 500 }}>✓ VA loans have no monthly PMI — ever. The funding fee (1.25–3.3%) can be rolled into the loan.</div>}
-        <div style={S.disclaimer}>Estimates are for educational purposes only and do not constitute a loan commitment or rate guarantee. Property tax rates are approximate. Shalanda Smith · NMLS #554554 · Unfiltered Keys · Powered by Secure Choice Lending · NMLS #1689518</div>
+        <div style={S.disclaimer}>Estimates are for educational purposes only and do not constitute a loan commitment or rate guarantee. Property tax rates are approximate. Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518</div>
         <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" style={S.cta}>Get Your Real Numbers →</a>
       </div>
     </div>
@@ -289,7 +289,7 @@ function VALoanCalc() {
         </div>
         {vaSavingsPerMonth > 0 && <div style={{ marginTop: "16px", padding: "14px 20px", backgroundColor: greenBg, borderRadius: "8px", borderLeft: `3px solid ${green}` }}><span style={{ fontWeight: 700, color: green }}>VA saves you {fmtDec(vaSavingsPerMonth)}/month</span><span style={{ color: green, fontSize: "14px" }}> — that's {fmt(vaSavings5yr)} over 5 years.</span></div>}
         <div style={{ marginBottom: "8px" }}><label style={{ ...S.label, marginTop: "20px" }}>Conventional Rate for Comparison (%)</label><input style={{ ...S.input, maxWidth: "160px" }} type="number" value={convRate} onChange={e => setConvRate(e.target.value)} min="1" max="15" step="0.05" /></div>
-        <div style={S.disclaimer}>VA loan estimates include the VA funding fee financed into the loan. Funding fee percentages per VA guidelines as of 2024. A service-connected disability rating may waive the funding fee — verify with your lender. Shalanda Smith · NMLS #554554 · Unfiltered Keys · Powered by Secure Choice Lending · NMLS #1689518</div>
+        <div style={S.disclaimer}>VA loan estimates include the VA funding fee financed into the loan. Funding fee percentages per VA guidelines as of 2024. A service-connected disability rating may waive the funding fee — verify with your lender. Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518</div>
         <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" style={S.cta}>Check Your VA Eligibility →</a>
       </div>
     </div>
@@ -362,7 +362,7 @@ function FHAvsConvCalc() {
           <div style={{ fontSize: "13px", color: "rgba(255,255,255,0.65)", marginBottom: "4px" }}>Key insight</div>
           <div style={{ color: white, fontSize: "14px", lineHeight: 1.6 }}>{fhaMIPForLife ? `With less than 10% down, FHA MIP never goes away. That's ${fmtDec(fhaMIP)}/month for the life of the loan. If your credit supports conventional, PMI drops at 80% LTV — making it cheaper long-term in most cases.` : `With 10%+ down, FHA MIP drops off at year 11. Conventional PMI removes at ~80% LTV. The right choice depends on your rate spread and how long you plan to stay.`}</div>
         </div>
-        <div style={S.disclaimer}>Results are estimates for educational purposes only. PMI rates vary by lender, credit, and LTV. FHA MIP rates reflect current HUD guidelines. Shalanda Smith · NMLS #554554 · Unfiltered Keys · Powered by Secure Choice Lending · NMLS #1689518</div>
+        <div style={S.disclaimer}>Results are estimates for educational purposes only. PMI rates vary by lender, credit, and LTV. FHA MIP rates reflect current HUD guidelines. Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518</div>
         <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" style={S.cta}>Run My Actual Scenario →</a>
       </div>
     </div>
@@ -569,7 +569,7 @@ function BudgetCalc() {
                 </div>
               )}
               <div style={S.disclaimer}>
-                This summary is for educational purposes only. Actual approval amounts depend on credit score, employment history, assets, and lender-specific guidelines. DTI thresholds vary by loan type — VA and FHA may allow higher DTI. This does not constitute a loan commitment or rate guarantee. Shalanda Smith · NMLS #554554 · Unfiltered Keys · Powered by Secure Choice Lending · NMLS #1689518
+                This summary is for educational purposes only. Actual approval amounts depend on credit score, employment history, assets, and lender-specific guidelines. DTI thresholds vary by loan type — VA and FHA may allow higher DTI. This does not constitute a loan commitment or rate guarantee. Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518
               </div>
               <div style={{ marginTop: "24px", textAlign: "center" as const, padding: "24px", backgroundColor: navy, borderRadius: "10px" }}>
                 <div style={{ fontFamily: "'Lora', serif", fontSize: "18px", color: white, marginBottom: "8px" }}>
@@ -583,7 +583,7 @@ function BudgetCalc() {
                   Book a Strategy Call →
                 </a>
                 <div style={{ marginTop: "12px", fontSize: "12px", color: "rgba(255,255,255,0.45)" }}>
-                  30 minutes · No obligation · unfilteredkeys.com
+                  30 minutes · No obligation · shalandasmith.com
                 </div>
               </div>
             </div>
@@ -805,7 +805,7 @@ function BAHCalc() {
 
         <div style={S.disclaimer}>
           BAH rates shown are 2026 DoD published rates, effective January 1, 2026. Rates are updated annually — verify current rates at <strong>militarypay.defense.gov</strong>. Home price estimates assume a 30-year VA loan with 0% down, no PMI, and the county property tax rate shown. This calculator is for educational purposes only and does not constitute a loan commitment or rate guarantee.<br /><br />
-          Shalanda Smith · NMLS #554554 · Unfiltered Keys · Powered by Secure Choice Lending · NMLS #1689518 · Licensed by the Texas Department of Savings and Mortgage Lending
+          Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Licensed by the Texas Department of Savings and Mortgage Lending
         </div>
         <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" style={S.cta}>See My Full VA Buying Power →</a>
       </div>
@@ -819,9 +819,9 @@ type TabId = "texas" | "va" | "compare" | "budget" | "bah";
 
 export default function Calculators() {
   useSEO({
-    title: "Texas Mortgage Calculators | Payment, VA, DTI & Loan Comparison | Unfiltered Keys",
+    title: "Texas Mortgage Calculators | Payment, VA, DTI & Loan Comparison | Keys by Shalanda",
     description: "Free Texas mortgage calculators with property taxes by county. Estimate your real monthly payment, VA loan costs, FHA vs. Conventional, and your buying budget.",
-    canonical: "https://unfilteredkeys.com/calculators",
+    canonical: "https://shalandasmith.com/calculators",
   });
 
   const [tab, setTab] = useState<TabId>("texas");
@@ -836,7 +836,7 @@ export default function Calculators() {
   return (
     <div style={S.page}>
       <div style={S.hero}>
-        <p style={S.eyebrow}>Mortgage Calculators · Texas · Unfiltered Keys</p>
+        <p style={S.eyebrow}>Mortgage Calculators · Texas · Keys by Shalanda</p>
         <h1 style={S.heroH1}>Real numbers. <em style={{ color: copper }}>Not estimates built for someone else's state.</em></h1>
         <p style={S.heroSub}>These calculators include Texas property taxes, VA funding fees, MIP permanence, and DTI — everything generic calculators leave out.</p>
         <div style={S.tabBar}>

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const RefinancePage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Refinance Your Texas Mortgage | VA IRRRL & Cash-Out | Unfiltered Keys";
+    document.title = "Refinance Your Texas Mortgage | VA IRRRL & Cash-Out | Keys by Shalanda";
     document.querySelector('meta[name="description"]')?.setAttribute("content", "Refinance your Texas mortgage with VA IRRRL, cash-out, or rate-and-term options. Broker-level pricing and structured strategy from Shalanda Smith.");
   }, []);
 
@@ -563,7 +563,7 @@ const RefinancePage = () => {
         {/* HERO */}
         <section className="ref-hero">
           <div className="ref-hero-inner">
-            <div className="ref-tag">Refinance · Unfiltered Keys</div>
+            <div className="ref-tag">Refinance · Keys by Shalanda</div>
             <h1>You earned this benefit.<em>Here's how to use it now.</em></h1>
             <p className="ref-hero-sub">Whether you already have a VA loan or purchased with FHA or Conventional, there may be a path to better terms — and a benefit you haven't used yet.</p>
             <div className="ref-paths">
@@ -854,11 +854,11 @@ const RefinancePage = () => {
           <p>
             This page is for educational purposes only and does not constitute a loan commitment, rate guarantee, or offer to lend. All loans subject to credit approval. Rates and terms subject to change without notice.
             <br /><br />
-            Shalanda Smith · NMLS #554554 · Unfiltered Keys · Powered by Secure Choice Lending · NMLS #1689518
+            Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518
             <br />
             Licensed by the Texas Department of Savings and Mortgage Lending · Equal Housing Lender
             <br /><br />
-            <a href="https://unfilteredkeys.com">unfilteredkeys.com</a> · 254.935.9331 · <a href="mailto:shalanda@securechoicelending.com">shalanda@securechoicelending.com</a>
+            <a href="https://shalandasmith.com">shalandasmith.com</a> · 254.935.9331 · <a href="mailto:shalanda@securechoicelending.com">shalanda@securechoicelending.com</a>
           </p>
         </footer>
 

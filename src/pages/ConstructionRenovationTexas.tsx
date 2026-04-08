@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 // ── SEO + FAQ SCHEMA ──────────────────────────────────────────────────────────
 function useConstructionSEO() {
   useEffect(() => {
-    document.title = "Construction & Renovation Loans Texas | One-Time Close | Unfiltered Keys";
+    document.title = "Construction & Renovation Loans Texas | One-Time Close | Keys by Shalanda";
 
     const setMeta = (name: string, content: string, prop = false) => {
       const attr = prop ? "property" : "name";
@@ -13,12 +13,12 @@ function useConstructionSEO() {
     };
 
     setMeta("description", "Texas construction and renovation loans — VA, FHA, USDA, and Conventional one-time close, FHA 203(k), HomeStyle, and VA Renovation up to $100K. Lock your rate before the first shovel hits the ground.");
-    setMeta("og:title", "Construction & Renovation Loans Texas | Unfiltered Keys", true);
+    setMeta("og:title", "Construction & Renovation Loans Texas | Keys by Shalanda", true);
     setMeta("og:description", "One-time close construction loans and renovation financing in Texas. VA, FHA 203(k), HomeStyle, and USDA options. Serving all of Texas.", true);
 
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) { canonical = document.createElement("link"); canonical.setAttribute("rel", "canonical"); document.head.appendChild(canonical); }
-    canonical.setAttribute("href", "https://unfilteredkeys.com/construction-renovation-loans-texas");
+    canonical.setAttribute("href", "https://shalandasmith.com/construction-renovation-loans-texas");
 
     const schema = {
       "@context": "https://schema.org",
@@ -178,7 +178,7 @@ export default function ConstructionRenovationTexas() {
       <section style={S.hero}>
         <div style={S.heroInner}>
           <div>
-            <p style={S.eyebrow}>Construction &amp; Renovation · Texas · All Loan Types · Unfiltered Keys</p>
+            <p style={S.eyebrow}>Construction &amp; Renovation · Texas · All Loan Types · Keys by Shalanda</p>
             <h1 style={S.heroH1}>
               Build It. Buy It. Fix It.<br />
               One Loan. One Closing.
@@ -416,7 +416,7 @@ export default function ConstructionRenovationTexas() {
             Book a Strategy Call →
           </a>
           <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.55)", marginTop: "16px" }}>
-            Or call/text 254.935.9331 · unfilteredkeys.com
+            Or call/text 254.935.9331 · shalandasmith.com
           </p>
         </div>
       </section>
@@ -425,9 +425,9 @@ export default function ConstructionRenovationTexas() {
       <div style={S.disclaimer}>
         This page is for educational purposes only and does not constitute a loan commitment, rate guarantee, or offer to lend. All loans subject to credit approval. Rates, terms, and program availability subject to change without notice. Not all programs available in all areas. USDA eligibility determined by the USDA Rural Development map — verify before applying.
         <br /><br />
-        Shalanda Smith · NMLS #554554 · Unfiltered Keys · Powered by Secure Choice Lending · NMLS #1689518 · Licensed by the Texas Department of Savings and Mortgage Lending · Equal Housing Lender
+        Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Licensed by the Texas Department of Savings and Mortgage Lending · Equal Housing Lender
         <br />
-        unfilteredkeys.com · 254.935.9331 · <a href="mailto:shalanda@securechoicelending.com" style={{ color: muted }}>shalanda@securechoicelending.com</a>
+        shalandasmith.com · 254.935.9331 · <a href="mailto:shalanda@securechoicelending.com" style={{ color: muted }}>shalanda@securechoicelending.com</a>
       </div>
     </div>
   );

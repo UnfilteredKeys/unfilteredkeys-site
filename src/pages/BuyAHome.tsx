@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const BuyAHomePage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Buy a Home in Texas | VA & FHA Loans | Unfiltered Keys";
+    document.title = "Buy a Home in Texas | VA & FHA Loans | Keys by Shalanda";
     document.querySelector('meta[name="description"]')?.setAttribute("content", "Buy a home in Texas with VA, FHA, or conventional financing. Mortgage broker access, structured strategy, and real guidance from application to keys.");
   }, []);
 
@@ -551,7 +551,7 @@ const BuyAHomePage = () => {
         {/* HERO */}
         <section className="bah-hero">
           <div className="bah-hero-inner">
-            <div className="bah-tag">Buy a Home · Unfiltered Keys</div>
+            <div className="bah-tag">Buy a Home · Keys by Shalanda</div>
             <h1>Your Texas home purchase,<em>structured around your file.</em></h1>
             <p className="bah-hero-sub">Whether you're using your VA benefit for the first time or buying your next home, the strategy starts before you ever talk to a lender.</p>
             <div className="bah-hero-grid">
@@ -789,9 +789,9 @@ const BuyAHomePage = () => {
         <footer className="bah-footer">
           <p>
             This page is for educational purposes only and does not constitute a loan commitment, rate guarantee, or offer to lend. All loans subject to credit approval.<br />
-            Shalanda Smith · NMLS #554554 · Unfiltered Keys · Powered by Secure Choice Lending · NMLS #1689518<br />
+            Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518<br />
             Licensed by the Texas Department of Savings and Mortgage Lending · Equal Housing Lender<br />
-            <a href="https://unfilteredkeys.com">unfilteredkeys.com</a> · <a href="tel:2549359331">254.935.9331</a> · <a href="mailto:shalanda@securechoicelending.com">shalanda@securechoicelending.com</a>
+            <a href="https://shalandasmith.com">shalandasmith.com</a> · <a href="tel:2549359331">254.935.9331</a> · <a href="mailto:shalanda@securechoicelending.com">shalanda@securechoicelending.com</a>
           </p>
         </footer>
 
