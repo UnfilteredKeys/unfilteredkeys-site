@@ -3,7 +3,7 @@ import { useEffect } from "react";
 const GuideePage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Free Mortgage Guide | What Lenders Won't Tell You | Unfiltered Keys";
+    document.title = "Free Mortgage Guide | What Lenders Won't Tell You | Keys by Shalanda";
     document.querySelector('meta[name="description"]')?.setAttribute("content", "Download the free mortgage guide that covers what lenders won't tell you — credit strategy, loan types, and how to show up informed before you apply.");
     // Load Kit script
     const script = document.createElement('script');
@@ -568,7 +568,7 @@ const GuideePage = () => {
         <section className="g-hero">
           <div className="g-hero-inner">
             <div className="g-hero-content">
-              <div className="g-hero-tag">Free Guide · Unfiltered Keys</div>
+              <div className="g-hero-tag">Free Guide · Keys by Shalanda</div>
               <h1>The mortgage industry wasn't built to educate you.<em>This guide is.</em></h1>
               <p className="g-hero-sub">So you show up informed, not surprised.</p>
               <ul className="g-hero-bullets">
@@ -664,7 +664,7 @@ const GuideePage = () => {
         <section className="g-about">
           <div className="g-about-inner">
             <div className="g-about-photo-wrap">
-              <img src={headshot} alt="Shalanda Smith — Mortgage Broker, Unfiltered Keys" className="g-about-photo" />
+              <img src={headshot} alt="Shalanda Smith — Mortgage Broker, Keys by Shalanda" className="g-about-photo" />
               <div className="g-about-badge">Shalanda Smith<br />NMLS #554554<br />Mortgage Broker</div>
             </div>
             <div className="g-about-content">
@@ -675,7 +675,7 @@ const GuideePage = () => {
               <p>That's what this guide is for. And if questions come up about your specific situation, that's what a strategy call is for.</p>
               <div className="g-about-sig">
                 — Shalanda Smith
-                <span>Founder, Unfiltered Keys · NMLS #554554</span>
+                <span>Founder, Keys by Shalanda · NMLS #554554</span>
               </div>
             </div>
           </div>
@@ -697,9 +697,9 @@ const GuideePage = () => {
         <footer className="g-footer">
           <p>
             This guide is for educational purposes only and does not constitute a loan commitment, rate guarantee, or offer to lend. All loans subject to credit approval. Rates and terms subject to change without notice.<br />
-            Shalanda Smith · NMLS #554554 · Unfiltered Keys · Powered by Secure Choice Lending · NMLS #1689518<br />
+            Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518<br />
             Licensed by the Texas Department of Savings and Mortgage Lending · Equal Housing Lender<br />
-            <a href="https://unfilteredkeys.com">unfilteredkeys.com</a> · <a href="tel:2549359331">254.935.9331</a> · <a href="mailto:shalanda@securechoicelending.com">shalanda@securechoicelending.com</a>
+            <a href="https://shalandasmith.com">shalandasmith.com</a> · <a href="tel:2549359331">254.935.9331</a> · <a href="mailto:shalanda@securechoicelending.com">shalanda@securechoicelending.com</a>
           </p>
         </footer>
 

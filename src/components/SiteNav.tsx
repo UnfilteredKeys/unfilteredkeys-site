@@ -26,8 +26,8 @@ const SiteNav = () => {
         <Link to="/" style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none" }}>
           <KeyIcon size={36} color="#b5621e" />
           <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.1 }}>
-            <span style={{ fontFamily: "'Lora', Georgia, serif", fontStyle: "italic", fontSize: "15px", color: "#b5621e" }}>Unfiltered</span>
-            <span style={{ fontFamily: "'Lora', Georgia, serif", fontWeight: 700, fontSize: "17px", color: "#1a3a5c", letterSpacing: "-0.3px" }}>Keys</span>
+            <span style={{ fontFamily: "'Lora', Georgia, serif", fontStyle: "italic", fontSize: "15px", color: "#b5621e" }}>Keys by</span>
+            <span style={{ fontFamily: "'Lora', Georgia, serif", fontWeight: 700, fontSize: "17px", color: "#1a3a5c", letterSpacing: "-0.3px" }}>Shalanda</span>
             <span style={{ fontFamily: "'Fira Mono', monospace", fontSize: "6.5px", color: "#8898aa", letterSpacing: "1.6px", textTransform: "uppercase" }}>Structured Mortgage Strategy</span>
           </div>
         </Link>

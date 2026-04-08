@@ -4,7 +4,7 @@ import AboutSidebar from "@/components/AboutSidebar";
 const AboutPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "About Shalanda Smith | Texas VA Loan Specialist | Unfiltered Keys";
+    document.title = "About Shalanda Smith | Texas VA Loan Specialist | Keys by Shalanda";
     document.querySelector('meta[name="description"]')?.setAttribute("content", "Meet Shalanda Smith, NMLS #554554 — Senior Loan Originator and Texas mortgage broker specializing in VA loans, non-QM, and structured mortgage strategy.");
   }, []);
 
@@ -331,11 +331,11 @@ const AboutPage = () => {
         <section className="ab-hero">
           <div className="ab-hero-inner">
             <div className="ab-photo-wrap">
-              <img src={headshot} alt="Shalanda Smith — Mortgage Broker, Unfiltered Keys" className="ab-photo" />
+              <img src={headshot} alt="Shalanda Smith — Mortgage Broker, Keys by Shalanda" className="ab-photo" />
               <div className="ab-photo-badge">Shalanda Smith<br />NMLS #554554<br />Mortgage Broker</div>
             </div>
             <div>
-              <div className="ab-tag">About · Unfiltered Keys</div>
+              <div className="ab-tag">About · Keys by Shalanda</div>
               <h1>Structured strategy.<em>Unfiltered advice.</em></h1>
               <p className="ab-hero-sub">I didn&apos;t set out to be a mortgage broker. I set out to help people — and this turned out to be the best way to do it.</p>
               <div className="ab-creds">
@@ -365,7 +365,7 @@ const AboutPage = () => {
               </div>
               <div className="ab-sig">
                 — Shalanda Smith
-                <span>Founder, Unfiltered Keys · NMLS #554554</span>
+                <span>Founder, Keys by Shalanda · NMLS #554554</span>
               </div>
             </div>
             <div className="ab-sidebar">
@@ -470,9 +470,9 @@ const AboutPage = () => {
         {/* FOOTER */}
         <footer className="ab-footer">
           <p>
-            Shalanda Smith · NMLS #554554 · Unfiltered Keys · Powered by Secure Choice Lending · NMLS #1689518<br />
+            Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518<br />
             Licensed by the Texas Department of Savings and Mortgage Lending · Equal Housing Lender<br />
-            <a href="https://unfilteredkeys.com">unfilteredkeys.com</a> · <a href="tel:2549359331">254.935.9331</a> · <a href="mailto:shalanda@securechoicelending.com">shalanda@securechoicelending.com</a>
+            <a href="https://shalandasmith.com">shalandasmith.com</a> · <a href="tel:2549359331">254.935.9331</a> · <a href="mailto:shalanda@securechoicelending.com">shalanda@securechoicelending.com</a>
           </p>
         </footer>
 

@@ -52,7 +52,7 @@ const milestones = [
   { era: "Bank", years: "Early Career", title: "Bank Manager", body: "Learned operations, underwriting, and the internal rules that determine who gets approved — and why. Saw first-hand how product limitations shape outcomes." },
   { era: "Builder", years: "Mid Career", title: "National Builder Lender", body: "Specialized in government loans — VA, FHA, USDA — and discovered what down payment assistance could actually do for buyers who thought homeownership was years away." },
   { era: "Retail", years: "Mid–Late Career", title: "Retail Mortgage Lender", body: "Originated at national retail lending companies — one product shelf, one set of rates, one answer per file. Learned exactly what that structure costs borrowers, and why access to more options changes everything." },
-  { era: "Broker", years: "Now", title: "Mortgage Broker · Unfiltered Keys", body: "The broker model is structurally better. No single product shelf. No retail pricing. Just access to 50+ lenders and the right loan matched to the right file.", current: true },
+  { era: "Broker", years: "Now", title: "Mortgage Broker · Keys by Shalanda", body: "The broker model is structurally better. No single product shelf. No retail pricing. Just access to 50+ lenders and the right loan matched to the right file.", current: true },
 ];
 
 export function AboutTimeline() {

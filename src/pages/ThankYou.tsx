@@ -20,7 +20,7 @@ const ThankYou = () => {
             className="text-xs tracking-widest uppercase hover:opacity-80 transition-opacity"
             style={{ color: '#f0ede6', opacity: 0.4 }}
           >
-            While you wait — unfilteredkeys.com
+            While you wait — shalandasmith.com
           </Link>
         </div>
       </div>

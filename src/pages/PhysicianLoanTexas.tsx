@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 // ── SEO + FAQ SCHEMA ──────────────────────────────────────────────────────────
 function usePhysicianSEO() {
   useEffect(() => {
-    document.title = "Physician Loans Texas | Doctor Mortgage Specialist | Unfiltered Keys";
+    document.title = "Physician Loans Texas | Doctor Mortgage Specialist | Keys by Shalanda";
 
     const setMeta = (name: string, content: string, prop = false) => {
       const attr = prop ? "property" : "name";
@@ -13,12 +13,12 @@ function usePhysicianSEO() {
     };
 
     setMeta("description", "Physician mortgage loans in Texas — low or no down payment, no PMI, student debt flexibility, and future income considered. Built for doctors, dentists, and high-income professionals. Serving all of Texas.");
-    setMeta("og:title", "Physician Loans Texas | Doctor Mortgage | Unfiltered Keys", true);
+    setMeta("og:title", "Physician Loans Texas | Doctor Mortgage | Keys by Shalanda", true);
     setMeta("og:description", "Texas physician mortgage loans with no PMI, low down payment, and student debt flexibility. Built for residents, attendings, and high-income professionals.", true);
 
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) { canonical = document.createElement("link"); canonical.setAttribute("rel", "canonical"); document.head.appendChild(canonical); }
-    canonical.setAttribute("href", "https://unfilteredkeys.com/physician-loan-texas");
+    canonical.setAttribute("href", "https://shalandasmith.com/physician-loan-texas");
 
     const schema = {
       "@context": "https://schema.org",
@@ -147,7 +147,7 @@ export default function PhysicianLoanTexas() {
       <div style={S.hero}>
         <div style={S.heroInner}>
           <div>
-            <p style={S.eyebrow}>Physician Loans · Texas · All Markets · Unfiltered Keys</p>
+            <p style={S.eyebrow}>Physician Loans · Texas · All Markets · Keys by Shalanda</p>
             <h1 style={S.heroH1}>
               A Mortgage Built<br />
               for How Doctors<br />
@@ -412,7 +412,7 @@ export default function PhysicianLoanTexas() {
             Book a Strategy Call →
           </a>
           <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.65)", marginTop: "20px" }}>
-            Or call/text 254.935.9331 · unfilteredkeys.com
+            Or call/text 254.935.9331 · shalandasmith.com
           </p>
         </div>
       </div>
@@ -421,9 +421,9 @@ export default function PhysicianLoanTexas() {
       <div style={S.disclaimer}>
         <p>This page is for educational purposes only and does not constitute a loan commitment, rate guarantee, or offer to lend. All loans subject to credit approval. Physician loan program availability, eligible designations, loan amounts, and down payment requirements vary by lender and are subject to change without notice. Not all programs are available in all areas.</p>
         <br />
-        <p>Shalanda Smith · NMLS #554554 · Unfiltered Keys · Powered by Secure Choice Lending · NMLS #1689518 · Licensed by the Texas Department of Savings and Mortgage Lending · Equal Housing Lender</p>
+        <p>Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Licensed by the Texas Department of Savings and Mortgage Lending · Equal Housing Lender</p>
         <br />
-        <p>unfilteredkeys.com · 254.935.9331 · <a href="mailto:shalanda@securechoicelending.com" style={{ color: muted }}>shalanda@securechoicelending.com</a></p>
+        <p>shalandasmith.com · 254.935.9331 · <a href="mailto:shalanda@securechoicelending.com" style={{ color: muted }}>shalanda@securechoicelending.com</a></p>
       </div>
     </div>
   );
