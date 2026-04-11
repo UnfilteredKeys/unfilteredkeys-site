@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-
+import { Helmet } from "react-helmet-async";
 const BuyAHomePage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Buy a Home in Texas | VA & FHA Loans | Keys by Shalanda";
-    document.querySelector('meta[name="description"]')?.setAttribute("content", "Buy a home in Texas with VA, FHA, or conventional financing. Mortgage broker access, structured strategy, and real guidance from application to keys.");
-  }, []);
+      }, []);
 
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
@@ -38,8 +36,13 @@ const BuyAHomePage = () => {
 
   return (
     <>
-      <style>{`
-        .bah-page {
+ <Helmet>
+      <title>Buy a Home in Texas | Mortgage Broker | Keys by Shalanda</title>
+      <meta name="description" content="Ready to buy a home in Texas? Get expert mortgage guidance, down payment assistance options, and a 21-day close. Serving all of Texas. NMLS #554554." />
+      <link rel="canonical" href="https://shalandasmith.com/buy" />
+    </Helmet>
+    <style>{`
+                .bah-page {
           font-family: 'Outfit', sans-serif;
           background: #faf8f4;
           color: #1c2630;
