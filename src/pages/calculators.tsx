@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-
+import { Helmet } from "react-helmet-async";
 // ── SEO ───────────────────────────────────────────────────────────────────────
 
 function useSEO({ title, description, canonical }: { title: string; description: string; canonical: string }) {
@@ -818,13 +818,7 @@ function BAHCalc() {
 type TabId = "texas" | "va" | "compare" | "budget" | "bah";
 
 export default function Calculators() {
-  useSEO({
-    title: "Texas Mortgage Calculators | Payment, VA, DTI & Loan Comparison | Keys by Shalanda",
-    description: "Free Texas mortgage calculators with property taxes by county. Estimate your real monthly payment, VA loan costs, FHA vs. Conventional, and your buying budget.",
-    canonical: "https://shalandasmith.com/calculators",
-  });
-
-  const [tab, setTab] = useState<TabId>("texas");
+    const [tab, setTab] = useState<TabId>("texas");
   const tabs: { id: TabId; label: string }[] = [
     { id: "texas", label: "Texas Payment" },
     { id: "va", label: "VA Loan" },
@@ -834,6 +828,12 @@ export default function Calculators() {
   ];
 
   return (
+    <>
+    <Helmet>
+      <title>Mortgage Calculators | Keys by Shalanda</title>
+      <meta name="description" content="Free mortgage calculators for Texas homebuyers. Estimate your payment, affordability, and loan options. NMLS #554554." />
+      <link rel="canonical" href="https://shalandasmith.com/calculators" />
+    </Helmet>
     <div style={S.page}>
       <div style={S.hero}>
         <p style={S.eyebrow}>Mortgage Calculators · Texas · Keys by Shalanda</p>
@@ -859,5 +859,6 @@ export default function Calculators() {
         </div>
       </div>
     </div>
+      </>
   );
 }
