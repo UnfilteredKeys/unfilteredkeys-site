@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
-
+import { Helmet } from "react-helmet-async";
 const LoanProgramsPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Texas Loan Programs | VA, FHA, Conventional & Non-QM | Keys by Shalanda";
-    document.querySelector('meta[name="description"]')?.setAttribute("content", "Explore VA, FHA, conventional, USDA, jumbo, DSCR, and non-QM loan programs available in Texas. Compare options side by side with broker access.");
-  }, []);
-
+      }, []);
   const [activeProgram, setActiveProgram] = useState<string | null>(null);
 
   const programs = [
@@ -179,6 +176,11 @@ const LoanProgramsPage = () => {
 
   return (
     <>
+     <Helmet>
+      <title>Mortgage Loan Programs in Texas | Keys by Shalanda</title>
+      <meta name="description" content="VA loans, FHA, USDA, conventional, non-QM, and down payment assistance programs available in Texas. Find the right loan for your situation. NMLS #554554." />
+      <link rel="canonical" href="https://shalandasmith.com/loan-programs" />
+    </Helmet> 
       <style>{`
         .lp-page {
           font-family: 'Outfit', sans-serif;
