@@ -1,11 +1,9 @@
 import { useEffect } from "react";
-
+import { Helmet } from "react-helmet-async";
 const GuideePage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Free Mortgage Guide | What Lenders Won't Tell You | Keys by Shalanda";
-    document.querySelector('meta[name="description"]')?.setAttribute("content", "Download the free mortgage guide that covers what lenders won't tell you — credit strategy, loan types, and how to show up informed before you apply.");
-    // Load Kit script
+        // Load Kit script
     const script = document.createElement('script');
     script.src = 'https://f.convertkit.com/ckjs/ck.5.js';
     script.async = true;
@@ -17,6 +15,11 @@ const GuideePage = () => {
 
   return (
     <>
+    <Helmet>
+      <title>Texas Homebuyer's Guide | Keys by Shalanda</title>
+      <meta name="description" content="Free mortgage guide for Texas homebuyers. Learn how approvals work, what lenders look at, and how to position yourself before you apply. NMLS #554554." />
+      <link rel="canonical" href="https://shalandasmith.com/guide" />
+    </Helmet>  
       <style>{`
         .guide-page {
           font-family: 'Outfit', sans-serif;
