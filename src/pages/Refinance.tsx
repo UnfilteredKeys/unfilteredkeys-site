@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-
+import { Helmet } from "react-helmet-async";
 const RefinancePage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Refinance Your Texas Mortgage | VA IRRRL & Cash-Out | Keys by Shalanda";
-    document.querySelector('meta[name="description"]')?.setAttribute("content", "Refinance your Texas mortgage with VA IRRRL, cash-out, or rate-and-term options. Broker-level pricing and structured strategy from Shalanda Smith.");
-  }, []);
+     }, []);
 
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
@@ -42,6 +40,11 @@ const RefinancePage = () => {
 
   return (
     <>
+      <Helmet>
+      <title>Refinance Your Texas Home | Keys by Shalanda | NMLS #554554</title>
+      <meta name="description" content="Refinance your Texas home with a broker who shops 50+ lenders. Lower your rate, access equity, or restructure your loan. NMLS #554554." />
+      <link rel="canonical" href="https://shalandasmith.com/refinance" />
+    </Helmet>
       <style>{`
         .ref-page {
           font-family: 'Outfit', sans-serif;
