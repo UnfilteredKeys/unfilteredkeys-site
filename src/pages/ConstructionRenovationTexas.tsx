@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import { Helmet } from "react-helmet-async";
 // ── SEO + FAQ SCHEMA ──────────────────────────────────────────────────────────
 function useConstructionSEO() {
   useEffect(() => {
@@ -172,6 +172,12 @@ export default function ConstructionRenovationTexas() {
   ];
 
   return (
+    <>
+    <Helmet>
+      <title>Construction & Renovation Loans in Texas | Keys by Shalanda</title>
+      <meta name="description" content="Finance new construction or renovate your Texas home with the right loan structure. Expert guidance from a licensed Texas mortgage broker. NMLS #554554." />
+      <link rel="canonical" href="https://shalandasmith.com/construction-renovation-loans-texas" />
+    </Helmet> 
     <div style={S.page}>
 
       {/* ── HERO ── */}
@@ -430,5 +436,6 @@ export default function ConstructionRenovationTexas() {
         shalandasmith.com · 254.935.9331 · <a href="mailto:shalanda@securechoicelending.com" style={{ color: muted }}>shalanda@securechoicelending.com</a>
       </div>
     </div>
+     </>   
   );
 }
