@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import { Helmet } from "react-helmet-async";
 // ── SEO + FAQ SCHEMA ──────────────────────────────────────────────────────────
 function usePhysicianSEO() {
   useEffect(() => {
@@ -141,6 +141,12 @@ export default function PhysicianLoanTexas() {
   ];
 
   return (
+      <>
+    <Helmet>
+      <title>Physician Loans in Texas | Keys by Shalanda | NMLS #554554</title>
+      <meta name="description" content="Physician mortgage loans in Texas with no PMI, flexible DTI, and options for residents and attendings. Expert guidance from a licensed Texas broker. NMLS #554554." />
+      <link rel="canonical" href="https://shalandasmith.com/physician-loan-texas" />
+    </Helmet>
     <div style={S.page}>
 
       {/* HERO */}
@@ -426,5 +432,6 @@ export default function PhysicianLoanTexas() {
         <p>shalandasmith.com · 254.935.9331 · <a href="mailto:shalanda@securechoicelending.com" style={{ color: muted }}>shalanda@securechoicelending.com</a></p>
       </div>
     </div>
+          </>
   );
 }
