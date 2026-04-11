@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import { Helmet } from "react-helmet-async";
 // ── SEO + FAQ SCHEMA ──────────────────────────────────────────────────────────
 function useVASEO() {
   useEffect(() => {
@@ -166,6 +166,12 @@ export default function VALoanTexas() {
   ];
 
   return (
+      <>
+    <Helmet>
+      <title>VA Loan Specialist in Texas | Keys by Shalanda | NMLS #554554</title>
+      <meta name="description" content="Texas VA loan expert serving active duty, veterans, and surviving spouses. Zero down, no PMI, competitive rates. Fort Hood, Killeen, and statewide. NMLS #554554." />
+      <link rel="canonical" href="https://shalandasmith.com/va-loan-texas" />
+    </Helmet>
     <div style={S.page}>
 
       {/* ── HERO ── */}
@@ -436,5 +442,6 @@ export default function VALoanTexas() {
         </p>
       </div>
     </div>
+          </>
   );
 }
