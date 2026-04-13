@@ -127,7 +127,7 @@ export default function VALoanTexas() {
         {/* Trust strip */}
         <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", padding: "20px 0" }}>
           <div style={{ ...container, display: "flex", justifyContent: "center", alignItems: "center", flexWrap: "wrap", gap: "8px 0" }}>
-            {["5.0 Google Rating", "VA Specialist", "21-Day Avg Close", "50+ Lender Network", "Fort Hood to Houston"].map((item, i) => (
+            {["VA Specialist", "21-Day Avg Close", "50+ Lender Network", "Fort Hood to Houston"].map((item, i) => (
               <span key={i} style={{ display: "inline-flex", alignItems: "center", gap: 0 }}>
                 {i > 0 && <span style={{ width: 6, height: 6, borderRadius: "50%", backgroundColor: copper, margin: "0 16px", flexShrink: 0 }} />}
                 <span style={{ fontSize: 13, color: "rgba(240,237,230,0.6)", letterSpacing: "0.04em", whiteSpace: "nowrap" }}>{item}</span>
