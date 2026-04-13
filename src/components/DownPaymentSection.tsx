@@ -68,7 +68,7 @@ export default function DownPaymentSection() {
           {/* Single CTA button */}
           <div>
             <a
-              href="/loan-programs"
+              href="/loan-programs#dpa"
               style={{
                 display: "inline-block",
                 backgroundColor: "transparent",
