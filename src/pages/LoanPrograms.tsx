@@ -2,8 +2,17 @@ import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 const LoanProgramsPage = () => {
   useEffect(() => {
-    window.scrollTo(0, 0);
-      }, []);
+    const hash = window.location.hash.replace('#', '');
+    if (hash) {
+      setActiveProgram(hash);
+      setTimeout(() => {
+        const el = document.getElementById('lp-detail-panel');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, []);
   const [activeProgram, setActiveProgram] = useState<string | null>(null);
 
   const programs = [
