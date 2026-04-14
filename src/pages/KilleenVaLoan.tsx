@@ -53,7 +53,7 @@ const bahRows = [
 
 /* ── NEIGHBORHOODS ─────────────────────────────────────────────────────────── */
 const neighborhoods = [
-  { name: "Killeen", price: "$215K–$240K", color: copper, tag: "Main gate access", desc: "Largest city in the corridor. Closest to Fort Hood's main gates. Killeen ISD. H-E-B on Rancier Avenue. Most affordable and most convenient for daily on-post access." },
+  { name: "Killeen", price: "$215K–$240K", color: copper, tag: "Main gate access", desc: "Largest city in the corridor. Closest to Fort Hood's main gates. Killeen ISD. { name: "Killeen", price: "$215K–$240K", color: copper, tag: "Main gate access", desc: "Largest city in the corridor. Closest to Fort Hood's main gates. Killeen ISD. H-E-B on W Stan Schlueter. Most affordable and most convenient for daily on-post access." },. Most affordable and most convenient for daily on-post access." },
   { name: "Harker Heights", price: "$280K–$320K", color: "#534AB7", tag: "Suburban feel", desc: "Five miles west of Killeen. Still Bell County, still Killeen ISD. Newer construction, quieter neighborhoods — without paying Austin prices." },
   { name: "Copperas Cove", price: "$210K–$245K", color: "#185FA5", tag: "Most affordable · West gate", desc: "Most affordable in the corridor. Closest to west gate. Copperas Cove ISD. Some addresses qualify for USDA 0% down financing." },
   { name: "Nolanville", price: "$220K–$260K", color: "#534AB7", tag: "Quiet · Killeen ISD", desc: "Small town between Killeen and Belton. Residential, quiet, Bell County. Solid middle ground between Killeen's affordability and Harker Heights' suburban feel." },
