@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 /* ── SEO ──────────────────────────────────────────────────────────────────── */
@@ -267,6 +268,17 @@ export default function VALoanTexas() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── PCS TO PORTFOLIO CALLOUT ──────────────────────────────────────── */}
+      <section style={{ backgroundColor: white, padding: "48px 0" }}>
+        <div style={container}>
+          <Link to="/pcs-to-portfolio" style={{ display: "block", backgroundColor: copperLight, border: `1px solid ${copper}`, borderRadius: radius, padding: "24px 28px", textDecoration: "none" }}>
+            <p style={{ fontSize: 16, fontWeight: 700, color: navy, margin: 0, fontFamily: "'Lora', serif" }}>
+              PCS orders in hand? <span style={{ color: copper }}>Read our Military Wealth Strategy Guide →</span>
+            </p>
+          </Link>
         </div>
       </section>
 
