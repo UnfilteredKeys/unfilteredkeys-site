@@ -247,6 +247,11 @@ export default function VALoanTexas() {
               </div>
             ))}
           </div>
+          <div style={{ marginTop: 28 }}>
+            <Link to="/killeen-va-loan" style={{ fontSize: 15, color: copper, fontWeight: 600, textDecoration: "none" }}>
+              Serving the Fort Hood corridor — see our Killeen VA Loan Guide →
+            </Link>
+          </div>
         </div>
       </section>
 
