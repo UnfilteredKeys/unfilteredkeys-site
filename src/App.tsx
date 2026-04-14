@@ -17,6 +17,7 @@ import CalculatorsPage from "@/pages/calculators";
 import VALoanTexasPage from "@/pages/VALoanTexas";
 import PhysicianLoanTexasPage from "@/pages/PhysicianLoanTexas";
 import ConstructionRenovationTexasPage from "@/pages/ConstructionRenovationTexas";
+import PcsToPortfolioPage from "@/pages/PcsToPortfolio";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -42,6 +43,7 @@ const App = () => (
             <Route path="/va-loan-texas" element={<VALoanTexasPage />} />
             <Route path="/physician-loan-texas" element={<PhysicianLoanTexasPage />} />
             <Route path="/construction-renovation-loans-texas" element={<ConstructionRenovationTexasPage />} />
+            <Route path="/pcs-to-portfolio" element={<PcsToPortfolioPage />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

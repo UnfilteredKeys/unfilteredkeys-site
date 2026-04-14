@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import headshot from "@/assets/headshot.png";
 
 const SiteFooter = () => (
@@ -58,6 +59,14 @@ const SiteFooter = () => (
             Schedule a Call
           </a>
         </div>
+      </div>
+
+      {/* Resources section */}
+      <div style={{ marginBottom: "40px" }}>
+        <p style={{ fontSize: "11px", letterSpacing: "1.5px", textTransform: "uppercase", color: "rgba(250,248,244,0.4)", marginBottom: "12px", fontFamily: "'Fira Mono', 'Courier New', monospace" }}>Resources</p>
+        <Link to="/pcs-to-portfolio" style={{ color: "#b5621e", fontSize: "14px", fontWeight: 600, textDecoration: "none" }}>
+          PCS to Portfolio: Military Wealth Strategy
+        </Link>
       </div>
 
       {/* Middle row: Founder */}
