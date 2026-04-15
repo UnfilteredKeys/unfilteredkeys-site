@@ -100,9 +100,9 @@ export default function PcsToPortfolio() {
     "Do I have a local contact — realtor, PM, or trusted person — who can be eyes on the property when I'm gone?",
   ];
 
-  const toolCards = [
-  { title: "BAH vs. Mortgage Tool", desc: "Select your pay grade, duty station, and t...
-  { title: "Duty Station Map", desc: "Every major installation in the US. Click a dot...
+const toolCards = [
+  { title: "BAH vs. Mortgage Tool", desc: "Select your pay grade, duty station, and total monthly housing cost to compare against your BAH allowance." },
+  { title: "Duty Station Map", desc: "Every major installation in the US. Click a dot to see local market data and VA loan limits." },
 ];
   
   return (
