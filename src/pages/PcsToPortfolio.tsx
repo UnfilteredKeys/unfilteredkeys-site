@@ -101,7 +101,6 @@ export default function PcsToPortfolio() {
   ];
 
 const toolCards = [
-  { title: "BAH vs. Mortgage Tool", desc: "Select your pay grade, duty station, and total monthly housing cost to compare against your BAH allowance." },
   { title: "Duty Station Map", desc: "Every major installation in the US. Click a dot to see local market data and VA loan limits." },
 ];
   
@@ -275,7 +274,7 @@ const toolCards = [
                 </div>
                 <div style={{ fontFamily: "'Lora', serif", fontSize: 17, fontWeight: 700, color: navy, marginBottom: 10 }}>{c.title}</div>
                 <p style={{ fontSize: 14, color: textSecondary, lineHeight: 1.65, marginBottom: 16 }}>{c.desc}</p>
-                <span style={{ fontSize: 11, fontFamily: "'Fira Mono', monospace", color: copper, backgroundColor: copperLight, padding: "4px 12px", borderRadius: 999 }}>{c.pill}</span>
+                <span style={{ fontSize: 11, fontFamily: "'Fira Mono', monospace", color: copper, backgroundColor: copperLight, padding: "4px 12px", borderRadius: 999 }}>Coming Soon</span>
               </div>
             ))}
           </div>
