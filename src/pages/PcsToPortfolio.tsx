@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import RentalROICalculator from "@/components/RentalROICalculator";
+import DutyStationMap from "@/components/DutyStationMap";
 
 /* ── SEO ──────────────────────────────────────────────────────────────────── */
 function usePCSSEO() {
@@ -100,10 +101,8 @@ export default function PcsToPortfolio() {
     "Do I have a local contact — realtor, PM, or trusted person — who can be eyes on the property when I'm gone?",
   ];
 
-const toolCards = [
-  { title: "Duty Station Map", desc: "Every major installation in the US. Click a dot to see local market data and VA loan limits." },
-];
-  
+const toolCards: { title: string; desc: string }[] = [];
+
   return (
     <div>
       {/* ── 1. HERO ─────────────────────────────────────────────────────────── */}
@@ -267,6 +266,7 @@ const toolCards = [
           <p style={subStyle()}>Three tools that make the strategy real and personal — coming soon.</p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24 }}>
 <RentalROICalculator />
+<DutyStationMap />
             {toolCards.map((c) => (
               <div key={c.title} style={{ border: `2px dashed ${border}`, borderRadius: radius, padding: 28, backgroundColor: "#fafaf8", textAlign: "center" }}>
                 <div style={{ width: 48, height: 48, borderRadius: "50%", backgroundColor: copperLight, margin: "0 auto 16px", display: "flex", alignItems: "center", justifyContent: "center" }}>
