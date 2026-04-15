@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import RentalROICalculator from "@/components/RentalROICalculator";
 
 /* ── SEO ──────────────────────────────────────────────────────────────────── */
 function usePCSSEO() {
@@ -100,11 +101,10 @@ export default function PcsToPortfolio() {
   ];
 
   const toolCards = [
-    { title: "PCS Wealth Builder", desc: "Input your years of service, home price, and expected rent. See your projected portfolio value and monthly cash flow at retirement.", pill: "Calculator — Coming Soon" },
-    { title: "BAH vs. Mortgage Tool", desc: "Select your pay grade, duty station, and target home price. See whether your BAH covers the full payment — by the dollar.", pill: "Calculator — Coming Soon" },
-    { title: "Duty Station Map", desc: "Every major installation in the US. Click a dot to see the local market, median home price, and whether we're licensed in that state.", pill: "Map — Coming Soon" },
-  ];
-
+  { title: "BAH vs. Mortgage Tool", desc: "Select your pay grade, duty station, and t...
+  { title: "Duty Station Map", desc: "Every major installation in the US. Click a dot...
+];
+  
   return (
     <div>
       {/* ── 1. HERO ─────────────────────────────────────────────────────────── */}
@@ -267,6 +267,7 @@ export default function PcsToPortfolio() {
           <h2 style={h2Style()}>Run your own numbers</h2>
           <p style={subStyle()}>Three tools that make the strategy real and personal — coming soon.</p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24 }}>
+<RentalROICalculator />
             {toolCards.map((c) => (
               <div key={c.title} style={{ border: `2px dashed ${border}`, borderRadius: radius, padding: 28, backgroundColor: "#fafaf8", textAlign: "center" }}>
                 <div style={{ width: 48, height: 48, borderRadius: "50%", backgroundColor: copperLight, margin: "0 auto 16px", display: "flex", alignItems: "center", justifyContent: "center" }}>
