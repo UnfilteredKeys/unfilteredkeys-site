@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import SEO from "@/components/SEO";
+import { seoMeta } from "@/lib/seoData";
 
 /* ── SEO ──────────────────────────────────────────────────────────────────── */
 function useKilleenSEO() {
