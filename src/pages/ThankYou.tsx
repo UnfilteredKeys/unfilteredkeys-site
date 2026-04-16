@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import SEO from "@/components/SEO";
+import { seoMeta } from "@/lib/seoData";
 const ThankYou = () => {
   return (
     <>
