@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
+import SEO from "@/components/SEO";
+import { seoMeta } from "@/lib/seoData";
 const GuideePage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
