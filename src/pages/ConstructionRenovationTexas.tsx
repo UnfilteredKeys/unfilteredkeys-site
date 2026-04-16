@@ -175,6 +175,7 @@ export default function ConstructionRenovationTexas() {
 
   return (
     <>
+    <SEO {...seoMeta.constructionRenovation} />
     <Helmet>
       <title>Construction & Renovation Loans in Texas | Keys by Shalanda</title>
       <meta name="description" content="Finance new construction or renovate your Texas home with the right loan structure. Expert guidance from a licensed Texas mortgage broker. NMLS #554554." />
