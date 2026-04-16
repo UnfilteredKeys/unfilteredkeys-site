@@ -12,7 +12,6 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-  return (
     <>
     <SEO {...seoMeta.notFound} />
     <section
