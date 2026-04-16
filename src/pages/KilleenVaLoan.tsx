@@ -94,6 +94,7 @@ const KilleenVaLoan = () => {
 
   return (
     <>
+      <SEO {...seoMeta.killeenVaLoan} />
       <style>{`
         .kvl-hero-btn:hover{opacity:.92}
         .kvl-table th,.kvl-table td{padding:14px 18px;text-align:left;font-size:14px}
