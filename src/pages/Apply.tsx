@@ -39,6 +39,7 @@ const Apply = () => {
 
   return (
     <>
+    <SEO {...seoMeta.apply} />
     <Helmet>
   <title>Apply for a VA Loan in Texas | Unfiltered Keys</title>
   <meta name="description" content="Start your VA loan application with Shalanda Smith at Unfiltered Keys. Soft credit pull first, 2-hour response, and clear next steps — serving veterans statewide in Texas." />
