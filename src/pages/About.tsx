@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import AboutSidebar from "@/components/AboutSidebar";
+import SEO from "@/components/SEO";
+import { seoMeta } from "@/lib/seoData";
 
 const AboutPage = () => {
   useEffect(() => {
