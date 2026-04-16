@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { Helmet } from "react-helmet-async";
 import DownPaymentSection from '@/components/DownPaymentSection';
+import SEO from "@/components/SEO";
+import { seoMeta } from "@/lib/seoData";
 
 const pageStyles = `
 /* ═══════════════════════════════════════════
