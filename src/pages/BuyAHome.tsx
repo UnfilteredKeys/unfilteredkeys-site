@@ -38,6 +38,7 @@ const BuyAHomePage = () => {
 
   return (
     <>
+    <SEO {...seoMeta.buy} />
  <Helmet>
       <title>Buy a Home in Texas | Mortgage Broker | Keys by Shalanda</title>
       <meta name="description" content="Ready to buy a home in Texas? Get expert mortgage guidance, down payment assistance options, and a 21-day close. Serving all of Texas. NMLS #554554." />
