@@ -831,6 +831,7 @@ export default function Calculators() {
 
   return (
     <>
+    <SEO {...seoMeta.calculators} />
     <Helmet>
       <title>Mortgage Calculators | Keys by Shalanda</title>
       <meta name="description" content="Free mortgage calculators for Texas homebuyers. Estimate your payment, affordability, and loan options. NMLS #554554." />
