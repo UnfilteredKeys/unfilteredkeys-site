@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
+import SEO from "@/components/SEO";
+import { seoMeta } from "@/lib/seoData";
 // ── SEO ───────────────────────────────────────────────────────────────────────
 
 function useSEO({ title, description, canonical }: { title: string; description: string; canonical: string }) {
