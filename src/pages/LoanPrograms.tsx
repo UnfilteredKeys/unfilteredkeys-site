@@ -187,6 +187,7 @@ const LoanProgramsPage = () => {
 
   return (
     <>
+     <SEO {...seoMeta.loanPrograms} />
      <Helmet>
       <title>Mortgage Loan Programs in Texas | Keys by Shalanda</title>
       <meta name="description" content="VA loans, FHA, USDA, conventional, non-QM, and down payment assistance programs available in Texas. Find the right loan for your situation. NMLS #554554." />
