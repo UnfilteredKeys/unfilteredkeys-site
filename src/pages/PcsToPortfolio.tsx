@@ -107,6 +107,7 @@ const toolCards: { title: string; desc: string }[] = [];
 
   return (
     <div>
+      <SEO {...seoMeta.pcsToPortfolio} />
       {/* ── 1. HERO ─────────────────────────────────────────────────────────── */}
       <section style={{ backgroundColor: hero, padding: "96px 0 72px" }}>
         <div style={container}>
