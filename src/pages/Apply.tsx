@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
+import SEO from "@/components/SEO";
+import { seoMeta } from "@/lib/seoData";
 const Apply = () => {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
