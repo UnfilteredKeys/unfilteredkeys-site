@@ -2477,11 +2477,7 @@ export default function Index() {
   return (
     <>
       <SEO {...seoMeta.home} />
-     <Helmet>
-      <title>Keys by Shalanda | Texas Mortgage Broker | VA Loan Specialist</title>
-      <meta name="description" content="Licensed Texas mortgage broker specializing in VA loans, down payment assistance, and non-QM lending. Serving Fort Hood, Killeen, and all of Texas. NMLS #554554." />
-      <link rel="canonical" href="https://shalandasmith.com/" />
-    </Helmet>  
+      <SchemaMarkup />
       <style dangerouslySetInnerHTML={{ __html: pageStyles }} />
       <div dangerouslySetInnerHTML={{ __html: pageHTML }} />
       <DownPaymentSection />
