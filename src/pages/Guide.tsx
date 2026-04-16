@@ -17,6 +17,7 @@ const GuideePage = () => {
 
   return (
     <>
+    <SEO {...seoMeta.guide} />
     <Helmet>
       <title>Texas Homebuyer's Guide | Keys by Shalanda</title>
       <meta name="description" content="Free mortgage guide for Texas homebuyers. Learn how approvals work, what lenders look at, and how to position yourself before you apply. NMLS #554554." />
