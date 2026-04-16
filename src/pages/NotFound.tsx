@@ -12,6 +12,9 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
+  return (
+    <>
+    <SEO {...seoMeta.notFound} />
     <section
       className="flex min-h-[60vh] items-center justify-center"
       style={{ background: "#1a3a5c" }}
@@ -32,6 +35,7 @@ const NotFound = () => {
         </Link>
       </div>
     </section>
+    </>
   );
 };
 
