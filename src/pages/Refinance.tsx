@@ -42,6 +42,7 @@ const RefinancePage = () => {
 
   return (
     <>
+      <SEO {...seoMeta.refinance} />
       <Helmet>
       <title>Refinance Your Texas Home | Keys by Shalanda | NMLS #554554</title>
       <meta name="description" content="Refinance your Texas home with a broker who shops 50+ lenders. Lower your rate, access equity, or restructure your loan. NMLS #554554." />
