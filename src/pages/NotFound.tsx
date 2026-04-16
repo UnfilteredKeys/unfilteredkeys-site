@@ -1,5 +1,7 @@
 import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
+import SEO from "@/components/SEO";
+import { seoMeta } from "@/lib/seoData";
 
 const NotFound = () => {
   const location = useLocation();
@@ -10,6 +12,8 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
+    <>
+    <SEO {...seoMeta.notFound} />
     <section
       className="flex min-h-[60vh] items-center justify-center"
       style={{ background: "#1a3a5c" }}
@@ -30,6 +34,7 @@ const NotFound = () => {
         </Link>
       </div>
     </section>
+    </>
   );
 };
 

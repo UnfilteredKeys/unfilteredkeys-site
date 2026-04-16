@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import SEO from "@/components/SEO";
+import { seoMeta } from "@/lib/seoData";
 const ThankYou = () => {
   return (
     <>
+    <SEO {...seoMeta.thankYou} />
     <Helmet>
       <title>Application Received | Keys by Shalanda</title>
       <meta name="robots" content="noindex, nofollow" />

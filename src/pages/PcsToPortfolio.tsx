@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import RentalROICalculator from "@/components/RentalROICalculator";
 import DutyStationMap from "@/components/DutyStationMap";
+import SEO from "@/components/SEO";
+import { seoMeta } from "@/lib/seoData";
 
 /* ── SEO ──────────────────────────────────────────────────────────────────── */
 function usePCSSEO() {
@@ -105,6 +107,7 @@ const toolCards: { title: string; desc: string }[] = [];
 
   return (
     <div>
+      <SEO {...seoMeta.pcsToPortfolio} />
       {/* ── 1. HERO ─────────────────────────────────────────────────────────── */}
       <section style={{ backgroundColor: hero, padding: "96px 0 72px" }}>
         <div style={container}>

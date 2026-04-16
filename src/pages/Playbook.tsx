@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
+import SEO from "@/components/SEO";
+import { seoMeta } from "@/lib/seoData";
 const PlaybookPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -15,6 +17,7 @@ const PlaybookPage = () => {
 
   return (
     <>
+     <SEO {...seoMeta.playbook} />
      <Helmet>
       <title>90-Day Mortgage Strategy Playbook | Keys by Shalanda</title>
       <meta name="description" content="Free 90-day homebuying playbook for Texas buyers. Step-by-step mortgage strategy from a licensed Texas broker. Download free. NMLS #554554." />

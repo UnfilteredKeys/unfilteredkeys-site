@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
+import SEO from "@/components/SEO";
+import { seoMeta } from "@/lib/seoData";
 const Apply = () => {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
@@ -37,6 +39,7 @@ const Apply = () => {
 
   return (
     <>
+    <SEO {...seoMeta.apply} />
     <Helmet>
   <title>Apply for a VA Loan in Texas | Unfiltered Keys</title>
   <meta name="description" content="Start your VA loan application with Shalanda Smith at Unfiltered Keys. Soft credit pull first, 2-hour response, and clear next steps — serving veterans statewide in Texas." />

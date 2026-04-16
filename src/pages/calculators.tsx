@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
+import SEO from "@/components/SEO";
+import { seoMeta } from "@/lib/seoData";
 // ── SEO ───────────────────────────────────────────────────────────────────────
 
 function useSEO({ title, description, canonical }: { title: string; description: string; canonical: string }) {
@@ -829,6 +831,7 @@ export default function Calculators() {
 
   return (
     <>
+    <SEO {...seoMeta.calculators} />
     <Helmet>
       <title>Mortgage Calculators | Keys by Shalanda</title>
       <meta name="description" content="Free mortgage calculators for Texas homebuyers. Estimate your payment, affordability, and loan options. NMLS #554554." />

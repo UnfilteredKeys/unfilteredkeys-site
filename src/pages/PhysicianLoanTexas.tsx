@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import SEO from "@/components/SEO";
+import { seoMeta } from "@/lib/seoData";
 // ── SEO + FAQ SCHEMA ──────────────────────────────────────────────────────────
 function usePhysicianSEO() {
   useEffect(() => {
@@ -142,6 +144,7 @@ export default function PhysicianLoanTexas() {
 
   return (
       <>
+    <SEO {...seoMeta.physicianLoanTexas} />
     <Helmet>
       <title>Physician Loans in Texas | Keys by Shalanda | NMLS #554554</title>
       <meta name="description" content="Physician mortgage loans in Texas with no PMI, flexible DTI, and options for residents and attendings. Expert guidance from a licensed Texas broker. NMLS #554554." />

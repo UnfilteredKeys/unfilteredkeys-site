@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import SEO from "@/components/SEO";
+import { seoMeta } from "@/lib/seoData";
 
 /* ── SEO ──────────────────────────────────────────────────────────────────── */
 function useVASEO() {
@@ -102,6 +104,7 @@ export default function VALoanTexas() {
 
   return (
     <div style={{ fontFamily: "'Outfit', sans-serif", color: textPrimary }}>
+      <SEO {...seoMeta.vaLoanTexas} />
       <Helmet>
         <title>VA Loans Texas | VA Loan Specialist | Keys by Shalanda</title>
         <meta name="description" content="Texas VA loan specialist helping veterans and active duty buy homes with 0% down, no PMI, and competitive rates." />
