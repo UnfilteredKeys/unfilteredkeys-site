@@ -71,6 +71,11 @@ export const seoMeta = {
     description: "First-time buyer guide for Texas: FHA, conventional, USDA, and TDHCA, TSAHC, SETH down payment assistance programs explained. Get pre-approved with Keys by Shalanda.",
     canonical: "/first-time-buyers",
   },
+  investors: {
+    title: "Texas Real Estate Investor Loans – DSCR, Bank Statement & Asset-Based",
+    description: "Investor mortgage programs in Texas: DSCR, bank statement, asset depletion, conventional investment, and bridge loans. Build or scale your rental portfolio with Keys by Shalanda.",
+    canonical: "/investors",
+  },
   apply: {
     title: "Apply Now – Start Your Texas Mortgage Application",
     description: "Start your Texas mortgage application with Keys by Shalanda. Secure, simple online application. VA, FHA, USDA, and conventional loans available.",
