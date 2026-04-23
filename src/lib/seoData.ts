@@ -81,6 +81,11 @@ export const seoMeta = {
     description: "Texas FHA loan specialist. 3.5% down, 580+ credit, FHA 203k renovation, and Texas down payment assistance programs. Run FHA vs conventional with a licensed Texas broker.",
     canonical: "/fha-loan-texas",
   },
+  conventionalLoanTexas: {
+    title: "Conventional Loans in Texas – 3% Down, Removable PMI | Keys by Shalanda",
+    description: "Texas conventional mortgage broker. 3% down HomeReady & Home Possible, removable PMI, and 50+ lender competition on LLPA pricing. Run conventional vs FHA before you decide.",
+    canonical: "/conventional-loan-texas",
+  },
   apply: {
     title: "Apply Now – Start Your Texas Mortgage Application",
     description: "Start your Texas mortgage application with Keys by Shalanda. Secure, simple online application. VA, FHA, USDA, and conventional loans available.",
