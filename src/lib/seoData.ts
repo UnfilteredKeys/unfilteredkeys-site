@@ -76,6 +76,11 @@ export const seoMeta = {
     description: "Investor mortgage programs in Texas: DSCR, bank statement, asset depletion, conventional investment, and bridge loans. Build or scale your rental portfolio with Keys by Shalanda.",
     canonical: "/investors",
   },
+  fhaLoanTexas: {
+    title: "FHA Loans in Texas – 3.5% Down, 580 Credit Minimum | Keys by Shalanda",
+    description: "Texas FHA loan specialist. 3.5% down, 580+ credit, FHA 203k renovation, and Texas down payment assistance programs. Run FHA vs conventional with a licensed Texas broker.",
+    canonical: "/fha-loan-texas",
+  },
   apply: {
     title: "Apply Now – Start Your Texas Mortgage Application",
     description: "Start your Texas mortgage application with Keys by Shalanda. Secure, simple online application. VA, FHA, USDA, and conventional loans available.",
