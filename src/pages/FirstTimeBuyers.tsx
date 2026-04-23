@@ -15,9 +15,9 @@ const CALL_URL = "https://calendly.com/shalanda-securechoicelending/30min";
 
 const stats = [
   { v: "3.5%", l: "Minimum Down — FHA" },
-  { v: "620", l: "Minimum Credit — Most Programs" },
+  { v: "580", l: "Minimum Credit — Most Programs" },
   { v: "$0", l: "Down — USDA Eligible Areas" },
-  { v: "5%", l: "Grant — TDHCA & TSAHC" },
+  { v: "Up to 5%", l: "Grant — TDHCA & TSAHC" },
 ];
 
 const myths = [
