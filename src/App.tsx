@@ -22,6 +22,7 @@ import KilleenVaLoanPage from "@/pages/KilleenVaLoan";
 import FirstTimeBuyersPage from "@/pages/FirstTimeBuyers";
 import InvestorsPage from "@/pages/Investors";
 import FhaLoanTexasPage from "@/pages/FhaLoanTexas";
+import ConventionalLoanTexasPage from "@/pages/ConventionalLoanTexas";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -52,6 +53,7 @@ const App = () => (
             <Route path="/first-time-buyers" element={<FirstTimeBuyersPage />} />
             <Route path="/investors" element={<InvestorsPage />} />
             <Route path="/fha-loan-texas" element={<FhaLoanTexasPage />} />
+            <Route path="/conventional-loan-texas" element={<ConventionalLoanTexasPage />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

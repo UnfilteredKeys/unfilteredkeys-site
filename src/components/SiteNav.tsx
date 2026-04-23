@@ -20,7 +20,7 @@ const NAV: NavItem[] = [
     children: [
       { to: "/first-time-buyers", label: "First-Time Buyers" },
       { to: "/fha-loan-texas", label: "FHA Loans" },
-      { to: "/loan-programs", label: "Conventional Loans" },
+      { to: "/conventional-loan-texas", label: "Conventional Loans" },
       { to: "/loan-programs", label: "Down Payment Assistance" },
       { to: "/construction-renovation-loans-texas", label: "New Construction" },
     ],
