@@ -17,7 +17,7 @@ const stats = [
   { v: "3.5%", l: "Minimum Down — FHA" },
   { v: "580", l: "Minimum Credit — Most Programs" },
   { v: "$0", l: "Down — USDA Eligible Areas" },
-  { v: "Up to 5%", l: "Grant — TDHCA & TSAHC" },
+  { v: "Up to 5%", l: "Down Payment Assistance" },
 ];
 
 const myths = [
