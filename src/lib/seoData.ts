@@ -86,6 +86,11 @@ export const seoMeta = {
     description: "Texas conventional mortgage broker. 3% down HomeReady & Home Possible, removable PMI, and 50+ lender competition on LLPA pricing. Run conventional vs FHA before you decide.",
     canonical: "/conventional-loan-texas",
   },
+  downPaymentAssistanceTexas: {
+    title: "Texas Down Payment Assistance – TDHCA, TSAHC, SETH & Chenoa Fund",
+    description: "Texas down payment assistance broker enrolled in TDHCA, TSAHC, SETH, and Chenoa Fund. Up to 5% grants and silent seconds, $0 out of pocket possible. 580+ credit options.",
+    canonical: "/down-payment-assistance-texas",
+  },
   apply: {
     title: "Apply Now – Start Your Texas Mortgage Application",
     description: "Start your Texas mortgage application with Keys by Shalanda. Secure, simple online application. VA, FHA, USDA, and conventional loans available.",
