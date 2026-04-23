@@ -384,6 +384,22 @@ const KilleenVaLoan = () => {
         </div>
       </section>
 
+      {/* ── 6.5 BAH CALCULATOR CALLOUT ─────────────────────────────────────── */}
+      <section style={{ backgroundColor: "#fdf9f3", ...sectionPad }}>
+        <div style={container}>
+          <div style={{ borderLeft: `4px solid ${copper}`, backgroundColor: white, borderRadius: radius, padding: "32px 36px", boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }}>
+            <p style={tag(copper)}>BAH · Buying Power</p>
+            <h2 style={{ ...h2Style(), marginBottom: 16 }}>See Exactly What Your BAH Covers</h2>
+            <p style={{ fontSize: 16, color: textSecondary, lineHeight: 1.65, marginBottom: 24, maxWidth: 720 }}>
+              The BAH and Buying Power calculator lets you model your real buying power by pay grade. Enter your BAH rate and see how it stacks against your estimated PITI at any purchase price in the Killeen corridor — including Bell County property taxes — so you know exactly where you stand before you shop a single home.
+            </p>
+            <Link to="/calculators?tab=bah-buying-power" style={{ display: "inline-block", backgroundColor: copper, color: white, fontWeight: 600, fontSize: 15, padding: "14px 28px", borderRadius: radius, textDecoration: "none" }}>
+              Open the BAH &amp; Buying Power Calculator →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* ── 7. TEXAS-SPECIFIC ───────────────────────────────────────────────── */}
       <section style={{ backgroundColor: hero, ...sectionPad }}>
         <div style={container}>
@@ -396,6 +412,34 @@ const KilleenVaLoan = () => {
                 <span style={{ display: "inline-block", backgroundColor: copperLight, color: copper, fontSize: 12, fontWeight: 600, padding: "4px 12px", borderRadius: 999, marginBottom: 12, fontFamily: "'Fira Mono', monospace" }}>{t.badge}</span>
                 <p style={{ fontSize: 15, color: "rgba(240,237,230,0.65)", lineHeight: 1.65, margin: 0 }}>{t.body}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 7.5 FAQ ─────────────────────────────────────────────────────────── */}
+      <section style={{ backgroundColor: white, ...sectionPad }}>
+        <div style={container}>
+          <p style={tag()}>FAQ · Fort Hood Buyers</p>
+          <h2 style={{ ...h2Style(), marginBottom: 32 }}>What Fort Hood Buyers Ask Us Most</h2>
+          <div style={{ display: "flex", flexDirection: "column", gap: 12, maxWidth: 880 }}>
+            {[
+              { q: "Do I need my Certificate of Eligibility before I can apply?", a: "No — we pull your COE directly from the VA system during your application at no cost to you. You do not need to track it down beforehand. Most COEs are returned in minutes, and we handle the rare exceptions where a manual request is needed." },
+              { q: "Can I use my VA loan benefit near Fort Hood if I've used it before?", a: "Yes — VA entitlement is reusable as long as your previous VA loan has been paid off or the entitlement has been restored. If you still have an active VA loan on another property, your remaining entitlement may cover a new purchase in Killeen at current price points. We calculate your available entitlement during our first conversation." },
+              { q: "What credit score do I need for a VA loan?", a: "The VA itself has no minimum credit score requirement — individual lenders set overlays. Most require 580 to 620 minimum. We have lenders who work with scores down to 550 with strong compensating factors such as residual income and stable employment history. Manual underwriting is available for files that do not fit automated approval." },
+              { q: "Can a surviving spouse use the VA loan benefit near Fort Hood?", a: "Yes — an unmarried surviving spouse of a veteran who died in service or from a service-connected disability is eligible for the VA home loan benefit. The surviving spouse must obtain a COE through the VA. Eligibility is not affected by remarriage in most circumstances. Contact us and we will walk through your specific situation." },
+              { q: "I have a 100% disability rating — what does that mean for my taxes in Texas?", a: "A 100% service-connected disability rating qualifies you for a full property tax exemption on your Texas primary residence. This eliminates your entire property tax liability — which typically runs $3,900 to $4,900 per year on a median Killeen home. File with Bell County Appraisal District after closing using your VA award letter. The exemption does not apply automatically — you must file." },
+              { q: "Does USDA financing work near Fort Hood?", a: "Some addresses in Copperas Cove and rural areas west of the corridor qualify for USDA Rural Development financing, which requires zero down payment and no monthly mortgage insurance. The trade-off is that the property must be in an eligible rural area as defined by USDA, income limits apply, and the home must be a primary residence. We check USDA eligibility for every buyer in the corridor at no cost." },
+              { q: "Can I use down payment assistance with a VA loan?", a: "VA loans already require zero down payment, so standard DPA programs are rarely needed. However, some DPA programs can be used to cover VA closing costs in certain circumstances. If you are not VA eligible, FHA plus DPA is a strong alternative — with programs like TDHCA My First Texas Home available statewide with a 620 minimum credit score." },
+              { q: "What happens if I get PCS orders before I finish building?", a: "If you are under contract on a new construction home and receive orders before closing, there are several options. VA allows you to close on the home and immediately convert it to a rental property. Loan assumption is available on VA loans, meaning a future buyer can take over your loan at your original rate. Or in some cases, the builder contract can be transferred or exited depending on the contract terms. Tell us your situation and we will model all three scenarios." },
+            ].map((item, i) => (
+              <details key={i} style={{ border: `1px solid ${border}`, borderRadius: radius, padding: "18px 22px", backgroundColor: "#fbfaf7" }}>
+                <summary style={{ cursor: "pointer", fontFamily: "'Lora', serif", fontSize: 17, fontWeight: 600, color: textPrimary, listStyle: "none", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16 }}>
+                  <span>{item.q}</span>
+                  <span style={{ color: copper, fontFamily: "'Fira Mono', monospace", fontSize: 18, flexShrink: 0 }}>+</span>
+                </summary>
+                <p style={{ fontSize: 15, color: textSecondary, lineHeight: 1.65, marginTop: 14, marginBottom: 0 }}>{item.a}</p>
+              </details>
             ))}
           </div>
         </div>
