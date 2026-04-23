@@ -21,6 +21,7 @@ import PcsToPortfolioPage from "@/pages/PcsToPortfolio";
 import KilleenVaLoanPage from "@/pages/KilleenVaLoan";
 import FirstTimeBuyersPage from "@/pages/FirstTimeBuyers";
 import InvestorsPage from "@/pages/Investors";
+import FhaLoanTexasPage from "@/pages/FhaLoanTexas";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -50,6 +51,7 @@ const App = () => (
             <Route path="/killeen-va-loan" element={<KilleenVaLoanPage />} />
             <Route path="/first-time-buyers" element={<FirstTimeBuyersPage />} />
             <Route path="/investors" element={<InvestorsPage />} />
+            <Route path="/fha-loan-texas" element={<FhaLoanTexasPage />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
