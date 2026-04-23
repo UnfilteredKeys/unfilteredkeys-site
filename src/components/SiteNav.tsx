@@ -21,7 +21,7 @@ const NAV: NavItem[] = [
       { to: "/first-time-buyers", label: "First-Time Buyers" },
       { to: "/fha-loan-texas", label: "FHA Loans" },
       { to: "/conventional-loan-texas", label: "Conventional Loans" },
-      { to: "/loan-programs", label: "Down Payment Assistance" },
+      { to: "/down-payment-assistance-texas", label: "Down Payment Assistance" },
       { to: "/construction-renovation-loans-texas", label: "New Construction" },
     ],
   },
