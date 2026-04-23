@@ -42,7 +42,16 @@ const NAV: NavItem[] = [
       { to: "/construction-renovation-loans-texas", label: "Construction and Renovation" },
     ],
   },
-  { label: "Calculators", to: "/calculators" },
+  {
+    label: "Calculators",
+    children: [
+      { to: "/calculators?tab=texas-payment", label: "Texas Payment Calculator" },
+      { to: "/calculators?tab=va-loan", label: "VA Loan Calculator" },
+      { to: "/calculators?tab=fha-vs-conventional", label: "FHA vs. Conventional" },
+      { to: "/calculators?tab=budget-affordability", label: "Budget and Affordability" },
+      { to: "/calculators?tab=bah-buying-power", label: "BAH and Buying Power" },
+    ],
+  },
   {
     label: "Resources",
     children: [
