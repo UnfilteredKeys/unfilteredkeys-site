@@ -333,6 +333,54 @@ const DownPaymentAssistanceTexasPage = () => {
           </div>
         </section>
 
+        {/* MCC */}
+        <section className="dpa-section dpa-section-parchment">
+          <div className="wrap">
+            <div className="dpa-eyebrow" style={{ color: COPPER }}>MCC · Federal Tax Credit</div>
+            <h2 className="dpa-h2" style={{ color: NAVY }}>Mortgage Credit Certificate — A Benefit First-Time Buyers May Have Access To</h2>
+            <p className="dpa-body">If you are a first-time home buyer using down payment assistance, you may also have access to a Mortgage Credit Certificate — a federal tax credit that reduces your income tax liability every year you live in the home. It is not a loan. It is not a grant. It is a permanent annual tax credit that puts real money back in your pocket at tax time, every year, for as long as the home is your primary residence.</p>
+            <p className="dpa-body">Not all DPA programs include it and eligibility depends on your county and situation — but if you qualify, it is one of the most powerful and least-known benefits available to Texas first-time buyers.</p>
+
+            <div className="mcc-compare">
+              <div className="mcc-box">
+                <div className="mcc-box-t">Without MCC</div>
+                <ul className="mcc-box-list">
+                  <li>Mortgage interest deduction reduces taxable income</li>
+                  <li>Tax savings depend on your tax bracket</li>
+                  <li>Benefit diminishes as loan balance decreases over time</li>
+                </ul>
+              </div>
+              <div className="mcc-box mcc-box-with">
+                <div className="mcc-box-t">With MCC</div>
+                <ul className="mcc-box-list">
+                  <li>A portion of your mortgage interest becomes a direct federal tax credit</li>
+                  <li>Reduces your actual tax bill dollar for dollar every year</li>
+                  <li>Remaining mortgage interest is still fully deductible as normal</li>
+                </ul>
+              </div>
+            </div>
+
+            <h3 className="mcc-feat-h">What First-Time Buyers Should Know About the MCC</h3>
+            <ul className="mcc-feat-list">
+              <li>It reduces your federal income tax liability every year you live in the home as your primary residence.</li>
+              <li>Lenders can use the annual MCC credit to reduce your debt-to-income ratio — which means you may qualify for a larger loan than you would without it. This is one of the most underused qualification tools in Texas mortgage.</li>
+              <li>There is no minimum credit score requirement and no maximum DTI requirement for the MCC itself.</li>
+              <li>The MCC can only be accessed in combination with down payment assistance — it is no longer available as a standalone product in most programs.</li>
+              <li>Income limits vary by county, and expanded income and purchase price limits are available in targeted areas.</li>
+              <li>The MCC is exclusively for first-time home buyers — defined as those who have not owned a primary residence in the past three years.</li>
+            </ul>
+
+            <div className="mcc-callout">
+              <div className="mcc-callout-h">One More Thing to Understand About DPA — The Program Sets Your Rate</div>
+              <p className="mcc-callout-b">When you use down payment assistance, the interest rate on your loan is set by the DPA program — not by your loan officer. This is one of the most important distinctions to understand before you apply. DPA programs publish their own fixed rates, and every borrower in that program on that day gets that rate. Your loan officer cannot negotiate it up or down.</p>
+              <p className="mcc-callout-b">What your loan officer can control is whether you are in the right program for your situation, whether you are structured correctly to qualify, and whether the total cost — rate plus assistance minus what you would have paid out of pocket — actually works in your favor.</p>
+              <p className="mcc-callout-b">This is why working with someone enrolled in multiple programs matters. If one program's rate is not competitive on a given day, we can evaluate whether another structure serves you better. The goal is never just to get you into a DPA program — it is to get you into the right structure for your specific situation.</p>
+            </div>
+
+            <div className="mcc-disclaimer">MCC availability, income limits, and purchase price limits vary by county and program and update periodically. All information is for general educational purposes. Contact us to verify current eligibility for your specific situation.</div>
+          </div>
+        </section>
+
         {/* STACKING */}
         <section className="dpa-section dpa-section-parchment">
           <div className="wrap">
