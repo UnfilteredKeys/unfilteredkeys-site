@@ -66,6 +66,11 @@ export const seoMeta = {
     description: "Free Texas mortgage calculators: monthly payment, affordability, VA loan estimate, and rental ROI. Run the numbers before you apply.",
     canonical: "/calculators",
   },
+  firstTimeBuyers: {
+    title: "First-Time Home Buyers in Texas – Down Payment Assistance & FHA Loans",
+    description: "First-time buyer guide for Texas: FHA, conventional, USDA, and TDHCA, TSAHC, SETH down payment assistance programs explained. Get pre-approved with Keys by Shalanda.",
+    canonical: "/first-time-buyers",
+  },
   apply: {
     title: "Apply Now – Start Your Texas Mortgage Application",
     description: "Start your Texas mortgage application with Keys by Shalanda. Secure, simple online application. VA, FHA, USDA, and conventional loans available.",
