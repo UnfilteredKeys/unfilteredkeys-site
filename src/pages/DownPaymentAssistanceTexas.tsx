@@ -243,6 +243,26 @@ const DownPaymentAssistanceTexasPage = () => {
         .faq-item[open] summary::after { content: '−'; }
         .faq-a { padding: 0 0 22px; font-size: 15.5px; color: #3d4754; line-height: 1.75; max-width: 760px; }
 
+        .mcc-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 0; background: ${NAVY}; border: 1px solid rgba(232,180,125,0.35); border-radius: 6px; overflow: hidden; margin: 32px 0 36px; }
+        @media (max-width: 760px) { .mcc-compare { grid-template-columns: 1fr; } }
+        .mcc-box { padding: 28px 30px; color: ${IVORY}; }
+        .mcc-box + .mcc-box { border-left: 1px solid rgba(232,180,125,0.25); }
+        @media (max-width: 760px) { .mcc-box + .mcc-box { border-left: none; border-top: 1px solid rgba(232,180,125,0.25); } }
+        .mcc-box-with { background: rgba(181,98,30,0.18); }
+        .mcc-box-t { font-family: 'Lora', Georgia, serif; font-size: 19px; font-weight: 600; color: ${GOLD}; margin-bottom: 14px; letter-spacing: 0.2px; }
+        .mcc-box-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+        .mcc-box-list li { font-size: 14.5px; line-height: 1.65; color: rgba(250,248,244,0.9); padding-left: 18px; position: relative; }
+        .mcc-box-list li::before { content: '—'; position: absolute; left: 0; top: 0; color: ${COPPER}; }
+        .mcc-feat-h { font-family: 'Lora', Georgia, serif; font-size: 22px; font-weight: 600; color: ${NAVY}; margin: 8px 0 16px; }
+        .mcc-feat-list { list-style: none; padding: 0; margin: 0 0 32px; display: grid; gap: 12px; max-width: 900px; }
+        .mcc-feat-list li { padding-left: 26px; position: relative; font-size: 15.5px; color: #3d4754; line-height: 1.7; }
+        .mcc-feat-list li::before { content: '➔'; position: absolute; left: 0; top: 1px; color: ${COPPER}; font-size: 14px; }
+        .mcc-callout { background: ${COPPER}; color: #fff; padding: 30px 34px; border-radius: 6px; max-width: 980px; }
+        .mcc-callout-h { font-family: 'Lora', Georgia, serif; font-size: 22px; font-weight: 600; margin-bottom: 12px; }
+        .mcc-callout-b { font-size: 15px; line-height: 1.75; opacity: 0.95; }
+        .mcc-callout-b + .mcc-callout-b { margin-top: 12px; }
+        .mcc-disclaimer { margin-top: 22px; font-size: 12.5px; color: #6b6357; font-style: italic; max-width: 880px; }
+
         .dpa-cta-final { text-align: center; padding: 96px 0; }
         .dpa-cta-final .dpa-h2 { margin-left: auto; margin-right: auto; margin-bottom: 22px; text-align: center; }
         .dpa-cta-final .dpa-sub-final { color: rgba(250,248,244,0.82); font-size: 17px; max-width: 720px; margin: 0 auto 32px; }
@@ -310,6 +330,54 @@ const DownPaymentAssistanceTexasPage = () => {
               ))}
             </div>
             <div className="prog-disclaimer">DPA program availability, income limits, credit minimums, and assistance amounts change frequently. All figures are for general educational purposes based on current enrollment. Contact us to verify current eligibility for your specific situation before making any financial decisions.</div>
+          </div>
+        </section>
+
+        {/* MCC */}
+        <section className="dpa-section dpa-section-parchment">
+          <div className="wrap">
+            <div className="dpa-eyebrow" style={{ color: COPPER }}>MCC · Federal Tax Credit</div>
+            <h2 className="dpa-h2" style={{ color: NAVY }}>Mortgage Credit Certificate — A Benefit First-Time Buyers May Have Access To</h2>
+            <p className="dpa-body">If you are a first-time home buyer using down payment assistance, you may also have access to a Mortgage Credit Certificate — a federal tax credit that reduces your income tax liability every year you live in the home. It is not a loan. It is not a grant. It is a permanent annual tax credit that puts real money back in your pocket at tax time, every year, for as long as the home is your primary residence.</p>
+            <p className="dpa-body">Not all DPA programs include it and eligibility depends on your county and situation — but if you qualify, it is one of the most powerful and least-known benefits available to Texas first-time buyers.</p>
+
+            <div className="mcc-compare">
+              <div className="mcc-box">
+                <div className="mcc-box-t">Without MCC</div>
+                <ul className="mcc-box-list">
+                  <li>Mortgage interest deduction reduces taxable income</li>
+                  <li>Tax savings depend on your tax bracket</li>
+                  <li>Benefit diminishes as loan balance decreases over time</li>
+                </ul>
+              </div>
+              <div className="mcc-box mcc-box-with">
+                <div className="mcc-box-t">With MCC</div>
+                <ul className="mcc-box-list">
+                  <li>A portion of your mortgage interest becomes a direct federal tax credit</li>
+                  <li>Reduces your actual tax bill dollar for dollar every year</li>
+                  <li>Remaining mortgage interest is still fully deductible as normal</li>
+                </ul>
+              </div>
+            </div>
+
+            <h3 className="mcc-feat-h">What First-Time Buyers Should Know About the MCC</h3>
+            <ul className="mcc-feat-list">
+              <li>It reduces your federal income tax liability every year you live in the home as your primary residence.</li>
+              <li>Lenders can use the annual MCC credit to reduce your debt-to-income ratio — which means you may qualify for a larger loan than you would without it. This is one of the most underused qualification tools in Texas mortgage.</li>
+              <li>There is no minimum credit score requirement and no maximum DTI requirement for the MCC itself.</li>
+              <li>The MCC can only be accessed in combination with down payment assistance — it is no longer available as a standalone product in most programs.</li>
+              <li>Income limits vary by county, and expanded income and purchase price limits are available in targeted areas.</li>
+              <li>The MCC is exclusively for first-time home buyers — defined as those who have not owned a primary residence in the past three years.</li>
+            </ul>
+
+            <div className="mcc-callout">
+              <div className="mcc-callout-h">One More Thing to Understand About DPA — The Program Sets Your Rate</div>
+              <p className="mcc-callout-b">When you use down payment assistance, the interest rate on your loan is set by the DPA program — not by your loan officer. This is one of the most important distinctions to understand before you apply. DPA programs publish their own fixed rates, and every borrower in that program on that day gets that rate. Your loan officer cannot negotiate it up or down.</p>
+              <p className="mcc-callout-b">What your loan officer can control is whether you are in the right program for your situation, whether you are structured correctly to qualify, and whether the total cost — rate plus assistance minus what you would have paid out of pocket — actually works in your favor.</p>
+              <p className="mcc-callout-b">This is why working with someone enrolled in multiple programs matters. If one program's rate is not competitive on a given day, we can evaluate whether another structure serves you better. The goal is never just to get you into a DPA program — it is to get you into the right structure for your specific situation.</p>
+            </div>
+
+            <div className="mcc-disclaimer">MCC availability, income limits, and purchase price limits vary by county and program and update periodically. All information is for general educational purposes. Contact us to verify current eligibility for your specific situation.</div>
           </div>
         </section>
 
