@@ -821,7 +821,22 @@ function BAHCalc() {
 type TabId = "texas" | "va" | "compare" | "budget" | "bah";
 
 export default function Calculators() {
-    const [tab, setTab] = useState<TabId>("texas");
+  const [searchParams] = useSearchParams();
+  const tabParamMap: Record<string, TabId> = {
+    "texas-payment": "texas",
+    "va-loan": "va",
+    "fha-vs-conventional": "compare",
+    "budget-affordability": "budget",
+    "bah-buying-power": "bah",
+  };
+  const initialTab: TabId = tabParamMap[searchParams.get("tab") || ""] || "texas";
+  const [tab, setTab] = useState<TabId>(initialTab);
+
+  useEffect(() => {
+    const t = tabParamMap[searchParams.get("tab") || ""];
+    if (t) setTab(t);
+  }, [searchParams]);
+
   const tabs: { id: TabId; label: string }[] = [
     { id: "texas", label: "Texas Payment" },
     { id: "va", label: "VA Loan" },
