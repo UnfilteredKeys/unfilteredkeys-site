@@ -384,6 +384,22 @@ const KilleenVaLoan = () => {
         </div>
       </section>
 
+      {/* ── 6.5 BAH CALCULATOR CALLOUT ─────────────────────────────────────── */}
+      <section style={{ backgroundColor: "#fdf9f3", ...sectionPad }}>
+        <div style={container}>
+          <div style={{ borderLeft: `4px solid ${copper}`, backgroundColor: white, borderRadius: radius, padding: "32px 36px", boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }}>
+            <p style={tag(copper)}>BAH · Buying Power</p>
+            <h2 style={{ ...h2Style(), marginBottom: 16 }}>See Exactly What Your BAH Covers</h2>
+            <p style={{ fontSize: 16, color: textSecondary, lineHeight: 1.65, marginBottom: 24, maxWidth: 720 }}>
+              The BAH and Buying Power calculator lets you model your real buying power by pay grade. Enter your BAH rate and see how it stacks against your estimated PITI at any purchase price in the Killeen corridor — including Bell County property taxes — so you know exactly where you stand before you shop a single home.
+            </p>
+            <Link to="/calculators?tab=bah-buying-power" style={{ display: "inline-block", backgroundColor: copper, color: white, fontWeight: 600, fontSize: 15, padding: "14px 28px", borderRadius: radius, textDecoration: "none" }}>
+              Open the BAH &amp; Buying Power Calculator →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* ── 7. TEXAS-SPECIFIC ───────────────────────────────────────────────── */}
       <section style={{ backgroundColor: hero, ...sectionPad }}>
         <div style={container}>
