@@ -243,6 +243,26 @@ const DownPaymentAssistanceTexasPage = () => {
         .faq-item[open] summary::after { content: '−'; }
         .faq-a { padding: 0 0 22px; font-size: 15.5px; color: #3d4754; line-height: 1.75; max-width: 760px; }
 
+        .mcc-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 0; background: ${NAVY}; border: 1px solid rgba(232,180,125,0.35); border-radius: 6px; overflow: hidden; margin: 32px 0 36px; }
+        @media (max-width: 760px) { .mcc-compare { grid-template-columns: 1fr; } }
+        .mcc-box { padding: 28px 30px; color: ${IVORY}; }
+        .mcc-box + .mcc-box { border-left: 1px solid rgba(232,180,125,0.25); }
+        @media (max-width: 760px) { .mcc-box + .mcc-box { border-left: none; border-top: 1px solid rgba(232,180,125,0.25); } }
+        .mcc-box-with { background: rgba(181,98,30,0.18); }
+        .mcc-box-t { font-family: 'Lora', Georgia, serif; font-size: 19px; font-weight: 600; color: ${GOLD}; margin-bottom: 14px; letter-spacing: 0.2px; }
+        .mcc-box-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+        .mcc-box-list li { font-size: 14.5px; line-height: 1.65; color: rgba(250,248,244,0.9); padding-left: 18px; position: relative; }
+        .mcc-box-list li::before { content: '—'; position: absolute; left: 0; top: 0; color: ${COPPER}; }
+        .mcc-feat-h { font-family: 'Lora', Georgia, serif; font-size: 22px; font-weight: 600; color: ${NAVY}; margin: 8px 0 16px; }
+        .mcc-feat-list { list-style: none; padding: 0; margin: 0 0 32px; display: grid; gap: 12px; max-width: 900px; }
+        .mcc-feat-list li { padding-left: 26px; position: relative; font-size: 15.5px; color: #3d4754; line-height: 1.7; }
+        .mcc-feat-list li::before { content: '➔'; position: absolute; left: 0; top: 1px; color: ${COPPER}; font-size: 14px; }
+        .mcc-callout { background: ${COPPER}; color: #fff; padding: 30px 34px; border-radius: 6px; max-width: 980px; }
+        .mcc-callout-h { font-family: 'Lora', Georgia, serif; font-size: 22px; font-weight: 600; margin-bottom: 12px; }
+        .mcc-callout-b { font-size: 15px; line-height: 1.75; opacity: 0.95; }
+        .mcc-callout-b + .mcc-callout-b { margin-top: 12px; }
+        .mcc-disclaimer { margin-top: 22px; font-size: 12.5px; color: #6b6357; font-style: italic; max-width: 880px; }
+
         .dpa-cta-final { text-align: center; padding: 96px 0; }
         .dpa-cta-final .dpa-h2 { margin-left: auto; margin-right: auto; margin-bottom: 22px; text-align: center; }
         .dpa-cta-final .dpa-sub-final { color: rgba(250,248,244,0.82); font-size: 17px; max-width: 720px; margin: 0 auto 32px; }
