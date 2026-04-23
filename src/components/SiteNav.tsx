@@ -7,33 +7,42 @@ type NavItem = { label: string; to?: string; children?: NavChild[] };
 
 const NAV: NavItem[] = [
   {
-    label: "Buy a Home",
+    label: "Veterans",
     children: [
-      { to: "/buy-a-home", label: "Overview" },
-      { to: "/va-loan-texas", label: "VA Loans" },
-      { to: "/killeen-va-loan", label: "Killeen VA Loan" },
+      { to: "/va-loan-texas", label: "VA Loan Overview" },
+      { to: "/killeen-va-loan", label: "Killeen and Fort Hood" },
       { to: "/pcs-to-portfolio", label: "PCS to Portfolio" },
-      { to: "/physician-loan-texas", label: "Physician Loans" },
+      { to: "/calculators", label: "BAH and Buying Power" },
     ],
   },
   {
-    label: "Refinance",
-    children: [{ to: "/refinance", label: "Overview" }],
+    label: "Buy a Home",
+    children: [
+      { to: "/loan-programs", label: "First-Time Buyers" },
+      { to: "/loan-programs", label: "FHA Loans" },
+      { to: "/loan-programs", label: "Conventional Loans" },
+      { to: "/loan-programs", label: "Down Payment Assistance" },
+      { to: "/construction-renovation-loans-texas", label: "New Construction" },
+    ],
+  },
+  {
+    label: "Investors",
+    children: [
+      { to: "/loan-programs", label: "DSCR Loans" },
+      { to: "/loan-programs", label: "Bank Statement Loans" },
+      { to: "/loan-programs", label: "Build a Rental Portfolio" },
+      { to: "/pcs-to-portfolio", label: "PCS to Portfolio" },
+    ],
   },
   {
     label: "Programs",
     children: [
       { to: "/loan-programs", label: "All Programs" },
-      { to: "/construction-renovation-loans-texas", label: "Construction & Renovation" },
-      { to: "/va-loan-texas", label: "VA Loans" },
       { to: "/physician-loan-texas", label: "Physician Loans" },
+      { to: "/construction-renovation-loans-texas", label: "Construction and Renovation" },
     ],
   },
-  {
-    label: "Calculators",
-    to: "/calculators",
-    children: [{ to: "/calculators", label: "All Calculators" }],
-  },
+  { label: "Calculators", to: "/calculators" },
   {
     label: "Resources",
     children: [
@@ -46,7 +55,6 @@ const NAV: NavItem[] = [
 
 const NAVY = "#1a3a5c";
 const COPPER = "#b5621e";
-const IVORY = "#faf8f4";
 
 const SiteNav = () => {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
@@ -115,20 +123,28 @@ const SiteNav = () => {
                   <span style={triggerStyle}>{item.label}</span>
                 )}
 
-                {hasChildren && isOpen && (
-                  <div style={{
-                    position: "absolute",
-                    top: "calc(100% + 8px)",
-                    left: 0,
-                    minWidth: "220px",
-                    background: NAVY,
-                    borderRadius: "8px",
-                    boxShadow: "0 12px 28px rgba(28,38,48,0.25)",
-                    padding: "8px",
-                    zIndex: 200,
-                  }}>
+                {hasChildren && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "calc(100% + 8px)",
+                      left: 0,
+                      minWidth: "240px",
+                      background: "#ffffff",
+                      borderTop: `2px solid ${COPPER}`,
+                      borderRadius: "6px",
+                      boxShadow: "0 12px 28px rgba(28,38,48,0.18)",
+                      padding: "8px",
+                      zIndex: 200,
+                      opacity: isOpen ? 1 : 0,
+                      visibility: isOpen ? "visible" : "hidden",
+                      transform: isOpen ? "translateY(0)" : "translateY(-4px)",
+                      transition: "opacity 0.18s ease, transform 0.18s ease, visibility 0.18s",
+                      pointerEvents: isOpen ? "auto" : "none",
+                    }}
+                  >
                     {/* Hover bridge */}
-                    <div style={{ position: "absolute", top: "-8px", left: 0, right: 0, height: "8px" }} />
+                    <div style={{ position: "absolute", top: "-10px", left: 0, right: 0, height: "10px" }} />
                     {item.children!.map((child) => (
                       <Link
                         key={child.to + child.label}
@@ -136,12 +152,12 @@ const SiteNav = () => {
                         style={{
                           display: "block",
                           padding: "10px 14px",
-                          color: IVORY,
+                          color: NAVY,
                           fontFamily: "'Outfit', sans-serif",
                           fontSize: "14px",
                           fontWeight: 500,
                           textDecoration: "none",
-                          borderRadius: "6px",
+                          borderRadius: "4px",
                           whiteSpace: "nowrap",
                           transition: "background 0.15s, color 0.15s",
                         }}
@@ -151,7 +167,7 @@ const SiteNav = () => {
                         }}
                         onMouseLeave={(e) => {
                           (e.currentTarget as HTMLElement).style.background = "transparent";
-                          (e.currentTarget as HTMLElement).style.color = IVORY;
+                          (e.currentTarget as HTMLElement).style.color = NAVY;
                         }}
                       >
                         {child.label}
@@ -229,7 +245,7 @@ const SiteNav = () => {
               }}>
                 {item.label}
               </div>
-              <div style={{ display: "flex", flexDirection: "column" }}>
+              <div style={{ display: "flex", flexDirection: "column", paddingLeft: "12px" }}>
                 {(item.children ?? (item.to ? [{ to: item.to, label: item.label }] : [])).map((child) => (
                   <Link
                     key={child.to + child.label}
