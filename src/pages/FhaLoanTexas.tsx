@@ -241,7 +241,7 @@ const FhaLoanTexasPage = () => {
 
             <div className="calc-callout">
               <div className="calc-callout-text">Not sure which is cheaper for your situation? Run the numbers yourself.</div>
-              <Link to="/calculators" className="calc-btn">Use the FHA vs Conventional Calculator →</Link>
+              <Link to="/calculators?tab=fha-vs-conventional" className="calc-btn">Use the FHA vs Conventional Calculator →</Link>
             </div>
           </div>
         </section>
