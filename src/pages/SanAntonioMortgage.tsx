@@ -172,18 +172,6 @@ const programs = [
     note: "BAMC and the South Texas Medical Center — one of the largest medical complexes in the country — drive steady physician relocation into San Antonio. 1-day-out-of-residency programs available.",
     link: { to: "/physician-loan-texas", text: "Physician Loan Details →" },
   },
-  {
-    title: "Texas Veterans Land Board (VLB)",
-    badgeColor: "#534AB7",
-    items: [
-      "Low-interest home loans exclusively for Texas veterans",
-      "Available for purchases, home improvement, and land",
-      "Can be combined with VA loan benefits in some scenarios",
-      "Must be a Texas resident who has served at least 90 days active duty",
-    ],
-    note: "The VLB is a Texas-specific benefit that complements your federal VA loan eligibility. Many veterans in San Antonio qualify and never use it. We review VLB alongside VA options on every veteran file.",
-    link: null,
-  },
 ];
 
 const texasItems = [
