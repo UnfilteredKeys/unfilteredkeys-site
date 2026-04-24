@@ -62,6 +62,7 @@ const NAV: NavItem[] = [
   {
     label: "Cities",
     children: [
+      { to: "/dallas-tx-mortgage", label: "Dallas–Fort Worth" },
       { to: "/georgetown-tx-mortgage", label: "Georgetown" },
       { to: "/houston-tx-mortgage", label: "Houston" },
       { to: "/killeen-va-loan", label: "Killeen and Fort Hood" },
