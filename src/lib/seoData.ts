@@ -101,6 +101,11 @@ export const seoMeta = {
     description: "Georgetown TX mortgage broker for Sun City buyers, historic square move-ups, and Williamson County families. VA, FHA, conventional, physician, renovation, and DPA programs.",
     canonical: "/georgetown-tx-mortgage",
   },
+  sanAntonioMortgage: {
+    title: "Mortgage Broker San Antonio TX – Bexar County Home Loans | Keys by Shalanda",
+    description: "San Antonio TX mortgage broker for military families, first-time buyers, and Bexar County move-ups. JBSA, VA, FHA, conventional, physician, and DPA programs.",
+    canonical: "/san-antonio-tx-mortgage",
+  },
   templeTxMortgage: {
     title: "Mortgage Broker Temple TX – Bell County Home Loans | Keys by Shalanda",
     description: "Temple TX mortgage broker for Baylor Scott & White professionals, Belton ISD families, and Bell County buyers. Physician, VA, FHA, and conventional loans.",
