@@ -29,6 +29,7 @@ import RoundRockMortgagePage from "@/pages/RoundRockMortgage";
 import GeorgetownMortgagePage from "@/pages/GeorgetownMortgage";
 import SanAntonioMortgagePage from "@/pages/SanAntonioMortgage";
 import HoustonMortgagePage from "@/pages/HoustonMortgage";
+import DallasMortgagePage from "@/pages/DallasMortgage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
