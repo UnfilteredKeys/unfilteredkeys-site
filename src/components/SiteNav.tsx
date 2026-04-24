@@ -59,6 +59,15 @@ const NAV: NavItem[] = [
       { to: "/playbook", label: "90-Day Playbook" },
     ],
   },
+  {
+    label: "Cities",
+    children: [
+      { to: "/killeen-va-loan", label: "Killeen and Fort Hood" },
+      { to: "/temple-tx-mortgage", label: "Temple and Bell County" },
+      { to: "/round-rock-tx-mortgage", label: "Round Rock" },
+      { to: "/georgetown-tx-mortgage", label: "Georgetown" },
+    ],
+  },
   { label: "About", to: "/about" },
 ];
 
