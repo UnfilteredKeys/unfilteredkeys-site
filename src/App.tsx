@@ -28,6 +28,7 @@ import TempleTexasMortgagePage from "@/pages/TempleTexasMortgage";
 import RoundRockMortgagePage from "@/pages/RoundRockMortgage";
 import GeorgetownMortgagePage from "@/pages/GeorgetownMortgage";
 import SanAntonioMortgagePage from "@/pages/SanAntonioMortgage";
+import HoustonMortgagePage from "@/pages/HoustonMortgage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -64,6 +65,7 @@ const App = () => (
             <Route path="/round-rock-tx-mortgage" element={<RoundRockMortgagePage />} />
             <Route path="/georgetown-tx-mortgage" element={<GeorgetownMortgagePage />} />
             <Route path="/san-antonio-tx-mortgage" element={<SanAntonioMortgagePage />} />
+            <Route path="/houston-tx-mortgage" element={<HoustonMortgagePage />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
