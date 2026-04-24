@@ -144,12 +144,12 @@ const AustinMortgage = () => {
       {/* HERO */}
       <section style={{ background: hero, color: ivory, padding: "96px 0 80px" }} className="atx-hero">
         <div style={container}>
-          <div style={tag(copper)}>Austin, TX · Travis County · Live Music Capital of the World · State Capital of Texas</div>
+          <div style={tag(copper)}>Austin, TX · Travis County · Live Music Capital of the World · Silicon Hills</div>
           <h1 style={{ fontFamily: "'Lora', serif", fontSize: 44, fontWeight: 700, lineHeight: 1.15, margin: "0 0 18px", color: ivory }}>
-            Buying a Home in Austin, TX. <span style={{ color: copper }}>Down 18–20% From Peak. Buyers Have the Best Leverage in Over a Decade. Keep Austin Weird.</span>
+            Buying a Home in Austin, TX. <span style={{ color: copper }}>Dell. Whole Foods. Barton Springs. The Broken Spoke. And a Market That's Down 18–20% From Peak.</span>
           </h1>
           <p style={{ fontSize: 17, lineHeight: 1.7, maxWidth: 820, color: "rgba(250,248,244,0.85)", marginBottom: 28 }}>
-            Austin is the Live Music Capital of the World, the home of SXSW, ACL, Barton Springs, and 250+ live music venues. It's also a city that overshot on price by 50%+ during the pandemic and has spent four years finding its floor. That floor is close. Sellers are negotiating. Homes are sitting 85 days. The underlying city — the one that earned its identity — hasn't gone anywhere.
+            Austin is the Live Music Capital of the World, a state capital, and the city where Michael Dell started a computer company in a dorm room and John Mackey opened Whole Foods in a house and both changed their industries forever. The city's identity runs 150 years deep — Tarrytown, Bouldin Creek, Hyde Park, Allandale, East Austin. The market overshot by 50% during the pandemic. It's correcting. Buyers have more leverage right now than at any point since 2012.
           </p>
           <div className="atx-hero-btns" style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 28 }}>
             <a className="atx-btn" href={apply} target="_blank" rel="noreferrer" style={{ background: copper, color: white, padding: "14px 26px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15 }}>Get Pre-Approved</a>
@@ -181,12 +181,12 @@ const AustinMortgage = () => {
       <section style={{ ...sectionPad, background: parchment }}>
         <div style={container}>
           <div style={tag()}>What Austin Actually Is</div>
-          <h2 style={h2Style()}>Live Music. Breakfast Tacos. Barton Springs. Tesla. Keep Austin Weird.</h2>
+          <h2 style={h2Style()}>The City That Built Dell in a Dorm Room and Whole Foods Survived a Flood</h2>
           <p style={subStyle()}>
-            Austin was officially named the Live Music Capital of the World in 1991 by the City Council, but the claim predates the vote — a group of Chamber of Commerce staffers counted more than 70 live music venues on a Monday night in the 1980s and decided they had a legitimate argument. The Broken Spoke has been open since 1964. Stevie Ray Vaughan cut his teeth at Antone's Blues Club. Willie Nelson has played every venue in town. Austin City Limits on PBS has been broadcasting live music from Austin since 1974 — the longest-running music TV program ever made. SXSW started in 1987 as a small regional music showcase and became one of the most influential cultural events in the world.
+            In 1984, a University of Texas freshman named Michael Dell started a computer company with $1,000 in startup capital in his dorm room at Dobie Center. He got kicked out of his dorm for storing parts and moved into an apartment with three roommates who helped him build and sell computers. Dell Technologies became the largest personal computer company in the world and moved its headquarters 15 miles north to Round Rock in 1996, where it still employs 13,000 people in the metro area. Austin had already earned the nickname "Silicon Hills" a decade before that — IBM opened in Austin in 1967, Texas Instruments in 1969, and the Microelectronics and Computer Technology Corporation in 1983 brought the tech consortium that made Austin a magnet for semiconductor and software companies.
           </p>
           <p style={subStyle()}>
-            Then the tech industry arrived. Dell had been in Round Rock since the 1990s. Apple chose North Austin for a massive campus. Tesla built a Gigafactory east of the city. Oracle relocated its headquarters here. Amazon, Google, Meta, and hundreds of startups followed. In 2020 and 2021, the remote work migration wave brought tens of thousands of California transplants chasing lower taxes, lower prices (relative to San Francisco), and the Austin identity. Home prices went up 50%+ in some neighborhoods. The "Keep Austin Weird" bumper sticker — originally a call to support local businesses against chain retail — started to feel ironic. And now, four years later, the market has corrected and the weirdness has survived, concentrated in specific neighborhoods and specific institutions, waiting for the next generation to find it.
+            Six years before Dell, John Mackey — a 25-year-old UT dropout who had "had the natural foods conversion" — borrowed $45,000 from family and friends to open Safer Way Natural Foods in 1978 in a house on Lamar, where he lived on the third floor. In 1980 he merged with Craig Weller's Clarksville Natural Grocery to open the first Whole Foods Market — 12,500 square feet with 19 employees — on Lamar Boulevard. In May 1981, the Memorial Day flood hit. The store was submerged, sewage forced through the pipes, inventory destroyed, looters came through, and Mackey waded through dark water to retrieve whatever cash remained in the safe. They didn't have flood insurance. The Austin community showed up — vendors extended credit, customers paid in advance, neighbors helped rebuild. Whole Foods reopened. It became the global chain that Amazon bought for $13.7 billion in 2017. The headquarters remains in Austin.
           </p>
           <div className="atx-2col" style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 20, marginTop: 24 }}>
             {cultureCards.map((c) => (
@@ -205,9 +205,9 @@ const AustinMortgage = () => {
       {/* MARKET STATS */}
       <section style={{ ...sectionPad, background: hero, color: ivory }}>
         <div style={container}>
-          <div style={tag(copper)}>The Market — Honest Version</div>
-          <h2 style={h2Style(ivory)}>Austin Overshot. It's Correcting. Here's What That Means for You.</h2>
-          <p style={subStyle("rgba(250,248,244,0.8)")}>Down 18–20% from peak. Homes sitting 85 days. Sellers offering concessions. This is the best buyer leverage Austin has offered in over a decade — and the floor is close.</p>
+          <div style={tag(copper)}>2026 Market — The Honest Version</div>
+          <h2 style={h2Style(ivory)}>Austin Overshot. It's Correcting. Here's What That Means for Buyers Right Now.</h2>
+          <p style={subStyle("rgba(250,248,244,0.8)")}>Down 18–20% from peak. 85 days on market. Sellers offering concessions. The floor is close. The long-term fundamentals never changed.</p>
           <div className="atx-3col" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 16, marginBottom: 28 }}>
             {marketStats.map((s) => (
               <div key={s.label} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: radius, padding: 22 }}>
@@ -219,7 +219,7 @@ const AustinMortgage = () => {
           </div>
           <div style={{ background: "rgba(181,98,30,0.1)", border: `1px solid ${copper}`, borderRadius: radius, padding: 22, marginBottom: 28 }}>
             <p style={{ margin: 0, color: ivory, lineHeight: 1.7, fontSize: 15 }}>
-              <strong style={{ color: copper }}>What happened:</strong> Austin home prices jumped 50%+ between 2020 and 2022 driven by remote work migration, low interest rates, and speculative buying. The Fed raised rates, remote work policies reversed, and overpriced inventory began accumulating. The City of Austin median has corrected from $590,000 peak to approximately $550,000 — down 6.8% year over year and 18–20% from peak depending on the neighborhood. On a per-square-foot basis, the correction is 21–25% from April 2022 highs, distributed over four years rather than compressed into a crash. The fundamentals — UT Austin, state capital, tech presence, music identity, Hill Country access — have not changed. Austin did not become a bad city. It became a city where sellers are finally negotiating.
+              <strong style={{ color: copper }}>What happened and where the market stands:</strong> Austin home prices jumped 50%+ between 2020 and 2022 driven by remote work migration, low interest rates, and speculative buying. The Fed raised rates, return-to-office eroded some demand, and overpriced inventory began accumulating. The City of Austin median has corrected from $590,000 to $550,000 — down 6.8% year over year. On a per-square-foot basis, the correction is 21% to 25% from April 2022 highs. Sellers are offering $5,000 to $15,000+ in concessions. Correctly priced homes in sought-after neighborhoods still move. The underlying Austin — UT, state capital, Silicon Hills, Barton Springs, 250+ live music venues — did not go anywhere. The city overshot on price. It is finding its floor.
             </p>
           </div>
           <div className="atx-2col" style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 20 }}>
@@ -251,9 +251,9 @@ const AustinMortgage = () => {
       <section style={{ ...sectionPad, background: ivory }}>
         <div style={container}>
           <div style={tag()}>Know the Area</div>
-          <h2 style={h2Style()}>Austin Neighborhoods — From SoCo to the Suburbs</h2>
+          <h2 style={h2Style()}>Austin Neighborhoods — From Tarrytown to Kyle</h2>
           <p style={subStyle()}>
-            Austin's neighborhoods have genuinely distinct identities — not just price tiers. Where you live shapes your daily experience in ways that matter: the food truck you stop at on the way to work, the park you run in on weekends, the music you hear on Tuesday nights through an open bar door. Here's the honest breakdown.
+            Austin's neighborhoods have 150 years of distinct history behind them. Where you live shapes your daily experience — the food trailer you stop at, the pool you swim in, the music you hear on Tuesday nights through an open bar door. Here's the honest breakdown, from the oldest established neighborhoods to the most affordable suburbs.
           </p>
           <div className="atx-2col" style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 20 }}>
             {neighborhoods.map((n) => (
@@ -276,7 +276,7 @@ const AustinMortgage = () => {
           <div style={tag()}>Find Your Fit</div>
           <h2 style={h2Style(textOnPale)}>Loan Programs for Austin Buyers</h2>
           <p style={subStyle(textOnPale)}>
-            California tech transplant with a big down payment. Dell Medical School physician relocating. UT alum buying their first home in East Austin. Veteran finally buying after years of renting. The right program depends on your file.
+            Dell Medical physician relocating. Tech professional with California equity. First-time buyer in Kyle targeting Hays CISD. Veteran finally buying after years of renting. The right program depends on your file.
           </p>
           <div className="atx-2col" style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 20 }}>
             {programs.map((p) => (
@@ -302,9 +302,9 @@ const AustinMortgage = () => {
         <div style={container}>
           <div style={{ background: white, border: `1px solid ${border}`, borderRadius: radius, padding: 36 }}>
             <div style={tag()}>Run Your Numbers</div>
-            <h2 style={h2Style(textOnPale)}>Model Your Full Austin Payment — Including Travis County Property Taxes</h2>
+            <h2 style={h2Style(textOnPale)}>Model Your Full Austin Payment Before You Fall in Love With a House</h2>
             <p style={subStyle(textOnPale)}>
-              The Texas Payment Calculator models your full PITI at any Austin price point — including Travis County property taxes and homeowners insurance. The VA Loan Calculator shows your zero-down payment with the funding fee built in. Run both before you look at a single home.
+              The Texas Payment Calculator models your full PITI at any Austin price point — including Travis County property taxes. The VA Loan Calculator shows your zero-down payment with the funding fee built in. For Kyle and Buda buyers, plug in Hays County's effective rate. Run the numbers before you tour a single home.
             </p>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
               <Link to="/calculators" className="atx-btn" style={{ background: copper, color: white, padding: "12px 22px", borderRadius: radius, textDecoration: "none", fontWeight: 600, fontSize: 14 }}>Texas Payment Calculator →</Link>
@@ -319,7 +319,7 @@ const AustinMortgage = () => {
         <div style={container}>
           <div style={tag()}>Texas-Specific</div>
           <h2 style={h2Style()}>Austin Details That Affect Your Real Monthly Payment</h2>
-          <p style={subStyle()}>No state income tax helps. Travis County property taxes hurt. Homestead exemption helps back. Know all three before you model a budget.</p>
+          <p style={subStyle()}>No state income tax helps. Travis County property taxes are among the highest in Texas. Homestead exemption helps back. Know all of it before you model a budget.</p>
           <div className="atx-2col" style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 20 }}>
             {texasItems.map((t, i) => (
               <div key={i} style={{ background: white, border: `1px solid ${border}`, borderRadius: radius, padding: 22 }}>
@@ -354,7 +354,7 @@ const AustinMortgage = () => {
           <h2 style={{ ...h2Style(ivory), textAlign: "center" }}>Shalanda Smith</h2>
           <div style={{ fontSize: 13, opacity: 0.75, marginBottom: 18, fontFamily: "'Fira Mono', monospace" }}>NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · Licensed in Texas</div>
           <p style={{ fontSize: 16, lineHeight: 1.7, color: "rgba(250,248,244,0.85)", marginBottom: 24 }}>
-            Relocating for tech or Dell Medical? Finally buying after years of renting in Austin? Targeting East Austin or looking at the suburbs for the price break? Tell me your situation. We'll run your real numbers — PITI, program, and the honest case for or against buying in 2026 — before you fall in love with a house.
+            Targeting Bouldin Creek? Relocating for Dell Medical? First-time buyer looking at Kyle or Buda? Tell me your situation and your target. We'll run your real PITI — Travis or Hays County tax rate, program, honest case for buying in 2026 — before you fall in love with a house.
           </p>
           <div className="atx-hero-btns" style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center", marginBottom: 16 }}>
             <a className="atx-btn" href={apply} target="_blank" rel="noreferrer" style={{ background: copper, color: white, padding: "14px 26px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15 }}>Get Pre-Approved</a>
@@ -368,7 +368,7 @@ const AustinMortgage = () => {
       <section style={{ background: "#0f1722", color: "rgba(250,248,244,0.6)", padding: "32px 0" }}>
         <div style={container}>
           <p style={{ fontSize: 12, lineHeight: 1.7, margin: "0 0 16px" }}>
-            Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Licensed in Texas · Equal Housing Lender · This page is for educational purposes only and does not constitute a loan commitment or rate guarantee. Market data approximate and subject to change. Travis County property tax rates vary by address — verify the specific rate before relying on payment estimates. FHA loan limits subject to annual adjustment by HUD. Down payment assistance program availability and credit score minimums subject to program rules in effect at time of application.
+            Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Licensed in Texas · Equal Housing Lender · This page is for educational purposes only and does not constitute a loan commitment or rate guarantee. Market data approximate and subject to change. Travis and Hays County property tax rates vary by address — verify the specific rate before relying on payment estimates. FHA loan limits subject to annual adjustment by HUD. Down payment assistance program availability and credit score minimums subject to program rules in effect at time of application.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 16, fontSize: 12 }}>
             <Link to="/physician-loan-texas" style={{ color: copper, textDecoration: "none" }}>Physician Loans</Link>
