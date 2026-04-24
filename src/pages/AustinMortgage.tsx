@@ -247,6 +247,25 @@ const AustinMortgage = () => {
         </div>
       </section>
 
+      {/* COUNTY COMPARISON */}
+      <section style={{ ...sectionPad, background: parchment }}>
+        <div style={container}>
+          <div style={tag()}>Three Counties · One Metro</div>
+          <h2 style={h2Style()}>Travis vs. Williamson vs. Hays — Where the Math Works</h2>
+          <p style={subStyle()}>The Austin metro spans three counties with materially different price points and tax structures. The right county for you depends on your purchase price, employer location, and program eligibility.</p>
+          <div className="atx-3col" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20 }}>
+            {countyCompare.map((c) => (
+              <div key={c.county} style={{ background: white, border: `1px solid ${border}`, borderRadius: radius, padding: 24 }}>
+                <div style={{ fontFamily: "'Lora', serif", fontWeight: 700, color: navy, fontSize: 18, marginBottom: 8 }}>{c.county}</div>
+                <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 32, color: copper, letterSpacing: "1px" }}>{c.median}</div>
+                <div style={{ fontSize: 13, color: textSecondary, marginTop: 8, marginBottom: 12, lineHeight: 1.6 }}>{c.note}</div>
+                <div style={{ fontSize: 12, color: textSecondary, fontFamily: "'Fira Mono', monospace", borderTop: `1px solid ${border}`, paddingTop: 10 }}>{c.cities}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* NEIGHBORHOODS */}
       <section style={{ ...sectionPad, background: ivory }}>
         <div style={container}>
@@ -374,8 +393,8 @@ const AustinMortgage = () => {
             <Link to="/physician-loan-texas" style={{ color: copper, textDecoration: "none" }}>Physician Loans</Link>
             <Link to="/va-loan-texas" style={{ color: copper, textDecoration: "none" }}>VA Loans Texas</Link>
             <Link to="/down-payment-assistance-texas" style={{ color: copper, textDecoration: "none" }}>Down Payment Assistance</Link>
-            <Link to="/round-rock-tx-mortgage" style={{ color: copper, textDecoration: "none" }}>Round Rock Homes</Link>
-            <Link to="/georgetown-tx-mortgage" style={{ color: copper, textDecoration: "none" }}>Georgetown Homes</Link>
+            <Link to="/round-rock-tx-mortgage" style={{ color: copper, textDecoration: "none" }}>Round Rock</Link>
+            <Link to="/georgetown-tx-mortgage" style={{ color: copper, textDecoration: "none" }}>Georgetown</Link>
             <a href={calendly} target="_blank" rel="noreferrer" style={{ color: copper, textDecoration: "none" }}>Schedule a Call</a>
             <a href={apply} target="_blank" rel="noreferrer" style={{ color: copper, textDecoration: "none" }}>Apply Now</a>
           </div>
