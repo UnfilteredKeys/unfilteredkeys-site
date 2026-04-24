@@ -67,6 +67,7 @@ const NAV: NavItem[] = [
       { to: "/round-rock-tx-mortgage", label: "Round Rock" },
       { to: "/georgetown-tx-mortgage", label: "Georgetown" },
       { to: "/san-antonio-tx-mortgage", label: "San Antonio" },
+      { to: "/houston-tx-mortgage", label: "Houston" },
     ],
   },
   { label: "About", to: "/about" },
