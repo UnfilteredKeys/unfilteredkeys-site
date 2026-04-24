@@ -67,6 +67,7 @@ const App = () => (
             <Route path="/georgetown-tx-mortgage" element={<GeorgetownMortgagePage />} />
             <Route path="/san-antonio-tx-mortgage" element={<SanAntonioMortgagePage />} />
             <Route path="/houston-tx-mortgage" element={<HoustonMortgagePage />} />
+            <Route path="/dallas-tx-mortgage" element={<DallasMortgagePage />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
