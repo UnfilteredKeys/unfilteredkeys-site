@@ -96,6 +96,11 @@ export const seoMeta = {
     description: "Round Rock TX mortgage broker for first-time buyers, tech relocations, and Williamson County move-ups. More home than Austin — same commute. VA, FHA, conventional, physician, and DPA programs.",
     canonical: "/round-rock-tx-mortgage",
   },
+  georgetownMortgage: {
+    title: "Mortgage Broker Georgetown TX – Williamson County Home Loans | Keys by Shalanda",
+    description: "Georgetown TX mortgage broker for Sun City buyers, historic square move-ups, and Williamson County families. VA, FHA, conventional, physician, renovation, and DPA programs.",
+    canonical: "/georgetown-tx-mortgage",
+  },
   templeTxMortgage: {
     title: "Mortgage Broker Temple TX – Bell County Home Loans | Keys by Shalanda",
     description: "Temple TX mortgage broker for Baylor Scott & White professionals, Belton ISD families, and Bell County buyers. Physician, VA, FHA, and conventional loans.",
