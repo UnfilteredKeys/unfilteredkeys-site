@@ -25,7 +25,7 @@ const TX_COUNTIES = [
   { label: "Coryell County (Copperas Cove)", rate: 0.0162 },
   { label: "Dallas County", rate: 0.0200 },
   { label: "El Paso County", rate: 0.0198 },
-  { label: "Harris County (Houston)", rate: 0.0213 },
+  { label: "Harris County (Houston) (2.13% base — add MUD below for master-planned communities)", rate: 0.0213 },
   { label: "McLennan County (Waco)", rate: 0.0181 },
   { label: "Tarrant County (Fort Worth)", rate: 0.0210 },
   { label: "Taylor County (Abilene)", rate: 0.0172 },
@@ -175,6 +175,7 @@ function TexasPaymentCalc() {
   const [loanType, setLoanType] = useState("conventional");
   const [countyIdx, setCountyIdx] = useState(0);
   const [insurance, setInsurance] = useState("1800");
+  const [mudRate, setMudRate] = useState("0");
 
   const homePrice = parseFloat(price) || 0;
   const dp = parseFloat(downPct) || 0;
@@ -183,8 +184,11 @@ function TexasPaymentCalc() {
   const annualRate = parseFloat(rate) || 0;
   const years = parseInt(term);
   const county = TX_COUNTIES[countyIdx];
+  const mudPct = parseFloat(mudRate) || 0;
+  const countyPct = county.rate * 100;
+  const effectiveTaxRate = county.rate + mudPct / 100;
   const pi = monthlyPI(loanAmt, annualRate, years);
-  const monthlyTax = (homePrice * county.rate) / 12;
+  const monthlyTax = (homePrice * effectiveTaxRate) / 12;
   const monthlyIns = (parseFloat(insurance) || 0) / 12;
   const ltv = loanAmt / homePrice;
   let monthlyMI = 0, miLabel = "";
@@ -199,7 +203,7 @@ function TexasPaymentCalc() {
     <div style={S.card}>
       <div style={S.cardHeader}>
         <h2 style={S.cardTitle}>Texas Payment Calculator</h2>
-        <p style={S.cardSub}>Includes property taxes by county — the number most calculators leave out</p>
+        <p style={S.cardSub}>Includes Texas property taxes + optional MUD overlay — the number most calculators leave out</p>
       </div>
       <div style={S.cardBody}>
         <div style={S.grid2}>
@@ -209,8 +213,13 @@ function TexasPaymentCalc() {
           <div><label style={S.label}>Loan Term</label><select style={S.select} value={term} onChange={e => setTerm(e.target.value)}><option value="30">30-Year Fixed</option><option value="15">15-Year Fixed</option><option value="20">20-Year Fixed</option></select></div>
           <div><label style={S.label}>Loan Type</label><select style={S.select} value={loanType} onChange={e => setLoanType(e.target.value)}><option value="conventional">Conventional</option><option value="fha">FHA</option><option value="va">VA</option><option value="usda">USDA</option></select></div>
           <div><label style={S.label}>Texas County</label><select style={S.select} value={countyIdx} onChange={e => setCountyIdx(parseInt(e.target.value))}>{TX_COUNTIES.map((c, i) => (<option key={i} value={i}>{c.label} ({(c.rate * 100).toFixed(2)}%)</option>))}</select></div>
+          <div>
+            <label style={S.label}>MUD Tax Rate (%)</label>
+            <input style={S.input} type="number" value={mudRate} onChange={e => setMudRate(e.target.value)} min="0" max="2" step="0.01" placeholder="0.00" />
+            <div style={{ fontSize: "11px", color: muted, marginTop: "4px", lineHeight: 1.4 }}>Municipal Utility District overlay — common in Houston, Georgetown &amp; San Antonio master-planned communities</div>
+          </div>
           <div><label style={S.label}>Annual Insurance ($)</label><input style={S.input} type="number" value={insurance} onChange={e => setInsurance(e.target.value)} min="500" step="100" /></div>
-          <div style={{ display: "flex", flexDirection: "column" as const, justifyContent: "flex-end" }}><div style={{ fontSize: "13px", color: muted, lineHeight: 1.5 }}>Down payment: {fmt(downAmt)}<br />Loan amount: {fmt(loanAmt)}<br />Tax rate: {(county.rate * 100).toFixed(2)}%/yr</div></div>
+          <div style={{ display: "flex", flexDirection: "column" as const, justifyContent: "flex-end" }}><div style={{ fontSize: "13px", color: muted, lineHeight: 1.5 }}>Down payment: {fmt(downAmt)}<br />Loan amount: {fmt(loanAmt)}<br />Tax rate: {mudPct > 0 ? `${countyPct.toFixed(2)}% county + ${mudPct.toFixed(2)}% MUD = ${(countyPct + mudPct).toFixed(2)}%/yr` : `${countyPct.toFixed(2)}%/yr`}</div></div>
         </div>
         <hr style={S.divider} />
         <div style={S.resultsGrid}>
