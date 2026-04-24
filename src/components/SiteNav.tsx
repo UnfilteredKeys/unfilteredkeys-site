@@ -62,12 +62,12 @@ const NAV: NavItem[] = [
   {
     label: "Cities",
     children: [
-      { to: "/killeen-va-loan", label: "Killeen and Fort Hood" },
-      { to: "/temple-tx-mortgage", label: "Temple and Bell County" },
-      { to: "/round-rock-tx-mortgage", label: "Round Rock" },
       { to: "/georgetown-tx-mortgage", label: "Georgetown" },
-      { to: "/san-antonio-tx-mortgage", label: "San Antonio" },
       { to: "/houston-tx-mortgage", label: "Houston" },
+      { to: "/killeen-va-loan", label: "Killeen and Fort Hood" },
+      { to: "/round-rock-tx-mortgage", label: "Round Rock" },
+      { to: "/san-antonio-tx-mortgage", label: "San Antonio" },
+      { to: "/temple-tx-mortgage", label: "Temple and Bell County" },
     ],
   },
   { label: "About", to: "/about" },
