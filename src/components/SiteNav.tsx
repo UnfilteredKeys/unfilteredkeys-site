@@ -66,6 +66,7 @@ const NAV: NavItem[] = [
       { to: "/temple-tx-mortgage", label: "Temple and Bell County" },
       { to: "/round-rock-tx-mortgage", label: "Round Rock" },
       { to: "/georgetown-tx-mortgage", label: "Georgetown" },
+      { to: "/san-antonio-tx-mortgage", label: "San Antonio" },
     ],
   },
   { label: "About", to: "/about" },
