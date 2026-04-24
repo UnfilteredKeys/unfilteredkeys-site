@@ -111,6 +111,11 @@ export const seoMeta = {
     description: "Temple TX mortgage broker for Baylor Scott & White professionals, Belton ISD families, and Bell County buyers. Physician, VA, FHA, and conventional loans.",
     canonical: "/temple-tx-mortgage",
   },
+  houstonMortgage: {
+    title: "Mortgage Broker Houston TX – TMC Physician & VA Loans | Keys by Shalanda",
+    description: "Houston TX mortgage broker for Texas Medical Center physicians, Energy Corridor professionals, VA buyers, and first-time buyers. Flood zone guidance built in.",
+    canonical: "/houston-tx-mortgage",
+  },
   apply: {
     title: "Apply Now – Start Your Texas Mortgage Application",
     description: "Start your Texas mortgage application with Keys by Shalanda. Secure, simple online application. VA, FHA, USDA, and conventional loans available.",
