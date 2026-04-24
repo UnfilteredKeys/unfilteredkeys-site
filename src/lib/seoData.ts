@@ -91,6 +91,11 @@ export const seoMeta = {
     description: "Texas down payment assistance broker enrolled in TDHCA, TSAHC, SETH, and Chenoa Fund. Up to 5% grants and silent seconds, $0 out of pocket possible. 580+ credit options.",
     canonical: "/down-payment-assistance-texas",
   },
+  templeTxMortgage: {
+    title: "Mortgage Broker Temple TX – Bell County Home Loans | Keys by Shalanda",
+    description: "Temple TX mortgage broker for Baylor Scott & White professionals, Belton ISD families, and Bell County buyers. Physician, VA, FHA, and conventional loans.",
+    canonical: "/temple-tx-mortgage",
+  },
   apply: {
     title: "Apply Now – Start Your Texas Mortgage Application",
     description: "Start your Texas mortgage application with Keys by Shalanda. Secure, simple online application. VA, FHA, USDA, and conventional loans available.",

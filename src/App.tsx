@@ -24,6 +24,7 @@ import InvestorsPage from "@/pages/Investors";
 import FhaLoanTexasPage from "@/pages/FhaLoanTexas";
 import ConventionalLoanTexasPage from "@/pages/ConventionalLoanTexas";
 import DownPaymentAssistanceTexasPage from "@/pages/DownPaymentAssistanceTexas";
+import TempleTexasMortgagePage from "@/pages/TempleTexasMortgage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -56,6 +57,7 @@ const App = () => (
             <Route path="/fha-loan-texas" element={<FhaLoanTexasPage />} />
             <Route path="/conventional-loan-texas" element={<ConventionalLoanTexasPage />} />
             <Route path="/down-payment-assistance-texas" element={<DownPaymentAssistanceTexasPage />} />
+            <Route path="/temple-tx-mortgage" element={<TempleTexasMortgagePage />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
