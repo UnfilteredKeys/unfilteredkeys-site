@@ -116,6 +116,11 @@ export const seoMeta = {
     description: "Houston TX mortgage broker for Texas Medical Center physicians, Energy Corridor professionals, VA buyers, and first-time buyers. Flood zone guidance built in.",
     canonical: "/houston-tx-mortgage",
   },
+  dallasMortgage: {
+    title: "Mortgage Broker Dallas TX – DFW Home Loans | Keys by Shalanda",
+    description: "Dallas TX mortgage broker for DFW first-time buyers, physicians, VA buyers, and move-up families. VA, FHA, conventional, physician, and DPA programs across Dallas County.",
+    canonical: "/dallas-tx-mortgage",
+  },
   apply: {
     title: "Apply Now – Start Your Texas Mortgage Application",
     description: "Start your Texas mortgage application with Keys by Shalanda. Secure, simple online application. VA, FHA, USDA, and conventional loans available.",
