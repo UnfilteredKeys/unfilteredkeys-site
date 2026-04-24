@@ -91,6 +91,11 @@ export const seoMeta = {
     description: "Texas down payment assistance broker enrolled in TDHCA, TSAHC, SETH, and Chenoa Fund. Up to 5% grants and silent seconds, $0 out of pocket possible. 580+ credit options.",
     canonical: "/down-payment-assistance-texas",
   },
+  roundRockMortgage: {
+    title: "Mortgage Broker Round Rock TX – Williamson County Home Loans | Keys by Shalanda",
+    description: "Round Rock TX mortgage broker for first-time buyers, tech relocations, and Williamson County move-ups. More home than Austin — same commute. VA, FHA, conventional, physician, and DPA programs.",
+    canonical: "/round-rock-tx-mortgage",
+  },
   templeTxMortgage: {
     title: "Mortgage Broker Temple TX – Bell County Home Loans | Keys by Shalanda",
     description: "Temple TX mortgage broker for Baylor Scott & White professionals, Belton ISD families, and Bell County buyers. Physician, VA, FHA, and conventional loans.",
