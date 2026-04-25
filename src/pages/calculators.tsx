@@ -1087,6 +1087,7 @@ export default function Calculators() {
     { id: "compare", label: "FHA vs. Conventional" },
     { id: "budget", label: "Budget & Affordability" },
     { id: "bah", label: "BAH & Buying Power" },
+    { id: "portfolio-builder", label: "Portfolio Builder" },
   ];
 
   return (
