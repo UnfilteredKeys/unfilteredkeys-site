@@ -1097,7 +1097,7 @@ function PortfolioBuilderCalc() {
         </div>
 
         <div style={{ marginTop: "12px", fontSize: "12px", color: muted, fontStyle: "italic", lineHeight: 1.5 }}>
-          Appreciation {appreciation}% · Mortgage {mortgageRate}% · Rent growth {rentYield}%/yr · Pre-tax only · Excludes vacancy, maintenance, insurance, and property taxes.
+          Appreciation {appreciation}% · Mortgage {mortgageRate}% · Rent growth {rentGrowth}%/yr · Pre-tax only · Excludes vacancy, maintenance, insurance, and property taxes.
         </div>
 
         <div style={{ marginTop: "20px", borderLeft: "4px solid #EF9F27", backgroundColor: "#fffaf0", padding: "16px 20px", borderRadius: "4px" }}>
