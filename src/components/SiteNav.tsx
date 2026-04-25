@@ -50,6 +50,7 @@ const NAV: NavItem[] = [
       { to: "/calculators?tab=fha-vs-conventional", label: "FHA vs. Conventional" },
       { to: "/calculators?tab=budget-affordability", label: "Budget and Affordability" },
       { to: "/calculators?tab=bah-buying-power", label: "BAH and Buying Power" },
+      { to: "/calculators?tab=portfolio-builder", label: "Portfolio Builder" },
     ],
   },
   {
