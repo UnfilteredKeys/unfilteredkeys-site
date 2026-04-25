@@ -303,6 +303,7 @@ const InvestorsPage = () => {
         .faq-item summary::-webkit-details-marker { display: none; }
         .faq-item summary::after { content: '+'; color: ${COPPER}; font-size: 24px; font-weight: 400; flex-shrink: 0; }
         .faq-item[open] summary::after { content: '−'; }
+        @media (max-width: 860px) { .pcg { grid-template-columns: 1fr !important; } }
         .faq-a { padding: 0 0 20px; font-size: 15px; color: ${MUTED}; line-height: 1.75; max-width: 760px; margin: 0; }
 
         .inv-cta-final { background: linear-gradient(135deg, ${NAVY} 0%, #122a44 100%); color: ${IVORY}; padding: 96px 0; text-align: center; }
