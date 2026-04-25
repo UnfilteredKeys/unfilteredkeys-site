@@ -3,6 +3,16 @@ import { useSearchParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
+import {
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  CartesianGrid,
+} from "recharts";
 // ── SEO ───────────────────────────────────────────────────────────────────────
 
 function useSEO({ title, description, canonical }: { title: string; description: string; canonical: string }) {
@@ -825,9 +835,233 @@ function BAHCalc() {
   );
 }
 
+// ── CALCULATOR 6: PORTFOLIO BUILDER ───────────────────────────────────────────
+
+type Property = {
+  id: number;
+  price: string;
+  downPct: string;
+  term: string;
+};
+
+function PortfolioBuilderCalc() {
+  const [currentAge, setCurrentAge] = useState("35");
+  const [retireAge, setRetireAge] = useState("65");
+  const [appreciation, setAppreciation] = useState("4");
+  const [mortgageRate, setMortgageRate] = useState("7");
+  const [rentYield, setRentYield] = useState("0.7"); // monthly rent as % of current value
+  const [properties, setProperties] = useState<Property[]>([
+    { id: 1, price: "300000", downPct: "20", term: "30" },
+  ]);
+
+  const addProperty = () => {
+    if (properties.length >= 10) return;
+    setProperties([
+      ...properties,
+      { id: Date.now(), price: "300000", downPct: "20", term: "30" },
+    ]);
+  };
+  const removeProperty = (id: number) => setProperties(properties.filter(p => p.id !== id));
+  const updateProperty = (id: number, field: keyof Property, value: string) =>
+    setProperties(properties.map(p => (p.id === id ? { ...p, [field]: value } : p)));
+
+  const yearsToRetire = Math.max(0, (parseInt(retireAge) || 0) - (parseInt(currentAge) || 0));
+  const apprRate = (parseFloat(appreciation) || 0) / 100;
+  const mRate = parseFloat(mortgageRate) || 0;
+  const rentPct = (parseFloat(rentYield) || 0) / 100;
+
+  // Compute per-year totals
+  const yearly: { year: number; age: number; value: number; equity: number; debt: number }[] = [];
+  for (let y = 0; y <= yearsToRetire; y++) {
+    let totalValue = 0;
+    let totalDebt = 0;
+    properties.forEach(p => {
+      const price = parseFloat(p.price) || 0;
+      const dp = (parseFloat(p.downPct) || 0) / 100;
+      const term = parseInt(p.term) || 30;
+      const loan = price * (1 - dp);
+      const value = price * Math.pow(1 + apprRate, y);
+      // Remaining balance after y years
+      const r = mRate / 100 / 12;
+      const n = term * 12;
+      const monthsPaid = Math.min(y * 12, n);
+      let balance = loan;
+      if (loan > 0 && y > 0) {
+        if (r === 0) {
+          balance = Math.max(0, loan - (loan / n) * monthsPaid);
+        } else {
+          balance =
+            loan * Math.pow(1 + r, monthsPaid) -
+            (loan * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1)) *
+              ((Math.pow(1 + r, monthsPaid) - 1) / r);
+          balance = Math.max(0, balance);
+        }
+      }
+      totalValue += value;
+      totalDebt += balance;
+    });
+    yearly.push({
+      year: y,
+      age: (parseInt(currentAge) || 0) + y,
+      value: totalValue,
+      equity: totalValue - totalDebt,
+      debt: totalDebt,
+    });
+  }
+
+  const final = yearly[yearly.length - 1] || { value: 0, equity: 0, debt: 0 };
+
+  // Estimated monthly cash flow at retirement: gross rent − P&I (taxes/insurance/vacancy excluded for simplicity)
+  let grossRent = 0;
+  let totalPI = 0;
+  properties.forEach(p => {
+    const price = parseFloat(p.price) || 0;
+    const dp = (parseFloat(p.downPct) || 0) / 100;
+    const term = parseInt(p.term) || 30;
+    const loan = price * (1 - dp);
+    const futureValue = price * Math.pow(1 + apprRate, yearsToRetire);
+    grossRent += futureValue * rentPct;
+    // If loan is paid off by retirement, no P&I
+    if (yearsToRetire < term) totalPI += monthlyPI(loan, mRate, term);
+  });
+  const netCashFlow = grossRent - totalPI;
+
+  return (
+    <div style={S.card}>
+      <div style={S.cardHeader}>
+        <h2 style={S.cardTitle}>Rental Portfolio Retirement Builder</h2>
+        <p style={S.cardSub}>Project equity, debt, and cash flow at retirement across up to 10 properties</p>
+      </div>
+      <div style={S.cardBody}>
+        {/* Global assumptions */}
+        <div style={S.grid2}>
+          <div>
+            <label style={S.label}>Current Age</label>
+            <input style={S.input} type="number" value={currentAge} onChange={e => setCurrentAge(e.target.value)} min="18" max="80" />
+          </div>
+          <div>
+            <label style={S.label}>Retirement Age</label>
+            <input style={S.input} type="number" value={retireAge} onChange={e => setRetireAge(e.target.value)} min="30" max="90" />
+          </div>
+          <div>
+            <label style={S.label}>Appreciation Rate (%/yr)</label>
+            <input style={S.input} type="number" value={appreciation} onChange={e => setAppreciation(e.target.value)} step="0.1" min="0" max="15" />
+          </div>
+          <div>
+            <label style={S.label}>Mortgage Rate (%)</label>
+            <input style={S.input} type="number" value={mortgageRate} onChange={e => setMortgageRate(e.target.value)} step="0.05" min="0" max="15" />
+          </div>
+          <div>
+            <label style={S.label}>Monthly Rent (% of value)</label>
+            <input style={S.input} type="number" value={rentYield} onChange={e => setRentYield(e.target.value)} step="0.05" min="0" max="3" />
+            <div style={{ fontSize: "11px", color: muted, marginTop: "4px", lineHeight: 1.4 }}>0.6–0.8% is typical in TX rental markets</div>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
+            <div style={{ fontSize: "13px", color: muted, lineHeight: 1.5 }}>
+              Years to retirement: <strong style={{ color: navy }}>{yearsToRetire}</strong><br />
+              Properties: <strong style={{ color: navy }}>{properties.length} / 10</strong>
+            </div>
+          </div>
+        </div>
+
+        <hr style={S.divider} />
+
+        {/* Properties */}
+        <h3 style={{ fontFamily: "'Lora', serif", fontSize: "18px", color: navy, marginBottom: "16px" }}>Properties</h3>
+        {properties.map((p, idx) => (
+          <div key={p.id} style={{ backgroundColor: "#f0f4f8", borderRadius: "8px", padding: "16px 20px", marginBottom: "12px" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
+              <div style={{ fontWeight: 600, color: navy, fontSize: "14px" }}>Property {idx + 1}</div>
+              {properties.length > 1 && (
+                <button
+                  onClick={() => removeProperty(p.id)}
+                  style={{ background: "none", border: "none", color: red, fontSize: "13px", cursor: "pointer", fontWeight: 600 }}
+                >
+                  Remove
+                </button>
+              )}
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "12px" }}>
+              <div>
+                <label style={S.label}>Purchase Price</label>
+                <input style={S.input} type="number" value={p.price} onChange={e => updateProperty(p.id, "price", e.target.value)} min="0" step="5000" />
+              </div>
+              <div>
+                <label style={S.label}>Down Payment (%)</label>
+                <input style={S.input} type="number" value={p.downPct} onChange={e => updateProperty(p.id, "downPct", e.target.value)} min="0" max="100" step="1" />
+              </div>
+              <div>
+                <label style={S.label}>Loan Term (yrs)</label>
+                <select style={S.select} value={p.term} onChange={e => updateProperty(p.id, "term", e.target.value)}>
+                  <option value="30">30</option>
+                  <option value="20">20</option>
+                  <option value="15">15</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        ))}
+
+        {properties.length < 10 && (
+          <button
+            onClick={addProperty}
+            style={{ marginTop: "8px", padding: "10px 18px", border: `1.5px dashed ${copper}`, borderRadius: "6px", background: "transparent", color: copper, fontWeight: 600, fontSize: "14px", cursor: "pointer", fontFamily: "'Outfit', sans-serif" }}
+          >
+            + Add Property ({properties.length}/10)
+          </button>
+        )}
+
+        <hr style={S.divider} />
+
+        {/* Results */}
+        <div style={S.resultsGrid}>
+          <ResultBox label="Portfolio Value" value={fmt(final.value)} />
+          <ResultBox label="Total Equity" value={fmt(final.equity)} />
+          <ResultBox label="Remaining Debt" value={fmt(final.debt)} />
+          <ResultBox label="Est. Monthly Cash Flow" value={fmt(netCashFlow)} highlight />
+        </div>
+
+        {/* Chart */}
+        <div style={{ marginTop: "32px", backgroundColor: "#fafafa", borderRadius: "8px", padding: "20px 12px 8px" }}>
+          <div style={{ fontSize: "13px", fontWeight: 600, color: navy, marginBottom: "12px", padding: "0 8px" }}>
+            Equity vs. Remaining Debt — Year by Year
+          </div>
+          <ResponsiveContainer width="100%" height={320}>
+            <BarChart data={yearly} margin={{ top: 8, right: 16, bottom: 8, left: 0 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(26,58,92,0.08)" />
+              <XAxis
+                dataKey="age"
+                tick={{ fontSize: 11, fill: navy }}
+                label={{ value: "Age", position: "insideBottom", offset: -2, fontSize: 11, fill: muted }}
+              />
+              <YAxis
+                tick={{ fontSize: 11, fill: navy }}
+                tickFormatter={(v) => v >= 1_000_000 ? `$${(v / 1_000_000).toFixed(1)}M` : `$${Math.round(v / 1000)}k`}
+              />
+              <Tooltip
+                formatter={(v: number) => fmt(v)}
+                labelFormatter={(age) => `Age ${age}`}
+                contentStyle={{ borderRadius: 6, border: `1px solid ${navy}`, fontSize: 12 }}
+              />
+              <Legend wrapperStyle={{ fontSize: 12 }} />
+              <Bar dataKey="equity" stackId="a" fill={copper} name="Equity" />
+              <Bar dataKey="debt" stackId="a" fill={navy} name="Remaining Debt" />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+
+        <div style={S.disclaimer}>
+          Projections assume constant appreciation, mortgage rate, and rent yield across all properties — real markets vary. Cash flow shown is gross rent minus principal &amp; interest only; taxes, insurance, vacancy, repairs, and management are excluded. This calculator is for educational purposes only. Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518
+        </div>
+        <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" style={S.cta}>Map Your Portfolio Strategy →</a>
+      </div>
+    </div>
+  );
+}
+
 // ── MAIN PAGE ─────────────────────────────────────────────────────────────────
 
-type TabId = "texas" | "va" | "compare" | "budget" | "bah";
+type TabId = "texas" | "va" | "compare" | "budget" | "bah" | "portfolio-builder";
 
 export default function Calculators() {
   const [searchParams] = useSearchParams();
@@ -837,6 +1071,7 @@ export default function Calculators() {
     "fha-vs-conventional": "compare",
     "budget-affordability": "budget",
     "bah-buying-power": "bah",
+    "portfolio-builder": "portfolio-builder",
   };
   const initialTab: TabId = tabParamMap[searchParams.get("tab") || ""] || "texas";
   const [tab, setTab] = useState<TabId>(initialTab);
@@ -852,6 +1087,7 @@ export default function Calculators() {
     { id: "compare", label: "FHA vs. Conventional" },
     { id: "budget", label: "Budget & Affordability" },
     { id: "bah", label: "BAH & Buying Power" },
+    { id: "portfolio-builder", label: "Portfolio Builder" },
   ];
 
   return (
@@ -879,6 +1115,7 @@ export default function Calculators() {
         {tab === "compare" && <FHAvsConvCalc />}
         {tab === "budget" && <BudgetCalc />}
         {tab === "bah" && <BAHCalc />}
+        {tab === "portfolio-builder" && <PortfolioBuilderCalc />}
         <div style={{ textAlign: "center" as const, marginTop: "48px" }}>
           <p style={{ fontFamily: "'Lora', serif", fontSize: "20px", color: navy, marginBottom: "8px" }}>Numbers look right? <em>Let's make them official.</em></p>
           <p style={{ color: muted, fontSize: "14px", marginBottom: "20px" }}>A 30-minute strategy call turns estimates into a real pre-approval.</p>
