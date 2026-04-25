@@ -837,11 +837,22 @@ function BAHCalc() {
 
 // ── CALCULATOR 6: PORTFOLIO BUILDER ───────────────────────────────────────────
 
+type PropType = "sfr" | "duplex" | "triplex" | "fourplex";
+const UNITS_BY_TYPE: Record<PropType, number> = { sfr: 1, duplex: 2, triplex: 3, fourplex: 4 };
+const TYPE_LABEL: Record<PropType, string> = {
+  sfr: "Single family (1 unit)",
+  duplex: "Duplex (2 units)",
+  triplex: "Triplex (3 units)",
+  fourplex: "Fourplex (4 units)",
+};
+
 type Property = {
   id: number;
+  type: PropType;
   price: string;
   downPct: string;
   term: string;
+  rentPerUnit: string;
 };
 
 function PortfolioBuilderCalc() {
