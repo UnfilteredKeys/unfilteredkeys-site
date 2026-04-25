@@ -837,252 +837,513 @@ function BAHCalc() {
 
 // ── CALCULATOR 6: PORTFOLIO BUILDER ───────────────────────────────────────────
 
-type PropType = "sfr" | "duplex" | "triplex" | "fourplex";
-const UNITS_BY_TYPE: Record<PropType, number> = { sfr: 1, duplex: 2, triplex: 3, fourplex: 4 };
-const TYPE_LABEL: Record<PropType, string> = {
+// ── PORTFOLIO BUILDER TYPES & HELPERS ────────────────────────────────────────
+
+const UNITS_MAP: Record<string, number> = { sfr: 1, duplex: 2, triplex: 3, fourplex: 4 };
+const TYPE_LBL: Record<string, string> = {
   sfr: "Single family (1 unit)",
   duplex: "Duplex (2 units)",
   triplex: "Triplex (3 units)",
   fourplex: "Fourplex (4 units)",
 };
 
-type Property = {
-  id: number;
-  type: PropType;
-  price: string;
-  downPct: string;
-  term: string;
-  rentPerUnit: string;
+type PropUnit = { label: string; rent: number; oo: boolean };
+type ExistingProp = {
+  id: number; type: string; purchasePrice: number; origRate: number;
+  termYears: number; yearsOwned: number; currentValue: number;
+  currentBalance: number; units: PropUnit[];
+};
+type TargetProp = {
+  id: number; type: string; value: number; down: number;
+  rate: number; termYears: number; units: PropUnit[];
 };
 
+function calcPmt(principal: number, annualRate: number, termYears: number): number {
+  const r = annualRate / 12, n = termYears * 12;
+  if (r === 0) return principal / n;
+  return principal * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+}
+function loanBal(principal: number, annualRate: number, termYears: number, monthsPaid: number): number {
+  const r = annualRate / 12, n = termYears * 12;
+  const m = Math.min(Math.max(monthsPaid, 0), n);
+  if (r === 0) return Math.max(0, principal - (principal / n) * m);
+  const pmt = calcPmt(principal, annualRate, termYears);
+  return Math.max(0, principal * Math.pow(1 + r, m) - pmt * (Math.pow(1 + r, m) - 1) / r);
+}
+function grossRent(units: PropUnit[]): number {
+  return units.reduce((s, u) => s + (u.oo ? 0 : u.rent), 0);
+}
+function makeUnits(type: string, defaultRent = 1200): PropUnit[] {
+  const n = UNITS_MAP[type] || 1;
+  const labels = ["A", "B", "C", "D"];
+  return Array.from({ length: n }, (_, i) => ({
+    label: n === 1 ? "Unit" : "Unit " + labels[i],
+    rent: defaultRent,
+    oo: false,
+  }));
+}
+
+function PortfolioSlider({
+  label, value, onChange, min, max, step, suffix,
+}: { label: string; value: number; onChange: (v: number) => void; min: number; max: number; step: number; suffix?: string }) {
+  return (
+    <div>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "6px" }}>
+        <label style={{ ...S.label, marginBottom: 0 }}>{label}</label>
+        <span style={{ fontFamily: "'Lora', serif", fontSize: "16px", fontWeight: 700, color: navy }}>
+          {value}{suffix || ""}
+        </span>
+      </div>
+      <input
+        type="range"
+        min={min}
+        max={max}
+        step={step}
+        value={value}
+        onChange={(e) => onChange(parseFloat(e.target.value))}
+        style={{ width: "100%", accentColor: copper }}
+      />
+    </div>
+  );
+}
+
 function PortfolioBuilderCalc() {
-  const [currentAge, setCurrentAge] = useState("35");
-  const [retireAge, setRetireAge] = useState("65");
-  const [appreciation, setAppreciation] = useState("4");
-  const [mortgageRate, setMortgageRate] = useState("7");
-  const [rentGrowth, setRentGrowth] = useState("3"); // annual rent growth %
-  const [properties, setProperties] = useState<Property[]>([
-    { id: 1, type: "sfr", price: "300000", downPct: "20", term: "30", rentPerUnit: "2000" },
-  ]);
+  const [curAge, setCurAge] = useState(35);
+  const [retAge, setRetAge] = useState(60);
+  const [appRate, setAppRate] = useState(4);
+  const [rentGrow, setRentGrow] = useState(3);
+  const [goalCash, setGoalCash] = useState(5000);
 
-  const addProperty = () => {
-    if (properties.length >= 10) return;
-    setProperties([
-      ...properties,
-      { id: Date.now(), type: "sfr", price: "300000", downPct: "20", term: "30", rentPerUnit: "2000" },
-    ]);
+  const [existingProps, setExistingProps] = useState<ExistingProp[]>([{
+    id: 1, type: "sfr", purchasePrice: 200000, origRate: 6.5,
+    termYears: 30, yearsOwned: 3, currentValue: 240000,
+    currentBalance: 185000, units: [{ label: "Unit", rent: 1600, oo: false }],
+  }]);
+  const [targetProps, setTargetProps] = useState<TargetProp[]>([{
+    id: 10, type: "duplex", value: 310000, down: 20, rate: 7.0,
+    termYears: 30, units: [
+      { label: "Unit A", rent: 1100, oo: false },
+      { label: "Unit B", rent: 1100, oo: false },
+    ],
+  }]);
+  const [exNextId, setExNextId] = useState(2);
+  const [tgNextId, setTgNextId] = useState(11);
+  const [propTab, setPropTab] = useState<"existing" | "target">("existing");
+
+  const totalCount = existingProps.length + targetProps.length;
+
+  // ─ Update helpers ─
+  const updateEx = (id: number, patch: Partial<ExistingProp>) =>
+    setExistingProps(existingProps.map(p => p.id === id ? { ...p, ...patch } : p));
+  const updateTg = (id: number, patch: Partial<TargetProp>) =>
+    setTargetProps(targetProps.map(p => p.id === id ? { ...p, ...patch } : p));
+  const updateExUnit = (id: number, idx: number, patch: Partial<PropUnit>) =>
+    setExistingProps(existingProps.map(p => p.id === id
+      ? { ...p, units: p.units.map((u, i) => i === idx ? { ...u, ...patch } : u) }
+      : p));
+  const updateTgUnit = (id: number, idx: number, patch: Partial<PropUnit>) =>
+    setTargetProps(targetProps.map(p => p.id === id
+      ? { ...p, units: p.units.map((u, i) => i === idx ? { ...u, ...patch } : u) }
+      : p));
+
+  const changeExType = (id: number, newType: string) => {
+    const p = existingProps.find(x => x.id === id);
+    if (!p) return;
+    const existingRent = p.units[0]?.rent || 1200;
+    updateEx(id, { type: newType, units: makeUnits(newType, existingRent) });
   };
-  const removeProperty = (id: number) => setProperties(properties.filter(p => p.id !== id));
-  const updateProperty = (id: number, field: keyof Property, value: string) =>
-    setProperties(properties.map(p => (p.id === id ? { ...p, [field]: value } : p)));
-
-  const yearsToRetire = Math.max(0, (parseInt(retireAge) || 0) - (parseInt(currentAge) || 0));
-  const apprRate = (parseFloat(appreciation) || 0) / 100;
-  const mRate = parseFloat(mortgageRate) || 0;
-  const rGrowth = (parseFloat(rentGrowth) || 0) / 100;
-
-  // Per-property derived helper
-  const propMeta = (p: Property) => {
-    const price = parseFloat(p.price) || 0;
-    const dp = (parseFloat(p.downPct) || 0) / 100;
-    const term = parseInt(p.term) || 30;
-    const loan = price * (1 - dp);
-    const units = UNITS_BY_TYPE[p.type] ?? 1;
-    const rentPerUnit = parseFloat(p.rentPerUnit) || 0;
-    const monthlyRentNow = rentPerUnit * units;
-    const monthlyPmt = monthlyPI(loan, mRate, term);
-    return { price, term, loan, units, rentPerUnit, monthlyRentNow, monthlyPmt };
+  const changeTgType = (id: number, newType: string) => {
+    const p = targetProps.find(x => x.id === id);
+    if (!p) return;
+    const existingRent = p.units[0]?.rent || 1200;
+    updateTg(id, { type: newType, units: makeUnits(newType, existingRent) });
   };
 
-  // Compute per-year totals
-  const yearly: { year: number; age: number; value: number; equity: number; debt: number }[] = [];
-  for (let y = 0; y <= yearsToRetire; y++) {
-    let totalValue = 0;
-    let totalDebt = 0;
-    properties.forEach(p => {
-      const { price, term, loan } = propMeta(p);
-      const value = price * Math.pow(1 + apprRate, y);
-      const r = mRate / 100 / 12;
-      const n = term * 12;
-      const monthsPaid = Math.min(y * 12, n);
-      let balance = loan;
-      if (loan > 0 && y > 0) {
-        if (r === 0) {
-          balance = Math.max(0, loan - (loan / n) * monthsPaid);
-        } else {
-          balance =
-            loan * Math.pow(1 + r, monthsPaid) -
-            (loan * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1)) *
-              ((Math.pow(1 + r, monthsPaid) - 1) / r);
-          balance = Math.max(0, balance);
-        }
-      }
-      totalValue += value;
-      totalDebt += balance;
+  const addEx = () => {
+    if (totalCount >= 10) return;
+    setExistingProps([...existingProps, {
+      id: exNextId, type: "sfr", purchasePrice: 250000, origRate: 6.75,
+      termYears: 30, yearsOwned: 1, currentValue: 260000,
+      currentBalance: 235000, units: makeUnits("sfr", 1800),
+    }]);
+    setExNextId(exNextId + 1);
+  };
+  const addTg = () => {
+    if (totalCount >= 10) return;
+    setTargetProps([...targetProps, {
+      id: tgNextId, type: "sfr", value: 280000, down: 20, rate: 7.0,
+      termYears: 30, units: makeUnits("sfr", 1900),
+    }]);
+    setTgNextId(tgNextId + 1);
+  };
+  const removeEx = (id: number) => setExistingProps(existingProps.filter(p => p.id !== id));
+  const removeTg = (id: number) => setTargetProps(targetProps.filter(p => p.id !== id));
+
+  // ─ Computed ─
+  const years = Math.max(0, retAge - curAge);
+  const ar = appRate / 100, rg = rentGrow / 100;
+
+  let exFV = 0, exDebt = 0, exRent = 0, exPmt = 0;
+  existingProps.forEach(p => {
+    const remTerm = Math.max(p.termYears - p.yearsOwned, 1);
+    exFV += p.currentValue * Math.pow(1 + ar, years);
+    exDebt += loanBal(p.currentBalance, p.origRate / 100, remTerm, years * 12);
+    exRent += grossRent(p.units) * Math.pow(1 + rg, years);
+    exPmt += calcPmt(p.currentBalance, p.origRate / 100, remTerm);
+  });
+
+  let tgFV = 0, tgDebt = 0, tgRent = 0, tgPmt = 0;
+  targetProps.forEach(p => {
+    const loan = p.value * (1 - p.down / 100);
+    tgFV += p.value * Math.pow(1 + ar, years);
+    tgDebt += loanBal(loan, p.rate / 100, p.termYears, years * 12);
+    tgRent += grossRent(p.units) * Math.pow(1 + rg, years);
+    tgPmt += calcPmt(loan, p.rate / 100, p.termYears);
+  });
+
+  const totalFV = exFV + tgFV;
+  const totalDebt = exDebt + tgDebt;
+  const totalEq = totalFV - totalDebt;
+  const totalRent = exRent + tgRent;
+  const totalPmt = exPmt + tgPmt;
+  const netCF = totalRent - totalPmt;
+  const goalPct = goalCash > 0 ? Math.round(netCF / goalCash * 100) : null;
+  const todayEquity = existingProps.reduce((s, p) => s + (p.currentValue - p.currentBalance), 0);
+  const todayValue = existingProps.reduce((s, p) => s + p.currentValue, 0);
+  const todayDebt = existingProps.reduce((s, p) => s + p.currentBalance, 0);
+
+  // Chart data
+  const chartData: { age: number; existingEquity: number; targetEquity: number; debt: number }[] = [];
+  const step = years <= 10 ? 1 : years <= 20 ? 2 : 5;
+  for (let y = 0; y <= years; y += step) {
+    let ef = 0, eb = 0, tf = 0, tb = 0;
+    existingProps.forEach(p => {
+      const rt = Math.max(p.termYears - p.yearsOwned, 1);
+      ef += p.currentValue * Math.pow(1 + ar, y);
+      eb += loanBal(p.currentBalance, p.origRate / 100, rt, y * 12);
     });
-    yearly.push({
-      year: y,
-      age: (parseInt(currentAge) || 0) + y,
-      value: totalValue,
-      equity: totalValue - totalDebt,
-      debt: totalDebt,
+    targetProps.forEach(p => {
+      const loan = p.value * (1 - p.down / 100);
+      tf += p.value * Math.pow(1 + ar, y);
+      tb += loanBal(loan, p.rate / 100, p.termYears, y * 12);
+    });
+    chartData.push({
+      age: curAge + y,
+      existingEquity: Math.round(Math.max(0, ef - eb)),
+      targetEquity: Math.round(Math.max(0, tf - tb)),
+      debt: Math.round(eb + tb),
     });
   }
 
-  const final = yearly[yearly.length - 1] || { value: 0, equity: 0, debt: 0 };
-
-  // Monthly cash flow at retirement: rent grown by rentGrowth − P&I (only while loan active)
-  let grossRent = 0;
-  let totalPI = 0;
-  properties.forEach(p => {
-    const { term, loan, monthlyRentNow } = propMeta(p);
-    grossRent += monthlyRentNow * Math.pow(1 + rGrowth, yearsToRetire);
-    if (yearsToRetire < term) totalPI += monthlyPI(loan, mRate, term);
+  // ─ Styles helpers ─
+  const subTabBtn = (active: boolean): React.CSSProperties => ({
+    flex: 1, padding: "10px 16px", borderRadius: "6px",
+    border: active ? "none" : "1.5px solid rgba(26,58,92,0.18)",
+    backgroundColor: active ? navy : "transparent",
+    color: active ? white : navy,
+    fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "14px",
+    cursor: "pointer",
   });
-  const netCashFlow = grossRent - totalPI;
+  const propCardStyle: React.CSSProperties = { backgroundColor: "#f0f4f8", borderRadius: "8px", padding: "20px", marginBottom: "14px" };
+  const goalColor = goalPct == null ? muted : goalPct >= 100 ? green : goalPct >= 75 ? "#1e6fb5" : copper;
 
+  // ─ Per-property summary row helper ─
+  const summaryRow = (
+    payment: number, equity: number | null, rentNow: number,
+  ) => {
+    const cf = rentNow - payment;
+    const positive = cf >= 0;
+    return (
+      <div style={{ marginTop: "14px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "10px", fontSize: "12px" }}>
+        <div><div style={{ color: muted, textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 600, fontSize: "10px" }}>Monthly P&amp;I</div><div style={{ color: navy, fontWeight: 600, fontSize: "14px" }}>{fmt(payment)}</div></div>
+        {equity !== null && (
+          <div><div style={{ color: muted, textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 600, fontSize: "10px" }}>Current Equity</div><div style={{ color: navy, fontWeight: 600, fontSize: "14px" }}>{fmt(equity)}</div></div>
+        )}
+        <div><div style={{ color: muted, textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 600, fontSize: "10px" }}>Gross Rent</div><div style={{ color: navy, fontWeight: 600, fontSize: "14px" }}>{fmt(rentNow)}/mo</div></div>
+        <div><div style={{ color: muted, textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 600, fontSize: "10px" }}>Today's Cash Flow</div><div style={{ color: positive ? green : red, fontWeight: 700, fontSize: "14px" }}>{positive ? "+" : "−"}{fmt(Math.abs(cf))}/mo</div></div>
+      </div>
+    );
+  };
+
+  // ─ Render ─
   return (
     <div style={S.card}>
       <div style={S.cardHeader}>
-        <h2 style={S.cardTitle}>Rental Portfolio Retirement Builder</h2>
-        <p style={S.cardSub}>Project equity, debt, and cash flow at retirement across up to 10 properties</p>
+        <h2 style={S.cardTitle}>Rental Portfolio Retirement Calculator</h2>
+        <p style={S.cardSub}>Enter what you own today, add target properties, and see your full retirement equity and cash flow picture. Pre-tax projections only.</p>
       </div>
       <div style={S.cardBody}>
-        {/* Global assumptions */}
-        <div style={S.grid2}>
-          <div>
-            <label style={S.label}>Current Age</label>
-            <input style={S.input} type="number" value={currentAge} onChange={e => setCurrentAge(e.target.value)} min="18" max="80" />
-          </div>
-          <div>
-            <label style={S.label}>Retirement Age</label>
-            <input style={S.input} type="number" value={retireAge} onChange={e => setRetireAge(e.target.value)} min="30" max="90" />
-          </div>
-          <div>
-            <label style={S.label}>Appreciation Rate (%/yr)</label>
-            <input style={S.input} type="number" value={appreciation} onChange={e => setAppreciation(e.target.value)} step="0.1" min="0" max="15" />
-          </div>
-          <div>
-            <label style={S.label}>Mortgage Rate (%)</label>
-            <input style={S.input} type="number" value={mortgageRate} onChange={e => setMortgageRate(e.target.value)} step="0.05" min="0" max="15" />
-          </div>
-          <div>
-            <label style={S.label}>Annual Rent Growth (%/yr)</label>
-            <input style={S.input} type="number" value={rentGrowth} onChange={e => setRentGrowth(e.target.value)} step="0.5" min="1" max="6" />
-            <div style={{ fontSize: "11px", color: muted, marginTop: "4px", lineHeight: 1.4 }}>3% is a typical long-term TX assumption</div>
-          </div>
-          <div style={{ display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
-            <div style={{ fontSize: "13px", color: muted, lineHeight: 1.5 }}>
-              Years to retirement: <strong style={{ color: navy }}>{yearsToRetire}</strong><br />
-              Properties: <strong style={{ color: navy }}>{properties.length} / 10</strong>
-            </div>
-          </div>
+
+        {/* 1. Portfolio Settings */}
+        <h3 style={{ fontFamily: "'Lora', serif", fontSize: "18px", color: navy, marginBottom: "16px" }}>Portfolio Settings</h3>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "20px", marginBottom: "8px" }}>
+          <PortfolioSlider label="Current Age" value={curAge} onChange={(v) => { setCurAge(v); if (retAge <= v) setRetAge(v + 1); }} min={18} max={65} step={1} />
+          <PortfolioSlider label="Retirement Age" value={retAge} onChange={setRetAge} min={Math.max(45, curAge + 1)} max={80} step={1} />
+          <PortfolioSlider label="Annual Appreciation %" value={appRate} onChange={setAppRate} min={1} max={8} step={0.5} suffix="%" />
+          <PortfolioSlider label="Annual Rent Growth %" value={rentGrow} onChange={setRentGrow} min={1} max={6} step={0.5} suffix="%" />
+        </div>
+        <div style={{ fontSize: "13px", color: muted, marginTop: "8px" }}>
+          Years to retirement: <strong style={{ color: navy }}>{years}</strong>  ·  Properties: <strong style={{ color: navy }}>{totalCount} / 10</strong>
         </div>
 
         <hr style={S.divider} />
 
-        {/* Properties */}
-        <h3 style={{ fontFamily: "'Lora', serif", fontSize: "18px", color: navy, marginBottom: "16px" }}>Properties</h3>
-        {properties.map((p, idx) => {
-          const meta = propMeta(p);
-          const todayCF = meta.monthlyRentNow - meta.monthlyPmt;
-          const cfPositive = todayCF >= 0;
-          return (
-            <div key={p.id} style={{ backgroundColor: "#f0f4f8", borderRadius: "8px", padding: "16px 20px", marginBottom: "12px" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
-                <div style={{ fontWeight: 600, color: navy, fontSize: "14px" }}>Property {idx + 1} <span style={{ color: muted, fontWeight: 400 }}>· {meta.units} unit{meta.units > 1 ? "s" : ""}</span></div>
-                {properties.length > 1 && (
-                  <button
-                    onClick={() => removeProperty(p.id)}
-                    aria-label="Remove property"
-                    style={{ background: "none", border: "none", color: red, fontSize: "16px", cursor: "pointer", fontWeight: 700, lineHeight: 1 }}
-                  >
-                    ×
-                  </button>
-                )}
-              </div>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "12px" }}>
-                <div>
-                  <label style={S.label}>Property Type</label>
-                  <select style={S.select} value={p.type} onChange={e => updateProperty(p.id, "type", e.target.value)}>
-                    {(Object.keys(UNITS_BY_TYPE) as PropType[]).map(t => (
-                      <option key={t} value={t}>{TYPE_LABEL[t]}</option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <label style={S.label}>Purchase Price</label>
-                  <input style={S.input} type="number" value={p.price} onChange={e => updateProperty(p.id, "price", e.target.value)} min="50000" max="2000000" step="5000" />
-                </div>
-                <div>
-                  <label style={S.label}>Down Payment (%)</label>
-                  <input style={S.input} type="number" value={p.downPct} onChange={e => updateProperty(p.id, "downPct", e.target.value)} min="5" max="30" step="1" />
-                </div>
-                <div>
-                  <label style={S.label}>Loan Term (yrs)</label>
-                  <select style={S.select} value={p.term} onChange={e => updateProperty(p.id, "term", e.target.value)}>
-                    <option value="30">30</option>
-                    <option value="20">20</option>
-                    <option value="15">15</option>
-                  </select>
-                </div>
-                <div>
-                  <label style={S.label}>Rent / Unit / Month</label>
-                  <input style={S.input} type="number" value={p.rentPerUnit} onChange={e => updateProperty(p.id, "rentPerUnit", e.target.value)} min="400" max="10000" step="50" />
-                </div>
-                <div>
-                  <label style={S.label}>Units</label>
-                  <div style={{ ...S.input, display: "flex", alignItems: "center", backgroundColor: "#fff", color: navy, fontWeight: 600 }}>
-                    {meta.units}
+        {/* 2. Property Tabs */}
+        <div style={{ display: "flex", gap: "10px", marginBottom: "20px" }}>
+          <button style={subTabBtn(propTab === "existing")} onClick={() => setPropTab("existing")}>
+            Existing Properties ({existingProps.length})
+          </button>
+          <button style={subTabBtn(propTab === "target")} onClick={() => setPropTab("target")}>
+            Target Properties ({targetProps.length})
+          </button>
+        </div>
+
+        {propTab === "existing" && (
+          <div>
+            <div style={{ borderLeft: "4px solid #1e6fb5", backgroundColor: "#eef4fb", padding: "12px 16px", borderRadius: "4px", marginBottom: "16px", fontSize: "13px", color: navy, lineHeight: 1.55 }}>
+              <strong>Estimating your property value?</strong> Use <a href="https://www.har.com/track-home-value" target="_blank" rel="noopener noreferrer" style={{ color: copper }}>HAR Track Home Value</a> (Texas-specific, free), <a href="https://www.redfin.com/what-is-my-home-worth" target="_blank" rel="noopener noreferrer" style={{ color: copper }}>Redfin Estimate</a> (~2% median error, on-market), or <a href="https://www.realtor.com/myhome" target="_blank" rel="noopener noreferrer" style={{ color: copper }}>Realtor.com My Home</a> (uses CoreLogic + 2 other AVM providers). These are estimates — a local CMA from an agent is most accurate.
+            </div>
+
+            {existingProps.map((p, idx) => {
+              const remTerm = Math.max(p.termYears - p.yearsOwned, 1);
+              const pmt = calcPmt(p.currentBalance, p.origRate / 100, remTerm);
+              const rentNow = grossRent(p.units);
+              return (
+                <div key={p.id} style={propCardStyle}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
+                    <div style={{ fontWeight: 700, color: navy, fontSize: "15px" }}>Existing Property {idx + 1}</div>
+                    <button onClick={() => removeEx(p.id)} aria-label="Remove" style={{ background: "none", border: "none", color: red, fontSize: "20px", cursor: "pointer", fontWeight: 700, lineHeight: 1 }}>×</button>
                   </div>
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "12px", marginBottom: "12px" }}>
+                    <div>
+                      <label style={S.label}>Property Type</label>
+                      <select style={S.select} value={p.type} onChange={(e) => changeExType(p.id, e.target.value)}>
+                        {Object.keys(UNITS_MAP).map(t => <option key={t} value={t}>{TYPE_LBL[t]}</option>)}
+                      </select>
+                    </div>
+                    <div>
+                      <label style={S.label}>Original Purchase Price</label>
+                      <input style={S.input} type="number" value={p.purchasePrice} onChange={(e) => updateEx(p.id, { purchasePrice: parseFloat(e.target.value) || 0 })} step="5000" />
+                    </div>
+                    <div>
+                      <label style={S.label}>Original Loan Rate (%)</label>
+                      <input style={S.input} type="number" value={p.origRate} onChange={(e) => updateEx(p.id, { origRate: parseFloat(e.target.value) || 0 })} step="0.05" />
+                    </div>
+                  </div>
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "12px" }}>
+                    <div>
+                      <label style={S.label}>Loan Term</label>
+                      <select style={S.select} value={p.termYears} onChange={(e) => updateEx(p.id, { termYears: parseInt(e.target.value) })}>
+                        <option value={30}>30 yr</option><option value={20}>20 yr</option><option value={15}>15 yr</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label style={S.label}>Years Owned</label>
+                      <input style={S.input} type="number" value={p.yearsOwned} onChange={(e) => updateEx(p.id, { yearsOwned: parseInt(e.target.value) || 0 })} min="0" max="40" step="1" />
+                    </div>
+                    <div>
+                      <label style={S.label}>Current Value</label>
+                      <input style={S.input} type="number" value={p.currentValue} onChange={(e) => updateEx(p.id, { currentValue: parseFloat(e.target.value) || 0 })} step="5000" />
+                    </div>
+                    <div>
+                      <label style={S.label}>Current Loan Balance</label>
+                      <input style={S.input} type="number" value={p.currentBalance} onChange={(e) => updateEx(p.id, { currentBalance: parseFloat(e.target.value) || 0 })} step="1000" />
+                    </div>
+                  </div>
+
+                  <hr style={{ ...S.divider, margin: "20px 0 14px" }} />
+                  <div style={{ fontSize: "12px", fontWeight: 600, color: muted, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "10px" }}>Unit Rents</div>
+                  {p.units.map((u, i) => (
+                    <div key={i} style={{ display: "grid", gridTemplateColumns: p.units.length > 1 ? "80px 1fr auto" : "80px 1fr", gap: "10px", alignItems: "center", marginBottom: "8px" }}>
+                      <div style={{ fontSize: "13px", color: navy, fontWeight: 600 }}>{u.label}</div>
+                      <input style={{ ...S.input, opacity: u.oo ? 0.5 : 1 }} type="number" disabled={u.oo} value={u.oo ? 0 : u.rent} onChange={(e) => updateExUnit(p.id, i, { rent: parseFloat(e.target.value) || 0 })} step="50" />
+                      {p.units.length > 1 && (
+                        <button
+                          onClick={() => updateExUnit(p.id, i, { oo: !u.oo, rent: !u.oo ? 0 : u.rent || 1200 })}
+                          style={{ padding: "8px 12px", border: `1.5px solid ${u.oo ? copper : "rgba(26,58,92,0.18)"}`, borderRadius: "6px", background: u.oo ? copper : white, color: u.oo ? white : navy, fontSize: "12px", fontWeight: 600, cursor: "pointer", whiteSpace: "nowrap" }}
+                        >
+                          {u.oo ? "✓ Owner-occupied" : "Owner-occupy"}
+                        </button>
+                      )}
+                    </div>
+                  ))}
+
+                  {summaryRow(pmt, p.currentValue - p.currentBalance, rentNow)}
                 </div>
-              </div>
-              <div style={{ marginTop: "12px", padding: "8px 12px", borderRadius: "6px", backgroundColor: cfPositive ? greenBg : redBg, color: cfPositive ? green : red, fontSize: "13px", fontWeight: 600 }}>
-                Today's cash flow: {cfPositive ? "+" : "−"}{fmt(Math.abs(todayCF))}/mo
-                <span style={{ marginLeft: 8, fontWeight: 400, color: muted }}>
-                  ({fmt(meta.monthlyRentNow)} rent − {fmt(meta.monthlyPmt)} P&amp;I)
-                </span>
+              );
+            })}
+
+            {/* Today snapshot */}
+            <div style={{ marginTop: "20px", marginBottom: "16px" }}>
+              <div style={{ fontFamily: "'Lora', serif", fontSize: "16px", color: navy, fontWeight: 700, marginBottom: "10px" }}>Your equity position today</div>
+              <div style={S.resultsGrid}>
+                <ResultBox label="Portfolio Value Today" value={fmt(todayValue)} />
+                <ResultBox label="Current Loan Balances" value={fmt(todayDebt)} />
+                <ResultBox label="Current Equity" value={fmt(todayEquity)} highlight />
               </div>
             </div>
-          );
-        })}
 
-        {properties.length < 10 && (
-          <button
-            onClick={addProperty}
-            style={{ marginTop: "8px", padding: "10px 18px", border: `1.5px dashed ${copper}`, borderRadius: "6px", background: "transparent", color: copper, fontWeight: 600, fontSize: "14px", cursor: "pointer", fontFamily: "'Outfit', sans-serif" }}
-          >
-            + Add Property ({properties.length}/10)
-          </button>
+            {totalCount < 10 && (
+              <button onClick={addEx} style={{ marginTop: "8px", padding: "10px 18px", border: `1.5px dashed ${copper}`, borderRadius: "6px", background: "transparent", color: copper, fontWeight: 600, fontSize: "14px", cursor: "pointer", fontFamily: "'Outfit', sans-serif" }}>
+                + Add Existing Property ({totalCount}/10)
+              </button>
+            )}
+          </div>
+        )}
+
+        {propTab === "target" && (
+          <div>
+            {targetProps.map((p, idx) => {
+              const loan = p.value * (1 - p.down / 100);
+              const pmt = calcPmt(loan, p.rate / 100, p.termYears);
+              const rentNow = grossRent(p.units);
+              const units = UNITS_MAP[p.type] || 1;
+              return (
+                <div key={p.id} style={propCardStyle}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
+                    <div style={{ fontWeight: 700, color: navy, fontSize: "15px" }}>Target Property {idx + 1}</div>
+                    <button onClick={() => removeTg(p.id)} aria-label="Remove" style={{ background: "none", border: "none", color: red, fontSize: "20px", cursor: "pointer", fontWeight: 700, lineHeight: 1 }}>×</button>
+                  </div>
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "12px", marginBottom: "12px" }}>
+                    <div>
+                      <label style={S.label}>Property Type</label>
+                      <select style={S.select} value={p.type} onChange={(e) => changeTgType(p.id, e.target.value)}>
+                        {Object.keys(UNITS_MAP).map(t => <option key={t} value={t}>{TYPE_LBL[t]}</option>)}
+                      </select>
+                    </div>
+                    <div>
+                      <label style={S.label}>Purchase Price</label>
+                      <input style={S.input} type="number" value={p.value} onChange={(e) => updateTg(p.id, { value: parseFloat(e.target.value) || 0 })} min="50000" max="2000000" step="5000" />
+                    </div>
+                    <div>
+                      <label style={S.label}>Down Payment (%)</label>
+                      <input style={S.input} type="number" value={p.down} onChange={(e) => updateTg(p.id, { down: parseFloat(e.target.value) || 0 })} min="5" max="30" step="1" />
+                    </div>
+                  </div>
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "12px" }}>
+                    <div>
+                      <label style={S.label}>Expected Rate (%)</label>
+                      <input style={S.input} type="number" value={p.rate} onChange={(e) => updateTg(p.id, { rate: parseFloat(e.target.value) || 0 })} step="0.05" />
+                    </div>
+                    <div>
+                      <label style={S.label}>Loan Term</label>
+                      <select style={S.select} value={p.termYears} onChange={(e) => updateTg(p.id, { termYears: parseInt(e.target.value) })}>
+                        <option value={30}>30 yr</option><option value={20}>20 yr</option><option value={15}>15 yr</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label style={S.label}>Units</label>
+                      <div style={{ ...S.input, display: "flex", alignItems: "center", backgroundColor: white, color: navy, fontWeight: 600 }}>{units}</div>
+                    </div>
+                  </div>
+
+                  <hr style={{ ...S.divider, margin: "20px 0 14px" }} />
+                  <div style={{ fontSize: "12px", fontWeight: 600, color: muted, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "10px" }}>Unit Rents</div>
+                  {p.units.map((u, i) => (
+                    <div key={i} style={{ display: "grid", gridTemplateColumns: p.units.length > 1 ? "80px 1fr auto" : "80px 1fr", gap: "10px", alignItems: "center", marginBottom: "8px" }}>
+                      <div style={{ fontSize: "13px", color: navy, fontWeight: 600 }}>{u.label}</div>
+                      <input style={{ ...S.input, opacity: u.oo ? 0.5 : 1 }} type="number" disabled={u.oo} value={u.oo ? 0 : u.rent} onChange={(e) => updateTgUnit(p.id, i, { rent: parseFloat(e.target.value) || 0 })} step="50" />
+                      {p.units.length > 1 && (
+                        <button
+                          onClick={() => updateTgUnit(p.id, i, { oo: !u.oo, rent: !u.oo ? 0 : u.rent || 1200 })}
+                          style={{ padding: "8px 12px", border: `1.5px solid ${u.oo ? copper : "rgba(26,58,92,0.18)"}`, borderRadius: "6px", background: u.oo ? copper : white, color: u.oo ? white : navy, fontSize: "12px", fontWeight: 600, cursor: "pointer", whiteSpace: "nowrap" }}
+                        >
+                          {u.oo ? "✓ Owner-occupied" : "Owner-occupy"}
+                        </button>
+                      )}
+                    </div>
+                  ))}
+
+                  <div style={{ marginTop: "14px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "10px", fontSize: "12px" }}>
+                    <div><div style={{ color: muted, textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 600, fontSize: "10px" }}>Loan Amount</div><div style={{ color: navy, fontWeight: 600, fontSize: "14px" }}>{fmt(loan)}</div></div>
+                    <div><div style={{ color: muted, textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 600, fontSize: "10px" }}>Monthly P&amp;I</div><div style={{ color: navy, fontWeight: 600, fontSize: "14px" }}>{fmt(pmt)}</div></div>
+                    <div><div style={{ color: muted, textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 600, fontSize: "10px" }}>Gross Rent</div><div style={{ color: navy, fontWeight: 600, fontSize: "14px" }}>{fmt(rentNow)}/mo</div></div>
+                    <div><div style={{ color: muted, textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 600, fontSize: "10px" }}>Cash Flow</div><div style={{ color: rentNow - pmt >= 0 ? green : red, fontWeight: 700, fontSize: "14px" }}>{rentNow - pmt >= 0 ? "+" : "−"}{fmt(Math.abs(rentNow - pmt))}/mo</div></div>
+                  </div>
+                </div>
+              );
+            })}
+
+            {totalCount < 10 && (
+              <button onClick={addTg} style={{ marginTop: "8px", padding: "10px 18px", border: `1.5px dashed ${copper}`, borderRadius: "6px", background: "transparent", color: copper, fontWeight: 600, fontSize: "14px", cursor: "pointer", fontFamily: "'Outfit', sans-serif" }}>
+                + Add Target Property ({totalCount}/10)
+              </button>
+            )}
+          </div>
         )}
 
         <hr style={S.divider} />
 
-        {/* Results */}
-        <div style={S.resultsGrid}>
-          <ResultBox label="Portfolio Value" value={fmt(final.value)} />
-          <ResultBox label="Total Equity" value={fmt(final.equity)} />
-          <ResultBox label="Remaining Debt" value={fmt(final.debt)} />
-          <ResultBox label="Est. Monthly Cash Flow" value={fmt(netCashFlow)} highlight />
+        {/* 3. Retirement Income Goal */}
+        <div style={{ backgroundColor: "#f0f4f8", borderRadius: "8px", padding: "20px", marginBottom: "24px" }}>
+          <label style={{ ...S.label, marginBottom: "8px" }}>What monthly cash flow do you want at retirement?</label>
+          <input
+            type="number"
+            value={goalCash}
+            onChange={(e) => setGoalCash(parseFloat(e.target.value) || 0)}
+            min={500} max={50000} step={500}
+            style={{ ...S.input, width: "160px", display: "inline-block" }}
+          />
+          <div style={{ fontSize: "12px", color: muted, marginTop: "6px" }}>per month after mortgage payments</div>
         </div>
 
-        {/* Chart */}
-        <div style={{ marginTop: "32px", backgroundColor: "#fafafa", borderRadius: "8px", padding: "20px 12px 8px" }}>
+        {/* 4. Summary cards at retirement */}
+        <h3 style={{ fontFamily: "'Lora', serif", fontSize: "18px", color: navy, marginBottom: "16px" }}>At Retirement (Age {retAge})</h3>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: "12px", marginBottom: "24px" }}>
+          <div style={{ ...S.resultBox(false), borderLeft: "4px solid #1e6fb5" }}>
+            <div style={S.resultLabel(false)}>Years to Retirement</div>
+            <div style={S.resultValue(false)}>{years}</div>
+          </div>
+          <div style={S.resultBox(false)}>
+            <div style={S.resultLabel(false)}>Total Properties</div>
+            <div style={S.resultValue(false)}>{totalCount}</div>
+          </div>
+          <div style={{ ...S.resultBox(false), borderLeft: `4px solid ${green}` }}>
+            <div style={S.resultLabel(false)}>Portfolio Value</div>
+            <div style={S.resultValue(false)}>{fmt(totalFV)}</div>
+          </div>
+          <div style={{ ...S.resultBox(false), borderLeft: "4px solid #6b3fa0" }}>
+            <div style={S.resultLabel(false)}>Total Equity</div>
+            <div style={S.resultValue(false)}>{fmt(totalEq)}</div>
+          </div>
+          <div style={{ ...S.resultBox(false), borderLeft: "4px solid #EF9F27" }}>
+            <div style={S.resultLabel(false)}>Remaining Debt</div>
+            <div style={S.resultValue(false)}>{fmt(totalDebt)}</div>
+          </div>
+          <div style={{ ...S.resultBox(false), borderLeft: `4px solid ${green}` }}>
+            <div style={S.resultLabel(false)}>Monthly Gross Rent</div>
+            <div style={S.resultValue(false)}>{fmt(totalRent)}/mo</div>
+          </div>
+          <div style={{ ...S.resultBox(false), borderLeft: "4px solid #EF9F27" }}>
+            <div style={S.resultLabel(false)}>Monthly Payments</div>
+            <div style={S.resultValue(false)}>{fmt(totalPmt)}/mo</div>
+          </div>
+          <div style={{ ...S.resultBox(true) }}>
+            <div style={S.resultLabel(true)}>Est. Net Cash Flow</div>
+            <div style={S.resultValue(true)}>{fmt(netCF)}/mo</div>
+          </div>
+          <div style={{ ...S.resultBox(false), borderLeft: `4px solid ${goalColor}` }}>
+            <div style={S.resultLabel(false)}>Goal Progress</div>
+            <div style={{ ...S.resultValue(false), color: goalColor }}>{goalPct ?? 0}%</div>
+          </div>
+        </div>
+
+        {/* 5. Stacked bar chart */}
+        <div style={{ marginTop: "16px", backgroundColor: "#fafafa", borderRadius: "8px", padding: "20px 12px 8px" }}>
           <div style={{ fontSize: "13px", fontWeight: 600, color: navy, marginBottom: "12px", padding: "0 8px" }}>
             Equity vs. Remaining Debt — Year by Year
           </div>
-          <ResponsiveContainer width="100%" height={320}>
-            <BarChart data={yearly} margin={{ top: 8, right: 16, bottom: 8, left: 0 }}>
+          <ResponsiveContainer width="100%" height={340}>
+            <BarChart data={chartData} margin={{ top: 8, right: 16, bottom: 8, left: 0 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="rgba(26,58,92,0.08)" />
               <XAxis
                 dataKey="age"
                 tick={{ fontSize: 11, fill: navy }}
-                interval={yearsToRetire <= 10 ? 0 : yearsToRetire <= 20 ? 1 : 4}
                 label={{ value: "Age", position: "insideBottom", offset: -2, fontSize: 11, fill: muted }}
               />
               <YAxis
                 tick={{ fontSize: 11, fill: navy }}
-                tickFormatter={(v) => v >= 1_000_000 ? `$${(v / 1_000_000).toFixed(1)}M` : `$${Math.round(v / 1000)}k`}
+                tickFormatter={(v) => v >= 1_000_000 ? `$${(v / 1_000_000).toFixed(1)}M` : `$${Math.round(v / 1000)}K`}
               />
               <Tooltip
                 formatter={(v: number) => fmt(v)}
@@ -1090,35 +1351,53 @@ function PortfolioBuilderCalc() {
                 contentStyle={{ borderRadius: 6, border: `1px solid ${navy}`, fontSize: 12 }}
               />
               <Legend wrapperStyle={{ fontSize: 12 }} />
-              <Bar dataKey="equity" stackId="a" fill="#639922" name="Equity" />
+              <Bar dataKey="existingEquity" stackId="a" fill="#3B6D11" name="Existing Equity" />
+              <Bar dataKey="targetEquity" stackId="a" fill="#6dbf6d" name="Target Equity" />
               <Bar dataKey="debt" stackId="a" fill="#EF9F27" name="Remaining Debt" />
             </BarChart>
           </ResponsiveContainer>
         </div>
 
         <div style={{ marginTop: "12px", fontSize: "12px", color: muted, fontStyle: "italic", lineHeight: 1.5 }}>
-          Appreciation {appreciation}% · Mortgage {mortgageRate}% · Rent growth {rentGrowth}%/yr · Pre-tax only · Excludes vacancy, maintenance, insurance, and property taxes.
+          Appreciation {appRate}% · Rent growth {rentGrow}%/yr · Pre-tax only · Excludes vacancy, maintenance, insurance, and property taxes.
         </div>
 
+        {/* Insight callout */}
+        <div style={{ marginTop: "20px", borderLeft: `4px solid ${green}`, backgroundColor: "#eef7e8", padding: "16px 20px", borderRadius: "4px" }}>
+          <div style={{ fontFamily: "'Lora', serif", fontWeight: 700, color: navy, fontSize: "15px", marginBottom: "10px" }}>
+            Your projection at a glance
+          </div>
+          <div style={{ fontSize: "13px", color: "#1c2630", lineHeight: 1.6 }}>
+            You hold <strong>{fmt(todayEquity)}</strong> in equity today. By age <strong>{retAge}</strong>, your portfolio is projected to be worth <strong>{fmt(totalFV)}</strong> with <strong>{fmt(totalEq)}</strong> in equity and an estimated <strong>{fmt(netCF)}/mo</strong> in net cash flow.
+            {goalPct !== null && goalPct >= 100 && (
+              <> You hit <strong>{goalPct}%</strong> of your <strong>{fmt(goalCash)}/mo</strong> goal — strategy is on track.</>
+            )}
+            {goalPct !== null && goalPct < 100 && (
+              <> That covers <strong>{goalPct}%</strong> of your <strong>{fmt(goalCash)}/mo</strong> goal. Add more target properties or extend the timeline to close the gap.</>
+            )}
+          </div>
+        </div>
+
+        {/* 6. Tax disclaimer */}
         <div style={{ marginTop: "20px", borderLeft: "4px solid #EF9F27", backgroundColor: "#fffaf0", padding: "16px 20px", borderRadius: "4px" }}>
           <div style={{ fontFamily: "'Lora', serif", fontWeight: 700, color: navy, fontSize: "15px", marginBottom: "10px" }}>
             Tax disclaimer — connect with a CPA
           </div>
           <div style={{ fontSize: "13px", color: "#1c2630", lineHeight: 1.6 }}>
             <p style={{ margin: "0 0 10px 0" }}>
-              This calculator shows pre-tax projections only. It does not account for income taxes on rental income, capital gains taxes on appreciation at sale, depreciation recapture, pass-through deduction rules (Section 199A), LLC versus personal ownership tax treatment, cost segregation studies, or 1031 exchange planning.
+              This calculator shows pre-tax projections only. It does not account for income taxes on rental income, capital gains taxes at sale, depreciation recapture, pass-through deduction rules (Section 199A), LLC versus personal ownership tax treatment, cost segregation studies, or 1031 exchange planning.
             </p>
             <p style={{ margin: "0 0 10px 0" }}>
-              Rental real estate has significant and often favorable tax treatment — depreciation deductions, cost segregation studies, 1031 exchanges, and the real estate professional election can materially reduce your tax burden and change your actual after-tax return. These strategies are highly individual and depend on your income level, filing status, and how the properties are structured.
+              Rental real estate has significant and often favorable tax treatment — depreciation deductions, cost segregation, 1031 exchanges, and the real estate professional election can materially reduce your tax burden. These strategies depend on your income level, filing status, and property structure.
             </p>
             <p style={{ margin: 0 }}>
-              Talk to a CPA who specializes in real estate before building your strategy. This calculator is a planning starting point — not a tax projection.
+              Talk to a CPA who specializes in real estate before building your strategy. This is a planning starting point — not a tax projection.
             </p>
           </div>
         </div>
 
         <div style={S.disclaimer}>
-          Projections assume constant appreciation, mortgage rate, and rent yield across all properties — real markets vary. Cash flow shown is gross rent minus principal &amp; interest only; taxes, insurance, vacancy, repairs, and management are excluded. This calculator is for educational purposes only. Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518
+          Projections assume constant appreciation and rent growth across all properties — real markets vary. Cash flow shown is gross rent minus principal &amp; interest only; taxes, insurance, vacancy, repairs, and management are excluded. This calculator is for educational purposes only. Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518
         </div>
         <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" style={S.cta}>Map Your Portfolio Strategy →</a>
       </div>
