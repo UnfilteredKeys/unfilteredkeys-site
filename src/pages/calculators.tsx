@@ -1071,6 +1071,7 @@ export default function Calculators() {
     "fha-vs-conventional": "compare",
     "budget-affordability": "budget",
     "bah-buying-power": "bah",
+    "portfolio-builder": "portfolio-builder",
   };
   const initialTab: TabId = tabParamMap[searchParams.get("tab") || ""] || "texas";
   const [tab, setTab] = useState<TabId>(initialTab);
