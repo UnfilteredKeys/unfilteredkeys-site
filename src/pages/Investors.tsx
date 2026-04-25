@@ -519,13 +519,13 @@ const InvestorsPage = () => {
           <div className="wrap">
             <div className="calc-callout">
               <div className="inv-eyebrow" style={{ color: GOLD }}>Sanity-check your DSCR</div>
-              <h2>Model Your Texas Rental Payment Before You Make an Offer</h2>
+              <h2>Run Your Investor Numbers</h2>
               <p>
-                The Texas Payment Calculator models full PITI at any purchase price including county property taxes. Plug in the expected rent and the modeled payment to calculate your DSCR ratio before you go under contract.
+                The Texas Payment Calculator models full PITI at any purchase price — plug in expected rent to sanity-check your DSCR before you go under contract. The Portfolio Builder shows your projected equity and retirement cash flow across up to 10 properties over any time horizon.
               </p>
               <div className="calc-row">
                 <Link className="calc-link" to="/calculators?tab=texas-payment">Texas Payment Calculator →</Link>
-                <Link className="calc-link" to="/calculators?tab=portfolio-builder">Portfolio Builder →</Link>
+                <Link className="calc-link" to="/calculators?tab=portfolio-builder">Portfolio Builder Calculator →</Link>
               </div>
             </div>
           </div>
