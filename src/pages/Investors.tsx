@@ -445,18 +445,87 @@ const InvestorsPage = () => {
           </div>
         </section>
 
-        {/* CALC */}
+        {/* PORTFOLIO BUILDER CALLOUT */}
+        <section className="inv-section inv-section-parch">
+          <div className="wrap">
+            <div
+              className="pcg"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1.1fr 1fr",
+                gap: 40,
+                alignItems: "center",
+                background: "#fff",
+                border: `1px solid rgba(26,58,92,0.1)`,
+                borderRadius: 8,
+                padding: 36,
+              }}
+            >
+              {/* Left: the story */}
+              <div>
+                <div className="inv-eyebrow" style={{ color: COPPER, marginBottom: 14 }}>Portfolio Builder Calculator</div>
+                <h2 style={{ fontFamily: "'Lora', Georgia, serif", fontSize: 30, fontWeight: 600, color: NAVY, marginBottom: 16, lineHeight: 1.2 }}>
+                  See What Starting at 30 Looks Like at 60
+                </h2>
+                <p style={{ fontSize: 15, color: MUTED, lineHeight: 1.75, marginBottom: 14 }}>
+                  Most people think about retirement in terms of a 401(k) balance. Rental investors think in terms of equity and monthly cash flow. The difference is profound — a paid-down portfolio of properties generates income that doesn't require you to sell anything.
+                </p>
+                <p style={{ fontSize: 15, color: MUTED, lineHeight: 1.75, marginBottom: 22 }}>
+                  Use our Portfolio Builder Calculator to model up to 10 properties at any price point. Set your current age, target retirement age, appreciation rate, and mortgage rate. See your projected total equity, remaining debt, and estimated monthly cash flow at retirement — year by year.
+                </p>
+                <Link to="/calculators?tab=portfolio-builder" className="btn-primary" style={{ background: COPPER, color: "#fff" }}>
+                  Open Portfolio Builder Calculator →
+                </Link>
+              </div>
+
+              {/* Right: scenario preview cards */}
+              <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                {[
+                  { name: "Scenario A — Start at 30", meta: [{ l: "3 properties", v: "by age 35" }, { l: "4% appreciation", v: "25 years" }], equity: "~$980K", cash: "~$4,200/mo" },
+                  { name: "Scenario B — Start at 45", meta: [{ l: "3 properties", v: "by age 50" }, { l: "4% appreciation", v: "10 years" }], equity: "~$410K", cash: "~$2,800/mo" },
+                ].map((s) => (
+                  <div key={s.name} style={{ background: SOFT, borderLeft: `4px solid ${COPPER}`, borderRadius: 6, padding: "18px 20px" }}>
+                    <div style={{ fontFamily: "'Lora', Georgia, serif", fontSize: 16, fontWeight: 600, color: NAVY, marginBottom: 10 }}>{s.name}</div>
+                    <div style={{ display: "flex", gap: 18, flexWrap: "wrap", marginBottom: 12 }}>
+                      {s.meta.map((m) => (
+                        <div key={m.l}>
+                          <div style={{ fontFamily: "'Fira Mono', monospace", fontSize: 10, letterSpacing: 1.4, textTransform: "uppercase", color: MUTED }}>{m.l}</div>
+                          <div style={{ fontSize: 13, color: NAVY, fontWeight: 600 }}>{m.v}</div>
+                        </div>
+                      ))}
+                    </div>
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, paddingTop: 10, borderTop: "1px solid rgba(26,58,92,0.08)" }}>
+                      <div>
+                        <div style={{ fontFamily: "'Lora', Georgia, serif", fontSize: 18, fontWeight: 700, color: COPPER }}>{s.equity}</div>
+                        <div style={{ fontSize: 11, color: MUTED }}>projected equity at 60</div>
+                      </div>
+                      <div>
+                        <div style={{ fontFamily: "'Lora', Georgia, serif", fontSize: 18, fontWeight: 700, color: COPPER }}>{s.cash}</div>
+                        <div style={{ fontSize: 11, color: MUTED }}>est. cash flow</div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+                <div style={{ fontSize: 11, color: MUTED, lineHeight: 1.6, fontStyle: "italic" }}>
+                  Scenarios assume $250K avg. purchase price, 20% down, 7% rate, 4% appreciation. Model your actual numbers in the calculator.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* PAYMENT CALCULATOR CALLOUT */}
         <section className="inv-section inv-section-cream">
           <div className="wrap">
             <div className="calc-callout">
-              <div className="inv-eyebrow" style={{ color: GOLD }}>Run Your Numbers</div>
+              <div className="inv-eyebrow" style={{ color: GOLD }}>Sanity-check your DSCR</div>
               <h2>Model Your Texas Rental Payment Before You Make an Offer</h2>
               <p>
-                The Texas Payment Calculator models your full PITI at any purchase price — including county property taxes. Use it to sanity-check DSCR before you go under contract. Plug in the expected rent and the modeled payment to calculate your ratio.
+                The Texas Payment Calculator models full PITI at any purchase price including county property taxes. Plug in the expected rent and the modeled payment to calculate your DSCR ratio before you go under contract.
               </p>
               <div className="calc-row">
                 <Link className="calc-link" to="/calculators?tab=texas-payment">Texas Payment Calculator →</Link>
-                <Link className="calc-link" to="/calculators?tab=budget-affordability">Budget &amp; Affordability →</Link>
+                <Link className="calc-link" to="/calculators?tab=portfolio-builder">Portfolio Builder →</Link>
               </div>
             </div>
           </div>
