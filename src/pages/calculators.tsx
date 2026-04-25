@@ -860,16 +860,16 @@ function PortfolioBuilderCalc() {
   const [retireAge, setRetireAge] = useState("65");
   const [appreciation, setAppreciation] = useState("4");
   const [mortgageRate, setMortgageRate] = useState("7");
-  const [rentYield, setRentYield] = useState("0.7"); // monthly rent as % of current value
+  const [rentGrowth, setRentGrowth] = useState("3"); // annual rent growth %
   const [properties, setProperties] = useState<Property[]>([
-    { id: 1, price: "300000", downPct: "20", term: "30" },
+    { id: 1, type: "sfr", price: "300000", downPct: "20", term: "30", rentPerUnit: "2000" },
   ]);
 
   const addProperty = () => {
     if (properties.length >= 10) return;
     setProperties([
       ...properties,
-      { id: Date.now(), price: "300000", downPct: "20", term: "30" },
+      { id: Date.now(), type: "sfr", price: "300000", downPct: "20", term: "30", rentPerUnit: "2000" },
     ]);
   };
   const removeProperty = (id: number) => setProperties(properties.filter(p => p.id !== id));
@@ -879,7 +879,20 @@ function PortfolioBuilderCalc() {
   const yearsToRetire = Math.max(0, (parseInt(retireAge) || 0) - (parseInt(currentAge) || 0));
   const apprRate = (parseFloat(appreciation) || 0) / 100;
   const mRate = parseFloat(mortgageRate) || 0;
-  const rentPct = (parseFloat(rentYield) || 0) / 100;
+  const rGrowth = (parseFloat(rentGrowth) || 0) / 100;
+
+  // Per-property derived helper
+  const propMeta = (p: Property) => {
+    const price = parseFloat(p.price) || 0;
+    const dp = (parseFloat(p.downPct) || 0) / 100;
+    const term = parseInt(p.term) || 30;
+    const loan = price * (1 - dp);
+    const units = UNITS_BY_TYPE[p.type] ?? 1;
+    const rentPerUnit = parseFloat(p.rentPerUnit) || 0;
+    const monthlyRentNow = rentPerUnit * units;
+    const monthlyPmt = monthlyPI(loan, mRate, term);
+    return { price, term, loan, units, rentPerUnit, monthlyRentNow, monthlyPmt };
+  };
 
   // Compute per-year totals
   const yearly: { year: number; age: number; value: number; equity: number; debt: number }[] = [];
@@ -887,12 +900,8 @@ function PortfolioBuilderCalc() {
     let totalValue = 0;
     let totalDebt = 0;
     properties.forEach(p => {
-      const price = parseFloat(p.price) || 0;
-      const dp = (parseFloat(p.downPct) || 0) / 100;
-      const term = parseInt(p.term) || 30;
-      const loan = price * (1 - dp);
+      const { price, term, loan } = propMeta(p);
       const value = price * Math.pow(1 + apprRate, y);
-      // Remaining balance after y years
       const r = mRate / 100 / 12;
       const n = term * 12;
       const monthsPaid = Math.min(y * 12, n);
@@ -922,17 +931,12 @@ function PortfolioBuilderCalc() {
 
   const final = yearly[yearly.length - 1] || { value: 0, equity: 0, debt: 0 };
 
-  // Estimated monthly cash flow at retirement: gross rent − P&I (taxes/insurance/vacancy excluded for simplicity)
+  // Monthly cash flow at retirement: rent grown by rentGrowth − P&I (only while loan active)
   let grossRent = 0;
   let totalPI = 0;
   properties.forEach(p => {
-    const price = parseFloat(p.price) || 0;
-    const dp = (parseFloat(p.downPct) || 0) / 100;
-    const term = parseInt(p.term) || 30;
-    const loan = price * (1 - dp);
-    const futureValue = price * Math.pow(1 + apprRate, yearsToRetire);
-    grossRent += futureValue * rentPct;
-    // If loan is paid off by retirement, no P&I
+    const { term, loan, monthlyRentNow } = propMeta(p);
+    grossRent += monthlyRentNow * Math.pow(1 + rGrowth, yearsToRetire);
     if (yearsToRetire < term) totalPI += monthlyPI(loan, mRate, term);
   });
   const netCashFlow = grossRent - totalPI;
