@@ -967,9 +967,9 @@ function PortfolioBuilderCalc() {
             <input style={S.input} type="number" value={mortgageRate} onChange={e => setMortgageRate(e.target.value)} step="0.05" min="0" max="15" />
           </div>
           <div>
-            <label style={S.label}>Monthly Rent (% of value)</label>
-            <input style={S.input} type="number" value={rentYield} onChange={e => setRentYield(e.target.value)} step="0.05" min="0" max="3" />
-            <div style={{ fontSize: "11px", color: muted, marginTop: "4px", lineHeight: 1.4 }}>0.6–0.8% is typical in TX rental markets</div>
+            <label style={S.label}>Annual Rent Growth (%/yr)</label>
+            <input style={S.input} type="number" value={rentGrowth} onChange={e => setRentGrowth(e.target.value)} step="0.5" min="1" max="6" />
+            <div style={{ fontSize: "11px", color: muted, marginTop: "4px", lineHeight: 1.4 }}>3% is a typical long-term TX assumption</div>
           </div>
           <div style={{ display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
             <div style={{ fontSize: "13px", color: muted, lineHeight: 1.5 }}>
@@ -983,39 +983,69 @@ function PortfolioBuilderCalc() {
 
         {/* Properties */}
         <h3 style={{ fontFamily: "'Lora', serif", fontSize: "18px", color: navy, marginBottom: "16px" }}>Properties</h3>
-        {properties.map((p, idx) => (
-          <div key={p.id} style={{ backgroundColor: "#f0f4f8", borderRadius: "8px", padding: "16px 20px", marginBottom: "12px" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
-              <div style={{ fontWeight: 600, color: navy, fontSize: "14px" }}>Property {idx + 1}</div>
-              {properties.length > 1 && (
-                <button
-                  onClick={() => removeProperty(p.id)}
-                  style={{ background: "none", border: "none", color: red, fontSize: "13px", cursor: "pointer", fontWeight: 600 }}
-                >
-                  Remove
-                </button>
-              )}
+        {properties.map((p, idx) => {
+          const meta = propMeta(p);
+          const todayCF = meta.monthlyRentNow - meta.monthlyPmt;
+          const cfPositive = todayCF >= 0;
+          return (
+            <div key={p.id} style={{ backgroundColor: "#f0f4f8", borderRadius: "8px", padding: "16px 20px", marginBottom: "12px" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
+                <div style={{ fontWeight: 600, color: navy, fontSize: "14px" }}>Property {idx + 1} <span style={{ color: muted, fontWeight: 400 }}>· {meta.units} unit{meta.units > 1 ? "s" : ""}</span></div>
+                {properties.length > 1 && (
+                  <button
+                    onClick={() => removeProperty(p.id)}
+                    aria-label="Remove property"
+                    style={{ background: "none", border: "none", color: red, fontSize: "16px", cursor: "pointer", fontWeight: 700, lineHeight: 1 }}
+                  >
+                    ×
+                  </button>
+                )}
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "12px" }}>
+                <div>
+                  <label style={S.label}>Property Type</label>
+                  <select style={S.select} value={p.type} onChange={e => updateProperty(p.id, "type", e.target.value)}>
+                    {(Object.keys(UNITS_BY_TYPE) as PropType[]).map(t => (
+                      <option key={t} value={t}>{TYPE_LABEL[t]}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label style={S.label}>Purchase Price</label>
+                  <input style={S.input} type="number" value={p.price} onChange={e => updateProperty(p.id, "price", e.target.value)} min="50000" max="2000000" step="5000" />
+                </div>
+                <div>
+                  <label style={S.label}>Down Payment (%)</label>
+                  <input style={S.input} type="number" value={p.downPct} onChange={e => updateProperty(p.id, "downPct", e.target.value)} min="5" max="30" step="1" />
+                </div>
+                <div>
+                  <label style={S.label}>Loan Term (yrs)</label>
+                  <select style={S.select} value={p.term} onChange={e => updateProperty(p.id, "term", e.target.value)}>
+                    <option value="30">30</option>
+                    <option value="20">20</option>
+                    <option value="15">15</option>
+                  </select>
+                </div>
+                <div>
+                  <label style={S.label}>Rent / Unit / Month</label>
+                  <input style={S.input} type="number" value={p.rentPerUnit} onChange={e => updateProperty(p.id, "rentPerUnit", e.target.value)} min="400" max="10000" step="50" />
+                </div>
+                <div>
+                  <label style={S.label}>Units</label>
+                  <div style={{ ...S.input, display: "flex", alignItems: "center", backgroundColor: "#fff", color: navy, fontWeight: 600 }}>
+                    {meta.units}
+                  </div>
+                </div>
+              </div>
+              <div style={{ marginTop: "12px", padding: "8px 12px", borderRadius: "6px", backgroundColor: cfPositive ? greenBg : redBg, color: cfPositive ? green : red, fontSize: "13px", fontWeight: 600 }}>
+                Today's cash flow: {cfPositive ? "+" : "−"}{fmt(Math.abs(todayCF))}/mo
+                <span style={{ marginLeft: 8, fontWeight: 400, color: muted }}>
+                  ({fmt(meta.monthlyRentNow)} rent − {fmt(meta.monthlyPmt)} P&amp;I)
+                </span>
+              </div>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "12px" }}>
-              <div>
-                <label style={S.label}>Purchase Price</label>
-                <input style={S.input} type="number" value={p.price} onChange={e => updateProperty(p.id, "price", e.target.value)} min="0" step="5000" />
-              </div>
-              <div>
-                <label style={S.label}>Down Payment (%)</label>
-                <input style={S.input} type="number" value={p.downPct} onChange={e => updateProperty(p.id, "downPct", e.target.value)} min="0" max="100" step="1" />
-              </div>
-              <div>
-                <label style={S.label}>Loan Term (yrs)</label>
-                <select style={S.select} value={p.term} onChange={e => updateProperty(p.id, "term", e.target.value)}>
-                  <option value="30">30</option>
-                  <option value="20">20</option>
-                  <option value="15">15</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        ))}
+          );
+        })}
 
         {properties.length < 10 && (
           <button
