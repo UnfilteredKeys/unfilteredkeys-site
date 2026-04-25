@@ -1032,6 +1032,7 @@ function PortfolioBuilderCalc() {
               <XAxis
                 dataKey="age"
                 tick={{ fontSize: 11, fill: navy }}
+                interval={yearsToRetire <= 10 ? 0 : yearsToRetire <= 20 ? 1 : 4}
                 label={{ value: "Age", position: "insideBottom", offset: -2, fontSize: 11, fill: muted }}
               />
               <YAxis
@@ -1044,10 +1045,31 @@ function PortfolioBuilderCalc() {
                 contentStyle={{ borderRadius: 6, border: `1px solid ${navy}`, fontSize: 12 }}
               />
               <Legend wrapperStyle={{ fontSize: 12 }} />
-              <Bar dataKey="equity" stackId="a" fill={copper} name="Equity" />
-              <Bar dataKey="debt" stackId="a" fill={navy} name="Remaining Debt" />
+              <Bar dataKey="equity" stackId="a" fill="#639922" name="Equity" />
+              <Bar dataKey="debt" stackId="a" fill="#EF9F27" name="Remaining Debt" />
             </BarChart>
           </ResponsiveContainer>
+        </div>
+
+        <div style={{ marginTop: "12px", fontSize: "12px", color: muted, fontStyle: "italic", lineHeight: 1.5 }}>
+          Appreciation {appreciation}% · Mortgage {mortgageRate}% · Rent growth {rentYield}%/yr · Pre-tax only · Excludes vacancy, maintenance, insurance, and property taxes.
+        </div>
+
+        <div style={{ marginTop: "20px", borderLeft: "4px solid #EF9F27", backgroundColor: "#fffaf0", padding: "16px 20px", borderRadius: "4px" }}>
+          <div style={{ fontFamily: "'Lora', serif", fontWeight: 700, color: navy, fontSize: "15px", marginBottom: "10px" }}>
+            Tax disclaimer — connect with a CPA
+          </div>
+          <div style={{ fontSize: "13px", color: "#1c2630", lineHeight: 1.6 }}>
+            <p style={{ margin: "0 0 10px 0" }}>
+              This calculator shows pre-tax projections only. It does not account for income taxes on rental income, capital gains taxes on appreciation at sale, depreciation recapture, pass-through deduction rules (Section 199A), LLC versus personal ownership tax treatment, cost segregation studies, or 1031 exchange planning.
+            </p>
+            <p style={{ margin: "0 0 10px 0" }}>
+              Rental real estate has significant and often favorable tax treatment — depreciation deductions, cost segregation studies, 1031 exchanges, and the real estate professional election can materially reduce your tax burden and change your actual after-tax return. These strategies are highly individual and depend on your income level, filing status, and how the properties are structured.
+            </p>
+            <p style={{ margin: 0 }}>
+              Talk to a CPA who specializes in real estate before building your strategy. This calculator is a planning starting point — not a tax projection.
+            </p>
+          </div>
         </div>
 
         <div style={S.disclaimer}>
