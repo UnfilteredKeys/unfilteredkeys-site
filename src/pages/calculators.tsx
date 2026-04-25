@@ -3,6 +3,16 @@ import { useSearchParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
+import {
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  CartesianGrid,
+} from "recharts";
 // ── SEO ───────────────────────────────────────────────────────────────────────
 
 function useSEO({ title, description, canonical }: { title: string; description: string; canonical: string }) {
