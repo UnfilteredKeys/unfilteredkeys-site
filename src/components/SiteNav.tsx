@@ -28,10 +28,10 @@ const NAV: NavItem[] = [
   {
     label: "Investors",
     children: [
-      { to: "/investors", label: "DSCR Loans" },
-      { to: "/investors", label: "Bank Statement Loans" },
       { to: "/investors", label: "Build a Rental Portfolio" },
       { to: "/pcs-to-portfolio", label: "PCS to Portfolio" },
+      { to: "/investors", label: "Bank Statement Loans" },
+      { to: "/investors", label: "DSCR Loans" },
     ],
   },
   {
