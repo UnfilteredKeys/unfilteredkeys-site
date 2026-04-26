@@ -186,7 +186,7 @@ const LoanProgramsPage = () => {
 
   return (
     <>
-     <SEO {...seoMeta.loanPrograms} /> 
+     <SEO title="Texas Mortgage Loan Programs | VA, FHA, USDA, Down Payment Assistance" description="Compare VA, FHA, USDA, conventional, and down payment assistance programs in Texas. Find out which loan fits your income, credit, and down payment — free consultation." canonical="/loan-programs" /> 
       <style>{`
         .lp-page {
           font-family: 'Outfit', sans-serif;
