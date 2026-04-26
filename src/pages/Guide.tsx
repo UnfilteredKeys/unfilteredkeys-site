@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
 const GuideePage = () => {
@@ -16,7 +17,12 @@ const GuideePage = () => {
 
   return (
     <>
-    <SEO title="Texas Home Buyer's Guide | Mortgage Education | Keys by Shalanda" description="The mortgage guide built for Texas buyers — credit, DTI, loan types, property taxes, and what lenders don't tell you. Free download, plain language, no fluff." canonical="/guide" />  
+    <SEO title="Texas Home Buyer's Guide | Mortgage Education | Keys by Shalanda" description="The mortgage guide built for Texas buyers — credit, DTI, loan types, property taxes, and what lenders don't tell you. Free download, plain language, no fluff." canonical="/guide" />
+    <Helmet>
+      <title>Texas Home Buyer's Guide | Mortgage Education | Keys by Shalanda</title>
+      <meta name="description" content="The mortgage guide for Texas buyers. Credit, DTI, loan types, property taxes explained in plain language. Free download." />
+      <link rel="canonical" href="https://shalandasmith.com/guide" />
+    </Helmet>  
       <style>{`
         .guide-page {
           font-family: 'Outfit', sans-serif;
