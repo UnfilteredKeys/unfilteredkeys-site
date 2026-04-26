@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
 import {
@@ -1439,11 +1438,6 @@ export default function Calculators() {
   return (
     <>
     <SEO {...seoMeta.calculators} />
-    <Helmet>
-      <title>Mortgage Calculators | Keys by Shalanda</title>
-      <meta name="description" content="Free mortgage calculators for Texas homebuyers. Estimate your payment, affordability, and loan options. NMLS #554554." />
-      <link rel="canonical" href="https://shalandasmith.com/calculators" />
-    </Helmet>
     <div style={S.page}>
       <div style={S.hero}>
         <p style={S.eyebrow}>Mortgage Calculators · Texas · Keys by Shalanda</p>
