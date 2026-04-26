@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 
 interface SEOProps {
@@ -20,47 +19,31 @@ export default function SEO({
   ogImage = DEFAULT_OG_IMAGE,
   noindex = false,
 }: SEOProps) {
+  // If a full title is passed, use it directly.
+  // If only a short title fragment is passed (no pipe), append site name.
+  // If no title, use the default.
   const fullTitle = title
-    ? `${title} | ${SITE_NAME}`
+    ? title.includes("|")
+      ? title
+      : `${title} | ${SITE_NAME}`
     : `${SITE_NAME} | Texas Mortgage Broker`;
 
-  const canonicalUrl = canonical
-    ? `${BASE_URL}${canonical}`
-    : BASE_URL;
-
-  useEffect(() => {
-    document.title = fullTitle;
-    let metaDesc = document.querySelector('meta[name="description"]');
-    if (!metaDesc) {
-      metaDesc = document.createElement("meta");
-      (metaDesc as HTMLMetaElement).name = "description";
-      document.head.appendChild(metaDesc);
-    }
-    if (description) (metaDesc as HTMLMetaElement).content = description;
-
-    let linkCanonical = document.querySelector('link[rel="canonical"]');
-    if (!linkCanonical) {
-      linkCanonical = document.createElement("link");
-      (linkCanonical as HTMLLinkElement).rel = "canonical";
-      document.head.appendChild(linkCanonical);
-    }
-    (linkCanonical as HTMLLinkElement).href = canonicalUrl;
-  }, [fullTitle, description, canonicalUrl]);
+  const canonicalUrl = canonical ? `${BASE_URL}${canonical}` : BASE_URL;
 
   return (
     <Helmet>
       <title>{fullTitle}</title>
       {description && <meta name="description" content={description} />}
       <link rel="canonical" href={canonicalUrl} />
-      {noindex && <meta name="robots" content="noindex,nofollow" />}
       <meta property="og:title" content={fullTitle} />
       {description && <meta property="og:description" content={description} />}
-      <meta property="og:url" content={canonicalUrl} />
       <meta property="og:image" content={ogImage} />
+      <meta property="og:url" content={canonicalUrl} />
       <meta property="og:type" content="website" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       {description && <meta name="twitter:description" content={description} />}
+      {noindex && <meta name="robots" content="noindex, nofollow" />}
     </Helmet>
   );
 }
