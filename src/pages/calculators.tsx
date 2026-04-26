@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Helmet } from "react-helmet-async";
 import { useSearchParams } from "react-router-dom";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
@@ -1438,6 +1439,11 @@ export default function Calculators() {
   return (
     <>
     <SEO title="Texas Mortgage Calculators | VA Loan, FHA, BAH & Payment Tools" description="Free Texas mortgage calculators: VA loan payment, FHA vs. conventional, BAH buying power, budget and affordability. Built for Texas property taxes — not generic estimates." canonical="/calculators" />
+    <Helmet>
+      <title>Texas Mortgage Calculators | VA Loan, FHA, BAH and Payment Tools</title>
+      <meta name="description" content="Free Texas mortgage calculators: VA loan payment, FHA vs conventional, BAH buying power, and affordability. Built for Texas property taxes." />
+      <link rel="canonical" href="https://shalandasmith.com/calculators" />
+    </Helmet>
     <div style={S.page}>
       <div style={S.hero}>
         <p style={S.eyebrow}>Mortgage Calculators · Texas · Keys by Shalanda</p>
