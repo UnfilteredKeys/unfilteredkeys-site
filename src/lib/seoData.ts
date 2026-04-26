@@ -1,3 +1,4 @@
+// v2
 // src/lib/seoData.ts
 
 export const seoMeta = {
