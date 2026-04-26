@@ -10,8 +10,8 @@ const AboutPage = () => {
 return (
   <>
     <Helmet>
-      <title>About Shalanda Smith | Licensed Texas Mortgage Broker | NMLS #554554</title>
-      <meta name="description" content="Meet Shalanda Smith — licensed Texas mortgage broker (NMLS #554554) specializing in VA loans and Central Texas military buyers. 5.0 Google rating. Real advice, no fluff." />
+      <title>About Shalanda Smith | Texas Mortgage Broker | NMLS #554554</title>
+      <meta name="description" content="Meet Shalanda Smith, licensed Texas mortgage broker (NMLS #554554). VA loans, Fort Hood military buyers, 5.0 Google rating. Real advice, no fluff." />
       <link rel="canonical" href="https://shalandasmith.com/about" />
     </Helmet>
 <style>{`
