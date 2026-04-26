@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
@@ -221,6 +222,11 @@ const InvestorsPage = () => {
   return (
     <>
       <SEO {...(seoMeta as any).investors} />
+    <Helmet>
+      <title>Texas Real Estate Investor Loans | DSCR, Bank Statement and Non-QM</title>
+      <meta name="description" content="DSCR, bank statement, and asset-based loans for Texas investors. Build a rental portfolio without W-2 requirements. Free strategy call." />
+      <link rel="canonical" href="https://shalandasmith.com/investors" />
+    </Helmet>
       <style>{`
         .inv { font-family: 'Outfit', sans-serif; background: ${IVORY}; color: ${INK}; line-height: 1.7; -webkit-font-smoothing: antialiased; }
         .inv *, .inv *::before, .inv *::after { box-sizing: border-box; }
