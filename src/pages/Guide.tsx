@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { Helmet } from "react-helmet-async";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
 const GuideePage = () => {
@@ -17,12 +16,7 @@ const GuideePage = () => {
 
   return (
     <>
-    <SEO {...seoMeta.guide} />
-    <Helmet>
-      <title>Texas Homebuyer's Guide | Keys by Shalanda</title>
-      <meta name="description" content="Free mortgage guide for Texas homebuyers. Learn how approvals work, what lenders look at, and how to position yourself before you apply. NMLS #554554." />
-      <link rel="canonical" href="https://shalandasmith.com/guide" />
-    </Helmet>  
+    <SEO {...seoMeta.guide} />  
       <style>{`
         .guide-page {
           font-family: 'Outfit', sans-serif;
