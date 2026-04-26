@@ -1437,7 +1437,7 @@ export default function Calculators() {
 
   return (
     <>
-    <SEO {...seoMeta.calculators} />
+    <SEO title="Texas Mortgage Calculators | VA Loan, FHA, BAH & Payment Tools" description="Free Texas mortgage calculators: VA loan payment, FHA vs. conventional, BAH buying power, budget and affordability. Built for Texas property taxes — not generic estimates." canonical="/calculators" />
     <div style={S.page}>
       <div style={S.hero}>
         <p style={S.eyebrow}>Mortgage Calculators · Texas · Keys by Shalanda</p>
