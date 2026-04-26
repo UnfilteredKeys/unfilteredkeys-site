@@ -16,7 +16,7 @@ const PlaybookPage = () => {
 
   return (
     <>
-     <SEO {...seoMeta.playbook} />  
+     <SEO title="90-Day Homebuyer Playbook | Texas Mortgage Road Map | Keys by Shalanda" description="The 90-Day Homebuyer Playbook walks Texas buyers through every step from pre-approval to closing table. Free download from Keys by Shalanda." canonical="/playbook" />  
       <style>{`
         .guide-page {
           font-family: 'Outfit', sans-serif;
