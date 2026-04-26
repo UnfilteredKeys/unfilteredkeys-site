@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
 const PlaybookPage = () => {
@@ -16,7 +17,12 @@ const PlaybookPage = () => {
 
   return (
     <>
-     <SEO title="90-Day Homebuyer Playbook | Texas Mortgage Road Map | Keys by Shalanda" description="The 90-Day Homebuyer Playbook walks Texas buyers through every step from pre-approval to closing table. Free download from Keys by Shalanda." canonical="/playbook" />  
+     <SEO title="90-Day Homebuyer Playbook | Texas Mortgage Road Map | Keys by Shalanda" description="The 90-Day Homebuyer Playbook walks Texas buyers through every step from pre-approval to closing table. Free download from Keys by Shalanda." canonical="/playbook" />
+    <Helmet>
+      <title>90-Day Homebuyer Playbook | Texas Mortgage Road Map | Keys by Shalanda</title>
+      <meta name="description" content="The 90-Day Homebuyer Playbook walks Texas buyers from pre-approval to closing. Free download from Keys by Shalanda." />
+      <link rel="canonical" href="https://shalandasmith.com/playbook" />
+    </Helmet>  
       <style>{`
         .guide-page {
           font-family: 'Outfit', sans-serif;
