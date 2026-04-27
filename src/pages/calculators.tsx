@@ -1441,7 +1441,7 @@ export default function Calculators() {
     <SEO title="Texas Mortgage Calculators | VA Loan, FHA, BAH & Payment Tools" description="Free Texas mortgage calculators: VA loan payment, FHA vs. conventional, BAH buying power, budget and affordability. Built for Texas property taxes — not generic estimates." canonical="/calculators" />
     <Helmet>
       <title>Texas Mortgage Calculators | VA Loan, FHA, BAH and Payment Tools</title>
-      <meta name="description" content="Free Texas mortgage calculators: VA loan payment, FHA vs conventional, BAH buying power, and affordability. Built for Texas property taxes." />
+      <meta name="description" content="Free Texas mortgage calculators built for VA loans, FHA, BAH buying power, and Texas property taxes." />
       <link rel="canonical" href="https://shalandasmith.com/calculators" />
     </Helmet>
     <div style={S.page}>
