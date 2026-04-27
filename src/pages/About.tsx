@@ -358,16 +358,37 @@ return (
           <div className="ab-story-inner">
             <div>
               <div className="ab-section-tag">My Story</div>
-              <h2 className="ab-heading">I came to mortgage sideways — and it turned out to be the best thing that happened to me.</h2>
+              <h2 className="ab-heading">I didn&apos;t choose mortgage. Mortgage chose me — and not gently.</h2>
               <div className="ab-body">
-                <p>I was a bank manager when mortgages got added to my list of responsibilities. I pushed back — I had enough on my plate. But the first time I helped a physician in the Austin market navigate a loan that actually fit how she earned, something clicked. I stopped pushing back and started leaning in.</p>
-                <p>From there I went to work for a national builder, where I learned government loans inside and out — VA, FHA, USDA — and discovered what down payment assistance could actually do for buyers who thought homeownership was years away. I watched people who came in convinced they couldn&apos;t qualify walk out with keys.</p>
-                <p>After working across a few different mortgage companies, I learned the difference between originating inside a system and building a practice with real options. <strong>The broker model isn&apos;t just different — it&apos;s structurally better for the client.</strong> No layers of management or marketing inflating the rate. No single product shelf. Just the right loan for the right situation.</p>
-                <p>What keeps me doing this is the turn. The client who was told no somewhere else, who comes in skeptical, and leaves with a clear path. The self-employed borrower who thought their write-offs disqualified them. The investor ready to grow a portfolio but stuck at one property. I love using my analytical skills to find the angle that works — and I love building the kind of trust that brings clients back again and again.</p>
+                <p>I was a bank branch manager in Austin when we got the news: effective immediately, we were also responsible for mortgage production. I remember thinking, great — who&apos;s my loan officer? They said, you are. I almost quit on the spot.</p>
+                <p>Instead, they introduced me to Mr. Macy. Old school. Gregarious. The kind of loan officer who sits in the meeting with you, thinks through the file with you, and makes you feel like you can actually do this. I leaned in.</p>
+                <p>It turns out I&apos;d landed at exactly the right branch at exactly the right time. My new location was full of physicians, surgeons, business owners, and asset-heavy clients. I became part of an internal medical board — sitting alongside private bankers, investment advisers, and senior management — building a real system for serving high-earning clients at the right moments. March for new residents. September for private practice buyins. I was learning faster than I could keep up with. By 2011, I was ranked #2 in total loan production in my region, named Elite Leader for the district, and recognized as a Medical Cabinet member. They put my name on a screen and handed me a trophy on stage. I didn&apos;t see that coming.</p>
+              </div>
+
+              <div className="ab-awards">
+                <div className="ab-awards-grid">
+                  <figure className="ab-award">
+                    <img src="/placeholder.svg" alt="Pinnacle Club credential slide — Shalanda Smith, ranked #2 in total loan production, Elite Leader, Medical Cabinet Member" data-replace="award-credential-slide" />
+                  </figure>
+                  <figure className="ab-award">
+                    <img src="/placeholder.svg" alt="Shalanda Smith receiving the Pinnacle Club award on stage" data-replace="award-stage-photo" />
+                  </figure>
+                </div>
+                <div className="ab-awards-caption">Pinnacle Club · 2011 · Ranked #2 in Total Loan Production · Elite Leader · Medical Cabinet Member</div>
+              </div>
+
+              <div className="ab-body">
+                <p>That&apos;s when my mentor told me: if you want to really learn this business, go work for a builder.</p>
+                <p>So I did. DHI Mortgage, in-house lender for DR Horton. I was thrown to the wolves — down payment assistance, revolving pipelines, internal sales pressure, zero breathing room. I learned everything. I also learned exactly how I didn&apos;t want to work. The moment I realized I had over 70 active loans and couldn&apos;t identify one of my own clients — I was done. I walked away.</p>
+                <p>What followed was years of figuring it out the hard way. Supreme Lending. CMG, where I learned that not every environment fights for your business the way you fight for your clients. Back to banking when the market slowed. Then Guaranteed Rate, sold on a Coldwell Banker relationship that started strong — until COVID hit and every loan officer in the country was slammed, turn times collapsed, and I was dragging every file across the finish line. That&apos;s not how I work.</p>
+                <p>Then I answered a phone call and met Nick.</p>
+                <p>He introduced me to the broker model. Secure Choice Lending. And everything changed. I finally understood pricing, options, and control. No corporate favoritism. No product shelf limits. No rate markup padding someone else&apos;s margins. <strong>Just the right lender for the right loan</strong>, and a CEO who gives me the autonomy and ongoing education to keep getting better.</p>
+                <p>All those years — the hustle, the toxic environments, the 70-loan pipelines, the bumps and bruises — I carry all of it into every file I touch now. The difference is, now I get to use it on your behalf. VA loans are where I go deepest — but whether you&apos;re a veteran, a first-time buyer, or a seasoned investor, you&apos;re getting the same fight.</p>
+                <p>That&apos;s why I built Keys by Shalanda. And that&apos;s why I&apos;m not going anywhere.</p>
               </div>
               <div className="ab-sig">
                 — Shalanda Smith
-                <span>Founder, Keys by Shalanda · NMLS #554554</span>
+                <span>Senior Loan Originator · NMLS #554554 · Secure Choice Lending · NMLS #1689518</span>
               </div>
             </div>
             <div className="ab-sidebar">
