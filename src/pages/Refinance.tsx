@@ -44,7 +44,7 @@ const RefinancePage = () => {
       <SEO title="Refinance Your Texas Home | Lower Rate or Restructure | Keys by Shalanda" description="Refinance your Texas mortgage and lower your rate or restructure your payment. VA IRRRL, FHA streamline, and conventional refi options. 21-day average close. Free consult." canonical="/refinance" />
     <Helmet>
       <title>Refinance Your Texas Home | Lower Rate or Restructure | Keys by Shalanda</title>
-      <meta name="description" content="Refinance your Texas mortgage. VA IRRRL, FHA streamline, conventional refi options. 21-day average close. Free consultation." />
+      <meta name="description" content="Refinance your Texas mortgage with VA IRRRL, FHA streamline, or conventional refi. 21-day average close. Free consultation." />
       <link rel="canonical" href="https://shalandasmith.com/refinance" />
     </Helmet>
       <style>{`
