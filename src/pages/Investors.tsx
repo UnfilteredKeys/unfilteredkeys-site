@@ -224,7 +224,7 @@ const InvestorsPage = () => {
       <SEO {...(seoMeta as any).investors} />
     <Helmet>
       <title>Texas Real Estate Investor Loans | DSCR, Bank Statement and Non-QM</title>
-      <meta name="description" content="DSCR, bank statement, and asset-based loans for Texas investors. Build a rental portfolio without W-2 requirements. Free strategy call." />
+      <meta name="description" content="DSCR, bank statement, and asset-based loans for Texas investors. Build a portfolio without W-2 requirements." />
       <link rel="canonical" href="https://shalandasmith.com/investors" />
     </Helmet>
       <style>{`
