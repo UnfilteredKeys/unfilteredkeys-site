@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import AboutSidebar from "@/components/AboutSidebar";
 import { Helmet } from "react-helmet-async";
+import awardCredentialSlide from "@/assets/award-credential-slide.jpg";
+import awardStagePhoto from "@/assets/award-stage-photo.jpg";
 
 const AboutPage = () => {
   useEffect(() => {
@@ -393,10 +395,10 @@ return (
               <div className="ab-awards">
                 <div className="ab-awards-grid">
                   <figure className="ab-award">
-                    <img src="/placeholder.svg" alt="Pinnacle Club credential slide — Shalanda Smith, ranked #2 in total loan production, Elite Leader, Medical Cabinet Member" data-replace="award-credential-slide" />
+                    <img src={awardCredentialSlide} alt="Pinnacle Club credential slide — Shalanda Smith, ranked #2 in total loan production, Elite Leader, Medical Cabinet Member" loading="lazy" />
                   </figure>
                   <figure className="ab-award">
-                    <img src="/placeholder.svg" alt="Shalanda Smith receiving the Pinnacle Club award on stage" data-replace="award-stage-photo" />
+                    <img src={awardStagePhoto} alt="Shalanda Smith receiving the Pinnacle Club award on stage" loading="lazy" />
                   </figure>
                 </div>
                 <div className="ab-awards-caption">Pinnacle Club · 2011 · Ranked #2 in Total Loan Production · Elite Leader · Medical Cabinet Member</div>
