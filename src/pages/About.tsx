@@ -163,6 +163,31 @@ return (
           letter-spacing: 1.5px; color: #b5621e;
           margin-top: 4px; text-transform: uppercase;
         }
+        .ab-awards {
+          margin: 36px 0 32px;
+        }
+        .ab-awards-grid {
+          display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+        }
+        .ab-award {
+          margin: 0; background: #faf8f4;
+          border: 1px solid #ddd8cf; border-radius: 10px;
+          overflow: hidden; aspect-ratio: 4 / 3;
+          display: flex; align-items: center; justify-content: center;
+        }
+        .ab-award img {
+          width: 100%; height: 100%; object-fit: cover; display: block;
+        }
+        .ab-awards-caption {
+          margin-top: 14px;
+          font-family: 'Fira Mono', monospace;
+          font-size: 11px; letter-spacing: 1.2px;
+          color: rgba(26,37,53,0.55); text-transform: uppercase;
+          text-align: center;
+        }
+        @media (max-width: 600px) {
+          .ab-awards-grid { grid-template-columns: 1fr; }
+        }
         .ab-sidebar {
           padding-top: 8px;
         }
