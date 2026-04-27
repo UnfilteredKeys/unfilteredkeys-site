@@ -20,7 +20,7 @@ const PlaybookPage = () => {
      <SEO title="90-Day Homebuyer Playbook | Texas Mortgage Road Map | Keys by Shalanda" description="The 90-Day Homebuyer Playbook walks Texas buyers through every step from pre-approval to closing table. Free download from Keys by Shalanda." canonical="/playbook" />
     <Helmet>
       <title>90-Day Homebuyer Playbook | Texas Mortgage Road Map | Keys by Shalanda</title>
-      <meta name="description" content="The 90-Day Homebuyer Playbook walks Texas buyers from pre-approval to closing. Free download from Keys by Shalanda." />
+      <meta name="description" content="The 90-Day Homebuyer Playbook walks Texas buyers from pre-approval to closing. Free download." />
       <link rel="canonical" href="https://shalandasmith.com/playbook" />
     </Helmet>  
       <style>{`

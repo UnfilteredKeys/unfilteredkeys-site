@@ -192,7 +192,7 @@ const LoanProgramsPage = () => {
       <title>Texas Mortgage Loan Programs | VA, FHA, USDA, Down Payment Assistance</title>
       <meta name="description" content="Compare VA, FHA, USDA, conventional, and down payment assistance programs in Texas. Free consultation." />
       <link rel="canonical" href="https://shalandasmith.com/loan-programs" />
-    </Helmet> 
+    </Helmet>
       <style>{`
         .lp-page {
           font-family: 'Outfit', sans-serif;

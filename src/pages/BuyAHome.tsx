@@ -40,7 +40,7 @@ const BuyAHomePage = () => {
     <SEO title="Buy a Home in Texas | Pre-Approval & Purchase Loans | Keys by Shalanda" description="Ready to buy in Texas? Get pre-approved fast with a broker who shops 50+ lenders to find your best rate. VA, FHA, USDA, and conventional. No lender fees on VA loans." canonical="/buy" />
     <Helmet>
       <title>Buy a Home in Texas | Pre-Approval and Purchase Loans | Keys by Shalanda</title>
-      <meta name="description" content="Buy a home in Texas with a broker who shops 50+ lenders. VA, FHA, USDA, conventional. No lender fees on VA loans. Fast pre-approval." />
+      <meta name="description" content="Buy a home in Texas with a broker who shops 50+ lenders. VA, FHA, USDA, conventional. No lender fees on VA loans." />
       <link rel="canonical" href="https://shalandasmith.com/buy" />
     </Helmet>
     <style>{`
