@@ -52,6 +52,11 @@ export const seoMeta = {
     description: "Buying near Fort Hood? VA loan guide built for Killeen, TX service members. BAH vs. mortgage by pay grade, neighborhood prices, and PCS exit strategy. Free 15-min call.",
     canonical: "/killeen-va-loan",
   },
+  physicianLoanAustinTx: {
+    title: "Physician Loans Austin TX | 0-5% Down, No PMI | Keys by Shalanda",
+    description: "Physician mortgage loans in Austin TX — low or no down payment, no PMI, student loan flexibility, and future income accepted. Serving Travis County doctors, dentists, and residents. Keys by Shalanda NMLS #554554.",
+    canonical: "/physician-loan-austin-tx",
+  },
   physicianLoanTexas: {
     title: "Physician Loans Texas | 0-5% Down, No PMI for Medical Professionals",
     description: "Physician mortgage loans in Texas — low or no down payment, no PMI, student loan flexibility, and future income accepted. Built for doctors, dentists, and high-income professionals.",
