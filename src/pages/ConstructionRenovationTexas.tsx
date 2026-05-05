@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet-async";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
 // ── SEO + FAQ SCHEMA ──────────────────────────────────────────────────────────
@@ -175,12 +174,7 @@ export default function ConstructionRenovationTexas() {
 
   return (
     <>
-    <SEO {...seoMeta.constructionRenovation} />
-    <Helmet>
-      <title>Construction & Renovation Loans in Texas | Keys by Shalanda</title>
-      <meta name="description" content="Finance new construction or renovate your Texas home with the right loan structure. Expert guidance from a licensed Texas mortgage broker. NMLS #554554." />
-      <link rel="canonical" href="https://shalandasmith.com/construction-renovation-loans-texas" />
-    </Helmet> 
+    <SEO {...seoMeta.constructionRenovation} /> 
     <div style={S.page}>
 
       {/* ── HERO ── */}
