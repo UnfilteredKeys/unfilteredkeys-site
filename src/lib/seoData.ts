@@ -52,6 +52,11 @@ export const seoMeta = {
     description: "Buying near Fort Hood? VA loan guide built for Killeen, TX service members. BAH vs. mortgage by pay grade, neighborhood prices, and PCS exit strategy. Free 15-min call.",
     canonical: "/killeen-va-loan",
   },
+  physicianLoanDallasTx: {
+    title: "Physician Loans Dallas TX | 0-5% Down, No PMI | Keys by Shalanda",
+    description: "Physician mortgage loans in Dallas TX — no PMI, student loan flexibility, future income accepted. Serving UT Southwestern, Baylor Scott & White, Texas Health, Medical City, and Parkland physicians. Keys by Shalanda NMLS #554554.",
+    canonical: "/physician-loan-dallas-tx",
+  },
   physicianLoanSanAntonioTx: {
     title: "Physician Loans San Antonio TX | 0-5% Down, No PMI | Keys by Shalanda",
     description: "Physician mortgage loans in San Antonio TX — no PMI, student loan flexibility, future income accepted. Serving BAMC, University Health, Baptist, Methodist, and UT Health physicians. Keys by Shalanda NMLS #554554.",
