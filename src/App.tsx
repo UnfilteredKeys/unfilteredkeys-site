@@ -19,6 +19,7 @@ import VaLoanFaqTexasPage from "@/pages/VaLoanFaqTexas";
 import PhysicianLoanTexasPage from "@/pages/PhysicianLoanTexas";
 import PhysicianLoanAustinTxPage from "@/pages/PhysicianLoanAustinTx";
 import PhysicianLoanSanAntonioTxPage from "@/pages/PhysicianLoanSanAntonioTx";
+import PhysicianLoanDallasTxPage from "@/pages/PhysicianLoanDallasTx";
 import ConstructionRenovationTexasPage from "@/pages/ConstructionRenovationTexas";
 import PcsToPortfolioPage from "@/pages/PcsToPortfolio";
 import KilleenVaLoanPage from "@/pages/KilleenVaLoan";
@@ -61,6 +62,7 @@ const App = () => (
             <Route path="/physician-loan-texas" element={<PhysicianLoanTexasPage />} />
             <Route path="/physician-loan-austin-tx" element={<PhysicianLoanAustinTxPage />} />
             <Route path="/physician-loan-san-antonio-tx" element={<PhysicianLoanSanAntonioTxPage />} />
+            <Route path="/physician-loan-dallas-tx" element={<PhysicianLoanDallasTxPage />} />
             <Route path="/construction-renovation-loans-texas" element={<ConstructionRenovationTexasPage />} />
             <Route path="/pcs-to-portfolio" element={<PcsToPortfolioPage />} />
             <Route path="/killeen-va-loan" element={<KilleenVaLoanPage />} />
