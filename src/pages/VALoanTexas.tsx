@@ -31,7 +31,6 @@ const btnOutlineDark: React.CSSProperties = { ...btnOutline, color: navy, border
 
 /* ── COMPONENT ─────────────────────────────────────────────────────────────── */
 export default function VALoanTexas() {
-  useVASEO();
 
   const eligibilityCards = [
     { icon: "🎖️", title: "Active Duty", desc: "90 consecutive days wartime · 181 days peacetime" },
