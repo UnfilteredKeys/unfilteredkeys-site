@@ -1,42 +1,8 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
 
 /* ── SEO ─────────────────────────────────────────────────────────────────── */
-function useRoundRockSEO() {
-  useEffect(() => {
-    document.title =
-      "Mortgage Broker Round Rock TX – Williamson County Home Loans | Keys by Shalanda";
-    const setMeta = (name: string, content: string, prop = false) => {
-      const attr = prop ? "property" : "name";
-      let el = document.querySelector(`meta[${attr}="${name}"]`);
-      if (!el) {
-        el = document.createElement("meta");
-        el.setAttribute(attr, name);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", content);
-    };
-    setMeta(
-      "description",
-      "Round Rock TX mortgage broker — VA, FHA, conventional, physician, renovation, and one-time close construction loans. More home than Austin. Old Town charm. Dell, Apple, Amazon corridor."
-    );
-    setMeta("og:title", "Mortgage Broker Round Rock TX | Keys by Shalanda", true);
-    setMeta(
-      "og:description",
-      "Buying in Round Rock? Old Town bungalows, new subdivisions, and the Austin price gap. We close here with VA, FHA, physician, renovation, and one-time close programs.",
-      true
-    );
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement("link");
-      canonical.setAttribute("rel", "canonical");
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute("href", "https://shalandasmith.com/round-rock-tx-mortgage");
-  }, []);
-}
 
 /* ── TOKENS ──────────────────────────────────────────────────────────────── */
 const hero = "#1a2535";
@@ -157,7 +123,6 @@ const heroBadges = ["Williamson County Specialist", "VA · FHA · Conventional �
 
 /* ── COMPONENT ───────────────────────────────────────────────────────────── */
 const RoundRockMortgage = () => {
-  useRoundRockSEO();
 
   const ctaPrimary: React.CSSProperties = {
     background: copper, color: white, padding: "14px 28px", borderRadius: radius,
@@ -171,7 +136,7 @@ const RoundRockMortgage = () => {
 
   return (
     <>
-      <SEO {...(seoMeta as any).roundRockMortgage} />
+      <SEO {...seoMeta.roundRockMortgage} />
       <style>{`
         .rrm-btn:hover { opacity: 0.92; }
         .rrm-faq summary {

@@ -1,25 +1,7 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
 
-function useAustinSEO() {
-  useEffect(() => {
-    document.title = "Mortgage Broker Austin TX – Live Music Capital Home Loans | Keys by Shalanda";
-    const setMeta = (name: string, content: string, prop = false) => {
-      const attr = prop ? "property" : "name";
-      let el = document.querySelector(`meta[${attr}="${name}"]`);
-      if (!el) { el = document.createElement("meta"); el.setAttribute(attr, name); document.head.appendChild(el); }
-      el.setAttribute("content", content);
-    };
-    setMeta("description", "Austin TX mortgage broker — VA, FHA, physician, jumbo, and conventional loans. Down 18-20% from 2022 peak. Buyers have the best leverage in a decade. Tarrytown to Kyle. Whole Foods started here.");
-    setMeta("og:title", "Mortgage Broker Austin TX | Keys by Shalanda", true);
-    setMeta("og:description", "Buying in Austin? Dell was born in a UT dorm room. Whole Foods opened in 1980 and survived a flood. The market is down 18-20% from peak. Best buyer leverage since 2012.", true);
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) { canonical = document.createElement("link"); canonical.setAttribute("rel", "canonical"); document.head.appendChild(canonical); }
-    canonical.setAttribute("href", "https://shalandasmith.com/austin-tx-mortgage");
-  }, []);
-}
 
 const hero = "#1a2535";
 const navy = "#1a3a5c";
@@ -116,11 +98,10 @@ const faqs = [
 ];
 
 const AustinMortgage = () => {
-  useAustinSEO();
 
   return (
     <>
-      <SEO {...(seoMeta as any).austinMortgage} />
+      <SEO {...seoMeta.austinMortgage} />
       <style>{`
         .atx-btn:hover { opacity: 0.92; }
         .atx-faq summary {

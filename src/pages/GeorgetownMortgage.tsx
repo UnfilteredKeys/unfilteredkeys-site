@@ -1,42 +1,8 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
 
 /* ── SEO ─────────────────────────────────────────────────────────────────── */
-function useGeorgetownSEO() {
-  useEffect(() => {
-    document.title =
-      "Mortgage Broker Georgetown TX – Williamson County Home Loans | Keys by Shalanda";
-    const setMeta = (name: string, content: string, prop = false) => {
-      const attr = prop ? "property" : "name";
-      let el = document.querySelector(`meta[${attr}="${name}"]`);
-      if (!el) {
-        el = document.createElement("meta");
-        el.setAttribute(attr, name);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", content);
-    };
-    setMeta(
-      "description",
-      "Georgetown TX mortgage broker — VA, FHA, conventional, physician, and Sun City 55+ loans. Most Beautiful Town Square in Texas. Fastest-growing city in America. Buyer's market in 2026."
-    );
-    setMeta("og:title", "Mortgage Broker Georgetown TX | Keys by Shalanda", true);
-    setMeta(
-      "og:description",
-      "Buying in Georgetown? The 1911 courthouse, Wolf Ranch, Sun City, and a genuine buyer's market. VA, FHA, conventional, and physician loan programs. We close here.",
-      true
-    );
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement("link");
-      canonical.setAttribute("rel", "canonical");
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute("href", "https://shalandasmith.com/georgetown-tx-mortgage");
-  }, []);
-}
 
 /* ── TOKENS ──────────────────────────────────────────────────────────────── */
 const hero      = "#1a2535";
@@ -131,14 +97,13 @@ const heroChips = ["Williamson County Specialist", "VA · FHA · Conventional ·
 
 /* ── COMPONENT ───────────────────────────────────────────────────────────── */
 const GeorgetownMortgage = () => {
-  useGeorgetownSEO();
 
   const btnPrimary: React.CSSProperties = { background: copper, color: white, padding: "14px 28px", borderRadius: radius, fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: 15, textDecoration: "none", display: "inline-block", border: "none", cursor: "pointer" };
   const btnGhost: React.CSSProperties   = { background: "transparent", color: ivory, padding: "14px 28px", borderRadius: radius, fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: 15, textDecoration: "none", display: "inline-block", border: `1px solid ${ivory}` };
 
   return (
     <>
-      <SEO {...(seoMeta as any).georgetownMortgage} />
+      <SEO {...seoMeta.georgetownMortgage} />
       <style>{`
         .gtx-btn:hover { opacity: 0.92; }
         .gtx-faq summary {

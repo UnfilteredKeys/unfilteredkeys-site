@@ -1,25 +1,7 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
 
-function useTempleSEO() {
-  useEffect(() => {
-    document.title = "Mortgage Broker Temple TX | BSW Physician Loans | Bell County | Keys by Shalanda";
-    const setMeta = (name: string, content: string, prop = false) => {
-      const attr = prop ? "property" : "name";
-      let el = document.querySelector(`meta[${attr}="${name}"]`);
-      if (!el) { el = document.createElement("meta"); el.setAttribute(attr, name); document.head.appendChild(el); }
-      el.setAttribute("content", content);
-    };
-    setMeta("description", "Temple TX mortgage broker for BSW physicians, Fort Hood military families, and Bell County buyers. Physician loans, VA, FHA, conventional, and DPA. The only Level I trauma center between Dallas and Austin started as a railroad doctor's practice in 1897.");
-    setMeta("og:title", "Mortgage Broker Temple TX – BSW Physician & VA Loans | Keys by Shalanda", true);
-    setMeta("og:description", "Buying near Baylor Scott & White Temple? Physician loans, VA, FHA, and DPA for Bell County buyers. Fort Hood is 30 minutes west. We close here.", true);
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) { canonical = document.createElement("link"); canonical.setAttribute("rel", "canonical"); document.head.appendChild(canonical); }
-    canonical.setAttribute("href", "https://shalandasmith.com/temple-tx-mortgage");
-  }, []);
-}
 
 const hero      = "#1a2535";
 const navy      = "#1a3a5c";
@@ -221,11 +203,10 @@ const faqs = [
 ];
 
 const TempleTexasMortgage = () => {
-  useTempleSEO();
 
   return (
     <>
-      <SEO {...(seoMeta as any).templeTxMortgage} />
+      <SEO {...seoMeta.templeTxMortgage} />
       <style>{`
         .ttx-btn:hover { opacity: 0.92; }
         .ttx-faq summary {

@@ -1,25 +1,7 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
 
-function useHoustonSEO() {
-  useEffect(() => {
-    document.title = "Mortgage Broker Houston TX – Texas Medical Center, Energy Corridor & VA Loans | Keys by Shalanda";
-    const setMeta = (name: string, content: string, prop = false) => {
-      const attr = prop ? "property" : "name";
-      let el = document.querySelector(`meta[${attr}="${name}"]`);
-      if (!el) { el = document.createElement("meta"); el.setAttribute(attr, name); document.head.appendChild(el); }
-      el.setAttribute("content", content);
-    };
-    setMeta("description", "Houston TX mortgage broker for Texas Medical Center physicians, Energy Corridor professionals, VA buyers, and first-time buyers. Flood zone guidance built in. VA, FHA, physician, conventional, and DPA programs.");
-    setMeta("og:title", "Mortgage Broker Houston TX – TMC, Energy Corridor & VA | Keys by Shalanda", true);
-    setMeta("og:description", "Buying in Houston? VA loans, physician loans, FHA, and conventional. Flood zone guidance, Harris County property tax breakdown, and honest neighborhood-by-neighborhood analysis.", true);
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) { canonical = document.createElement("link"); canonical.setAttribute("rel", "canonical"); document.head.appendChild(canonical); }
-    canonical.setAttribute("href", "https://shalandasmith.com/houston-tx-mortgage");
-  }, []);
-}
 
 const hero      = "#1a2535";
 const navy      = "#1a3a5c";
@@ -121,11 +103,10 @@ const compareRows = [
 const heroBadges = ["TMC Physician Loan Specialist", "VA · FHA · Conventional · DPA", "Flood Zone Guidance", "Jumbo & Non-QM", "Harris & Fort Bend Counties", "21-Day Avg Close", "50+ Lender Network"];
 
 const HoustonMortgage = () => {
-  useHoustonSEO();
 
   return (
     <>
-      <SEO {...(seoMeta as any).houstonMortgage} />
+      <SEO {...seoMeta.houstonMortgage} />
       <style>{`
         .hou-btn:hover { opacity: 0.92; }
         .hou-faq summary {
