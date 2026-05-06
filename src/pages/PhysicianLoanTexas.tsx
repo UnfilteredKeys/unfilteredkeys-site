@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
@@ -404,6 +405,29 @@ export default function PhysicianLoanTexas() {
             <div style={{ fontSize: "14px", color: "rgba(255,255,255,0.7)", lineHeight: 1.7 }}>
               Texas has no state income tax but property taxes run 1.6–2.6% annually. On a $900,000 home that's $1,200–$1,950/month added to your payment — before principal, interest, or insurance. We build this into your real payment from day one so there are no surprises at your first escrow adjustment. If you have a 100% VA disability rating, a full property tax exemption may also apply.
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* INTERNAL LINKS — CITY GUIDES */}
+      <div style={{ backgroundColor: navy, padding: "72px 24px" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <h2 style={{ fontFamily: "'Lora', serif", fontSize: "clamp(26px, 3vw, 36px)", fontWeight: 700, color: "#faf8f4", textAlign: "center", marginBottom: "12px" }}>Physician Loans by Texas City</h2>
+          <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "16px", color: "rgba(255,255,255,0.75)", textAlign: "center", maxWidth: "640px", margin: "0 auto 40px", lineHeight: 1.6 }}>Find the right program for your market — we know each city's neighborhoods, price points, and hospital systems.</p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "20px" }}>
+            {[
+              { city: "AUSTIN", heading: "Physician Loans in Austin, TX", desc: "Travis County home prices $550K–$750K. No PMI, 0% down, student loans excluded from DTI.", to: "/physician-loan-austin-tx", label: "Austin Guide →" },
+              { city: "DALLAS", heading: "Physician Loans in Dallas, TX", desc: "UT Southwestern, Baylor Scott & White, Medical City. Serving residents, fellows, and attending physicians across DFW.", to: "/physician-loan-dallas-tx", label: "Dallas Guide →" },
+              { city: "HOUSTON", heading: "Physician Loans in Houston, TX", desc: "Texas Medical Center — the largest in the world. TMC physicians face unique flood zone and DTI challenges we handle daily.", to: "/physician-loan-houston-tx", label: "Houston Guide →" },
+              { city: "SAN ANTONIO", heading: "Physician Loans in San Antonio, TX", desc: "University Health, Baptist, Methodist, BAMC, and Wilford Hall. Military physicians welcome — we run VA vs. physician loan comparisons side by side.", to: "/physician-loan-san-antonio-tx", label: "San Antonio Guide →" },
+            ].map((c) => (
+              <div key={c.city} style={{ backgroundColor: white, borderRadius: "10px", padding: "28px", borderTop: `3px solid ${copper}`, display: "flex", flexDirection: "column" }}>
+                <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase", color: copper, fontWeight: 600, marginBottom: "10px" }}>{c.city}</div>
+                <h3 style={{ fontFamily: "'Lora', serif", fontSize: "19px", fontWeight: 700, color: navy, marginBottom: "10px" }}>{c.heading}</h3>
+                <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "14px", color: "#3d4f63", lineHeight: 1.6, marginBottom: "18px", flexGrow: 1 }}>{c.desc}</p>
+                <Link to={c.to} style={{ fontFamily: "'Outfit', sans-serif", fontSize: "14px", fontWeight: 600, color: copper, textDecoration: "none" }}>{c.label}</Link>
+              </div>
+            ))}
           </div>
         </div>
       </div>
