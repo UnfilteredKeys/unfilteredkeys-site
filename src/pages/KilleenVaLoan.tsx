@@ -69,7 +69,6 @@ const loanPrograms = [
 
 /* ── COMPONENT ─────────────────────────────────────────────────────────────── */
 const KilleenVaLoan = () => {
-  useKilleenSEO();
 
   return (
     <>
