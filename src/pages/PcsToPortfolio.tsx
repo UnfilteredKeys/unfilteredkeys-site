@@ -35,7 +35,6 @@ const branches = ["Army", "Navy", "Marine Corps", "Air Force", "Space Force", "C
 
 /* ── COMPONENT ─────────────────────────────────────────────────────────────── */
 export default function PcsToPortfolio() {
-  usePCSSEO();
 
   const landlordCards = [
     { color: "rgba(99,153,34,0.12)", title: "Location near the gate", desc: "Military market rentals have structural demand. Near-gate properties rent on certainty, not hope. Buy accordingly." },
