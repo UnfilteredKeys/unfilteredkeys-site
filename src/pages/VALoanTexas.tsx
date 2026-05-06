@@ -1,45 +1,6 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
-
-/* ── SEO ──────────────────────────────────────────────────────────────────── */
-function useVASEO() {
-  useEffect(() => {
-    document.title = "VA Loans Texas | VA Loan Specialist | Keys by Shalanda";
-    const setMeta = (name: string, content: string, prop = false) => {
-      const attr = prop ? "property" : "name";
-      let el = document.querySelector(`meta[${attr}="${name}"]`);
-      if (!el) { el = document.createElement("meta"); el.setAttribute(attr, name); document.head.appendChild(el); }
-      el.setAttribute("content", content);
-    };
-    setMeta("description", "Texas VA loan specialist helping veterans and active duty buy homes with 0% down, no PMI, and competitive rates. Serving Fort Hood, Killeen, DFW, San Antonio, Houston, and all of Texas.");
-    setMeta("og:title", "VA Loans Texas | VA Loan Specialist | Keys by Shalanda", true);
-    setMeta("og:description", "Texas VA loan specialist. 0% down, no PMI, funding fee waived for disabled veterans. Serving Fort Hood, Killeen, and all of Texas.", true);
-
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) { canonical = document.createElement("link"); canonical.setAttribute("rel", "canonical"); document.head.appendChild(canonical); }
-    canonical.setAttribute("href", "https://shalandasmith.com/va-loan-texas");
-
-    const schema = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: [
-        { "@type": "Question", name: "Who qualifies for a VA loan in Texas?", acceptedAnswer: { "@type": "Answer", text: "Veterans, active duty service members, National Guard members, Reservists with qualifying service, and eligible surviving spouses may qualify. You'll need a Certificate of Eligibility (COE), which your lender can pull directly from the VA system." } },
-        { "@type": "Question", name: "Can I buy a home near Fort Hood with a VA loan?", acceptedAnswer: { "@type": "Answer", text: "Yes. VA loans work across all of Texas including the Killeen-Temple-Fort Hood area. There are no geographic restrictions for VA loans within the United States." } },
-        { "@type": "Question", name: "What is the VA funding fee in 2026?", acceptedAnswer: { "@type": "Answer", text: "For a first-time VA loan with no down payment, the funding fee is 2.15%. Subsequent use is 3.30%. Putting 5% down drops the fee to 1.50%. Putting 10%+ down drops it to 1.25%. Veterans receiving VA disability compensation are completely exempt." } },
-        { "@type": "Question", name: "Do disabled veterans pay the VA funding fee?", acceptedAnswer: { "@type": "Answer", text: "No. Veterans receiving VA disability compensation at any rating level are fully exempt from the VA funding fee." } },
-        { "@type": "Question", name: "Is there a VA loan limit in Texas?", acceptedAnswer: { "@type": "Answer", text: "Veterans with full entitlement have no VA loan limit. Loan limits only apply to veterans with reduced entitlement from a prior VA loan that has not been paid off." } },
-        { "@type": "Question", name: "What is the VA property tax exemption in Texas?", acceptedAnswer: { "@type": "Answer", text: "Texas offers a full property tax exemption on a veteran's primary residence for those with a 100% service-connected disability rating. Partial ratings receive scaled reductions." } },
-        { "@type": "Question", name: "Can I use a VA loan more than once?", acceptedAnswer: { "@type": "Answer", text: "Yes. VA loan benefits can be used multiple times. If you've paid off a prior VA loan and sold the property, your entitlement is restored." } },
-        { "@type": "Question", name: "How is a VA loan different from FHA or conventional?", acceptedAnswer: { "@type": "Answer", text: "VA loans require no down payment, have no monthly mortgage insurance (PMI), and typically carry lower interest rates than conventional loans." } },
-      ],
-    };
-    let schemaTag = document.querySelector('script[data-id="va-faq-schema"]');
-    if (!schemaTag) { schemaTag = document.createElement("script"); schemaTag.setAttribute("type", "application/ld+json"); schemaTag.setAttribute("data-id", "va-faq-schema"); document.head.appendChild(schemaTag); }
-    schemaTag.textContent = JSON.stringify(schema);
-  }, []);
-}
 
 /* ── TOKENS ────────────────────────────────────────────────────────────────── */
 const hero = "#1a2535";
