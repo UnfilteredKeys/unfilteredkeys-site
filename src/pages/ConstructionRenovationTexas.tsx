@@ -1,51 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
-// ── SEO + FAQ SCHEMA ──────────────────────────────────────────────────────────
-function useConstructionSEO() {
-  useEffect(() => {
-    document.title = "Construction & Renovation Loans Texas | One-Time Close | Keys by Shalanda";
-
-    const setMeta = (name: string, content: string, prop = false) => {
-      const attr = prop ? "property" : "name";
-      let el = document.querySelector(`meta[${attr}="${name}"]`);
-      if (!el) { el = document.createElement("meta"); el.setAttribute(attr, name); document.head.appendChild(el); }
-      el.setAttribute("content", content);
-    };
-
-    setMeta("description", "Texas construction and renovation loans — VA, FHA, USDA, and Conventional one-time close, FHA 203(k), HomeStyle, and VA Renovation up to $100K. Lock your rate before the first shovel hits the ground.");
-    setMeta("og:title", "Construction & Renovation Loans Texas | Keys by Shalanda", true);
-    setMeta("og:description", "One-time close construction loans and renovation financing in Texas. VA, FHA 203(k), HomeStyle, and USDA options. Serving all of Texas.", true);
-
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) { canonical = document.createElement("link"); canonical.setAttribute("rel", "canonical"); document.head.appendChild(canonical); }
-    canonical.setAttribute("href", "https://shalandasmith.com/construction-renovation-loans-texas");
-
-    const schema = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        { "@type": "Question", "name": "What is a one-time close construction loan?", "acceptedAnswer": { "@type": "Answer", "text": "A one-time close construction loan combines the construction financing and the permanent mortgage into a single loan with one closing, one set of closing costs, and one rate locked before construction begins. When the build is complete, the loan automatically converts to your permanent mortgage — no second qualification, no second appraisal, no second closing." } },
-        { "@type": "Question", "name": "Can I use a VA loan for new construction in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. VA one-time close construction loans are available in Texas with 0% down for eligible veterans and active duty service members. You lock your rate before construction starts and the loan converts to a permanent VA mortgage when the home is complete. No re-qualification at completion." } },
-        { "@type": "Question", "name": "What is an FHA 203(k) loan?", "acceptedAnswer": { "@type": "Answer", "text": "The FHA 203(k) is a renovation loan that lets you finance the purchase price and the cost of improvements in a single loan based on the after-improved value of the property. It's available in Standard (for major renovations $5,000+) and Limited (for cosmetic improvements up to $35,000) versions. Available statewide in Texas with 3.5% down." } },
-        { "@type": "Question", "name": "What is a VA Renovation loan?", "acceptedAnswer": { "@type": "Answer", "text": "A VA Renovation loan allows eligible veterans to finance up to $100,000 in home improvements alongside the purchase — in a single loan. The property is appraised at its after-improved value. No down payment required. This is separate from the VA one-time close construction loan." } },
-        { "@type": "Question", "name": "What is a Fannie Mae HomeStyle renovation loan?", "acceptedAnswer": { "@type": "Answer", "text": "The HomeStyle Renovation loan is a conventional loan that allows buyers or homeowners to finance renovations up to 75% of the after-improved value of the property. It can be used for any permanent improvement — kitchen, bathrooms, additions, ADUs. Available with as little as 3–5% down for eligible borrowers." } },
-        { "@type": "Question", "name": "Can I lock my rate before construction starts in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. One-time close construction loans lock your interest rate at closing, before construction begins. This protects you from rate increases during the build period — which can run 6–12 months in Texas. This is one of the primary advantages over two-close construction financing." } },
-        { "@type": "Question", "name": "What is the difference between one-time close and two-close construction loans?", "acceptedAnswer": { "@type": "Answer", "text": "A one-time close loan has a single closing — you lock your rate, close once, and the loan converts to permanent financing when construction is complete. A two-close loan requires a separate construction loan closing and then a second closing for the permanent mortgage, meaning two sets of closing costs, two appraisals, and re-qualification at the end of construction when rates may have moved." } },
-        { "@type": "Question", "name": "Are construction loans available for USDA eligible areas in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. USDA one-time close construction loans are available in eligible rural and suburban Texas areas — including Coryell County (Copperas Cove), parts of Bell County, and many Central Texas communities. No down payment required. Income limits apply." } },
-      ]
-    };
-
-    let schemaTag = document.querySelector('script[data-id="construction-faq-schema"]');
-    if (!schemaTag) {
-      schemaTag = document.createElement("script");
-      schemaTag.setAttribute("type", "application/ld+json");
-      schemaTag.setAttribute("data-id", "construction-faq-schema");
-      document.head.appendChild(schemaTag);
-    }
-    schemaTag.textContent = JSON.stringify(schema);
-  }, []);
-}
 
 // ── STYLES ────────────────────────────────────────────────────────────────────
 const navy = "#1a3a5c";
