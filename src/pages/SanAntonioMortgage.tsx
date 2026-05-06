@@ -1,42 +1,8 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
 
 /* ── SEO ─────────────────────────────────────────────────────────────────── */
-function useSanAntonioSEO() {
-  useEffect(() => {
-    document.title =
-      "VA Loan Mortgage Broker San Antonio TX – JBSA Military Home Loans | Keys by Shalanda";
-    const setMeta = (name: string, content: string, prop = false) => {
-      const attr = prop ? "property" : "name";
-      let el = document.querySelector(`meta[${attr}="${name}"]`);
-      if (!el) {
-        el = document.createElement("meta");
-        el.setAttribute(attr, name);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", content);
-    };
-    setMeta(
-      "description",
-      "San Antonio TX mortgage broker specializing in VA loans for JBSA military families — Lackland, Fort Sam Houston, Randolph. PCS relocation, VA, FHA, conventional, and physician loan programs. Military City USA."
-    );
-    setMeta("og:title", "VA Loan Broker San Antonio TX – JBSA Military | Keys by Shalanda", true);
-    setMeta(
-      "og:description",
-      "Buying near JBSA Lackland, Fort Sam Houston, or Randolph? VA loans, zero down, no PMI — and a Bexar County loan limit of $832,750. We close military buyers across San Antonio.",
-      true
-    );
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement("link");
-      canonical.setAttribute("rel", "canonical");
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute("href", "https://shalandasmith.com/san-antonio-tx-mortgage");
-  }, []);
-}
 
 /* ── TOKENS ──────────────────────────────────────────────────────────────── */
 const hero      = "#1a2535";
@@ -197,11 +163,10 @@ const faqs = [
 
 /* ── COMPONENT ───────────────────────────────────────────────────────────── */
 const SanAntonioMortgage = () => {
-  useSanAntonioSEO();
 
   return (
     <>
-      <SEO {...(seoMeta as any).sanAntonioMortgage} />
+      <SEO {...seoMeta.sanAntonioMortgage} />
       <style>{`
         .sa-btn:hover { opacity: 0.92; }
         .sa-faq summary {

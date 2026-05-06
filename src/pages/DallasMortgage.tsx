@@ -1,25 +1,7 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
 
-function useDallasSEO() {
-  useEffect(() => {
-    document.title = "Mortgage Broker Dallas TX – DFW Home Loans | VA, Physician & Conventional | Keys by Shalanda";
-    const setMeta = (name: string, content: string, prop = false) => {
-      const attr = prop ? "property" : "name";
-      let el = document.querySelector(`meta[${attr}="${name}"]`);
-      if (!el) { el = document.createElement("meta"); el.setAttribute(attr, name); document.head.appendChild(el); }
-      el.setAttribute("content", content);
-    };
-    setMeta("description", "Dallas TX mortgage broker — VA, FHA, physician, jumbo, and conventional loans across DFW. Deep Ellum to Frisco. Inner Loop to the suburbs. We know the market.");
-    setMeta("og:title", "Mortgage Broker Dallas TX – DFW | Keys by Shalanda", true);
-    setMeta("og:description", "Buying in Dallas-Fort Worth? Inner neighborhoods holding strong. Outer suburbs correcting. VA, FHA, physician, and conventional programs across the entire metroplex.", true);
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) { canonical = document.createElement("link"); canonical.setAttribute("rel", "canonical"); document.head.appendChild(canonical); }
-    canonical.setAttribute("href", "https://shalandasmith.com/dallas-tx-mortgage");
-  }, []);
-}
 
 const hero = "#1a2535";
 const navy = "#1a3a5c";
@@ -109,11 +91,10 @@ const faqs = [
 ];
 
 const DallasMortgage = () => {
-  useDallasSEO();
 
   return (
     <>
-      <SEO {...(seoMeta as any).dallasMortgage} />
+      <SEO {...seoMeta.dallasMortgage} />
       <style>{`
         .dal-btn:hover { opacity: 0.92; }
         .dal-faq summary {
