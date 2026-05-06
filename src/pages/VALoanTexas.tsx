@@ -290,6 +290,30 @@ export default function VALoanTexas() {
         </div>
       </section>
 
+      {/* ── INTERNAL LINKS ──────────────────────────────────────────────────── */}
+      <section style={{ backgroundColor: "#faf8f4", ...sectionPad }}>
+        <div style={container}>
+          <h2 style={{ fontFamily: "'Lora', serif", fontSize: 32, fontWeight: 700, color: navy, textAlign: "center", marginBottom: 40 }}>Explore More VA Loan Resources</h2>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 20 }}>
+            {[
+              { title: "VA Loan FAQ — Texas", desc: "Every question Fort Hood and Texas veterans ask about entitlement, funding fees, BAH, and more. Answered plainly.", to: "/va-loan-faq-texas", label: "Read the FAQ →" },
+              { title: "Killeen & Fort Hood VA Loans", desc: "Buying near Fort Hood? We close VA loans in Killeen, Harker Heights, and Copperas Cove regularly.", to: "/killeen-va-loan", label: "See Killeen Guide →" },
+              { title: "PCS to Portfolio", desc: "PCSing to Texas? Learn how to turn every duty station move into a long-term wealth-building opportunity.", to: "/pcs-to-portfolio", label: "Read the Strategy →" },
+              { title: "VA Loan Calculator", desc: "Run your payment, compare VA vs. conventional, and see how BAH affects your buying power.", to: "/calculators", label: "Use the Calculator →" },
+            ].map((c) => (
+              <div key={c.title} style={{ backgroundColor: white, borderRadius: radius, padding: 28, borderTop: `3px solid ${copper}`, boxShadow: "0 2px 12px rgba(26,58,92,0.07)", display: "flex", flexDirection: "column" }}>
+                <div style={{ color: copper, marginBottom: 14 }}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </div>
+                <h3 style={{ fontFamily: "'Lora', serif", fontSize: 19, fontWeight: 700, color: navy, marginBottom: 10 }}>{c.title}</h3>
+                <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: "#3d4f63", lineHeight: 1.6, marginBottom: 18, flexGrow: 1 }}>{c.desc}</p>
+                <Link to={c.to} style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, fontWeight: 600, color: navy, textDecoration: "none" }}>{c.label}</Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── 8. CLOSING CTA ──────────────────────────────────────────────────── */}
       <section style={{ backgroundColor: navy, ...sectionPad }}>
         <div style={{ ...container, textAlign: "center", maxWidth: 640 }}>
