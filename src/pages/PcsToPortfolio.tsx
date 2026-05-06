@@ -1,29 +1,8 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import RentalROICalculator from "@/components/RentalROICalculator";
 import DutyStationMap from "@/components/DutyStationMap";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
-
-/* ── SEO ──────────────────────────────────────────────────────────────────── */
-function usePCSSEO() {
-  useEffect(() => {
-    document.title = "PCS to Portfolio: Military Wealth Strategy | Keys by Shalanda";
-    const setMeta = (name: string, content: string, prop = false) => {
-      const attr = prop ? "property" : "name";
-      let el = document.querySelector(`meta[${attr}="${name}"]`);
-      if (!el) { el = document.createElement("meta"); el.setAttribute(attr, name); document.head.appendChild(el); }
-      el.setAttribute("content", content);
-    };
-    setMeta("description", "Turn every PCS into a real estate asset. Military wealth-building strategy using VA loans — zero down, multiple properties, one duty station at a time.");
-    setMeta("og:title", "PCS to Portfolio: Military Wealth Strategy | Keys by Shalanda", true);
-    setMeta("og:description", "Turn every PCS into a real estate asset. VA loan strategy for building a rental portfolio across duty stations.", true);
-
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) { canonical = document.createElement("link"); canonical.setAttribute("rel", "canonical"); document.head.appendChild(canonical); }
-    canonical.setAttribute("href", "https://shalandasmith.com/pcs-to-portfolio");
-  }, []);
-}
 
 /* ── TOKENS ────────────────────────────────────────────────────────────────── */
 const hero = "#1a2535";
@@ -56,7 +35,6 @@ const branches = ["Army", "Navy", "Marine Corps", "Air Force", "Space Force", "C
 
 /* ── COMPONENT ─────────────────────────────────────────────────────────────── */
 export default function PcsToPortfolio() {
-  usePCSSEO();
 
   const landlordCards = [
     { color: "rgba(99,153,34,0.12)", title: "Location near the gate", desc: "Military market rentals have structural demand. Near-gate properties rent on certainty, not hope. Buy accordingly." },

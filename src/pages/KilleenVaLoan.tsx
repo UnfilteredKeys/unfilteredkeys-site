@@ -1,27 +1,6 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
-
-/* ── SEO ──────────────────────────────────────────────────────────────────── */
-function useKilleenSEO() {
-  useEffect(() => {
-    document.title = "VA Loans Killeen TX | Fort Hood VA Loan Guide | Keys by Shalanda";
-    const setMeta = (name: string, content: string, prop = false) => {
-      const attr = prop ? "property" : "name";
-      let el = document.querySelector(`meta[${attr}="${name}"]`);
-      if (!el) { el = document.createElement("meta"); el.setAttribute(attr, name); document.head.appendChild(el); }
-      el.setAttribute("content", content);
-    };
-    setMeta("description", "Killeen TX VA loan guide for Fort Hood service members. BAH vs mortgage by pay grade, neighborhood price guide, builder strategies, and PCS exit planning.");
-    setMeta("og:title", "VA Loans Killeen TX | Fort Hood VA Loan Guide | Keys by Shalanda", true);
-    setMeta("og:description", "Should you buy or rent near Fort Hood? BAH by pay grade, neighborhood guide, new construction strategy, and PCS exit options.", true);
-
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) { canonical = document.createElement("link"); canonical.setAttribute("rel", "canonical"); document.head.appendChild(canonical); }
-    canonical.setAttribute("href", "https://shalandasmith.com/killeen-va-loan");
-  }, []);
-}
 
 /* ── TOKENS ────────────────────────────────────────────────────────────────── */
 const hero = "#1a2535";
@@ -90,7 +69,6 @@ const loanPrograms = [
 
 /* ── COMPONENT ─────────────────────────────────────────────────────────────── */
 const KilleenVaLoan = () => {
-  useKilleenSEO();
 
   return (
     <>
