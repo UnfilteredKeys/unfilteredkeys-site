@@ -1,54 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
-// ── SEO + FAQ SCHEMA ──────────────────────────────────────────────────────────
-function usePhysicianSEO() {
-  useEffect(() => {
-    document.title = "Physician Loans Texas | Doctor Mortgage Specialist | Keys by Shalanda";
-
-    const setMeta = (name: string, content: string, prop = false) => {
-      const attr = prop ? "property" : "name";
-      let el = document.querySelector(`meta[${attr}="${name}"]`);
-      if (!el) { el = document.createElement("meta"); el.setAttribute(attr, name); document.head.appendChild(el); }
-      el.setAttribute("content", content);
-    };
-
-    setMeta("description", "Physician mortgage loans in Texas — low or no down payment, no PMI, student debt flexibility, and future income considered. Built for doctors, dentists, and high-income professionals. Serving all of Texas.");
-    setMeta("og:title", "Physician Loans Texas | Doctor Mortgage | Keys by Shalanda", true);
-    setMeta("og:description", "Texas physician mortgage loans with no PMI, low down payment, and student debt flexibility. Built for residents, attendings, and high-income professionals.", true);
-
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) { canonical = document.createElement("link"); canonical.setAttribute("rel", "canonical"); document.head.appendChild(canonical); }
-    canonical.setAttribute("href", "https://shalandasmith.com/physician-loan-texas");
-
-    const schema = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        { "@type": "Question", "name": "What is a physician mortgage loan?", "acceptedAnswer": { "@type": "Answer", "text": "A physician mortgage loan is a specialized home loan designed for medical doctors, dentists, and other high-income professionals. It allows low or no down payment without PMI, excludes deferred student loan debt from DTI calculations, and considers future income from a signed employment contract — making it possible to buy a home during residency or early in your career." } },
-        { "@type": "Question", "name": "Who qualifies for a physician loan in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Eligibility typically includes MDs, DOs, DMDs, DDSs, and in some programs: optometrists, podiatrists, pharmacists, nurse practitioners, physician assistants, attorneys, and CPAs. Residents and fellows qualify — you don't need to be an attending yet. A signed employment contract is usually accepted in place of pay stubs." } },
-        { "@type": "Question", "name": "Do physician loans require a down payment?", "acceptedAnswer": { "@type": "Answer", "text": "Most physician loan programs offer 0–5% down with no PMI. Some programs go up to $1M or $1.5M with 0% down, and up to $2M with 5–10% down. The exact structure depends on the lender and loan amount." } },
-        { "@type": "Question", "name": "Do physician loans have PMI?", "acceptedAnswer": { "@type": "Answer", "text": "No. Physician loans are specifically structured to waive private mortgage insurance even with less than 20% down. This is one of the primary advantages over conventional loans, which require PMI until you reach 20% equity." } },
-        { "@type": "Question", "name": "How do physician loans handle student loan debt?", "acceptedAnswer": { "@type": "Answer", "text": "Most physician loan programs exclude deferred student loan debt from DTI calculations entirely, or use a reduced income-based repayment (IBR) payment rather than the full standard payment. This is critical for residents and new attendings with $200K–$400K in student loans who would otherwise be denied on a standard loan." } },
-        { "@type": "Question", "name": "Can I get a physician loan as a resident or fellow in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Most physician loan programs accept a signed residency or fellowship contract as proof of future income. You can close on a home 60–90 days before your start date in most cases. You don't need to have started earning your attending salary yet." } },
-        { "@type": "Question", "name": "What loan amounts are available for physician loans in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Physician loan programs in Texas typically go up to $1M–$2M depending on down payment. Some programs offer $1M with 0% down, $1.5M with 5% down, and $2M with 10% down. Jumbo physician loans are also available for higher purchase prices." } },
-        { "@type": "Question", "name": "Are physician loans available for new construction in Texas?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Physician loans can be used for new construction purchases in Texas. You can lock your rate early and close when construction completes. This is common in markets like Austin, Dallas-Fort Worth, Houston, and San Antonio where new builds are prevalent." } },
-      ]
-    };
-
-    let schemaTag = document.querySelector('script[data-id="physician-faq-schema"]');
-    if (!schemaTag) {
-      schemaTag = document.createElement("script");
-      schemaTag.setAttribute("type", "application/ld+json");
-      schemaTag.setAttribute("data-id", "physician-faq-schema");
-      document.head.appendChild(schemaTag);
-    }
-    schemaTag.textContent = JSON.stringify(schema);
-  }, []);
-}
-
 // ── STYLES ────────────────────────────────────────────────────────────────────
 const navy = "#1a3a5c";
 const copper = "#b5621e";
@@ -114,8 +67,6 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 }
 
 export default function PhysicianLoanTexas() {
-  usePhysicianSEO();
-
   const benefits = [
     { title: "Low or No Down Payment", body: "Most programs offer 0–5% down with no PMI — on loan amounts up to $1M or more. Buy without depleting the cash reserves you spent years building." },
     { title: "No PMI — Ever", body: "Physician loans waive private mortgage insurance regardless of down payment. On a $700K loan, that's $400–$600/month you keep instead of paying a lender's insurance premium." },
@@ -144,13 +95,8 @@ export default function PhysicianLoanTexas() {
   ];
 
   return (
-      <>
-    <SEO {...seoMeta.physicianLoanTexas} />
-    <Helmet>
-      <title>Physician Loans in Texas | Keys by Shalanda | NMLS #554554</title>
-      <meta name="description" content="Physician mortgage loans in Texas with no PMI, flexible DTI, and options for residents and attendings. Expert guidance from a licensed Texas broker. NMLS #554554." />
-      <link rel="canonical" href="https://shalandasmith.com/physician-loan-texas" />
-    </Helmet>
+    <>
+      <SEO {...seoMeta.physicianLoanTexas} />
     <div style={S.page}>
 
       {/* HERO */}

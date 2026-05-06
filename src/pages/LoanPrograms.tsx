@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet-async";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
 const LoanProgramsPage = () => {
@@ -187,12 +186,7 @@ const LoanProgramsPage = () => {
 
   return (
     <>
-     <SEO title="Texas Mortgage Loan Programs | VA, FHA, USDA, Down Payment Assistance" description="Compare VA, FHA, USDA, conventional, and down payment assistance programs in Texas. Find out which loan fits your income, credit, and down payment — free consultation." canonical="/loan-programs" />
-    <Helmet>
-      <title>Texas Mortgage Loan Programs | VA, FHA, USDA, Down Payment Assistance</title>
-      <meta name="description" content="Compare VA, FHA, USDA, conventional, and down payment assistance programs in Texas. Free consultation." />
-      <link rel="canonical" href="https://shalandasmith.com/loan-programs" />
-    </Helmet>
+      <SEO {...seoMeta.loanPrograms} />
       <style>{`
         .lp-page {
           font-family: 'Outfit', sans-serif;
