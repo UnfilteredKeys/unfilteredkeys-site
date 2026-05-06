@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet-async";
 import SEO from "@/components/SEO";
+import { seoMeta } from "@/lib/seoData";
 const RefinancePage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -41,12 +41,7 @@ const RefinancePage = () => {
 
   return (
     <>
-      <SEO title="Refinance Your Texas Home | Lower Rate or Restructure | Keys by Shalanda" description="Refinance your Texas mortgage and lower your rate or restructure your payment. VA IRRRL, FHA streamline, and conventional refi options. 21-day average close. Free consult." canonical="/refinance" />
-    <Helmet>
-      <title>Refinance Your Texas Home | Lower Rate or Restructure | Keys by Shalanda</title>
-      <meta name="description" content="Refinance your Texas mortgage with VA IRRRL, FHA streamline, or conventional refi. 21-day average close. Free consultation." />
-      <link rel="canonical" href="https://shalandasmith.com/refinance" />
-    </Helmet>
+      <SEO {...seoMeta.refinance} />
       <style>{`
         .ref-page {
           font-family: 'Outfit', sans-serif;
