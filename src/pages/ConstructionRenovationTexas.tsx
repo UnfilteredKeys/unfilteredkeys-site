@@ -69,7 +69,6 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 }
 
 export default function ConstructionRenovationTexas() {
-  useConstructionSEO();
 
   const programs = [
     {
