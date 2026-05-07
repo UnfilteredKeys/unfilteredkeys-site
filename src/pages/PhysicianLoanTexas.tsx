@@ -355,6 +355,30 @@ export default function PhysicianLoanTexas() {
         </div>
       </div>
 
+      {/* BY MARKET / BY HOSPITAL SYSTEM */}
+      <div style={S.section(true)}>
+        <div style={S.inner}>
+          <p style={S.sectionEyebrow}>By Market · By Hospital System</p>
+          <h2 style={S.sectionH2}>Texas physician mortgage loans — matched to your market and hospital system.</h2>
+          <p style={S.sectionSub}>Whether you're finishing residency at UT Southwestern or joining an attending group at the Texas Medical Center, the loan structure is the same. What changes is the market.</p>
+          <div style={S.grid2}>
+            {[
+              { city: "AUSTIN", title: "Physician Loans in Austin, TX", body: "Dell Medical School, Seton/Ascension physicians, Round Rock, Cedar Park, Travis County. $550K–$750K price range. 0% down, no PMI, student debt excluded.", to: "/physician-loan-austin-tx", label: "Austin Guide →" },
+              { city: "DALLAS", title: "Physician Loans in Dallas, TX", body: "UT Southwestern, Baylor Scott & White, Medical City. Frisco, McKinney, Southlake. $500K–$900K. Doctor loans structured to handle large student debt at DTI level.", to: "/physician-loan-dallas-tx", label: "Dallas Guide →" },
+              { city: "HOUSTON", title: "Physician Loans in Houston, TX", body: "Texas Medical Center — the largest medical complex in the world. Flood zone overlays and higher insurance costs affect real monthly payment.", to: "/physician-loan-houston-tx", label: "Houston Guide →" },
+              { city: "SAN ANTONIO", title: "Physician Loans in San Antonio, TX", body: "BAMC, Wilford Hall, University Health, Baptist. Military physicians may qualify for both VA and physician programs. We run side-by-side comparison on every military physician file.", to: "/physician-loan-san-antonio-tx", label: "San Antonio Guide →" },
+            ].map((c) => (
+              <div key={c.city} style={{ ...S.card, display: "flex", flexDirection: "column" }}>
+                <div style={S.sectionEyebrow}>{c.city}</div>
+                <h3 style={S.cardTitle}>{c.title}</h3>
+                <p style={{ ...S.cardBody, marginBottom: "16px" }}>{c.body}</p>
+                <Link to={c.to} style={{ fontFamily: "'Outfit', sans-serif", fontSize: "14px", fontWeight: 600, color: copper, textDecoration: "none", marginTop: "auto" }}>{c.label}</Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* INTERNAL LINKS — CITY GUIDES */}
       <div style={{ backgroundColor: navy, padding: "72px 24px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
