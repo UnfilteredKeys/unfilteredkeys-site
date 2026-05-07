@@ -143,6 +143,7 @@ export default function PhysicianLoanAustinTx() {
               ))}
             </ul>
           </div>
+        </section>
 
         {/* By Hospital System and Neighborhood */}
         <section style={{ background: IVORY, padding: "72px 24px" }}>
