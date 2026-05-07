@@ -6,7 +6,7 @@ export const seoMeta = {
     title: "Texas Mortgage Broker | VA, FHA & Conventional Loans | Keys by Shalanda",
     description: "Texas mortgage broker specializing in VA loans, FHA, and conventional. 50+ lenders, 21-day average close, 5.0 Google rating. Serving all of Texas — free 15-min call.",
     canonical: "/",
-  },
+  },h
   buy: {
     title: "Buy a Home in Texas | Pre-Approval & Purchase Loans | Keys by Shalanda",
     description: "Ready to buy in Texas? Get pre-approved fast with a broker who shops 50+ lenders to find your best rate. VA, FHA, USDA, and conventional. No lender fees on VA loans.",
@@ -73,8 +73,8 @@ export const seoMeta = {
     canonical: "/physician-loan-austin-tx",
   },
   physicianLoanTexas: {
-    title: "Physician Loans Texas | 0-5% Down, No PMI for Medical Professionals",
-    description: "Physician mortgage loans in Texas — low or no down payment, no PMI, student loan flexibility, and future income accepted. Built for doctors, dentists, and high-income professionals.",
+    title: "Physician Loans Texas | Doctor Mortgage, No PMI | Keys by Shalanda NMLS #554554",
+    description: "Texas physician mortgage loans — 0–5% down, no PMI, student debt excluded, future income accepted. MDs, DOs, dentists, residents, and fellows. Licensed Texas broker. Keys by Shalanda NMLS #554554.",
     canonical: "/physician-loan-texas",
   },
   constructionRenovation: {
