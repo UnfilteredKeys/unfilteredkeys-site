@@ -6,7 +6,7 @@ export const seoMeta = {
     title: "Texas Mortgage Broker | VA, FHA & Conventional Loans | Keys by Shalanda",
     description: "Texas mortgage broker specializing in VA loans, FHA, and conventional. 50+ lenders, 21-day average close, 5.0 Google rating. Serving all of Texas — free 15-min call.",
     canonical: "/",
-  },h
+  },
   buy: {
     title: "Buy a Home in Texas | Pre-Approval & Purchase Loans | Keys by Shalanda",
     description: "Ready to buy in Texas? Get pre-approved fast with a broker who shops 50+ lenders to find your best rate. VA, FHA, USDA, and conventional. No lender fees on VA loans.",

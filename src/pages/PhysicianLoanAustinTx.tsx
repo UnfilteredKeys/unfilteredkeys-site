@@ -145,7 +145,54 @@ export default function PhysicianLoanAustinTx() {
           </div>
         </section>
 
-        {/* Copper CTA Band */}
+        {/* By Hospital System and Neighborhood */}
+        <section style={{ background: IVORY, padding: "72px 24px" }}>
+          <div style={{ maxWidth: 880, margin: "0 auto" }}>
+            <h2 style={{ ...headingFont, color: NAVY, fontSize: "clamp(1.75rem, 3vw, 2rem)", marginBottom: 16 }}>
+              Austin Physician Loan — By Hospital System and Neighborhood
+            </h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: 1.7, color: NAVY, opacity: 0.8, marginBottom: 40 }}>
+              Where you're employed and where you're buying both affect how your loan is structured. Here's how Austin breaks down.
+            </p>
+
+            <div style={{ borderLeft: `3px solid ${COPPER}`, paddingLeft: 20, marginBottom: 32 }}>
+              <div style={{ color: COPPER, textTransform: "uppercase", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.05em", marginBottom: 8 }}>
+                Dell Medical School · UT Dell Seton
+              </div>
+              <p style={{ color: NAVY, fontSize: "1rem", lineHeight: 1.7 }}>
+                Residents and fellows at Dell Med are buying in Mueller, East Austin, and Hyde Park — $500K–$700K range. Most qualify with a signed residency contract, student debt excluded from DTI, and 0% down up to $1M. Physician loans in Austin at this stage don't require a single paycheck.
+              </p>
+            </div>
+
+            <div style={{ borderLeft: `3px solid ${COPPER}`, paddingLeft: 20, marginBottom: 32 }}>
+              <div style={{ color: COPPER, textTransform: "uppercase", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.05em", marginBottom: 8 }}>
+                St. David's HealthCare · Ascension Seton
+              </div>
+              <p style={{ color: NAVY, fontSize: "1rem", lineHeight: 1.7 }}>
+                Attending physicians joining St. David's or Seton networks are shopping Tarrytown, Rollingwood, West Lake Hills, and Circle C — $700K–$1.1M. At these price points, PMI elimination is worth $400–$600/month. A physician mortgage in Austin at $900K closes with 0–5% down and no PMI.
+              </p>
+            </div>
+
+            <div style={{ borderLeft: `3px solid ${COPPER}`, paddingLeft: 20, marginBottom: 32 }}>
+              <div style={{ color: COPPER, textTransform: "uppercase", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.05em", marginBottom: 8 }}>
+                Austin Regional Clinic · Texas Oncology · Private Practice
+              </div>
+              <p style={{ color: NAVY, fontSize: "1rem", lineHeight: 1.7 }}>
+                Physicians in private practice or multi-specialty groups often have self-employment income or partnership distributions. These files need a lender who understands non-W-2 physician income — not just the standard doctor loan pitch.
+              </p>
+            </div>
+
+            <div style={{ borderLeft: `3px solid ${COPPER}`, paddingLeft: 20, marginBottom: 32 }}>
+              <div style={{ color: COPPER, textTransform: "uppercase", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.05em", marginBottom: 8 }}>
+                Relocating from Out of State
+              </div>
+              <p style={{ color: NAVY, fontSize: "1rem", lineHeight: 1.7 }}>
+                Austin is a frequent relocation destination for physicians leaving California, New York, and Illinois. No state income tax means your take-home pay is materially higher in Texas — and that changes how much home you can comfortably carry. We build the real Texas payment with property taxes at 1.8–2.2% in Travis County from day one.
+              </p>
+            </div>
+          </div>
+        </section>
+
         <section style={{ background: COPPER, color: WHITE, padding: "64px 24px", textAlign: "center" }}>
           <div style={{ maxWidth: 760, margin: "0 auto" }}>
             <h2 style={{ ...headingFont, fontSize: "2rem", marginBottom: 14 }}>Ready to run your numbers?</h2>
