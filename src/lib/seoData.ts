@@ -53,23 +53,23 @@ export const seoMeta = {
     canonical: "/killeen-va-loan",
   },
   physicianLoanHoustonTx: {
-    title: "Physician Loans Houston TX | 0-5% Down, No PMI | Keys by Shalanda",
-    description: "Physician mortgage loans in Houston TX — no PMI, student loan flexibility, future income accepted. Serving Texas Medical Center, MD Anderson, Houston Methodist, Memorial Hermann, and Baylor physicians. Keys by Shalanda NMLS #554554.",
+    title: "Physician Loans Houston TX | Doctor Mortgage, No PMI | Keys by Shalanda NMLS #554554",
+    description: "Houston TX physician mortgage loans — 0–5% down, no PMI, student debt excluded, future income accepted. Texas Medical Center, MD Anderson, Houston Methodist, Memorial Hermann physicians. Licensed Texas broker. Keys by Shalanda NMLS #554554.",
     canonical: "/physician-loan-houston-tx",
   },
   physicianLoanDallasTx: {
-    title: "Physician Loans Dallas TX | 0-5% Down, No PMI | Keys by Shalanda",
-    description: "Physician mortgage loans in Dallas TX — no PMI, student loan flexibility, future income accepted. Serving UT Southwestern, Baylor Scott & White, Texas Health, Medical City, and Parkland physicians. Keys by Shalanda NMLS #554554.",
+    title: "Physician Loans Dallas TX | Doctor Mortgage, No PMI | Keys by Shalanda NMLS #554554",
+    description: "Dallas TX physician mortgage loans — 0–5% down, no PMI, student debt excluded, future income accepted. UT Southwestern, Baylor Scott & White, Medical City physicians. Licensed Texas broker. Keys by Shalanda NMLS #554554.",
     canonical: "/physician-loan-dallas-tx",
   },
   physicianLoanSanAntonioTx: {
-    title: "Physician Loans San Antonio TX | 0-5% Down, No PMI | Keys by Shalanda",
-    description: "Physician mortgage loans in San Antonio TX — no PMI, student loan flexibility, future income accepted. Serving BAMC, University Health, Baptist, Methodist, and UT Health physicians. Keys by Shalanda NMLS #554554.",
+    title: "Physician Loans San Antonio TX | Doctor Mortgage, No PMI | Keys by Shalanda NMLS #554554",
+    description: "San Antonio TX physician mortgage loans — 0–5% down, no PMI, student debt excluded, future income accepted. BAMC, Wilford Hall, UT Health, University Health, Methodist physicians. Licensed Texas broker. Keys by Shalanda NMLS #554554.",
     canonical: "/physician-loan-san-antonio-tx",
   },
   physicianLoanAustinTx: {
-    title: "Physician Loans Austin TX | 0-5% Down, No PMI | Keys by Shalanda",
-    description: "Physician mortgage loans in Austin TX — low or no down payment, no PMI, student loan flexibility, and future income accepted. Serving Travis County doctors, dentists, and residents. Keys by Shalanda NMLS #554554.",
+    title: "Physician Loans Austin TX | Doctor Mortgage, No PMI | Keys by Shalanda NMLS #554554",
+    description: "Austin TX physician mortgage loans — 0–5% down, no PMI, student debt excluded, future income accepted. Dell Medical, St. David's, Ascension Seton physicians. Licensed Texas broker. Keys by Shalanda NMLS #554554.",
     canonical: "/physician-loan-austin-tx",
   },
   physicianLoanTexas: {
