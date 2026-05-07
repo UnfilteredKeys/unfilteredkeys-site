@@ -139,6 +139,54 @@ export default function PhysicianLoanHoustonTx() {
           </div>
         </section>
 
+        {/* By Hospital System and Neighborhood */}
+        <section style={{ background: IVORY, padding: "72px 24px" }}>
+          <div style={{ maxWidth: 880, margin: "0 auto" }}>
+            <h2 style={{ ...headingFont, color: NAVY, fontSize: "clamp(1.75rem, 3vw, 2rem)", marginBottom: 16 }}>
+              Houston Physician Loan — By Hospital System and Neighborhood
+            </h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: 1.7, color: NAVY, opacity: 0.8, marginBottom: 40 }}>
+              The Texas Medical Center alone has 60+ institutions. Where you work inside that complex — and which neighborhood you're buying in — changes the loan conversation.
+            </p>
+
+            <div style={{ borderLeft: `3px solid ${COPPER}`, paddingLeft: 20, marginBottom: 32 }}>
+              <div style={{ color: COPPER, textTransform: "uppercase", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.05em", marginBottom: 8 }}>
+                MD Anderson Cancer Center · Houston Methodist
+              </div>
+              <p style={{ color: NAVY, fontSize: "1rem", lineHeight: 1.7 }}>
+                Fellowship-trained oncologists, surgeons, and specialists finishing at MD Anderson or Houston Methodist are some of the highest-earning physicians in Texas — and some of the most loan-ready. Physician mortgage loans in Houston at this stage use your executed offer letter to qualify, exclude student debt from DTI, and close with 0% down up to $1M. West University, Bellaire, and Tanglewood are within range.
+              </p>
+            </div>
+
+            <div style={{ borderLeft: `3px solid ${COPPER}`, paddingLeft: 20, marginBottom: 32 }}>
+              <div style={{ color: COPPER, textTransform: "uppercase", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.05em", marginBottom: 8 }}>
+                Baylor College of Medicine · UTHealth Houston
+              </div>
+              <p style={{ color: NAVY, fontSize: "1rem", lineHeight: 1.7 }}>
+                Residents and fellows training at Baylor or UTHealth carry high student loan balances against modest stipend income. Physician loans for Houston doctors at this stage underwrite on future attending income — not what you're earning during training. You can close before your first paycheck.
+              </p>
+            </div>
+
+            <div style={{ borderLeft: `3px solid ${COPPER}`, paddingLeft: 20, marginBottom: 32 }}>
+              <div style={{ color: COPPER, textTransform: "uppercase", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.05em", marginBottom: 8 }}>
+                Memorial Hermann · HCA Houston Healthcare
+              </div>
+              <p style={{ color: NAVY, fontSize: "1rem", lineHeight: 1.7 }}>
+                Physicians joining Memorial Hermann or HCA are often relocating from out of state and unfamiliar with Houston's flood zone geography. Flood insurance in Harris County can add $150–$400/month to your real payment — we build that into your budget from day one, not as a closing table surprise.
+              </p>
+            </div>
+
+            <div style={{ borderLeft: `3px solid ${COPPER}`, paddingLeft: 20, marginBottom: 32 }}>
+              <div style={{ color: COPPER, textTransform: "uppercase", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.05em", marginBottom: 8 }}>
+                Private Practice · Sugar Land · Katy · The Woodlands
+              </div>
+              <p style={{ color: NAVY, fontSize: "1rem", lineHeight: 1.7 }}>
+                Physicians buying in Houston's suburban corridors — Sugar Land, Katy, Pearland, The Woodlands — often have self-employment income, partnership distributions, or split W-2 and 1099 structures. We match those files to lenders who understand physician economics, not just standard payroll documentation.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Copper CTA Band */}
         <section style={{ background: COPPER, color: WHITE, padding: "64px 24px", textAlign: "center" }}>
           <div style={{ maxWidth: 760, margin: "0 auto" }}>
