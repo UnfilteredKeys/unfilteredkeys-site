@@ -139,6 +139,54 @@ export default function PhysicianLoanSanAntonioTx() {
           </div>
         </section>
 
+        {/* By Hospital System and Neighborhood */}
+        <section style={{ background: IVORY, padding: "72px 24px" }}>
+          <div style={{ maxWidth: 880, margin: "0 auto" }}>
+            <h2 style={{ ...headingFont, color: NAVY, fontSize: "clamp(1.75rem, 3vw, 2rem)", marginBottom: 16 }}>
+              San Antonio Physician Loan — By Hospital System and Neighborhood
+            </h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: 1.7, color: NAVY, opacity: 0.8, marginBottom: 40 }}>
+              San Antonio has a unique mix of civilian and military medical systems. Your employer and your VA eligibility both factor into which loan structure wins.
+            </p>
+
+            <div style={{ borderLeft: `3px solid ${COPPER}`, paddingLeft: 20, marginBottom: 32 }}>
+              <div style={{ color: COPPER, textTransform: "uppercase", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.05em", marginBottom: 8 }}>
+                BAMC · Wilford Hall Ambulatory Surgical Center
+              </div>
+              <p style={{ color: NAVY, fontSize: "1rem", lineHeight: 1.7 }}>
+                Military physicians at BAMC and Wilford Hall often qualify for both VA loans and physician loan programs. We run both side by side on every military physician file — VA loan benefits versus physician loan flexibility. Whichever puts more cash back in your pocket is the one we use.
+              </p>
+            </div>
+
+            <div style={{ borderLeft: `3px solid ${COPPER}`, paddingLeft: 20, marginBottom: 32 }}>
+              <div style={{ color: COPPER, textTransform: "uppercase", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.05em", marginBottom: 8 }}>
+                UT Health San Antonio · University Health
+              </div>
+              <p style={{ color: NAVY, fontSize: "1rem", lineHeight: 1.7 }}>
+                Residents and fellows training at UT Health San Antonio are buying in Alamo Heights, Terrell Hills, and Stone Oak — $450K–$650K range. Physician loans at this stage qualify on your signed residency or attending contract, student debt excluded from DTI, 0% down up to $1M. No paycheck required.
+              </p>
+            </div>
+
+            <div style={{ borderLeft: `3px solid ${COPPER}`, paddingLeft: 20, marginBottom: 32 }}>
+              <div style={{ color: COPPER, textTransform: "uppercase", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.05em", marginBottom: 8 }}>
+                Methodist Healthcare · Baptist Health System
+              </div>
+              <p style={{ color: NAVY, fontSize: "1rem", lineHeight: 1.7 }}>
+                Attending physicians joining Methodist or Baptist networks in San Antonio are frequently within 1–3 years of completing training. These files close cleanly with offer letter income, even when W-2 history is short. Neighborhoods like Shavano Park and The Dominion are within reach at 0–5% down.
+              </p>
+            </div>
+
+            <div style={{ borderLeft: `3px solid ${COPPER}`, paddingLeft: 20, marginBottom: 32 }}>
+              <div style={{ color: COPPER, textTransform: "uppercase", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.05em", marginBottom: 8 }}>
+                Private Practice · Boerne · New Braunfels
+              </div>
+              <p style={{ color: NAVY, fontSize: "1rem", lineHeight: 1.7 }}>
+                Physicians buying outside the city core — Boerne, New Braunfels, Helotes — often have self-employment income or partnership structures. We match those files to physician loan programs that work with full-doc or bank statement documentation depending on how long you've been in practice.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Copper CTA Band */}
         <section style={{ background: COPPER, color: WHITE, padding: "64px 24px", textAlign: "center" }}>
           <div style={{ maxWidth: 760, margin: "0 auto" }}>
