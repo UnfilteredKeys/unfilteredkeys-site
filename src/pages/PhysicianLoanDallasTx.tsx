@@ -139,6 +139,54 @@ export default function PhysicianLoanDallasTx() {
           </div>
         </section>
 
+        {/* By Hospital System and Neighborhood */}
+        <section style={{ background: IVORY, padding: "72px 24px" }}>
+          <div style={{ maxWidth: 880, margin: "0 auto" }}>
+            <h2 style={{ ...headingFont, color: NAVY, fontSize: "clamp(1.75rem, 3vw, 2rem)", marginBottom: 16 }}>
+              Dallas Physician Loan — By Hospital System and Neighborhood
+            </h2>
+            <p style={{ fontSize: "1.05rem", lineHeight: 1.7, color: NAVY, opacity: 0.8, marginBottom: 40 }}>
+              DFW has one of the largest medical training ecosystems in the country. Where you train and where you're buying shapes how your loan gets structured.
+            </p>
+
+            <div style={{ borderLeft: `3px solid ${COPPER}`, paddingLeft: 20, marginBottom: 32 }}>
+              <div style={{ color: COPPER, textTransform: "uppercase", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.05em", marginBottom: 8 }}>
+                UT Southwestern Medical Center
+              </div>
+              <p style={{ color: NAVY, fontSize: "1rem", lineHeight: 1.7 }}>
+                UT Southwestern trains more residents and fellows than almost any system in Texas. If you're buying during or right after residency at UTSW, you qualify with your signed contract — no W-2 required. Physician loans for Dallas buyers at this stage allow 0% down up to $1M with student debt excluded from DTI. Preston Hollow, Lakewood, and Uptown are all within reach.
+              </p>
+            </div>
+
+            <div style={{ borderLeft: `3px solid ${COPPER}`, paddingLeft: 20, marginBottom: 32 }}>
+              <div style={{ color: COPPER, textTransform: "uppercase", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.05em", marginBottom: 8 }}>
+                Baylor Scott & White · Texas Health Resources
+              </div>
+              <p style={{ color: NAVY, fontSize: "1rem", lineHeight: 1.7 }}>
+                Attending physicians joining BSW or Texas Health are frequently relocating from other states or moving from renting to owning in Frisco, Southlake, and McKinney — $700K–$1.1M range. Doctor loans in Dallas at these price points close without PMI and without the 20% down a conventional loan demands.
+              </p>
+            </div>
+
+            <div style={{ borderLeft: `3px solid ${COPPER}`, paddingLeft: 20, marginBottom: 32 }}>
+              <div style={{ color: COPPER, textTransform: "uppercase", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.05em", marginBottom: 8 }}>
+                Medical City Healthcare · Parkland Health
+              </div>
+              <p style={{ color: NAVY, fontSize: "1rem", lineHeight: 1.7 }}>
+                Physicians at Medical City and Parkland often have complex compensation structures — RVU-based pay, shift differentials, employed vs. contractor arrangements. We document these correctly the first time so your file doesn't stall at underwriting.
+              </p>
+            </div>
+
+            <div style={{ borderLeft: `3px solid ${COPPER}`, paddingLeft: 20, marginBottom: 32 }}>
+              <div style={{ color: COPPER, textTransform: "uppercase", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.05em", marginBottom: 8 }}>
+                Private Practice · Self-Employed DFW Physicians
+              </div>
+              <p style={{ color: NAVY, fontSize: "1rem", lineHeight: 1.7 }}>
+                Partnership distributions, K-1 income, and profit-share arrangements require lenders who understand physician economics. Bank statement programs and full-doc physician loans are both available — the right structure depends on how long you've been in practice and how your entity is set up.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Copper CTA Band */}
         <section style={{ background: COPPER, color: WHITE, padding: "64px 24px", textAlign: "center" }}>
           <div style={{ maxWidth: 760, margin: "0 auto" }}>
