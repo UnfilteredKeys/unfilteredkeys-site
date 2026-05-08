@@ -58,8 +58,8 @@ export const seoMeta = {
     canonical: "/copperas-cove-va-loan",
   },
   elPasoVaLoan: {
-    title: "VA Loans El Paso TX | Fort Bliss Home Buying Guide | Keys by Shalanda",
-    description: "Buying near Fort Bliss? VA loan guide built for El Paso, TX. BAH by pay grade, El Paso County taxes, neighborhoods, and cross-border NM comparison. Free 15-min call.",
+    title: "VA Loan El Paso TX | Fort Bliss Home Buying Guide | Keys by Shalanda NMLS #554554",
+    description: "El Paso TX VA loan guide for Fort Bliss buyers — BAH by pay grade, El Paso County property taxes, neighborhoods, cross-border NM comparison. 0% down, no PMI. Keys by Shalanda NMLS #554554.",
     canonical: "/el-paso-va-loan",
   },
   physicianLoanHoustonTx: {
