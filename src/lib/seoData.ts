@@ -173,6 +173,12 @@ export const seoMeta = {
     canonical: "/thank-you",
     noindex: true,
   },
+  partnerDemo: {
+    title: "Fort Hood Home Buying Team | Realtor + Mortgage Broker | Keys by Shalanda",
+    description: "Co-brand Fort Hood home buying team. VA loan specialist + local realtor working your file from offer to keys. 0% down, no PMI, 21-day average close.",
+    canonical: "/partners/demo",
+    noindex: true,
+  },
   notFound: {
     title: "Page Not Found | Keys by Shalanda",
     description: "The page you are looking for does not exist. Head back to Keys by Shalanda to find what you need.",
