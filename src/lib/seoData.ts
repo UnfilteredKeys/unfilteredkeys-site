@@ -52,6 +52,11 @@ export const seoMeta = {
     description: "Buying near Fort Hood? VA loan guide built for Killeen, TX service members. BAH vs. mortgage by pay grade, neighborhood prices, and PCS exit strategy. Free 15-min call.",
     canonical: "/killeen-va-loan",
   },
+  copperasCoveVaLoan: {
+    title: "VA Loans Copperas Cove TX | Fort Hood West Gate Guide | Keys by Shalanda",
+    description: "Buying near Fort Hood's west gate? VA loan guide built for Copperas Cove, TX. BAH by pay grade, Coryell County taxes, neighborhoods, and local builders. Free 15-min call.",
+    canonical: "/copperas-cove-va-loan",
+  },
   physicianLoanHoustonTx: {
     title: "Physician Loans Houston TX | Doctor Mortgage, No PMI | Keys by Shalanda NMLS #554554",
     description: "Houston TX physician mortgage loans — 0–5% down, no PMI, student debt excluded, future income accepted. Texas Medical Center, MD Anderson, Houston Methodist, Memorial Hermann physicians. Licensed Texas broker. Keys by Shalanda NMLS #554554.",
