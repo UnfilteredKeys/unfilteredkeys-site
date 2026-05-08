@@ -24,6 +24,7 @@ import PhysicianLoanHoustonTxPage from "@/pages/PhysicianLoanHoustonTx";
 import ConstructionRenovationTexasPage from "@/pages/ConstructionRenovationTexas";
 import PcsToPortfolioPage from "@/pages/PcsToPortfolio";
 import KilleenVaLoanPage from "@/pages/KilleenVaLoan";
+import CopperasCoveVALoanPage from "@/pages/CopperasCoveVALoan";
 import FirstTimeBuyersPage from "@/pages/FirstTimeBuyers";
 import InvestorsPage from "@/pages/Investors";
 import FhaLoanTexasPage from "@/pages/FhaLoanTexas";
