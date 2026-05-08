@@ -27,6 +27,7 @@ import KilleenVaLoanPage from "@/pages/KilleenVaLoan";
 import CopperasCoveVALoanPage from "@/pages/CopperasCoveVALoan";
 import ElPasoVALoanPage from "@/pages/ElPasoVALoan";
 import PartnerDemoPage from "@/pages/partners/Demo";
+import PartnerJoinPage from "@/pages/partners/Join";
 import FirstTimeBuyersPage from "@/pages/FirstTimeBuyers";
 import InvestorsPage from "@/pages/Investors";
 import FhaLoanTexasPage from "@/pages/FhaLoanTexas";
