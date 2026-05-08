@@ -25,6 +25,7 @@ import ConstructionRenovationTexasPage from "@/pages/ConstructionRenovationTexas
 import PcsToPortfolioPage from "@/pages/PcsToPortfolio";
 import KilleenVaLoanPage from "@/pages/KilleenVaLoan";
 import CopperasCoveVALoanPage from "@/pages/CopperasCoveVALoan";
+import ElPasoVALoanPage from "@/pages/ElPasoVALoan";
 import FirstTimeBuyersPage from "@/pages/FirstTimeBuyers";
 import InvestorsPage from "@/pages/Investors";
 import FhaLoanTexasPage from "@/pages/FhaLoanTexas";
@@ -70,6 +71,7 @@ const App = () => (
             <Route path="/pcs-to-portfolio" element={<PcsToPortfolioPage />} />
             <Route path="/killeen-va-loan" element={<KilleenVaLoanPage />} />
               <Route path="/copperas-cove-va-loan" element={<CopperasCoveVALoanPage />} />
+              <Route path="/el-paso-va-loan" element={<ElPasoVALoanPage />} />
             <Route path="/first-time-buyers" element={<FirstTimeBuyersPage />} />
             <Route path="/investors" element={<InvestorsPage />} />
             <Route path="/fha-loan-texas" element={<FhaLoanTexasPage />} />
