@@ -173,6 +173,12 @@ export const seoMeta = {
     canonical: "/thank-you",
     noindex: true,
   },
+  partnersJoin: {
+    title: "Become a Partner | Co-Branded Buyer Page | Keys by Shalanda",
+    description: "Real estate agents: get your own co-branded home buying page with Keys by Shalanda. VA loan expertise, 21-day average close, branded with your name and brokerage.",
+    canonical: "/partners/join",
+    noindex: true,
+  },
   partnerDemo: {
     title: "Fort Hood Home Buying Team | Realtor + Mortgage Broker | Keys by Shalanda",
     description: "Co-brand Fort Hood home buying team. VA loan specialist + local realtor working your file from offer to keys. 0% down, no PMI, 21-day average close.",
