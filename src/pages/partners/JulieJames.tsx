@@ -375,42 +375,6 @@ export default function PartnerJulieJames() {
         </div>
       </section>
 
-      {/* Section 3: Stats Strip */}
-      <section style={{ background: HERO, padding: "56px 24px" }}>
-        <div
-          style={{
-            maxWidth: 1120,
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
-            gap: 24,
-            textAlign: "center",
-            color: WHITE,
-          }}
-        >
-          {[
-            { v: "50+", l: "Lender Network" },
-            { v: "21 Days", l: "Average Close" },
-            { v: "5.0", l: "Google Rating" },
-            { v: "All of Texas", l: "Licensed Statewide" },
-          ].map((s) => (
-            <div key={s.l}>
-              <div style={{ fontFamily: heading, fontSize: 32, fontWeight: 700, marginBottom: 6 }}>{s.v}</div>
-              <div
-                style={{
-                  fontSize: 12,
-                  letterSpacing: "1px",
-                  textTransform: "uppercase",
-                  color: "rgba(255,255,255,0.7)",
-                }}
-              >
-                {s.l}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Section 4: CTA */}
       <section style={{ background: COPPER, padding: "80px 24px", textAlign: "center" }}>
         <div style={{ maxWidth: 720, margin: "0 auto" }}>
