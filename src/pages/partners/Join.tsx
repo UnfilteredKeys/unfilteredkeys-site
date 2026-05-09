@@ -79,27 +79,15 @@ const SPECIALTIES = [
 
 const LANGUAGES = ["English", "Spanish", "Other"];
 
-const MARKETS = [
-  "Killeen",
-  "Copperas Cove",
-  "Harker Heights",
-  "Temple",
-  "Belton",
-  "Waco",
-  "Austin",
-  "Round Rock",
-  "Georgetown",
-  "Cedar Park",
-  "Pflugerville",
-  "San Marcos",
-  "New Braunfels",
-  "San Antonio",
-  "Houston",
-  "Dallas",
-  "Fort Worth",
-  "El Paso",
-  "Corpus Christi",
-  "Wichita Falls",
+const MLS_ASSOCIATIONS: { name: string; counties: string }[] = [
+  { name: "Central Texas MLS", counties: "Bell, Coryell, Lampasas, Milam, Falls — Killeen, Temple, Harker Heights, Copperas Cove, Waco corridor" },
+  { name: "Austin Board of Realtors (ABoR)", counties: "Travis, Williamson, Hays, Bastrop, Caldwell — Austin, Round Rock, Georgetown, Cedar Park, San Marcos, Kyle" },
+  { name: "San Antonio Board of Realtors (SABOR)", counties: "Bexar, Comal, Guadalupe, Medina, Atascosa — San Antonio, New Braunfels, Seguin" },
+  { name: "Houston Association of Realtors (HAR)", counties: "Harris, Fort Bend, Montgomery, Brazoria, Galveston" },
+  { name: "MetroTex Association of Realtors", counties: "Dallas, Tarrant, Collin, Denton — DFW metro" },
+  { name: "El Paso Association of Realtors", counties: "El Paso County" },
+  { name: "Corpus Christi Association of Realtors", counties: "Nueces, San Patricio counties" },
+  { name: "Wichita Falls Association of Realtors", counties: "Wichita County" },
 ];
 
 const BUILDER_TYPES = ["Production Builder", "Semi-Custom Builder", "Custom Builder"];
