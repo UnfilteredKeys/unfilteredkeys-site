@@ -197,6 +197,14 @@ export default function PartnerJoinPage() {
     const ptInput = form.querySelector<HTMLInputElement>('input[name="partnerType"]');
     if (ptInput) ptInput.value = partnerType;
 
+    const isFutureConsideration =
+      partnerType === "builder" &&
+      hasPreferredLender === "Yes" &&
+      considerNewLender === "No";
+
+    const psInput = form.querySelector<HTMLInputElement>('input[name="partnerStatus"]');
+    if (psInput) psInput.value = isFutureConsideration ? "future-consideration" : "active";
+
     const formData = new FormData(form);
     const email = ((formData.get("email") as string) || "").trim().toLowerCase();
     submittedEmails.add(email);
@@ -206,6 +214,7 @@ export default function PartnerJoinPage() {
     } catch {
       /* no-op — Netlify intercepts on production */
     }
+    setFutureConsideration(isFutureConsideration);
     setSubmitted(true);
   };
 
