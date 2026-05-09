@@ -299,38 +299,41 @@ export default function PartnerJoinPage() {
     </div>
   );
 
-  const marketsField = (
+  const mlsField = (
     <div style={fieldWrap}>
-      <label style={labelStyle}>Primary Market Served</label>
+      <label style={labelStyle}>MLS Associations</label>
       <div
         style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-          gap: "8px 16px",
-          padding: errors.markets ? 10 : 0,
-          border: errors.markets ? `2px solid ${ERROR}` : "none",
+          display: "flex",
+          flexDirection: "column",
+          gap: 10,
+          padding: errors.mlsAssociations ? 10 : 0,
+          border: errors.mlsAssociations ? `2px solid ${ERROR}` : "none",
           borderRadius: 6,
         }}
       >
-        {MARKETS.map((m) => (
+        {MLS_ASSOCIATIONS.map((m) => (
           <label
-            key={m}
+            key={m.name}
             style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
+              display: "flex",
+              alignItems: "flex-start",
+              gap: 10,
               color: NAVY,
-              fontSize: "0.95rem",
               cursor: "pointer",
+              lineHeight: 1.35,
             }}
           >
             <input
               type="checkbox"
-              name="markets"
-              value={m}
-              style={{ accentColor: COPPER }}
+              name="mlsAssociations"
+              value={m.name}
+              style={{ accentColor: COPPER, marginTop: 3, flexShrink: 0 }}
             />
-            {m}
+            <div>
+              <div style={{ fontWeight: 600, fontSize: "0.95rem" }}>{m.name}</div>
+              <div style={{ fontSize: "0.85rem", opacity: 0.7 }}>{m.counties}</div>
+            </div>
           </label>
         ))}
       </div>
@@ -342,9 +345,9 @@ export default function PartnerJoinPage() {
           marginTop: 6,
         }}
       >
-        Select all markets where you actively work with buyers.
+        Select all MLS associations you are an active member of.
       </div>
-      {errors.markets && <div style={errorTextStyle}>{errors.markets}</div>}
+      {errors.mlsAssociations && <div style={errorTextStyle}>{errors.mlsAssociations}</div>}
     </div>
   );
 
