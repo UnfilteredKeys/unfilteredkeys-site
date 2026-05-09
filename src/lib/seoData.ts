@@ -185,6 +185,12 @@ export const seoMeta = {
     canonical: "/partners/demo",
     noindex: true,
   },
+  partnerJulieJames: {
+    title: "Central Texas Home Buying Team | Julie James + Shalanda Smith | Keys by Shalanda",
+    description: "Central Texas home buying team. Julie James (Esperanza Realty) + Shalanda Smith (Keys by Shalanda). Two specialists. One seamless experience. From offer to keys.",
+    canonical: "/partners/julie-james",
+    noindex: true,
+  },
   notFound: {
     title: "Page Not Found | Keys by Shalanda",
     description: "The page you are looking for does not exist. Head back to Keys by Shalanda to find what you need.",
