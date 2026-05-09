@@ -170,8 +170,8 @@ export default function PartnerJoinPage() {
       e.email = "This email has already been submitted.";
 
     const website = get("website");
-    if (website && !/^https?:\/\/.+/.test(website))
-      e.website = "Website must start with http:// or https://";
+    if (website && !/^(https?:\/\/)?(www\.)?[^\s.]+\.(com|org|net|io|co|gov|edu|biz|us)([\/?#].*)?$/i.test(website))
+      e.website = "Please enter a valid website like shalandasmith.com";
 
     const mls = data.getAll("mlsAssociations");
     if (mls.length === 0) e.mlsAssociations = "Please select at least one MLS association.";
