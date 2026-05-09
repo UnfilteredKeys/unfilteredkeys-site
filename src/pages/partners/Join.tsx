@@ -127,6 +127,8 @@ export default function PartnerJoinPage() {
   const [otherLang, setOtherLang] = useState(false);
   const [hasBuilderRel, setHasBuilderRel] = useState<"Yes" | "No">("No");
   const [hasPreferredLender, setHasPreferredLender] = useState<"Yes" | "No">("No");
+  const [considerNewLender, setConsiderNewLender] = useState<"" | "Yes" | "No">("");
+  const [futureConsideration, setFutureConsideration] = useState(false);
   const [errors, setErrors] = useState<Errors>({});
   const [hoverSubmit, setHoverSubmit] = useState(false);
 
