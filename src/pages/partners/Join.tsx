@@ -127,6 +127,8 @@ export default function PartnerJoinPage() {
   const [otherLang, setOtherLang] = useState(false);
   const [hasBuilderRel, setHasBuilderRel] = useState<"Yes" | "No">("No");
   const [hasPreferredLender, setHasPreferredLender] = useState<"Yes" | "No">("No");
+  const [considerNewLender, setConsiderNewLender] = useState<"" | "Yes" | "No">("");
+  const [futureConsideration, setFutureConsideration] = useState(false);
   const [errors, setErrors] = useState<Errors>({});
   const [hoverSubmit, setHoverSubmit] = useState(false);
 
@@ -195,6 +197,14 @@ export default function PartnerJoinPage() {
     const ptInput = form.querySelector<HTMLInputElement>('input[name="partnerType"]');
     if (ptInput) ptInput.value = partnerType;
 
+    const isFutureConsideration =
+      partnerType === "builder" &&
+      hasPreferredLender === "Yes" &&
+      considerNewLender === "No";
+
+    const psInput = form.querySelector<HTMLInputElement>('input[name="partnerStatus"]');
+    if (psInput) psInput.value = isFutureConsideration ? "future-consideration" : "active";
+
     const formData = new FormData(form);
     const email = ((formData.get("email") as string) || "").trim().toLowerCase();
     submittedEmails.add(email);
@@ -204,6 +214,7 @@ export default function PartnerJoinPage() {
     } catch {
       /* no-op — Netlify intercepts on production */
     }
+    setFutureConsideration(isFutureConsideration);
     setSubmitted(true);
   };
 
@@ -461,7 +472,9 @@ export default function PartnerJoinPage() {
 
           {submitted ? (
             <div style={{ color: NAVY, background: IVORY, border: `1.5px solid ${COPPER}`, borderRadius: 8, padding: 28, textAlign: "center", fontSize: "1.05rem", lineHeight: 1.6 }}>
-              Thanks! We'll have your page ready within 48 hours. Watch for an email from shalanda@securechoicelending.com.
+              {futureConsideration
+                ? "Thank you for your interest in partnering with Keys by Shalanda. At this time we are building our network with builders who are open to outside lender relationships. We appreciate you reaching out and may reconnect as our program grows."
+                : "Thanks! We'll have your page ready within 48 hours. Watch for an email from shalanda@securechoicelending.com."}
             </div>
           ) : (
             <form
@@ -475,6 +488,7 @@ export default function PartnerJoinPage() {
             >
               <input type="hidden" name="form-name" value="partner-intake" />
               <input type="hidden" name="partnerType" />
+              <input type="hidden" name="partnerStatus" />
               <p style={{ display: "none" }}>
                 <label>Don't fill this out: <input name="bot-field" /></label>
               </p>
@@ -648,16 +662,32 @@ export default function PartnerJoinPage() {
                     )}
                   </div>
 
-                  <Field label="What would make you consider a new lender relationship?">
+                  <div style={fieldWrap}>
+                    <label style={labelStyle}>Would you consider a new lender relationship?</label>
+                    <div style={{ display: "flex", gap: 18 }}>
+                      {(["Yes", "No"] as const).map((opt) => (
+                        <label key={opt} style={{ display: "inline-flex", alignItems: "center", gap: 8, color: NAVY, cursor: "pointer" }}>
+                          <input
+                            type="radio"
+                            name="considerNewLender"
+                            value={opt}
+                            checked={considerNewLender === opt}
+                            onChange={() => setConsiderNewLender(opt)}
+                            style={{ accentColor: COPPER }}
+                          />
+                          {opt}
+                        </label>
+                      ))}
+                    </div>
                     <textarea
-                      style={{ ...inputBase, resize: "vertical", fontFamily: body }}
+                      style={{ ...inputBase, resize: "vertical", fontFamily: body, marginTop: 10 }}
                       name="lenderSwitch"
                       rows={3}
-                      placeholder="Optional"
+                      placeholder="Optional — what would make you consider switching?"
                       onFocus={focusCopper}
                       onBlur={blurCopper}
                     />
-                  </Field>
+                  </div>
 
                   {headshotField("Headshot or Company Logo")}
 
