@@ -170,8 +170,8 @@ export default function PartnerJoinPage() {
       e.email = "This email has already been submitted.";
 
     const website = get("website");
-    if (website && !/^https?:\/\/.+/.test(website))
-      e.website = "Website must start with http:// or https://";
+    if (website && !/^(https?:\/\/)?(www\.)?[^\s.]+\.(com|org|net|io|co|gov|edu|biz|us)([\/?#].*)?$/i.test(website))
+      e.website = "Please enter a valid website like shalandasmith.com";
 
     const mls = data.getAll("mlsAssociations");
     if (mls.length === 0) e.mlsAssociations = "Please select at least one MLS association.";
@@ -192,7 +192,17 @@ export default function PartnerJoinPage() {
     const form = ev.currentTarget;
     const errs = validate(form);
     setErrors(errs);
-    if (Object.keys(errs).length > 0) return;
+    if (Object.keys(errs).length > 0) {
+      const firstKey = Object.keys(errs)[0];
+      requestAnimationFrame(() => {
+        const lookup = firstKey === "_partnerType" ? "partnerType" : firstKey;
+        const el =
+          form.querySelector<HTMLElement>(`[name="${lookup}"]`) ||
+          form.querySelector<HTMLElement>(`[data-field="${firstKey}"]`);
+        el?.scrollIntoView({ behavior: "smooth", block: "center" });
+      });
+      return;
+    }
 
     const ptInput = form.querySelector<HTMLInputElement>('input[name="partnerType"]');
     if (ptInput) ptInput.value = partnerType;
@@ -204,6 +214,12 @@ export default function PartnerJoinPage() {
 
     const psInput = form.querySelector<HTMLInputElement>('input[name="partnerStatus"]');
     if (psInput) psInput.value = isFutureConsideration ? "future-consideration" : "active";
+
+    // Normalize website to include protocol
+    const websiteInput = form.querySelector<HTMLInputElement>('input[name="website"]');
+    if (websiteInput && websiteInput.value.trim() && !/^https?:\/\//i.test(websiteInput.value.trim())) {
+      websiteInput.value = "https://" + websiteInput.value.trim();
+    }
 
     const formData = new FormData(form);
     const email = ((formData.get("email") as string) || "").trim().toLowerCase();
