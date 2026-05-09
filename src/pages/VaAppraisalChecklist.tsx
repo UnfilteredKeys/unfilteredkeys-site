@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import SEO from "@/components/SEO";
-import { Home, Zap, Droplet, Wind, ShieldCheck, Sofa, ChevronDown, AlertTriangle } from "lucide-react";
+import { Home, Zap, Droplet, Wind, ShieldCheck, Sofa, ChevronDown, AlertTriangle, type LucideIcon } from "lucide-react";
 
 const NAVY = "#1a3a5c";
 const COPPER = "#b5621e";
@@ -13,7 +13,7 @@ const body = "'Outfit', sans-serif";
 const calendly = "https://calendly.com/shalanda-securechoicelending/30min";
 
 type Item = { id: string; label: string; flag?: string };
-type Category = { id: string; title: string; Icon: React.ComponentType<{ size?: number; color?: string }>; items: Item[] };
+type Category = { id: string; title: string; Icon: LucideIcon; items: Item[] };
 
 const CATEGORIES: Category[] = [
   {
