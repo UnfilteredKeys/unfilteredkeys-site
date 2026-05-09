@@ -662,16 +662,32 @@ export default function PartnerJoinPage() {
                     )}
                   </div>
 
-                  <Field label="What would make you consider a new lender relationship?">
+                  <div style={fieldWrap}>
+                    <label style={labelStyle}>Would you consider a new lender relationship?</label>
+                    <div style={{ display: "flex", gap: 18 }}>
+                      {(["Yes", "No"] as const).map((opt) => (
+                        <label key={opt} style={{ display: "inline-flex", alignItems: "center", gap: 8, color: NAVY, cursor: "pointer" }}>
+                          <input
+                            type="radio"
+                            name="considerNewLender"
+                            value={opt}
+                            checked={considerNewLender === opt}
+                            onChange={() => setConsiderNewLender(opt)}
+                            style={{ accentColor: COPPER }}
+                          />
+                          {opt}
+                        </label>
+                      ))}
+                    </div>
                     <textarea
-                      style={{ ...inputBase, resize: "vertical", fontFamily: body }}
+                      style={{ ...inputBase, resize: "vertical", fontFamily: body, marginTop: 10 }}
                       name="lenderSwitch"
                       rows={3}
-                      placeholder="Optional"
+                      placeholder="Optional — what would make you consider switching?"
                       onFocus={focusCopper}
                       onBlur={blurCopper}
                     />
-                  </Field>
+                  </div>
 
                   {headshotField("Headshot or Company Logo")}
 
