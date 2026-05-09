@@ -171,8 +171,8 @@ export default function PartnerJoinPage() {
     if (website && !/^https?:\/\/.+/.test(website))
       e.website = "Website must start with http:// or https://";
 
-    const markets = data.getAll("markets");
-    if (markets.length === 0) e.markets = "Select at least one market.";
+    const mls = data.getAll("mlsAssociations");
+    if (mls.length === 0) e.mlsAssociations = "Please select at least one MLS association.";
 
     if (partnerType === "agent") {
       required("brokerage", "Brokerage");
