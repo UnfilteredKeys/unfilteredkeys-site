@@ -299,7 +299,7 @@ export default function PartnerJulieJames() {
                 status: "Active",
                 address: "419 Cattail Cir",
                 city: "Harker Heights, TX 76548",
-                price: "$550,000",
+                price: "$355,000",
                 beds: 4,
                 baths: 2,
                 sqft: "2,293",
