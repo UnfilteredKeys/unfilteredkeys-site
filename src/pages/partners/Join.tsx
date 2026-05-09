@@ -8,6 +8,7 @@ const COPPER = "#b5621e";
 const IVORY = "#faf8f4";
 const HERO = "#1a2535";
 const WHITE = "#ffffff";
+const ERROR = "#c0392b";
 const heading = "'Lora', serif";
 const body = "'Outfit', sans-serif";
 const COPPER_DARK = "#9a5319";
@@ -60,20 +61,12 @@ const inputBase: React.CSSProperties = {
 
 const fieldWrap: React.CSSProperties = { marginBottom: 18 };
 
-function Field({
-  label,
-  children,
-}: {
-  label: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div style={fieldWrap}>
-      <label style={labelStyle}>{label}</label>
-      {children}
-    </div>
-  );
-}
+const errorTextStyle: React.CSSProperties = {
+  color: ERROR,
+  fontSize: "0.8rem",
+  marginTop: 4,
+  fontFamily: body,
+};
 
 const SPECIALTIES = [
   "VA Buyers",
@@ -86,35 +79,345 @@ const SPECIALTIES = [
 
 const LANGUAGES = ["English", "Spanish", "Other"];
 
+const MARKETS = [
+  "Killeen",
+  "Copperas Cove",
+  "Harker Heights",
+  "Temple",
+  "Belton",
+  "Waco",
+  "Austin",
+  "Round Rock",
+  "Georgetown",
+  "Cedar Park",
+  "Pflugerville",
+  "San Marcos",
+  "New Braunfels",
+  "San Antonio",
+  "Houston",
+  "Dallas",
+  "Fort Worth",
+  "El Paso",
+  "Corpus Christi",
+  "Wichita Falls",
+];
+
+const BUILDER_TYPES = ["Production Builder", "Semi-Custom Builder", "Custom Builder"];
+const PRICE_RANGES = ["$150K–$250K", "$250K–$400K", "$400K–$600K", "$600K+"];
+
+type Errors = Record<string, string>;
+const submittedEmails = new Set<string>();
+
+function fieldStyle(hasError: boolean): React.CSSProperties {
+  return hasError
+    ? { ...inputBase, border: `2px solid ${ERROR}` }
+    : inputBase;
+}
+
+function Field({
+  label,
+  children,
+  error,
+}: {
+  label: string;
+  children: React.ReactNode;
+  error?: string;
+}) {
+  return (
+    <div style={fieldWrap}>
+      <label style={labelStyle}>{label}</label>
+      {children}
+      {error && <div style={errorTextStyle}>{error}</div>}
+    </div>
+  );
+}
+
 export default function PartnerJoinPage() {
   const meta = seoMeta.partnersJoin;
   const [submitted, setSubmitted] = useState(false);
+  const [partnerType, setPartnerType] = useState<"" | "agent" | "builder">("");
   const [otherLang, setOtherLang] = useState(false);
+  const [hasBuilderRel, setHasBuilderRel] = useState<"Yes" | "No">("No");
+  const [hasPreferredLender, setHasPreferredLender] = useState<"Yes" | "No">("No");
+  const [errors, setErrors] = useState<Errors>({});
   const [hoverSubmit, setHoverSubmit] = useState(false);
 
   const focusCopper = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    if (errors[e.currentTarget.name]) return;
     e.currentTarget.style.borderColor = COPPER;
     e.currentTarget.style.boxShadow = `0 0 0 2px ${COPPER}33`;
   };
   const blurCopper = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    if (errors[e.currentTarget.name]) return;
     e.currentTarget.style.borderColor = BORDER;
     e.currentTarget.style.boxShadow = "none";
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = e.currentTarget;
+  const validate = (form: HTMLFormElement): Errors => {
+    const e: Errors = {};
+    if (!partnerType) {
+      e._partnerType = "Please select your role.";
+      return e;
+    }
+    const data = new FormData(form);
+    const get = (n: string) => ((data.get(n) as string) || "").trim();
+
+    const required = (name: string, label: string) => {
+      if (!get(name)) e[name] = `${label} is required.`;
+    };
+
+    required("firstName", "First name");
+    required("lastName", "Last name");
+
+    const phone = get("phone").replace(/\D/g, "");
+    if (!phone) e.phone = "Phone is required.";
+    else if (phone.length !== 10) e.phone = "Phone must be 10 digits.";
+
+    const email = get("email");
+    if (!email) e.email = "Email is required.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) e.email = "Enter a valid email.";
+    else if (submittedEmails.has(email.toLowerCase()))
+      e.email = "This email has already been submitted.";
+
+    const website = get("website");
+    if (website && !/^https?:\/\/.+/.test(website))
+      e.website = "Website must start with http:// or https://";
+
+    const markets = data.getAll("markets");
+    if (markets.length === 0) e.markets = "Select at least one market.";
+
+    if (partnerType === "agent") {
+      required("brokerage", "Brokerage");
+    } else {
+      required("companyName", "Company name");
+      if (!get("builderType")) e.builderType = "Select a builder type.";
+      required("communities", "Active communities");
+      if (!get("priceRange")) e.priceRange = "Select a price range.";
+    }
+    return e;
+  };
+
+  const handleSubmit = async (ev: FormEvent<HTMLFormElement>) => {
+    ev.preventDefault();
+    const form = ev.currentTarget;
+    const errs = validate(form);
+    setErrors(errs);
+    if (Object.keys(errs).length > 0) return;
+
+    const ptInput = form.querySelector<HTMLInputElement>('input[name="partnerType"]');
+    if (ptInput) ptInput.value = partnerType;
+
     const formData = new FormData(form);
+    const email = ((formData.get("email") as string) || "").trim().toLowerCase();
+    submittedEmails.add(email);
+
     try {
-      await fetch("/", {
-        method: "POST",
-        body: formData,
-      });
+      await fetch("/", { method: "POST", body: formData });
     } catch {
       /* no-op — Netlify intercepts on production */
     }
     setSubmitted(true);
   };
+
+  const renderRoleCard = (value: "agent" | "builder", label: string) => {
+    const active = partnerType === value;
+    return (
+      <button
+        type="button"
+        onClick={() => {
+          setPartnerType(value);
+          setErrors((p) => {
+            const n = { ...p };
+            delete n._partnerType;
+            return n;
+          });
+        }}
+        style={{
+          flex: 1,
+          minWidth: 220,
+          border: active ? `2px solid ${COPPER}` : `2px solid ${BORDER}`,
+          background: active ? "#fdf6f0" : WHITE,
+          color: NAVY,
+          borderRadius: 8,
+          padding: 16,
+          textAlign: "center",
+          cursor: "pointer",
+          fontFamily: body,
+          fontWeight: 600,
+          fontSize: "1rem",
+          transition: "all 0.15s ease",
+        }}
+      >
+        {label}
+      </button>
+    );
+  };
+
+  const checkboxRow = (
+    name: string,
+    options: string[],
+    onChange?: (val: string, checked: boolean) => void,
+  ) => (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: "10px 18px" }}>
+      {options.map((s) => (
+        <label
+          key={s}
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            color: NAVY,
+            fontSize: "0.95rem",
+            cursor: "pointer",
+          }}
+        >
+          <input
+            type="checkbox"
+            name={name}
+            value={s}
+            style={{ accentColor: COPPER }}
+            onChange={(e) => onChange?.(s, e.currentTarget.checked)}
+          />
+          {s}
+        </label>
+      ))}
+    </div>
+  );
+
+  const radioRow = (name: string, options: string[], hasError?: boolean) => (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: "10px 18px" }}>
+      {options.map((s) => (
+        <label
+          key={s}
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            color: NAVY,
+            fontSize: "0.95rem",
+            cursor: "pointer",
+            ...(hasError ? { color: ERROR } : {}),
+          }}
+        >
+          <input
+            type="radio"
+            name={name}
+            value={s}
+            style={{ accentColor: COPPER }}
+          />
+          {s}
+        </label>
+      ))}
+    </div>
+  );
+
+  const marketsField = (
+    <div style={fieldWrap}>
+      <label style={labelStyle}>Primary Market Served</label>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+          gap: "8px 16px",
+          padding: errors.markets ? 10 : 0,
+          border: errors.markets ? `2px solid ${ERROR}` : "none",
+          borderRadius: 6,
+        }}
+      >
+        {MARKETS.map((m) => (
+          <label
+            key={m}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              color: NAVY,
+              fontSize: "0.95rem",
+              cursor: "pointer",
+            }}
+          >
+            <input
+              type="checkbox"
+              name="markets"
+              value={m}
+              style={{ accentColor: COPPER }}
+            />
+            {m}
+          </label>
+        ))}
+      </div>
+      <div
+        style={{
+          color: NAVY,
+          fontStyle: "italic",
+          fontSize: "0.85rem",
+          marginTop: 6,
+        }}
+      >
+        Select all markets where you actively work with buyers.
+      </div>
+      {errors.markets && <div style={errorTextStyle}>{errors.markets}</div>}
+    </div>
+  );
+
+  const headshotField = (label: string) => (
+    <div style={fieldWrap}>
+      <label style={labelStyle}>{label}</label>
+      <label
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 10,
+          border: `2px dashed ${COPPER}`,
+          borderRadius: 6,
+          padding: "18px 14px",
+          color: COPPER,
+          fontWeight: 600,
+          fontSize: "0.95rem",
+          cursor: "pointer",
+          background: IVORY,
+        }}
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <polyline points="17 8 12 3 7 8" />
+          <line x1="12" y1="3" x2="12" y2="15" />
+        </svg>
+        <span>Upload</span>
+        <input type="file" name="headshot" accept="image/*" style={{ display: "none" }} />
+      </label>
+    </div>
+  );
+
+  const contactBlock = (
+    <>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+        <Field label="First Name" error={errors.firstName}>
+          <input style={fieldStyle(!!errors.firstName)} name="firstName" onFocus={focusCopper} onBlur={blurCopper} />
+        </Field>
+        <Field label="Last Name" error={errors.lastName}>
+          <input style={fieldStyle(!!errors.lastName)} name="lastName" onFocus={focusCopper} onBlur={blurCopper} />
+        </Field>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+        <Field label="Phone" error={errors.phone}>
+          <input style={fieldStyle(!!errors.phone)} name="phone" type="tel" onFocus={focusCopper} onBlur={blurCopper} />
+        </Field>
+        <Field label="Email" error={errors.email}>
+          <input style={fieldStyle(!!errors.email)} name="email" type="email" onFocus={focusCopper} onBlur={blurCopper} />
+        </Field>
+      </div>
+      <Field label="Website" error={errors.website}>
+        <input style={fieldStyle(!!errors.website)} name="website" placeholder="https://" onFocus={focusCopper} onBlur={blurCopper} />
+      </Field>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+        <Field label="Instagram"><input style={inputBase} name="instagram" placeholder="@handle" onFocus={focusCopper} onBlur={blurCopper} /></Field>
+        <Field label="Facebook"><input style={inputBase} name="facebook" placeholder="Profile URL" onFocus={focusCopper} onBlur={blurCopper} /></Field>
+      </div>
+      <Field label="LinkedIn"><input style={inputBase} name="linkedin" placeholder="Profile URL" onFocus={focusCopper} onBlur={blurCopper} /></Field>
+    </>
+  );
 
   return (
     <div style={{ fontFamily: body, background: WHITE, color: NAVY }}>
@@ -129,79 +432,25 @@ export default function PartnerJoinPage() {
       <section style={{ ...sectionPad, background: HERO, textAlign: "center" }}>
         <div style={{ maxWidth: 820, margin: "0 auto" }}>
           <div style={{ ...eyebrow, marginBottom: 16 }}>For Real Estate Agents</div>
-          <h1
-            style={{
-              fontFamily: heading,
-              color: WHITE,
-              fontSize: "clamp(2rem, 4vw, 2.75rem)",
-              fontWeight: 700,
-              lineHeight: 1.2,
-              margin: 0,
-            }}
-          >
+          <h1 style={{ fontFamily: heading, color: WHITE, fontSize: "clamp(2rem, 4vw, 2.75rem)", fontWeight: 700, lineHeight: 1.2, margin: 0 }}>
             Get Your Own Co-Branded Home Buying Page
           </h1>
-          <p
-            style={{
-              color: "rgba(255,255,255,0.75)",
-              fontSize: "clamp(1rem, 1.5vw, 1.15rem)",
-              lineHeight: 1.6,
-              marginTop: 20,
-            }}
-          >
-            Partner with Keys by Shalanda and give every buyer you work with a
-            personalized mortgage resource — branded with both our names.
+          <p style={{ color: "rgba(255,255,255,0.75)", fontSize: "clamp(1rem, 1.5vw, 1.15rem)", lineHeight: 1.6, marginTop: 20 }}>
+            Partner with Keys by Shalanda and give every buyer you work with a personalized mortgage resource — branded with both our names.
           </p>
         </div>
       </section>
 
       {/* Section 2 — Benefits */}
       <section style={{ ...sectionPad, background: IVORY }}>
-        <div
-          style={{
-            maxWidth: 1100,
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-            gap: 24,
-          }}
-        >
+        <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 24 }}>
           {[
-            {
-              t: "Your Name on the Page",
-              b: "Every buyer you refer lands on a page that features you and your brokerage alongside Keys by Shalanda.",
-            },
-            {
-              t: "A Link You Can Share Anywhere",
-              b: "Text it, email it, post it. One link does the work — buyers get educated and connected before the first showing.",
-            },
-            {
-              t: "VA Loan Expertise Behind You",
-              b: "We close VA loans in 21 days. Your buyers get answers fast and you get a lender who won't fumble the file.",
-            },
+            { t: "Your Name on the Page", b: "Every buyer you refer lands on a page that features you and your brokerage alongside Keys by Shalanda." },
+            { t: "A Link You Can Share Anywhere", b: "Text it, email it, post it. One link does the work — buyers get educated and connected before the first showing." },
+            { t: "VA Loan Expertise Behind You", b: "We close VA loans in 21 days. Your buyers get answers fast and you get a lender who won't fumble the file." },
           ].map((c) => (
-            <div
-              key={c.t}
-              style={{
-                background: WHITE,
-                color: NAVY,
-                borderTop: `3px solid ${COPPER}`,
-                padding: 28,
-                borderRadius: 4,
-                boxShadow: "0 1px 2px rgba(0,0,0,0.04)",
-              }}
-            >
-              <h3
-                style={{
-                  fontFamily: heading,
-                  fontSize: "1.25rem",
-                  fontWeight: 700,
-                  marginBottom: 12,
-                  color: NAVY,
-                }}
-              >
-                {c.t}
-              </h3>
+            <div key={c.t} style={{ background: WHITE, color: NAVY, borderTop: `3px solid ${COPPER}`, padding: 28, borderRadius: 4, boxShadow: "0 1px 2px rgba(0,0,0,0.04)" }}>
+              <h3 style={{ fontFamily: heading, fontSize: "1.25rem", fontWeight: 700, marginBottom: 12, color: NAVY }}>{c.t}</h3>
               <p style={{ fontSize: "0.95rem", lineHeight: 1.6, color: NAVY }}>{c.b}</p>
             </div>
           ))}
@@ -220,20 +469,8 @@ export default function PartnerJoinPage() {
           </div>
 
           {submitted ? (
-            <div
-              style={{
-                color: NAVY,
-                background: IVORY,
-                border: `1.5px solid ${COPPER}`,
-                borderRadius: 8,
-                padding: 28,
-                textAlign: "center",
-                fontSize: "1.05rem",
-                lineHeight: 1.6,
-              }}
-            >
-              Thanks! We'll have your page ready within 48 hours. Watch for an
-              email from shalanda@securechoicelending.com.
+            <div style={{ color: NAVY, background: IVORY, border: `1.5px solid ${COPPER}`, borderRadius: 8, padding: 28, textAlign: "center", fontSize: "1.05rem", lineHeight: 1.6 }}>
+              Thanks! We'll have your page ready within 48 hours. Watch for an email from shalanda@securechoicelending.com.
             </div>
           ) : (
             <form
@@ -243,266 +480,208 @@ export default function PartnerJoinPage() {
               data-netlify-honeypot="bot-field"
               encType="multipart/form-data"
               onSubmit={handleSubmit}
+              noValidate
             >
               <input type="hidden" name="form-name" value="partner-intake" />
+              <input type="hidden" name="partnerType" />
               <p style={{ display: "none" }}>
-                <label>
-                  Don't fill this out: <input name="bot-field" />
-                </label>
+                <label>Don't fill this out: <input name="bot-field" /></label>
               </p>
 
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: 16,
-                }}
-              >
-                <Field label="First Name">
-                  <input
-                    style={inputBase}
-                    name="firstName"
-                    required
-                    onFocus={focusCopper}
-                    onBlur={blurCopper}
-                  />
-                </Field>
-                <Field label="Last Name">
-                  <input
-                    style={inputBase}
-                    name="lastName"
-                    required
-                    onFocus={focusCopper}
-                    onBlur={blurCopper}
-                  />
-                </Field>
-              </div>
-
-              <Field label="Brokerage Name">
-                <input
-                  style={inputBase}
-                  name="brokerage"
-                  required
-                  onFocus={focusCopper}
-                  onBlur={blurCopper}
-                />
-              </Field>
-
-              <Field label="License Number">
-                <input
-                  style={inputBase}
-                  name="licenseNumber"
-                  placeholder="Optional"
-                  onFocus={focusCopper}
-                  onBlur={blurCopper}
-                />
-              </Field>
-
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: 16,
-                }}
-              >
-                <Field label="Phone">
-                  <input
-                    style={inputBase}
-                    name="phone"
-                    type="tel"
-                    required
-                    onFocus={focusCopper}
-                    onBlur={blurCopper}
-                  />
-                </Field>
-                <Field label="Email">
-                  <input
-                    style={inputBase}
-                    name="email"
-                    type="email"
-                    required
-                    onFocus={focusCopper}
-                    onBlur={blurCopper}
-                  />
-                </Field>
-              </div>
-
-              <Field label="Website">
-                <input
-                  style={inputBase}
-                  name="website"
-                  placeholder="https://"
-                  onFocus={focusCopper}
-                  onBlur={blurCopper}
-                />
-              </Field>
-
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: 16,
-                }}
-              >
-                <Field label="Instagram">
-                  <input
-                    style={inputBase}
-                    name="instagram"
-                    placeholder="@handle"
-                    onFocus={focusCopper}
-                    onBlur={blurCopper}
-                  />
-                </Field>
-                <Field label="Facebook">
-                  <input
-                    style={inputBase}
-                    name="facebook"
-                    placeholder="Profile URL"
-                    onFocus={focusCopper}
-                    onBlur={blurCopper}
-                  />
-                </Field>
-              </div>
-
-              <Field label="LinkedIn">
-                <input
-                  style={inputBase}
-                  name="linkedin"
-                  placeholder="Profile URL"
-                  onFocus={focusCopper}
-                  onBlur={blurCopper}
-                />
-              </Field>
-
-              <Field label="Primary Cities Served">
-                <input
-                  style={inputBase}
-                  name="cities"
-                  placeholder="e.g. Killeen, Temple, Copperas Cove"
-                  required
-                  onFocus={focusCopper}
-                  onBlur={blurCopper}
-                />
-              </Field>
-
+              {/* Role toggle */}
               <div style={fieldWrap}>
-                <label style={labelStyle}>Buyer Specialties</label>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "10px 18px" }}>
-                  {SPECIALTIES.map((s) => (
-                    <label
-                      key={s}
-                      style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: 8,
-                        color: NAVY,
-                        fontSize: "0.95rem",
-                        cursor: "pointer",
-                      }}
-                    >
-                      <input
-                        type="checkbox"
-                        name="specialties"
-                        value={s}
-                        style={{ accentColor: COPPER }}
-                      />
-                      {s}
-                    </label>
-                  ))}
+                <label style={labelStyle}>I am a...</label>
+                <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                  {renderRoleCard("agent", "Realtor / Real Estate Agent")}
+                  {renderRoleCard("builder", "Builder / Builder Representative")}
                 </div>
+                {errors._partnerType && <div style={errorTextStyle}>{errors._partnerType}</div>}
               </div>
 
-              <div style={fieldWrap}>
-                <label style={labelStyle}>Languages Spoken</label>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "10px 18px" }}>
-                  {LANGUAGES.map((s) => (
-                    <label
-                      key={s}
-                      style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: 8,
-                        color: NAVY,
-                        fontSize: "0.95rem",
-                        cursor: "pointer",
-                      }}
-                    >
+              {partnerType === "agent" && (
+                <>
+                  {contactBlock /* note: order — putting brokerage/license before contact in spec */}
+                  <Field label="Brokerage Name" error={errors.brokerage}>
+                    <input style={fieldStyle(!!errors.brokerage)} name="brokerage" onFocus={focusCopper} onBlur={blurCopper} />
+                  </Field>
+                  <Field label="License Number">
+                    <input style={inputBase} name="licenseNumber" placeholder="Optional" onFocus={focusCopper} onBlur={blurCopper} />
+                  </Field>
+
+                  {marketsField}
+
+                  <div style={fieldWrap}>
+                    <label style={labelStyle}>Buyer Specialties</label>
+                    {checkboxRow("specialties", SPECIALTIES)}
+                  </div>
+
+                  <div style={fieldWrap}>
+                    <label style={labelStyle}>Languages Spoken</label>
+                    {checkboxRow("languages", LANGUAGES, (val, checked) => {
+                      if (val === "Other") setOtherLang(checked);
+                    })}
+                    {otherLang && (
                       <input
-                        type="checkbox"
-                        name="languages"
-                        value={s}
-                        style={{ accentColor: COPPER }}
-                        onChange={(e) => {
-                          if (s === "Other") setOtherLang(e.currentTarget.checked);
-                        }}
+                        style={{ ...inputBase, marginTop: 10 }}
+                        name="languagesOther"
+                        placeholder="Please specify"
+                        onFocus={focusCopper}
+                        onBlur={blurCopper}
                       />
-                      {s}
-                    </label>
-                  ))}
-                </div>
-                {otherLang && (
-                  <input
-                    style={{ ...inputBase, marginTop: 10 }}
-                    name="languagesOther"
-                    placeholder="Please specify"
-                    onFocus={focusCopper}
-                    onBlur={blurCopper}
-                  />
-                )}
-              </div>
+                    )}
+                  </div>
 
-              <div style={fieldWrap}>
-                <label style={labelStyle}>Headshot Photo</label>
-                <label
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: 10,
-                    border: `2px dashed ${COPPER}`,
-                    borderRadius: 6,
-                    padding: "18px 14px",
-                    color: COPPER,
-                    fontWeight: 600,
-                    fontSize: "0.95rem",
-                    cursor: "pointer",
-                    background: IVORY,
-                  }}
-                >
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                    <polyline points="17 8 12 3 7 8" />
-                    <line x1="12" y1="3" x2="12" y2="15" />
-                  </svg>
-                  <span>Upload Headshot</span>
-                  <input
-                    type="file"
-                    name="headshot"
-                    accept="image/*"
-                    style={{ display: "none" }}
-                  />
-                </label>
-              </div>
+                  <div style={fieldWrap}>
+                    <label style={labelStyle}>Do you represent any builders?</label>
+                    <div style={{ display: "flex", gap: 18 }}>
+                      {(["Yes", "No"] as const).map((opt) => (
+                        <label key={opt} style={{ display: "inline-flex", alignItems: "center", gap: 8, color: NAVY, cursor: "pointer" }}>
+                          <input
+                            type="radio"
+                            name="builderRelationship"
+                            value={opt}
+                            checked={hasBuilderRel === opt}
+                            onChange={() => setHasBuilderRel(opt)}
+                            style={{ accentColor: COPPER }}
+                          />
+                          {opt}
+                        </label>
+                      ))}
+                    </div>
+                    {hasBuilderRel === "Yes" && (
+                      <input
+                        style={{ ...inputBase, marginTop: 10 }}
+                        name="builderNames"
+                        placeholder="e.g. Flintrock Builders, Stylecraft"
+                        onFocus={focusCopper}
+                        onBlur={blurCopper}
+                      />
+                    )}
+                  </div>
 
-              <Field label="Anything else you want buyers to know about working with you?">
-                <textarea
-                  style={{ ...inputBase, resize: "vertical", fontFamily: body }}
-                  name="bio"
-                  rows={4}
-                  placeholder="Optional — this may appear on your partner page."
-                  onFocus={focusCopper}
-                  onBlur={blurCopper}
-                />
-              </Field>
+                  {headshotField("Headshot Photo")}
+
+                  <Field label="Anything else you want buyers to know about working with you?">
+                    <textarea
+                      style={{ ...inputBase, resize: "vertical", fontFamily: body }}
+                      name="bio"
+                      rows={4}
+                      placeholder="Optional — this may appear on your partner page."
+                      onFocus={focusCopper}
+                      onBlur={blurCopper}
+                    />
+                  </Field>
+                </>
+              )}
+
+              {partnerType === "builder" && (
+                <>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+                    <Field label="First Name" error={errors.firstName}>
+                      <input style={fieldStyle(!!errors.firstName)} name="firstName" onFocus={focusCopper} onBlur={blurCopper} />
+                    </Field>
+                    <Field label="Last Name" error={errors.lastName}>
+                      <input style={fieldStyle(!!errors.lastName)} name="lastName" onFocus={focusCopper} onBlur={blurCopper} />
+                    </Field>
+                  </div>
+
+                  <Field label="Company Name" error={errors.companyName}>
+                    <input style={fieldStyle(!!errors.companyName)} name="companyName" onFocus={focusCopper} onBlur={blurCopper} />
+                  </Field>
+
+                  <Field label="Builder Type" error={errors.builderType}>
+                    {radioRow("builderType", BUILDER_TYPES, !!errors.builderType)}
+                  </Field>
+
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+                    <Field label="Phone" error={errors.phone}>
+                      <input style={fieldStyle(!!errors.phone)} name="phone" type="tel" onFocus={focusCopper} onBlur={blurCopper} />
+                    </Field>
+                    <Field label="Email" error={errors.email}>
+                      <input style={fieldStyle(!!errors.email)} name="email" type="email" onFocus={focusCopper} onBlur={blurCopper} />
+                    </Field>
+                  </div>
+
+                  <Field label="Website" error={errors.website}>
+                    <input style={fieldStyle(!!errors.website)} name="website" placeholder="https://" onFocus={focusCopper} onBlur={blurCopper} />
+                  </Field>
+
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+                    <Field label="Instagram"><input style={inputBase} name="instagram" placeholder="@handle" onFocus={focusCopper} onBlur={blurCopper} /></Field>
+                    <Field label="Facebook"><input style={inputBase} name="facebook" placeholder="Profile URL" onFocus={focusCopper} onBlur={blurCopper} /></Field>
+                  </div>
+                  <Field label="LinkedIn"><input style={inputBase} name="linkedin" placeholder="Profile URL" onFocus={focusCopper} onBlur={blurCopper} /></Field>
+
+                  <Field label="Active Communities or Projects" error={errors.communities}>
+                    <textarea
+                      style={{ ...fieldStyle(!!errors.communities), resize: "vertical", fontFamily: body }}
+                      name="communities"
+                      rows={3}
+                      placeholder="List your current communities, subdivisions, or active projects"
+                      onFocus={focusCopper}
+                      onBlur={blurCopper}
+                    />
+                  </Field>
+
+                  <Field label="Typical Price Range" error={errors.priceRange}>
+                    {radioRow("priceRange", PRICE_RANGES, !!errors.priceRange)}
+                  </Field>
+
+                  {marketsField}
+
+                  <div style={fieldWrap}>
+                    <label style={labelStyle}>Do you currently have a preferred lender relationship?</label>
+                    <div style={{ display: "flex", gap: 18 }}>
+                      {(["Yes", "No"] as const).map((opt) => (
+                        <label key={opt} style={{ display: "inline-flex", alignItems: "center", gap: 8, color: NAVY, cursor: "pointer" }}>
+                          <input
+                            type="radio"
+                            name="preferredLender"
+                            value={opt}
+                            checked={hasPreferredLender === opt}
+                            onChange={() => setHasPreferredLender(opt)}
+                            style={{ accentColor: COPPER }}
+                          />
+                          {opt}
+                        </label>
+                      ))}
+                    </div>
+                    {hasPreferredLender === "Yes" && (
+                      <input
+                        style={{ ...inputBase, marginTop: 10 }}
+                        name="preferredLenderName"
+                        placeholder="Lender name"
+                        onFocus={focusCopper}
+                        onBlur={blurCopper}
+                      />
+                    )}
+                  </div>
+
+                  <Field label="What would make you consider a new lender relationship?">
+                    <textarea
+                      style={{ ...inputBase, resize: "vertical", fontFamily: body }}
+                      name="lenderSwitch"
+                      rows={3}
+                      placeholder="Optional"
+                      onFocus={focusCopper}
+                      onBlur={blurCopper}
+                    />
+                  </Field>
+
+                  {headshotField("Headshot or Company Logo")}
+
+                  <Field label="Tell us about your company and the buyers you build for">
+                    <textarea
+                      style={{ ...inputBase, resize: "vertical", fontFamily: body }}
+                      name="bio"
+                      rows={4}
+                      placeholder="Optional"
+                      onFocus={focusCopper}
+                      onBlur={blurCopper}
+                    />
+                  </Field>
+                </>
+              )}
 
               <button
                 type="submit"
@@ -532,41 +711,19 @@ export default function PartnerJoinPage() {
 
       {/* Section 4 — Questions */}
       <section style={{ ...sectionPad, background: HERO, textAlign: "center" }}>
-        <h2
-          style={{
-            fontFamily: heading,
-            color: WHITE,
-            fontSize: "clamp(1.75rem, 3vw, 2.25rem)",
-            fontWeight: 700,
-            marginBottom: 32,
-          }}
-        >
+        <h2 style={{ fontFamily: heading, color: WHITE, fontSize: "clamp(1.75rem, 3vw, 2.25rem)", fontWeight: 700, marginBottom: 32 }}>
           Questions?
         </h2>
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "center",
-            gap: 48,
-            color: WHITE,
-          }}
-        >
+        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 48, color: WHITE }}>
           <div>
             <div style={{ ...eyebrow, color: COPPER, marginBottom: 8 }}>Email</div>
-            <a
-              href="mailto:shalanda@securechoicelending.com"
-              style={{ color: WHITE, fontSize: "1.05rem", textDecoration: "none" }}
-            >
+            <a href="mailto:shalanda@securechoicelending.com" style={{ color: WHITE, fontSize: "1.05rem", textDecoration: "none" }}>
               shalanda@securechoicelending.com
             </a>
           </div>
           <div>
             <div style={{ ...eyebrow, color: COPPER, marginBottom: 8 }}>Call or Text</div>
-            <a
-              href="tel:2549359331"
-              style={{ color: WHITE, fontSize: "1.05rem", textDecoration: "none" }}
-            >
+            <a href="tel:2549359331" style={{ color: WHITE, fontSize: "1.05rem", textDecoration: "none" }}>
               254-935-9331
             </a>
           </div>
@@ -574,16 +731,7 @@ export default function PartnerJoinPage() {
       </section>
 
       {/* Section 5 — Compliance */}
-      <section
-        style={{
-          background: IVORY,
-          padding: "32px 20px",
-          textAlign: "center",
-          color: NAVY,
-          fontSize: "0.8rem",
-          lineHeight: 1.6,
-        }}
-      >
+      <section style={{ background: IVORY, padding: "32px 20px", textAlign: "center", color: NAVY, fontSize: "0.8rem", lineHeight: 1.6 }}>
         Shalanda Smith · NMLS #554554 · Secure Choice Lending · NMLS #1689518 ·
         Equal Housing Opportunity · Licensed in Texas · This page is for
         educational purposes and does not constitute a loan commitment or rate
