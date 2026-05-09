@@ -286,7 +286,7 @@ export default function PartnerJulieJames() {
           >
             {[
               {
-                status: "Pending",
+                status: "Active",
                 address: "1398 County Road 3152",
                 city: "Kempner, TX 76539",
                 price: "$400,000",
