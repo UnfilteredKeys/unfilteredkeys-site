@@ -123,7 +123,7 @@ function JulieCard() {
       <div style={{ fontSize: 13, color: COPPER, fontWeight: 600, marginBottom: 2 }}>
         REALTOR® · License #733161
       </div>
-      <div style={{ fontSize: 13, color: "#4a5568", marginBottom: 12 }}>Esperanza Realty</div>
+      <div style={{ fontSize: 13, color: "#4a5568", marginBottom: 12 }}>Esperanza Realty Group</div>
       <div style={{ fontSize: 13, lineHeight: 1.7 }}>
         <a href="tel:2547028080" style={{ color: NAVY, textDecoration: "none", display: "block" }}>
           (254) 702-8080
@@ -263,7 +263,7 @@ export default function PartnerJulieJames() {
               padding: "0 8px",
             }}
           >
-            Julie James is the founder of Esperanza Realty, powered by Epique Realty, and a proud veteran spouse who
+            Julie James is the founder of Esperanza Realty Group, powered by Epique Realty, and a proud veteran spouse who
             has built her business around the military community she calls home. Fluent in English and Spanish, she works
             with VA buyers, first-time buyers, investors, and luxury clients across Killeen, Harker Heights, Kempner, and
             beyond. Whether you're buying or selling, Julie brings the same dedication and local expertise to every
