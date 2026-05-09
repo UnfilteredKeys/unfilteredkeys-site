@@ -375,8 +375,8 @@ export default function PartnerJulieJames() {
         </div>
       </section>
 
-      {/* Section 3: Stats Strip */}
-      <section style={{ background: HERO, padding: "56px 24px" }}>
+      {/* Section 3: Stats Strip - removed */}
+      {false && <section style={{ background: HERO, padding: "56px 24px" }}>
         <div
           style={{
             maxWidth: 1120,
