@@ -488,6 +488,7 @@ export default function PartnerJoinPage() {
             >
               <input type="hidden" name="form-name" value="partner-intake" />
               <input type="hidden" name="partnerType" />
+              <input type="hidden" name="partnerStatus" />
               <p style={{ display: "none" }}>
                 <label>Don't fill this out: <input name="bot-field" /></label>
               </p>
