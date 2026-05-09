@@ -472,7 +472,9 @@ export default function PartnerJoinPage() {
 
           {submitted ? (
             <div style={{ color: NAVY, background: IVORY, border: `1.5px solid ${COPPER}`, borderRadius: 8, padding: 28, textAlign: "center", fontSize: "1.05rem", lineHeight: 1.6 }}>
-              Thanks! We'll have your page ready within 48 hours. Watch for an email from shalanda@securechoicelending.com.
+              {futureConsideration
+                ? "Thank you for your interest in partnering with Keys by Shalanda. At this time we are building our network with builders who are open to outside lender relationships. We appreciate you reaching out and may reconnect as our program grows."
+                : "Thanks! We'll have your page ready within 48 hours. Watch for an email from shalanda@securechoicelending.com."}
             </div>
           ) : (
             <form
