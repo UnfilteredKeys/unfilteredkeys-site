@@ -277,6 +277,82 @@ export default function PartnerDemo() {
         </div>
       </section>
 
+      {/* Promo Banner */}
+      <section style={{ background: COPPER, padding: "80px 24px", textAlign: "center" }}>
+        <div style={{ maxWidth: 1120, margin: "0 auto" }}>
+          <div
+            style={{
+              fontSize: 11,
+              letterSpacing: "1.5px",
+              textTransform: "uppercase",
+              color: WHITE,
+              fontFamily: "'Fira Mono', monospace",
+              fontWeight: 600,
+              marginBottom: 12,
+            }}
+          >
+            LIMITED-TIME OFFER · MAY 11 – JUNE 30, 2026
+          </div>
+          <h2
+            style={{
+              fontFamily: heading,
+              fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
+              color: WHITE,
+              fontWeight: 700,
+              marginBottom: 12,
+              lineHeight: 1.25,
+            }}
+          >
+            More Value at the Closing Table
+          </h2>
+          <p style={{ color: "rgba(255,255,255,0.85)", fontSize: 16.5, lineHeight: 1.65, marginBottom: 40, maxWidth: 720, margin: "0 auto 40px" }}>
+            On eligible purchase loans closed through June 30, 2026, my buyers receive three lender-paid benefits.
+          </p>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+              gap: 20,
+              marginBottom: 32,
+            }}
+          >
+            {[
+              {
+                t: "Credit Report",
+                b: "Hard pull fee credited on your closing disclosure. First pull only.",
+              },
+              {
+                t: "1-0 Temporary Buydown",
+                b: "Rate reduced by 1% in year one. Lender paid.",
+              },
+              {
+                t: "Appraisal Reimbursement",
+                b: "Up to $675 credited at closing.",
+              },
+            ].map((c) => (
+              <div
+                key={c.t}
+                style={{
+                  background: WHITE,
+                  color: NAVY,
+                  padding: "28px 24px",
+                  borderRadius: 10,
+                  textAlign: "left",
+                }}
+              >
+                <div style={{ fontFamily: heading, fontSize: 18, fontWeight: 700, marginBottom: 10 }}>
+                  {c.t}
+                </div>
+                <div style={{ fontSize: 14.5, lineHeight: 1.65, color: "#4a5568" }}>{c.b}</div>
+              </div>
+            ))}
+          </div>
+          <p style={{ color: "rgba(255,255,255,0.85)", fontSize: 12, lineHeight: 1.6, fontStyle: "italic", maxWidth: 920, margin: "0 auto" }}>
+            Purchase loans only. Does not apply to loans utilizing down payment or closing cost assistance programs. No manually underwritten loans. Valid 5/11/2026–6/30/2026. Subject to loan approval. Shalanda Smith · NMLS #554554 · Secure Choice Lending · NMLS #1689518.
+          </p>
+        </div>
+      </section>
+
       {/* Section 5: CTA */}
       <section style={{ background: COPPER, padding: "80px 24px", textAlign: "center" }}>
         <div style={{ maxWidth: 720, margin: "0 auto" }}>
