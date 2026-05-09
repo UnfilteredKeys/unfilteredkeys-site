@@ -278,14 +278,14 @@ export default function PartnerDemo() {
       </section>
 
       {/* Promo Banner */}
-      <section style={{ background: "#16a34a", textAlign: "center" }}>
+      <section style={{ background: IVORY, textAlign: "center" }}>
         <style>{`
           @keyframes marqueeScroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
           }
         `}</style>
-        <div style={{ background: "#15803d", overflow: "hidden", whiteSpace: "nowrap", padding: "14px 0" }}>
+        <div style={{ background: COPPER, overflow: "hidden", whiteSpace: "nowrap", padding: "14px 0" }}>
           <div style={{ display: "inline-flex", animation: "marqueeScroll 25s linear infinite" }}>
             <span style={{ fontSize: 18, fontWeight: 700, color: WHITE, textTransform: "uppercase", letterSpacing: "1px", fontFamily: body, whiteSpace: "nowrap", paddingRight: 40 }}>
               ⭐ LIMITED TIME OFFER · MAY 11 – JUNE 30, 2026 · ⭐ LIMITED TIME OFFER · MAY 11 – JUNE 30, 2026 · ⭐ LIMITED TIME OFFER · MAY 11 – JUNE 30, 2026 ·&nbsp;
@@ -301,7 +301,7 @@ export default function PartnerDemo() {
               style={{
                 fontFamily: heading,
                 fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
-                color: WHITE,
+                color: NAVY,
                 fontWeight: 700,
                 marginBottom: 12,
                 lineHeight: 1.25,
@@ -309,7 +309,7 @@ export default function PartnerDemo() {
             >
               More Value at the Closing Table
             </h2>
-            <p style={{ color: "rgba(255,255,255,0.85)", fontSize: 16.5, lineHeight: 1.65, marginBottom: 40, maxWidth: 720, margin: "0 auto 40px" }}>
+            <p style={{ color: "#4a5568", fontSize: 16.5, lineHeight: 1.65, marginBottom: 40, maxWidth: 720, margin: "0 auto 40px" }}>
               On eligible purchase loans closed through June 30, 2026, my buyers receive three lender-paid benefits.
             </p>
             <div
@@ -344,14 +344,14 @@ export default function PartnerDemo() {
                     textAlign: "left",
                   }}
                 >
-                  <div style={{ fontFamily: heading, fontSize: 18, fontWeight: 700, marginBottom: 10 }}>
+                  <div style={{ fontFamily: heading, fontSize: 18, fontWeight: 700, marginBottom: 10, color: COPPER }}>
                     {c.t}
                   </div>
                   <div style={{ fontSize: 14.5, lineHeight: 1.65, color: "#4a5568" }}>{c.b}</div>
                 </div>
               ))}
             </div>
-            <p style={{ color: "rgba(255,255,255,0.85)", fontSize: 12, lineHeight: 1.6, fontStyle: "italic", maxWidth: 920, margin: "0 auto" }}>
+            <p style={{ color: NAVY, fontSize: 12, lineHeight: 1.6, fontStyle: "italic", maxWidth: 920, margin: "0 auto" }}>
               Purchase loans only. Does not apply to loans utilizing down payment or closing cost assistance programs. No manually underwritten loans. Valid 5/11/2026–6/30/2026. Subject to loan approval. Shalanda Smith · NMLS #554554 · Secure Choice Lending · NMLS #1689518.
             </p>
           </div>
