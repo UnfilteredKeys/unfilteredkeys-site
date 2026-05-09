@@ -499,7 +499,7 @@ export default function PartnerJoinPage() {
                     <input style={inputBase} name="licenseNumber" placeholder="Optional" onFocus={focusCopper} onBlur={blurCopper} />
                   </Field>
 
-                  {marketsField}
+                  {mlsField}
 
                   <div style={fieldWrap}>
                     <label style={labelStyle}>Buyer Specialties</label>
@@ -618,7 +618,7 @@ export default function PartnerJoinPage() {
                     {radioRow("priceRange", PRICE_RANGES, !!errors.priceRange)}
                   </Field>
 
-                  {marketsField}
+                  {mlsField}
 
                   <div style={fieldWrap}>
                     <label style={labelStyle}>Do you currently have a preferred lender relationship?</label>
