@@ -251,95 +251,131 @@ export default function PartnerJulieJames() {
             <JulieCard />
             <ShalandaCard />
           </div>
+
+          {/* Julie Bio */}
+          <div
+            style={{
+              maxWidth: 720,
+              margin: "40px auto 0",
+              color: "rgba(255,255,255,0.85)",
+              fontSize: 15.5,
+              lineHeight: 1.75,
+              padding: "0 8px",
+            }}
+          >
+            Julie James is the founder of Esperanza Realty, powered by Epique Realty, and a proud veteran spouse who
+            has built her business around the military community she calls home. Fluent in English and Spanish, she works
+            with VA buyers, first-time buyers, investors, and luxury clients across Killeen, Harker Heights, Kempner, and
+            beyond. Whether you're buying or selling, Julie brings the same dedication and local expertise to every
+            transaction.
+          </div>
         </div>
       </section>
 
-      {/* Section 2: Why Work With This Team */}
-      <section style={{ background: IVORY, padding: "80px 24px" }}>
+      {/* Section 2: Featured Listings */}
+      <section style={{ background: NAVY, padding: "80px 24px" }}>
         <div style={{ maxWidth: 1120, margin: "0 auto" }}>
-          <div style={eyebrow}>Why Work With This Team</div>
-          <h2 style={h2}>Two specialists working your file from day one.</h2>
+          <div style={{ ...eyebrow, textAlign: "center", color: COPPER }}>FEATURED LISTINGS</div>
+          <h2 style={{ ...h2, textAlign: "center", color: WHITE }}>Current Listings</h2>
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
               gap: 20,
             }}
           >
             {[
               {
-                t: "VA Loans Closed in 21 Days",
-                b: "PCS timelines respected, BAH math done upfront, no surprises at closing.",
+                status: "Pending",
+                address: "1398 County Road 3152",
+                city: "Kempner, TX 76539",
+                price: "$400,000",
+                beds: 4,
+                baths: 2,
+                sqft: "1,926",
+                acres: "0.93 acre",
               },
               {
-                t: "50+ Lender Network",
-                b: "We shop your file across wholesale lenders to find the best rate and terms for your situation.",
+                status: "Active",
+                address: "419 Cattail Cir",
+                city: "Harker Heights, TX 76548",
+                price: "$550,000",
+                beds: 4,
+                baths: 2,
+                sqft: "2,293",
               },
               {
-                t: "One Team, One Transaction",
-                b: "Your agent and your lender are already aligned before you write your first offer.",
+                status: "Active",
+                address: "202 Danielle Dr",
+                city: "Killeen, TX 76542",
+                price: "$280,000",
+                beds: 4,
+                baths: 3,
+                sqft: "1,970",
               },
-            ].map((c) => (
+            ].map((listing) => (
               <div
-                key={c.t}
+                key={listing.address}
                 style={{
                   background: WHITE,
                   color: NAVY,
-                  padding: "28px 24px",
                   borderRadius: 10,
-                  boxShadow: "0 2px 10px rgba(26,58,92,0.06)",
+                  padding: "24px",
+                  boxShadow: "0 4px 16px rgba(0,0,0,0.12)",
                 }}
               >
-                <div style={{ fontFamily: heading, fontSize: 18, fontWeight: 700, marginBottom: 10 }}>{c.t}</div>
-                <div style={{ fontSize: 14.5, lineHeight: 1.65, color: "#4a5568" }}>{c.b}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Section 3: How We Work */}
-      <section style={{ background: WHITE, padding: "80px 24px" }}>
-        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
-          <div style={eyebrow}>How We Work</div>
-          <h2 style={h2}>No down payment. No PMI. No guessing.</h2>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-              gap: 28,
-            }}
-          >
-            {[
-              {
-                l: "No Down Payment",
-                b: "VA-eligible buyers purchase with 0% down — no PMI ever. We verify entitlement on the first call.",
-              },
-              {
-                l: "Student Debt Handled",
-                b: "IBR payments used, not 1% of balance. Junior enlisted and officers with education debt qualify.",
-              },
-              {
-                l: "Future Income Accepted",
-                b: "Signed offer letter qualifies you before your first paycheck. Built for PCS moves and new assignments.",
-              },
-              {
-                l: "Funding Fee Waiver",
-                b: "100% service-connected disability = funding fee waived entirely. We check this on every VA file.",
-              },
-            ].map((it) => (
-              <div key={it.l} style={{ borderLeft: `3px solid ${COPPER}`, paddingLeft: 16 }}>
-                <div style={{ fontFamily: heading, fontSize: 17, fontWeight: 700, marginBottom: 8, color: NAVY }}>
-                  {it.l}
+                <span
+                  style={{
+                    display: "inline-block",
+                    fontSize: 11,
+                    fontWeight: 600,
+                    letterSpacing: "0.5px",
+                    textTransform: "uppercase",
+                    padding: "4px 10px",
+                    borderRadius: 4,
+                    marginBottom: 14,
+                    color: listing.status === "Active" ? COPPER : "#4a5568",
+                    background: listing.status === "Active" ? "rgba(181,98,30,0.10)" : "#f1f5f9",
+                  }}
+                >
+                  {listing.status}
+                </span>
+                <div style={{ fontFamily: heading, fontSize: 16, fontWeight: 700, marginBottom: 4 }}>
+                  {listing.address}
                 </div>
-                <div style={{ fontSize: 14.5, lineHeight: 1.65, color: "#4a5568" }}>{it.b}</div>
+                <div style={{ fontSize: 13.5, color: "#4a5568", marginBottom: 12 }}>{listing.city}</div>
+                <div
+                  style={{
+                    fontFamily: heading,
+                    fontSize: 22,
+                    fontWeight: 700,
+                    color: NAVY,
+                    marginBottom: 10,
+                  }}
+                >
+                  {listing.price}
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "0 14px",
+                    fontSize: 13,
+                    color: "#4a5568",
+                  }}
+                >
+                  <span>{listing.beds} bed</span>
+                  <span>{listing.baths} bath</span>
+                  <span>{listing.sqft} sq ft</span>
+                  {listing.acres && <span>{listing.acres}</span>}
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Section 4: Stats Strip */}
+      {/* Section 3: Stats Strip */}
       <section style={{ background: HERO, padding: "56px 24px" }}>
         <div
           style={{
@@ -375,7 +411,7 @@ export default function PartnerJulieJames() {
         </div>
       </section>
 
-      {/* Section 5: CTA */}
+      {/* Section 4: CTA */}
       <section style={{ background: COPPER, padding: "80px 24px", textAlign: "center" }}>
         <div style={{ maxWidth: 720, margin: "0 auto" }}>
           <h2
@@ -431,7 +467,7 @@ export default function PartnerJulieJames() {
         </div>
       </section>
 
-      {/* Section 6: Compliance footer */}
+      {/* Section 5: Compliance footer */}
       <section style={{ background: IVORY, padding: "32px 24px" }}>
         <div
           style={{
