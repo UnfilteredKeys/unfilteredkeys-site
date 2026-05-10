@@ -20,6 +20,11 @@ export default function SEO({
   ogImage = DEFAULT_OG_IMAGE,
   noindex = false,
 }: SEOProps) {
+  const location = useLocation();
+
+  // Automatically noindex any /partners/* route
+  const effectiveNoindex = noindex || location.pathname.startsWith("/partners/");
+
   // If a full title is passed, use it directly.
   // If only a short title fragment is passed (no pipe), append site name.
   // If no title, use the default.
