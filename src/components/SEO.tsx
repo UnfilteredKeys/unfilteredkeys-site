@@ -49,7 +49,7 @@ export default function SEO({
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       {description && <meta name="twitter:description" content={description} />}
-      {noindex && <meta name="robots" content="noindex, nofollow" />}
+      {effectiveNoindex && <meta name="robots" content="noindex, nofollow" />}
     </Helmet>
   );
 }
