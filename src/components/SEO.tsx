@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { useLocation } from "react-router-dom";
 
 interface SEOProps {
   title?: string;
@@ -19,6 +20,11 @@ export default function SEO({
   ogImage = DEFAULT_OG_IMAGE,
   noindex = false,
 }: SEOProps) {
+  const location = useLocation();
+
+  // Automatically noindex any /partners/* route
+  const effectiveNoindex = noindex || location.pathname.startsWith("/partners/");
+
   // If a full title is passed, use it directly.
   // If only a short title fragment is passed (no pipe), append site name.
   // If no title, use the default.
@@ -43,7 +49,7 @@ export default function SEO({
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       {description && <meta name="twitter:description" content={description} />}
-      {noindex && <meta name="robots" content="noindex, nofollow" />}
+      {effectiveNoindex && <meta name="robots" content="noindex, nofollow" />}
     </Helmet>
   );
 }
