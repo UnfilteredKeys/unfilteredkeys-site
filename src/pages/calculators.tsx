@@ -592,17 +592,15 @@ function TempBuydownCalc() {
 // ── CALCULATOR 2d: VA ENTITLEMENT ────────────────────────────────────────────
 
 function VAEntitlementCalc() {
-  const [currentBalance, setCurrentBalance] = useState("220000");
-  const [county, setCounty] = useState("Bell County, TX");
-  const [countyLimit, setCountyLimit] = useState("766550");
+  const [entitlementCharged, setEntitlementCharged] = useState("55000");
+  const [countyLimit, setCountyLimit] = useState("832750");
   const [purchasePrice, setPurchasePrice] = useState("400000");
   const [disabled, setDisabled] = useState(false);
 
-  const balance = parseFloat(currentBalance) || 0;
+  const entitlementUsed = parseFloat(entitlementCharged) || 0;
   const limit = parseFloat(countyLimit) || 0;
   const price = parseFloat(purchasePrice) || 0;
 
-  const entitlementUsed = balance * 0.25;
   const remainingEntitlement = limit * 0.25 - entitlementUsed;
   const maxPurchaseNoDown = remainingEntitlement > 0 ? remainingEntitlement * 4 : 0;
   const exhausted = remainingEntitlement <= 0;
@@ -649,19 +647,14 @@ function VAEntitlementCalc() {
 
         <div style={S.grid2}>
           <div>
-            <label style={S.label}>Remaining balance on your current VA loan</label>
-            <input style={S.input} type="number" value={currentBalance} onChange={e => setCurrentBalance(e.target.value)} min="0" step="1000" />
-            <div style={helper}>Use your current payoff balance, not the original loan amount</div>
+            <label style={S.label}>Entitlement charged on current VA loan (from your COE)</label>
+            <input style={S.input} type="number" value={entitlementCharged} onChange={e => setEntitlementCharged(e.target.value)} min="0" step="1000" />
+            <div style={helper}>This is the entitlement amount the VA charged when your current loan was originated. It appears on your Certificate of Eligibility and does not change as you pay down your loan. If you don't have your COE handy, we can pull it for you — call us at 254-935-9331.</div>
           </div>
           <div>
-            <label style={S.label}>County where you are buying</label>
-            <input style={S.input} type="text" value={county} onChange={e => setCounty(e.target.value)} />
-            <div style={helper}>Used to determine your county loan limit. Type your county and state, e.g. Bell County, TX</div>
-          </div>
-          <div>
-            <label style={S.label}>County loan limit (2025)</label>
+            <label style={S.label}>County loan limit (2026)</label>
             <input style={S.input} type="number" value={countyLimit} onChange={e => setCountyLimit(e.target.value)} min="0" step="1000" />
-            <div style={helper}>Most Texas counties are $766,550. High-cost counties may be higher — we can confirm this for your area</div>
+            <div style={helper}>All Texas counties use the standard 2026 limit of $832,750 — including Bell, Travis, Bexar, Harris, and Dallas counties. If you are purchasing outside of Texas, county limits vary and this number may need to change. Give us a call at 254-935-9331 and we'll confirm the correct limit for your county before you run the numbers.</div>
           </div>
           <div>
             <label style={S.label}>Purchase price of new home</label>
@@ -683,16 +676,16 @@ function VAEntitlementCalc() {
         <hr style={S.divider} />
 
         <div style={S.resultsGrid}>
-          <ResultBox label="Entitlement Used" value={fmt(entitlementUsed)} />
+          <ResultBox label="Entitlement Charged" value={fmt(entitlementUsed)} />
           <ResultBox label="Remaining Entitlement" value={fmt(Math.max(0, remainingEntitlement))} />
-          <ResultBox label="Max Purchase (No Down Payment)" value={fmt(maxPurchaseNoDown)} highlight />
+          <ResultBox label="Max Purchase with No Down Payment" value={fmt(maxPurchaseNoDown)} highlight />
           <ResultBox label="Down Payment Required" value={fmt(downPaymentRequired)} />
         </div>
 
         {exhausted && (
           <div style={copperCallout}>
             <strong style={{ color: copper, display: "block", marginBottom: "6px" }}>Full entitlement in use</strong>
-            Based on these numbers, your full entitlement is in use. You may still be able to purchase using VA financing with a down payment, or by restoring your entitlement. Contact us to review your options.
+            Based on these numbers, your full entitlement is in use. You may still be able to purchase using VA financing with a down payment, or by restoring your entitlement. Contact us to review your options — 254-935-9331.
           </div>
         )}
         {!exhausted && !overLimit && (
