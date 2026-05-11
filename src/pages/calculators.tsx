@@ -1824,6 +1824,7 @@ export default function Calculators() {
     "va-loan": "va",
     "va-funding-fee": "va-funding-fee",
     "temp-buydown": "temp-buydown",
+    "va-entitlement": "va-entitlement",
     "fha-vs-conventional": "compare",
     "budget-affordability": "budget",
     "bah-buying-power": "bah",
