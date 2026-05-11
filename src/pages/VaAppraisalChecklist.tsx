@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import SEO from "@/components/SEO";
 import { Home, Zap, Droplet, Wind, ShieldCheck, Sofa, ChevronDown, AlertTriangle, Mail, X, CheckCircle2, type LucideIcon } from "lucide-react";
 
