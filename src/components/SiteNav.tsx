@@ -203,16 +203,14 @@ const SiteNav = () => {
           })}
         </ul>
 
-        {/* Phone + CTA */}
+        {/* Phone */}
+        <a href="tel:+12549359331" className="nav-phone" style={{ textDecoration: "none" }}>
+          <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.19a16 16 0 006.9 6.9l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <span>254-935-9331</span>
+        </a>
+
+        {/* CTA */}
         <div className="site-nav-cta" style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-          <a href="tel:+12549359331" style={{
-            display: "flex", alignItems: "center", gap: "6px",
-            fontWeight: 700, fontSize: "16px", color: COPPER,
-            textDecoration: "none", whiteSpace: "nowrap"
-          }}>
-            <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.19a16 16 0 006.9 6.9l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            (254) 935-9331
-          </a>
           <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" style={{
             background: COPPER, color: "#fff",
             fontFamily: "'Outfit', sans-serif", fontSize: "13.5px", fontWeight: 600,
