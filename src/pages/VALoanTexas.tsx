@@ -240,6 +240,11 @@ export default function VALoanTexas() {
               </div>
             ))}
           </div>
+          <div style={{ marginTop: 20 }}>
+            <Link to="/calculators?tab=va-entitlement" style={{ fontSize: 15, color: copper, fontWeight: 600, textDecoration: "none" }}>
+              → Calculate your remaining VA entitlement
+            </Link>
+          </div>
         </div>
       </section>
 
