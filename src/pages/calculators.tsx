@@ -1815,7 +1815,7 @@ function PortfolioBuilderCalc() {
 
 // ── MAIN PAGE ─────────────────────────────────────────────────────────────────
 
-type TabId = "texas" | "va" | "va-funding-fee" | "temp-buydown" | "compare" | "budget" | "bah" | "portfolio-builder";
+type TabId = "texas" | "va" | "va-funding-fee" | "temp-buydown" | "va-entitlement" | "compare" | "budget" | "bah" | "portfolio-builder";
 
 export default function Calculators() {
   const [searchParams] = useSearchParams();
