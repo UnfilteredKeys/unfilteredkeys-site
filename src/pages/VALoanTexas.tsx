@@ -139,6 +139,11 @@ export default function VALoanTexas() {
               </div>
             ))}
           </div>
+          <div style={{ marginTop: 20 }}>
+            <Link to="/calculators?tab=va-loan" style={{ fontSize: 15, color: copper, fontWeight: 600, textDecoration: "none" }}>
+              → Run your VA loan payment with Texas taxes included
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -152,6 +157,11 @@ export default function VALoanTexas() {
             <p style={{ fontSize: 15, color: "#3b1f08", lineHeight: 1.7, margin: 0 }}>
               <strong>Disability waiver:</strong> If you have a VA service-connected disability rating, the funding fee is waived entirely. Pending claim at closing? You may be eligible for a refund once the rating is approved. Ask before you close.
             </p>
+          </div>
+          <div style={{ marginTop: 20 }}>
+            <Link to="/calculators?tab=va-funding-fee" style={{ fontSize: 15, color: copper, fontWeight: 600, textDecoration: "none" }}>
+              → Calculate your exact VA funding fee
+            </Link>
           </div>
         </div>
       </section>
@@ -204,6 +214,11 @@ export default function VALoanTexas() {
               </div>
             ))}
           </div>
+          <div style={{ marginTop: 20 }}>
+            <Link to="/calculators?tab=texas-payment" style={{ fontSize: 15, color: copper, fontWeight: 600, textDecoration: "none" }}>
+              → See your real Texas payment — taxes included
+            </Link>
+          </div>
           <div style={{ marginTop: 28 }}>
             <Link to="/killeen-va-loan" style={{ fontSize: 15, color: copper, fontWeight: 600, textDecoration: "none" }}>
               Serving the Fort Hood corridor — see our Killeen VA Loan Guide →
@@ -229,6 +244,11 @@ export default function VALoanTexas() {
                 <span style={{ fontSize: 12, color: copper, fontFamily: "'Fira Mono', monospace", letterSpacing: "0.04em" }}>{c.tag}</span>
               </div>
             ))}
+          </div>
+          <div style={{ marginTop: 20 }}>
+            <Link to="/calculators?tab=va-entitlement" style={{ fontSize: 15, color: copper, fontWeight: 600, textDecoration: "none" }}>
+              → Calculate your remaining VA entitlement
+            </Link>
           </div>
         </div>
       </section>
