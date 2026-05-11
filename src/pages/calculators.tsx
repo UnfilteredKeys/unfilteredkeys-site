@@ -303,6 +303,132 @@ function VALoanCalc() {
   );
 }
 
+// ── CALCULATOR 2b: VA FUNDING FEE ────────────────────────────────────────────
+
+function VAFundingFeeCalc() {
+  const [loanAmount, setLoanAmount] = useState("350000");
+  const [loanType, setLoanType] = useState<"purchase" | "irrrl" | "cashout">("purchase");
+  const [useType, setUseType] = useState<"first" | "subsequent">("first");
+  const [downBracket, setDownBracket] = useState<"0" | "5" | "10">("0");
+  const [exempt, setExempt] = useState(false);
+
+  const loan = parseFloat(loanAmount) || 0;
+
+  let ffPct = 0;
+  if (!exempt) {
+    if (loanType === "irrrl") {
+      ffPct = 0.5;
+    } else if (loanType === "cashout") {
+      ffPct = useType === "first" ? 2.15 : 3.3;
+    } else {
+      // purchase
+      if (useType === "first") {
+        ffPct = downBracket === "10" ? 1.25 : downBracket === "5" ? 1.5 : 2.15;
+      } else {
+        ffPct = downBracket === "10" ? 1.25 : downBracket === "5" ? 1.5 : 3.3;
+      }
+    }
+  }
+
+  const fundingFee = loan * (ffPct / 100);
+  const totalLoan = loan + fundingFee;
+
+  const calloutBox: React.CSSProperties = {
+    backgroundColor: "#fdf4e8",
+    border: `1.5px solid ${copper}`,
+    borderLeft: `4px solid ${copper}`,
+    borderRadius: "8px",
+    padding: "16px 20px",
+    marginTop: "16px",
+    fontSize: "13px",
+    lineHeight: 1.6,
+    color: "#5a3210",
+  };
+
+  const radio: React.CSSProperties = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "8px",
+    cursor: "pointer",
+    fontSize: "14px",
+    color: navy,
+    marginRight: "20px",
+  };
+
+  return (
+    <div style={S.card}>
+      <div style={S.cardHeader}>
+        <h2 style={S.cardTitle}>VA Funding Fee Calculator</h2>
+        <p style={S.cardSub}>2024–2025 VA funding fee table — purchase, IRRRL, and cash-out refinance</p>
+      </div>
+      <div style={S.cardBody}>
+        <div style={S.grid2}>
+          <div>
+            <label style={S.label}>Loan Amount</label>
+            <input style={S.input} type="number" value={loanAmount} onChange={e => setLoanAmount(e.target.value)} min="10000" step="1000" />
+          </div>
+          <div>
+            <label style={S.label}>Loan Type</label>
+            <select style={S.select} value={loanType} onChange={e => setLoanType(e.target.value as "purchase" | "irrrl" | "cashout")}>
+              <option value="purchase">Purchase</option>
+              <option value="irrrl">IRRRL / Streamline Refinance</option>
+              <option value="cashout">Cash-Out Refinance</option>
+            </select>
+          </div>
+          {loanType === "purchase" && (
+            <div>
+              <label style={S.label}>Down Payment</label>
+              <select style={S.select} value={downBracket} onChange={e => setDownBracket(e.target.value as "0" | "5" | "10")}>
+                <option value="0">0%</option>
+                <option value="5">5–9.99%</option>
+                <option value="10">10%+</option>
+              </select>
+            </div>
+          )}
+          <div>
+            <label style={S.label}>VA Loan Use</label>
+            <div style={{ display: "flex", flexWrap: "wrap" as const, gap: "8px", paddingTop: "6px" }}>
+              <label style={radio}>
+                <input type="radio" name="vaff-use" checked={useType === "first"} onChange={() => setUseType("first")} />
+                First-time use
+              </label>
+              <label style={radio}>
+                <input type="radio" name="vaff-use" checked={useType === "subsequent"} onChange={() => setUseType("subsequent")} />
+                Subsequent use
+              </label>
+            </div>
+          </div>
+          <div style={{ gridColumn: "1 / -1" }}>
+            <label style={{ ...radio, fontWeight: 600 }}>
+              <input type="checkbox" checked={exempt} onChange={e => setExempt(e.target.checked)} />
+              Disability exemption (10%+ service-connected rating)
+            </label>
+          </div>
+        </div>
+
+        {loanType === "cashout" && (
+          <div style={calloutBox}>
+            <strong style={{ color: copper, display: "block", marginBottom: "6px" }}>Texas homestead law note</strong>
+            In Texas, a VA cash-out refinance is governed by Article XVI Section 50(a)(6) of the Texas Constitution. This is commonly used to convert an existing conventional loan to a VA loan — even if you are not taking cash out. However, Texas requires this transaction to be structured as a cash-out refinance, which carries a higher funding fee than an IRRRL. If your goal is simply to move from a conventional loan to a VA loan without taking cash, contact us before applying — the structure of your transaction affects your costs.
+          </div>
+        )}
+
+        <hr style={S.divider} />
+        <div style={S.resultsGrid}>
+          <ResultBox label="Funding Fee Rate" value={exempt ? "Exempt" : pct(ffPct)} />
+          <ResultBox label="Funding Fee Amount" value={fmt(fundingFee)} />
+          <ResultBox label="Total Loan w/ Fee" value={fmt(totalLoan)} highlight />
+        </div>
+
+        <div style={S.disclaimer}>
+          Veterans with a service-connected disability rating of 10% or higher are exempt from the VA funding fee. Surviving spouses receiving DIC and Purple Heart recipients on active duty may also qualify for an exemption. Funding fee rates reflect the current 2024–2025 VA fee schedule. Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518
+        </div>
+        <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" style={S.cta}>Talk Through Your VA Strategy →</a>
+      </div>
+    </div>
+  );
+}
+
 // ── CALCULATOR 3: FHA VS CONVENTIONAL ────────────────────────────────────────
 
 function FHAvsConvCalc() {
@@ -1392,13 +1518,14 @@ function PortfolioBuilderCalc() {
 
 // ── MAIN PAGE ─────────────────────────────────────────────────────────────────
 
-type TabId = "texas" | "va" | "compare" | "budget" | "bah" | "portfolio-builder";
+type TabId = "texas" | "va" | "va-funding-fee" | "compare" | "budget" | "bah" | "portfolio-builder";
 
 export default function Calculators() {
   const [searchParams] = useSearchParams();
   const tabParamMap: Record<string, TabId> = {
     "texas-payment": "texas",
     "va-loan": "va",
+    "va-funding-fee": "va-funding-fee",
     "fha-vs-conventional": "compare",
     "budget-affordability": "budget",
     "bah-buying-power": "bah",
@@ -1415,6 +1542,7 @@ export default function Calculators() {
   const tabs: { id: TabId; label: string }[] = [
     { id: "texas", label: "Texas Payment" },
     { id: "va", label: "VA Loan" },
+    { id: "va-funding-fee", label: "VA Funding Fee" },
     { id: "compare", label: "FHA vs. Conventional" },
     { id: "budget", label: "Budget & Affordability" },
     { id: "bah", label: "BAH & Buying Power" },
@@ -1438,6 +1566,7 @@ export default function Calculators() {
       <div style={S.body}>
         {tab === "texas" && <TexasPaymentCalc />}
         {tab === "va" && <VALoanCalc />}
+        {tab === "va-funding-fee" && <VAFundingFeeCalc />}
         {tab === "compare" && <FHAvsConvCalc />}
         {tab === "budget" && <BudgetCalc />}
         {tab === "bah" && <BAHCalc />}
