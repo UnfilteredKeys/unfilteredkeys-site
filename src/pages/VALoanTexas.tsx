@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
@@ -8,6 +9,7 @@ const navy = "#1a3a5c";
 const copper = "#b5621e";
 const copperLight = "#fef0e6";
 const white = "#ffffff";
+const ivory = "#faf8f4";
 const soft = "#f2efe9";
 const textPrimary = "#1c2630";
 const textSecondary = "#4a5568";
@@ -27,28 +29,158 @@ const h2Style = (color = navy): React.CSSProperties => ({ fontFamily: "'Lora', s
 const subStyle = (color = textMuted): React.CSSProperties => ({ fontSize: 16, color, lineHeight: 1.65, maxWidth: 620, marginBottom: 48 });
 const btnPrimary: React.CSSProperties = { display: "inline-block", backgroundColor: copper, color: white, padding: "14px 28px", borderRadius: 6, fontWeight: 700, fontSize: 15, textDecoration: "none" };
 const btnOutline: React.CSSProperties = { display: "inline-block", backgroundColor: "transparent", color: white, padding: "14px 28px", borderRadius: 6, fontWeight: 600, fontSize: 15, textDecoration: "none", border: "1px solid rgba(255,255,255,0.35)" };
-const btnOutlineDark: React.CSSProperties = { ...btnOutline, color: navy, border: `1px solid ${border}` };
+
+/* ── ELIGIBILITY WIZARD ────────────────────────────────────────────────────── */
+type EligCategory = "active" | "veteran" | "reserve" | "spouse";
+type EligResult = "likely" | "unclear";
+
+const categoryLabels: Record<EligCategory, string> = {
+  active: "Active Duty",
+  veteran: "Veteran",
+  reserve: "Reserve / Guard",
+  spouse: "Surviving Spouse",
+};
+
+const lengthOptions: Record<EligCategory, { label: string; result: EligResult }[]> = {
+  active: [
+    { label: "90+ continuous days (current service)", result: "likely" },
+    { label: "Less than 90 days", result: "unclear" },
+  ],
+  veteran: [
+    { label: "Served 24+ months or full call-up period", result: "likely" },
+    { label: "Discharged for service-connected disability (any length)", result: "likely" },
+    { label: "Less than 24 months / other discharge", result: "unclear" },
+  ],
+  reserve: [
+    { label: "6+ years in Selected Reserve or Guard", result: "likely" },
+    { label: "90+ days active service under Title 10 or Title 32", result: "likely" },
+    { label: "Less than 6 years and no qualifying activation", result: "unclear" },
+  ],
+  spouse: [
+    { label: "Spouse died in service or from service-connected cause", result: "likely" },
+    { label: "Other situation (MIA, POW, total disability, remarriage)", result: "unclear" },
+  ],
+};
+
+function EligibilityWizard() {
+  const [cat, setCat] = useState<EligCategory | null>(null);
+  const [result, setResult] = useState<EligResult | null>(null);
+
+  const reset = () => { setCat(null); setResult(null); };
+
+  return (
+    <div>
+      {/* Step 1 */}
+      <div style={{ marginBottom: 24 }}>
+        <p style={{ ...tag(navy), marginBottom: 14 }}>Step 1 · Who are you?</p>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 12 }}>
+          {(Object.keys(categoryLabels) as EligCategory[]).map((k) => {
+            const active = cat === k;
+            return (
+              <button
+                key={k}
+                onClick={() => { setCat(k); setResult(null); }}
+                style={{
+                  padding: "20px 16px",
+                  borderRadius: radius,
+                  border: `2px solid ${active ? copper : border}`,
+                  backgroundColor: active ? copper : white,
+                  color: active ? white : navy,
+                  fontFamily: "'Lora', serif",
+                  fontSize: 16,
+                  fontWeight: 700,
+                  cursor: "pointer",
+                  textAlign: "center",
+                  transition: "all 0.15s ease",
+                }}
+              >
+                {categoryLabels[k]}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Step 2 */}
+      {cat && (
+        <div style={{ marginBottom: 24 }}>
+          <p style={{ ...tag(navy), marginBottom: 14 }}>Step 2 · How long did you serve?</p>
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            {lengthOptions[cat].map((opt) => {
+              const active = result !== null && opt.label === (lengthOptions[cat].find((o) => o.result === result && o.label === opt.label)?.label);
+              return (
+                <button
+                  key={opt.label}
+                  onClick={() => setResult(opt.result)}
+                  style={{
+                    padding: "16px 20px",
+                    borderRadius: radius,
+                    border: `2px solid ${active ? copper : border}`,
+                    backgroundColor: white,
+                    color: textPrimary,
+                    fontFamily: "'Outfit', sans-serif",
+                    fontSize: 15,
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    textAlign: "left",
+                  }}
+                >
+                  {opt.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* Step 3 */}
+      {result === "likely" && (
+        <div style={{ backgroundColor: "#e8f5ee", border: "1px solid #1a7a4a", borderRadius: radius, padding: "28px 32px" }}>
+          <p style={{ ...tag("#1a7a4a") }}>Step 3 · Result</p>
+          <p style={{ fontFamily: "'Lora', serif", fontSize: 19, fontWeight: 700, color: "#0f3d24", marginBottom: 18, lineHeight: 1.4 }}>
+            Based on your answers, you likely qualify for a VA loan. Here's your next step.
+          </p>
+          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+            <a href={APPLY} target="_blank" rel="noopener noreferrer" style={btnPrimary}>Start Your Application</a>
+            <button onClick={reset} style={{ background: "none", border: "none", color: "#0f3d24", fontWeight: 600, cursor: "pointer", fontSize: 14 }}>Start over</button>
+          </div>
+        </div>
+      )}
+      {result === "unclear" && (
+        <div style={{ backgroundColor: copperLight, border: `1px solid ${copper}`, borderRadius: radius, padding: "28px 32px" }}>
+          <p style={{ ...tag(copper) }}>Step 3 · Result</p>
+          <p style={{ fontFamily: "'Lora', serif", fontSize: 19, fontWeight: 700, color: "#5c3214", marginBottom: 18, lineHeight: 1.4 }}>
+            Your situation may still qualify — VA eligibility has more paths than most people know. Let's talk.
+          </p>
+          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+            <a href="tel:2549359331" style={btnPrimary}>Call 254-935-9331</a>
+            <button onClick={reset} style={{ background: "none", border: "none", color: "#5c3214", fontWeight: 600, cursor: "pointer", fontSize: 14 }}>Start over</button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 /* ── COMPONENT ─────────────────────────────────────────────────────────────── */
 export default function VALoanTexas() {
 
-  const eligibilityCards = [
-    { icon: "🎖️", title: "Active Duty", desc: "90 consecutive days wartime · 181 days peacetime" },
-    { icon: "🏅", title: "Veterans", desc: "Must meet minimum service requirements · DD-214 required" },
-    { icon: "🛡️", title: "Guard & Reserve", desc: "6 years service · or 90 days under Title 32 orders" },
-    { icon: "💛", title: "Surviving Spouses", desc: "Veteran died in service or from service-connected disability" },
-  ];
-
-  const benefits = [
+  const covers = [
     { title: "No down payment", body: "With full entitlement, purchase any home in Texas with zero down — no cap on price." },
     { title: "No PMI — ever", body: "Conventional requires PMI under 20% down. FHA requires it for life. VA has neither." },
-    { title: "Competitive rates", body: "VA guarantee reduces lender risk — rates typically beat conventional, even with lower credit scores." },
+    { title: "No loan limit in Texas", body: "If you have full entitlement, the VA places no cap on how much you can borrow. Your purchase is limited only by what you qualify for — not an arbitrary county number." },
+    { title: "Competitive rates", body: "VA guarantee reduces lender risk — rates typically beat conventional, even with lower credit scores. The VA doesn't set a minimum credit score; most lenders work down to 580–620. Your full picture matters more than one number." },
     {
-      title: "Seller concessions — and potentially more",
-      body: "The VA allows sellers to pay up to 4% of the purchase price in concessions. On a $300K home, that's up to $12,000.",
-      callout: "The 4% cap covers concessions — but it's separate from other seller-paid costs like buying down your rate or covering normal closing fees. Working with a knowledgeable VA broker means structuring the offer to maximize every dollar the seller can contribute, often well beyond what buyers assume is possible.",
+      title: "Reusable benefit",
+      body: "Your VA entitlement isn't one-and-done. As you pay down or sell, entitlement restores. Many veterans use it multiple times across a career — and some hold two VA loans at once with remaining entitlement.",
+      callout: "Bonus: the VA allows sellers to pay up to 4% of the purchase price in concessions — separate from other seller-paid items like rate buydowns. A knowledgeable VA broker structures the offer to maximize every dollar.",
     },
-    { title: "Flexible credit standards", body: "The VA doesn't set a minimum credit score — but lenders do. Most will work with scores down to 580. More conservative lenders set their floor at 620. Either way, your full financial picture — income, assets, payment history — carries more weight than a single number. If one lender says no, that's their overlay, not a VA denial." },
+  ];
+
+  const costs = [
+    { title: "Funding fee", body: "A one-time fee (1.25%–3.3%) that keeps the program running. Can be rolled into the loan — no out-of-pocket required. Waived entirely for veterans with a service-connected disability rating." },
+    { title: "Closing costs", body: "Title, appraisal, recording, lender fees, prepaid taxes and insurance. Typically 2%–4% of the loan. The VA limits what you can be charged and lets the seller cover most of it through concessions." },
+    { title: "Texas property taxes", body: "No state income tax, but property taxes run 1.6%–2.6% of assessed value. They're escrowed monthly — and they affect what you qualify for. 100% disability rating = full exemption on your primary residence." },
   ];
 
   const builders = ["D.R. Horton", "Lennar", "MHI / Coventry", "Pulte", "Perry Homes", "Meritage"];
@@ -59,6 +191,19 @@ export default function VALoanTexas() {
     { badge: "Homestead exemption", body: "Texas law reduces your taxable home value by $100,000. File in the year you close — it doesn't happen automatically." },
     { badge: "Community property", body: "If you're married, your spouse may need to sign certain loan documents even if they're not on the loan. Standard in Texas — not a red flag." },
     { badge: "Option period", body: "Texas contracts include a 5–10 day window to back out for any reason and keep your earnest money. Use it for inspections. Don't waive it." },
+  ];
+
+  const fundingScenarios = [
+    { label: "First-Time Use", detail: "0% Down", rate: "2.15%" },
+    { label: "First-Time Use", detail: "5%+ Down", rate: "1.5%" },
+    { label: "Subsequent Use", detail: "0% Down", rate: "3.3%" },
+  ];
+
+  const stats = [
+    { value: "0%", label: "Down Payment" },
+    { value: "No PMI", label: "Ever" },
+    { value: "No Limit", label: "On Loans in Texas" },
+    { value: "21 Days", label: "Average Close" },
   ];
 
   return (
@@ -95,22 +240,26 @@ export default function VALoanTexas() {
         </div>
       </section>
 
-      {/* ── 2. ELIGIBILITY ──────────────────────────────────────────────────── */}
+      {/* ── STATS BAR ───────────────────────────────────────────────────────── */}
+      <section style={{ backgroundColor: copper, padding: "32px 0" }}>
+        <div style={{ ...container, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 24, textAlign: "center" }}>
+          {stats.map((s) => (
+            <div key={s.label}>
+              <div style={{ fontFamily: "'Lora', serif", fontSize: "clamp(22px, 2.6vw, 30px)", fontWeight: 700, color: white, lineHeight: 1.1, marginBottom: 4 }}>{s.value}</div>
+              <div style={{ fontSize: 12, color: "rgba(255,255,255,0.85)", letterSpacing: "0.12em", textTransform: "uppercase", fontFamily: "'Fira Mono', monospace" }}>{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── 2. ELIGIBILITY (INTERACTIVE) ────────────────────────────────────── */}
       <section style={{ backgroundColor: white, ...sectionPad }}>
         <div style={container}>
           <p style={tag()}>Eligibility</p>
           <h2 style={h2Style()}>Who qualifies for a VA loan in Texas</h2>
-          <p style={subStyle()}>The benefit is broader than most people realize. Here's who's covered.</p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 20, marginBottom: 40 }}>
-            {eligibilityCards.map((c) => (
-              <div key={c.title} style={{ backgroundColor: soft, borderRadius: radius, padding: 28 }}>
-                <div style={{ fontSize: 28, marginBottom: 12 }}>{c.icon}</div>
-                <div style={{ fontFamily: "'Lora', serif", fontSize: 17, fontWeight: 700, color: navy, marginBottom: 8 }}>{c.title}</div>
-                <div style={{ fontSize: 14, color: textSecondary, lineHeight: 1.6 }}>{c.desc}</div>
-              </div>
-            ))}
-          </div>
-          <div style={{ borderLeft: `3px solid ${navy}`, backgroundColor: "#eaf0f8", borderRadius: radius, padding: "24px 28px" }}>
+          <p style={subStyle()}>The benefit is broader than most people realize. Answer two quick questions to see where you stand.</p>
+          <EligibilityWizard />
+          <div style={{ borderLeft: `3px solid ${navy}`, backgroundColor: "#eaf0f8", borderRadius: radius, padding: "24px 28px", marginTop: 32 }}>
             <p style={{ fontSize: 14, color: navy, lineHeight: 1.7, margin: 0 }}>
               <strong>Certificate of Eligibility (COE):</strong> Pull it yourself at VA.gov, through the VA Health &amp; Benefits app, or we pull it directly during your application. It's not a barrier — it's a formality.
             </p>
@@ -118,32 +267,48 @@ export default function VALoanTexas() {
         </div>
       </section>
 
-      {/* ── 3. BENEFITS ─────────────────────────────────────────────────────── */}
-      <section style={{ backgroundColor: soft, ...sectionPad }}>
+      {/* ── 3a. WHAT VA COVERS ──────────────────────────────────────────────── */}
+      <section style={{ backgroundColor: ivory, ...sectionPad }}>
         <div style={container}>
           <p style={tag()}>Benefits</p>
-          <h2 style={h2Style()}>What the VA loan actually covers</h2>
+          <h2 style={h2Style()}>What VA covers</h2>
           <p style={subStyle()}>Five things that make VA the strongest purchase loan available to those who qualify.</p>
-          <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
-            {benefits.map((b, i) => (
-              <div key={b.title}>
-                <div style={{ padding: "28px 0", borderTop: i === 0 ? `1px solid ${border}` : "none", borderBottom: `1px solid ${border}` }}>
-                  <div style={{ fontFamily: "'Lora', serif", fontSize: 18, fontWeight: 700, color: navy, marginBottom: 10 }}>{b.title}</div>
-                  <p style={{ fontSize: 15, color: textSecondary, lineHeight: 1.65, margin: 0 }}>{b.body}</p>
-                  {b.callout && (
-                    <div style={{ borderLeft: `3px solid ${navy}`, backgroundColor: "#eaf0f8", borderRadius: radius, padding: "20px 24px", marginTop: 16 }}>
-                      <p style={{ fontSize: 14, color: navy, lineHeight: 1.7, margin: 0 }}>{b.callout}</p>
-                    </div>
-                  )}
-                </div>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            {covers.map((b, i) => (
+              <div key={b.title} style={{ padding: "28px 0", borderTop: i === 0 ? `1px solid ${border}` : "none", borderBottom: `1px solid ${border}` }}>
+                <div style={{ fontFamily: "'Lora', serif", fontSize: 18, fontWeight: 700, color: navy, marginBottom: 10 }}>{b.title}</div>
+                <p style={{ fontSize: 15, color: textSecondary, lineHeight: 1.65, margin: 0 }}>{b.body}</p>
+                {b.callout && (
+                  <div style={{ borderLeft: `3px solid ${navy}`, backgroundColor: "#eaf0f8", borderRadius: radius, padding: "20px 24px", marginTop: 16 }}>
+                    <p style={{ fontSize: 14, color: navy, lineHeight: 1.7, margin: 0 }}>{b.callout}</p>
+                  </div>
+                )}
               </div>
             ))}
           </div>
-          <div style={{ marginTop: 20 }}>
-            <Link to="/calculators?tab=va-loan" style={{ fontSize: 15, color: copper, fontWeight: 600, textDecoration: "none" }}>
-              → Run your VA loan payment with Texas taxes included
-            </Link>
+        </div>
+      </section>
+
+      {/* ── 3b. WHAT VA COSTS ───────────────────────────────────────────────── */}
+      <section style={{ backgroundColor: white, ...sectionPad }}>
+        <div style={container}>
+          <p style={tag()}>The Trade-Offs</p>
+          <h2 style={h2Style()}>What VA costs</h2>
+          <p style={subStyle()}>VA is the strongest loan for those who qualify — but it's not free. Here's what to plan for.</p>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            {costs.map((c, i) => (
+              <div key={c.title} style={{ padding: "28px 0", borderTop: i === 0 ? `1px solid ${border}` : "none", borderBottom: `1px solid ${border}` }}>
+                <div style={{ fontFamily: "'Lora', serif", fontSize: 18, fontWeight: 700, color: navy, marginBottom: 10 }}>{c.title}</div>
+                <p style={{ fontSize: 15, color: textSecondary, lineHeight: 1.65, margin: 0 }}>{c.body}</p>
+              </div>
+            ))}
           </div>
+          <Link to="/calculators?tab=va-loan" style={{ display: "block", marginTop: 32, backgroundColor: navy, borderRadius: radius, padding: "24px 28px", textDecoration: "none", color: white }}>
+            <p style={{ fontSize: 12, letterSpacing: "0.15em", textTransform: "uppercase", color: copper, fontWeight: 600, marginBottom: 8, fontFamily: "'Fira Mono', monospace" }}>Calculator</p>
+            <p style={{ fontFamily: "'Lora', serif", fontSize: 19, fontWeight: 700, color: white, margin: 0, lineHeight: 1.4 }}>
+              Run your real number — Texas taxes included <span style={{ color: copper }}>→ VA Loan Calculator</span>
+            </p>
+          </Link>
         </div>
       </section>
 
@@ -152,7 +317,23 @@ export default function VALoanTexas() {
         <div style={container}>
           <p style={{ ...tag("#7a3d0a") }}>Funding Fee</p>
           <h2 style={{ ...h2Style("#3b1f08") }}>The VA funding fee — explained plainly</h2>
-          <p style={{ ...subStyle("#5c3214") }}>A one-time fee (1.25%–3.3%) that keeps the program running. It can be rolled into the loan — no out-of-pocket required at closing.</p>
+          <p style={{ ...subStyle("#5c3214") }}>A one-time fee that keeps the program running. It can be rolled into the loan — no out-of-pocket required at closing. Your rate depends on whether it's your first VA loan and how much you put down.</p>
+
+          {/* Scenario cards */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 20, marginBottom: 24 }}>
+            {fundingScenarios.map((s, i) => (
+              <div key={i} style={{ backgroundColor: navy, borderTop: `4px solid ${copper}`, borderRadius: radius, padding: 28, textAlign: "center" }}>
+                <p style={{ fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: copper, fontWeight: 600, marginBottom: 8, fontFamily: "'Fira Mono', monospace" }}>{s.label}</p>
+                <p style={{ fontFamily: "'Lora', serif", fontSize: 16, color: textOnDark, fontWeight: 600, marginBottom: 16 }}>{s.detail}</p>
+                <p style={{ fontFamily: "'Lora', serif", fontSize: 36, fontWeight: 700, color: white, margin: 0, lineHeight: 1 }}>{s.rate}</p>
+              </div>
+            ))}
+          </div>
+
+          <p style={{ fontSize: 15, color: "#3b1f08", lineHeight: 1.7, marginBottom: 24, fontWeight: 600 }}>
+            Exempt if you have a service-connected disability rating of 10% or higher.
+          </p>
+
           <div style={{ backgroundColor: white, border: `1px solid ${copper}`, borderRadius: radius, padding: "28px 32px" }}>
             <p style={{ fontSize: 15, color: "#3b1f08", lineHeight: 1.7, margin: 0 }}>
               <strong>Disability waiver:</strong> If you have a VA service-connected disability rating, the funding fee is waived entirely. Pending claim at closing? You may be eligible for a refund once the rating is approved. Ask before you close.
@@ -173,14 +354,12 @@ export default function VALoanTexas() {
           <h2 style={h2Style(white)}>Buying new construction with a VA loan in Texas</h2>
           <p style={subStyle("rgba(240,237,230,0.6)")}>Builders are active across every major Texas military market. Knowing how to navigate their process is the difference between getting the home — and walking away from a deal that was never actually dead.</p>
 
-          {/* Builder pills */}
           <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 40 }}>
             {builders.map((b) => (
               <span key={b} style={{ backgroundColor: "rgba(255,255,255,0.1)", color: textOnDark, fontSize: 13, padding: "8px 18px", borderRadius: 999, fontWeight: 500 }}>{b}</span>
             ))}
           </div>
 
-          {/* Compare cards */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24, marginBottom: 40 }}>
             <div style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: radius, padding: 28 }}>
               <p style={{ fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: textMuted, marginBottom: 12, fontFamily: "'Fira Mono', monospace" }}>What the builder's lender says</p>
@@ -192,7 +371,6 @@ export default function VALoanTexas() {
             </div>
           </div>
 
-          {/* Mid-page CTA */}
           <div style={{ backgroundColor: "rgba(255,255,255,0.08)", borderRadius: radius, padding: "24px 32px", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
             <p style={{ fontSize: 15, color: textOnDark, margin: 0, maxWidth: 600, lineHeight: 1.6 }}>A strong realtor negotiating on your behalf makes all the difference. Don't walk into a builder's sales office without one.</p>
             <a href={CALENDLY} target="_blank" rel="noopener noreferrer" style={btnPrimary}>Talk to Shalanda</a>
@@ -245,11 +423,14 @@ export default function VALoanTexas() {
               </div>
             ))}
           </div>
-          <div style={{ marginTop: 20 }}>
-            <Link to="/calculators?tab=va-entitlement" style={{ fontSize: 15, color: copper, fontWeight: 600, textDecoration: "none" }}>
-              → Calculate your remaining VA entitlement
-            </Link>
-          </div>
+
+          {/* Entitlement callout */}
+          <Link to="/calculators?tab=va-entitlement" style={{ display: "block", marginTop: 32, backgroundColor: copper, borderRadius: radius, padding: "24px 28px", textDecoration: "none", color: white }}>
+            <p style={{ fontSize: 12, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.8)", fontWeight: 600, marginBottom: 8, fontFamily: "'Fira Mono', monospace" }}>VA Entitlement</p>
+            <p style={{ fontFamily: "'Lora', serif", fontSize: 19, fontWeight: 700, color: white, margin: 0, lineHeight: 1.4 }}>
+              Already have a VA loan? PCSing and need to know if you can buy again — Do you have remaining entitlement? <span style={{ textDecoration: "underline" }}>→ Calculate Your Remaining VA Entitlement</span>
+            </p>
+          </Link>
         </div>
       </section>
 
