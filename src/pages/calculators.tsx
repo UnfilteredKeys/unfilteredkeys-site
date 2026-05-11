@@ -589,6 +589,143 @@ function TempBuydownCalc() {
   );
 }
 
+// ── CALCULATOR 2d: VA ENTITLEMENT ────────────────────────────────────────────
+
+function VAEntitlementCalc() {
+  const [currentBalance, setCurrentBalance] = useState("220000");
+  const [county, setCounty] = useState("Bell County, TX");
+  const [countyLimit, setCountyLimit] = useState("766550");
+  const [purchasePrice, setPurchasePrice] = useState("400000");
+  const [disabled, setDisabled] = useState(false);
+
+  const balance = parseFloat(currentBalance) || 0;
+  const limit = parseFloat(countyLimit) || 0;
+  const price = parseFloat(purchasePrice) || 0;
+
+  const entitlementUsed = balance * 0.25;
+  const remainingEntitlement = limit * 0.25 - entitlementUsed;
+  const maxPurchaseNoDown = remainingEntitlement > 0 ? remainingEntitlement * 4 : 0;
+  const exhausted = remainingEntitlement <= 0;
+  const overLimit = !exhausted && price > maxPurchaseNoDown;
+  const downPaymentRequired = overLimit ? (price - maxPurchaseNoDown) * 0.25 : 0;
+
+  const copperCallout: React.CSSProperties = {
+    backgroundColor: "#fdf4e8",
+    borderLeft: `4px solid ${copper}`,
+    borderRadius: "8px",
+    padding: "16px 20px",
+    marginTop: "16px",
+    fontSize: "13px",
+    lineHeight: 1.6,
+    color: "#5a3210",
+  };
+  const navyCallout: React.CSSProperties = {
+    backgroundColor: navy,
+    borderLeft: `4px solid ${copper}`,
+    borderRadius: "8px",
+    padding: "16px 20px",
+    marginTop: "12px",
+    fontSize: "13px",
+    lineHeight: 1.6,
+    color: "rgba(255,255,255,0.92)",
+  };
+  const helper: React.CSSProperties = {
+    fontSize: "11px",
+    color: muted,
+    marginTop: "4px",
+    lineHeight: 1.4,
+  };
+
+  return (
+    <div style={S.card}>
+      <div style={S.cardHeader}>
+        <h2 style={S.cardTitle}>VA Entitlement Calculator</h2>
+        <p style={S.cardSub}>How much VA entitlement do you have left for a second home?</p>
+      </div>
+      <div style={S.cardBody}>
+        <p style={{ fontSize: "14px", lineHeight: 1.6, color: navy, marginBottom: "24px" }}>
+          If you already have a VA loan, you may still have remaining entitlement to buy another home — without selling your current one. This is common for PCS moves. Here's how to calculate what you have left.
+        </p>
+
+        <div style={S.grid2}>
+          <div>
+            <label style={S.label}>Remaining balance on your current VA loan</label>
+            <input style={S.input} type="number" value={currentBalance} onChange={e => setCurrentBalance(e.target.value)} min="0" step="1000" />
+            <div style={helper}>Use your current payoff balance, not the original loan amount</div>
+          </div>
+          <div>
+            <label style={S.label}>County where you are buying</label>
+            <input style={S.input} type="text" value={county} onChange={e => setCounty(e.target.value)} />
+            <div style={helper}>Used to determine your county loan limit. Type your county and state, e.g. Bell County, TX</div>
+          </div>
+          <div>
+            <label style={S.label}>County loan limit (2025)</label>
+            <input style={S.input} type="number" value={countyLimit} onChange={e => setCountyLimit(e.target.value)} min="0" step="1000" />
+            <div style={helper}>Most Texas counties are $766,550. High-cost counties may be higher — we can confirm this for your area</div>
+          </div>
+          <div>
+            <label style={S.label}>Purchase price of new home</label>
+            <input style={S.input} type="number" value={purchasePrice} onChange={e => setPurchasePrice(e.target.value)} min="0" step="1000" />
+          </div>
+          <div style={{ gridColumn: "1 / -1" }}>
+            <label style={{ display: "inline-flex", alignItems: "center", gap: "8px", cursor: "pointer", fontSize: "14px", color: navy, fontWeight: 600 }}>
+              <input type="checkbox" checked={disabled} onChange={e => setDisabled(e.target.checked)} />
+              I have a service-connected disability rating of 10% or higher
+            </label>
+            {disabled && (
+              <div style={{ fontSize: "13px", color: copper, marginTop: "8px", fontWeight: 500 }}>
+                ✓ VA funding fee is waived. (Does not affect your entitlement math.)
+              </div>
+            )}
+          </div>
+        </div>
+
+        <hr style={S.divider} />
+
+        <div style={S.resultsGrid}>
+          <ResultBox label="Entitlement Used" value={fmt(entitlementUsed)} />
+          <ResultBox label="Remaining Entitlement" value={fmt(Math.max(0, remainingEntitlement))} />
+          <ResultBox label="Max Purchase (No Down Payment)" value={fmt(maxPurchaseNoDown)} highlight />
+          <ResultBox label="Down Payment Required" value={fmt(downPaymentRequired)} />
+        </div>
+
+        {exhausted && (
+          <div style={copperCallout}>
+            <strong style={{ color: copper, display: "block", marginBottom: "6px" }}>Full entitlement in use</strong>
+            Based on these numbers, your full entitlement is in use. You may still be able to purchase using VA financing with a down payment, or by restoring your entitlement. Contact us to review your options.
+          </div>
+        )}
+        {!exhausted && !overLimit && (
+          <div style={copperCallout}>
+            <strong style={{ color: copper, display: "block", marginBottom: "6px" }}>Zero down available</strong>
+            You can purchase this home using your remaining VA entitlement with no down payment required.
+          </div>
+        )}
+        {overLimit && (
+          <div style={copperCallout}>
+            <strong style={{ color: copper, display: "block", marginBottom: "6px" }}>Partial entitlement — small down payment needed</strong>
+            You can still use your remaining VA entitlement on this purchase. Estimated down payment required: <strong>{fmt(downPaymentRequired)}</strong>. This covers the gap between your remaining entitlement and the purchase price.
+          </div>
+        )}
+
+        <div style={copperCallout}>
+          Entitlement is based on your outstanding loan balance, not your original loan amount. As you pay down your current VA loan, your available entitlement increases. These numbers are estimates — your Certificate of Eligibility (COE) shows your exact entitlement. Contact us before making any decisions based on this calculator.
+        </div>
+
+        <div style={navyCallout}>
+          <strong style={{ color: copper, display: "block", marginBottom: "6px" }}>PCS move?</strong>
+          You may be able to rent your current home and use remaining entitlement to buy at your new duty station — even if you still owe on the first VA loan. This is one of the most powerful and underused VA benefits available.
+        </div>
+
+        <div style={S.disclaimer}>
+          This calculator provides estimates only and is not a guarantee of financing. VA entitlement and loan eligibility are determined by the VA and your lender. Shalanda Smith · NMLS #554554 · Secure Choice Lending · NMLS #1689518.
+        </div>
+        <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" style={S.cta}>Review Your Entitlement With Us →</a>
+      </div>
+    </div>
+  );
+}
+
 // ── CALCULATOR 3: FHA VS CONVENTIONAL ────────────────────────────────────────
 
 function FHAvsConvCalc() {
