@@ -44,6 +44,7 @@ import AustinMortgagePage from "@/pages/AustinMortgage";
 import VaAppraisalChecklistPage from "@/pages/VaAppraisalChecklist";
 import VaFundingFeeCalculatorPage from "@/pages/VaFundingFeeCalculator";
 import BahCalculatorKilleenTxPage from "@/pages/BahCalculatorKilleenTx";
+import VaLoanCalculatorTexasPage from "@/pages/VaLoanCalculatorTexas";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
