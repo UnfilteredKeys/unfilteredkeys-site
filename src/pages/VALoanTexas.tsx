@@ -139,6 +139,11 @@ export default function VALoanTexas() {
               </div>
             ))}
           </div>
+          <div style={{ marginTop: 20 }}>
+            <Link to="/calculators?tab=va-loan" style={{ fontSize: 15, color: copper, fontWeight: 600, textDecoration: "none" }}>
+              → Run your VA loan payment with Texas taxes included
+            </Link>
+          </div>
         </div>
       </section>
 
