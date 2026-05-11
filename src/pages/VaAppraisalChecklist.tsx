@@ -105,8 +105,8 @@ export default function VaAppraisalChecklist() {
   return (
     <>
       <SEO
-        title="VA Appraisal Checklist Texas | Keys by Shalanda"
-        description="Use this VA Minimum Property Requirements checklist alongside your home inspection. Know what VA appraisers look for before your closing day in Texas."
+        title="VA Appraisal Checklist — MPR Guide for Texas Veterans | Keys by Shalanda"
+        description="The complete VA Minimum Property Requirements checklist for Texas. Built for veterans and agents — share it before the inspection to know exactly what the VA appraiser will flag."
         canonical="/va-appraisal-checklist"
       />
 
