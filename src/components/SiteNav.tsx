@@ -12,7 +12,11 @@ const NAV: NavItem[] = [
       { to: "/va-loan-texas", label: "VA Loan Overview" },
       { to: "/killeen-va-loan", label: "Killeen and Fort Hood" },
       { to: "/pcs-to-portfolio", label: "PCS to Portfolio" },
-      { to: "/calculators", label: "BAH and Buying Power" },
+      { to: "/va-loan-faq-texas", label: "VA Loan FAQ" },
+        { to: "/va-appraisal-checklist", label: "VA Appraisal Checklist" },
+        { to: "/va-funding-fee-calculator", label: "VA Funding Fee Calculator" },
+        { to: "/bah-calculator-killeen-tx", label: "BAH Calculator — Killeen" },
+        { to: "/va-loan-calculator-texas", label: "VA Loan Calculator" },
     ],
   },
   {
