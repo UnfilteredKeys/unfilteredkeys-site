@@ -305,7 +305,7 @@ function VALoanCalc() {
 
 // ── CALCULATOR 2b: VA FUNDING FEE ────────────────────────────────────────────
 
-function VAFundingFeeCalc() {
+export function VAFundingFeeCalc() {
   const [loanAmount, setLoanAmount] = useState("350000");
   const [loanType, setLoanType] = useState<"purchase" | "irrrl" | "cashout">("purchase");
   const [useType, setUseType] = useState<"first" | "subsequent">("first");
