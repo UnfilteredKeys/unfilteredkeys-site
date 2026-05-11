@@ -1823,7 +1823,7 @@ export default function Calculators() {
     "bah-buying-power": "bah",
     "portfolio-builder": "portfolio-builder",
   };
-  const initialTab: TabId = tabParamMap[searchParams.get("tab") || ""] || "texas";
+  const initialTab: TabId = tabParamMap[searchParams.get("tab") || ""] || "va";
   const [tab, setTab] = useState<TabId>(initialTab);
 
   useEffect(() => {
@@ -1832,14 +1832,14 @@ export default function Calculators() {
   }, [searchParams]);
 
   const tabs: { id: TabId; label: string }[] = [
-    { id: "texas", label: "Texas Payment" },
     { id: "va", label: "VA Loan" },
     { id: "va-funding-fee", label: "VA Funding Fee" },
-    { id: "temp-buydown", label: "Temp Buydown" },
     { id: "va-entitlement", label: "VA Entitlement" },
+    { id: "bah", label: "BAH & Buying Power" },
+    { id: "texas", label: "Texas Payment" },
     { id: "compare", label: "FHA vs. Conventional" },
     { id: "budget", label: "Budget & Affordability" },
-    { id: "bah", label: "BAH & Buying Power" },
+    { id: "temp-buydown", label: "Temp Buydown" },
     { id: "portfolio-builder", label: "Portfolio Builder" },
   ];
 
@@ -1858,14 +1858,14 @@ export default function Calculators() {
         </div>
       </div>
       <div style={S.body}>
-        {tab === "texas" && <TexasPaymentCalc />}
         {tab === "va" && <VALoanCalc />}
         {tab === "va-funding-fee" && <VAFundingFeeCalc />}
-        {tab === "temp-buydown" && <TempBuydownCalc />}
         {tab === "va-entitlement" && <VAEntitlementCalc />}
+        {tab === "bah" && <BAHCalc />}
+        {tab === "texas" && <TexasPaymentCalc />}
         {tab === "compare" && <FHAvsConvCalc />}
         {tab === "budget" && <BudgetCalc />}
-        {tab === "bah" && <BAHCalc />}
+        {tab === "temp-buydown" && <TempBuydownCalc />}
         {tab === "portfolio-builder" && <PortfolioBuilderCalc />}
         <div style={{ textAlign: "center" as const, marginTop: "48px" }}>
           <p style={{ fontFamily: "'Lora', serif", fontSize: "20px", color: navy, marginBottom: "8px" }}>Numbers look right? <em>Let's make them official.</em></p>
