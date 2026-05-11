@@ -214,6 +214,11 @@ export default function VALoanTexas() {
               </div>
             ))}
           </div>
+          <div style={{ marginTop: 20 }}>
+            <Link to="/calculators?tab=texas-payment" style={{ fontSize: 15, color: copper, fontWeight: 600, textDecoration: "none" }}>
+              → See your real Texas payment — taxes included
+            </Link>
+          </div>
           <div style={{ marginTop: 28 }}>
             <Link to="/killeen-va-loan" style={{ fontSize: 15, color: copper, fontWeight: 600, textDecoration: "none" }}>
               Serving the Fort Hood corridor — see our Killeen VA Loan Guide →
