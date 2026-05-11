@@ -1704,6 +1704,7 @@ export default function Calculators() {
     { id: "texas", label: "Texas Payment" },
     { id: "va", label: "VA Loan" },
     { id: "va-funding-fee", label: "VA Funding Fee" },
+    { id: "temp-buydown", label: "Temp Buydown" },
     { id: "compare", label: "FHA vs. Conventional" },
     { id: "budget", label: "Budget & Affordability" },
     { id: "bah", label: "BAH & Buying Power" },
