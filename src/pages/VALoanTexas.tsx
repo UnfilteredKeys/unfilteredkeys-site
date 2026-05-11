@@ -153,6 +153,11 @@ export default function VALoanTexas() {
               <strong>Disability waiver:</strong> If you have a VA service-connected disability rating, the funding fee is waived entirely. Pending claim at closing? You may be eligible for a refund once the rating is approved. Ask before you close.
             </p>
           </div>
+          <div style={{ marginTop: 20 }}>
+            <Link to="/calculators?tab=va-funding-fee" style={{ fontSize: 15, color: copper, fontWeight: 600, textDecoration: "none" }}>
+              → Calculate your exact VA funding fee
+            </Link>
+          </div>
         </div>
       </section>
 
