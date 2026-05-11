@@ -44,6 +44,7 @@ import AustinMortgagePage from "@/pages/AustinMortgage";
 import VaAppraisalChecklistPage from "@/pages/VaAppraisalChecklist";
 import VaFundingFeeCalculatorPage from "@/pages/VaFundingFeeCalculator";
 import BahCalculatorKilleenTxPage from "@/pages/BahCalculatorKilleenTx";
+import VaLoanCalculatorTexasPage from "@/pages/VaLoanCalculatorTexas";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -96,6 +97,7 @@ const App = () => (
             <Route path="/va-appraisal-checklist" element={<VaAppraisalChecklistPage />} />
             <Route path="/va-funding-fee-calculator" element={<VaFundingFeeCalculatorPage />} />
             <Route path="/bah-calculator-killeen-tx" element={<BahCalculatorKilleenTxPage />} />
+            <Route path="/va-loan-calculator-texas" element={<VaLoanCalculatorTexasPage />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

@@ -235,7 +235,7 @@ function TexasPaymentCalc() {
 
 // ── CALCULATOR 2: VA LOAN ─────────────────────────────────────────────────────
 
-function VALoanCalc() {
+export function VALoanCalc() {
   const [price, setPrice] = useState("350000");
   const [downPct, setDownPct] = useState("0");
   const [rate, setRate] = useState("5.92");
