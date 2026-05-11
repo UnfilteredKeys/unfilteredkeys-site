@@ -1686,6 +1686,7 @@ export default function Calculators() {
     "texas-payment": "texas",
     "va-loan": "va",
     "va-funding-fee": "va-funding-fee",
+    "temp-buydown": "temp-buydown",
     "fha-vs-conventional": "compare",
     "budget-affordability": "budget",
     "bah-buying-power": "bah",
