@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import SEO from "@/components/SEO";
-import { Home, Zap, Droplet, Wind, ShieldCheck, Sofa, ChevronDown, AlertTriangle, type LucideIcon } from "lucide-react";
+import { Home, Zap, Droplet, Wind, ShieldCheck, Sofa, ChevronDown, AlertTriangle, Mail, X, CheckCircle2, type LucideIcon } from "lucide-react";
 
 const NAVY = "#1a3a5c";
 const COPPER = "#b5621e";
