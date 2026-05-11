@@ -429,6 +429,166 @@ function VAFundingFeeCalc() {
   );
 }
 
+// ── CALCULATOR 2c: TEMP BUYDOWN ──────────────────────────────────────────────
+
+function TempBuydownCalc() {
+  const [loanAmount, setLoanAmount] = useState("350000");
+  const [noteRate, setNoteRate] = useState("6.75");
+  const [term, setTerm] = useState("30");
+  const [bdType, setBdType] = useState<"1-0" | "2-1" | "3-2-1">("2-1");
+  const [paidBy, setPaidBy] = useState("builder");
+
+  const loan = parseFloat(loanAmount) || 0;
+  const note = parseFloat(noteRate) || 0;
+  const years = parseInt(term);
+
+  const reductions =
+    bdType === "1-0" ? [1] : bdType === "2-1" ? [2, 1] : [3, 2, 1];
+
+  const notePmt = monthlyPI(loan, note, years);
+
+  const rows = Array.from({ length: years }, (_, i) => {
+    const yearNum = i + 1;
+    const reduction = i < reductions.length ? reductions[i] : 0;
+    const effRate = Math.max(0, note - reduction);
+    const pmt = monthlyPI(loan, effRate, years);
+    return { yearNum, effRate, pmt, subsidized: reduction > 0 };
+  });
+
+  const totalCost = rows
+    .filter(r => r.subsidized)
+    .reduce((s, r) => s + (notePmt - r.pmt) * 12, 0);
+  const year1Savings = rows[0] ? (notePmt - rows[0].pmt) * 12 : 0;
+
+  const radio: React.CSSProperties = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "8px",
+    cursor: "pointer",
+    fontSize: "14px",
+    color: navy,
+    marginRight: "20px",
+  };
+
+  const th: React.CSSProperties = {
+    textAlign: "left" as const,
+    padding: "10px 14px",
+    fontSize: "11px",
+    fontWeight: 600,
+    letterSpacing: "0.08em",
+    textTransform: "uppercase" as const,
+    color: "rgba(255,255,255,0.7)",
+    backgroundColor: navy,
+  };
+  const td = (sub: boolean): React.CSSProperties => ({
+    padding: "10px 14px",
+    fontSize: "14px",
+    color: sub ? copper : navy,
+    fontWeight: sub ? 700 : 500,
+    backgroundColor: sub ? "#fdf4e8" : "#ffffff",
+    borderBottom: "1px solid rgba(26,58,92,0.08)",
+  });
+
+  return (
+    <div style={S.card}>
+      <div style={S.cardHeader}>
+        <h2 style={S.cardTitle}>Temporary Buydown Calculator</h2>
+        <p style={S.cardSub}>Visualize 1-0, 2-1, and 3-2-1 buydowns — and what they cost</p>
+      </div>
+      <div style={S.cardBody}>
+        <div style={S.grid2}>
+          <div>
+            <label style={S.label}>Loan Amount</label>
+            <input style={S.input} type="number" value={loanAmount} onChange={e => setLoanAmount(e.target.value)} min="10000" step="1000" />
+          </div>
+          <div>
+            <label style={S.label}>Note Rate (%) — Permanent</label>
+            <input style={S.input} type="number" value={noteRate} onChange={e => setNoteRate(e.target.value)} min="1" max="15" step="0.05" />
+          </div>
+          <div>
+            <label style={S.label}>Loan Term</label>
+            <select style={S.select} value={term} onChange={e => setTerm(e.target.value)}>
+              <option value="30">30-Year Fixed</option>
+              <option value="15">15-Year Fixed</option>
+            </select>
+          </div>
+          <div>
+            <label style={S.label}>Buydown Cost Paid By</label>
+            <select style={S.select} value={paidBy} onChange={e => setPaidBy(e.target.value)}>
+              <option value="builder">Builder Concession</option>
+              <option value="seller">Seller Concession</option>
+              <option value="lender">Lender Credit</option>
+            </select>
+          </div>
+          <div style={{ gridColumn: "1 / -1" }}>
+            <label style={S.label}>Buydown Type</label>
+            <div style={{ display: "flex", flexWrap: "wrap" as const, gap: "8px", paddingTop: "6px" }}>
+              <label style={radio}>
+                <input type="radio" name="bdtype" checked={bdType === "1-0"} onChange={() => setBdType("1-0")} />
+                1-0 Buydown
+              </label>
+              <label style={radio}>
+                <input type="radio" name="bdtype" checked={bdType === "2-1"} onChange={() => setBdType("2-1")} />
+                2-1 Buydown
+              </label>
+              <label style={radio}>
+                <input type="radio" name="bdtype" checked={bdType === "3-2-1"} onChange={() => setBdType("3-2-1")} />
+                3-2-1 Buydown
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <hr style={S.divider} />
+
+        <div style={{ overflowX: "auto" as const, borderRadius: "8px", border: "1px solid rgba(26,58,92,0.1)" }}>
+          <table style={{ width: "100%", borderCollapse: "collapse" as const }}>
+            <thead>
+              <tr>
+                <th style={th}>Year</th>
+                <th style={th}>Effective Rate</th>
+                <th style={th}>Monthly Payment</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map(r => (
+                <tr key={r.yearNum}>
+                  <td style={td(r.subsidized)}>Year {r.yearNum}{r.subsidized ? " — Subsidized" : ""}</td>
+                  <td style={td(r.subsidized)}>{pct(r.effRate)}</td>
+                  <td style={td(r.subsidized)}>{fmtDec(r.pmt)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div style={{ ...S.resultsGrid, marginTop: "24px" }}>
+          <div style={S.resultBox(false)}>
+            <div style={S.resultLabel(false)}>Estimated Buydown Cost</div>
+            <div style={S.resultValue(false)}>{fmt(totalCost)}</div>
+            <div style={{ fontSize: "11px", color: muted, marginTop: "8px", lineHeight: 1.5 }}>
+              This is what the builder, seller, or lender pays upfront to fund your reduced payments
+            </div>
+          </div>
+          <div style={S.resultBox(true)}>
+            <div style={S.resultLabel(true)}>Your First-Year Savings</div>
+            <div style={S.resultValue(true)}>{fmt(year1Savings)}</div>
+          </div>
+        </div>
+
+        <div style={{ marginTop: "20px", padding: "16px 20px", backgroundColor: "#fdf4e8", borderLeft: `4px solid ${copper}`, borderRadius: "8px", fontSize: "13px", lineHeight: 1.6, color: "#5a3210" }}>
+          Temporary buydowns are commonly offered as builder and seller concessions. The cost is paid upfront at closing — your reduced payments in the early years are funded from that escrow account, not from a change in your actual loan rate.
+        </div>
+
+        <div style={S.disclaimer}>
+          Temporary buydown programs are subject to lender and program guidelines. Not all loan types are eligible. Contact us to confirm availability for your scenario. This is not a commitment to lend. Shalanda Smith · NMLS #554554 · Secure Choice Lending · NMLS #1689518.
+        </div>
+        <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" style={S.cta}>See If a Buydown Fits Your Deal →</a>
+      </div>
+    </div>
+  );
+}
+
 // ── CALCULATOR 3: FHA VS CONVENTIONAL ────────────────────────────────────────
 
 function FHAvsConvCalc() {
@@ -1518,7 +1678,7 @@ function PortfolioBuilderCalc() {
 
 // ── MAIN PAGE ─────────────────────────────────────────────────────────────────
 
-type TabId = "texas" | "va" | "va-funding-fee" | "compare" | "budget" | "bah" | "portfolio-builder";
+type TabId = "texas" | "va" | "va-funding-fee" | "temp-buydown" | "compare" | "budget" | "bah" | "portfolio-builder";
 
 export default function Calculators() {
   const [searchParams] = useSearchParams();
@@ -1526,6 +1686,7 @@ export default function Calculators() {
     "texas-payment": "texas",
     "va-loan": "va",
     "va-funding-fee": "va-funding-fee",
+    "temp-buydown": "temp-buydown",
     "fha-vs-conventional": "compare",
     "budget-affordability": "budget",
     "bah-buying-power": "bah",
@@ -1543,6 +1704,7 @@ export default function Calculators() {
     { id: "texas", label: "Texas Payment" },
     { id: "va", label: "VA Loan" },
     { id: "va-funding-fee", label: "VA Funding Fee" },
+    { id: "temp-buydown", label: "Temp Buydown" },
     { id: "compare", label: "FHA vs. Conventional" },
     { id: "budget", label: "Budget & Affordability" },
     { id: "bah", label: "BAH & Buying Power" },
@@ -1567,6 +1729,7 @@ export default function Calculators() {
         {tab === "texas" && <TexasPaymentCalc />}
         {tab === "va" && <VALoanCalc />}
         {tab === "va-funding-fee" && <VAFundingFeeCalc />}
+        {tab === "temp-buydown" && <TempBuydownCalc />}
         {tab === "compare" && <FHAvsConvCalc />}
         {tab === "budget" && <BudgetCalc />}
         {tab === "bah" && <BAHCalc />}
