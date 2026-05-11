@@ -1729,6 +1729,7 @@ export default function Calculators() {
         {tab === "texas" && <TexasPaymentCalc />}
         {tab === "va" && <VALoanCalc />}
         {tab === "va-funding-fee" && <VAFundingFeeCalc />}
+        {tab === "temp-buydown" && <TempBuydownCalc />}
         {tab === "compare" && <FHAvsConvCalc />}
         {tab === "budget" && <BudgetCalc />}
         {tab === "bah" && <BAHCalc />}
