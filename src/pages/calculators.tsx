@@ -1070,7 +1070,7 @@ const BAH_MEDIAN_RENTS: Record<string, number> = {
   "Fort Sam Houston (San Antonio / JBSA)": 1550,
 };
 
-function BAHCalc() {
+export function BAHCalc() {
   const [installation, setInstallation] = useState(BAH_INSTALLATIONS[0]);
   const [rank, setRank] = useState("E5");
   const [hasDeps, setHasDeps] = useState(true);
