@@ -389,9 +389,182 @@ export default function VaAppraisalChecklist() {
               </div>
             );
           })}
+
+          <div style={{ marginTop: 32, display: "flex", justifyContent: "center" }}>
+            <button
+              onClick={() => setModalOpen(true)}
+              disabled={checkedCount === 0}
+              style={{
+                background: checkedCount === 0 ? GRAY : COPPER,
+                color: WHITE,
+                border: "none",
+                padding: "14px 28px",
+                borderRadius: 8,
+                fontFamily: body,
+                fontWeight: 600,
+                fontSize: "1rem",
+                cursor: checkedCount === 0 ? "not-allowed" : "pointer",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 10,
+                width: "100%",
+                maxWidth: 360,
+                justifyContent: "center",
+              }}
+            >
+              <Mail size={18} />
+              Email This Report
+            </button>
+          </div>
         </div>
       </section>
 
+      {modalOpen && (
+        <div
+          onClick={closeModal}
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "rgba(0,0,0,0.6)",
+            zIndex: 100,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: 16,
+            fontFamily: body,
+          }}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              background: WHITE,
+              borderRadius: 12,
+              padding: "32px 28px",
+              maxWidth: 560,
+              width: "100%",
+              position: "relative",
+              boxShadow: "0 20px 60px rgba(0,0,0,0.3)",
+            }}
+          >
+            <button
+              onClick={closeModal}
+              aria-label="Close"
+              style={{
+                position: "absolute",
+                top: 14,
+                right: 14,
+                background: "transparent",
+                border: "none",
+                cursor: "pointer",
+                color: NAVY,
+                padding: 4,
+              }}
+            >
+              <X size={22} />
+            </button>
+
+            {sent ? (
+              <div style={{ textAlign: "center", padding: "16px 0" }}>
+                <CheckCircle2 size={56} color={COPPER} style={{ margin: "0 auto" }} />
+                <h3 style={{ fontFamily: heading, color: NAVY, fontSize: "1.6rem", fontWeight: 700, margin: "16px 0 8px" }}>
+                  Report Sent
+                </h3>
+                <p style={{ color: SLATE, fontSize: 14, margin: 0 }}>
+                  Check your inbox — your agent has been copied.
+                </p>
+                <button
+                  onClick={closeModal}
+                  style={{
+                    marginTop: 24,
+                    background: NAVY,
+                    color: IVORY,
+                    border: "none",
+                    padding: "12px 28px",
+                    borderRadius: 8,
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    fontFamily: body,
+                  }}
+                >
+                  Close
+                </button>
+              </div>
+            ) : (
+              <>
+                <h3 style={{ fontFamily: heading, color: NAVY, fontSize: "1.5rem", fontWeight: 700, margin: "0 0 10px" }}>
+                  Email Your VA Inspection Report
+                </h3>
+                <p style={{ fontFamily: body, fontSize: 14, color: SLATE, margin: "0 0 22px", lineHeight: 1.5 }}>
+                  Enter your information and your agent's information. Both are required — your agent needs this to negotiate repairs on your behalf.
+                </p>
+
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 12 }}>
+                  <input
+                    type="text"
+                    placeholder="Your full name"
+                    value={buyerName}
+                    onChange={(e) => setBuyerName(e.target.value)}
+                    style={inputStyle}
+                  />
+                  <input
+                    type="email"
+                    placeholder="your@email.com"
+                    value={buyerEmail}
+                    onChange={(e) => setBuyerEmail(e.target.value)}
+                    style={inputStyle}
+                  />
+                </div>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 18 }}>
+                  <input
+                    type="text"
+                    placeholder="Agent's full name"
+                    value={agentName}
+                    onChange={(e) => setAgentName(e.target.value)}
+                    style={inputStyle}
+                  />
+                  <input
+                    type="email"
+                    placeholder="agent@email.com"
+                    value={agentEmail}
+                    onChange={(e) => setAgentEmail(e.target.value)}
+                    style={inputStyle}
+                  />
+                </div>
+
+                <button
+                  onClick={handleSend}
+                  disabled={!formValid || sending}
+                  style={{
+                    width: "100%",
+                    background: formValid ? COPPER : GRAY,
+                    color: WHITE,
+                    border: "none",
+                    padding: "14px 20px",
+                    borderRadius: 8,
+                    fontFamily: body,
+                    fontWeight: 600,
+                    fontSize: "1rem",
+                    cursor: formValid && !sending ? "pointer" : "not-allowed",
+                  }}
+                >
+                  {sending ? "Sending..." : "Send Report"}
+                </button>
+
+                {!formValid && (
+                  <p style={{ fontSize: 13, color: SLATE, textAlign: "center", margin: "10px 0 0" }}>
+                    All four fields required
+                  </p>
+                )}
+                {sendError && (
+                  <p style={{ fontSize: 13, color: "#dc2626", textAlign: "center", margin: "10px 0 0" }}>
+                    {sendError}
+                  </p>
+                )}
+              </>
+            )}
+          </div>
+        </div>
+      )}
       {/* CTA */}
       <section style={{ background: COPPER, padding: "64px 24px", fontFamily: body, textAlign: "center" }}>
         <div style={{ maxWidth: 720, margin: "0 auto" }}>
