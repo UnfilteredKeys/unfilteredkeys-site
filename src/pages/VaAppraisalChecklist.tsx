@@ -93,6 +93,18 @@ const TOTAL = CATEGORIES.reduce((s, c) => s + c.items.length, 0);
 const GRAY = "#9ca3af";
 const SLATE = "#64748b";
 
+const inputStyle: React.CSSProperties = {
+  width: "100%",
+  padding: "10px 12px",
+  borderRadius: 8,
+  border: "1px solid #e2e8f0",
+  fontFamily: "'Outfit', sans-serif",
+  fontSize: 14,
+  color: "#1a3a5c",
+  background: "#fff",
+  outline: "none",
+};
+
 const isEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
 
 export default function VaAppraisalChecklist() {
