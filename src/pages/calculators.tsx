@@ -1869,6 +1869,7 @@ export default function Calculators() {
         {tab === "va" && <VALoanCalc />}
         {tab === "va-funding-fee" && <VAFundingFeeCalc />}
         {tab === "temp-buydown" && <TempBuydownCalc />}
+        {tab === "va-entitlement" && <VAEntitlementCalc />}
         {tab === "compare" && <FHAvsConvCalc />}
         {tab === "budget" && <BudgetCalc />}
         {tab === "bah" && <BAHCalc />}
