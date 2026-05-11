@@ -105,8 +105,8 @@ export default function VaAppraisalChecklist() {
   return (
     <>
       <SEO
-        title="VA Appraisal Checklist Texas | Keys by Shalanda"
-        description="Use this VA Minimum Property Requirements checklist alongside your home inspection. Know what VA appraisers look for before your closing day in Texas."
+        title="VA Appraisal Checklist — MPR Guide for Texas Veterans | Keys by Shalanda"
+        description="The complete VA Minimum Property Requirements checklist for Texas. Built for veterans and agents — share it before the inspection to know exactly what the VA appraiser will flag."
         canonical="/va-appraisal-checklist"
       />
 
@@ -138,6 +138,26 @@ export default function VaAppraisalChecklist() {
           </p>
           <p style={{ color: IVORY, opacity: 0.75, fontSize: "1.05rem", lineHeight: 1.6, maxWidth: 680, margin: "0 auto" }}>
             VA appraisers check Minimum Property Requirements on every home. Use this list alongside your inspection report so nothing catches you off guard.
+          </p>
+        </div>
+      </section>
+
+
+      {/* Intro — How to use */}
+      <section style={{ background: WHITE, padding: "64px 24px", fontFamily: body }}>
+        <div style={{ maxWidth: 760, margin: "0 auto" }}>
+          <h2 style={{ fontFamily: heading, color: NAVY, fontSize: "1.85rem", fontWeight: 700, lineHeight: 1.25, marginTop: 0, marginBottom: 16 }}>
+            How Veterans and Agents Use This Checklist
+          </h2>
+          <p style={{ color: "#3d4f63", fontSize: "1.02rem", lineHeight: 1.7, margin: 0 }}>
+            This checklist is built around the VA's Minimum Property Requirements — the standards every home must meet before a VA loan can close. It is designed to be shared: send it to your agent before you make an offer, walk through it during your inspection period, and use it as a reference when requesting seller repairs. Agents who receive it know exactly what the VA appraiser will flag — which means repair requests land with documentation behind them, not just buyer preferences.
+          </p>
+
+          <h3 style={{ fontFamily: heading, color: NAVY, fontSize: "1.4rem", fontWeight: 700, lineHeight: 1.3, marginTop: 36, marginBottom: 12 }}>
+            After Your Inspection
+          </h3>
+          <p style={{ color: "#3d4f63", fontSize: "1.02rem", lineHeight: 1.7, margin: 0 }}>
+            Once you have your inspection report, match each flagged item to the checklist. Any item that appears on both your inspection report and this checklist is a VA requirement — not a negotiating point. Sellers and their agents understand the distinction. Present it that way.
           </p>
         </div>
       </section>
