@@ -42,6 +42,28 @@ to = "/va-loan-fort-hood-tx"
 status = 301
 force = true
 
+# VA calculator tab URLs redirect to dedicated pages
+[[redirects]]
+from = "/calculators"
+to = "/va-funding-fee-calculator"
+status = 301
+force = true
+query = {tab = "va-funding-fee"}
+
+[[redirects]]
+from = "/calculators"
+to = "/bah-calculator-killeen-tx"
+status = 301
+force = true
+query = {tab = "bah-buying-power"}
+
+[[redirects]]
+from = "/calculators"
+to = "/va-loan-calculator-texas"
+status = 301
+force = true
+query = {tab = "va-loan"}
+
 # SPA fallback - serve index.html for all routes
 [[redirects]]
 from = "/*"
