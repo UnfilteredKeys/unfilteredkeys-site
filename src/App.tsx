@@ -42,6 +42,7 @@ import HoustonMortgagePage from "@/pages/HoustonMortgage";
 import DallasMortgagePage from "@/pages/DallasMortgage";
 import AustinMortgagePage from "@/pages/AustinMortgage";
 import VaAppraisalChecklistPage from "@/pages/VaAppraisalChecklist";
+import VaFundingFeeCalculatorPage from "@/pages/VaFundingFeeCalculator";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
