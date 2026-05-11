@@ -1518,13 +1518,14 @@ function PortfolioBuilderCalc() {
 
 // ── MAIN PAGE ─────────────────────────────────────────────────────────────────
 
-type TabId = "texas" | "va" | "compare" | "budget" | "bah" | "portfolio-builder";
+type TabId = "texas" | "va" | "va-funding-fee" | "compare" | "budget" | "bah" | "portfolio-builder";
 
 export default function Calculators() {
   const [searchParams] = useSearchParams();
   const tabParamMap: Record<string, TabId> = {
     "texas-payment": "texas",
     "va-loan": "va",
+    "va-funding-fee": "va-funding-fee",
     "fha-vs-conventional": "compare",
     "budget-affordability": "budget",
     "bah-buying-power": "bah",
@@ -1541,6 +1542,7 @@ export default function Calculators() {
   const tabs: { id: TabId; label: string }[] = [
     { id: "texas", label: "Texas Payment" },
     { id: "va", label: "VA Loan" },
+    { id: "va-funding-fee", label: "VA Funding Fee" },
     { id: "compare", label: "FHA vs. Conventional" },
     { id: "budget", label: "Budget & Affordability" },
     { id: "bah", label: "BAH & Buying Power" },
@@ -1564,6 +1566,7 @@ export default function Calculators() {
       <div style={S.body}>
         {tab === "texas" && <TexasPaymentCalc />}
         {tab === "va" && <VALoanCalc />}
+        {tab === "va-funding-fee" && <VAFundingFeeCalc />}
         {tab === "compare" && <FHAvsConvCalc />}
         {tab === "budget" && <BudgetCalc />}
         {tab === "bah" && <BAHCalc />}
