@@ -88,9 +88,9 @@ export const seoMeta = {
     canonical: "/physician-loan-texas",
   },
   constructionRenovation: {
-    title: "Texas Construction & Renovation Loans | One-Time Close | Keys by Shalanda",
-    description: "Finance new construction or a home renovation with a single Texas loan. VA, FHA, USDA, and conventional one-time close construction loans. Serving all of Texas.",
-    canonical: "/construction-renovation-texas",
+    title: "Texas Construction & Renovation Loans | Keys by Shalanda",
+    description: "Finance new construction or home renovation with a single Texas loan. VA, FHA, USDA, and conventional one-time close construction loans.",
+    canonical: "/construction-renovation-loans-texas",
   },
   pcsToPortfolio: {
     title: "PCS to Portfolio | Build Wealth With VA Loans | Keys by Shalanda",
