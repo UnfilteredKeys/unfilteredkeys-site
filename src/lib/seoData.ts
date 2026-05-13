@@ -18,22 +18,22 @@ export const seoMeta = {
     canonical: "/refinance",
   },
   loanPrograms: {
-    title: "Texas Mortgage Loan Programs | VA, FHA, USDA, Down Payment Assistance",
-    description: "Compare VA, FHA, USDA, conventional, and down payment assistance programs in Texas. Find out which loan fits your income, credit, and down payment — free consultation.",
+    title: "Texas Mortgage Loan Programs | VA, FHA, USDA | Keys by Shalanda",
+    description: "Compare VA, FHA, USDA, conventional, and down payment assistance programs in Texas. Find the loan that fits your income, credit, and down payment.",
     canonical: "/loan-programs",
   },
   about: {
-    title: "About Shalanda Smith | Licensed Texas Mortgage Broker | NMLS #554554",
-    description: "Meet Shalanda Smith — licensed Texas mortgage broker (NMLS #554554) specializing in VA loans and Central Texas military buyers. 5.0 Google rating. Real advice, no fluff.",
+    title: "About Shalanda Smith | Texas Mortgage Broker | Keys by Shalanda",
+    description: "Meet Shalanda Smith — licensed Texas mortgage broker (NMLS #554554) specializing in VA loans and Central Texas military buyers. Real advice, no fluff.",
     canonical: "/about",
   },
   guide: {
     title: "Texas Home Buyer's Guide | Mortgage Education | Keys by Shalanda",
-    description: "The mortgage guide built for Texas buyers — credit, DTI, loan types, property taxes, and what lenders don't tell you. Free download, plain language, no fluff.",
+    description: "The mortgage guide built for Texas buyers — credit, DTI, loan types, property taxes, and what lenders don't tell you. Free download, plain language.",
     canonical: "/guide",
   },
   playbook: {
-    title: "90-Day Homebuyer Playbook | Texas Mortgage Road Map | Keys by Shalanda",
+    title: "90-Day Homebuyer Playbook | Texas | Keys by Shalanda",
     description: "The 90-Day Homebuyer Playbook walks Texas buyers through every step from pre-approval to closing table. Free download from Keys by Shalanda.",
     canonical: "/playbook",
   },
