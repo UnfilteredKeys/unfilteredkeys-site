@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://shalandasmith.com/sitemap.xml
+Sitemap: https://unfilteredkeys-site.lovable.app/sitemap.xml
