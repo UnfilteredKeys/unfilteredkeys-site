@@ -2463,9 +2463,7 @@ export default function Index() {
     });
   }
 
-    return () => {
-      try { document.head.removeChild(link); } catch(e) {}
-    };
+  }, []);
   }, []);
 
   return (
