@@ -6,10 +6,6 @@ const ThankYou = () => {
   return (
     <>
     <SEO {...seoMeta.thankYou} />
-    <Helmet>
-      <title>Application Received | Keys by Shalanda</title>
-      <meta name="robots" content="noindex, nofollow" />
-    </Helmet>
     <div className="min-h-screen flex items-center justify-center px-6" style={{ backgroundColor: '#1a2535' }}>
       <div className="text-center max-w-lg space-y-6">
         <div className="w-3 h-3 rounded-full mx-auto" style={{ backgroundColor: '#b5621e' }} />
