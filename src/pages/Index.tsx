@@ -2366,12 +2366,6 @@ const pageHTMLAfterDPA = `
 
 export default function Index() {
   useEffect(() => {
-    // Google Fonts
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;0,700;1,600&family=Outfit:wght@300;400;500;600;700&family=Fira+Mono:wght@400;500&display=swap';
-    document.head.appendChild(link);
-
     // Set page background
     document.body.style.background = '#faf8f4';
     document.body.style.margin = '0';
