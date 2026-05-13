@@ -21,8 +21,8 @@ const ThankYou = () => {
         <div className="pt-8">
           <Link
             to="/"
-            className="text-xs tracking-widest uppercase hover:opacity-80 transition-opacity"
-            style={{ color: '#f0ede6', opacity: 0.4 }}
+            className="text-xs tracking-widest uppercase hover:opacity-100 transition-opacity"
+            style={{ color: '#f0ede6', opacity: 0.85 }}
           >
             While you wait — shalandasmith.com
           </Link>
