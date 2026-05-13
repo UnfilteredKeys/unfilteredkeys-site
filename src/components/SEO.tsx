@@ -1,16 +1,22 @@
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
 
+interface FaqItem {
+  q: string;
+  a: string;
+}
+
 interface SEOProps {
   title?: string;
   description?: string;
   canonical?: string;
   ogImage?: string;
   noindex?: boolean;
+  faqs?: FaqItem[];
 }
 
 const SITE_NAME = "Keys by Shalanda";
-const BASE_URL = "https://shalandasmith.com";
+const BASE_URL = "https://unfilteredkeys-site.lovable.app";
 const DEFAULT_OG_IMAGE = `${BASE_URL}/og-default.jpg`;
 
 export default function SEO({
@@ -19,15 +25,12 @@ export default function SEO({
   canonical,
   ogImage = DEFAULT_OG_IMAGE,
   noindex = false,
+  faqs,
 }: SEOProps) {
   const location = useLocation();
 
-  // Automatically noindex any /partners/* route
   const effectiveNoindex = noindex || location.pathname.startsWith("/partners/");
 
-  // If a full title is passed, use it directly.
-  // If only a short title fragment is passed (no pipe), append site name.
-  // If no title, use the default.
   const fullTitle = title
     ? title.includes("|")
       ? title
@@ -35,6 +38,18 @@ export default function SEO({
     : `${SITE_NAME} | Texas Mortgage Broker`;
 
   const canonicalUrl = canonical ? `${BASE_URL}${canonical}` : BASE_URL;
+
+  const faqJsonLd = faqs && faqs.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
+      }
+    : null;
 
   return (
     <Helmet>
@@ -50,6 +65,9 @@ export default function SEO({
       <meta name="twitter:title" content={fullTitle} />
       {description && <meta name="twitter:description" content={description} />}
       {effectiveNoindex && <meta name="robots" content="noindex, nofollow" />}
+      {faqJsonLd && (
+        <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
+      )}
     </Helmet>
   );
 }
