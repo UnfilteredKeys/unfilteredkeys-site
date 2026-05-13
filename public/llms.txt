@@ -1,0 +1,64 @@
+# Keys by Shalanda
+
+> Texas mortgage broker specializing in VA loans, physician loans, and home purchase financing for military families and first-time buyers across Texas.
+
+Keys by Shalanda is a mortgage brokerage led by Shalanda Smith (NMLS #554554) under Secure Choice Lending (NMLS #1689518). The site provides loan program information, mortgage calculators, educational guides, and application tools for homebuyers and refinancers in Texas — with deep expertise in VA loans for military families stationed at Fort Hood and across Central Texas.
+
+## Pages
+
+- [Home](/): Texas mortgage broker for VA, physician, and conventional loans.
+- [About](/about): Meet Shalanda Smith, NMLS #554554, and learn the brokerage mission.
+- [Apply](/apply): Start your mortgage application online.
+- [Thank You](/thank-you): Application submission confirmation page.
+
+## VA Loans
+
+- [VA Loan Texas](/va-loan-texas): Overview of VA loan benefits and eligibility in Texas.
+- [VA Loan FAQ Texas](/va-loan-faq-texas): Frequently asked questions about Texas VA loans.
+- [Killeen VA Loan](/killeen-va-loan): VA loans for Fort Hood and Killeen-area military buyers.
+- [Copperas Cove VA Loan](/copperas-cove-va-loan): VA loan guidance for Copperas Cove homebuyers.
+- [El Paso VA Loan](/el-paso-va-loan): VA loan resources for El Paso military families.
+- [VA Appraisal Checklist](/va-appraisal-checklist): Interactive checklist for VA inspection readiness.
+- [VA Funding Fee Calculator](/va-funding-fee-calculator): Calculate your VA funding fee.
+- [VA Loan Calculator Texas](/va-loan-calculator-texas): Estimate VA loan payments in Texas.
+
+## Physician Loans
+
+- [Physician Loan Texas](/physician-loan-texas): Doctor and dentist mortgage programs across Texas.
+- [Physician Loan Austin](/physician-loan-austin-tx): Physician loans in Austin, TX.
+- [Physician Loan Dallas](/physician-loan-dallas-tx): Physician loans in Dallas, TX.
+- [Physician Loan Houston](/physician-loan-houston-tx): Physician loans in Houston, TX.
+- [Physician Loan San Antonio](/physician-loan-san-antonio-tx): Physician loans in San Antonio, TX.
+
+## City Mortgages
+
+- [Austin TX Mortgage](/austin-tx-mortgage): Home loans and mortgage rates in Austin.
+- [Dallas TX Mortgage](/dallas-tx-mortgage): Mortgage services for Dallas-area buyers.
+- [Houston TX Mortgage](/houston-tx-mortgage): Home financing in Houston, Texas.
+- [San Antonio TX Mortgage](/san-antonio-tx-mortgage): Mortgage solutions for San Antonio.
+- [Temple TX Mortgage](/temple-tx-mortgage): Home loans in Temple, Texas.
+- [Round Rock TX Mortgage](/round-rock-tx-mortgage): Mortgage options in Round Rock.
+- [Georgetown TX Mortgage](/georgetown-tx-mortgage): Home financing in Georgetown, TX.
+
+## Loan Programs
+
+- [Loan Programs](/loan-programs): Full directory of available mortgage products.
+- [Conventional Loan Texas](/conventional-loan-texas): Conventional mortgage requirements in Texas.
+- [FHA Loan Texas](/fha-loan-texas): FHA loan guidelines and down payment options.
+- [Construction & Renovation Loans](/construction-renovation-loans-texas): Build or renovate financing.
+- [Down Payment Assistance](/down-payment-assistance-texas): Texas down payment help programs.
+- [First-Time Buyers](/first-time-buyers): Guidance for first-time homebuyers in Texas.
+- [Investors](/investors): Financing for real estate investors and rental properties.
+- [PCS to Portfolio](/pcs-to-portfolio): Turn military moves into rental investments.
+
+## Calculators & Tools
+
+- [Calculators](/calculators): Full suite of mortgage and financial calculators.
+- [BAH Calculator Killeen](/bah-calculator-killeen-tx): Basic Allowance for Housing calculator.
+
+## Resources
+
+- [Consumer Guide](/guide): Free downloadable home buying guide.
+- [90-Day Playbook](/playbook): Step-by-step PCS home buying strategy.
+- [Buy a Home](/buy): Home purchase process overview.
+- [Refinance](/refinance): Mortgage refinance options and guidance.
