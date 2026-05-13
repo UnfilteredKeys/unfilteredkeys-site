@@ -53,13 +53,13 @@ export const seoMeta = {
     canonical: "/killeen-va-loan",
   },
   copperasCoveVaLoan: {
-    title: "VA Loans Copperas Cove TX | Fort Hood West Gate Guide | Keys by Shalanda",
-    description: "Buying near Fort Hood's west gate? VA loan guide built for Copperas Cove, TX. BAH by pay grade, Coryell County taxes, neighborhoods, and local builders. Free 15-min call.",
+    title: "VA Loans Copperas Cove TX | Fort Hood | Keys by Shalanda",
+    description: "Buying near Fort Hood's west gate? VA loan guide for Copperas Cove, TX. BAH by pay grade, Coryell County taxes, neighborhoods, and local builders.",
     canonical: "/copperas-cove-va-loan",
   },
   elPasoVaLoan: {
-    title: "VA Loan El Paso TX | Fort Bliss Home Buying Guide | Keys by Shalanda NMLS #554554",
-    description: "El Paso TX VA loan guide for Fort Bliss buyers — BAH by pay grade, El Paso County property taxes, neighborhoods, cross-border NM comparison. 0% down, no PMI. Keys by Shalanda NMLS #554554.",
+    title: "VA Loan El Paso TX | Fort Bliss | Keys by Shalanda",
+    description: "El Paso TX VA loan guide for Fort Bliss buyers — BAH by pay grade, El Paso County property taxes, neighborhoods. 0% down, no PMI.",
     canonical: "/el-paso-va-loan",
   },
   physicianLoanHoustonTx: {
