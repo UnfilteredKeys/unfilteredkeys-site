@@ -164,7 +164,7 @@ const DownPaymentAssistanceTexasPage = () => {
 
   return (
     <>
-      <SEO {...seoMeta.downPaymentAssistanceTexas} />
+      <SEO {...seoMeta.downPaymentAssistanceTexas} faqs={faqs} />
 
       <style>{`
         .dpa { font-family: 'Outfit', sans-serif; background: ${IVORY}; color: ${INK}; line-height: 1.7; -webkit-font-smoothing: antialiased; }

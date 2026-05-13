@@ -37,7 +37,7 @@ const BuyAHomePage = () => {
 
   return (
     <>
-    <SEO title="Buy a Home in Texas | Pre-Approval & Purchase Loans | Keys by Shalanda" description="Ready to buy in Texas? Get pre-approved fast with a broker who shops 50+ lenders to find your best rate. VA, FHA, USDA, and conventional. No lender fees on VA loans." canonical="/buy" />
+    <SEO title="Buy a Home in Texas | Pre-Approval & Purchase Loans | Keys by Shalanda" description="Ready to buy in Texas? Get pre-approved fast with a broker who shops 50+ lenders to find your best rate. VA, FHA, USDA, and conventional. No lender fees on VA loans." canonical="/buy" faqs={faqs} />
     <style>{`
                 .bah-page {
           font-family: 'Outfit', sans-serif;
