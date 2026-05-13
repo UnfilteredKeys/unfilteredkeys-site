@@ -38,13 +38,13 @@ export const seoMeta = {
     canonical: "/playbook",
   },
   vaLoanFaqTexas: {
-    title: "VA Loan FAQ Texas | Common Questions Answered | Keys by Shalanda",
-    description: "VA loan questions answered for Texas veterans and Fort Hood military buyers. Entitlement, funding fee, BAH income, disability exemption, and more. Keys by Shalanda — NMLS #554554.",
+    title: "VA Loan FAQ Texas | Common Questions | Keys by Shalanda",
+    description: "VA loan questions for Texas veterans and Fort Hood buyers. Entitlement, funding fee, BAH income, disability exemption, and more.",
     canonical: "/va-loan-faq-texas",
   },
   vaLoanTexas: {
-    title: "VA Loans in Texas | 0% Down, No PMI | Keys by Shalanda (NMLS #554554)",
-    description: "Texas VA loan specialist. 0% down, no PMI, competitive rates. Serving Fort Hood, Killeen, San Antonio, DFW & all of Texas. Book a free 15-min call — close in 21 days.",
+    title: "VA Loans in Texas | 0% Down, No PMI | Keys by Shalanda",
+    description: "Texas VA loan specialist. 0% down, no PMI, competitive rates. Serving Fort Hood, Killeen, San Antonio, DFW & all of Texas. Book a free call.",
     canonical: "/va-loan-texas",
   },
   killeenVaLoan: {
