@@ -41,7 +41,7 @@ const RefinancePage = () => {
 
   return (
     <>
-      <SEO {...seoMeta.refinance} />
+      <SEO {...seoMeta.refinance} faqs={faqs} />
       <style>{`
         .ref-page {
           font-family: 'Outfit', sans-serif;
