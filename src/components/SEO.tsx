@@ -17,13 +17,12 @@ interface SEOProps {
 
 const SITE_NAME = "Keys by Shalanda";
 const BASE_URL = "https://unfilteredkeys-site.lovable.app";
-const DEFAULT_OG_IMAGE = `${BASE_URL}/og-default.jpg`;
 
 export default function SEO({
   title,
   description,
   canonical,
-  ogImage = DEFAULT_OG_IMAGE,
+  ogImage,
   noindex = false,
   faqs,
 }: SEOProps) {
@@ -58,7 +57,7 @@ export default function SEO({
       <link rel="canonical" href={canonicalUrl} />
       <meta property="og:title" content={fullTitle} />
       {description && <meta property="og:description" content={description} />}
-      <meta property="og:image" content={ogImage} />
+      {ogImage && <meta property="og:image" content={ogImage} />}
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:type" content="website" />
       <meta name="twitter:card" content="summary_large_image" />
