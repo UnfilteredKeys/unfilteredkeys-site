@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Helmet } from "react-helmet-async";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
 const Apply = () => {
@@ -40,11 +39,6 @@ const Apply = () => {
   return (
     <>
     <SEO {...seoMeta.apply} />
-    <Helmet>
-  <title>Apply for a VA Loan in Texas | Unfiltered Keys</title>
-  <meta name="description" content="Start your VA loan application with Shalanda Smith at Unfiltered Keys. Soft credit pull first, 2-hour response, and clear next steps — serving veterans statewide in Texas." />
-  <link rel="canonical" href="https://unfilteredkeys.com/apply" />
-</Helmet>  
       <section className="py-24 md:py-32 px-6 md:px-12">
         <div className="max-w-3xl mx-auto">
           <p className="font-mono text-xs text-primary tracking-widest uppercase mb-4">Apply</p>
