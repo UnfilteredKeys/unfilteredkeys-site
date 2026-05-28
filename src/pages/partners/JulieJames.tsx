@@ -289,7 +289,8 @@ export default function PartnerJulieJames() {
                 status: "Active",
                 address: "1398 County Road 3152",
                 city: "Kempner, TX 76539",
-                price: "$400,000",
+                price: "$395,000",
+                priceReduced: true,
                 beds: 4,
                 baths: 2,
                 sqft: "1,926",
@@ -324,22 +325,40 @@ export default function PartnerJulieJames() {
                   boxShadow: "0 4px 16px rgba(0,0,0,0.12)",
                 }}
               >
-                <span
-                  style={{
-                    display: "inline-block",
-                    fontSize: 11,
-                    fontWeight: 600,
-                    letterSpacing: "0.5px",
-                    textTransform: "uppercase",
-                    padding: "4px 10px",
-                    borderRadius: 4,
-                    marginBottom: 14,
-                    color: listing.status === "Active" ? COPPER : "#4a5568",
-                    background: listing.status === "Active" ? "rgba(181,98,30,0.10)" : "#f1f5f9",
-                  }}
-                >
-                  {listing.status}
-                </span>
+                <div style={{ display: "flex", gap: 8, marginBottom: 14, flexWrap: "wrap" }}>
+                  <span
+                    style={{
+                      display: "inline-block",
+                      fontSize: 11,
+                      fontWeight: 600,
+                      letterSpacing: "0.5px",
+                      textTransform: "uppercase",
+                      padding: "4px 10px",
+                      borderRadius: 4,
+                      color: listing.status === "Active" ? COPPER : "#4a5568",
+                      background: listing.status === "Active" ? "rgba(181,98,30,0.10)" : "#f1f5f9",
+                    }}
+                  >
+                    {listing.status}
+                  </span>
+                  {listing.priceReduced && (
+                    <span
+                      style={{
+                        display: "inline-block",
+                        fontSize: 11,
+                        fontWeight: 600,
+                        letterSpacing: "0.5px",
+                        textTransform: "uppercase",
+                        padding: "4px 10px",
+                        borderRadius: 4,
+                        color: "#ffffff",
+                        background: "#2d7a3e",
+                      }}
+                    >
+                      Price Reduced
+                    </span>
+                  )}
+                </div>
                 <div style={{ fontFamily: heading, fontSize: 16, fontWeight: 700, marginBottom: 4 }}>
                   {listing.address}
                 </div>
