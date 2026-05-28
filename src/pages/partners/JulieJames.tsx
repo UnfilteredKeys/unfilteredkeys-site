@@ -406,10 +406,10 @@ export default function PartnerJulieJames() {
         <div style={{ background: COPPER, overflow: "hidden", whiteSpace: "nowrap", padding: "14px 0" }}>
           <div style={{ display: "inline-flex", animation: "marqueeScroll 25s linear infinite" }}>
             <span style={{ fontSize: 18, fontWeight: 700, color: WHITE, textTransform: "uppercase", letterSpacing: "1px", fontFamily: body, whiteSpace: "nowrap", paddingRight: 40 }}>
-              ⭐ LIMITED TIME OFFER · MAY 11 – JUNE 30, 2026 · ⭐ LIMITED TIME OFFER · MAY 11 – JUNE 30, 2026 · ⭐ LIMITED TIME OFFER · MAY 11 – JUNE 30, 2026 ·&nbsp;
+              ⭐ LIMITED TIME OFFER · LOANS LOCKED BY JUNE 30, 2026 · ⭐ LIMITED TIME OFFER · LOANS LOCKED BY JUNE 30, 2026 · ⭐ LIMITED TIME OFFER · LOANS LOCKED BY JUNE 30, 2026 ·&nbsp;
             </span>
             <span style={{ fontSize: 18, fontWeight: 700, color: WHITE, textTransform: "uppercase", letterSpacing: "1px", fontFamily: body, whiteSpace: "nowrap", paddingRight: 40 }}>
-              ⭐ LIMITED TIME OFFER · MAY 11 – JUNE 30, 2026 · ⭐ LIMITED TIME OFFER · MAY 11 – JUNE 30, 2026 · ⭐ LIMITED TIME OFFER · MAY 11 – JUNE 30, 2026 ·&nbsp;
+              ⭐ LIMITED TIME OFFER · LOANS LOCKED BY JUNE 30, 2026 · ⭐ LIMITED TIME OFFER · LOANS LOCKED BY JUNE 30, 2026 · ⭐ LIMITED TIME OFFER · LOANS LOCKED BY JUNE 30, 2026 ·&nbsp;
             </span>
           </div>
         </div>
