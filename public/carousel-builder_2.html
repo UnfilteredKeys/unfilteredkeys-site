@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keys by Shalanda — Carousel Builder</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&family=Oswald:wght@500;600;700&family=Lora:ital,wght@0,600;0,700;1,600&family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f0f0f; color: #f0ece3; font-family: 'Inter', sans-serif; min-height: 100vh; padding: 32px 20px; }
+  h1 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #c8873a; margin-bottom: 4px; letter-spacing: -0.5px; }
+  .subtitle { font-size: 0.8rem; color: #888; margin-bottom: 28px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  .upload-zone { border: 2px dashed #c8873a44; border-radius: 12px; padding: 36px; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; margin-bottom: 32px; background: #1a1a1a; }
+  .upload-zone:hover { border-color: #c8873a; background: #1f1a15; }
+  .upload-zone p { color: #888; font-size: 0.9rem; margin-top: 8px; }
+  .upload-zone .icon { font-size: 2rem; }
+  #fileInput { display: none; }
+
+  .nav { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 20px; }
+  .nav-btn { background: #1f1f1f; border: 1px solid #333; color: #f0ece3; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 0.85rem; font-family: 'Inter', sans-serif; transition: background 0.15s, border-color 0.15s; }
+  .nav-btn:hover { background: #2a2a2a; border-color: #c8873a; }
+  .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+  .slide-counter { font-size: 0.85rem; color: #888; min-width: 80px; text-align: center; }
+
+  #slideWrap { display: none; }
+
+  .slide-canvas { position: relative; width: 100%; max-width: 500px; margin: 0 auto 16px; border-radius: 12px; overflow: hidden; aspect-ratio: 4/5; background: #111; }
+  .slide-canvas img { width: 100%; height: 100%; object-fit: cover; display: block; transform-origin: center center; }
+  .slide-canvas::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.45) 45%, rgba(0,0,0,0.72) 100%); pointer-events: none; }
+  
+  .slide-text { position: absolute; left: 0; right: 0; padding: 32px 28px; z-index: 2; transition: top 0.1s, bottom 0.1s; }
+  .slide-eyebrow { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: #c8873a; font-weight: 600; margin-bottom: 8px; font-family: 'Inter', sans-serif; }
+  .slide-headline { font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 900; line-height: 1.15; color: #ffffff; text-shadow: 0 2px 12px rgba(0,0,0,0.5); margin-bottom: 10px; }
+  .slide-sub { font-size: 0.78rem; color: rgba(255,255,255,0.7); font-weight: 400; letter-spacing: 0.02em; }
+  .slide-brand { position: absolute; top: 18px; right: 20px; z-index: 2; font-family: 'Inter', sans-serif; font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.65); font-weight: 500; }
+
+  .dots { display: flex; justify-content: center; gap: 6px; margin-bottom: 24px; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: #333; transition: background 0.2s, width 0.2s; }
+  .dot.active { background: #c8873a; width: 18px; border-radius: 3px; }
+
+  .tip { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 10px; padding: 14px 18px; font-size: 0.78rem; color: #888; text-align: center; margin-bottom: 24px; line-height: 1.5; }
+  .tip strong { color: #c8873a; }
+
+  .panel { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+  .panel h3 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: #666; margin-bottom: 14px; }
+
+  .slider-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .slider-label { font-size: 0.72rem; color: #888; min-width: 72px; text-transform: uppercase; letter-spacing: 0.08em; }
+  input[type=range] { flex: 1; -webkit-appearance: none; height: 4px; background: #2d2d2d; border-radius: 2px; outline: none; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: #c8873a; cursor: pointer; }
+  .slider-val { font-size: 0.72rem; color: #555; min-width: 36px; text-align: right; }
+
+  /* Font picker */
+  .font-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 14px; }
+  .font-btn { background: #111; border: 1px solid #222; border-radius: 8px; padding: 10px 12px; cursor: pointer; color: #ccc; text-align: center; transition: border-color 0.15s; font-size: 1rem; line-height: 1.2; }
+  .font-btn:hover { border-color: #444; }
+  .font-btn.active { border-color: #c8873a; color: #f0ece3; }
+  .font-btn small { display: block; font-family: 'Inter', sans-serif; font-size: 0.6rem; color: #555; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 3px; }
+
+  /* Align buttons */
+  .align-row { display: flex; gap: 8px; margin-bottom: 12px; }
+  .align-btn { flex: 1; background: #111; border: 1px solid #222; border-radius: 8px; padding: 10px; cursor: pointer; color: #888; font-size: 1rem; text-align: center; transition: border-color 0.15s, color 0.15s; }
+  .align-btn:hover { border-color: #444; color: #ccc; }
+  .align-btn.active { border-color: #c8873a; color: #c8873a; }
+
+  /* Position buttons */
+  .pos-row { display: flex; gap: 8px; margin-bottom: 12px; }
+  .pos-btn { flex: 1; background: #111; border: 1px solid #222; border-radius: 8px; padding: 10px 6px; cursor: pointer; color: #888; font-family: 'Inter', sans-serif; font-size: 0.72rem; text-align: center; transition: border-color 0.15s, color 0.15s; }
+  .pos-btn:hover { border-color: #444; color: #ccc; }
+  .pos-btn.active { border-color: #c8873a; color: #c8873a; }
+
+  /* Text color buttons */
+  .color-row { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+  .color-swatch { width: 32px; height: 32px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: border-color 0.15s; flex-shrink: 0; }
+  .color-swatch.active { border-color: #fff; }
+
+  .filter-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 6px; }
+  .filter-btn { background: #111; border: 1px solid #222; border-radius: 8px; padding: 8px 4px 6px; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 0.62rem; color: #888; text-align: center; transition: border-color 0.15s, color 0.15s; }
+  .filter-btn:hover { border-color: #444; color: #ccc; }
+  .filter-btn.active { border-color: #c8873a; color: #c8873a; }
+  .filter-icon { font-size: 1.2rem; display: block; margin-bottom: 4px; }
+
+  .field { margin-bottom: 12px; }
+  .field label { display: block; font-size: 0.7rem; color: #666; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.1em; }
+  .field input, .field textarea { width: 100%; background: #111; border: 1px solid #2d2d2d; border-radius: 8px; padding: 10px 12px; color: #f0ece3; font-family: 'Inter', sans-serif; font-size: 0.85rem; outline: none; transition: border-color 0.2s; resize: none; }
+  .field input:focus, .field textarea:focus { border-color: #c8873a; }
+
+  .slide-list { display: flex; flex-direction: column; gap: 8px; }
+  .slide-item { background: #111; border: 1px solid #222; border-radius: 8px; padding: 10px 14px; cursor: pointer; font-size: 0.8rem; color: #888; transition: border-color 0.15s, color 0.15s; display: flex; align-items: center; gap: 10px; }
+  .slide-item:hover { border-color: #444; color: #ccc; }
+  .slide-item.active { border-color: #c8873a; color: #f0ece3; }
+  .slide-item .num { font-size: 0.65rem; color: #c8873a; font-weight: 600; min-width: 16px; }
+
+  .action-row { display: flex; gap: 10px; margin-top: 16px; }
+  .btn-copper { flex: 1; background: #c8873a; color: #0f0f0f; border: none; border-radius: 8px; padding: 12px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.82rem; cursor: pointer; transition: background 0.15s; }
+  .btn-copper:hover { background: #d99547; }
+  .btn-ghost { flex: 1; background: transparent; color: #888; border: 1px solid #2d2d2d; border-radius: 8px; padding: 12px; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.82rem; cursor: pointer; transition: border-color 0.15s, color 0.15s; }
+  .btn-ghost:hover { border-color: #555; color: #ccc; }
+  .divider { height: 1px; background: #222; margin: 14px 0; }
+  .section-label { font-size: 0.68rem; color: #666; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
+  .filter-note { font-size: 0.68rem; color: #555; margin-top: 8px; font-style: italic; }
+</style>
+</head>
+<body>
+
+<h1>Keys by Shalanda</h1>
+<p class="subtitle">Carousel Slide Builder</p>
+
+<div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
+  <div class="icon">📸</div>
+  <p><strong style="color:#f0ece3">Tap to upload your photo</strong></p>
+  <p>Use the orange dress photo — or any photo you want</p>
+  <input type="file" id="fileInput" accept="image/*">
+</div>
+
+<div id="slideWrap">
+
+  <div class="tip">
+    <strong>How to save each slide:</strong> iPhone — Side button + Volume Up to screenshot, then crop to the slide.
+  </div>
+
+  <div class="nav">
+    <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">← Prev</button>
+    <span class="slide-counter" id="counter">1 / 6</span>
+    <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Next →</button>
+  </div>
+
+  <div class="slide-canvas" id="slideCanvas">
+    <img id="slideImg" src="" alt="Your photo">
+    <div class="slide-brand">@keysbyshalanda</div>
+    <div class="slide-text" id="slideText" style="bottom:0;">
+      <div class="slide-eyebrow" id="eyebrow">Keys by Shalanda</div>
+      <div class="slide-headline" id="headline" style="font-family:'Playfair Display',serif;">I am your Texas Mortgage Lender.</div>
+      <div class="slide-sub" id="subtext">NMLS #554554 · Statewide</div>
+    </div>
+  </div>
+
+  <div class="dots" id="dots"></div>
+
+  <!-- TEXT STYLE PANEL -->
+  <div class="panel">
+    <h3>🖋 Text Style</h3>
+
+    <div class="section-label">Font</div>
+    <div class="font-grid" id="fontGrid">
+      <button class="font-btn active" onclick="setFont('Playfair Display',this)" style="font-family:'Playfair Display',serif;font-weight:700;">Elegant Serif<small>Playfair Display</small></button>
+      <button class="font-btn" onclick="setFont('Montserrat',this)" style="font-family:'Montserrat',sans-serif;font-weight:800;">Bold Sans<small>Montserrat</small></button>
+      <button class="font-btn" onclick="setFont('Oswald',this)" style="font-family:'Oswald',sans-serif;font-weight:600;">Strong Condensed<small>Oswald</small></button>
+      <button class="font-btn" onclick="setFont('Lora',this)" style="font-family:'Lora',serif;font-weight:700;">Classic Serif<small>Lora</small></button>
+      <button class="font-btn" onclick="setFont('Bebas Neue',this)" style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;">ALL CAPS IMPACT<small>Bebas Neue</small></button>
+      <button class="font-btn" onclick="setFont('DM Serif Display',this)" style="font-family:'DM Serif Display',serif;font-weight:400;font-style:italic;">Refined Italic<small>DM Serif Display</small></button>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-label">Text Position</div>
+    <div class="pos-row">
+      <button class="pos-btn" onclick="setPosition('top',this)">▲ Top</button>
+      <button class="pos-btn" onclick="setPosition('middle',this)">● Middle</button>
+      <button class="pos-btn active" onclick="setPosition('bottom',this)">▼ Bottom</button>
+    </div>
+
+    <div class="section-label">Alignment</div>
+    <div class="align-row">
+      <button class="align-btn active" onclick="setAlign('left',this)">☰ Left</button>
+      <button class="align-btn" onclick="setAlign('center',this)">≡ Center</button>
+      <button class="align-btn" onclick="setAlign('right',this)">☰ Right</button>
+    </div>
+
+    <div class="section-label">Headline Size</div>
+    <div class="slider-row">
+      <span class="slider-label">Size</span>
+      <input type="range" id="fontSizeSlider" min="60" max="160" value="100" oninput="updateFontSize()">
+      <span class="slider-val" id="fontSizeVal">100%</span>
+    </div>
+
+    <div class="section-label" style="margin-top:12px;">Text Color</div>
+    <div class="color-row">
+      <div class="color-swatch active" style="background:#ffffff;" onclick="setTextColor('#ffffff',this)" title="White"></div>
+      <div class="color-swatch" style="background:#c8873a;" onclick="setTextColor('#c8873a',this)" title="Copper"></div>
+      <div class="color-swatch" style="background:#f5e6c8;" onclick="setTextColor('#f5e6c8',this)" title="Cream"></div>
+      <div class="color-swatch" style="background:#ffd700;" onclick="setTextColor('#ffd700',this)" title="Gold"></div>
+      <div class="color-swatch" style="background:#000000;border:1px solid #333;" onclick="setTextColor('#000000',this)" title="Black"></div>
+    </div>
+  </div>
+
+  <!-- POSITION PANEL -->
+  <div class="panel">
+    <h3>📸 Position Your Photo</h3>
+    <div class="slider-row">
+      <span class="slider-label">Zoom</span>
+      <input type="range" id="zoomSlider" min="100" max="220" value="100" oninput="updatePhoto()">
+      <span class="slider-val" id="zoomVal">1×</span>
+    </div>
+    <div class="slider-row">
+      <span class="slider-label">Up / Down</span>
+      <input type="range" id="ySlider" min="-60" max="60" value="0" oninput="updatePhoto()">
+      <span class="slider-val" id="yVal">0</span>
+    </div>
+    <div class="slider-row">
+      <span class="slider-label">Left / Right</span>
+      <input type="range" id="xSlider" min="-60" max="60" value="0" oninput="updatePhoto()">
+      <span class="slider-val" id="xVal">0</span>
+    </div>
+  </div>
+
+  <!-- PHOTO EDIT PANEL -->
+  <div class="panel">
+    <h3>✨ Edit Your Photo</h3>
+    <div class="section-label">Filters — curated for deep skin tones</div>
+    <div class="filter-grid" id="filterGrid">
+      <button class="filter-btn active" onclick="setFilter('none',this)"><span class="filter-icon">🔲</span>None</button>
+      <button class="filter-btn" onclick="setFilter('warm',this)"><span class="filter-icon">🌅</span>Warm</button>
+      <button class="filter-btn" onclick="setFilter('golden',this)"><span class="filter-icon">✨</span>Golden</button>
+      <button class="filter-btn" onclick="setFilter('lush',this)"><span class="filter-icon">🌿</span>Lush</button>
+      <button class="filter-btn" onclick="setFilter('drama',this)"><span class="filter-icon">🎭</span>Drama</button>
+      <button class="filter-btn" onclick="setFilter('cinema',this)"><span class="filter-icon">🎬</span>Cinema</button>
+      <button class="filter-btn" onclick="setFilter('mono',this)"><span class="filter-icon">⬜</span>Mono</button>
+      <button class="filter-btn" onclick="setFilter('rich',this)"><span class="filter-icon">💎</span>Rich</button>
+    </div>
+    <p class="filter-note">All filters curated for deep skin — no ashy or washed-out effects.</p>
+    <div class="divider"></div>
+    <div class="section-label">Manual Adjustments</div>
+    <div class="slider-row">
+      <span class="slider-label">Brightness</span>
+      <input type="range" id="brightnessSlider" min="70" max="160" value="100" oninput="updatePhoto()">
+      <span class="slider-val" id="brightnessVal">100</span>
+    </div>
+    <div class="slider-row">
+      <span class="slider-label">Contrast</span>
+      <input type="range" id="contrastSlider" min="70" max="180" value="100" oninput="updatePhoto()">
+      <span class="slider-val" id="contrastVal">100</span>
+    </div>
+    <div class="slider-row">
+      <span class="slider-label">Warmth</span>
+      <input type="range" id="warmthSlider" min="0" max="40" value="0" oninput="updatePhoto()">
+      <span class="slider-val" id="warmthVal">0</span>
+    </div>
+    <div class="slider-row">
+      <span class="slider-label">Saturation</span>
+      <input type="range" id="satSlider" min="70" max="180" value="100" oninput="updatePhoto()">
+      <span class="slider-val" id="satVal">100</span>
+    </div>
+    <div class="slider-row">
+      <span class="slider-label">Vignette</span>
+      <input type="range" id="vignetteSlider" min="0" max="80" value="0" oninput="updateVignette()">
+      <span class="slider-val" id="vignetteVal">0</span>
+    </div>
+    <div class="action-row">
+      <button class="btn-ghost" onclick="resetPhoto()">Reset Photo</button>
+    </div>
+  </div>
+
+  <!-- SLIDE TEXT EDITOR -->
+  <div class="panel">
+    <h3>Edit This Slide</h3>
+    <div class="field">
+      <label>Eyebrow (small top line)</label>
+      <input type="text" id="editEyebrow" oninput="liveEdit()">
+    </div>
+    <div class="field">
+      <label>Headline</label>
+      <textarea id="editHeadline" rows="2" oninput="liveEdit()"></textarea>
+    </div>
+    <div class="field">
+      <label>Subtext (small bottom line)</label>
+      <input type="text" id="editSubtext" oninput="liveEdit()">
+    </div>
+    <div class="action-row">
+      <button class="btn-copper" onclick="saveSlide()">Save Slide</button>
+      <button class="btn-ghost" onclick="resetSlide()">Reset</button>
+    </div>
+  </div>
+
+  <!-- SLIDE LIST -->
+  <div class="panel">
+    <h3>All Slides — tap to jump</h3>
+    <div class="slide-list" id="slideList"></div>
+  </div>
+
+</div>
+
+<script>
+const DEFAULT_SLIDES = [
+  { eyebrow: "Keys by Shalanda", headline: "I am your Texas Mortgage Lender.\nDon't Google your way — just ask.", sub: "NMLS #554554 · Statewide" },
+  { eyebrow: "20 Years In the Game", headline: "Two decades of deals closed.\nI've seen everything.", sub: "VA · FHA · Conventional · Non-QM" },
+  { eyebrow: "VA Loan Specialist", headline: "Your VA benefit deserves someone who actually knows VA.", sub: "Active Duty · Veterans · Surviving Spouses" },
+  { eyebrow: "Texas Statewide", headline: "Fort Hood. San Antonio.\nAustin. Houston. DFW. El Paso.", sub: "Wherever you are in Texas — I'm your lender." },
+  { eyebrow: "No Runaround", headline: "No fluff.\nNo endless transfers.\nJust answers.", sub: "Real talk from a real loan officer." },
+  { eyebrow: "Let's Talk", headline: "Drop a question.\nSend a DM.\nLet's get you home.", sub: "@keysbyshalanda · shalandasmith.com" }
+];
+
+const FILTERS = {
+  none:   { brightness: 100, contrast: 100, saturate: 100, sepia: 0,  warmth: 0  },
+  warm:   { brightness: 104, contrast: 108, saturate: 118, sepia: 12, warmth: 12 },
+  golden: { brightness: 106, contrast: 105, saturate: 125, sepia: 20, warmth: 18 },
+  lush:   { brightness: 102, contrast: 112, saturate: 145, sepia: 0,  warmth: 5  },
+  drama:  { brightness: 96,  contrast: 148, saturate: 108, sepia: 0,  warmth: 0  },
+  cinema: { brightness: 93,  contrast: 135, saturate: 88,  sepia: 8,  warmth: 5  },
+  mono:   { brightness: 102, contrast: 120, saturate: 0,   sepia: 0,  warmth: 0  },
+  rich:   { brightness: 98,  contrast: 120, saturate: 130, sepia: 5,  warmth: 8  },
+};
+
+let slides = JSON.parse(JSON.stringify(DEFAULT_SLIDES));
+let current = 0;
+let currentFont = 'Playfair Display';
+let currentAlign = 'left';
+let currentPosition = 'bottom';
+let currentColor = '#ffffff';
+let baseFontSize = 100;
+
+// Vignette layer
+const canvas = document.getElementById('slideCanvas');
+const vigLayer = document.createElement('div');
+vigLayer.id = 'vignetteLayer';
+vigLayer.style.cssText = 'position:absolute;inset:0;pointer-events:none;z-index:1;';
+canvas.appendChild(vigLayer);
+
+document.getElementById('fileInput').addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    document.getElementById('slideImg').src = ev.target.result;
+    document.getElementById('uploadZone').style.display = 'none';
+    document.getElementById('slideWrap').style.display = 'block';
+    renderSlide();
+    buildDots();
+    buildList();
+  };
+  reader.readAsDataURL(file);
+});
+
+// Font
+function setFont(font, btn) {
+  currentFont = font;
+  document.querySelectorAll('.font-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('headline').style.fontFamily = `'${font}', serif`;
+}
+
+// Position
+function setPosition(pos, btn) {
+  currentPosition = pos;
+  document.querySelectorAll('.pos-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const el = document.getElementById('slideText');
+  el.style.top = '';
+  el.style.bottom = '';
+  el.style.transform = '';
+  if (pos === 'top') { el.style.top = '0'; }
+  else if (pos === 'middle') { el.style.top = '50%'; el.style.transform = 'translateY(-50%)'; }
+  else { el.style.bottom = '0'; }
+}
+
+// Alignment
+function setAlign(align, btn) {
+  currentAlign = align;
+  document.querySelectorAll('.align-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const el = document.getElementById('slideText');
+  el.style.textAlign = align;
+}
+
+// Text color
+function setTextColor(color, swatch) {
+  currentColor = color;
+  document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+  swatch.classList.add('active');
+  document.getElementById('headline').style.color = color;
+  document.getElementById('subtext').style.color = color === '#ffffff' ? 'rgba(255,255,255,0.7)' : color;
+}
+
+// Font size
+function updateFontSize() {
+  const val = document.getElementById('fontSizeSlider').value;
+  document.getElementById('fontSizeVal').textContent = val + '%';
+  const base = parseFloat(getComputedStyle(document.getElementById('headline')).fontSize);
+  document.getElementById('headline').style.fontSize = (val / 100 * 2) + 'rem';
+}
+
+// Photo
+function setFilter(name, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const f = FILTERS[name];
+  document.getElementById('brightnessSlider').value = f.brightness;
+  document.getElementById('contrastSlider').value   = f.contrast;
+  document.getElementById('satSlider').value        = f.saturate;
+  document.getElementById('warmthSlider').value     = f.warmth;
+  updatePhoto();
+}
+
+function updatePhoto() {
+  const zoom       = document.getElementById('zoomSlider').value;
+  const x          = document.getElementById('xSlider').value;
+  const y          = document.getElementById('ySlider').value;
+  const brightness = document.getElementById('brightnessSlider').value;
+  const contrast   = document.getElementById('contrastSlider').value;
+  const sat        = document.getElementById('satSlider').value;
+  const warmth     = document.getElementById('warmthSlider').value;
+  const scale      = zoom / 100;
+  const img        = document.getElementById('slideImg');
+  const sepia      = warmth * 0.5;
+  img.style.filter    = `brightness(${brightness}%) contrast(${contrast}%) saturate(${sat}%) sepia(${sepia}%)`;
+  img.style.transform = `scale(${scale}) translate(${x}px, ${y}px)`;
+  document.getElementById('zoomVal').textContent       = scale.toFixed(1) + '×';
+  document.getElementById('xVal').textContent          = x;
+  document.getElementById('yVal').textContent          = y;
+  document.getElementById('brightnessVal').textContent = brightness;
+  document.getElementById('contrastVal').textContent   = contrast;
+  document.getElementById('satVal').textContent        = sat;
+  document.getElementById('warmthVal').textContent     = warmth;
+}
+
+function updateVignette() {
+  const v = document.getElementById('vignetteSlider').value;
+  document.getElementById('vignetteVal').textContent = v;
+  const opacity = v / 100;
+  vigLayer.style.background = `radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,${opacity}) 100%)`;
+}
+
+function resetPhoto() {
+  ['zoomSlider','xSlider','ySlider','warmthSlider','vignetteSlider'].forEach(id => document.getElementById(id).value = 0);
+  document.getElementById('zoomSlider').value       = 100;
+  document.getElementById('brightnessSlider').value = 100;
+  document.getElementById('contrastSlider').value   = 100;
+  document.getElementById('satSlider').value        = 100;
+  document.querySelectorAll('.filter-btn').forEach((b, i) => b.classList.toggle('active', i === 0));
+  vigLayer.style.background = 'none';
+  updatePhoto();
+  document.getElementById('vignetteVal').textContent = 0;
+}
+
+function renderSlide() {
+  const s = slides[current];
+  document.getElementById('eyebrow').textContent    = s.eyebrow;
+  document.getElementById('headline').innerHTML     = s.headline.replace(/\n/g, '<br>');
+  document.getElementById('subtext').textContent    = s.sub;
+  document.getElementById('counter').textContent    = `${current + 1} / ${slides.length}`;
+  document.getElementById('prevBtn').disabled       = current === 0;
+  document.getElementById('nextBtn').disabled       = current === slides.length - 1;
+  document.getElementById('editEyebrow').value      = s.eyebrow;
+  document.getElementById('editHeadline').value     = s.headline;
+  document.getElementById('editSubtext').value      = s.sub;
+  // Re-apply current styles
+  document.getElementById('headline').style.fontFamily = `'${currentFont}', serif`;
+  document.getElementById('headline').style.color      = currentColor;
+  document.getElementById('slideText').style.textAlign = currentAlign;
+  document.querySelectorAll('.dot').forEach((d, i)        => d.classList.toggle('active', i === current));
+  document.querySelectorAll('.slide-item').forEach((d, i)  => d.classList.toggle('active', i === current));
+}
+
+function buildDots() {
+  document.getElementById('dots').innerHTML = slides.map((_, i) =>
+    `<div class="dot${i === 0 ? ' active' : ''}" onclick="goTo(${i})"></div>`).join('');
+}
+
+function buildList() {
+  document.getElementById('slideList').innerHTML = slides.map((s, i) =>
+    `<div class="slide-item${i === 0 ? ' active' : ''}" onclick="goTo(${i})">
+      <span class="num">${i + 1}</span>
+      <span>${s.headline.replace(/\n/g, ' ')}</span>
+    </div>`).join('');
+}
+
+function goTo(i) { current = i; renderSlide(); }
+function changeSlide(dir) { const n = current + dir; if (n >= 0 && n < slides.length) { current = n; renderSlide(); } }
+
+function liveEdit() {
+  document.getElementById('eyebrow').textContent = document.getElementById('editEyebrow').value;
+  document.getElementById('headline').innerHTML  = document.getElementById('editHeadline').value.replace(/\n/g, '<br>');
+  document.getElementById('subtext').textContent = document.getElementById('editSubtext').value;
+}
+
+function saveSlide() {
+  slides[current] = { eyebrow: document.getElementById('editEyebrow').value, headline: document.getElementById('editHeadline').value, sub: document.getElementById('editSubtext').value };
+  buildList();
+  const btn = document.querySelector('.btn-copper');
+  btn.textContent = '✓ Saved!';
+  setTimeout(() => btn.textContent = 'Save Slide', 1500);
+}
+
+function resetSlide() { slides[current] = JSON.parse(JSON.stringify(DEFAULT_SLIDES[current])); renderSlide(); }
+</script>
+</body>
+</html>
