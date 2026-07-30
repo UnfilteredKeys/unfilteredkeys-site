@@ -2123,37 +2123,32 @@ const pageHTML = `
 <hr class="section-rule" aria-hidden="true">
 
 <!-- ═══════════════════════════════════════════
-     HOW IT WORKS
+     CHOOSE YOUR NEXT STEP
      ═══════════════════════════════════════════ -->
 <section class="section section-parchment" aria-labelledby="process-heading">
   <div class="container">
-    <p class="section-tag">The Process</p>
-    <h2 class="section-title" id="process-heading">How It Works — From First Call to Closing Day</h2>
-    <p class="section-sub">Most lenders lose control after pre-approval. This is where we don't.</p>
+    <p class="section-tag">Start Where You Are</p>
+    <h2 class="section-title" id="process-heading">Learn. Plan. Apply.</h2>
+    <p class="section-sub">You do not have to be ready to apply before you get useful answers. Choose the step that fits where you are today.</p>
     <div class="steps-grid" role="list">
       <div class="step" role="listitem">
         <div class="step-number" aria-hidden="true">01</div>
-        <h3 class="step-title">Strategy Call</h3>
-        <p class="step-body">30 minutes. We review your goals, income, credit range, and timeline. You leave knowing your real buying power — not a rough estimate.</p>
-        <span class="step-time">30 min · Free · No Obligation</span>
+        <h3 class="step-title">Learn</h3>
+        <p class="step-body">Understand the mortgage process, loan options, and the numbers that matter before anyone asks you to complete an application.</p>
+        <a href="/guide" class="step-time" style="text-decoration:none;">Start with the free guide →</a>
       </div>
       <div class="step" role="listitem">
         <div class="step-number" aria-hidden="true">02</div>
-        <h3 class="step-title">Fully Underwritten Pre-Approval</h3>
-        <p class="step-body">We gather your documents, run the numbers, and deliver a fully underwritten pre-approval letter — the kind that actually holds up with sellers and agents.</p>
-        <span class="step-time">24–48 hrs · Fully Underwritten</span>
+        <h3 class="step-title">Plan</h3>
+        <p class="step-body">Talk through your goals, timing, payment comfort, and possible loan strategies so you know what to work toward.</p>
+        <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" class="step-time" style="text-decoration:none;">Book a strategy call →</a>
       </div>
       <div class="step" role="listitem">
         <div class="step-number" aria-hidden="true">03</div>
-        <h3 class="step-title">Close &amp; Move In</h3>
-        <p class="step-body">We handle the loan from application to funding. No disappearing acts. No last-minute surprises. You'll know where your file is every step of the way.</p>
-        <span class="step-time">Average: 21 Days to Close</span>
+        <h3 class="step-title">Apply</h3>
+        <p class="step-body">When you are ready for real numbers, complete the secure application so we can review your full financial picture.</p>
+        <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" class="step-time" style="text-decoration:none;">Begin the secure application →</a>
       </div>
-    </div>
-    <div style="margin-top:32px; text-align:center;">
-      <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display:inline-flex;">
-        Start Your Pre-Approval →
-      </a>
     </div>
   </div>
 </section>
