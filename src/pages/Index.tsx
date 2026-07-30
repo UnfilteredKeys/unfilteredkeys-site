@@ -1446,17 +1446,29 @@ details[open] summary::after { content: '−'; }
    BROKER INTRO SECTION
    ═══════════════════════════════════════════ */
 .section-broker {
-  background:
-    radial-gradient(circle at 18% 48%, rgba(26,58,92,0.08), transparent 34%),
-    var(--bg-white);
+  background: #fff;
   position: relative;
   overflow: hidden;
 }
+.section-broker::after {
+  content: 'SHALANDA';
+  position: absolute;
+  right: -0.04em;
+  bottom: -0.18em;
+  font-family: var(--font-display);
+  font-size: clamp(96px, 17vw, 250px);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  color: rgba(26,58,92,0.035);
+  pointer-events: none;
+}
 .broker-inner {
   display: grid;
-  grid-template-columns: minmax(300px, 390px) 1fr;
-  gap: 64px;
+  grid-template-columns: minmax(340px, 0.9fr) 1.1fr;
+  gap: clamp(44px, 7vw, 96px);
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 @media (max-width: 860px) {
   .broker-inner {
@@ -1468,39 +1480,49 @@ details[open] summary::after { content: '−'; }
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 8px;
+  align-items: flex-start;
+  gap: 14px;
   isolation: isolate;
 }
 .broker-photo-wrap::before {
   content: '';
   position: absolute;
-  inset: 8% 2% 10%;
+  width: 58%;
+  aspect-ratio: 1;
+  left: -12%;
+  bottom: 2%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(26,58,92,0.14), rgba(250,248,244,0) 68%);
-  filter: blur(10px);
+  background: rgba(181,98,30,0.10);
   z-index: -1;
 }
 .broker-photo {
   width: 100%;
-  max-width: 390px;
-  aspect-ratio: 4/5;
+  max-width: 480px;
+  aspect-ratio: 1/1;
   object-fit: cover;
   object-position: center top;
   border: 0;
   border-radius: 0;
   box-shadow: none;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 80%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 80%, transparent 100%);
+  mix-blend-mode: multiply;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 84%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 84%, transparent 100%);
 }
 @media (max-width: 860px) {
-  .broker-photo { max-width: 360px; }
+  .broker-photo-wrap { align-items: center; }
+  .broker-photo { max-width: 430px; }
 }
 .broker-photo-badge {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: 12px;
+  padding-left: 4px;
+}
+.broker-photo-badge::before {
+  content: '';
+  width: 36px;
+  height: 1px;
+  background: var(--copper);
 }
 .broker-badge-line {
   font-family: var(--font-mono);
@@ -1693,33 +1715,47 @@ details[open] summary::after { content: '−'; }
    TEXAS MARKETS MAP
    ═══════════════════════════════════════════ */
 .tx-map-section {
-  background:
-    radial-gradient(circle at 50% 42%, rgba(181,98,30,0.10), transparent 38%),
-    linear-gradient(180deg, var(--bg-hero) 0%, #1a3a5c 100%);
-  padding: 76px 0 84px;
+  background: #f3eee6;
+  padding: clamp(76px, 9vw, 118px) 0;
   position: relative;
   overflow: hidden;
 }
+.tx-map-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.72fr) minmax(420px, 1.28fr);
+  gap: clamp(48px, 8vw, 110px);
+  align-items: center;
+}
+.tx-map-kicker {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin: 0 0 18px;
+}
 .tx-map-heading {
-  text-align: center;
+  text-align: left;
   font-family: var(--font-display);
-  font-size: clamp(26px, 3.5vw, 38px);
+  font-size: clamp(38px, 5vw, 64px);
   font-weight: 700;
-  color: #faf8f4;
-  margin-bottom: 8px;
-  line-height: 1.15;
+  color: var(--navy);
+  margin: 0 0 22px;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
 }
 .tx-map-subheading {
-  text-align: center;
+  text-align: left;
   font-family: var(--font-body);
-  font-size: 15px;
-  color: rgba(250,248,244,0.68);
-  margin: 0 auto 40px;
-  max-width: 620px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 440px;
 }
 .tx-map-wrap {
-  max-width: 680px;
-  margin: 0 auto;
+  max-width: 720px;
+  margin: 0;
   position: relative;
 }
 .tx-map-svg {
@@ -1728,124 +1764,38 @@ details[open] summary::after { content: '−'; }
   display: block;
 }
 .tx-map-svg .tx-outline {
-  fill: rgba(250,248,244,0.035);
-  stroke: rgba(232,180,125,0.82);
-  stroke-width: 2.2;
+  fill: rgba(255,255,255,0.48);
+  stroke: var(--navy);
+  stroke-width: 1.4;
   stroke-linejoin: round;
 }
-.tx-map-svg .tx-dot-current {
-  fill: #b5621e;
-  cursor: pointer;
-  transition: r 0.2s;
+.tx-map-svg .tx-market-line {
+  stroke: rgba(26,58,92,0.30);
+  stroke-width: 1;
 }
-.tx-map-svg .tx-dot-expansion {
-  fill: none;
-  stroke: #b5621e;
-  stroke-width: 1.8;
-  stroke-dasharray: 3 2;
-  cursor: pointer;
-  transition: r 0.2s;
+.tx-map-svg .tx-market-dot {
+  fill: var(--copper);
+  stroke: #f3eee6;
+  stroke-width: 5;
 }
 .tx-map-svg .tx-city-label {
   font-family: var(--font-body);
-  font-size: 9px;
-  fill: #faf8f4;
-  pointer-events: none;
-}
-.tx-map-tooltip {
-  position: absolute;
-  background: #1a3a5c;
-  color: #faf8f4;
-  border-radius: 8px;
-  padding: 10px 14px;
-  pointer-events: none;
-  z-index: 50;
-  min-width: 200px;
-  max-width: 280px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-  border: 1px solid rgba(181,98,30,0.3);
-  opacity: 0;
-  transition: opacity 0.15s;
-}
-.tx-map-tooltip.visible { opacity: 1; }
-.tx-map-tooltip-name {
-  color: #e8a46a;
-  font-size: 13px;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-.tx-map-tooltip-badge {
-  display: inline-block;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
-  padding: 2px 7px;
-  border-radius: 3px;
-  margin-bottom: 6px;
-}
-.tx-map-tooltip-badge.current {
-  background: rgba(181,98,30,0.25);
-  color: #e8a46a;
-}
-.tx-map-tooltip-badge.expansion {
-  background: rgba(255,255,255,0.1);
-  color: rgba(250,248,244,0.6);
-}
-.tx-map-tooltip-category {
-  font-size: 10px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: rgba(250,248,244,0.5);
-  margin-bottom: 6px;
-}
-.tx-map-tooltip-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.tx-map-tooltip-list li {
-  font-size: 11.5px;
-  color: rgba(250,248,244,0.75);
-  padding: 2px 0;
-  line-height: 1.4;
-}
-.tx-map-tooltip-list li::before {
-  content: '•';
-  color: #b5621e;
-  margin-right: 6px;
-}
-.tx-map-legend {
-  display: flex;
-  justify-content: center;
-  gap: 28px;
-  margin-top: 28px;
-}
-.tx-map-legend-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  color: rgba(250,248,244,0.55);
-}
-.tx-legend-dot-solid {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #b5621e;
-  flex-shrink: 0;
-}
-.tx-legend-dot-dashed {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: 1.5px dashed #b5621e;
-  flex-shrink: 0;
+  fill: var(--navy);
+  pointer-events: none;
 }
 /* Mobile: hide map, show card grid */
 .tx-map-mobile-grid {
   display: none;
 }
+@media (max-width: 780px) {
+  .tx-map-layout { grid-template-columns: 1fr; gap: 38px; }
+  .tx-map-copy { max-width: 560px; }
+  .tx-map-heading, .tx-map-subheading { text-align: left; }
+}
 @media (max-width: 639px) {
-  .tx-map-wrap, .tx-map-legend { display: none; }
+  .tx-map-wrap { display: none; }
   .tx-map-mobile-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1854,8 +1804,9 @@ details[open] summary::after { content: '−'; }
     margin: 0 auto;
   }
   .tx-map-mobile-card {
-    background: rgba(255,255,255,0.06);
-    border-radius: 8px;
+    background: rgba(255,255,255,0.55);
+    border: 1px solid rgba(26,58,92,0.10);
+    border-radius: 0;
     padding: 12px 14px;
     display: flex;
     align-items: center;
@@ -1870,7 +1821,7 @@ details[open] summary::after { content: '−'; }
   }
   .tx-map-mobile-name {
     font-size: 13px;
-    color: #faf8f4;
+    color: var(--navy);
     font-weight: 500;
   }
 }
@@ -1921,53 +1872,55 @@ const pageHTML = `
      ═══════════════════════════════════════════ -->
 <section class="tx-map-section" aria-labelledby="tx-map-heading">
   <div class="container">
-    <h2 class="tx-map-heading" id="tx-map-heading">Texas Is Not a Side Market. It Is the Market.</h2>
-    <p class="tx-map-subheading">Explore six priority markets where local taxes, military moves, medical employment, and neighborhood pricing shape the right mortgage strategy.</p>
+    <div class="tx-map-layout">
+      <div class="tx-map-copy">
+        <p class="tx-map-kicker">Texas, statewide</p>
+        <h2 class="tx-map-heading" id="tx-map-heading">Local knowledge. Statewide reach.</h2>
+        <p class="tx-map-subheading">Texas is not one mortgage market. Property taxes, military moves, medical employment, and neighborhood pricing change the strategy from city to city. Your financing should account for that.</p>
+      </div>
 
-    <div class="tx-map-wrap" id="txMapWrap">
-      <svg class="tx-map-svg" viewBox="0 0 640 550" xmlns="http://www.w3.org/2000/svg" aria-label="Texas markets map">
-        <path class="tx-outline" d="M192,15 H321 V130 L370,128 L430,130 L500,133 L560,136 L591,140 L594,200 L596,295 L584,340 L560,358 L536,370 L510,390 L480,408 L455,428 L433,455 L430,520 L370,468 L340,450 L299,400 L282,368 L240,358 L175,352 L132,348 L90,310 L60,272 L42,242 L42,229 H192 V15 Z"/>
+      <div>
+        <div class="tx-map-wrap">
+          <svg class="tx-map-svg" viewBox="0 0 640 550" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="tx-map-title tx-map-desc">
+            <title id="tx-map-title">Priority Texas mortgage markets</title>
+            <desc id="tx-map-desc">Dallas-Fort Worth, Killeen and Fort Cavazos, Austin, Houston, San Antonio, and El Paso.</desc>
+            <path class="tx-outline" d="M192,15 H321 V130 L370,128 L430,130 L500,133 L560,136 L591,140 L594,200 L596,295 L584,340 L560,358 L536,370 L510,390 L480,408 L455,428 L433,455 L430,520 L370,468 L340,450 L299,400 L282,368 L240,358 L175,352 L132,348 L90,310 L60,272 L42,242 L42,229 H192 V15 Z"/>
 
-        <!-- PRIORITY TEXAS MARKETS -->
-        <circle class="tx-dot-current" cx="452" cy="185" r="6" data-city="dfw"/>
-        <text class="tx-city-label" x="462" y="188">Dallas-Fort Worth</text>
+            <line class="tx-market-line" x1="452" y1="185" x2="505" y2="163"/>
+            <circle class="tx-market-dot" cx="452" cy="185" r="7"/>
+            <text class="tx-city-label" x="513" y="166">Dallas-Fort Worth</text>
 
-        <circle class="tx-dot-current" cx="412" cy="262" r="6" data-city="forthood"/>
-        <text class="tx-city-label" x="402" y="265" text-anchor="end">Killeen / Fort Cavazos</text>
+            <line class="tx-market-line" x1="412" y1="262" x2="315" y2="242"/>
+            <circle class="tx-market-dot" cx="412" cy="262" r="7"/>
+            <text class="tx-city-label" x="307" y="245" text-anchor="end">Killeen / Fort Cavazos</text>
 
-        <circle class="tx-dot-current" cx="414" cy="310" r="6" data-city="austin"/>
-        <text class="tx-city-label" x="404" y="313" text-anchor="end">Austin</text>
+            <line class="tx-market-line" x1="414" y1="310" x2="337" y2="307"/>
+            <circle class="tx-market-dot" cx="414" cy="310" r="7"/>
+            <text class="tx-city-label" x="329" y="310" text-anchor="end">Austin</text>
 
-        <circle class="tx-dot-current" cx="514" cy="350" r="6" data-city="houston"/>
-        <text class="tx-city-label" x="524" y="353">Houston</text>
+            <line class="tx-market-line" x1="514" y1="350" x2="559" y2="333"/>
+            <circle class="tx-market-dot" cx="514" cy="350" r="7"/>
+            <text class="tx-city-label" x="567" y="336">Houston</text>
 
-        <circle class="tx-dot-current" cx="380" cy="358" r="6" data-city="sanantonio"/>
-        <text class="tx-city-label" x="370" y="361" text-anchor="end">San Antonio</text>
+            <line class="tx-market-line" x1="380" y1="358" x2="300" y2="374"/>
+            <circle class="tx-market-dot" cx="380" cy="358" r="7"/>
+            <text class="tx-city-label" x="292" y="378" text-anchor="end">San Antonio</text>
 
-        <circle class="tx-dot-current" cx="57" cy="248" r="6" data-city="elpaso"/>
-        <text class="tx-city-label" x="67" y="251">El Paso</text>
+            <line class="tx-market-line" x1="57" y1="248" x2="104" y2="218"/>
+            <circle class="tx-market-dot" cx="57" cy="248" r="7"/>
+            <text class="tx-city-label" x="112" y="221">El Paso</text>
+          </svg>
+        </div>
 
-      </svg>
-      <div class="tx-map-tooltip" id="txMapTooltip"></div>
-    </div>
-
-    <div class="tx-map-legend">
-      <span class="tx-map-legend-item"><span class="tx-legend-dot-solid"></span> Current market</span>
-      <span class="tx-map-legend-item"><span class="tx-legend-dot-dashed"></span> Potential expansion</span>
-    </div>
-
-    <!-- Mobile fallback -->
-    <div class="tx-map-mobile-grid">
-      <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">Dallas-Fort Worth</span></div>
-      <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">Killeen / Fort Cavazos</span></div>
-      <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">Temple</span></div>
-      <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">Round Rock</span></div>
-      <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">Austin</span></div>
-      <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">The Woodlands</span></div>
-      <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">Houston</span></div>
-      <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">San Antonio</span></div>
-      <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">El Paso</span></div>
-      <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">Corpus Christi</span></div>
+        <div class="tx-map-mobile-grid" aria-label="Priority Texas mortgage markets">
+          <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">Dallas-Fort Worth</span></div>
+          <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">Killeen / Fort Cavazos</span></div>
+          <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">Austin</span></div>
+          <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">Houston</span></div>
+          <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">San Antonio</span></div>
+          <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">El Paso</span></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -2353,64 +2306,6 @@ export default function Index() {
     navLinks.style.borderBottom = '1px solid #ddd8cf';
     navLinks.style.zIndex = '99';
     hamburger.setAttribute('aria-expanded', String(!isOpen));
-  });
-
-  // Texas Map tooltip
-  const txCityData: Record<string, {name:string,type:string,category:string,locations:string[]}> = {
-    dfw:{name:'Dallas-Fort Worth',type:'current',category:'Military & Medical',locations:['NAS Joint Reserve Base Fort Worth','Parkland Memorial Hospital','UT Southwestern Medical Center','Baylor Scott & White – Dallas','Medical City Dallas']},
-    forthood:{name:'Killeen / Fort Cavazos',type:'current',category:'Military Installation',locations:['Fort Cavazos (formerly Fort Hood)','Carl R. Darnall Army Medical Center']},
-    temple:{name:'Temple',type:'current',category:'Medical Hub',locations:['Baylor Scott & White Medical Center (flagship)','Scott & White Memorial Hospital']},
-    roundrock:{name:'Round Rock',type:'current',category:'Medical Hub',locations:['Baylor Scott & White Round Rock','St. David\'s Round Rock Medical Center']},
-    austin:{name:'Austin',type:'current',category:'Military & Medical',locations:['Army Futures Command','Dell Seton Medical Center','St. David\'s Medical Center','Ascension Seton Medical Center']},
-    woodlands:{name:'The Woodlands',type:'current',category:'Medical Hub',locations:['Houston Methodist The Woodlands','Memorial Hermann The Woodlands']},
-    houston:{name:'Houston',type:'current',category:'Military & Medical',locations:['Ellington Field Joint Reserve Base','Texas Medical Center','MD Anderson Cancer Center','Houston Methodist Hospital','Memorial Hermann Hospital']},
-    sanantonio:{name:'San Antonio',type:'current',category:'Military & Medical',locations:['Joint Base San Antonio (JBSA)','Brooke Army Medical Center','Audie Murphy VA Hospital']},
-    elpaso:{name:'El Paso',type:'current',category:'Military & Medical',locations:['Fort Bliss','William Beaumont Army Medical Center']},
-    corpuschristi:{name:'Corpus Christi',type:'current',category:'Military Installation',locations:['Naval Air Station Corpus Christi','Corpus Christi Army Depot','NAS Kingsville (40 mi south)']},
-    wichitafalls:{name:'Wichita Falls',type:'expansion',category:'Military Installation',locations:['Sheppard Air Force Base','United Regional Health Care System']},
-    abilene:{name:'Abilene',type:'expansion',category:'Military & Medical',locations:['Dyess Air Force Base','Baylor Scott & White – Abilene','Hendrick Medical Center']},
-    lubbock:{name:'Lubbock',type:'expansion',category:'Medical Hub',locations:['Texas Tech Health Sciences Center','Covenant Medical Center','University Medical Center']},
-    amarillo:{name:'Amarillo',type:'expansion',category:'Medical Hub',locations:['BSA Health System','Northwest Texas Healthcare System','Texas Tech Physicians of Amarillo']},
-    sanangelo:{name:'San Angelo',type:'expansion',category:'Military Installation',locations:['Goodfellow Air Force Base']},
-    delrio:{name:'Del Rio',type:'expansion',category:'Military Installation',locations:['Laughlin Air Force Base']},
-    tyler:{name:'Tyler',type:'expansion',category:'Medical Hub',locations:['UT Health East Texas','Christus Mother Frances Hospital']},
-    mcallen:{name:'McAllen / Rio Grande Valley',type:'expansion',category:'Medical Hub',locations:['McAllen Medical Center','Doctors Hospital at Renaissance','South Texas Health System']},
-  };
-  const tooltip = document.getElementById('txMapTooltip');
-  const mapWrap = document.getElementById('txMapWrap');
-  const dots = document.querySelectorAll('.tx-dot-current, .tx-dot-expansion');
-  const dotHandlers: Array<{el:Element, enter:(e:MouseEvent)=>void, move:(e:MouseEvent)=>void, leave:()=>void}> = [];
-  dots.forEach(dot => {
-    const city = dot.getAttribute('data-city');
-    if (!city || !txCityData[city] || !tooltip || !mapWrap) return;
-    const d = txCityData[city];
-    const enter = () => {
-      (dot as SVGCircleElement).setAttribute('r', '9');
-      const badgeClass = d.type === 'current' ? 'current' : 'expansion';
-      const badgeText = d.type === 'current' ? 'Current Market' : 'Potential Expansion';
-      tooltip.innerHTML = '<div class="tx-map-tooltip-name">' + d.name + '</div>' +
-        '<span class="tx-map-tooltip-badge ' + badgeClass + '">' + badgeText + '</span>' +
-        '<div class="tx-map-tooltip-category">' + d.category + '</div>' +
-        '<ul class="tx-map-tooltip-list">' + d.locations.map(l => '<li>' + l + '</li>').join('') + '</ul>';
-      tooltip.classList.add('visible');
-    };
-    const move = (e: MouseEvent) => {
-      if (!tooltip || !mapWrap) return;
-      const rect = mapWrap.getBoundingClientRect();
-      let left = e.clientX - rect.left + 14;
-      const top = e.clientY - rect.top - 10;
-      if (left + 240 > rect.width) left = e.clientX - rect.left - 254;
-      tooltip.style.left = left + 'px';
-      tooltip.style.top = top + 'px';
-    };
-    const leave = () => {
-      (dot as SVGCircleElement).setAttribute('r', '6');
-      if (tooltip) { tooltip.classList.remove('visible'); }
-    };
-    dot.addEventListener('mouseenter', enter as any);
-    dot.addEventListener('mousemove', move as any);
-    dot.addEventListener('mouseleave', leave);
-    dotHandlers.push({el: dot, enter: enter as any, move: move as any, leave});
   });
 
   // Intersection Observer for scroll animations
