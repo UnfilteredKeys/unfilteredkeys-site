@@ -10,7 +10,7 @@ const NAV: NavItem[] = [
     label: "VA Loans",
     children: [
       { to: "/va-loan-texas", label: "VA Loan Overview" },
-      { to: "/killeen-va-loan", label: "Killeen and Fort Hood" },
+      { to: "/killeen-va-loan", label: "Killeen and Fort Cavazos" },
       { to: "/pcs-to-portfolio", label: "PCS to Portfolio" },
       { to: "/va-loan-faq-texas", label: "VA Loan FAQ" },
     ],
