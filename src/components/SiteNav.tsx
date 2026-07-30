@@ -23,7 +23,6 @@ const NAV: NavItem[] = [
       { to: "/physician-loan-texas", label: "Physician Loans" },
       { to: "/loan-programs", label: "Explore Loan Programs" },
       { to: "/down-payment-assistance-texas", label: "Down Payment Assistance" },
-      { to: "/construction-renovation-loans-texas", label: "Construction and Renovation" },
     ],
   },
   {
