@@ -3,7 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { lazy, Suspense } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import SiteLayout from "./components/SiteLayout";
 import Index from "./pages/Index";
@@ -13,7 +13,6 @@ const Guide = lazy(() => import("./pages/Guide"));
 const PlaybookPage = lazy(() => import("@/pages/Playbook"));
 const BuyAHomePage = lazy(() => import("@/pages/BuyAHome"));
 const RefinancePage = lazy(() => import("@/pages/Refinance"));
-const LoanProgramsPage = lazy(() => import("@/pages/LoanPrograms"));
 const AboutPage = lazy(() => import("@/pages/About"));
 const CalculatorsPage = lazy(() => import("@/pages/calculators"));
 const VALoanTexasPage = lazy(() => import("@/pages/VALoanTexas"));
@@ -68,7 +67,7 @@ const App = () => (
             <Route path="/playbook" element={<PlaybookPage />} />
             <Route path="/buy" element={<BuyAHomePage />} />
             <Route path="/refinance" element={<RefinancePage />} />
-            <Route path="/loan-programs" element={<LoanProgramsPage />} />
+            <Route path="/loan-programs" element={<Navigate to="/buy" replace />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/calculators" element={<CalculatorsPage />} />
             <Route path="/va-loan-texas" element={<VALoanTexasPage />} />
