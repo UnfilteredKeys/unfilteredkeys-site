@@ -2,51 +2,52 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import SiteLayout from "./components/SiteLayout";
 import Index from "./pages/Index";
-import ThankYou from "./pages/ThankYou";
-import Guide from "./pages/Guide";
-import PlaybookPage from "@/pages/Playbook";
-import BuyAHomePage from "@/pages/BuyAHome";
-import RefinancePage from "@/pages/Refinance";
-import LoanProgramsPage from "@/pages/LoanPrograms";
-import AboutPage from "@/pages/About";
-import CalculatorsPage from "@/pages/calculators";
-import VALoanTexasPage from "@/pages/VALoanTexas";
-import VaLoanFaqTexasPage from "@/pages/VaLoanFaqTexas";
-import PhysicianLoanTexasPage from "@/pages/PhysicianLoanTexas";
-import PhysicianLoanAustinTxPage from "@/pages/PhysicianLoanAustinTx";
-import PhysicianLoanSanAntonioTxPage from "@/pages/PhysicianLoanSanAntonioTx";
-import PhysicianLoanDallasTxPage from "@/pages/PhysicianLoanDallasTx";
-import PhysicianLoanHoustonTxPage from "@/pages/PhysicianLoanHoustonTx";
-import ConstructionRenovationTexasPage from "@/pages/ConstructionRenovationTexas";
-import PcsToPortfolioPage from "@/pages/PcsToPortfolio";
-import KilleenVaLoanPage from "@/pages/KilleenVaLoan";
-import CopperasCoveVALoanPage from "@/pages/CopperasCoveVALoan";
-import ElPasoVALoanPage from "@/pages/ElPasoVALoan";
-import PartnerDemoPage from "@/pages/partners/Demo";
-import PartnerJoinPage from "@/pages/partners/Join";
-import PartnerJulieJamesPage from "@/pages/partners/JulieJames";
-import PartnerMakitaWingardPage from "@/pages/partners/MakitaWingard";
-import FirstTimeBuyersPage from "@/pages/FirstTimeBuyers";
-import InvestorsPage from "@/pages/Investors";
-import FhaLoanTexasPage from "@/pages/FhaLoanTexas";
-import ConventionalLoanTexasPage from "@/pages/ConventionalLoanTexas";
-import DownPaymentAssistanceTexasPage from "@/pages/DownPaymentAssistanceTexas";
-import TempleTexasMortgagePage from "@/pages/TempleTexasMortgage";
-import RoundRockMortgagePage from "@/pages/RoundRockMortgage";
-import GeorgetownMortgagePage from "@/pages/GeorgetownMortgage";
-import SanAntonioMortgagePage from "@/pages/SanAntonioMortgage";
-import HoustonMortgagePage from "@/pages/HoustonMortgage";
-import DallasMortgagePage from "@/pages/DallasMortgage";
-import AustinMortgagePage from "@/pages/AustinMortgage";
-import VaAppraisalChecklistPage from "@/pages/VaAppraisalChecklist";
-import VaFundingFeeCalculatorPage from "@/pages/VaFundingFeeCalculator";
-import BahCalculatorKilleenTxPage from "@/pages/BahCalculatorKilleenTx";
-import VaLoanCalculatorTexasPage from "@/pages/VaLoanCalculatorTexas";
-import NotFound from "./pages/NotFound";
+
+const ThankYou = lazy(() => import("./pages/ThankYou"));
+const Guide = lazy(() => import("./pages/Guide"));
+const PlaybookPage = lazy(() => import("@/pages/Playbook"));
+const BuyAHomePage = lazy(() => import("@/pages/BuyAHome"));
+const RefinancePage = lazy(() => import("@/pages/Refinance"));
+const AboutPage = lazy(() => import("@/pages/About"));
+const CalculatorsPage = lazy(() => import("@/pages/calculators"));
+const VALoanTexasPage = lazy(() => import("@/pages/VALoanTexas"));
+const VaLoanFaqTexasPage = lazy(() => import("@/pages/VaLoanFaqTexas"));
+const PhysicianLoanTexasPage = lazy(() => import("@/pages/PhysicianLoanTexas"));
+const PhysicianLoanAustinTxPage = lazy(() => import("@/pages/PhysicianLoanAustinTx"));
+const PhysicianLoanSanAntonioTxPage = lazy(() => import("@/pages/PhysicianLoanSanAntonioTx"));
+const PhysicianLoanDallasTxPage = lazy(() => import("@/pages/PhysicianLoanDallasTx"));
+const PhysicianLoanHoustonTxPage = lazy(() => import("@/pages/PhysicianLoanHoustonTx"));
+const ConstructionRenovationTexasPage = lazy(() => import("@/pages/ConstructionRenovationTexas"));
+const PcsToPortfolioPage = lazy(() => import("@/pages/PcsToPortfolio"));
+const KilleenVaLoanPage = lazy(() => import("@/pages/KilleenVaLoan"));
+const CopperasCoveVALoanPage = lazy(() => import("@/pages/CopperasCoveVALoan"));
+const ElPasoVALoanPage = lazy(() => import("@/pages/ElPasoVALoan"));
+const PartnerDemoPage = lazy(() => import("@/pages/partners/Demo"));
+const PartnerJoinPage = lazy(() => import("@/pages/partners/Join"));
+const PartnerJulieJamesPage = lazy(() => import("@/pages/partners/JulieJames"));
+const PartnerMakitaWingardPage = lazy(() => import("@/pages/partners/MakitaWingard"));
+const FirstTimeBuyersPage = lazy(() => import("@/pages/FirstTimeBuyers"));
+const InvestorsPage = lazy(() => import("@/pages/Investors"));
+const FhaLoanTexasPage = lazy(() => import("@/pages/FhaLoanTexas"));
+const ConventionalLoanTexasPage = lazy(() => import("@/pages/ConventionalLoanTexas"));
+const DownPaymentAssistanceTexasPage = lazy(() => import("@/pages/DownPaymentAssistanceTexas"));
+const TempleTexasMortgagePage = lazy(() => import("@/pages/TempleTexasMortgage"));
+const RoundRockMortgagePage = lazy(() => import("@/pages/RoundRockMortgage"));
+const GeorgetownMortgagePage = lazy(() => import("@/pages/GeorgetownMortgage"));
+const SanAntonioMortgagePage = lazy(() => import("@/pages/SanAntonioMortgage"));
+const HoustonMortgagePage = lazy(() => import("@/pages/HoustonMortgage"));
+const DallasMortgagePage = lazy(() => import("@/pages/DallasMortgage"));
+const AustinMortgagePage = lazy(() => import("@/pages/AustinMortgage"));
+const VaAppraisalChecklistPage = lazy(() => import("@/pages/VaAppraisalChecklist"));
+const VaFundingFeeCalculatorPage = lazy(() => import("@/pages/VaFundingFeeCalculator"));
+const BahCalculatorKilleenTxPage = lazy(() => import("@/pages/BahCalculatorKilleenTx"));
+const VaLoanCalculatorTexasPage = lazy(() => import("@/pages/VaLoanCalculatorTexas"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
 
@@ -57,15 +58,16 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
-        <Routes>
-          <Route element={<SiteLayout />}>
+        <Suspense fallback={<div className="min-h-[40vh]" aria-hidden="true" />}>
+          <Routes>
+            <Route element={<SiteLayout />}>
             <Route path="/" element={<Index />} />
             <Route path="/thank-you" element={<ThankYou />} />
             <Route path="/guide" element={<Guide />} />
             <Route path="/playbook" element={<PlaybookPage />} />
             <Route path="/buy" element={<BuyAHomePage />} />
             <Route path="/refinance" element={<RefinancePage />} />
-            <Route path="/loan-programs" element={<LoanProgramsPage />} />
+            <Route path="/loan-programs" element={<Navigate to="/buy" replace />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/calculators" element={<CalculatorsPage />} />
             <Route path="/va-loan-texas" element={<VALoanTexasPage />} />
@@ -101,8 +103,9 @@ const App = () => (
             <Route path="/bah-calculator-killeen-tx" element={<BahCalculatorKilleenTxPage />} />
             <Route path="/va-loan-calculator-texas" element={<VaLoanCalculatorTexasPage />} />
             <Route path="*" element={<NotFound />} />
-          </Route>
-        </Routes>
+            </Route>
+          </Routes>
+        </Suspense>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

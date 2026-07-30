@@ -4,17 +4,17 @@
 export const seoMeta = {
   home: {
     title: "Texas Mortgage Broker | VA, FHA & Conventional Loans | Keys by Shalanda",
-    description: "Texas mortgage broker specializing in VA loans, FHA, and conventional. 50+ lenders, 21-day average close, 5.0 Google rating. Serving all of Texas — free 15-min call.",
+    description: "Clear Texas mortgage guidance for VA, FHA, conventional, physician, construction, and investor loans. Compare the structure, cost, and trade-offs before you commit.",
     canonical: "/",
   },
   buy: {
     title: "Buy a Home in Texas | Pre-Approval & Purchase Loans | Keys by Shalanda",
-    description: "Ready to buy in Texas? Get pre-approved fast with a broker who shops 50+ lenders to find your best rate. VA, FHA, USDA, and conventional. No lender fees on VA loans.",
+    description: "Prepare to buy a home in Texas by comparing payment, cash to close, reserves, and loan structure. Explore VA, FHA, conventional, and specialty financing paths.",
     canonical: "/buy",
   },
   refinance: {
     title: "Refinance Your Texas Home | Lower Rate or Restructure | Keys by Shalanda",
-    description: "Refinance your Texas mortgage and lower your rate or restructure your payment. VA IRRRL, FHA streamline, and conventional refi options. 21-day average close. Free consult.",
+    description: "Evaluate a Texas mortgage refinance by comparing the measurable benefit, total cost, recovery time, equity, and future plans. Explore rate-and-term, streamline, and cash-out options.",
     canonical: "/refinance",
   },
   loanPrograms: {
@@ -44,7 +44,7 @@ export const seoMeta = {
   },
   vaLoanTexas: {
     title: "VA Loans in Texas | 0% Down, No PMI | Keys by Shalanda",
-    description: "Texas VA loan specialist. 0% down, no PMI, competitive rates. Serving Fort Hood, Killeen, San Antonio, DFW & all of Texas. Book a free call.",
+    description: "Texas VA loan guidance for eligible service members and veterans. Understand entitlement, funding fees, property requirements, cash to close, and long-term strategy.",
     canonical: "/va-loan-texas",
   },
   killeenVaLoan: {
@@ -64,32 +64,32 @@ export const seoMeta = {
   },
   physicianLoanHoustonTx: {
     title: "Physician Loan Houston TX | No PMI | Keys by Shalanda",
-    description: "Houston TX physician mortgage — 0–5% down, no PMI, student debt excluded. TMC, MD Anderson, Houston Methodist physicians. Licensed Texas broker.",
+    description: "Houston physician mortgage guidance for doctors, dentists, residents, and fellows. Compare contract income, student-debt treatment, cash needs, and conventional or VA alternatives.",
     canonical: "/physician-loan-houston-tx",
   },
   physicianLoanDallasTx: {
     title: "Physician Loan Dallas TX | No PMI | Keys by Shalanda",
-    description: "Dallas TX physician mortgage — 0–5% down, no PMI, student debt excluded. UT Southwestern, Baylor Scott & White, Medical City physicians.",
+    description: "Dallas physician mortgage guidance for doctors, dentists, residents, and fellows. Compare contract income, student-debt treatment, cash needs, and conventional or VA alternatives.",
     canonical: "/physician-loan-dallas-tx",
   },
   physicianLoanSanAntonioTx: {
     title: "Physician Loan San Antonio TX | No PMI | Keys by Shalanda",
-    description: "San Antonio TX physician mortgage — 0–5% down, no PMI, student debt excluded. BAMC, Wilford Hall, UT Health, University Health physicians.",
+    description: "San Antonio physician mortgage guidance for doctors, dentists, residents, and fellows. Compare contract income, student-debt treatment, cash needs, and conventional or VA alternatives.",
     canonical: "/physician-loan-san-antonio-tx",
   },
   physicianLoanAustinTx: {
     title: "Physician Loan Austin TX | No PMI | Keys by Shalanda",
-    description: "Austin TX physician mortgage — 0–5% down, no PMI, student debt excluded. Dell Medical, St. David's, Ascension Seton physicians.",
+    description: "Austin physician mortgage guidance for doctors, dentists, residents, and fellows. Compare contract income, student-debt treatment, cash needs, and conventional or VA alternatives.",
     canonical: "/physician-loan-austin-tx",
   },
   physicianLoanTexas: {
     title: "Physician Loan Texas | No PMI | Keys by Shalanda",
-    description: "Texas physician mortgage — 0–5% down, no PMI, student debt excluded, future income accepted. MDs, DOs, dentists, residents, fellows.",
+    description: "Texas physician and professional mortgage guidance. Compare contract income, student-debt treatment, cash needs, career stage, and conventional or VA alternatives.",
     canonical: "/physician-loan-texas",
   },
   constructionRenovation: {
     title: "Texas Construction & Renovation Loans | Keys by Shalanda",
-    description: "Finance new construction or home renovation with a single Texas loan. VA, FHA, USDA, and conventional one-time close construction loans.",
+    description: "Texas construction and renovation financing guidance covering ground-up builds, purchase renovations, one-close and two-close structures, builder approval, draws, reserves, and timing.",
     canonical: "/construction-renovation-loans-texas",
   },
   pcsToPortfolio: {
@@ -113,18 +113,18 @@ export const seoMeta = {
     canonical: "/investors",
   },
   fhaLoanTexas: {
-    title: "FHA Loans in Texas | 3.5% Down, 580 Credit Minimum | Keys by Shalanda",
-    description: "Texas FHA loan specialist. 3.5% down, 580+ credit, FHA 203k renovation, and Texas down payment assistance programs. Run FHA vs conventional with a licensed Texas broker.",
+    title: "FHA Loans in Texas | Compare Costs and Options | Keys by Shalanda",
+    description: "Compare Texas FHA financing with conventional and VA options based on total cost, mortgage insurance, property standards, cash to close, and long-term plans.",
     canonical: "/fha-loan-texas",
   },
   conventionalLoanTexas: {
-    title: "Conventional Loans in Texas | 3% Down, Removable PMI | Keys by Shalanda",
-    description: "Texas conventional mortgage broker. 3% down HomeReady and Home Possible, removable PMI, and 50+ lender competition on LLPA pricing. Run conventional vs FHA before you decide.",
+    title: "Conventional Loans in Texas | Compare Costs and PMI | Keys by Shalanda",
+    description: "Compare Texas conventional financing with FHA and VA options based on total cost, PMI, cash to close, property type, credit profile, and long-term flexibility.",
     canonical: "/conventional-loan-texas",
   },
   downPaymentAssistanceTexas: {
-    title: "Texas Down Payment Assistance | TDHCA, TSAHC, SETH & Chenoa Fund",
-    description: "Texas down payment assistance broker enrolled in TDHCA, TSAHC, SETH, and Chenoa Fund. Up to 5% grants and silent seconds, $0 out of pocket possible. 580+ credit options.",
+    title: "Texas Down Payment Assistance | Costs, Options and Eligibility",
+    description: "Understand how Texas down payment assistance may affect cash to close, repayment terms, interest rate, fees, and long-term flexibility. Program eligibility and availability must be verified.",
     canonical: "/down-payment-assistance-texas",
   },
   roundRockMortgage: {

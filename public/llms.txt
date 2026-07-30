@@ -8,8 +8,6 @@ Keys by Shalanda is a mortgage brokerage led by Shalanda Smith (NMLS #554554) un
 
 - [Home](/): Texas mortgage broker for VA, physician, and conventional loans.
 - [About](/about): Meet Shalanda Smith, NMLS #554554, and learn the brokerage mission.
-- [Apply](/apply): Start your mortgage application online.
-- [Thank You](/thank-you): Application submission confirmation page.
 
 ## VA Loans
 

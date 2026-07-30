@@ -16,7 +16,7 @@ interface SEOProps {
 }
 
 const SITE_NAME = "Keys by Shalanda";
-const BASE_URL = "https://unfilteredkeys-site.lovable.app";
+const BASE_URL = "https://www.shalandasmith.com";
 
 export default function SEO({
   title,

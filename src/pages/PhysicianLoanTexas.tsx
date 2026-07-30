@@ -1,434 +1,346 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
-// ── STYLES ────────────────────────────────────────────────────────────────────
-const navy = "#1a3a5c";
-const copper = "#b5621e";
-const bg = "#f7f5f2";
-const white = "#ffffff";
-const muted = "rgba(26,58,92,0.55)";
 
-const S = {
-  page: { backgroundColor: bg, fontFamily: "'Outfit', sans-serif", color: navy } as React.CSSProperties,
-  hero: { backgroundColor: navy, padding: "80px 24px 72px", position: "relative" as const, overflow: "hidden" as const },
-  heroInner: { maxWidth: "1100px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr auto", gap: "48px", alignItems: "center" } as React.CSSProperties,
-  eyebrow: { fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase" as const, color: copper, marginBottom: "18px", fontWeight: 500 },
-  heroH1: { fontFamily: "'Lora', serif", fontSize: "clamp(30px, 4.5vw, 52px)", fontWeight: 700, color: white, lineHeight: 1.1, marginBottom: "20px" },
-  heroSub: { fontSize: "17px", color: "rgba(255,255,255,0.72)", lineHeight: 1.65, maxWidth: "560px", marginBottom: "32px" },
-  heroCTAs: { display: "flex", gap: "12px", flexWrap: "wrap" as const },
-  ctaPrimary: { display: "inline-block", backgroundColor: copper, color: white, padding: "14px 28px", borderRadius: "6px", fontWeight: 700, fontSize: "15px", textDecoration: "none" },
-  ctaSecondary: { display: "inline-block", backgroundColor: "transparent", color: white, padding: "14px 28px", borderRadius: "6px", fontWeight: 600, fontSize: "15px", textDecoration: "none", border: "1px solid rgba(255,255,255,0.35)" },
-  statsBar: { backgroundColor: copper, padding: "20px 24px" },
-  statsInner: { maxWidth: "1100px", margin: "0 auto", display: "flex", justifyContent: "space-around", flexWrap: "wrap" as const, gap: "16px" },
-  statItem: { textAlign: "center" as const },
-  statNum: { fontFamily: "'Lora', serif", fontSize: "26px", fontWeight: 700, color: white },
-  statLabel: { fontSize: "12px", color: "rgba(255,255,255,0.75)", letterSpacing: "0.05em", textTransform: "uppercase" as const },
-  section: (alt?: boolean): React.CSSProperties => ({ backgroundColor: alt ? white : bg, padding: "72px 24px" }),
-  inner: { maxWidth: "1100px", margin: "0 auto" } as React.CSSProperties,
-  sectionEyebrow: { fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase" as const, color: copper, fontWeight: 600, marginBottom: "12px" },
-  sectionH2: { fontFamily: "'Lora', serif", fontSize: "clamp(24px, 3vw, 36px)", fontWeight: 700, color: navy, marginBottom: "16px", lineHeight: 1.2 },
-  sectionSub: { fontSize: "16px", color: muted, maxWidth: "620px", lineHeight: 1.65, marginBottom: "48px" },
-  grid3: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" } as React.CSSProperties,
-  grid2: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "24px" } as React.CSSProperties,
-  card: { backgroundColor: white, borderRadius: "10px", padding: "28px", boxShadow: "0 2px 12px rgba(26,58,92,0.07)", borderTop: `3px solid ${copper}` } as React.CSSProperties,
-  cardDark: { backgroundColor: navy, borderRadius: "10px", padding: "28px" } as React.CSSProperties,
-  cardTitle: { fontFamily: "'Lora', serif", fontSize: "18px", fontWeight: 700, color: navy, marginBottom: "10px" },
-  cardTitleLight: { fontFamily: "'Lora', serif", fontSize: "18px", fontWeight: 700, color: copper, marginBottom: "10px" },
-  cardBody: { fontSize: "15px", color: muted, lineHeight: 1.65 },
-  cardBodyLight: { fontSize: "14px", color: "rgba(255,255,255,0.7)", lineHeight: 1.65 },
-  table: { width: "100%", borderCollapse: "collapse" as const, fontSize: "14px" },
-  th: { backgroundColor: navy, color: white, padding: "12px 16px", textAlign: "left" as const, fontWeight: 600, fontSize: "12px", letterSpacing: "0.05em", textTransform: "uppercase" as const },
-  td: (shade?: boolean): React.CSSProperties => ({ padding: "12px 16px", backgroundColor: shade ? "#f0f4f8" : white, color: navy, borderBottom: "1px solid rgba(26,58,92,0.08)" }),
-  tdGreen: { padding: "12px 16px", backgroundColor: "#e8f2e8", color: "#2d7a2d", fontWeight: 700, borderBottom: "1px solid rgba(26,58,92,0.08)" } as React.CSSProperties,
-  faqItem: { borderBottom: "1px solid rgba(26,58,92,0.1)" },
-  faqQ: { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "20px 0", cursor: "pointer", fontWeight: 600, fontSize: "15px", color: navy } as React.CSSProperties,
-  faqA: { fontSize: "14px", color: muted, lineHeight: 1.7, paddingBottom: "20px" },
-  ctaBand: { backgroundColor: copper, padding: "72px 24px", textAlign: "center" as const },
-  ctaBandH2: { fontFamily: "'Lora', serif", fontSize: "clamp(24px, 3vw, 38px)", fontWeight: 700, color: white, marginBottom: "16px" },
-  ctaBandSub: { fontSize: "16px", color: "rgba(255,255,255,0.8)", marginBottom: "32px", maxWidth: "540px", margin: "0 auto 32px" },
-  ctaBandBtn: { display: "inline-block", backgroundColor: white, color: copper, padding: "16px 36px", borderRadius: "6px", fontWeight: 700, fontSize: "16px", textDecoration: "none" },
-  disclaimer: { fontSize: "11px", color: muted, lineHeight: 1.6, padding: "24px", backgroundColor: white, borderTop: "1px solid rgba(26,58,92,0.1)", textAlign: "center" as const } as React.CSSProperties,
-  tag: { display: "inline-block", backgroundColor: "#f0f4f8", color: navy, padding: "6px 14px", borderRadius: "20px", fontSize: "13px", fontWeight: 500, margin: "4px" },
-  tagCopper: { display: "inline-block", backgroundColor: copper, color: white, padding: "6px 14px", borderRadius: "20px", fontSize: "13px", fontWeight: 700, margin: "4px" },
-};
+const CALL_URL = "https://calendly.com/shalanda-securechoicelending/30min";
+const APPLY_URL = "https://scl.my1003app.com/554554/register";
 
-function FAQItem({ q, a }: { q: string; a: string }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div style={S.faqItem}>
-      <div style={S.faqQ} onClick={() => setOpen(!open)}>
-        <span>{q}</span>
-        <span style={{ fontSize: "20px", color: copper }}>{open ? "−" : "+"}</span>
-      </div>
-      {open && <div style={S.faqA}>{a}</div>}
-    </div>
-  );
-}
+const advantages = [
+  {
+    title: "Employment contracts may count",
+    body: "Some programs can qualify eligible borrowers with a signed contract before the new position begins, subject to the lender's timing and documentation rules.",
+  },
+  {
+    title: "Student debt may be treated differently",
+    body: "Depending on the program and repayment status, student loans may be calculated more favorably than they are under standard conventional guidelines.",
+  },
+  {
+    title: "Lower down-payment options",
+    body: "Eligible medical professionals may have access to high-balance financing with a smaller down payment and no monthly mortgage insurance.",
+  },
+  {
+    title: "Residents and fellows may qualify",
+    body: "You may not need to wait until you become an attending. Career stage, contract terms, reserves, credit, and the full loan structure still matter.",
+  },
+];
+
+const decisions = [
+  {
+    title: "Your designation",
+    body: "MD and DO borrowers are commonly eligible. Dentists, pharmacists, veterinarians, advanced-practice clinicians, and other professionals may qualify through select programs.",
+  },
+  {
+    title: "Your timing",
+    body: "A resident, fellow, relocating physician, or new attending may need a program that can use future employment income without forcing the purchase to wait.",
+  },
+  {
+    title: "Your complete payment",
+    body: "Texas property taxes, homeowners insurance, association dues, and the down payment affect the decision just as much as the loan amount.",
+  },
+];
+
+const comparisons = [
+  {
+    title: "Physician loan",
+    body: "Often strongest when contract income, student debt, or cash preservation makes standard underwriting a poor fit.",
+  },
+  {
+    title: "Conventional or jumbo",
+    body: "May offer a better overall cost when income documentation, down payment, reserves, and student-debt treatment already work within standard guidelines.",
+  },
+  {
+    title: "VA loan",
+    body: "For eligible military physicians, VA financing may be the better option. I compare the payment, fees, cash to close, and long-term flexibility side by side.",
+  },
+];
+
+const cityGuides = [
+  { title: "Austin", to: "/physician-loan-austin-tx" },
+  { title: "Dallas-Fort Worth", to: "/physician-loan-dallas-tx" },
+  { title: "Houston", to: "/physician-loan-houston-tx" },
+  { title: "San Antonio", to: "/physician-loan-san-antonio-tx" },
+];
 
 export default function PhysicianLoanTexas() {
-  const benefits = [
-    { title: "Low or No Down Payment", body: "Most programs offer 0–5% down with no PMI — on loan amounts up to $1M or more. Buy without depleting the cash reserves you spent years building." },
-    { title: "No PMI — Ever", body: "Physician loans waive private mortgage insurance regardless of down payment. On a $700K loan, that's $400–$600/month you keep instead of paying a lender's insurance premium." },
-    { title: "Student Debt Flexibility", body: "Deferred student loans are excluded or drastically reduced in DTI calculations. $300K in med school debt won't disqualify you the way it would on a conventional loan." },
-    { title: "Future Income Considered", body: "A signed employment contract is accepted as income verification. Close on your home 60–90 days before your attending salary starts — without waiting to build a pay stub history." },
-    { title: "High Loan Amounts", body: "Programs go up to $1M with 0% down, $1.5M with 5%, and $2M+ with 10%. Designed for markets like Austin, Dallas, and Houston where physician salaries and home prices both run high." },
-    { title: "Residents & Fellows Qualify", body: "You don't need to be an attending. A signed residency or fellowship contract is sufficient. Most programs allow closing up to 90 days before your start date." },
-  ];
-
-  const whoQualifies = [
-    "MD — Medical Doctor", "DO — Doctor of Osteopathic Medicine", "DMD / DDS — Dentist",
-    "DPM — Podiatrist", "OD — Optometrist", "PharmD — Pharmacist",
-    "NP — Nurse Practitioner", "CRNA — Anesthetist", "PA — Physician Assistant",
-    "PhD (select programs)",
-  ];
-
-  const faqs = [
-    { q: "What is a physician mortgage loan?", a: "A physician mortgage loan is a specialized home loan for medical doctors, dentists, and other high-income professionals. It allows low or no down payment without PMI, excludes deferred student loan debt from DTI calculations, and accepts a signed employment contract as income — making it possible to buy during residency or early career." },
-    { q: "Who qualifies for a physician loan in Texas?", a: "Eligibility typically includes MDs, DOs, DMDs, DDSs, and in some programs: optometrists, podiatrists, pharmacists, nurse practitioners, physician assistants, attorneys, and CPAs. Residents and fellows qualify — you don't need to be an attending yet. A signed employment contract is accepted in place of pay stubs." },
-    { q: "Do physician loans require a down payment?", a: "Most programs offer 0–5% down with no PMI. Some go up to $1M with 0% down, $1.5M with 5% down, and $2M with 10% down. The structure depends on loan amount and lender guidelines — we match your file to the program that fits." },
-    { q: "Do physician loans have PMI?", a: "No. Physician loans waive private mortgage insurance even with less than 20% down. This is one of the primary advantages — on a $700K loan, PMI could cost $400–$600/month on a conventional loan. Physician programs eliminate it entirely." },
-    { q: "How do physician loans handle student loan debt?", a: "Most programs exclude deferred student debt from DTI entirely, or use the income-based repayment (IBR) payment rather than the full standard payment. This is critical for residents and new attendings with $200K–$400K in student loans who would otherwise fail DTI on a conventional loan." },
-    { q: "Can I get a physician loan as a resident or fellow?", a: "Yes. A signed residency or fellowship contract is accepted as income verification. You can typically close 60–90 days before your start date. You don't need to have started earning your attending salary yet." },
-    { q: "Are physician loans available for new construction in Texas?", a: "Yes. Physician loans work for new construction. You can lock your rate early and close when the build completes — common in Austin, DFW, Houston, and San Antonio where new builds are a significant share of the market." },
-    { q: "How does a physician loan compare to a conventional or jumbo loan?", a: "Physician loans beat conventional on down payment flexibility, PMI waiver, and student debt treatment. Compared to jumbo loans, physician programs typically have more flexible DTI guidelines and don't require two years of tax returns for early-career physicians." },
-  ];
-
   return (
     <>
       <SEO {...seoMeta.physicianLoanTexas} />
-    <div style={S.page}>
+      <style>{`
+        .physician-page {
+          --navy: #1a3a5c;
+          --copper: #b5621e;
+          --ivory: #faf8f4;
+          --cream: #f5efe5;
+          --white: #ffffff;
+          --ink: #1c2630;
+          --muted: #526171;
+          --line: rgba(26, 58, 92, .14);
+          background: var(--ivory);
+          color: var(--ink);
+          font-family: 'Outfit', sans-serif;
+          line-height: 1.65;
+        }
+        .physician-page *, .physician-page *::before, .physician-page *::after { box-sizing: border-box; }
+        .physician-page h1, .physician-page h2, .physician-page h3 {
+          font-family: 'Lora', Georgia, serif;
+          letter-spacing: -.025em;
+          line-height: 1.12;
+        }
+        .physician-wrap { width: min(1120px, calc(100% - 48px)); margin: 0 auto; }
+        .physician-kicker {
+          margin: 0 0 16px;
+          color: var(--copper);
+          font: 600 11px/1.4 'Fira Mono', monospace;
+          letter-spacing: .15em;
+          text-transform: uppercase;
+        }
+        .physician-hero { padding: 92px 0 86px; background: var(--cream); }
+        .physician-hero-grid {
+          display: grid;
+          grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr);
+          gap: 72px;
+          align-items: center;
+        }
+        .physician-hero h1 {
+          max-width: 760px;
+          margin: 0 0 24px;
+          color: var(--navy);
+          font-size: clamp(42px, 5.8vw, 68px);
+          font-weight: 600;
+        }
+        .physician-lead {
+          max-width: 680px;
+          margin: 0 0 32px;
+          color: var(--muted);
+          font-size: clamp(17px, 2vw, 20px);
+        }
+        .physician-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; }
+        .physician-primary {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 48px;
+          padding: 0 24px;
+          border-radius: 5px;
+          background: var(--copper);
+          color: white;
+          font-weight: 700;
+          text-decoration: none;
+        }
+        .physician-text-link { color: var(--navy); font-weight: 700; text-underline-offset: 5px; }
+        .physician-summary {
+          padding: 36px;
+          border-radius: 12px;
+          background: var(--navy);
+          color: white;
+          box-shadow: 0 18px 50px rgba(26, 58, 92, .13);
+        }
+        .physician-summary h2 { margin: 0 0 22px; color: white; font-size: 27px; }
+        .physician-summary ul { display: grid; gap: 15px; margin: 0; padding: 0; list-style: none; }
+        .physician-summary li { padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,.14); color: rgba(255,255,255,.78); }
+        .physician-summary li:last-child { padding-bottom: 0; border-bottom: 0; }
+        .physician-section { padding: 86px 0; }
+        .physician-section.white { background: var(--white); }
+        .physician-heading { max-width: 740px; margin-bottom: 44px; }
+        .physician-heading h2 {
+          margin: 0 0 17px;
+          color: var(--navy);
+          font-size: clamp(32px, 4vw, 46px);
+          font-weight: 600;
+        }
+        .physician-heading > p:last-child { margin: 0; color: var(--muted); font-size: 17px; }
+        .physician-advantages {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          border-top: 1px solid var(--line);
+        }
+        .physician-advantage { padding: 30px 34px 30px 0; border-bottom: 1px solid var(--line); }
+        .physician-advantage:nth-child(even) { padding-right: 0; padding-left: 34px; border-left: 1px solid var(--line); }
+        .physician-advantage h3, .physician-decision h3, .physician-choice h3 {
+          margin: 0 0 10px;
+          color: var(--navy);
+          font-size: 21px;
+        }
+        .physician-advantage p, .physician-decision p, .physician-choice p { margin: 0; color: var(--muted); }
+        .physician-split {
+          display: grid;
+          grid-template-columns: .85fr 1.15fr;
+          gap: 82px;
+          align-items: start;
+        }
+        .physician-split h2 { margin: 0; color: var(--navy); font-size: clamp(32px, 4vw, 48px); font-weight: 600; }
+        .physician-decisions { border-top: 1px solid var(--line); }
+        .physician-decision { padding: 26px 0; border-bottom: 1px solid var(--line); }
+        .physician-choices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+        .physician-choice { padding: 28px; border-top: 3px solid var(--copper); background: var(--white); }
+        .physician-note {
+          margin-top: 32px;
+          padding: 26px 30px;
+          border-left: 4px solid var(--copper);
+          background: var(--cream);
+          color: var(--muted);
+        }
+        .physician-note strong { color: var(--navy); }
+        .physician-guides { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+        .physician-guide {
+          display: flex;
+          min-height: 120px;
+          align-items: flex-end;
+          padding: 24px;
+          border: 1px solid var(--line);
+          background: white;
+          color: var(--navy);
+          font-family: 'Lora', serif;
+          font-size: 20px;
+          font-weight: 700;
+          text-decoration: none;
+        }
+        .physician-guide:hover { border-color: var(--copper); color: var(--copper); }
+        .physician-cta { padding: 82px 0; background: var(--navy); color: white; text-align: center; }
+        .physician-cta .physician-wrap { max-width: 760px; }
+        .physician-cta h2 { margin: 0 0 18px; color: white; font-size: clamp(32px, 5vw, 50px); }
+        .physician-cta p { margin: 0 auto 30px; color: rgba(255,255,255,.76); font-size: 17px; }
+        .physician-cta .physician-primary { background: #d08045; }
+        @media (max-width: 800px) {
+          .physician-wrap { width: min(100% - 32px, 1120px); }
+          .physician-hero, .physician-section, .physician-cta { padding: 62px 0; }
+          .physician-hero-grid, .physician-split { grid-template-columns: 1fr; gap: 38px; }
+          .physician-advantages, .physician-choices, .physician-guides { grid-template-columns: 1fr; }
+          .physician-advantage, .physician-advantage:nth-child(even) { padding: 24px 0; border-left: 0; }
+          .physician-actions { align-items: flex-start; flex-direction: column; }
+          .physician-primary { width: 100%; }
+          .physician-guide { min-height: 90px; }
+        }
+      `}</style>
 
-      {/* HERO */}
-      <div style={S.hero}>
-        <div style={S.heroInner}>
-          <div>
-            <p style={S.eyebrow}>Physician Loans · Texas · All Markets · Keys by Shalanda</p>
-            <h1 style={S.heroH1}>
-              A Mortgage Built<br />
-              for How Doctors<br />
-              Actually Get Paid.
-            </h1>
-            <p style={S.heroSub}>
-              Student debt that doesn't count. Future income that does. No PMI on loan amounts up to $2M. Physician mortgage programs exist because conventional underwriting wasn't built for your career path.
+      <main className="physician-page">
+        <section className="physician-hero">
+          <div className="physician-wrap physician-hero-grid">
+            <div>
+              <p className="physician-kicker">Texas physician and professional lending</p>
+              <h1>Your career path should not confuse your mortgage.</h1>
+              <p className="physician-lead">
+                Contract income, student debt, and years spent in training can make a strong borrower look complicated.
+                The right strategy compares the programs built for that reality.
+              </p>
+              <div className="physician-actions">
+                <a className="physician-primary" href={CALL_URL} target="_blank" rel="noopener noreferrer">
+                  Book a Strategy Call
+                </a>
+                <a className="physician-text-link" href={APPLY_URL} target="_blank" rel="noopener noreferrer">
+                  Ready now? Start here
+                </a>
+              </div>
+            </div>
+            <aside className="physician-summary">
+              <p className="physician-kicker" style={{ color: "#e8b47d" }}>What we review</p>
+              <h2>The complete file, not one headline.</h2>
+              <ul>
+                <li>Professional designation and career stage</li>
+                <li>Employment contract and start date</li>
+                <li>Student-loan repayment status</li>
+                <li>Cash, reserves, credit, and target payment</li>
+              </ul>
+            </aside>
+          </div>
+        </section>
+
+        <section className="physician-section white">
+          <div className="physician-wrap">
+            <div className="physician-heading">
+              <p className="physician-kicker">Why these programs exist</p>
+              <h2>Traditional underwriting does not always tell the full story.</h2>
+              <p>
+                Physician and professional programs can solve specific documentation problems. Availability and terms
+                vary, so we begin with your file instead of promising a one-size-fits-all product.
+              </p>
+            </div>
+            <div className="physician-advantages">
+              {advantages.map((advantage) => (
+                <article className="physician-advantage" key={advantage.title}>
+                  <h3>{advantage.title}</h3>
+                  <p>{advantage.body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="physician-section">
+          <div className="physician-wrap physician-split">
+            <div>
+              <p className="physician-kicker">Before the preapproval</p>
+              <h2>Three details shape the strategy.</h2>
+            </div>
+            <div className="physician-decisions">
+              {decisions.map((decision) => (
+                <article className="physician-decision" key={decision.title}>
+                  <h3>{decision.title}</h3>
+                  <p>{decision.body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="physician-section white">
+          <div className="physician-wrap">
+            <div className="physician-heading">
+              <p className="physician-kicker">Compare before choosing</p>
+              <h2>A physician loan is an option, not an automatic winner.</h2>
+              <p>
+                The best loan is the one that gives you the strongest overall structure after payment, cash to close,
+                mortgage insurance, fees, and future plans are considered.
+              </p>
+            </div>
+            <div className="physician-choices">
+              {comparisons.map((choice) => (
+                <article className="physician-choice" key={choice.title}>
+                  <h3>{choice.title}</h3>
+                  <p>{choice.body}</p>
+                </article>
+              ))}
+            </div>
+            <div className="physician-note">
+              <strong>Program guidelines change.</strong> Eligible designations, maximum loan amounts, down payments,
+              student-debt calculations, property types, and contract timing vary by lender and borrower profile.
+            </div>
+          </div>
+        </section>
+
+        <section className="physician-section">
+          <div className="physician-wrap">
+            <div className="physician-heading">
+              <p className="physician-kicker">Texas market guides</p>
+              <h2>Local details still change the payment.</h2>
+              <p>
+                Explore focused guidance for four major medical markets, including property taxes, insurance, commute,
+                and the real monthly cost of the home.
+              </p>
+            </div>
+            <div className="physician-guides">
+              {cityGuides.map((guide) => (
+                <Link className="physician-guide" to={guide.to} key={guide.title}>
+                  {guide.title} →
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="physician-cta">
+          <div className="physician-wrap">
+            <h2>Let’s compare the options around your actual career and finances.</h2>
+            <p>
+              We will review your contract, student debt, cash, target payment, and timing before deciding which loan
+              deserves your attention.
             </p>
-            <div style={S.heroCTAs}>
-              <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" style={S.ctaPrimary}>
-                See If I Qualify →
-              </a>
-              <a href="https://scl.my1003app.com/554554/register?time=1775490954917" target="_blank" rel="noopener noreferrer" style={S.ctaSecondary}>
-                Start My Application
-              </a>
-            </div>
+            <a className="physician-primary" href={CALL_URL} target="_blank" rel="noopener noreferrer">
+              Book a Strategy Call
+            </a>
           </div>
-
-          <div style={{ backgroundColor: "rgba(255,255,255,0.06)", borderRadius: "12px", padding: "28px 24px", minWidth: "220px" }}>
-            {[
-              ["Down Payment", "0–5% Typical"],
-              ["PMI", "None — Ever"],
-              ["Student Debt", "Excluded or Reduced"],
-              ["Income", "Contract Accepted"],
-              ["Max Loan", "Up to $2M+"],
-              ["Residents", "Yes — Contract OK"],
-            ].map(([l, v]) => (
-              <div key={l} style={{ marginBottom: "14px" }}>
-                <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.5)", letterSpacing: "0.08em", textTransform: "uppercase" as const }}>{l}</div>
-                <div style={{ fontWeight: 700, color: white, fontSize: "15px" }}>{v}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* STATS BAR */}
-      <div style={S.statsBar}>
-        <div style={S.statsInner}>
-          {[
-            ["0%", "Down Payment Available"],
-            ["$0", "Monthly PMI"],
-            ["$2M+", "Max Loan Amount"],
-            ["90 Days", "Before Start Date Allowed"],
-          ].map(([n, l]) => (
-            <div key={l} style={S.statItem}>
-              <div style={S.statNum}>{n}</div>
-              <div style={S.statLabel}>{l}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* WHY PHYSICIAN LOANS EXIST */}
-      <div style={S.section()}>
-        <div style={S.inner}>
-          <p style={S.sectionEyebrow}>The Problem</p>
-          <h2 style={S.sectionH2}>Conventional underwriting wasn't<br />designed for your career path.</h2>
-          <p style={S.sectionSub}>A standard loan looks at last year's tax returns, your current debt-to-income ratio, and your down payment. For most physicians, that picture is deliberately misleading.</p>
-          <div style={S.grid3}>
-            {[
-              { problem: "Your tax returns show low income", fix: "Because you were in residency last year. A physician loan uses your contract — not last year's W-2." },
-              { problem: "Your DTI looks impossibly high", fix: "Because $300K in student loans skews the math. Physician programs exclude deferred debt or use IBR payments instead." },
-              { problem: "You don't have 20% down saved", fix: "Because you've been in training for 7–12 years. Physician loans allow 0–5% down with no PMI on high loan amounts." },
-            ].map(item => (
-              <div key={item.problem} style={S.card}>
-                <div style={{ ...S.cardTitle, color: copper }}>The Problem</div>
-                <div style={{ ...S.cardBody, marginBottom: "16px" }}>{item.problem}</div>
-                <div style={S.cardTitle}>The Fix</div>
-                <div style={S.cardBody}>{item.fix}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* BENEFITS */}
-      <div style={S.section(true)}>
-        <div style={S.inner}>
-          <p style={S.sectionEyebrow}>Program Benefits</p>
-          <h2 style={S.sectionH2}>Six reasons physician loans<br />work when conventional doesn't.</h2>
-          <p style={S.sectionSub}>These programs exist at the wholesale level — not every lender participates. Access matters as much as eligibility.</p>
-          <div style={S.grid3}>
-            {benefits.map(b => (
-              <div key={b.title} style={S.card}>
-                <div style={S.cardTitle}>{b.title}</div>
-                <div style={S.cardBody}>{b.body}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* LOAN LIMITS TABLE */}
-      <div style={S.section()}>
-        <div style={S.inner}>
-          <p style={S.sectionEyebrow}>Loan Structure</p>
-          <h2 style={S.sectionH2}>What physician loan amounts<br />look like in practice.</h2>
-          <p style={S.sectionSub}>Most programs tier by loan amount and down payment. Here's the general structure — exact terms depend on lender and your specific file.</p>
-
-          <div style={{ overflowX: "auto" as const, marginBottom: "32px" }}>
-            <table style={S.table}>
-              <thead>
-                <tr>
-                  <th style={S.th}>Loan Amount</th>
-                  <th style={S.th}>Down Payment</th>
-                  <th style={S.th}>PMI</th>
-                  <th style={S.th}>Notes</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td style={S.td()}>Up to $1,000,000</td><td style={S.td()}>0%</td><td style={S.tdGreen}>None</td><td style={S.td()}>Most common for attendings and residents</td></tr>
-                <tr><td style={S.td(true)}>Up to $1,250,000</td><td style={S.td(true)}>5%</td><td style={S.tdGreen}>None</td><td style={S.td(true)}>Common in Austin, DFW, Houston markets</td></tr>
-                <tr><td style={S.td()}>Up to $1,500,000</td><td style={S.td()}>10%</td><td style={S.tdGreen}>None</td><td style={S.td()}>High-value primary residence</td></tr>
-                <tr><td style={S.td(true)}>$1.5M–$2M+</td><td style={S.td(true)}>10–15%</td><td style={S.tdGreen}>None</td><td style={S.td(true)}>Jumbo physician — lender dependent</td></tr>
-                <tr><td style={S.td()}>Conventional comparison</td><td style={S.td()}>3–5%</td><td style={S.td()}>Required until 20% equity</td><td style={S.td()}>Standard DTI rules — student debt counted</td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <p style={{ fontSize: "13px", color: muted, lineHeight: 1.6, fontStyle: "italic" }}>
-            Program terms vary by lender. Loan amounts and down payment requirements shown are representative ranges — actual terms depend on your credit profile, income documentation, and the wholesale lender matched to your file.
-          </p>
-        </div>
-      </div>
-
-      {/* WHO QUALIFIES */}
-      <div style={S.section(true)}>
-        <div style={S.inner}>
-          <p style={S.sectionEyebrow}>Eligible Designations</p>
-          <h2 style={S.sectionH2}>This isn't just for MDs.<br />More designations qualify than you think.</h2>
-          <p style={S.sectionSub}>Eligibility has expanded significantly. Ask about your specific designation — the list below covers most programs but not all lenders include every designation.</p>
-
-          <div style={{ marginBottom: "48px" }}>
-            {whoQualifies.map(d => (
-              <span key={d} style={S.tag}>{d}</span>
-            ))}
-          </div>
-
-          <div style={S.grid2}>
-            <div style={S.cardDark}>
-              <div style={S.cardTitleLight}>
-                Residents &amp; Fellows: You qualify now.
-              </div>
-              <div style={{ ...S.cardBodyLight, marginBottom: "16px" }}>
-                You don't need to wait until your attending contract starts. Most physician loan programs accept:
-              </div>
-              <ul style={{ fontSize: "14px", color: "rgba(255,255,255,0.7)", lineHeight: 1.8, paddingLeft: "20px" }}>
-                <li>Signed residency or fellowship contract</li>
-                <li>Closing up to 90 days before start date</li>
-                <li>Current resident income as qualifying income</li>
-                <li>Deferred student loans excluded from DTI</li>
-              </ul>
-            </div>
-            <div style={S.cardDark}>
-              <div style={S.cardTitleLight}>
-                New Attendings: Your contract is enough.
-              </div>
-              <div style={{ ...S.cardBodyLight, marginBottom: "16px" }}>
-                Just started your attending position? No two years of tax returns required.
-              </div>
-              <ul style={{ fontSize: "14px", color: "rgba(255,255,255,0.7)", lineHeight: 1.8, paddingLeft: "20px" }}>
-                <li>Signed offer letter accepted as income</li>
-                <li>No requirement for 2 years of W-2s</li>
-                <li>Student loans in IBR treated at IBR payment</li>
-                <li>Close before your first paycheck if needed</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* PHYSICIAN vs CONVENTIONAL */}
-      <div style={S.section()}>
-        <div style={S.inner}>
-          <p style={S.sectionEyebrow}>Side by Side</p>
-          <h2 style={S.sectionH2}>Physician loan vs. conventional<br />on a $900,000 Texas home.</h2>
-          <p style={S.sectionSub}>Same home, same borrower, very different outcome depending on which loan program is used.</p>
-
-          <div style={S.grid2}>
-            <div style={{ ...S.card, borderTop: `4px solid ${copper}` }}>
-              <div style={{ ...S.cardTitle, marginBottom: "20px" }}>Physician Loan ★</div>
-              {[
-                ["Down Payment", "0% — $0 out of pocket"],
-                ["PMI", "$0/month — waived"],
-                ["Student Debt DTI", "Excluded if deferred"],
-                ["Income Verification", "Signed contract accepted"],
-                ["Loan Amount", "$900,000 financed"],
-                ["Cash to Close", "Closing costs only"],
-              ].map(([l, v]) => (
-                <div key={l} style={{ display: "flex", justifyContent: "space-between", padding: "10px 0", borderBottom: "1px solid rgba(26,58,92,0.08)" }}>
-                  <span style={{ fontSize: "14px", color: muted }}>{l}</span>
-                  <span style={{ fontSize: "14px", fontWeight: 600, color: navy }}>{v}</span>
-                </div>
-              ))}
-            </div>
-            <div style={S.card}>
-              <div style={{ ...S.cardTitle, marginBottom: "20px" }}>Conventional Loan</div>
-              {[
-                ["Down Payment", "20% — $180,000 required"],
-                ["PMI (if <20% down)", "$500–$700/month"],
-                ["Student Debt DTI", "Counted at 1% of balance/mo"],
-                ["Income Verification", "2 years tax returns required"],
-                ["Loan Amount", "$720,000 (after 20% down)"],
-                ["Cash to Close", "$180,000+ down + closing costs"],
-              ].map(([l, v]) => (
-                <div key={l} style={{ display: "flex", justifyContent: "space-between", padding: "10px 0", borderBottom: "1px solid rgba(26,58,92,0.08)" }}>
-                  <span style={{ fontSize: "14px", color: muted }}>{l}</span>
-                  <span style={{ fontSize: "14px", color: muted }}>{v}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* FAQ */}
-      <div style={S.section(true)}>
-        <div style={S.inner}>
-          <p style={S.sectionEyebrow}>FAQ</p>
-          <h2 style={S.sectionH2}>Questions physicians ask<br />before they apply.</h2>
-          <p style={S.sectionSub}>The answers your lender should give you upfront — especially the ones about student debt and income verification.</p>
-          <div style={{ maxWidth: "760px" }}>
-            {faqs.map(f => <FAQItem key={f.q} q={f.q} a={f.a} />)}
-          </div>
-        </div>
-      </div>
-
-      {/* TEXAS MARKETS */}
-      <div style={S.section()}>
-        <div style={S.inner}>
-          <p style={S.sectionEyebrow}>Texas Markets We Serve</p>
-          <h2 style={S.sectionH2}>Where Texas physicians<br />are buying right now.</h2>
-
-          <div style={{ marginBottom: "40px" }}>
-            {["Houston Medical Center", "Dallas-Fort Worth", "Austin", "San Antonio", "El Paso", "Killeen-Temple", "Round Rock", "Georgetown", "Waco", "Abilene", "All of Texas"].map(m => (
-              <span key={m} style={m === "All of Texas" ? S.tagCopper : S.tag}>{m}</span>
-            ))}
-          </div>
-
-          <div style={{ backgroundColor: navy, borderRadius: "12px", padding: "32px" }}>
-            <div style={{ fontFamily: "'Lora', serif", fontSize: "16px", fontWeight: 700, color: copper, marginBottom: "12px" }}>
-              A note on Texas property taxes
-            </div>
-            <div style={{ fontSize: "14px", color: "rgba(255,255,255,0.7)", lineHeight: 1.7 }}>
-              Texas has no state income tax but property taxes run 1.6–2.6% annually. On a $900,000 home that's $1,200–$1,950/month added to your payment — before principal, interest, or insurance. We build this into your real payment from day one so there are no surprises at your first escrow adjustment. If you have a 100% VA disability rating, a full property tax exemption may also apply.
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* BY MARKET / BY HOSPITAL SYSTEM */}
-      <div style={S.section(true)}>
-        <div style={S.inner}>
-          <p style={S.sectionEyebrow}>By Market · By Hospital System</p>
-          <h2 style={S.sectionH2}>Texas physician mortgage loans — matched to your market and hospital system.</h2>
-          <p style={S.sectionSub}>Whether you're finishing residency at UT Southwestern or joining an attending group at the Texas Medical Center, the loan structure is the same. What changes is the market.</p>
-          <div style={S.grid2}>
-            {[
-              { city: "AUSTIN", title: "Physician Loans in Austin, TX", body: "Dell Medical School, Seton/Ascension physicians, Round Rock, Cedar Park, Travis County. $550K–$750K price range. 0% down, no PMI, student debt excluded.", to: "/physician-loan-austin-tx", label: "Austin Guide →" },
-              { city: "DALLAS", title: "Physician Loans in Dallas, TX", body: "UT Southwestern, Baylor Scott & White, Medical City. Frisco, McKinney, Southlake. $500K–$900K. Doctor loans structured to handle large student debt at DTI level.", to: "/physician-loan-dallas-tx", label: "Dallas Guide →" },
-              { city: "HOUSTON", title: "Physician Loans in Houston, TX", body: "Texas Medical Center — the largest medical complex in the world. Flood zone overlays and higher insurance costs affect real monthly payment.", to: "/physician-loan-houston-tx", label: "Houston Guide →" },
-              { city: "SAN ANTONIO", title: "Physician Loans in San Antonio, TX", body: "BAMC, Wilford Hall, University Health, Baptist. Military physicians may qualify for both VA and physician programs. We run side-by-side comparison on every military physician file.", to: "/physician-loan-san-antonio-tx", label: "San Antonio Guide →" },
-            ].map((c) => (
-              <div key={c.city} style={{ ...S.card, display: "flex", flexDirection: "column" }}>
-                <div style={S.sectionEyebrow}>{c.city}</div>
-                <h3 style={S.cardTitle}>{c.title}</h3>
-                <p style={{ ...S.cardBody, marginBottom: "16px" }}>{c.body}</p>
-                <Link to={c.to} style={{ fontFamily: "'Outfit', sans-serif", fontSize: "14px", fontWeight: 600, color: copper, textDecoration: "none", marginTop: "auto" }}>{c.label}</Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* INTERNAL LINKS — CITY GUIDES */}
-      <div style={{ backgroundColor: navy, padding: "72px 24px" }}>
-        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <h2 style={{ fontFamily: "'Lora', serif", fontSize: "clamp(26px, 3vw, 36px)", fontWeight: 700, color: "#faf8f4", textAlign: "center", marginBottom: "12px" }}>Physician Loans by Texas City</h2>
-          <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "16px", color: "rgba(255,255,255,0.75)", textAlign: "center", maxWidth: "640px", margin: "0 auto 40px", lineHeight: 1.6 }}>Find the right program for your market — we know each city's neighborhoods, price points, and hospital systems.</p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "20px" }}>
-            {[
-              { city: "AUSTIN", heading: "Physician Loans in Austin, TX", desc: "Travis County home prices $550K–$750K. No PMI, 0% down, student loans excluded from DTI.", to: "/physician-loan-austin-tx", label: "Austin Guide →" },
-              { city: "DALLAS", heading: "Physician Loans in Dallas, TX", desc: "UT Southwestern, Baylor Scott & White, Medical City. Serving residents, fellows, and attending physicians across DFW.", to: "/physician-loan-dallas-tx", label: "Dallas Guide →" },
-              { city: "HOUSTON", heading: "Physician Loans in Houston, TX", desc: "Texas Medical Center — the largest in the world. TMC physicians face unique flood zone and DTI challenges we handle daily.", to: "/physician-loan-houston-tx", label: "Houston Guide →" },
-              { city: "SAN ANTONIO", heading: "Physician Loans in San Antonio, TX", desc: "University Health, Baptist, Methodist, BAMC, and Wilford Hall. Military physicians welcome — we run VA vs. physician loan comparisons side by side.", to: "/physician-loan-san-antonio-tx", label: "San Antonio Guide →" },
-            ].map((c) => (
-              <div key={c.city} style={{ backgroundColor: white, borderRadius: "10px", padding: "28px", borderTop: `3px solid ${copper}`, display: "flex", flexDirection: "column" }}>
-                <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase", color: copper, fontWeight: 600, marginBottom: "10px" }}>{c.city}</div>
-                <h3 style={{ fontFamily: "'Lora', serif", fontSize: "19px", fontWeight: 700, color: navy, marginBottom: "10px" }}>{c.heading}</h3>
-                <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "14px", color: "#3d4f63", lineHeight: 1.6, marginBottom: "18px", flexGrow: 1 }}>{c.desc}</p>
-                <Link to={c.to} style={{ fontFamily: "'Outfit', sans-serif", fontSize: "14px", fontWeight: 600, color: copper, textDecoration: "none" }}>{c.label}</Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* CTA BAND */}
-      <div style={S.ctaBand}>
-        <div style={{ maxWidth: "640px", margin: "0 auto" }}>
-          <h2 style={S.ctaBandH2}>
-            You've spent a decade<br />earning this income.
-          </h2>
-          <p style={S.ctaBandSub}>
-            Thirty minutes. We review your designation, income structure, student debt situation, and target price — and tell you exactly which physician loan program fits your file.
-          </p>
-          <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" style={S.ctaBandBtn}>
-            Book a Strategy Call →
-          </a>
-          <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.65)", marginTop: "20px" }}>
-            Or call/text 254.935.9331 · shalandasmith.com
-          </p>
-        </div>
-      </div>
-
-      {/* DISCLAIMER */}
-      <div style={S.disclaimer}>
-        <p>This page is for educational purposes only and does not constitute a loan commitment, rate guarantee, or offer to lend. All loans subject to credit approval. Physician loan program availability, eligible designations, loan amounts, and down payment requirements vary by lender and are subject to change without notice. Not all programs are available in all areas.</p>
-        <br />
-        <p>Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Licensed by the Texas Department of Savings and Mortgage Lending · Equal Housing Lender</p>
-        <br />
-        <p>shalandasmith.com · 254.935.9331 · <a href="mailto:shalanda@securechoicelending.com" style={{ color: muted }}>shalanda@securechoicelending.com</a></p>
-      </div>
-    </div>
-          </>
+        </section>
+      </main>
+    </>
   );
 }

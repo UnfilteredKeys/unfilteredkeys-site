@@ -7,80 +7,42 @@ type NavItem = { label: string; to?: string; children?: NavChild[] };
 
 const NAV: NavItem[] = [
   {
-    label: "Veterans",
+    label: "VA Loans",
     children: [
       { to: "/va-loan-texas", label: "VA Loan Overview" },
       { to: "/killeen-va-loan", label: "Killeen and Fort Hood" },
       { to: "/pcs-to-portfolio", label: "PCS to Portfolio" },
       { to: "/va-loan-faq-texas", label: "VA Loan FAQ" },
-        { to: "/va-appraisal-checklist", label: "VA Appraisal Checklist" },
-        { to: "/va-funding-fee-calculator", label: "VA Funding Fee Calculator" },
-        { to: "/bah-calculator-killeen-tx", label: "BAH Calculator — Killeen" },
-        { to: "/va-loan-calculator-texas", label: "VA Loan Calculator" },
     ],
   },
   {
     label: "Buy a Home",
     children: [
       { to: "/first-time-buyers", label: "First-Time Buyers" },
-      { to: "/fha-loan-texas", label: "FHA Loans" },
       { to: "/conventional-loan-texas", label: "Conventional Loans" },
-      { to: "/down-payment-assistance-texas", label: "Down Payment Assistance" },
-      { to: "/construction-renovation-loans-texas", label: "New Construction" },
-    ],
-  },
-  {
-    label: "Investors",
-    children: [
-      { to: "/investors", label: "Build a Rental Portfolio" },
-      { to: "/pcs-to-portfolio", label: "PCS to Portfolio" },
-      { to: "/investors", label: "Bank Statement Loans" },
-      { to: "/investors", label: "DSCR Loans" },
-    ],
-  },
-  {
-    label: "Programs",
-    children: [
-      { to: "/loan-programs", label: "All Programs" },
+      { to: "/fha-loan-texas", label: "FHA Loans" },
       { to: "/physician-loan-texas", label: "Physician Loans" },
-      { to: "/construction-renovation-loans-texas", label: "Construction and Renovation" },
+      { to: "/down-payment-assistance-texas", label: "Down Payment Assistance" },
     ],
   },
   {
-    label: "Calculators",
+    label: "Specialty Loans",
     children: [
-      { to: "/calculators?tab=texas-payment", label: "Texas Payment Calculator" },
-      { to: "/calculators?tab=va-loan", label: "VA Loan Calculator" },
-      { to: "/calculators?tab=va-funding-fee", label: "VA Funding Fee Calculator" },
-      { to: "/calculators?tab=temp-buydown", label: "Temp Buydown Calculator" },
-      { to: "/calculators?tab=va-entitlement", label: "VA Entitlement Calculator" },
-      { to: "/calculators?tab=fha-vs-conventional", label: "FHA vs. Conventional" },
-      { to: "/calculators?tab=budget-affordability", label: "Budget and Affordability" },
-      { to: "/calculators?tab=bah-buying-power", label: "BAH and Buying Power" },
-      { to: "/calculators?tab=portfolio-builder", label: "Portfolio Builder" },
+      { to: "/investors", label: "Investor and DSCR Loans" },
+      { to: "/investors", label: "Self-Employed Borrowers" },
+      { to: "/construction-renovation-loans-texas", label: "Construction and Renovation" },
+      { to: "/refinance", label: "Refinance" },
     ],
   },
   {
     label: "Resources",
     children: [
+      { to: "/calculators", label: "Mortgage Calculators" },
       { to: "/guide", label: "Consumer Guide" },
       { to: "/playbook", label: "90-Day Playbook" },
+      { to: "/about", label: "About Shalanda" },
     ],
   },
-  {
-    label: "Cities",
-    children: [
-      { to: "/austin-tx-mortgage", label: "Austin" },
-      { to: "/dallas-tx-mortgage", label: "Dallas–Fort Worth" },
-      { to: "/georgetown-tx-mortgage", label: "Georgetown" },
-      { to: "/houston-tx-mortgage", label: "Houston" },
-      { to: "/killeen-va-loan", label: "Killeen and Fort Hood" },
-      { to: "/round-rock-tx-mortgage", label: "Round Rock" },
-      { to: "/san-antonio-tx-mortgage", label: "San Antonio" },
-      { to: "/temple-tx-mortgage", label: "Temple and Bell County" },
-    ],
-  },
-  { label: "About", to: "/about" },
 ];
 
 const NAVY = "#1a3a5c";
@@ -95,9 +57,9 @@ const SiteNav = () => {
       position: "sticky",
       top: 0,
       zIndex: 100,
-      background: "#ffffff",
-      borderBottom: "1px solid #ddd8cf",
-      boxShadow: "0 1px 4px rgba(28,38,48,0.09)"
+      background: "#f7f1e9",
+      borderBottom: "1px solid rgba(26,58,92,0.12)",
+      boxShadow: "0 1px 3px rgba(28,38,48,0.06)"
     }}>
       <div style={{
         maxWidth: "1120px",
@@ -106,17 +68,17 @@ const SiteNav = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        height: "64px",
+        height: "62px",
         gap: "16px"
       }}>
 
         {/* Logo */}
         <Link to="/" style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none" }}>
-          <KeyIcon size={36} color={COPPER} />
+          <KeyIcon size={40} color={COPPER} />
           <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.1 }}>
-            <span style={{ fontFamily: "'Lora', Georgia, serif", fontStyle: "italic", fontSize: "15px", color: COPPER }}>Keys by</span>
-            <span style={{ fontFamily: "'Lora', Georgia, serif", fontWeight: 700, fontSize: "17px", color: NAVY, letterSpacing: "-0.3px" }}>Shalanda</span>
-            <span style={{ fontFamily: "'Fira Mono', monospace", fontSize: "6.5px", color: "#8898aa", letterSpacing: "1.6px", textTransform: "uppercase" }}>Structured Mortgage Strategy</span>
+            <span style={{ fontFamily: "'Lora', Georgia, serif", fontStyle: "italic", fontSize: "16px", color: COPPER }}>Keys by</span>
+            <span style={{ fontFamily: "'Lora', Georgia, serif", fontWeight: 700, fontSize: "18px", color: NAVY, letterSpacing: "-0.3px" }}>Shalanda</span>
+            <span style={{ fontFamily: "'Fira Mono', monospace", fontSize: "7px", color: "#66798b", letterSpacing: "1.35px", textTransform: "uppercase" }}>Structured Mortgage Strategy</span>
           </div>
         </Link>
 
@@ -150,7 +112,15 @@ const SiteNav = () => {
                 {item.to ? (
                   <Link to={item.to} style={triggerStyle}>{item.label}</Link>
                 ) : (
-                  <span style={triggerStyle}>{item.label}</span>
+                  <button
+                    type="button"
+                    aria-expanded={isOpen}
+                    aria-haspopup="true"
+                    onClick={() => setOpenIdx(isOpen ? null : idx)}
+                    style={triggerStyle}
+                  >
+                    {item.label}
+                  </button>
                 )}
 
                 {hasChildren && (
@@ -210,12 +180,6 @@ const SiteNav = () => {
           })}
         </ul>
 
-        {/* Phone */}
-        <a href="tel:+12549359331" className="nav-phone" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "6px", color: NAVY, fontFamily: "'Outfit', sans-serif", fontSize: "14px", fontWeight: 600, whiteSpace: "nowrap" }}>
-          <svg width="16" height="16" fill="none" stroke={COPPER} strokeWidth="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.19a16 16 0 006.9 6.9l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          <span style={{ color: NAVY }}>254-935-9331</span>
-        </a>
-
         {/* CTA */}
         <div className="site-nav-cta" style={{ display: "flex", alignItems: "center", gap: "16px" }}>
           <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" style={{
@@ -224,13 +188,15 @@ const SiteNav = () => {
             padding: "10px 20px", borderRadius: "6px",
             textDecoration: "none", whiteSpace: "nowrap",
             transition: "background 0.2s"
-          }}>Apply Now</a>
+          }}>Start Here</a>
         </div>
 
         {/* Mobile hamburger */}
         <button
           className="site-nav-hamburger"
           aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
+          aria-controls="site-mobile-menu"
           onClick={() => setMobileOpen((v) => !v)}
           style={{
             display: "none",
@@ -253,8 +219,8 @@ const SiteNav = () => {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="site-nav-mobile" style={{
-          background: "#ffffff",
+        <div id="site-mobile-menu" className="site-nav-mobile" style={{
+          background: "#f7f1e9",
           borderTop: "1px solid #ddd8cf",
           padding: "12px 20px 20px",
           maxHeight: "calc(100vh - 64px)",
@@ -286,7 +252,7 @@ const SiteNav = () => {
                       fontSize: "15px",
                       fontWeight: 500,
                       textDecoration: "none",
-                      borderBottom: "1px solid #f2efe9",
+                      borderBottom: "1px solid rgba(26,58,92,0.08)",
                     }}
                   >
                     {child.label}
