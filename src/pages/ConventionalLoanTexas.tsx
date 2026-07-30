@@ -245,8 +245,8 @@ const ConventionalLoanTexasPage = () => (
           </div>
           <div className="conv-links">
             <Link className="conv-link-card" to="/investors">Explore investor financing</Link>
-            <Link className="conv-link-card" to="/first-time-homebuyer">First-time buyer guidance</Link>
-            <Link className="conv-link-card" to="/loan-programs/fha-loan-texas">Compare the FHA path</Link>
+            <Link className="conv-link-card" to="/first-time-buyers">First-time buyer guidance</Link>
+            <Link className="conv-link-card" to="/fha-loan-texas">Compare the FHA path</Link>
           </div>
         </div>
       </section>
