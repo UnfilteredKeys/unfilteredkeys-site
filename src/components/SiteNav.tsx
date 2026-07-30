@@ -194,7 +194,7 @@ const SiteNav = () => {
             padding: "10px 20px", borderRadius: "6px",
             textDecoration: "none", whiteSpace: "nowrap",
             transition: "background 0.2s"
-          }}>Apply Now</a>
+          }}>Start Here</a>
         </div>
 
         {/* Mobile hamburger */}
@@ -258,30 +258,3 @@ const SiteNav = () => {
                       fontSize: "15px",
                       fontWeight: 500,
                       textDecoration: "none",
-                      borderBottom: "1px solid #f2efe9",
-                    }}
-                  >
-                    {child.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      <style>{`
-        @media (max-width: 900px) {
-          .site-nav-desktop { display: none !important; }
-          .site-nav-cta { display: none !important; }
-          .site-nav-hamburger { display: inline-flex !important; }
-        }
-        @media (min-width: 901px) {
-          .site-nav-mobile { display: none !important; }
-        }
-      `}</style>
-    </nav>
-  );
-};
-
-export default SiteNav;
