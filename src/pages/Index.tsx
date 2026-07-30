@@ -2150,28 +2150,15 @@ const pageHTML = `
 
 const pageHTMLAfterDPA = `
 <section class="section section-cream" aria-labelledby="testimonials-heading">
-  <div class="container" style="max-width:900px;">
+  <div class="container" style="max-width:820px;">
     <div style="text-align:center; margin-bottom:48px;">
-      <p class="section-tag" style="justify-content:center;">Client Testimonials</p>
-      <h2 class="section-title" id="testimonials-heading">What Clients Say</h2>
+      <p class="section-tag" style="justify-content:center;">A Home Worth the Journey</p>
+      <h2 class="section-title" id="testimonials-heading">In Their Words</h2>
     </div>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
-      <div style="background:var(--navy); border-radius:12px; padding:32px;">
-        <p style="color:#faf8f4; font-size:16px; line-height:1.7; font-style:italic; margin:0 0 16px;">"She took time to teach and guide me through the overwhelming process of buying a house, making it super easy and stress-free."</p>
-        <p style="color:var(--copper); font-weight:600; font-size:14px; margin:0;">— Yaniska W.</p>
-      </div>
-      <div style="background:var(--navy); border-radius:12px; padding:32px;">
-        <p style="color:#faf8f4; font-size:16px; line-height:1.7; font-style:italic; margin:0 0 16px;">"It was clear she genuinely cared about helping me make the right decisions, not just closing a deal."</p>
-        <p style="color:var(--copper); font-weight:600; font-size:14px; margin:0;">— Thomas S.</p>
-      </div>
-      <div style="background:var(--navy); border-radius:12px; padding:32px;">
-        <p style="color:#faf8f4; font-size:16px; line-height:1.7; font-style:italic; margin:0 0 16px;">"The entire process was smooth from start to finish, and I felt supported every step of the way."</p>
-        <p style="color:var(--copper); font-weight:600; font-size:14px; margin:0;">— Moya T.</p>
-      </div>
-      <div style="background:var(--navy); border-radius:12px; padding:32px;">
-        <p style="color:#faf8f4; font-size:16px; line-height:1.7; font-style:italic; margin:0 0 16px;">"She helped us purchase our home and later refinance to better fit our budget — we never felt alone."</p>
-        <p style="color:var(--copper); font-weight:600; font-size:14px; margin:0;">— Gardenia B.</p>
-      </div>
+    <div style="background:var(--navy); border-radius:12px; padding:clamp(32px,6vw,56px); text-align:center;">
+      <p style="color:#faf8f4; font-family:var(--font-display); font-size:clamp(20px,3vw,28px); line-height:1.55; font-style:italic; margin:0 auto 24px; max-width:680px;">"This was such a journey that felt like a roller coaster we couldn't get off, but it was so worth it. We are still in absolute awe of our home. We are so grateful for all your help!"</p>
+      <p style="color:var(--copper); font-weight:600; font-size:14px; margin:0 0 4px;">Lillie M.</p>
+      <p style="color:rgba(250,248,244,0.72); font-size:13px; margin:0;">Texas Homebuyer</p>
     </div>
   </div>
 </section>
