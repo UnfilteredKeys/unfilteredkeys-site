@@ -57,9 +57,9 @@ const SiteNav = () => {
       position: "sticky",
       top: 0,
       zIndex: 100,
-      background: "#ffffff",
-      borderBottom: "1px solid #ddd8cf",
-      boxShadow: "0 1px 4px rgba(28,38,48,0.09)"
+      background: "#f7f1e9",
+      borderBottom: "1px solid rgba(26,58,92,0.12)",
+      boxShadow: "0 1px 3px rgba(28,38,48,0.06)"
     }}>
       <div style={{
         maxWidth: "1120px",
@@ -68,17 +68,17 @@ const SiteNav = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        height: "64px",
+        height: "62px",
         gap: "16px"
       }}>
 
         {/* Logo */}
         <Link to="/" style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none" }}>
-          <KeyIcon size={36} color={COPPER} />
+          <KeyIcon size={40} color={COPPER} />
           <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.1 }}>
-            <span style={{ fontFamily: "'Lora', Georgia, serif", fontStyle: "italic", fontSize: "15px", color: COPPER }}>Keys by</span>
-            <span style={{ fontFamily: "'Lora', Georgia, serif", fontWeight: 700, fontSize: "17px", color: NAVY, letterSpacing: "-0.3px" }}>Shalanda</span>
-            <span style={{ fontFamily: "'Fira Mono', monospace", fontSize: "6.5px", color: "#8898aa", letterSpacing: "1.6px", textTransform: "uppercase" }}>Structured Mortgage Strategy</span>
+            <span style={{ fontFamily: "'Lora', Georgia, serif", fontStyle: "italic", fontSize: "16px", color: COPPER }}>Keys by</span>
+            <span style={{ fontFamily: "'Lora', Georgia, serif", fontWeight: 700, fontSize: "18px", color: NAVY, letterSpacing: "-0.3px" }}>Shalanda</span>
+            <span style={{ fontFamily: "'Fira Mono', monospace", fontSize: "7px", color: "#66798b", letterSpacing: "1.35px", textTransform: "uppercase" }}>Structured Mortgage Strategy</span>
           </div>
         </Link>
 
@@ -180,12 +180,6 @@ const SiteNav = () => {
           })}
         </ul>
 
-        {/* Phone */}
-        <a href="tel:+12549359331" className="nav-phone" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "6px", color: NAVY, fontFamily: "'Outfit', sans-serif", fontSize: "14px", fontWeight: 600, whiteSpace: "nowrap" }}>
-          <svg width="16" height="16" fill="none" stroke={COPPER} strokeWidth="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.19a16 16 0 006.9 6.9l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          <span style={{ color: NAVY }}>254-935-9331</span>
-        </a>
-
         {/* CTA */}
         <div className="site-nav-cta" style={{ display: "flex", alignItems: "center", gap: "16px" }}>
           <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" style={{
@@ -226,7 +220,7 @@ const SiteNav = () => {
       {/* Mobile menu */}
       {mobileOpen && (
         <div id="site-mobile-menu" className="site-nav-mobile" style={{
-          background: "#ffffff",
+          background: "#f7f1e9",
           borderTop: "1px solid #ddd8cf",
           padding: "12px 20px 20px",
           maxHeight: "calc(100vh - 64px)",
@@ -258,3 +252,30 @@ const SiteNav = () => {
                       fontSize: "15px",
                       fontWeight: 500,
                       textDecoration: "none",
+                      borderBottom: "1px solid rgba(26,58,92,0.08)",
+                    }}
+                  >
+                    {child.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <style>{`
+        @media (max-width: 900px) {
+          .site-nav-desktop { display: none !important; }
+          .site-nav-cta { display: none !important; }
+          .site-nav-hamburger { display: inline-flex !important; }
+        }
+        @media (min-width: 901px) {
+          .site-nav-mobile { display: none !important; }
+        }
+      `}</style>
+    </nav>
+  );
+};
+
+export default SiteNav;
