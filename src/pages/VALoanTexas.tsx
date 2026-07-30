@@ -1,495 +1,496 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
 
-/* ── TOKENS ────────────────────────────────────────────────────────────────── */
-const hero = "#1a2535";
-const navy = "#1a3a5c";
-const copper = "#b5621e";
-const copperLight = "#fef0e6";
-const white = "#ffffff";
-const ivory = "#faf8f4";
-const soft = "#f2efe9";
-const textPrimary = "#1c2630";
-const textSecondary = "#4a5568";
-const textMuted = "#8898aa";
-const textOnDark = "#f0ede6";
-const border = "#ddd8cf";
-const radius = "10px";
-
 const CALENDLY = "https://calendly.com/shalanda-securechoicelending/30min";
 const APPLY = "https://scl.my1003app.com/554554/register";
 
-/* ── SHARED STYLES ────────────────────────────────────────────────────────── */
-const container: React.CSSProperties = { maxWidth: 1120, margin: "0 auto", padding: "0 24px" };
-const sectionPad: React.CSSProperties = { padding: "72px 0" };
-const tag = (color = copper): React.CSSProperties => ({ fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase", color, fontWeight: 600, marginBottom: 12, fontFamily: "'Fira Mono', monospace" });
-const h2Style = (color = navy): React.CSSProperties => ({ fontFamily: "'Lora', serif", fontSize: "clamp(24px,3vw,36px)", fontWeight: 700, color, lineHeight: 1.2, marginBottom: 16 });
-const subStyle = (color = textMuted): React.CSSProperties => ({ fontSize: 16, color, lineHeight: 1.65, maxWidth: 620, marginBottom: 48 });
-const btnPrimary: React.CSSProperties = { display: "inline-block", backgroundColor: copper, color: white, padding: "14px 28px", borderRadius: 6, fontWeight: 700, fontSize: 15, textDecoration: "none" };
-const btnOutline: React.CSSProperties = { display: "inline-block", backgroundColor: "transparent", color: white, padding: "14px 28px", borderRadius: 6, fontWeight: 600, fontSize: 15, textDecoration: "none", border: "1px solid rgba(255,255,255,0.35)" };
+const benefits = [
+  {
+    title: "No down payment",
+    body: "Eligible borrowers with full entitlement can purchase with zero down. Your approval is based on what fits your finances, not an arbitrary county cap.",
+  },
+  {
+    title: "No monthly mortgage insurance",
+    body: "VA loans do not require PMI, which can make a meaningful difference in the monthly payment.",
+  },
+  {
+    title: "Flexible qualification",
+    body: "The VA does not set a universal minimum credit score. I review the complete file and match it with the right lender guidelines.",
+  },
+  {
+    title: "A benefit you can reuse",
+    body: "VA entitlement is not one and done. Many veterans use it more than once, and some can purchase again while another VA loan is still open.",
+  },
+];
 
-/* ── ELIGIBILITY WIZARD ────────────────────────────────────────────────────── */
-type EligCategory = "active" | "veteran" | "reserve" | "spouse";
-type EligResult = "likely" | "unclear";
+const texasDetails = [
+  {
+    title: "Property taxes matter",
+    body: "Texas property taxes can change the payment substantially from one county to another. We calculate them before you fall in love with the house.",
+  },
+  {
+    title: "Disability exemptions matter too",
+    body: "Eligible disabled veterans may qualify for partial or full property-tax relief. The exemption can affect both affordability and cash flow.",
+  },
+  {
+    title: "The contract needs a strategy",
+    body: "The option period, appraisal timing, seller concessions, and builder incentives all affect how a VA offer should be structured.",
+  },
+];
 
-const categoryLabels: Record<EligCategory, string> = {
-  active: "Active Duty",
-  veteran: "Veteran",
-  reserve: "Reserve / Guard",
-  spouse: "Surviving Spouse",
-};
+const resources = [
+  {
+    title: "VA Loan Calculator",
+    body: "Estimate the payment with Texas taxes and the VA funding fee included.",
+    to: "/calculators?tab=va-loan",
+    label: "Run the numbers",
+  },
+  {
+    title: "Killeen and Fort Cavazos",
+    body: "Local guidance for buyers and military families in the Fort Cavazos area.",
+    to: "/killeen-va-loan",
+    label: "Read the local guide",
+  },
+  {
+    title: "PCS to Portfolio",
+    body: "Learn how a military move can become part of a long-term property strategy.",
+    to: "/pcs-to-portfolio",
+    label: "Explore the strategy",
+  },
+];
 
-const lengthOptions: Record<EligCategory, { label: string; result: EligResult }[]> = {
-  active: [
-    { label: "90+ continuous days (current service)", result: "likely" },
-    { label: "Less than 90 days", result: "unclear" },
-  ],
-  veteran: [
-    { label: "Served 24+ months or full call-up period", result: "likely" },
-    { label: "Discharged for service-connected disability (any length)", result: "likely" },
-    { label: "Less than 24 months / other discharge", result: "unclear" },
-  ],
-  reserve: [
-    { label: "6+ years in Selected Reserve or Guard", result: "likely" },
-    { label: "90+ days active service under Title 10 or Title 32", result: "likely" },
-    { label: "Less than 6 years and no qualifying activation", result: "unclear" },
-  ],
-  spouse: [
-    { label: "Spouse died in service or from service-connected cause", result: "likely" },
-    { label: "Other situation (MIA, POW, total disability, remarriage)", result: "unclear" },
-  ],
-};
-
-function EligibilityWizard() {
-  const [cat, setCat] = useState<EligCategory | null>(null);
-  const [result, setResult] = useState<EligResult | null>(null);
-
-  const reset = () => { setCat(null); setResult(null); };
-
-  return (
-    <div>
-      {/* Step 1 */}
-      <div style={{ marginBottom: 24 }}>
-        <p style={{ ...tag(navy), marginBottom: 14 }}>Step 1 · Who are you?</p>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 12 }}>
-          {(Object.keys(categoryLabels) as EligCategory[]).map((k) => {
-            const active = cat === k;
-            return (
-              <button
-                key={k}
-                onClick={() => { setCat(k); setResult(null); }}
-                style={{
-                  padding: "20px 16px",
-                  borderRadius: radius,
-                  border: `2px solid ${active ? copper : border}`,
-                  backgroundColor: active ? copper : white,
-                  color: active ? white : navy,
-                  fontFamily: "'Lora', serif",
-                  fontSize: 16,
-                  fontWeight: 700,
-                  cursor: "pointer",
-                  textAlign: "center",
-                  transition: "all 0.15s ease",
-                }}
-              >
-                {categoryLabels[k]}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Step 2 */}
-      {cat && (
-        <div style={{ marginBottom: 24 }}>
-          <p style={{ ...tag(navy), marginBottom: 14 }}>Step 2 · How long did you serve?</p>
-          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-            {lengthOptions[cat].map((opt) => {
-              const active = result !== null && opt.label === (lengthOptions[cat].find((o) => o.result === result && o.label === opt.label)?.label);
-              return (
-                <button
-                  key={opt.label}
-                  onClick={() => setResult(opt.result)}
-                  style={{
-                    padding: "16px 20px",
-                    borderRadius: radius,
-                    border: `2px solid ${active ? copper : border}`,
-                    backgroundColor: white,
-                    color: textPrimary,
-                    fontFamily: "'Outfit', sans-serif",
-                    fontSize: 15,
-                    fontWeight: 600,
-                    cursor: "pointer",
-                    textAlign: "left",
-                  }}
-                >
-                  {opt.label}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      )}
-
-      {/* Step 3 */}
-      {result === "likely" && (
-        <div style={{ backgroundColor: "#e8f5ee", border: "1px solid #1a7a4a", borderRadius: radius, padding: "28px 32px" }}>
-          <p style={{ ...tag("#1a7a4a") }}>Step 3 · Result</p>
-          <p style={{ fontFamily: "'Lora', serif", fontSize: 19, fontWeight: 700, color: "#0f3d24", marginBottom: 18, lineHeight: 1.4 }}>
-            Based on your answers, you likely qualify for a VA loan. Here's your next step.
-          </p>
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <a href={APPLY} target="_blank" rel="noopener noreferrer" style={btnPrimary}>Start Your Application</a>
-            <button onClick={reset} style={{ background: "none", border: "none", color: "#0f3d24", fontWeight: 600, cursor: "pointer", fontSize: 14 }}>Start over</button>
-          </div>
-        </div>
-      )}
-      {result === "unclear" && (
-        <div style={{ backgroundColor: copperLight, border: `1px solid ${copper}`, borderRadius: radius, padding: "28px 32px" }}>
-          <p style={{ ...tag(copper) }}>Step 3 · Result</p>
-          <p style={{ fontFamily: "'Lora', serif", fontSize: 19, fontWeight: 700, color: "#5c3214", marginBottom: 18, lineHeight: 1.4 }}>
-            Your situation may still qualify — VA eligibility has more paths than most people know. Let's talk.
-          </p>
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <a href="tel:2549359331" style={btnPrimary}>Call 254-935-9331</a>
-            <button onClick={reset} style={{ background: "none", border: "none", color: "#5c3214", fontWeight: 600, cursor: "pointer", fontSize: 14 }}>Start over</button>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-/* ── COMPONENT ─────────────────────────────────────────────────────────────── */
 export default function VALoanTexas() {
-
-  const covers = [
-    { title: "No down payment", body: "With full entitlement, purchase any home in Texas with zero down — no cap on price." },
-    { title: "No PMI — ever", body: "Conventional requires PMI under 20% down. FHA requires it for life. VA has neither." },
-    { title: "No loan limit in Texas", body: "If you have full entitlement, the VA places no cap on how much you can borrow. Your purchase is limited only by what you qualify for — not an arbitrary county number." },
-    { title: "Competitive rates", body: "VA guarantee reduces lender risk — rates typically beat conventional, even with lower credit scores. The VA doesn't set a minimum credit score; most lenders work down to 580–620. Your full picture matters more than one number." },
-    {
-      title: "Reusable benefit",
-      body: "Your VA entitlement isn't one-and-done. As you pay down or sell, entitlement restores. Many veterans use it multiple times across a career — and some hold two VA loans at once with remaining entitlement.",
-      callout: "Bonus: the VA allows sellers to pay up to 4% of the purchase price in concessions — separate from other seller-paid items like rate buydowns. A knowledgeable VA broker structures the offer to maximize every dollar.",
-    },
-  ];
-
-  const costs = [
-    { title: "Funding fee", body: "A one-time fee (1.25%–3.3%) that keeps the program running. Can be rolled into the loan — no out-of-pocket required. Waived entirely for veterans with a service-connected disability rating." },
-    { title: "Closing costs", body: "Title, appraisal, recording, lender fees, prepaid taxes and insurance. Typically 2%–4% of the loan. The VA limits what you can be charged and lets the seller cover most of it through concessions." },
-    { title: "Texas property taxes", body: "No state income tax, but property taxes run 1.6%–2.6% of assessed value. They're escrowed monthly — and they affect what you qualify for. 100% disability rating = full exemption on your primary residence." },
-  ];
-
-  const builders = ["D.R. Horton", "Lennar", "MHI / Coventry", "Pulte", "Perry Homes", "Meritage"];
-
-  const texasItems = [
-    { badge: "Property taxes", body: "No state income tax, but property taxes run 1.6%–2.6% of assessed value. Bell County (Killeen, Temple): 1.85%–2.20%. Williamson County (Round Rock, Georgetown): 2.00%–2.40%. These go into your monthly escrow — they affect what you qualify for." },
-    { badge: "VA disability exemption", body: "100% rating = full property tax exemption on your Texas primary residence. Partial ratings receive a scaled reduction. File with your county appraisal district using your VA award letter after closing." },
-    { badge: "Homestead exemption", body: "Texas law reduces your taxable home value by $100,000. File in the year you close — it doesn't happen automatically." },
-    { badge: "Community property", body: "If you're married, your spouse may need to sign certain loan documents even if they're not on the loan. Standard in Texas — not a red flag." },
-    { badge: "Option period", body: "Texas contracts include a 5–10 day window to back out for any reason and keep your earnest money. Use it for inspections. Don't waive it." },
-  ];
-
-  const fundingScenarios = [
-    { label: "First-Time Use", detail: "0% Down", rate: "2.15%" },
-    { label: "First-Time Use", detail: "5%+ Down", rate: "1.5%" },
-    { label: "Subsequent Use", detail: "0% Down", rate: "3.3%" },
-  ];
-
-  const stats = [
-    { value: "0%", label: "Down Payment" },
-    { value: "No PMI", label: "Ever" },
-    { value: "No Limit", label: "On Loans in Texas" },
-    { value: "21 Days", label: "Average Close" },
-  ];
-
   return (
-    <div style={{ fontFamily: "'Outfit', sans-serif", color: textPrimary }}>
+    <div className="va-page">
       <SEO {...seoMeta.vaLoanTexas} />
 
-      {/* ── 1. HERO ─────────────────────────────────────────────────────────── */}
-      <section style={{ backgroundColor: hero, padding: "80px 0 0" }}>
-        <div style={{ ...container, maxWidth: 1120 }}>
-          <div style={{ display: "inline-block", backgroundColor: "rgba(181,98,30,0.15)", border: `1px solid ${copper}`, borderRadius: 999, padding: "6px 18px", marginBottom: 24 }}>
-            <span style={{ fontSize: 12, letterSpacing: "0.12em", textTransform: "uppercase", color: copper, fontWeight: 600, fontFamily: "'Fira Mono', monospace" }}>VA Loan Specialist · Texas Mortgage Broker</span>
-          </div>
-          <h1 style={{ fontFamily: "'Lora', serif", fontSize: "clamp(32px,5vw,54px)", fontWeight: 700, color: white, lineHeight: 1.08, marginBottom: 20, maxWidth: 720 }}>
-            VA Loans in Texas: What You're Actually Entitled&nbsp;To
-          </h1>
-          <p style={{ fontSize: 17, color: "rgba(240,237,230,0.72)", lineHeight: 1.65, maxWidth: 600, marginBottom: 32 }}>
-            No down payment. No PMI. Competitive rates. If you served and you're buying in Texas, VA should be the first conversation — not the last.
-          </p>
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 56 }}>
-            <a href={CALENDLY} target="_blank" rel="noopener noreferrer" style={btnPrimary}>Schedule a Strategy Call</a>
-            <a href={APPLY} target="_blank" rel="noopener noreferrer" style={btnOutline}>Start Your Application</a>
-          </div>
-        </div>
-        {/* Trust strip */}
-        <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", padding: "20px 0" }}>
-          <div style={{ ...container, display: "flex", justifyContent: "center", alignItems: "center", flexWrap: "wrap", gap: "8px 0" }}>
-            {["VA Specialist", "21-Day Avg Close", "50+ Lender Network", "Fort Hood to Houston"].map((item, i) => (
-              <span key={i} style={{ display: "inline-flex", alignItems: "center", gap: 0 }}>
-                {i > 0 && <span style={{ width: 6, height: 6, borderRadius: "50%", backgroundColor: copper, margin: "0 16px", flexShrink: 0 }} />}
-                <span style={{ fontSize: 13, color: "rgba(240,237,230,0.6)", letterSpacing: "0.04em", whiteSpace: "nowrap" }}>{item}</span>
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
+      <style>{`
+        .va-page {
+          --navy: #1a3a5c;
+          --deep: #172f48;
+          --copper: #b5621e;
+          --ivory: #faf8f4;
+          --warm: #f3ece3;
+          --ink: #1c2630;
+          --muted: #5f6872;
+          --line: rgba(26, 58, 92, .14);
+          color: var(--ink);
+          font-family: 'Outfit', sans-serif;
+          background: var(--ivory);
+        }
+        .va-wrap {
+          width: min(1120px, calc(100% - 48px));
+          margin: 0 auto;
+        }
+        .va-kicker {
+          margin: 0 0 14px;
+          color: var(--copper);
+          font: 600 11px/1.4 'Fira Mono', monospace;
+          letter-spacing: .15em;
+          text-transform: uppercase;
+        }
+        .va-page h1, .va-page h2, .va-page h3 {
+          font-family: 'Lora', serif;
+        }
+        .va-hero {
+          padding: 88px 0 82px;
+          background: var(--warm);
+          border-bottom: 1px solid var(--line);
+        }
+        .va-hero-grid {
+          display: grid;
+          grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr);
+          gap: 72px;
+          align-items: center;
+        }
+        .va-hero h1 {
+          max-width: 700px;
+          margin: 0 0 22px;
+          color: var(--navy);
+          font-size: clamp(42px, 5.5vw, 68px);
+          line-height: 1.02;
+          letter-spacing: -.035em;
+        }
+        .va-lead {
+          max-width: 620px;
+          margin: 0 0 30px;
+          color: var(--muted);
+          font-size: 18px;
+          line-height: 1.7;
+        }
+        .va-actions {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 18px;
+        }
+        .va-primary {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 48px;
+          padding: 0 24px;
+          border-radius: 6px;
+          background: var(--copper);
+          color: white;
+          font-weight: 700;
+          text-decoration: none;
+        }
+        .va-text-link {
+          color: var(--navy);
+          font-weight: 700;
+          text-underline-offset: 4px;
+        }
+        .va-summary {
+          padding: 38px;
+          border-radius: 18px;
+          background: var(--navy);
+          color: white;
+          box-shadow: 0 18px 50px rgba(26, 58, 92, .14);
+        }
+        .va-summary p {
+          margin: 0;
+        }
+        .va-summary-title {
+          margin-bottom: 24px !important;
+          color: #e8b087;
+          font: 600 11px/1.4 'Fira Mono', monospace;
+          letter-spacing: .14em;
+          text-transform: uppercase;
+        }
+        .va-summary dl {
+          display: grid;
+          gap: 20px;
+          margin: 0;
+        }
+        .va-summary div {
+          padding-bottom: 18px;
+          border-bottom: 1px solid rgba(255, 255, 255, .14);
+        }
+        .va-summary div:last-child {
+          padding-bottom: 0;
+          border-bottom: 0;
+        }
+        .va-summary dt {
+          margin-bottom: 4px;
+          color: rgba(255, 255, 255, .62);
+          font-size: 12px;
+          letter-spacing: .08em;
+          text-transform: uppercase;
+        }
+        .va-summary dd {
+          margin: 0;
+          font-family: 'Lora', serif;
+          font-size: 21px;
+          font-weight: 700;
+        }
+        .va-section {
+          padding: 82px 0;
+        }
+        .va-section.white {
+          background: #fff;
+        }
+        .va-heading {
+          max-width: 700px;
+          margin-bottom: 44px;
+        }
+        .va-heading h2 {
+          margin: 0 0 16px;
+          color: var(--navy);
+          font-size: clamp(32px, 4vw, 46px);
+          line-height: 1.12;
+          letter-spacing: -.025em;
+        }
+        .va-heading p:last-child {
+          margin: 0;
+          color: var(--muted);
+          font-size: 17px;
+          line-height: 1.7;
+        }
+        .va-benefits {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          border-top: 1px solid var(--line);
+        }
+        .va-benefit {
+          padding: 30px 34px 30px 0;
+          border-bottom: 1px solid var(--line);
+        }
+        .va-benefit:nth-child(even) {
+          padding-right: 0;
+          padding-left: 34px;
+          border-left: 1px solid var(--line);
+        }
+        .va-benefit h3, .va-detail h3, .va-resource h3 {
+          margin: 0 0 10px;
+          color: var(--navy);
+          font-size: 20px;
+        }
+        .va-benefit p, .va-detail p, .va-resource p {
+          margin: 0;
+          color: var(--muted);
+          font-size: 15px;
+          line-height: 1.7;
+        }
+        .va-tradeoff {
+          display: grid;
+          grid-template-columns: .9fr 1.1fr;
+          gap: 72px;
+          align-items: start;
+        }
+        .va-tradeoff h2 {
+          margin: 0 0 18px;
+          color: var(--navy);
+          font-size: clamp(32px, 4vw, 46px);
+          line-height: 1.12;
+        }
+        .va-tradeoff-copy > p {
+          color: var(--muted);
+          font-size: 17px;
+          line-height: 1.75;
+        }
+        .va-note {
+          padding: 30px;
+          border-left: 4px solid var(--copper);
+          background: #fff;
+        }
+        .va-note strong {
+          display: block;
+          margin-bottom: 8px;
+          color: var(--navy);
+          font-family: 'Lora', serif;
+          font-size: 20px;
+        }
+        .va-note p {
+          margin: 0;
+          color: var(--muted);
+          line-height: 1.7;
+        }
+        .va-details {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 24px;
+        }
+        .va-detail {
+          padding-top: 24px;
+          border-top: 3px solid var(--copper);
+        }
+        .va-resources {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+        }
+        .va-resource {
+          display: flex;
+          min-height: 230px;
+          flex-direction: column;
+          padding: 28px;
+          border: 1px solid var(--line);
+          border-radius: 12px;
+          background: #fff;
+        }
+        .va-resource p {
+          flex: 1;
+          margin-bottom: 24px;
+        }
+        .va-resource a {
+          color: var(--copper);
+          font-weight: 700;
+          text-decoration: none;
+        }
+        .va-cta {
+          padding: 74px 0;
+          background: var(--navy);
+          color: white;
+          text-align: center;
+        }
+        .va-cta h2 {
+          max-width: 720px;
+          margin: 0 auto 16px;
+          font-size: clamp(32px, 4vw, 48px);
+          line-height: 1.12;
+        }
+        .va-cta p {
+          max-width: 620px;
+          margin: 0 auto 28px;
+          color: rgba(255, 255, 255, .7);
+          font-size: 17px;
+          line-height: 1.7;
+        }
+        .va-cta .va-primary {
+          background: #d08045;
+        }
+        @media (max-width: 800px) {
+          .va-wrap {
+            width: min(100% - 32px, 1120px);
+          }
+          .va-hero {
+            padding: 58px 0;
+          }
+          .va-hero-grid, .va-tradeoff {
+            grid-template-columns: 1fr;
+            gap: 38px;
+          }
+          .va-hero h1 {
+            font-size: clamp(38px, 12vw, 54px);
+          }
+          .va-summary {
+            padding: 28px;
+          }
+          .va-section {
+            padding: 62px 0;
+          }
+          .va-benefits, .va-details, .va-resources {
+            grid-template-columns: 1fr;
+          }
+          .va-benefit, .va-benefit:nth-child(even) {
+            padding: 24px 0;
+            border-left: 0;
+          }
+          .va-resource {
+            min-height: 0;
+          }
+          .va-actions {
+            align-items: flex-start;
+            flex-direction: column;
+          }
+          .va-primary {
+            width: 100%;
+          }
+        }
+      `}</style>
 
-      {/* ── STATS BAR ───────────────────────────────────────────────────────── */}
-      <section style={{ backgroundColor: copper, padding: "32px 0" }}>
-        <div style={{ ...container, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 24, textAlign: "center" }}>
-          {stats.map((s) => (
-            <div key={s.label}>
-              <div style={{ fontFamily: "'Lora', serif", fontSize: "clamp(22px, 2.6vw, 30px)", fontWeight: 700, color: white, lineHeight: 1.1, marginBottom: 4 }}>{s.value}</div>
-              <div style={{ fontSize: 12, color: "rgba(255,255,255,0.85)", letterSpacing: "0.12em", textTransform: "uppercase", fontFamily: "'Fira Mono', monospace" }}>{s.label}</div>
+      <section className="va-hero">
+        <div className="va-wrap va-hero-grid">
+          <div>
+            <p className="va-kicker">Texas VA loan guidance</p>
+            <h1>Your VA benefit deserves a real strategy.</h1>
+            <p className="va-lead">
+              Zero down is only the headline. The right plan accounts for entitlement, Texas property taxes, seller concessions, and the payment you actually want to live with.
+            </p>
+            <div className="va-actions">
+              <a className="va-primary" href={CALENDLY} target="_blank" rel="noopener noreferrer">
+                Book a Strategy Call
+              </a>
+              <Link className="va-text-link" to="/va-loan-faq-texas">
+                Read the VA loan FAQ
+              </Link>
             </div>
-          ))}
+          </div>
+
+          <aside className="va-summary" aria-label="VA loan highlights">
+            <p className="va-summary-title">The essentials</p>
+            <dl>
+              <div>
+                <dt>Down payment</dt>
+                <dd>As low as 0%</dd>
+              </div>
+              <div>
+                <dt>Monthly mortgage insurance</dt>
+                <dd>None</dd>
+              </div>
+              <div>
+                <dt>Benefit use</dt>
+                <dd>Reusable</dd>
+              </div>
+            </dl>
+          </aside>
         </div>
       </section>
 
-      {/* ── 2. ELIGIBILITY (INTERACTIVE) ────────────────────────────────────── */}
-      <section style={{ backgroundColor: white, ...sectionPad }}>
-        <div style={container}>
-          <p style={tag()}>Eligibility</p>
-          <h2 style={h2Style()}>Who qualifies for a VA loan in Texas</h2>
-          <p style={subStyle()}>The benefit is broader than most people realize. Answer two quick questions to see where you stand.</p>
-          <EligibilityWizard />
-          <div style={{ borderLeft: `3px solid ${navy}`, backgroundColor: "#eaf0f8", borderRadius: radius, padding: "24px 28px", marginTop: 32 }}>
-            <p style={{ fontSize: 14, color: navy, lineHeight: 1.7, margin: 0 }}>
-              <strong>Certificate of Eligibility (COE):</strong> Pull it yourself at VA.gov, through the VA Health &amp; Benefits app, or we pull it directly during your application. It's not a barrier — it's a formality.
+      <section className="va-section white">
+        <div className="va-wrap">
+          <div className="va-heading">
+            <p className="va-kicker">Why VA first</p>
+            <h2>A powerful loan when it is structured properly.</h2>
+            <p>
+              VA financing can offer excellent terms, but the best outcome still depends on the details of your file and your purchase.
             </p>
           </div>
-        </div>
-      </section>
-
-      {/* ── 3a. WHAT VA COVERS ──────────────────────────────────────────────── */}
-      <section style={{ backgroundColor: ivory, ...sectionPad }}>
-        <div style={container}>
-          <p style={tag()}>Benefits</p>
-          <h2 style={h2Style()}>What VA covers</h2>
-          <p style={subStyle()}>Five things that make VA the strongest purchase loan available to those who qualify.</p>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            {covers.map((b, i) => (
-              <div key={b.title} style={{ padding: "28px 0", borderTop: i === 0 ? `1px solid ${border}` : "none", borderBottom: `1px solid ${border}` }}>
-                <div style={{ fontFamily: "'Lora', serif", fontSize: 18, fontWeight: 700, color: navy, marginBottom: 10 }}>{b.title}</div>
-                <p style={{ fontSize: 15, color: textSecondary, lineHeight: 1.65, margin: 0 }}>{b.body}</p>
-                {b.callout && (
-                  <div style={{ borderLeft: `3px solid ${navy}`, backgroundColor: "#eaf0f8", borderRadius: radius, padding: "20px 24px", marginTop: 16 }}>
-                    <p style={{ fontSize: 14, color: navy, lineHeight: 1.7, margin: 0 }}>{b.callout}</p>
-                  </div>
-                )}
-              </div>
+          <div className="va-benefits">
+            {benefits.map((benefit) => (
+              <article className="va-benefit" key={benefit.title}>
+                <h3>{benefit.title}</h3>
+                <p>{benefit.body}</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── 3b. WHAT VA COSTS ───────────────────────────────────────────────── */}
-      <section style={{ backgroundColor: white, ...sectionPad }}>
-        <div style={container}>
-          <p style={tag()}>The Trade-Offs</p>
-          <h2 style={h2Style()}>What VA costs</h2>
-          <p style={subStyle()}>VA is the strongest loan for those who qualify — but it's not free. Here's what to plan for.</p>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            {costs.map((c, i) => (
-              <div key={c.title} style={{ padding: "28px 0", borderTop: i === 0 ? `1px solid ${border}` : "none", borderBottom: `1px solid ${border}` }}>
-                <div style={{ fontFamily: "'Lora', serif", fontSize: 18, fontWeight: 700, color: navy, marginBottom: 10 }}>{c.title}</div>
-                <p style={{ fontSize: 15, color: textSecondary, lineHeight: 1.65, margin: 0 }}>{c.body}</p>
-              </div>
-            ))}
+      <section className="va-section">
+        <div className="va-wrap va-tradeoff">
+          <div>
+            <p className="va-kicker">The honest part</p>
+            <h2>VA is strong. It is not magic.</h2>
           </div>
-          <Link to="/calculators?tab=va-loan" style={{ display: "block", marginTop: 32, backgroundColor: navy, borderRadius: radius, padding: "24px 28px", textDecoration: "none", color: white }}>
-            <p style={{ fontSize: 12, letterSpacing: "0.15em", textTransform: "uppercase", color: copper, fontWeight: 600, marginBottom: 8, fontFamily: "'Fira Mono', monospace" }}>Calculator</p>
-            <p style={{ fontFamily: "'Lora', serif", fontSize: 19, fontWeight: 700, color: white, margin: 0, lineHeight: 1.4 }}>
-              Run your real number — Texas taxes included <span style={{ color: copper }}>→ VA Loan Calculator</span>
+          <div className="va-tradeoff-copy">
+            <p>
+              You may still have a funding fee, closing costs, an appraisal, and property-condition requirements. The goal is not to pretend those costs do not exist. It is to structure the loan so you understand what you are paying and why.
             </p>
-          </Link>
-        </div>
-      </section>
-
-      {/* ── 4. FUNDING FEE ──────────────────────────────────────────────────── */}
-      <section style={{ backgroundColor: "#fdf3e8", border: `1px solid ${copper}`, ...sectionPad }}>
-        <div style={container}>
-          <p style={{ ...tag("#7a3d0a") }}>Funding Fee</p>
-          <h2 style={{ ...h2Style("#3b1f08") }}>The VA funding fee — explained plainly</h2>
-          <p style={{ ...subStyle("#5c3214") }}>A one-time fee that keeps the program running. It can be rolled into the loan — no out-of-pocket required at closing. Your rate depends on whether it's your first VA loan and how much you put down.</p>
-
-          {/* Scenario cards */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 20, marginBottom: 24 }}>
-            {fundingScenarios.map((s, i) => (
-              <div key={i} style={{ backgroundColor: navy, borderTop: `4px solid ${copper}`, borderRadius: radius, padding: 28, textAlign: "center" }}>
-                <p style={{ fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: copper, fontWeight: 600, marginBottom: 8, fontFamily: "'Fira Mono', monospace" }}>{s.label}</p>
-                <p style={{ fontFamily: "'Lora', serif", fontSize: 16, color: textOnDark, fontWeight: 600, marginBottom: 16 }}>{s.detail}</p>
-                <p style={{ fontFamily: "'Lora', serif", fontSize: 36, fontWeight: 700, color: white, margin: 0, lineHeight: 1 }}>{s.rate}</p>
-              </div>
-            ))}
-          </div>
-
-          <p style={{ fontSize: 15, color: "#3b1f08", lineHeight: 1.7, marginBottom: 24, fontWeight: 600 }}>
-            Exempt if you have a service-connected disability rating of 10% or higher.
-          </p>
-
-          <div style={{ backgroundColor: white, border: `1px solid ${copper}`, borderRadius: radius, padding: "28px 32px" }}>
-            <p style={{ fontSize: 15, color: "#3b1f08", lineHeight: 1.7, margin: 0 }}>
-              <strong>Disability waiver:</strong> If you have a VA service-connected disability rating, the funding fee is waived entirely. Pending claim at closing? You may be eligible for a refund once the rating is approved. Ask before you close.
-            </p>
-          </div>
-          <div style={{ marginTop: 20 }}>
-            <Link to="/calculators?tab=va-funding-fee" style={{ fontSize: 15, color: copper, fontWeight: 600, textDecoration: "none" }}>
-              → Calculate your exact VA funding fee
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 5. NEW CONSTRUCTION ─────────────────────────────────────────────── */}
-      <section style={{ backgroundColor: navy, ...sectionPad }}>
-        <div style={container}>
-          <p style={tag(copper)}>New Construction</p>
-          <h2 style={h2Style(white)}>Buying new construction with a VA loan in Texas</h2>
-          <p style={subStyle("rgba(240,237,230,0.6)")}>Builders are active across every major Texas military market. Knowing how to navigate their process is the difference between getting the home — and walking away from a deal that was never actually dead.</p>
-
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 40 }}>
-            {builders.map((b) => (
-              <span key={b} style={{ backgroundColor: "rgba(255,255,255,0.1)", color: textOnDark, fontSize: 13, padding: "8px 18px", borderRadius: 999, fontWeight: 500 }}>{b}</span>
-            ))}
-          </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24, marginBottom: 40 }}>
-            <div style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: radius, padding: 28 }}>
-              <p style={{ fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: textMuted, marginBottom: 12, fontFamily: "'Fira Mono', monospace" }}>What the builder's lender says</p>
-              <p style={{ fontSize: 15, color: "rgba(240,237,230,0.7)", lineHeight: 1.65, margin: 0 }}>Your VA loan won't work here. Getting declined or redirected isn't a VA problem — it's the constraints of that specific lender.</p>
-            </div>
-            <div style={{ backgroundColor: "rgba(181,98,30,0.12)", border: `1px solid ${copper}`, borderRadius: radius, padding: 28 }}>
-              <p style={{ fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: copper, marginBottom: 12, fontFamily: "'Fira Mono', monospace" }}>What's actually true</p>
-              <p style={{ fontSize: 15, color: "rgba(240,237,230,0.85)", lineHeight: 1.65, margin: 0 }}>A broker with 50+ lenders can often close the same deal. Builder incentives frequently follow you to an outside lender — you just have to ask, and have the right person in your corner to negotiate it.</p>
+            <div className="va-note">
+              <strong>The funding fee may be waived.</strong>
+              <p>
+                Veterans receiving qualifying service-connected disability compensation are generally exempt. We verify the status before closing and calculate the fee for everyone else.
+              </p>
             </div>
           </div>
-
-          <div style={{ backgroundColor: "rgba(255,255,255,0.08)", borderRadius: radius, padding: "24px 32px", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
-            <p style={{ fontSize: 15, color: textOnDark, margin: 0, maxWidth: 600, lineHeight: 1.6 }}>A strong realtor negotiating on your behalf makes all the difference. Don't walk into a builder's sales office without one.</p>
-            <a href={CALENDLY} target="_blank" rel="noopener noreferrer" style={btnPrimary}>Talk to Shalanda</a>
-          </div>
         </div>
       </section>
 
-      {/* ── 6. TEXAS-SPECIFIC ───────────────────────────────────────────────── */}
-      <section style={{ backgroundColor: white, ...sectionPad }}>
-        <div style={container}>
-          <p style={tag()}>Texas-Specific</p>
-          <h2 style={h2Style()}>What's different about VA loans in Texas</h2>
-          <p style={subStyle()}>Texas has rules and nuances that affect every buyer. These are the ones worth knowing before you start shopping.</p>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            {texasItems.map((t, i) => (
-              <div key={t.badge} style={{ padding: "24px 0", borderBottom: i < texasItems.length - 1 ? `1px solid ${border}` : "none" }}>
-                <span style={{ display: "inline-block", backgroundColor: copperLight, color: copper, fontSize: 12, fontWeight: 600, padding: "4px 12px", borderRadius: 999, marginBottom: 12, fontFamily: "'Fira Mono', monospace" }}>{t.badge}</span>
-                <p style={{ fontSize: 15, color: textSecondary, lineHeight: 1.65, margin: 0 }}>{t.body}</p>
-              </div>
-            ))}
-          </div>
-          <div style={{ marginTop: 20 }}>
-            <Link to="/calculators?tab=texas-payment" style={{ fontSize: 15, color: copper, fontWeight: 600, textDecoration: "none" }}>
-              → See your real Texas payment — taxes included
-            </Link>
-          </div>
-          <div style={{ marginTop: 28 }}>
-            <Link to="/killeen-va-loan" style={{ fontSize: 15, color: copper, fontWeight: 600, textDecoration: "none" }}>
-              Serving the Fort Hood corridor — see our Killeen VA Loan Guide →
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 7. VA RENOVATION + ONE-TIME CLOSE ───────────────────────────────── */}
-      <section style={{ backgroundColor: soft, ...sectionPad }}>
-        <div style={container}>
-          <p style={tag()}>More VA Options</p>
-          <h2 style={h2Style()}>Beyond the standard purchase loan</h2>
-          <p style={subStyle()}>Your VA benefit can do more than buy a move-in-ready home.</p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 24 }}>
-            {[
-              { title: "VA Renovation Loan", body: "Buy a home and finance eligible repairs or improvements in a single loan. One closing, one payment — useful when the home you want needs work that would otherwise kill the deal.", tag: "Single close · Repairs included" },
-              { title: "VA One-Time Close Construction", body: "Build from the ground up with one closing covering both construction and permanent financing. No re-qualifying when the build is complete. Builder approval requirements apply.", tag: "New build · One closing · No re-qualify" },
-            ].map((c) => (
-              <div key={c.title} style={{ backgroundColor: white, borderRadius: radius, padding: 28, borderTop: `3px solid ${copper}`, boxShadow: "0 2px 12px rgba(26,58,92,0.07)" }}>
-                <div style={{ fontFamily: "'Lora', serif", fontSize: 18, fontWeight: 700, color: navy, marginBottom: 10 }}>{c.title}</div>
-                <p style={{ fontSize: 15, color: textSecondary, lineHeight: 1.65, marginBottom: 16 }}>{c.body}</p>
-                <span style={{ fontSize: 12, color: copper, fontFamily: "'Fira Mono', monospace", letterSpacing: "0.04em" }}>{c.tag}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Entitlement callout */}
-          <Link to="/calculators?tab=va-entitlement" style={{ display: "block", marginTop: 32, backgroundColor: copper, borderRadius: radius, padding: "24px 28px", textDecoration: "none", color: white }}>
-            <p style={{ fontSize: 12, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.8)", fontWeight: 600, marginBottom: 8, fontFamily: "'Fira Mono', monospace" }}>VA Entitlement</p>
-            <p style={{ fontFamily: "'Lora', serif", fontSize: 19, fontWeight: 700, color: white, margin: 0, lineHeight: 1.4 }}>
-              Already have a VA loan? PCSing and need to know if you can buy again — Do you have remaining entitlement? <span style={{ textDecoration: "underline" }}>→ Calculate Your Remaining VA Entitlement</span>
+      <section className="va-section white">
+        <div className="va-wrap">
+          <div className="va-heading">
+            <p className="va-kicker">Texas changes the numbers</p>
+            <h2>The house is only part of the payment.</h2>
+            <p>
+              A Texas VA strategy should account for the county, exemptions, contract terms, and the way the offer is presented.
             </p>
-          </Link>
-        </div>
-      </section>
-
-      {/* ── PCS TO PORTFOLIO CALLOUT ──────────────────────────────────────── */}
-      <section style={{ backgroundColor: white, padding: "48px 0" }}>
-        <div style={container}>
-          <Link to="/pcs-to-portfolio" style={{ display: "block", backgroundColor: copperLight, border: `1px solid ${copper}`, borderRadius: radius, padding: "24px 28px", textDecoration: "none" }}>
-            <p style={{ fontSize: 16, fontWeight: 700, color: navy, margin: 0, fontFamily: "'Lora', serif" }}>
-              PCS orders in hand? <span style={{ color: copper }}>Read our Military Wealth Strategy Guide →</span>
-            </p>
-          </Link>
-        </div>
-      </section>
-
-      {/* ── INTERNAL LINKS ──────────────────────────────────────────────────── */}
-      <section style={{ backgroundColor: "#faf8f4", ...sectionPad }}>
-        <div style={container}>
-          <h2 style={{ fontFamily: "'Lora', serif", fontSize: 32, fontWeight: 700, color: navy, textAlign: "center", marginBottom: 40 }}>Explore More VA Loan Resources</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 20 }}>
-            {[
-              { title: "VA Loan FAQ — Texas", desc: "Every question Fort Hood and Texas veterans ask about entitlement, funding fees, BAH, and more. Answered plainly.", to: "/va-loan-faq-texas", label: "Read the FAQ →" },
-              { title: "Killeen & Fort Hood VA Loans", desc: "Buying near Fort Hood? We close VA loans in Killeen, Harker Heights, and Copperas Cove regularly.", to: "/killeen-va-loan", label: "See Killeen Guide →" },
-              { title: "PCS to Portfolio", desc: "PCSing to Texas? Learn how to turn every duty station move into a long-term wealth-building opportunity.", to: "/pcs-to-portfolio", label: "Read the Strategy →" },
-              { title: "VA Loan Calculator", desc: "Run your payment, compare VA vs. conventional, and see how BAH affects your buying power.", to: "/calculators", label: "Use the Calculator →" },
-            ].map((c) => (
-              <div key={c.title} style={{ backgroundColor: white, borderRadius: radius, padding: 28, borderTop: `3px solid ${copper}`, boxShadow: "0 2px 12px rgba(26,58,92,0.07)", display: "flex", flexDirection: "column" }}>
-                <div style={{ color: copper, marginBottom: 14 }}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-                </div>
-                <h3 style={{ fontFamily: "'Lora', serif", fontSize: 19, fontWeight: 700, color: navy, marginBottom: 10 }}>{c.title}</h3>
-                <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: "#3d4f63", lineHeight: 1.6, marginBottom: 18, flexGrow: 1 }}>{c.desc}</p>
-                <Link to={c.to} style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, fontWeight: 600, color: navy, textDecoration: "none" }}>{c.label}</Link>
-              </div>
+          </div>
+          <div className="va-details">
+            {texasDetails.map((detail) => (
+              <article className="va-detail" key={detail.title}>
+                <h3>{detail.title}</h3>
+                <p>{detail.body}</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── 8. CLOSING CTA ──────────────────────────────────────────────────── */}
-      <section style={{ backgroundColor: navy, ...sectionPad }}>
-        <div style={{ ...container, textAlign: "center", maxWidth: 640 }}>
-          <div style={{ width: 64, height: 64, borderRadius: "50%", backgroundColor: copper, color: white, display: "inline-flex", alignItems: "center", justifyContent: "center", fontFamily: "'Lora', serif", fontSize: 22, fontWeight: 700, marginBottom: 20 }}>SS</div>
-          <div style={{ fontFamily: "'Lora', serif", fontSize: 22, fontWeight: 700, color: white, marginBottom: 6 }}>Shalanda Smith</div>
-          <p style={{ fontSize: 13, color: "rgba(240,237,230,0.5)", marginBottom: 24, fontFamily: "'Fira Mono', monospace", letterSpacing: "0.03em" }}>NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · Licensed in Texas</p>
-          <p style={{ fontSize: 16, color: "rgba(240,237,230,0.75)", lineHeight: 1.7, marginBottom: 32 }}>
-            VA loans aren't a side product. They're the loan I know best and close most — from Fort Hood to El Paso to Houston. If you want a real picture of what you qualify for, let's talk.
+      <section className="va-section">
+        <div className="va-wrap">
+          <div className="va-heading">
+            <p className="va-kicker">Go deeper when you need to</p>
+            <h2>Useful VA resources, without the scavenger hunt.</h2>
+          </div>
+          <div className="va-resources">
+            {resources.map((resource) => (
+              <article className="va-resource" key={resource.title}>
+                <h3>{resource.title}</h3>
+                <p>{resource.body}</p>
+                <Link to={resource.to}>{resource.label} →</Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="va-cta">
+        <div className="va-wrap">
+          <h2>Let’s find out what your VA benefit can do.</h2>
+          <p>
+            Start with a conversation about your goals, timing, entitlement, and comfortable monthly payment.
           </p>
-          <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <a href={CALENDLY} target="_blank" rel="noopener noreferrer" style={btnPrimary}>Schedule a Strategy Call</a>
-            <a href={APPLY} target="_blank" rel="noopener noreferrer" style={btnOutline}>Start Your Application</a>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 9. COMPLIANCE FOOTER ────────────────────────────────────────────── */}
-      <section style={{ backgroundColor: "#141c24", padding: "32px 0" }}>
-        <div style={{ ...container, textAlign: "center" }}>
-          <p style={{ fontSize: 12, color: "rgba(240,237,230,0.4)", lineHeight: 1.7, marginBottom: 0, maxWidth: 800, margin: "0 auto" }}>
-            Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Licensed in Texas · Equal Housing Lender · This page is for educational purposes only and does not constitute a loan commitment or rate guarantee.
+          <a className="va-primary" href={CALENDLY} target="_blank" rel="noopener noreferrer">
+            Book a Strategy Call
+          </a>
+          <p style={{ marginTop: 18, marginBottom: 0, fontSize: 13 }}>
+            Ready now?{" "}
+            <a href={APPLY} target="_blank" rel="noopener noreferrer" style={{ color: "white", textUnderlineOffset: 4 }}>
+              Begin the secure application
+            </a>
           </p>
         </div>
       </section>
