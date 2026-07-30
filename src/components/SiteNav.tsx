@@ -20,6 +20,7 @@ const NAV: NavItem[] = [
     children: [
       { to: "/first-time-buyers", label: "First-Time Buyers" },
       { to: "/conventional-loan-texas", label: "Conventional Loans" },
+      { to: "/fha-loan-texas", label: "FHA Loans" },
       { to: "/physician-loan-texas", label: "Physician Loans" },
       { to: "/loan-programs", label: "Explore Loan Programs" },
       { to: "/down-payment-assistance-texas", label: "Down Payment Assistance" },
@@ -29,7 +30,7 @@ const NAV: NavItem[] = [
     label: "Specialty Loans",
     children: [
       { to: "/investors", label: "Investor and DSCR Loans" },
-      { to: "/loan-programs", label: "Self-Employed Borrowers" },
+      { to: "/investors", label: "Self-Employed Borrowers" },
       { to: "/construction-renovation-loans-texas", label: "Construction and Renovation" },
       { to: "/refinance", label: "Refinance" },
     ],
