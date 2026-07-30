@@ -116,10 +116,10 @@ const styles = `
   .wm-hero {
     position: relative;
     overflow: hidden;
-    padding: clamp(80px, 11vw, 142px) 0;
+    padding: clamp(56px, 7vw, 88px) 0;
     background:
-      radial-gradient(circle at 89% 15%, rgba(181, 101, 42, 0.12), transparent 31%),
-      linear-gradient(115deg, var(--soft-white) 0 56%, var(--warm-ivory) 56%);
+      radial-gradient(circle at 88% 18%, rgba(181, 101, 42, 0.09), transparent 28%),
+      #ffffff;
   }
   .wm-hero-grid {
     display: grid;
@@ -146,7 +146,7 @@ const styles = `
   }
   .wm-portrait {
     position: relative;
-    min-height: 520px;
+    min-height: 470px;
   }
   .wm-portrait img {
     position: absolute;
@@ -323,12 +323,12 @@ const styles = `
   @media (max-width: 820px) {
     .wm-container { width: min(100% - 36px, 680px); }
     .wm-hero {
-      padding-top: 64px;
-      background: linear-gradient(180deg, var(--soft-white) 0 63%, var(--warm-ivory) 63%);
+      padding-top: 52px;
+      background: #ffffff;
     }
     .wm-hero-grid { grid-template-columns: 1fr; }
     .wm-portrait {
-      min-height: 460px;
+      min-height: 420px;
       max-width: 500px;
       width: 100%;
       margin: 0 auto;
@@ -403,10 +403,10 @@ export default function Index() {
                 >
                   Book a Strategy Call
                 </a>
-                <a className="wm-button wm-button-secondary" href="/guide">
-                  Start With the Free Guide
-                </a>
               </div>
+              <a className="wm-text-link" href="/guide">
+                Start with the free guide
+              </a>
               <div className="wm-hero-note">
                 VA-focused · Independent Texas mortgage broker
               </div>
