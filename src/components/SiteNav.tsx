@@ -7,80 +7,42 @@ type NavItem = { label: string; to?: string; children?: NavChild[] };
 
 const NAV: NavItem[] = [
   {
-    label: "Veterans",
+    label: "VA Loans",
     children: [
       { to: "/va-loan-texas", label: "VA Loan Overview" },
       { to: "/killeen-va-loan", label: "Killeen and Fort Hood" },
       { to: "/pcs-to-portfolio", label: "PCS to Portfolio" },
       { to: "/va-loan-faq-texas", label: "VA Loan FAQ" },
-        { to: "/va-appraisal-checklist", label: "VA Appraisal Checklist" },
-        { to: "/va-funding-fee-calculator", label: "VA Funding Fee Calculator" },
-        { to: "/bah-calculator-killeen-tx", label: "BAH Calculator — Killeen" },
-        { to: "/va-loan-calculator-texas", label: "VA Loan Calculator" },
     ],
   },
   {
     label: "Buy a Home",
     children: [
       { to: "/first-time-buyers", label: "First-Time Buyers" },
-      { to: "/fha-loan-texas", label: "FHA Loans" },
-      { to: "/conventional-loan-texas", label: "Conventional Loans" },
-      { to: "/down-payment-assistance-texas", label: "Down Payment Assistance" },
-      { to: "/construction-renovation-loans-texas", label: "New Construction" },
-    ],
-  },
-  {
-    label: "Investors",
-    children: [
-      { to: "/investors", label: "Build a Rental Portfolio" },
-      { to: "/pcs-to-portfolio", label: "PCS to Portfolio" },
-      { to: "/investors", label: "Bank Statement Loans" },
-      { to: "/investors", label: "DSCR Loans" },
-    ],
-  },
-  {
-    label: "Programs",
-    children: [
-      { to: "/loan-programs", label: "All Programs" },
       { to: "/physician-loan-texas", label: "Physician Loans" },
+      { to: "/loan-programs", label: "Explore Loan Programs" },
+      { to: "/down-payment-assistance-texas", label: "Down Payment Assistance" },
       { to: "/construction-renovation-loans-texas", label: "Construction and Renovation" },
     ],
   },
   {
-    label: "Calculators",
+    label: "Specialty Loans",
     children: [
-      { to: "/calculators?tab=texas-payment", label: "Texas Payment Calculator" },
-      { to: "/calculators?tab=va-loan", label: "VA Loan Calculator" },
-      { to: "/calculators?tab=va-funding-fee", label: "VA Funding Fee Calculator" },
-      { to: "/calculators?tab=temp-buydown", label: "Temp Buydown Calculator" },
-      { to: "/calculators?tab=va-entitlement", label: "VA Entitlement Calculator" },
-      { to: "/calculators?tab=fha-vs-conventional", label: "FHA vs. Conventional" },
-      { to: "/calculators?tab=budget-affordability", label: "Budget and Affordability" },
-      { to: "/calculators?tab=bah-buying-power", label: "BAH and Buying Power" },
-      { to: "/calculators?tab=portfolio-builder", label: "Portfolio Builder" },
+      { to: "/investors", label: "Investor and DSCR Loans" },
+      { to: "/loan-programs", label: "Self-Employed Borrowers" },
+      { to: "/construction-renovation-loans-texas", label: "Construction and Renovation" },
+      { to: "/refinance", label: "Refinance" },
     ],
   },
   {
     label: "Resources",
     children: [
+      { to: "/calculators", label: "Mortgage Calculators" },
       { to: "/guide", label: "Consumer Guide" },
       { to: "/playbook", label: "90-Day Playbook" },
+      { to: "/about", label: "About Shalanda" },
     ],
   },
-  {
-    label: "Cities",
-    children: [
-      { to: "/austin-tx-mortgage", label: "Austin" },
-      { to: "/dallas-tx-mortgage", label: "Dallas–Fort Worth" },
-      { to: "/georgetown-tx-mortgage", label: "Georgetown" },
-      { to: "/houston-tx-mortgage", label: "Houston" },
-      { to: "/killeen-va-loan", label: "Killeen and Fort Hood" },
-      { to: "/round-rock-tx-mortgage", label: "Round Rock" },
-      { to: "/san-antonio-tx-mortgage", label: "San Antonio" },
-      { to: "/temple-tx-mortgage", label: "Temple and Bell County" },
-    ],
-  },
-  { label: "About", to: "/about" },
 ];
 
 const NAVY = "#1a3a5c";
@@ -150,7 +112,15 @@ const SiteNav = () => {
                 {item.to ? (
                   <Link to={item.to} style={triggerStyle}>{item.label}</Link>
                 ) : (
-                  <span style={triggerStyle}>{item.label}</span>
+                  <button
+                    type="button"
+                    aria-expanded={isOpen}
+                    aria-haspopup="true"
+                    onClick={() => setOpenIdx(isOpen ? null : idx)}
+                    style={triggerStyle}
+                  >
+                    {item.label}
+                  </button>
                 )}
 
                 {hasChildren && (
@@ -231,6 +201,8 @@ const SiteNav = () => {
         <button
           className="site-nav-hamburger"
           aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
+          aria-controls="site-mobile-menu"
           onClick={() => setMobileOpen((v) => !v)}
           style={{
             display: "none",
@@ -253,7 +225,7 @@ const SiteNav = () => {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="site-nav-mobile" style={{
+        <div id="site-mobile-menu" className="site-nav-mobile" style={{
           background: "#ffffff",
           borderTop: "1px solid #ddd8cf",
           padding: "12px 20px 20px",
