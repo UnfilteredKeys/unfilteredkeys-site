@@ -1446,12 +1446,15 @@ details[open] summary::after { content: '−'; }
    BROKER INTRO SECTION
    ═══════════════════════════════════════════ */
 .section-broker {
-  background: var(--bg-white);
+  background:
+    radial-gradient(circle at 18% 48%, rgba(26,58,92,0.08), transparent 34%),
+    var(--bg-white);
   position: relative;
+  overflow: hidden;
 }
 .broker-inner {
   display: grid;
-  grid-template-columns: 340px 1fr;
+  grid-template-columns: minmax(300px, 390px) 1fr;
   gap: 64px;
   align-items: center;
 }
@@ -1466,17 +1469,32 @@ details[open] summary::after { content: '−'; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
+  gap: 8px;
+  isolation: isolate;
+}
+.broker-photo-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 8% 2% 10%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,58,92,0.14), rgba(250,248,244,0) 68%);
+  filter: blur(10px);
+  z-index: -1;
 }
 .broker-photo {
   width: 100%;
-  max-width: 340px;
-  aspect-ratio: 1/1;
+  max-width: 390px;
+  aspect-ratio: 4/5;
   object-fit: cover;
   object-position: center top;
-  border-radius: 12px;
-  box-shadow: 0 12px 48px rgba(28,38,48,0.14);
-  border: 3px solid var(--border-light);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 80%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 80%, transparent 100%);
+}
+@media (max-width: 860px) {
+  .broker-photo { max-width: 360px; }
 }
 .broker-photo-badge {
   display: flex;
@@ -1675,9 +1693,12 @@ details[open] summary::after { content: '−'; }
    TEXAS MARKETS MAP
    ═══════════════════════════════════════════ */
 .tx-map-section {
-  background: #1a3a5c;
-  padding: 80px 0;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(181,98,30,0.10), transparent 38%),
+    linear-gradient(180deg, var(--bg-hero) 0%, #1a3a5c 100%);
+  padding: 76px 0 84px;
   position: relative;
+  overflow: hidden;
 }
 .tx-map-heading {
   text-align: center;
@@ -1692,8 +1713,9 @@ details[open] summary::after { content: '−'; }
   text-align: center;
   font-family: var(--font-body);
   font-size: 15px;
-  color: #b5621e;
-  margin-bottom: 40px;
+  color: rgba(250,248,244,0.68);
+  margin: 0 auto 40px;
+  max-width: 620px;
 }
 .tx-map-wrap {
   max-width: 680px;
@@ -1706,9 +1728,9 @@ details[open] summary::after { content: '−'; }
   display: block;
 }
 .tx-map-svg .tx-outline {
-  fill: rgba(26,58,92,0.2);
-  stroke: #b5621e;
-  stroke-width: 1.8;
+  fill: rgba(250,248,244,0.035);
+  stroke: rgba(232,180,125,0.82);
+  stroke-width: 2.2;
   stroke-linejoin: round;
 }
 .tx-map-svg .tx-dot-current {
@@ -1899,31 +1921,22 @@ const pageHTML = `
      ═══════════════════════════════════════════ -->
 <section class="tx-map-section" aria-labelledby="tx-map-heading">
   <div class="container">
-    <h2 class="tx-map-heading" id="tx-map-heading">Serving Veterans &amp; Buyers Across Texas</h2>
-    <p class="tx-map-subheading">Hover a market to see who we serve there</p>
+    <h2 class="tx-map-heading" id="tx-map-heading">Texas Is Not a Side Market. It Is the Market.</h2>
+    <p class="tx-map-subheading">Explore six priority markets where local taxes, military moves, medical employment, and neighborhood pricing shape the right mortgage strategy.</p>
 
     <div class="tx-map-wrap" id="txMapWrap">
       <svg class="tx-map-svg" viewBox="0 0 640 550" xmlns="http://www.w3.org/2000/svg" aria-label="Texas markets map">
         <path class="tx-outline" d="M192,15 H321 V130 L370,128 L430,130 L500,133 L560,136 L591,140 L594,200 L596,295 L584,340 L560,358 L536,370 L510,390 L480,408 L455,428 L433,455 L430,520 L370,468 L340,450 L299,400 L282,368 L240,358 L175,352 L132,348 L90,310 L60,272 L42,242 L42,229 H192 V15 Z"/>
 
-        <!-- CURRENT MARKETS -->
+        <!-- PRIORITY TEXAS MARKETS -->
         <circle class="tx-dot-current" cx="452" cy="185" r="6" data-city="dfw"/>
         <text class="tx-city-label" x="462" y="188">Dallas-Fort Worth</text>
 
         <circle class="tx-dot-current" cx="412" cy="262" r="6" data-city="forthood"/>
-        <text class="tx-city-label" x="402" y="265" text-anchor="end">Fort Hood / Killeen</text>
-
-        <circle class="tx-dot-current" cx="432" cy="275" r="6" data-city="temple"/>
-        <text class="tx-city-label" x="442" y="278">Temple</text>
-
-        <circle class="tx-dot-current" cx="428" cy="292" r="6" data-city="roundrock"/>
-        <text class="tx-city-label" x="438" y="295">Round Rock</text>
+        <text class="tx-city-label" x="402" y="265" text-anchor="end">Killeen / Fort Cavazos</text>
 
         <circle class="tx-dot-current" cx="414" cy="310" r="6" data-city="austin"/>
         <text class="tx-city-label" x="404" y="313" text-anchor="end">Austin</text>
-
-        <circle class="tx-dot-current" cx="510" cy="318" r="6" data-city="woodlands"/>
-        <text class="tx-city-label" x="520" y="321">The Woodlands</text>
 
         <circle class="tx-dot-current" cx="514" cy="350" r="6" data-city="houston"/>
         <text class="tx-city-label" x="524" y="353">Houston</text>
@@ -1934,33 +1947,6 @@ const pageHTML = `
         <circle class="tx-dot-current" cx="57" cy="248" r="6" data-city="elpaso"/>
         <text class="tx-city-label" x="67" y="251">El Paso</text>
 
-        <circle class="tx-dot-current" cx="436" cy="448" r="6" data-city="corpuschristi"/>
-        <text class="tx-city-label" x="446" y="451">Corpus Christi</text>
-
-        <!-- POTENTIAL EXPANSION -->
-        <circle class="tx-dot-expansion" cx="398" cy="138" r="6" data-city="wichitafalls"/>
-        <text class="tx-city-label" x="408" y="141">Wichita Falls</text>
-
-        <circle class="tx-dot-expansion" cx="325" cy="255" r="6" data-city="abilene"/>
-        <text class="tx-city-label" x="335" y="258">Abilene</text>
-
-        <circle class="tx-dot-expansion" cx="242" cy="158" r="6" data-city="lubbock"/>
-        <text class="tx-city-label" x="252" y="161">Lubbock</text>
-
-        <circle class="tx-dot-expansion" cx="248" cy="72" r="6" data-city="amarillo"/>
-        <text class="tx-city-label" x="258" y="75">Amarillo</text>
-
-        <circle class="tx-dot-expansion" cx="305" cy="300" r="6" data-city="sanangelo"/>
-        <text class="tx-city-label" x="315" y="303">San Angelo</text>
-
-        <circle class="tx-dot-expansion" cx="280" cy="398" r="6" data-city="delrio"/>
-        <text class="tx-city-label" x="270" y="401" text-anchor="end">Del Rio</text>
-
-        <circle class="tx-dot-expansion" cx="536" cy="210" r="6" data-city="tyler"/>
-        <text class="tx-city-label" x="546" y="213">Tyler</text>
-
-        <circle class="tx-dot-expansion" cx="400" cy="492" r="6" data-city="mcallen"/>
-        <text class="tx-city-label" x="390" y="495" text-anchor="end">McAllen / RGV</text>
       </svg>
       <div class="tx-map-tooltip" id="txMapTooltip"></div>
     </div>
@@ -1973,7 +1959,7 @@ const pageHTML = `
     <!-- Mobile fallback -->
     <div class="tx-map-mobile-grid">
       <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">Dallas-Fort Worth</span></div>
-      <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">Fort Hood / Killeen</span></div>
+      <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">Killeen / Fort Cavazos</span></div>
       <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">Temple</span></div>
       <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">Round Rock</span></div>
       <div class="tx-map-mobile-card"><span class="tx-map-mobile-dot"></span><span class="tx-map-mobile-name">Austin</span></div>
@@ -2022,7 +2008,7 @@ const pageHTML = `
       <div class="broker-photo-wrap">
         <img
           src="/headshot.jpg" loading="lazy" decoding="async"
-          alt="Mortgage broker — Keys by Shalanda, Texas"
+          alt="Shalanda Smith, Texas mortgage broker and VA loan specialist"
           class="broker-photo"
           width="340"
           height="340"
@@ -2377,7 +2363,7 @@ export default function Index() {
   // Texas Map tooltip
   const txCityData: Record<string, {name:string,type:string,category:string,locations:string[]}> = {
     dfw:{name:'Dallas-Fort Worth',type:'current',category:'Military & Medical',locations:['NAS Joint Reserve Base Fort Worth','Parkland Memorial Hospital','UT Southwestern Medical Center','Baylor Scott & White – Dallas','Medical City Dallas']},
-    forthood:{name:'Fort Hood / Killeen',type:'current',category:'Military Installation',locations:['Fort Hood','Carl R. Darnall Army Medical Center']},
+    forthood:{name:'Killeen / Fort Cavazos',type:'current',category:'Military Installation',locations:['Fort Cavazos (formerly Fort Hood)','Carl R. Darnall Army Medical Center']},
     temple:{name:'Temple',type:'current',category:'Medical Hub',locations:['Baylor Scott & White Medical Center (flagship)','Scott & White Memorial Hospital']},
     roundrock:{name:'Round Rock',type:'current',category:'Medical Hub',locations:['Baylor Scott & White Round Rock','St. David\'s Round Rock Medical Center']},
     austin:{name:'Austin',type:'current',category:'Military & Medical',locations:['Army Futures Command','Dell Seton Medical Center','St. David\'s Medical Center','Ascension Seton Medical Center']},
