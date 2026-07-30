@@ -19,6 +19,7 @@ const NAV: NavItem[] = [
     label: "Buy a Home",
     children: [
       { to: "/first-time-buyers", label: "First-Time Buyers" },
+      { to: "/conventional-loan-texas", label: "Conventional Loans" },
       { to: "/physician-loan-texas", label: "Physician Loans" },
       { to: "/loan-programs", label: "Explore Loan Programs" },
       { to: "/down-payment-assistance-texas", label: "Down Payment Assistance" },
