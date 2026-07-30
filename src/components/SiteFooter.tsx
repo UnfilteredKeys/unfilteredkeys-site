@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 
 const footerLinks = [
   { label: "About", to: "/about" },
-  { label: "Loan Programs", to: "/loan-programs" },
+  { label: "Buy a Home", to: "/buy" },
   { label: "Free Guide", to: "/guide" },
   { label: "Calculators", to: "/calculators" },
   { label: "Military Wealth Strategy", to: "/pcs-to-portfolio" },
-  { label: "VA Loans in Killeen & Fort Cavazos", to: "/killeen-va-loan" },
+  { label: "VA Loans in Killeen & Fort Hood", to: "/killeen-va-loan" },
 ];
 
 const SiteFooter = () => (

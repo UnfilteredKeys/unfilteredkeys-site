@@ -47,8 +47,8 @@ const resources = [
     label: "Run the numbers",
   },
   {
-    title: "Killeen and Fort Cavazos",
-    body: "Local guidance for buyers and military families in the Fort Cavazos area.",
+    title: "Killeen and Fort Hood",
+    body: "Local guidance for buyers and military families in the Fort Hood area.",
     to: "/killeen-va-loan",
     label: "Read the local guide",
   },

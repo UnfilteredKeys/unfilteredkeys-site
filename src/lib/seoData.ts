@@ -113,18 +113,18 @@ export const seoMeta = {
     canonical: "/investors",
   },
   fhaLoanTexas: {
-    title: "FHA Loans in Texas | 3.5% Down, 580 Credit Minimum | Keys by Shalanda",
+    title: "FHA Loans in Texas | Compare Costs and Options | Keys by Shalanda",
     description: "Texas FHA loan specialist. 3.5% down, 580+ credit, FHA 203k renovation, and Texas down payment assistance programs. Run FHA vs conventional with a licensed Texas broker.",
     canonical: "/fha-loan-texas",
   },
   conventionalLoanTexas: {
-    title: "Conventional Loans in Texas | 3% Down, Removable PMI | Keys by Shalanda",
+    title: "Conventional Loans in Texas | Compare Costs and PMI | Keys by Shalanda",
     description: "Texas conventional mortgage broker. 3% down HomeReady and Home Possible, removable PMI, and 50+ lender competition on LLPA pricing. Run conventional vs FHA before you decide.",
     canonical: "/conventional-loan-texas",
   },
   downPaymentAssistanceTexas: {
-    title: "Texas Down Payment Assistance | TDHCA, TSAHC, SETH & Chenoa Fund",
-    description: "Texas down payment assistance broker enrolled in TDHCA, TSAHC, SETH, and Chenoa Fund. Up to 5% grants and silent seconds, $0 out of pocket possible. 580+ credit options.",
+    title: "Texas Down Payment Assistance | Costs, Options and Eligibility",
+    description: "Understand how Texas down payment assistance may affect cash to close, repayment terms, interest rate, fees, and long-term flexibility. Program eligibility and availability must be verified.",
     canonical: "/down-payment-assistance-texas",
   },
   roundRockMortgage: {
