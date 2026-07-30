@@ -22,7 +22,6 @@ const NAV: NavItem[] = [
       { to: "/conventional-loan-texas", label: "Conventional Loans" },
       { to: "/fha-loan-texas", label: "FHA Loans" },
       { to: "/physician-loan-texas", label: "Physician Loans" },
-      { to: "/loan-programs", label: "Explore Loan Programs" },
       { to: "/down-payment-assistance-texas", label: "Down Payment Assistance" },
     ],
   },
