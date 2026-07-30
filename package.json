@@ -92,7 +92,6 @@
     "source": "dist",
     "include": [
       "/",
-      "/apply",
       "/va-loan-texas",
       "/buy",
       "/about",
@@ -101,7 +100,7 @@
       "/guide",
       "/calculators",
       "/physician-loan-texas",
-      "/construction-renovation-texas"
+      "/construction-renovation-loans-texas"
     ]
   }
 }
