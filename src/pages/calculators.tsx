@@ -1916,7 +1916,7 @@ function PortfolioBuilderCalc() {
 
 // ── MAIN PAGE ─────────────────────────────────────────────────────────────────
 
-type TabId = "va-funding-fee" | "temp-buydown" | "va-entitlement" | "compare" | "bah" | "portfolio-builder";
+type TabId = "va-funding-fee" | "temp-buydown" | "va-entitlement" | "bah" | "portfolio-builder";
 
 export default function Calculators() {
   const [searchParams] = useSearchParams();
@@ -1924,7 +1924,6 @@ export default function Calculators() {
     "va-funding-fee": "va-funding-fee",
     "temp-buydown": "temp-buydown",
     "va-entitlement": "va-entitlement",
-    "fha-vs-conventional": "compare",
     "bah-buying-power": "bah",
     "portfolio-builder": "portfolio-builder",
   };
@@ -1940,7 +1939,6 @@ export default function Calculators() {
     { id: "va-funding-fee", label: "VA Funding Fee" },
     { id: "va-entitlement", label: "VA Entitlement" },
     { id: "bah", label: "BAH & Buying Power" },
-    { id: "compare", label: "FHA vs. Conventional" },
     { id: "temp-buydown", label: "Temp Buydown" },
     { id: "portfolio-builder", label: "Portfolio Builder" },
   ];
@@ -1950,6 +1948,9 @@ export default function Calculators() {
   }
   if (searchParams.get("tab") === "budget-affordability") {
     return <Navigate to="/calculators/homebuying-budget" replace />;
+  }
+  if (searchParams.get("tab") === "fha-vs-conventional") {
+    return <Navigate to="/calculators/fha-vs-conventional" replace />;
   }
 
   return (
@@ -1973,6 +1974,12 @@ export default function Calculators() {
           >
             Budget Planning
           </Link>
+          <Link
+            to="/calculators/fha-vs-conventional"
+            style={{ ...S.tabBtn(false), textDecoration: "none", display: "inline-flex", alignItems: "center" }}
+          >
+            FHA vs. Conventional
+          </Link>
           {tabs.map(t => (
             <button key={t.id} style={S.tabBtn(tab === t.id)} onClick={() => setTab(t.id)}>{t.label}</button>
           ))}
@@ -1982,7 +1989,6 @@ export default function Calculators() {
         {tab === "va-funding-fee" && <VAFundingFeeCalc />}
         {tab === "va-entitlement" && <VAEntitlementCalc />}
         {tab === "bah" && <BAHCalc />}
-        {tab === "compare" && <FHAvsConvCalc />}
         {tab === "temp-buydown" && <TempBuydownCalc />}
         {tab === "portfolio-builder" && <PortfolioBuilderCalc />}
         <div style={{ textAlign: "center" as const, marginTop: "48px" }}>

@@ -140,7 +140,7 @@ const FhaLoanTexasPage = () => (
             <p className="eyebrow">Mortgage insurance</p>
             <h2 className="section-title">FHA’s flexibility is not free.</h2>
             <p className="section-intro">FHA loans generally include upfront and annual mortgage-insurance premiums. How long the annual premium remains depends on the loan structure and current rules.</p>
-            <Link className="text-link" to="/calculators?tab=fha-vs-conventional">Compare FHA and Conventional costs</Link>
+            <Link className="text-link" to="/calculators/fha-vs-conventional">Compare FHA and Conventional costs</Link>
           </div>
           <div>
             <article className="fha-new-detail"><h3>Payment today</h3><p>Compare principal, interest, taxes, homeowners insurance, mortgage insurance, HOA dues, and any assistance repayment. Rate alone is an incomplete answer.</p></article>
