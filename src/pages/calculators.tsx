@@ -1916,7 +1916,7 @@ function PortfolioBuilderCalc() {
 
 // ── MAIN PAGE ─────────────────────────────────────────────────────────────────
 
-type TabId = "va" | "va-funding-fee" | "temp-buydown" | "va-entitlement" | "compare" | "budget" | "bah" | "portfolio-builder";
+type TabId = "va" | "va-funding-fee" | "temp-buydown" | "va-entitlement" | "compare" | "bah" | "portfolio-builder";
 
 export default function Calculators() {
   const [searchParams] = useSearchParams();
@@ -1926,7 +1926,6 @@ export default function Calculators() {
     "temp-buydown": "temp-buydown",
     "va-entitlement": "va-entitlement",
     "fha-vs-conventional": "compare",
-    "budget-affordability": "budget",
     "bah-buying-power": "bah",
     "portfolio-builder": "portfolio-builder",
   };
@@ -1944,13 +1943,15 @@ export default function Calculators() {
     { id: "va-entitlement", label: "VA Entitlement" },
     { id: "bah", label: "BAH & Buying Power" },
     { id: "compare", label: "FHA vs. Conventional" },
-    { id: "budget", label: "Budget & Affordability" },
     { id: "temp-buydown", label: "Temp Buydown" },
     { id: "portfolio-builder", label: "Portfolio Builder" },
   ];
 
   if (searchParams.get("tab") === "texas-payment") {
     return <Navigate to="/calculators/texas-mortgage-payment" replace />;
+  }
+  if (searchParams.get("tab") === "budget-affordability") {
+    return <Navigate to="/calculators/homebuying-budget" replace />;
   }
 
   return (
@@ -1968,6 +1969,12 @@ export default function Calculators() {
           >
             Texas Payment
           </Link>
+          <Link
+            to="/calculators/homebuying-budget"
+            style={{ ...S.tabBtn(false), textDecoration: "none", display: "inline-flex", alignItems: "center" }}
+          >
+            Budget Planning
+          </Link>
           {tabs.map(t => (
             <button key={t.id} style={S.tabBtn(tab === t.id)} onClick={() => setTab(t.id)}>{t.label}</button>
           ))}
@@ -1979,7 +1986,6 @@ export default function Calculators() {
         {tab === "va-entitlement" && <VAEntitlementCalc />}
         {tab === "bah" && <BAHCalc />}
         {tab === "compare" && <FHAvsConvCalc />}
-        {tab === "budget" && <BudgetCalc />}
         {tab === "temp-buydown" && <TempBuydownCalc />}
         {tab === "portfolio-builder" && <PortfolioBuilderCalc />}
         <div style={{ textAlign: "center" as const, marginTop: "48px" }}>
