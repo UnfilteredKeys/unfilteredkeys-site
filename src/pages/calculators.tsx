@@ -1939,7 +1939,10 @@ export default function Calculators() {
     { id: "portfolio-builder", label: "Portfolio Builder" },
   ];
 
-  if (searchParams.get("tab") === "va-entitlement") {\n    return <Navigate to="/calculators/va-entitlement" replace />;\n  }\n  if (searchParams.get("tab") === "va-funding-fee") {
+  if (searchParams.get("tab") === "va-entitlement") {
+    return <Navigate to="/calculators/va-entitlement" replace />;
+  }
+  if (searchParams.get("tab") === "va-funding-fee") {
     return <Navigate to="/calculators/va-funding-fee" replace />;
   }
   if (searchParams.get("tab") === "texas-payment" || searchParams.get("tab") === "va-loan") {
