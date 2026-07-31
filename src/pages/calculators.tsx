@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, Navigate, useSearchParams } from "react-router-dom";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
 import {
@@ -162,72 +162,180 @@ function DTIGauge({ dti }: { dti: number }) {
 
 // ── CALCULATOR 1: TEXAS PAYMENT ───────────────────────────────────────────────
 
-function TexasPaymentCalc() {
+export function TexasPaymentCalc() {
   const [price, setPrice] = useState("350000");
-  const [downPct, setDownPct] = useState("10");
+  const [downMode, setDownMode] = useState<"percent" | "dollars">("percent");
+  const [downPayment, setDownPayment] = useState("10");
   const [rate, setRate] = useState("6.75");
   const [term, setTerm] = useState("30");
   const [loanType, setLoanType] = useState("conventional");
-  const [countyIdx, setCountyIdx] = useState(0);
+  const [taxRate, setTaxRate] = useState("2.10");
   const [insurance, setInsurance] = useState("1800");
-  const [mudRate, setMudRate] = useState("0");
+  const [floodInsurance, setFloodInsurance] = useState("0");
+  const [hoa, setHoa] = useState("0");
+  const [monthlyPmi, setMonthlyPmi] = useState("0");
+  const [financeUpfrontFee, setFinanceUpfrontFee] = useState(true);
+  const [vaUseType, setVaUseType] = useState("first");
+  const [vaExempt, setVaExempt] = useState(false);
 
-  const homePrice = parseFloat(price) || 0;
-  const dp = parseFloat(downPct) || 0;
-  const downAmt = homePrice * (dp / 100);
-  const loanAmt = homePrice - downAmt;
-  const annualRate = parseFloat(rate) || 0;
-  const years = parseInt(term);
-  const county = TX_COUNTIES[countyIdx];
-  const mudPct = parseFloat(mudRate) || 0;
-  const countyPct = county.rate * 100;
-  const effectiveTaxRate = county.rate + mudPct / 100;
-  const pi = monthlyPI(loanAmt, annualRate, years);
-  const monthlyTax = (homePrice * effectiveTaxRate) / 12;
-  const monthlyIns = (parseFloat(insurance) || 0) / 12;
-  const ltv = loanAmt / homePrice;
-  let monthlyMI = 0, miLabel = "";
-  if (loanType === "fha") { monthlyMI = (loanAmt * 0.0055) / 12; miLabel = "MIP"; }
-  else if (loanType === "conventional" && ltv > 0.8) {
-    const pmiRate = ltv > 0.95 ? 0.012 : ltv > 0.9 ? 0.009 : ltv > 0.85 ? 0.007 : 0.005;
-    monthlyMI = (loanAmt * pmiRate) / 12; miLabel = "PMI";
-  } else if (loanType === "usda") { monthlyMI = (loanAmt * 0.0035) / 12; miLabel = "Guarantee Fee"; }
-  const total = pi + monthlyTax + monthlyIns + monthlyMI;
+  const homePrice = Math.max(parseFloat(price) || 0, 0);
+  const enteredDown = Math.max(parseFloat(downPayment) || 0, 0);
+  const rawDownAmt = downMode === "percent" ? homePrice * (enteredDown / 100) : enteredDown;
+  const downAmt = Math.min(rawDownAmt, homePrice);
+  const downPct = homePrice > 0 ? (downAmt / homePrice) * 100 : 0;
+  const baseLoan = Math.max(homePrice - downAmt, 0);
+  const annualRate = Math.max(parseFloat(rate) || 0, 0);
+  const years = parseInt(term) || 30;
+
+  let upfrontFeePct = 0;
+  let upfrontFeeLabel = "";
+  if (loanType === "fha") {
+    upfrontFeePct = 1.75;
+    upfrontFeeLabel = "FHA upfront MIP";
+  } else if (loanType === "usda") {
+    upfrontFeePct = 1;
+    upfrontFeeLabel = "USDA upfront guarantee fee";
+  } else if (loanType === "va" && !vaExempt) {
+    upfrontFeePct = downPct >= 10 ? 1.25 : downPct >= 5 ? 1.5 : vaUseType === "subsequent" ? 3.3 : 2.15;
+    upfrontFeeLabel = "VA funding fee";
+  }
+
+  const upfrontFee = baseLoan * (upfrontFeePct / 100);
+  const financedFee = financeUpfrontFee ? upfrontFee : 0;
+  const financedLoan = baseLoan + financedFee;
+  const pi = monthlyPI(financedLoan, annualRate, years);
+  const monthlyTax = (homePrice * (Math.max(parseFloat(taxRate) || 0, 0) / 100)) / 12;
+  const monthlyIns = Math.max(parseFloat(insurance) || 0, 0) / 12;
+  const monthlyFlood = Math.max(parseFloat(floodInsurance) || 0, 0) / 12;
+  const monthlyHoa = Math.max(parseFloat(hoa) || 0, 0);
+
+  let monthlyMI = 0;
+  let miLabel = "";
+  if (loanType === "fha") {
+    monthlyMI = (baseLoan * 0.0055) / 12;
+    miLabel = "FHA monthly MIP";
+  } else if (loanType === "usda") {
+    monthlyMI = (baseLoan * 0.0035) / 12;
+    miLabel = "USDA annual fee";
+  } else if (loanType === "conventional") {
+    monthlyMI = Math.max(parseFloat(monthlyPmi) || 0, 0);
+    miLabel = "Conventional PMI";
+  }
+
+  const total = pi + monthlyTax + monthlyIns + monthlyFlood + monthlyHoa + monthlyMI;
+  const estimatedUpfront = downAmt + (financeUpfrontFee ? 0 : upfrontFee);
+  const hasUpfrontFee = upfrontFee > 0;
+
+  const handleLoanType = (nextType: string) => {
+    setLoanType(nextType);
+    if (nextType === "va" || nextType === "usda") {
+      setDownMode("percent");
+      setDownPayment("0");
+    } else if (nextType === "fha") {
+      setDownMode("percent");
+      setDownPayment("3.5");
+    } else {
+      setDownMode("percent");
+      setDownPayment("10");
+    }
+  };
 
   return (
     <div style={S.card}>
       <div style={S.cardHeader}>
         <h2 style={S.cardTitle}>Texas Payment Calculator</h2>
-        <p style={S.cardSub}>Includes Texas property taxes + optional MUD overlay — the number most calculators leave out</p>
+        <p style={S.cardSub}>Estimate the complete monthly housing expense for a specific Texas property</p>
       </div>
       <div style={S.cardBody}>
+        <div style={{ fontSize: "14px", lineHeight: 1.65, color: navy, marginBottom: "24px", padding: "16px 18px", backgroundColor: "#f7efe7", borderRadius: "8px", borderLeft: `4px solid ${copper}` }}>
+          Use the property’s full combined tax rate and actual insurance quotes when available. County averages can miss city, school district, MUD, and other local taxes.
+        </div>
         <div style={S.grid2}>
           <div><label style={S.label}>Home Price</label><input style={S.input} type="number" value={price} onChange={e => setPrice(e.target.value)} min="50000" step="5000" /></div>
-          <div><label style={S.label}>Down Payment (%)</label><input style={S.input} type="number" value={downPct} onChange={e => setDownPct(e.target.value)} min="0" max="100" step="0.5" /></div>
+          <div>
+            <label style={S.label}>Loan Type</label>
+            <select style={S.select} value={loanType} onChange={e => handleLoanType(e.target.value)}>
+              <option value="conventional">Conventional</option>
+              <option value="fha">FHA</option>
+              <option value="va">VA</option>
+              <option value="usda">USDA</option>
+            </select>
+          </div>
+          <div>
+            <label style={S.label}>Down Payment</label>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 92px", gap: "8px" }}>
+              <input style={S.input} type="number" value={downPayment} onChange={e => setDownPayment(e.target.value)} min="0" max={downMode === "percent" ? "100" : undefined} step={downMode === "percent" ? "0.5" : "1000"} />
+              <select style={S.select} value={downMode} onChange={e => setDownMode(e.target.value as "percent" | "dollars")}>
+                <option value="percent">Percent</option>
+                <option value="dollars">Dollars</option>
+              </select>
+            </div>
+          </div>
           <div><label style={S.label}>Interest Rate (%)</label><input style={S.input} type="number" value={rate} onChange={e => setRate(e.target.value)} min="1" max="15" step="0.05" /></div>
           <div><label style={S.label}>Loan Term</label><select style={S.select} value={term} onChange={e => setTerm(e.target.value)}><option value="30">30-Year Fixed</option><option value="15">15-Year Fixed</option><option value="20">20-Year Fixed</option></select></div>
-          <div><label style={S.label}>Loan Type</label><select style={S.select} value={loanType} onChange={e => setLoanType(e.target.value)}><option value="conventional">Conventional</option><option value="fha">FHA</option><option value="va">VA</option><option value="usda">USDA</option></select></div>
-          <div><label style={S.label}>Texas County</label><select style={S.select} value={countyIdx} onChange={e => setCountyIdx(parseInt(e.target.value))}>{TX_COUNTIES.map((c, i) => (<option key={i} value={i}>{c.label} ({(c.rate * 100).toFixed(2)}%)</option>))}</select></div>
           <div>
-            <label style={S.label}>MUD Tax Rate (%)</label>
-            <input style={S.input} type="number" value={mudRate} onChange={e => setMudRate(e.target.value)} min="0" max="2" step="0.01" placeholder="0.00" />
-            <div style={{ fontSize: "11px", color: muted, marginTop: "4px", lineHeight: 1.4 }}>Municipal Utility District overlay — common in Houston, Georgetown &amp; San Antonio master-planned communities</div>
+            <label style={S.label}>Combined Property Tax Rate (%)</label>
+            <input style={S.input} type="number" value={taxRate} onChange={e => setTaxRate(e.target.value)} min="0" max="10" step="0.01" />
+            <div style={{ fontSize: "11px", color: muted, marginTop: "4px", lineHeight: 1.4 }}>Include every taxing jurisdiction for the property, including any MUD.</div>
           </div>
-          <div><label style={S.label}>Annual Insurance ($)</label><input style={S.input} type="number" value={insurance} onChange={e => setInsurance(e.target.value)} min="500" step="100" /></div>
-          <div style={{ display: "flex", flexDirection: "column" as const, justifyContent: "flex-end" }}><div style={{ fontSize: "13px", color: muted, lineHeight: 1.5 }}>Down payment: {fmt(downAmt)}<br />Loan amount: {fmt(loanAmt)}<br />Tax rate: {mudPct > 0 ? `${countyPct.toFixed(2)}% county + ${mudPct.toFixed(2)}% MUD = ${(countyPct + mudPct).toFixed(2)}%/yr` : `${countyPct.toFixed(2)}%/yr`}</div></div>
+          <div><label style={S.label}>Annual Homeowners Insurance ($)</label><input style={S.input} type="number" value={insurance} onChange={e => setInsurance(e.target.value)} min="0" step="100" /></div>
+          <div><label style={S.label}>Annual Flood Insurance ($, Optional)</label><input style={S.input} type="number" value={floodInsurance} onChange={e => setFloodInsurance(e.target.value)} min="0" step="100" /></div>
+          <div><label style={S.label}>Monthly HOA Dues ($, Optional)</label><input style={S.input} type="number" value={hoa} onChange={e => setHoa(e.target.value)} min="0" step="25" /></div>
+          {loanType === "conventional" && (
+            <div>
+              <label style={S.label}>Monthly PMI Quote ($)</label>
+              <input style={S.input} type="number" value={monthlyPmi} onChange={e => setMonthlyPmi(e.target.value)} min="0" step="10" />
+              <div style={{ fontSize: "11px", color: muted, marginTop: "4px", lineHeight: 1.4 }}>Enter 0 if PMI does not apply. Actual PMI requires a quote.</div>
+            </div>
+          )}
+          {loanType === "va" && (
+            <>
+              <div>
+                <label style={S.label}>VA Use</label>
+                <select style={S.select} value={vaUseType} onChange={e => setVaUseType(e.target.value)}>
+                  <option value="first">First use</option>
+                  <option value="subsequent">Subsequent use</option>
+                </select>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column" as const, justifyContent: "flex-end", paddingBottom: "8px" }}>
+                <Toggle active={vaExempt} onToggle={() => setVaExempt(!vaExempt)} label="Funding-fee exempt" />
+              </div>
+            </>
+          )}
+          {hasUpfrontFee && (
+            <div style={{ display: "flex", flexDirection: "column" as const, justifyContent: "flex-end", paddingBottom: "8px" }}>
+              <Toggle active={financeUpfrontFee} onToggle={() => setFinanceUpfrontFee(!financeUpfrontFee)} label={`Finance ${upfrontFeeLabel}`} />
+            </div>
+          )}
         </div>
+
+        <div style={{ backgroundColor: "#f0f4f8", borderRadius: "8px", padding: "16px 20px", fontSize: "13px", color: muted, lineHeight: 1.65 }}>
+          <strong style={{ color: navy }}>Loan structure</strong><br />
+          Down payment: {fmt(downAmt)} ({downPct.toFixed(2)}%)<br />
+          Base loan amount: {fmt(baseLoan)}
+          {hasUpfrontFee && <><br />{upfrontFeeLabel}: {fmt(upfrontFee)} ({upfrontFeePct.toFixed(2)}%)</>}
+          {hasUpfrontFee && <><br />Fee treatment: {financeUpfrontFee ? "Financed into the loan" : "Paid upfront"}</>}
+          <br />Total financed loan amount: {fmt(financedLoan)}
+        </div>
+
         <hr style={S.divider} />
+        <h3 style={{ fontFamily: "'Lora', serif", fontSize: "18px", color: navy, margin: "0 0 16px" }}>Estimated monthly housing expense</h3>
         <div style={S.resultsGrid}>
           <ResultBox label="Principal & Interest" value={fmtDec(pi)} />
-          <ResultBox label="Property Tax / Mo" value={fmtDec(monthlyTax)} />
-          <ResultBox label="Insurance / Mo" value={fmtDec(monthlyIns)} />
+          <ResultBox label="Property Taxes" value={fmtDec(monthlyTax)} />
+          <ResultBox label="Homeowners Insurance" value={fmtDec(monthlyIns)} />
+          {monthlyFlood > 0 && <ResultBox label="Flood Insurance" value={fmtDec(monthlyFlood)} />}
+          {monthlyHoa > 0 && <ResultBox label="HOA Dues" value={fmtDec(monthlyHoa)} />}
           {monthlyMI > 0 && <ResultBox label={miLabel + " / Mo"} value={fmtDec(monthlyMI)} />}
-          <ResultBox label="Total Monthly Payment" value={fmtDec(total)} highlight />
+          <ResultBox label="Estimated Total Monthly" value={fmtDec(total)} highlight />
         </div>
-        {loanType === "fha" && <div style={{ fontSize: "13px", color: copper, marginBottom: "12px", fontWeight: 500 }}>⚠ FHA MIP stays for the life of the loan if you put less than 10% down.</div>}
-        {loanType === "va" && <div style={{ fontSize: "13px", color: copper, marginBottom: "12px", fontWeight: 500 }}>✓ VA loans have no monthly PMI — ever. The funding fee (1.25–3.3%) can be rolled into the loan.</div>}
-        <div style={S.disclaimer}>Estimates are for educational purposes only and do not constitute a loan commitment or rate guarantee. Property tax rates are approximate. Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518</div>
-        <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" style={S.cta}>Get Your Real Numbers →</a>
+        <div style={{ fontSize: "13px", color: navy, marginBottom: "12px", lineHeight: 1.6 }}>
+          Estimated down payment plus any fee paid upfront: <strong>{fmt(estimatedUpfront)}</strong>. This is not cash to close and does not include closing costs, prepaid expenses, credits, or reserves.
+        </div>
+        {loanType === "fha" && <div style={{ fontSize: "13px", color: copper, marginBottom: "12px", fontWeight: 500 }}>FHA monthly MIP is estimated at 0.55% annually. The actual amount and duration depend on the final loan structure and current FHA rules.</div>}
+        {loanType === "usda" && <div style={{ fontSize: "13px", color: copper, marginBottom: "12px", fontWeight: 500 }}>USDA calculations use a 1.00% upfront guarantee fee and 0.35% annual fee. Eligibility and final fees must be verified.</div>}
+        {loanType === "va" && <div style={{ fontSize: "13px", color: copper, marginBottom: "12px", fontWeight: 500 }}>VA loans have no monthly mortgage insurance. Funding-fee exemption and the applicable fee must be verified with the Certificate of Eligibility and loan file.</div>}
+        <div style={S.disclaimer}>Educational estimate only. This calculator does not determine eligibility, approval, cash to close, or final loan terms. Property taxes, insurance, HOA dues, mortgage insurance, agency fees, and rates must be verified for the specific borrower and property. Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518</div>
       </div>
     </div>
   );
@@ -1808,12 +1916,11 @@ function PortfolioBuilderCalc() {
 
 // ── MAIN PAGE ─────────────────────────────────────────────────────────────────
 
-type TabId = "texas" | "va" | "va-funding-fee" | "temp-buydown" | "va-entitlement" | "compare" | "budget" | "bah" | "portfolio-builder";
+type TabId = "va" | "va-funding-fee" | "temp-buydown" | "va-entitlement" | "compare" | "budget" | "bah" | "portfolio-builder";
 
 export default function Calculators() {
   const [searchParams] = useSearchParams();
   const tabParamMap: Record<string, TabId> = {
-    "texas-payment": "texas",
     "va-loan": "va",
     "va-funding-fee": "va-funding-fee",
     "temp-buydown": "temp-buydown",
@@ -1836,12 +1943,15 @@ export default function Calculators() {
     { id: "va-funding-fee", label: "VA Funding Fee" },
     { id: "va-entitlement", label: "VA Entitlement" },
     { id: "bah", label: "BAH & Buying Power" },
-    { id: "texas", label: "Texas Payment" },
     { id: "compare", label: "FHA vs. Conventional" },
     { id: "budget", label: "Budget & Affordability" },
     { id: "temp-buydown", label: "Temp Buydown" },
     { id: "portfolio-builder", label: "Portfolio Builder" },
   ];
+
+  if (searchParams.get("tab") === "texas-payment") {
+    return <Navigate to="/calculators/texas-mortgage-payment" replace />;
+  }
 
   return (
     <>
@@ -1852,6 +1962,12 @@ export default function Calculators() {
         <h1 style={S.heroH1}>Real numbers. <em style={{ color: copper }}>Not estimates built for someone else's state.</em></h1>
         <p style={S.heroSub}>These calculators include Texas property taxes, VA funding fees, MIP permanence, and DTI — everything generic calculators leave out.</p>
         <div style={S.tabBar}>
+          <Link
+            to="/calculators/texas-mortgage-payment"
+            style={{ ...S.tabBtn(false), textDecoration: "none", display: "inline-flex", alignItems: "center" }}
+          >
+            Texas Payment
+          </Link>
           {tabs.map(t => (
             <button key={t.id} style={S.tabBtn(tab === t.id)} onClick={() => setTab(t.id)}>{t.label}</button>
           ))}
@@ -1862,7 +1978,6 @@ export default function Calculators() {
         {tab === "va-funding-fee" && <VAFundingFeeCalc />}
         {tab === "va-entitlement" && <VAEntitlementCalc />}
         {tab === "bah" && <BAHCalc />}
-        {tab === "texas" && <TexasPaymentCalc />}
         {tab === "compare" && <FHAvsConvCalc />}
         {tab === "budget" && <BudgetCalc />}
         {tab === "temp-buydown" && <TempBuydownCalc />}

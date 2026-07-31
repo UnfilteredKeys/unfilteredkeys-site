@@ -15,6 +15,7 @@ const BuyAHomePage = lazy(() => import("@/pages/BuyAHome"));
 const RefinancePage = lazy(() => import("@/pages/Refinance"));
 const AboutPage = lazy(() => import("@/pages/About"));
 const CalculatorsPage = lazy(() => import("@/pages/calculators"));
+const TexasMortgagePaymentCalculatorPage = lazy(() => import("@/pages/TexasMortgagePaymentCalculator"));
 const VALoanTexasPage = lazy(() => import("@/pages/VALoanTexas"));
 const VaLoanFaqTexasPage = lazy(() => import("@/pages/VaLoanFaqTexas"));
 const PhysicianLoanTexasPage = lazy(() => import("@/pages/PhysicianLoanTexas"));
@@ -70,6 +71,7 @@ const App = () => (
             <Route path="/loan-programs" element={<Navigate to="/buy" replace />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/calculators" element={<CalculatorsPage />} />
+            <Route path="/calculators/texas-mortgage-payment" element={<TexasMortgagePaymentCalculatorPage />} />
             <Route path="/va-loan-texas" element={<VALoanTexasPage />} />
             <Route path="/va-loan-faq-texas" element={<VaLoanFaqTexasPage />} />
             <Route path="/physician-loan-texas" element={<PhysicianLoanTexasPage />} />
