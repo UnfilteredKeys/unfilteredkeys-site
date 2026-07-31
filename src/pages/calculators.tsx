@@ -1934,7 +1934,6 @@ export default function Calculators() {
   }, [searchParams]);
 
   const tabs: { id: TabId; label: string }[] = [
-    { id: "va-entitlement", label: "VA Entitlement" },
     { id: "bah", label: "BAH & Buying Power" },
     { id: "portfolio-builder", label: "Portfolio Builder" },
   ];
