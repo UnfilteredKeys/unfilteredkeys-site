@@ -8,8 +8,14 @@ declare global {
   }
 }
 
-const GA_ID = import.meta.env.VITE_GA_MEASUREMENT_ID?.trim();
-const CLARITY_ID = import.meta.env.VITE_CLARITY_PROJECT_ID?.trim();
+const PRODUCTION_HOSTNAMES = new Set([
+  "shalandasmith.com",
+  "www.shalandasmith.com",
+]);
+const GA_ID =
+  import.meta.env.VITE_GA_MEASUREMENT_ID?.trim() || "G-CHVF1GYN2K";
+const CLARITY_ID =
+  import.meta.env.VITE_CLARITY_PROJECT_ID?.trim() || "xv3yxohgzj";
 
 const addScript = (src: string, id: string) => {
   if (document.getElementById(id)) return;
@@ -165,7 +171,12 @@ const initializeClarity = () => {
 };
 
 export const initializeAnalytics = () => {
-  if (typeof window === "undefined") return;
+  if (
+    typeof window === "undefined" ||
+    !PRODUCTION_HOSTNAMES.has(window.location.hostname)
+  ) {
+    return;
+  }
 
   initializeGoogleAnalytics();
   initializeClarity();
