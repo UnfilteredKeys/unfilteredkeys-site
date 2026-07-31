@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, Navigate, useSearchParams } from "react-router-dom";
 import SEO from "@/components/SEO";
 import { seoMeta } from "@/lib/seoData";
 import {
@@ -162,7 +162,7 @@ function DTIGauge({ dti }: { dti: number }) {
 
 // ── CALCULATOR 1: TEXAS PAYMENT ───────────────────────────────────────────────
 
-function TexasPaymentCalc() {
+export function TexasPaymentCalc() {
   const [price, setPrice] = useState("350000");
   const [downMode, setDownMode] = useState<"percent" | "dollars">("percent");
   const [downPayment, setDownPayment] = useState("10");
@@ -1916,12 +1916,11 @@ function PortfolioBuilderCalc() {
 
 // ── MAIN PAGE ─────────────────────────────────────────────────────────────────
 
-type TabId = "texas" | "va" | "va-funding-fee" | "temp-buydown" | "va-entitlement" | "compare" | "budget" | "bah" | "portfolio-builder";
+type TabId = "va" | "va-funding-fee" | "temp-buydown" | "va-entitlement" | "compare" | "budget" | "bah" | "portfolio-builder";
 
 export default function Calculators() {
   const [searchParams] = useSearchParams();
   const tabParamMap: Record<string, TabId> = {
-    "texas-payment": "texas",
     "va-loan": "va",
     "va-funding-fee": "va-funding-fee",
     "temp-buydown": "temp-buydown",
@@ -1944,12 +1943,15 @@ export default function Calculators() {
     { id: "va-funding-fee", label: "VA Funding Fee" },
     { id: "va-entitlement", label: "VA Entitlement" },
     { id: "bah", label: "BAH & Buying Power" },
-    { id: "texas", label: "Texas Payment" },
     { id: "compare", label: "FHA vs. Conventional" },
     { id: "budget", label: "Budget & Affordability" },
     { id: "temp-buydown", label: "Temp Buydown" },
     { id: "portfolio-builder", label: "Portfolio Builder" },
   ];
+
+  if (searchParams.get("tab") === "texas-payment") {
+    return <Navigate to="/calculators/texas-mortgage-payment" replace />;
+  }
 
   return (
     <>
@@ -1960,6 +1962,12 @@ export default function Calculators() {
         <h1 style={S.heroH1}>Real numbers. <em style={{ color: copper }}>Not estimates built for someone else's state.</em></h1>
         <p style={S.heroSub}>These calculators include Texas property taxes, VA funding fees, MIP permanence, and DTI — everything generic calculators leave out.</p>
         <div style={S.tabBar}>
+          <Link
+            to="/calculators/texas-mortgage-payment"
+            style={{ ...S.tabBtn(false), textDecoration: "none", display: "inline-flex", alignItems: "center" }}
+          >
+            Texas Payment
+          </Link>
           {tabs.map(t => (
             <button key={t.id} style={S.tabBtn(tab === t.id)} onClick={() => setTab(t.id)}>{t.label}</button>
           ))}
@@ -1970,7 +1978,6 @@ export default function Calculators() {
         {tab === "va-funding-fee" && <VAFundingFeeCalc />}
         {tab === "va-entitlement" && <VAEntitlementCalc />}
         {tab === "bah" && <BAHCalc />}
-        {tab === "texas" && <TexasPaymentCalc />}
         {tab === "compare" && <FHAvsConvCalc />}
         {tab === "budget" && <BudgetCalc />}
         {tab === "temp-buydown" && <TempBuydownCalc />}
