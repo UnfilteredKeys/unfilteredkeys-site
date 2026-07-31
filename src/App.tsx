@@ -48,7 +48,6 @@ const AustinMortgagePage = lazy(() => import("@/pages/AustinMortgage"));
 const VaAppraisalChecklistPage = lazy(() => import("@/pages/VaAppraisalChecklist"));
 const VaFundingFeeCalculatorPage = lazy(() => import("@/pages/VaFundingFeeCalculator"));
 const BahCalculatorKilleenTxPage = lazy(() => import("@/pages/BahCalculatorKilleenTx"));
-const VaLoanCalculatorTexasPage = lazy(() => import("@/pages/VaLoanCalculatorTexas"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -105,7 +104,7 @@ const App = () => (
             <Route path="/va-appraisal-checklist" element={<VaAppraisalChecklistPage />} />
             <Route path="/va-funding-fee-calculator" element={<VaFundingFeeCalculatorPage />} />
             <Route path="/bah-calculator-killeen-tx" element={<BahCalculatorKilleenTxPage />} />
-            <Route path="/va-loan-calculator-texas" element={<VaLoanCalculatorTexasPage />} />
+            <Route path="/va-loan-calculator-texas" element={<Navigate to="/calculators/texas-mortgage-payment" replace />} />
             <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
