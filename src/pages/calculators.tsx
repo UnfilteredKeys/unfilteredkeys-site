@@ -1916,17 +1916,16 @@ function PortfolioBuilderCalc() {
 
 // ── MAIN PAGE ─────────────────────────────────────────────────────────────────
 
-type TabId = "va-funding-fee" | "va-entitlement" | "bah" | "portfolio-builder";
+type TabId = "va-entitlement" | "bah" | "portfolio-builder";
 
 export default function Calculators() {
   const [searchParams] = useSearchParams();
   const tabParamMap: Record<string, TabId> = {
-    "va-funding-fee": "va-funding-fee",
     "va-entitlement": "va-entitlement",
     "bah-buying-power": "bah",
     "portfolio-builder": "portfolio-builder",
   };
-  const initialTab: TabId = tabParamMap[searchParams.get("tab") || ""] || "va-funding-fee";
+  const initialTab: TabId = tabParamMap[searchParams.get("tab") || ""] || "va-entitlement";
   const [tab, setTab] = useState<TabId>(initialTab);
 
   useEffect(() => {
@@ -1935,12 +1934,14 @@ export default function Calculators() {
   }, [searchParams]);
 
   const tabs: { id: TabId; label: string }[] = [
-    { id: "va-funding-fee", label: "VA Funding Fee" },
     { id: "va-entitlement", label: "VA Entitlement" },
     { id: "bah", label: "BAH & Buying Power" },
     { id: "portfolio-builder", label: "Portfolio Builder" },
   ];
 
+  if (searchParams.get("tab") === "va-funding-fee") {
+    return <Navigate to="/calculators/va-funding-fee" replace />;
+  }
   if (searchParams.get("tab") === "texas-payment" || searchParams.get("tab") === "va-loan") {
     return <Navigate to="/calculators/texas-mortgage-payment" replace />;
   }
@@ -1982,6 +1983,12 @@ export default function Calculators() {
             FHA vs. Conventional
           </Link>
           <Link
+            to="/calculators/va-funding-fee"
+            style={{ ...S.tabBtn(false), textDecoration: "none", display: "inline-flex", alignItems: "center" }}
+          >
+            VA Funding Fee
+          </Link>
+          <Link
             to="/calculators/temporary-buydown"
             style={{ ...S.tabBtn(false), textDecoration: "none", display: "inline-flex", alignItems: "center" }}
           >
@@ -1993,7 +2000,6 @@ export default function Calculators() {
         </div>
       </div>
       <div style={S.body}>
-        {tab === "va-funding-fee" && <VAFundingFeeCalc />}
         {tab === "va-entitlement" && <VAEntitlementCalc />}
         {tab === "bah" && <BAHCalc />}
         {tab === "portfolio-builder" && <PortfolioBuilderCalc />}
