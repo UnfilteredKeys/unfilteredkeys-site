@@ -51,6 +51,7 @@ const VaAppraisalChecklistPage = lazy(() => import("@/pages/VaAppraisalChecklist
 const VaFundingFeeCalculatorPage = lazy(() => import("@/pages/VaFundingFeeCalculator"));
 const VaEntitlementCalculatorPage = lazy(() => import("@/pages/VaEntitlementCalculator"));
 const BahHousingBudgetCalculatorPage = lazy(() => import("@/pages/BahHousingBudgetCalculator"));
+const RentalPortfolioPlannerPage = lazy(() => import("@/pages/RentalPortfolioPlanner"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -81,6 +82,7 @@ const App = () => (
             <Route path="/calculators/va-funding-fee" element={<VaFundingFeeCalculatorPage />} />
             <Route path="/calculators/va-entitlement" element={<VaEntitlementCalculatorPage />} />
             <Route path="/calculators/bah-housing-budget" element={<BahHousingBudgetCalculatorPage />} />
+            <Route path="/calculators/rental-portfolio-planner" element={<RentalPortfolioPlannerPage />} />
             <Route path="/va-loan-texas" element={<VALoanTexasPage />} />
             <Route path="/va-loan-faq-texas" element={<VaLoanFaqTexasPage />} />
             <Route path="/physician-loan-texas" element={<PhysicianLoanTexasPage />} />

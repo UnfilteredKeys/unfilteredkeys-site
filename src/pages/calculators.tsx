@@ -1958,6 +1958,9 @@ export default function Calculators() {
   if (searchParams.get("tab") === "temp-buydown") {
     return <Navigate to="/calculators/temporary-buydown" replace />;
   }
+  if (searchParams.get("tab") === "portfolio-builder") {
+    return <Navigate to="/calculators/rental-portfolio-planner" replace />;
+  }
 
   return (
     <>
@@ -2010,15 +2013,15 @@ export default function Calculators() {
           >
             Seller Credit Comparison
           </Link>
-          {tabs.map(t => (
-            <button key={t.id} style={S.tabBtn(tab === t.id)} onClick={() => setTab(t.id)}>{t.label}</button>
-          ))}
+          <Link
+            to="/calculators/rental-portfolio-planner"
+            style={{ ...S.tabBtn(false), textDecoration: "none", display: "inline-flex", alignItems: "center" }}
+          >
+            Rental Portfolio Planner
+          </Link>
         </div>
       </div>
       <div style={S.body}>
-        {tab === "va-entitlement" && <VAEntitlementCalc />}
-        {tab === "bah" && <BAHCalc />}
-        {tab === "portfolio-builder" && <PortfolioBuilderCalc />}
         <div style={{ textAlign: "center" as const, marginTop: "48px" }}>
           <p style={{ fontFamily: "'Lora', serif", fontSize: "20px", color: navy, marginBottom: "8px" }}>Numbers look right? <em>Let's make them official.</em></p>
           <p style={{ color: muted, fontSize: "14px", marginBottom: "20px" }}>A 30-minute strategy call turns estimates into a real pre-approval.</p>
