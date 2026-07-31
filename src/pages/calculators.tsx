@@ -1925,7 +1925,7 @@ export default function Calculators() {
     "bah-buying-power": "bah",
     "portfolio-builder": "portfolio-builder",
   };
-  const initialTab: TabId = tabParamMap[searchParams.get("tab") || ""] || "va-entitlement";
+  const initialTab: TabId = tabParamMap[searchParams.get("tab") || ""] || "bah";
   const [tab, setTab] = useState<TabId>(initialTab);
 
   useEffect(() => {
@@ -1939,7 +1939,7 @@ export default function Calculators() {
     { id: "portfolio-builder", label: "Portfolio Builder" },
   ];
 
-  if (searchParams.get("tab") === "va-funding-fee") {
+  if (searchParams.get("tab") === "va-entitlement") {\n    return <Navigate to="/calculators/va-entitlement" replace />;\n  }\n  if (searchParams.get("tab") === "va-funding-fee") {
     return <Navigate to="/calculators/va-funding-fee" replace />;
   }
   if (searchParams.get("tab") === "texas-payment" || searchParams.get("tab") === "va-loan") {
@@ -1987,6 +1987,12 @@ export default function Calculators() {
             style={{ ...S.tabBtn(false), textDecoration: "none", display: "inline-flex", alignItems: "center" }}
           >
             VA Funding Fee
+          </Link>
+          <Link
+            to="/calculators/va-entitlement"
+            style={{ ...S.tabBtn(false), textDecoration: "none", display: "inline-flex", alignItems: "center" }}
+          >
+            VA Entitlement
           </Link>
           <Link
             to="/calculators/temporary-buydown"
