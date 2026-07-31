@@ -1916,12 +1916,11 @@ function PortfolioBuilderCalc() {
 
 // ── MAIN PAGE ─────────────────────────────────────────────────────────────────
 
-type TabId = "va" | "va-funding-fee" | "temp-buydown" | "va-entitlement" | "compare" | "bah" | "portfolio-builder";
+type TabId = "va-funding-fee" | "temp-buydown" | "va-entitlement" | "compare" | "bah" | "portfolio-builder";
 
 export default function Calculators() {
   const [searchParams] = useSearchParams();
   const tabParamMap: Record<string, TabId> = {
-    "va-loan": "va",
     "va-funding-fee": "va-funding-fee",
     "temp-buydown": "temp-buydown",
     "va-entitlement": "va-entitlement",
@@ -1929,7 +1928,7 @@ export default function Calculators() {
     "bah-buying-power": "bah",
     "portfolio-builder": "portfolio-builder",
   };
-  const initialTab: TabId = tabParamMap[searchParams.get("tab") || ""] || "va";
+  const initialTab: TabId = tabParamMap[searchParams.get("tab") || ""] || "va-funding-fee";
   const [tab, setTab] = useState<TabId>(initialTab);
 
   useEffect(() => {
@@ -1938,7 +1937,6 @@ export default function Calculators() {
   }, [searchParams]);
 
   const tabs: { id: TabId; label: string }[] = [
-    { id: "va", label: "VA Loan" },
     { id: "va-funding-fee", label: "VA Funding Fee" },
     { id: "va-entitlement", label: "VA Entitlement" },
     { id: "bah", label: "BAH & Buying Power" },
@@ -1947,7 +1945,7 @@ export default function Calculators() {
     { id: "portfolio-builder", label: "Portfolio Builder" },
   ];
 
-  if (searchParams.get("tab") === "texas-payment") {
+  if (searchParams.get("tab") === "texas-payment" || searchParams.get("tab") === "va-loan") {
     return <Navigate to="/calculators/texas-mortgage-payment" replace />;
   }
   if (searchParams.get("tab") === "budget-affordability") {
@@ -1981,7 +1979,6 @@ export default function Calculators() {
         </div>
       </div>
       <div style={S.body}>
-        {tab === "va" && <VALoanCalc />}
         {tab === "va-funding-fee" && <VAFundingFeeCalc />}
         {tab === "va-entitlement" && <VAEntitlementCalc />}
         {tab === "bah" && <BAHCalc />}
