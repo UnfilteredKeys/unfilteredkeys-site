@@ -1916,13 +1916,12 @@ function PortfolioBuilderCalc() {
 
 // ── MAIN PAGE ─────────────────────────────────────────────────────────────────
 
-type TabId = "va-funding-fee" | "temp-buydown" | "va-entitlement" | "bah" | "portfolio-builder";
+type TabId = "va-funding-fee" | "va-entitlement" | "bah" | "portfolio-builder";
 
 export default function Calculators() {
   const [searchParams] = useSearchParams();
   const tabParamMap: Record<string, TabId> = {
     "va-funding-fee": "va-funding-fee",
-    "temp-buydown": "temp-buydown",
     "va-entitlement": "va-entitlement",
     "bah-buying-power": "bah",
     "portfolio-builder": "portfolio-builder",
@@ -1939,7 +1938,6 @@ export default function Calculators() {
     { id: "va-funding-fee", label: "VA Funding Fee" },
     { id: "va-entitlement", label: "VA Entitlement" },
     { id: "bah", label: "BAH & Buying Power" },
-    { id: "temp-buydown", label: "Temp Buydown" },
     { id: "portfolio-builder", label: "Portfolio Builder" },
   ];
 
@@ -1951,6 +1949,9 @@ export default function Calculators() {
   }
   if (searchParams.get("tab") === "fha-vs-conventional") {
     return <Navigate to="/calculators/fha-vs-conventional" replace />;
+  }
+  if (searchParams.get("tab") === "temp-buydown") {
+    return <Navigate to="/calculators/temporary-buydown" replace />;
   }
 
   return (
@@ -1980,6 +1981,12 @@ export default function Calculators() {
           >
             FHA vs. Conventional
           </Link>
+          <Link
+            to="/calculators/temporary-buydown"
+            style={{ ...S.tabBtn(false), textDecoration: "none", display: "inline-flex", alignItems: "center" }}
+          >
+            Seller Credit Comparison
+          </Link>
           {tabs.map(t => (
             <button key={t.id} style={S.tabBtn(tab === t.id)} onClick={() => setTab(t.id)}>{t.label}</button>
           ))}
@@ -1989,7 +1996,6 @@ export default function Calculators() {
         {tab === "va-funding-fee" && <VAFundingFeeCalc />}
         {tab === "va-entitlement" && <VAEntitlementCalc />}
         {tab === "bah" && <BAHCalc />}
-        {tab === "temp-buydown" && <TempBuydownCalc />}
         {tab === "portfolio-builder" && <PortfolioBuilderCalc />}
         <div style={{ textAlign: "center" as const, marginTop: "48px" }}>
           <p style={{ fontFamily: "'Lora', serif", fontSize: "20px", color: navy, marginBottom: "8px" }}>Numbers look right? <em>Let's make them official.</em></p>
