@@ -61,7 +61,7 @@ export default function VaFundingFeeCalculatorPage() {
       {/* CALCULATOR */}
       <section style={{ backgroundColor: ivory, ...sectionPad }}>
         <div style={{ maxWidth: 900, margin: "0 auto", padding: "0 24px", fontFamily: "'Outfit', sans-serif", color: navy }}>
-          <VAFundingFeeCalc />
+          <VaFundingFeeCalc />
         </div>
       </section>
 
