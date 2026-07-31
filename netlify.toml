@@ -52,10 +52,16 @@ query = {tab = "va-funding-fee"}
 
 [[redirects]]
 from = "/calculators"
-to = "/bah-calculator-killeen-tx"
+to = "/calculators/bah-housing-budget"
 status = 301
 force = true
 query = {tab = "bah-buying-power"}
+
+[[redirects]]
+from = "/bah-calculator-killeen-tx"
+to = "/calculators/bah-housing-budget"
+status = 301
+force = true
 
 [[redirects]]
 from = "/calculators"

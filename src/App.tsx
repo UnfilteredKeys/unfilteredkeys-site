@@ -50,7 +50,7 @@ const AustinMortgagePage = lazy(() => import("@/pages/AustinMortgage"));
 const VaAppraisalChecklistPage = lazy(() => import("@/pages/VaAppraisalChecklist"));
 const VaFundingFeeCalculatorPage = lazy(() => import("@/pages/VaFundingFeeCalculator"));
 const VaEntitlementCalculatorPage = lazy(() => import("@/pages/VaEntitlementCalculator"));
-const BahCalculatorKilleenTxPage = lazy(() => import("@/pages/BahCalculatorKilleenTx"));
+const BahHousingBudgetCalculatorPage = lazy(() => import("@/pages/BahHousingBudgetCalculator"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -80,6 +80,7 @@ const App = () => (
             <Route path="/calculators/temporary-buydown" element={<TemporaryBuydownCalculatorPage />} />
             <Route path="/calculators/va-funding-fee" element={<VaFundingFeeCalculatorPage />} />
             <Route path="/calculators/va-entitlement" element={<VaEntitlementCalculatorPage />} />
+            <Route path="/calculators/bah-housing-budget" element={<BahHousingBudgetCalculatorPage />} />
             <Route path="/va-loan-texas" element={<VALoanTexasPage />} />
             <Route path="/va-loan-faq-texas" element={<VaLoanFaqTexasPage />} />
             <Route path="/physician-loan-texas" element={<PhysicianLoanTexasPage />} />
@@ -110,7 +111,7 @@ const App = () => (
             <Route path="/austin-tx-mortgage" element={<AustinMortgagePage />} />
             <Route path="/va-appraisal-checklist" element={<VaAppraisalChecklistPage />} />
             <Route path="/va-funding-fee-calculator" element={<Navigate to="/calculators/va-funding-fee" replace />} />
-            <Route path="/bah-calculator-killeen-tx" element={<BahCalculatorKilleenTxPage />} />
+            <Route path="/bah-calculator-killeen-tx" element={<Navigate to="/calculators/bah-housing-budget" replace />} />
             <Route path="/va-loan-calculator-texas" element={<Navigate to="/calculators/texas-mortgage-payment" replace />} />
             <Route path="*" element={<NotFound />} />
             </Route>

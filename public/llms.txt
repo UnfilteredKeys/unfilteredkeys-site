@@ -52,7 +52,7 @@ Keys by Shalanda is a mortgage brokerage led by Shalanda Smith (NMLS #554554) un
 ## Calculators & Tools
 
 - [Calculators](/calculators): Full suite of mortgage and financial calculators.
-- [BAH Calculator Killeen](/bah-calculator-killeen-tx): Basic Allowance for Housing calculator.
+- [Texas BAH Housing Budget Calculator](/calculators/bah-housing-budget): Compare actual BAH with an estimated mortgage payment and broader homeowner costs.
 
 ## Resources
 

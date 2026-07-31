@@ -1925,7 +1925,7 @@ export default function Calculators() {
     "bah-buying-power": "bah",
     "portfolio-builder": "portfolio-builder",
   };
-  const initialTab: TabId = tabParamMap[searchParams.get("tab") || ""] || "bah";
+  const initialTab: TabId = tabParamMap[searchParams.get("tab") || ""] || "portfolio-builder";
   const [tab, setTab] = useState<TabId>(initialTab);
 
   useEffect(() => {
@@ -1934,7 +1934,6 @@ export default function Calculators() {
   }, [searchParams]);
 
   const tabs: { id: TabId; label: string }[] = [
-    { id: "bah", label: "BAH & Buying Power" },
     { id: "portfolio-builder", label: "Portfolio Builder" },
   ];
 
@@ -1943,6 +1942,9 @@ export default function Calculators() {
   }
   if (searchParams.get("tab") === "va-funding-fee") {
     return <Navigate to="/calculators/va-funding-fee" replace />;
+  }
+  if (searchParams.get("tab") === "bah-buying-power") {
+    return <Navigate to="/calculators/bah-housing-budget" replace />;
   }
   if (searchParams.get("tab") === "texas-payment" || searchParams.get("tab") === "va-loan") {
     return <Navigate to="/calculators/texas-mortgage-payment" replace />;
@@ -1995,6 +1997,12 @@ export default function Calculators() {
             style={{ ...S.tabBtn(false), textDecoration: "none", display: "inline-flex", alignItems: "center" }}
           >
             VA Entitlement
+          </Link>
+          <Link
+            to="/calculators/bah-housing-budget"
+            style={{ ...S.tabBtn(false), textDecoration: "none", display: "inline-flex", alignItems: "center" }}
+          >
+            BAH Housing Budget
           </Link>
           <Link
             to="/calculators/temporary-buydown"
