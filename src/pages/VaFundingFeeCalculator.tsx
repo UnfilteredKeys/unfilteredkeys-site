@@ -27,10 +27,10 @@ const FAQS = [
 ];
 
 const LINKS = [
-  { title: "VA Loan Texas — Full Guide", desc: "Everything Texas veterans need to know about VA loan eligibility, entitlement, and the buying process.", to: "/va-loan-texas", label: "Read the Full Guide →" },
-  { title: "Killeen & Fort Hood VA Loans", desc: "Local guidance for Fort Hood buyers — neighborhoods, BAH, builders, and PCS strategy.", to: "/killeen-va-loan", label: "Explore Killeen →" },
-  { title: "VA Loan FAQ — Texas", desc: "Every question Fort Hood and Texas veterans ask about entitlement, funding fees, BAH, and more.", to: "/va-loan-faq-texas", label: "Read the FAQ →" },
-  { title: "All Mortgage Calculators", desc: "Texas payment, VA, BAH, entitlement, buydown, and more — built for real Texas scenarios.", to: "/calculators", label: "See All Calculators →" },
+  { title: "VA Loan Texas — Full Guide", desc: "Statewide guidance on VA eligibility, entitlement, property taxes, and the Texas homebuying process.", to: "/va-loan-texas", label: "Read the Texas Guide →" },
+  { title: "VA Loan FAQ — Texas", desc: "Clear answers for Texas service members, veterans, and surviving spouses using VA loan benefits.", to: "/va-loan-faq-texas", label: "Read the FAQ →" },
+  { title: "Texas Mortgage Payment Calculator", desc: "Estimate a full monthly housing payment using property-specific taxes, insurance, HOA dues, and loan details.", to: "/calculators/texas-mortgage-payment", label: "Estimate a Payment →" },
+  { title: "All Mortgage Calculators", desc: "Explore VA entitlement, Texas payments, seller credits, homebuying budgets, and other planning tools.", to: "/calculators", label: "See All Calculators →" },
 ];
 
 export default function VaFundingFeeCalculatorPage() {
