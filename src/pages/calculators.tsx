@@ -336,7 +336,6 @@ function TexasPaymentCalc() {
         {loanType === "usda" && <div style={{ fontSize: "13px", color: copper, marginBottom: "12px", fontWeight: 500 }}>USDA calculations use a 1.00% upfront guarantee fee and 0.35% annual fee. Eligibility and final fees must be verified.</div>}
         {loanType === "va" && <div style={{ fontSize: "13px", color: copper, marginBottom: "12px", fontWeight: 500 }}>VA loans have no monthly mortgage insurance. Funding-fee exemption and the applicable fee must be verified with the Certificate of Eligibility and loan file.</div>}
         <div style={S.disclaimer}>Educational estimate only. This calculator does not determine eligibility, approval, cash to close, or final loan terms. Property taxes, insurance, HOA dues, mortgage insurance, agency fees, and rates must be verified for the specific borrower and property. Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518</div>
-        <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" style={S.cta}>Review This Payment With Shalanda →</a>
       </div>
     </div>
   );
