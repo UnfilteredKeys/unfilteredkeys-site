@@ -17,10 +17,10 @@ const GuideePage = () => {
 
   return (
     <>
-    <SEO title="Texas Home Buyer's Guide | Mortgage Education | Keys by Shalanda" description="The mortgage guide built for Texas buyers — credit, DTI, loan types, property taxes, and what lenders don't tell you. Free download, plain language, no fluff." canonical="/guide" />
+    <SEO title="Texas Homebuying Guide | Build a Smarter Strategy" description="A practical overview for Texas buyers covering income, assets, credit, cash to close, home priorities, and exit strategy." canonical="/guide" />
     <Helmet>
       <title>Texas Home Buyers Guide | Mortgage Education | Keys by Shalanda</title>
-      <meta name="description" content="The mortgage guide for Texas buyers. Credit, DTI, loan types, and property taxes explained in plain language." />
+      <meta name="description" content="A practical homebuying overview for Texas buyers covering income, assets, credit, cash to close, priorities, and exit strategy." />
       <link rel="canonical" href="https://shalandasmith.com/guide" />
     </Helmet>  
       <style>{`
@@ -575,22 +575,21 @@ const GuideePage = () => {
           <div className="g-hero-inner">
             <div className="g-hero-content">
               <div className="g-hero-tag">Free Guide · Keys by Shalanda</div>
-              <h1>The mortgage industry wasn't built to educate you.<em>This guide is.</em></h1>
-              <p className="g-hero-sub">So you show up informed, not surprised.</p>
+              <h1>Buying a home is more than<em>getting approved.</em></h1>
+              <p className="g-hero-sub">Understand the full picture before you choose the house, the payment, or the loan.</p>
               <ul className="g-hero-bullets">
-                <li>How mortgage rates actually move — and the real cost of waiting</li>
-                <li>The true monthly payment your calculator isn't showing you</li>
-                <li>How to shop lenders the way professionals do</li>
-                <li>Down payment assistance programs most lenders won't mention</li>
-                <li>How approvals actually work — overlays, DTI, AUS results</li>
-                <li>Bonus: Refinancing math + non-traditional income programs</li>
+                <li>What lenders review in your income, assets, and credit</li>
+                <li>How down payment differs from your total cash to close</li>
+                <li>How to build a comfortable budget instead of chasing a maximum</li>
+                <li>How needs, wants, and tradeoffs shape the right home</li>
+                <li>Why your exit strategy matters before you make an offer</li>
               </ul>
             </div>
 
             <div className="g-form-card">
               <div className="g-form-card-tag">Free Download</div>
-              <h2>This is where clarity starts.</h2>
-              <p className="g-form-card-sub">Fill in your details and the guide lands in your inbox in minutes.</p>
+              <h2>Start with the full picture.</h2>
+              <p className="g-form-card-sub">Get the overview that helps you prepare better questions and a smarter homebuying strategy.</p>
               <div dangerouslySetInnerHTML={{__html: `<script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
       <form action="https://app.kit.com/forms/9273888/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="9273888" data-uid="5485421258" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;Success! Now check your email to confirm your subscription.&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:false,&quot;url&quot;:&quot;https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}" min-width="400 500 600 700 800"><div data-style="clean"><ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul><div data-element="fields" data-stacked="false" class="seva-fields formkit-fields"><div class="formkit-field"><input class="formkit-input" aria-label="First Name" name="fields[first_name]" required="" placeholder="First Name" type="text" style="color: rgb(0, 0, 0); border-color: rgb(227, 227, 227); border-radius: 4px; font-weight: 400;"></div><div class="formkit-field"><input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Email Address" required="" type="email" style="color: rgb(0, 0, 0); border-color: rgb(227, 227, 227); border-radius: 4px; font-weight: 400;"></div><button data-element="submit" class="formkit-submit formkit-submit" style="color: rgb(250, 248, 244); background-color: rgb(26, 58, 92); border-radius: 4px; font-weight: 400;"><div class="formkit-spinner"><div></div><div></div><div></div></div><span class="">Send Me the Guide →</span></button></div></div></form>`}} />
               <p className="g-form-privacy">Your information stays private. Unsubscribe anytime.</p>
@@ -604,39 +603,39 @@ const GuideePage = () => {
         <section className="g-inside">
           <div className="g-inside-inner">
             <div className="g-section-tag">What's Inside</div>
-            <h2 className="g-section-heading">The questions buyers keep asking — finally answered.</h2>
-            <p className="g-section-sub">Why does my payment keep changing? Should I wait for rates to drop? Do I actually need 20% down? What's the difference between pre-qualified and pre-approved? Why did I get declined when my credit feels fine?<br /><br />This guide answers all of it — before you're already in the middle of a transaction.</p>
+            <h2 className="g-section-heading">The six parts of a thoughtful homebuying plan.</h2>
+            <p className="g-section-sub">A mortgage decision is not built from one credit score, one interest rate, or one online payment estimate. This guide introduces the financial and practical decisions that work together, so you can see where you stand and what deserves a closer conversation.</p>
 
             <div className="g-chapters">
               <div className="g-chapter">
                 <div className="g-chapter-num">01</div>
-                <h3>Mastering the Rate Game</h3>
-                <p>How rates actually move, the real math on waiting, and why your rate is built from your specific file — not a headline number.</p>
+                <h3>Income</h3>
+                <p>Learn what income may be used, why stability and documentation matter, and why gross income is not the same as a comfortable housing budget.</p>
               </div>
               <div className="g-chapter">
                 <div className="g-chapter-num">02</div>
-                <h3>The True Cost of Homeownership</h3>
-                <p>Escrow, taxes, PMI vs. MIP, closing costs — the full payment picture before you commit to a budget.</p>
+                <h3>Assets</h3>
+                <p>Understand funds for closing, reserves, gift funds, and why lenders need to document where the money used in a transaction came from.</p>
               </div>
               <div className="g-chapter">
                 <div className="g-chapter-num">03</div>
-                <h3>How to Shop Lenders Like a Professional</h3>
-                <p>The structural difference between a broker and a bank, how to compare Loan Estimates, and why execution matters as much as rate.</p>
+                <h3>Credit</h3>
+                <p>Look beyond the score to payment history, balances, disputes, recent late payments, collections, and new debt that can change the loan picture.</p>
               </div>
               <div className="g-chapter">
                 <div className="g-chapter-num">04</div>
-                <h3>Down Payment Decoded</h3>
-                <p>The 20% myth, DPA programs in Texas, 0% down options, and what four years of waiting actually cost you in equity and appreciation.</p>
+                <h3>Down Payment &amp; Cash to Close</h3>
+                <p>Separate the down payment from closing costs, prepaid expenses, and reserves. Zero-down financing does not always mean zero cash needed.</p>
               </div>
               <div className="g-chapter">
                 <div className="g-chapter-num">05</div>
-                <h3>Loan Types &amp; Getting Approved</h3>
-                <p>FHA vs. Conventional at your credit score, how the AUS works, what a "Refer" result actually means, and why a "no" from one lender isn't final.</p>
+                <h3>Needs vs. Wants</h3>
+                <p>Define your non-negotiables, preferences, location, commute, and monthly comfort before the wish list meets the budget and tradeoffs begin.</p>
               </div>
               <div className="g-chapter g-chapter-bonus">
-                <div className="g-chapter-num">+</div>
-                <h3>Bonus: When the Standard Path Doesn't Fit</h3>
-                <p>Refinancing math, physician loans, self-employed qualification, DSCR for investors — programs built for non-traditional income situations.</p>
+                <div className="g-chapter-num">06</div>
+                <h3>Exit Strategy</h3>
+                <p>Consider how long you may keep the home, whether you would sell or rent it when you move up, and how career, family, or duty-station changes could affect the plan.</p>
               </div>
             </div>
           </div>
@@ -649,17 +648,17 @@ const GuideePage = () => {
           <div className="g-for-inner">
             <div>
               <div className="g-section-tag">Who This Is For</div>
-              <h2 className="g-section-heading">Anyone who's about to talk to a lender.</h2>
-              <p className="g-section-sub">You don't need to be ready to buy tomorrow. You need to understand what you're walking into before you walk into it.</p>
+              <h2 className="g-section-heading">Buyers who want a plan, not just a price range.</h2>
+              <p className="g-section-sub">You do not need to be ready to buy tomorrow. You need enough perspective to recognize your priorities, prepare for the process, and know which questions require personal guidance.</p>
             </div>
             <ul className="g-for-list">
-              <li>First-time buyers who don't know what they don't know</li>
-              <li>Move-up buyers who got burned by surprises the first time</li>
-              <li>Veterans who want to understand the VA loan process before applying</li>
-              <li>Buyers who've been told "no" and want to understand why</li>
-              <li>Anyone comparing FHA vs. Conventional at their credit score</li>
-              <li>Texans who've never heard of DPA programs and want to know if they qualify</li>
-              <li>Self-employed buyers who've been told their income "doesn't count"</li>
+              <li>First-time buyers who want to understand the complete process</li>
+              <li>Move-up buyers deciding whether to sell or keep their current home</li>
+              <li>Veterans who want their VA benefit to support a broader financial plan</li>
+              <li>Buyers who have been told “no” and need to understand the obstacle</li>
+              <li>Self-employed buyers who need a clearer view of usable income</li>
+              <li>Anyone trying to balance a home wish list with monthly comfort</li>
+              <li>Future buyers who want to prepare before they apply</li>
             </ul>
           </div>
         </section>
@@ -675,10 +674,10 @@ const GuideePage = () => {
             </div>
             <div className="g-about-content">
               <div className="g-section-tag">About Shalanda</div>
-              <h2 className="g-section-heading">Twenty years inside the system. Now on your side of it.</h2>
-              <p>I spent two decades working inside banks, builder lenders, and national retail mortgage companies. I saw how approvals really happen — and how much of that process stays invisible to the buyer.</p>
-              <p>Too many buyers walk away believing the answer they got was the only answer available. <strong>Before accepting a limitation that may not actually be real, you deserve to understand your options clearly.</strong></p>
-              <p>That's what this guide is for. And if questions come up about your specific situation, that's what a strategy call is for.</p>
+              <h2 className="g-section-heading">Education first. Strategy when the details become personal.</h2>
+              <p>I spent two decades working inside banks, builder lenders, and national retail mortgage companies. I saw how approvals happen and how easily buyers can focus on one number while missing the larger decision.</p>
+              <p>This guide gives you the overview. It helps you ask better questions, identify possible obstacles, and understand how the pieces of a homebuying plan connect.</p>
+              <p><strong>It is not a loan decision, an approval, or a substitute for advice based on your actual income, assets, credit, goals, and timeline.</strong> That is where a personalized mortgage strategy begins.</p>
               <div className="g-about-sig">
                 — Shalanda Smith
                 <span>Founder, Keys by Shalanda · NMLS #554554</span>
@@ -692,8 +691,8 @@ const GuideePage = () => {
         {/* CTA BAND */}
         <section className="g-cta-band">
           <div className="g-cta-band-inner">
-            <h2>Get the guide.<em>Show up ready.</em></h2>
-            <p>Free. No obligation. Just the information you should have had before your first lender conversation.</p>
+            <h2>Understand the overview.<em>Then build your strategy.</em></h2>
+            <p>Use the guide to prepare, spot questions, and see the full terrain. When the details become personal, your mortgage strategy should too.</p>
             <div dangerouslySetInnerHTML={{__html: `<script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
       <form action="https://app.kit.com/forms/9273888/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="9273888" data-uid="5485421258" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;Success! Now check your email to confirm your subscription.&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:false,&quot;url&quot;:&quot;https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}" min-width="400 500 600 700 800"><div data-style="clean"><ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul><div data-element="fields" data-stacked="false" class="seva-fields formkit-fields"><div class="formkit-field"><input class="formkit-input" aria-label="First Name" name="fields[first_name]" required="" placeholder="First Name" type="text" style="color: rgb(0, 0, 0); border-color: rgb(227, 227, 227); border-radius: 4px; font-weight: 400;"></div><div class="formkit-field"><input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Email Address" required="" type="email" style="color: rgb(0, 0, 0); border-color: rgb(227, 227, 227); border-radius: 4px; font-weight: 400;"></div><button data-element="submit" class="formkit-submit formkit-submit" style="color: rgb(250, 248, 244); background-color: rgb(26, 58, 92); border-radius: 4px; font-weight: 400;"><div class="formkit-spinner"><div></div><div></div><div></div></div><span class="">Send Me the Guide →</span></button></div></div></form>`}} />
           </div>
