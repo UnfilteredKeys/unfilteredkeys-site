@@ -211,6 +211,7 @@ export default function VaEntitlementCalc() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 10 }}>
             <button
               type="button"
+              aria-pressed={status === "full"}
               onClick={() => setStatus("full")}
               style={{
                 padding: "13px 15px",
@@ -226,6 +227,7 @@ export default function VaEntitlementCalc() {
             </button>
             <button
               type="button"
+              aria-pressed={status === "partial"}
               onClick={() => setStatus("partial")}
               style={{
                 padding: "13px 15px",
@@ -252,8 +254,9 @@ export default function VaEntitlementCalc() {
         >
           {status === "partial" && (
             <div>
-              <label style={labelStyle}>Total entitlement charged on COE</label>
+              <label htmlFor="entitlement-charged" style={labelStyle}>Total entitlement charged on COE</label>
               <input
+                id="entitlement-charged"
                 style={inputStyle}
                 type="number"
                 min="0"
@@ -267,8 +270,9 @@ export default function VaEntitlementCalc() {
             </div>
           )}
           <div>
-            <label style={labelStyle}>Purchase price</label>
+            <label htmlFor="entitlement-purchase-price" style={labelStyle}>Purchase price</label>
             <input
+              id="entitlement-purchase-price"
               style={inputStyle}
               type="number"
               min="0"
@@ -278,8 +282,9 @@ export default function VaEntitlementCalc() {
             />
           </div>
           <div>
-            <label style={labelStyle}>Proposed down payment</label>
+            <label htmlFor="entitlement-proposed-down" style={labelStyle}>Proposed down payment</label>
             <input
+              id="entitlement-proposed-down"
               style={inputStyle}
               type="number"
               min="0"
