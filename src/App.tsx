@@ -72,7 +72,7 @@ const App = () => (
             <Route path="/about" element={<AboutPage />} />
             <Route path="/calculators" element={<CalculatorsPage />} />
             <Route path="/calculators/texas-mortgage-payment" element={<TexasMortgagePaymentCalculatorPage />} />
-            <Route path="/calculators/homebuying-budget" element={<HomebuyingBudgetCalculatorPage />} />
+            <Route path="/calculators/homebuying-budget" element={<HomebuyingBudgetCalculatorPage />} />\n            <Route path="/calculators/fha-vs-conventional" element={<FhaVsConventionalCalculatorPage />} />
             <Route path="/va-loan-texas" element={<VALoanTexasPage />} />
             <Route path="/va-loan-faq-texas" element={<VaLoanFaqTexasPage />} />
             <Route path="/physician-loan-texas" element={<PhysicianLoanTexasPage />} />
