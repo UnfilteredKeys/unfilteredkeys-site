@@ -77,6 +77,7 @@ const App = () => (
             <Route path="/calculators/homebuying-budget" element={<HomebuyingBudgetCalculatorPage />} />
             <Route path="/calculators/fha-vs-conventional" element={<FhaVsConventionalCalculatorPage />} />
             <Route path="/calculators/temporary-buydown" element={<TemporaryBuydownCalculatorPage />} />
+            <Route path="/calculators/va-funding-fee" element={<VaFundingFeeCalculatorPage />} />
             <Route path="/va-loan-texas" element={<VALoanTexasPage />} />
             <Route path="/va-loan-faq-texas" element={<VaLoanFaqTexasPage />} />
             <Route path="/physician-loan-texas" element={<PhysicianLoanTexasPage />} />
@@ -106,7 +107,7 @@ const App = () => (
             <Route path="/dallas-tx-mortgage" element={<DallasMortgagePage />} />
             <Route path="/austin-tx-mortgage" element={<AustinMortgagePage />} />
             <Route path="/va-appraisal-checklist" element={<VaAppraisalChecklistPage />} />
-            <Route path="/va-funding-fee-calculator" element={<VaFundingFeeCalculatorPage />} />
+            <Route path="/va-funding-fee-calculator" element={<Navigate to="/calculators/va-funding-fee" replace />} />
             <Route path="/bah-calculator-killeen-tx" element={<BahCalculatorKilleenTxPage />} />
             <Route path="/va-loan-calculator-texas" element={<Navigate to="/calculators/texas-mortgage-payment" replace />} />
             <Route path="*" element={<NotFound />} />
