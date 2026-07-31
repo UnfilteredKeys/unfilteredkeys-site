@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
-import { VAFundingFeeCalc } from "./calculators";
+import VaFundingFeeCalc from "@/components/calculators/VaFundingFeeCalc";
 
 const hero = "#1a2535";
 const navy = "#1a3a5c";
@@ -18,11 +18,12 @@ const tag = (c = copper) => ({ fontSize: 11, letterSpacing: "1.5px", textTransfo
 const h2Style = (c = textPrimary) => ({ fontFamily: "'Lora', serif", fontSize: 30, fontWeight: 700 as const, color: c, lineHeight: 1.25, marginBottom: 12 });
 
 const FAQS = [
-  { q: "What is the VA funding fee?", a: "The VA funding fee is a one-time fee charged at closing ranging from 1.25% to 3.3% of the loan amount. It replaces private mortgage insurance and keeps the VA loan program self-funded. It can be rolled into the loan balance so you owe nothing extra at closing." },
-  { q: "Who is exempt from the VA funding fee?", a: "Veterans receiving VA disability compensation at any rating, surviving spouses of veterans who died in service or from service-connected disability, and active duty Purple Heart recipients are exempt. We verify your exemption status during the application — you do not need to chase down paperwork." },
-  { q: "Can I roll the VA funding fee into my loan?", a: "Yes. The funding fee can be financed into the loan balance. On a $300,000 purchase with a 2.15% fee, that adds $6,450 to your balance — your monthly payment increases by roughly $35. We show you both options so you can decide what makes sense for your cash position." },
-  { q: "Does the funding fee change if I've used my VA loan before?", a: "Yes. First use with zero down is 2.15%. Subsequent use with zero down is 3.3%. Putting 5% or more down reduces the fee regardless of use count." },
-  { q: "Is the VA funding fee tax deductible?", a: "The VA funding fee may be deductible as mortgage interest points in the year of purchase. Consult a tax advisor for your specific situation — we can refer you to veteran-friendly CPAs in Central Texas." },
+  { q: "What is the VA funding fee?", a: "The VA funding fee is a one-time charge that applies to many VA loans. The percentage depends on the transaction, prior VA-loan use, down payment for a purchase, and confirmed exemption status." },
+  { q: "Who may be exempt from the VA funding fee?", a: "Some veterans receiving VA compensation for a service-connected disability, certain surviving spouses, and active-duty Purple Heart recipients may be exempt. Exemption status must be confirmed on the Certificate of Eligibility and final loan file." },
+  { q: "Can the VA funding fee be financed?", a: "The fee can often be financed into the loan. It may also be paid at closing or by another permitted party, subject to the transaction, program rules, and contribution limits." },
+  { q: "Why is a conventional-to-VA refinance listed in the cash-out fee category?", a: "VA classifies a refinance from a non-VA loan into VA under its cash-out refinance rules, even when the borrower receives no cash. This calculator uses borrower-friendly wording while applying VA's fee category." },
+  { q: "Does this calculator cover a Texas 50(a)(6) home-equity loan?", a: "No. This tool does not cover Texas 50(a)(6) home-equity loans. It covers a purchase, a VA IRRRL, and a refinance from a non-VA loan into VA." },
+  { q: "Can a funding fee be refunded later?", a: "A borrower whose VA disability compensation is awarded retroactively may be eligible to request a refund. Eligibility and the effective date must be verified with VA and the loan servicer." },
 ];
 
 const LINKS = [
@@ -37,8 +38,8 @@ export default function VaFundingFeeCalculatorPage() {
     <>
       <SEO
         title="VA Funding Fee Calculator | Texas Veterans | Keys by Shalanda"
-        description="Calculate your VA funding fee instantly. See if your disability rating waives it, whether to roll it in, and what it means for your payment. Fort Hood and Texas veterans."
-        canonical="/va-funding-fee-calculator"
+        description="Estimate the VA funding fee for a Texas purchase, IRRRL, or refinance from a non-VA loan into VA. Compare exempt status and fee-payment choices."
+        canonical="/calculators/va-funding-fee"
       />
 
       {/* HERO */}
@@ -52,7 +53,7 @@ export default function VaFundingFeeCalculatorPage() {
             VA Funding Fee Calculator — Texas Veterans
           </h1>
           <p style={{ fontSize: 17, color: "rgba(255,255,255,0.78)", lineHeight: 1.65, maxWidth: 720, margin: 0 }}>
-            The VA funding fee is a one-time cost that keeps the VA loan program running — no taxpayer money, no PMI ever. Use this calculator to see your exact fee, whether you can roll it into the loan, and whether your disability rating waives it entirely.
+            Estimate the one-time VA funding fee for a purchase, an IRRRL, or a refinance from a non-VA loan into VA. See the base loan, fee, financed balance, and fee-payment choices without confusing a VA transaction label with a Texas home-equity loan.
           </p>
         </div>
       </section>
