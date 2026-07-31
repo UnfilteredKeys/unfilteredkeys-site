@@ -38,6 +38,10 @@ const FAQS = [
     q: "Can I keep my current VA home and buy another?",
     a: "Possibly. A veteran with sufficient remaining entitlement may be able to keep the current VA-financed property and purchase another primary residence, often after a PCS move. The full loan file and occupancy requirements still apply.",
   },
+  {
+    q: "Is there a maximum number of VA loans I can have at one time?",
+    a: "No. VA does not set a fixed two-loan maximum. A veteran may potentially have more than two outstanding VA loans when sufficient entitlement remains, each new purchase meets VA primary-residence occupancy requirements, the borrower qualifies with the existing obligations, and the lender approves the loan.",
+  },
 ];
 
 const LINKS = [
