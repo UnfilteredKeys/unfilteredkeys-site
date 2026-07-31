@@ -54,8 +54,8 @@ const resources = [
   {
     title: "Model a longer strategy",
     body: "Explore how multiple properties, time, appreciation, and debt reduction may affect a portfolio.",
-    to: "/calculators?tab=portfolio-builder",
-    label: "Portfolio Builder",
+    to: "/calculators/rental-portfolio-planner",
+    label: "Rental Portfolio Planner",
   },
   {
     title: "Military portfolio strategy",
