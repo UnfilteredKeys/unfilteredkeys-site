@@ -65,3 +65,26 @@
     font-family: var(--font-serif);
   }
 }
+
+/* Mortgage Review page: brand palette (navy / copper / ivory) */
+.mortgage-review {
+  --background: 40 43% 97%;
+  --foreground: 210 50% 23%;
+  --card: 0 0% 100%;
+  --card-foreground: 210 50% 23%;
+  --primary: 26 72% 41%;
+  --primary-foreground: 40 43% 97%;
+  --muted: 36 30% 92%;
+  --muted-foreground: 213 18% 36%;
+  --border: 32 25% 84%;
+  --input: 32 25% 84%;
+  --destructive: 0 70% 42%;
+  font-family: "Outfit", system-ui, sans-serif;
+}
+.mortgage-review h1, .mortgage-review h2, .mortgage-review h3 {
+  font-family: "Lora", Georgia, serif;
+  color: hsl(210 50% 23%);
+}
+.mortgage-review section:first-of-type { background: hsl(210 52% 23%); }
+.mortgage-review section:first-of-type h1 { color: hsl(40 43% 97%); }
+.mortgage-review section:first-of-type p:not(.text-primary) { color: hsl(40 43% 97% / 0.85); }
