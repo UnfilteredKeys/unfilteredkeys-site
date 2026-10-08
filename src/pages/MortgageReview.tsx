@@ -157,7 +157,7 @@ export default function MortgageReview() {
     document.getElementById("review-form")?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="mortgage-review min-h-screen bg-background text-foreground">
       {/* HERO */}
       <section className="px-4 pt-16 pb-12 md:pt-24 md:pb-16">
         <div className="mx-auto max-w-3xl text-center">
