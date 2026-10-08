@@ -52,6 +52,7 @@ const VaFundingFeeCalculatorPage = lazy(() => import("@/pages/VaFundingFeeCalcul
 const VaEntitlementCalculatorPage = lazy(() => import("@/pages/VaEntitlementCalculator"));
 const BahHousingBudgetCalculatorPage = lazy(() => import("@/pages/BahHousingBudgetCalculator"));
 const RentalPortfolioPlannerPage = lazy(() => import("@/pages/RentalPortfolioPlanner"));
+const MortgageReviewPage = lazy(() => import("@/pages/MortgageReview"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -67,6 +68,7 @@ const App = () => (
           <Routes>
             <Route element={<SiteLayout />}>
             <Route path="/" element={<Index />} />
+            <Route path="/mortgage-review" element={<MortgageReviewPage />} />
             <Route path="/thank-you" element={<ThankYou />} />
             <Route path="/guide" element={<Guide />} />
             <Route path="/playbook" element={<PlaybookPage />} />
