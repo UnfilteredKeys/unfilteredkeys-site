@@ -105,6 +105,7 @@ const FAQS = [
 
 const STORAGE_KEY = "mr_campaign";
 const SUBMITTED_KEY = "mr_submitted";
+const SUBMITTED_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "src"];
 
 const encode = (data: Record<string, string>) =>
@@ -141,7 +142,9 @@ export default function MortgageReview() {
     setCampaign(merged);
     try {
       sessionStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
-      if (sessionStorage.getItem(SUBMITTED_KEY)) setStatus("sent");
+      const saved = Number(localStorage.getItem(SUBMITTED_KEY));
+      if (saved && Date.now() - saved < SUBMITTED_TTL_MS) setStatus("sent");
+      else localStorage.removeItem(SUBMITTED_KEY);
     } catch {
       /* ignore */
     }
@@ -191,7 +194,7 @@ export default function MortgageReview() {
       });
       if (!res.ok) throw new Error("Submit failed");
       try {
-        sessionStorage.setItem(SUBMITTED_KEY, "1");
+        localStorage.setItem(SUBMITTED_KEY, String(Date.now()));
       } catch {
         /* ignore */
       }
@@ -318,6 +321,26 @@ export default function MortgageReview() {
               <p className="mt-2 text-muted-foreground">
                 I'll be in touch within one business day. You don't need to gather anything yet; if a
                 closer look would help, I'll let you know what to have handy and how to share it securely.
+              </p>
+              <p className="mt-6 text-sm text-muted-foreground">
+                Need to send another request?{" "}
+                <button
+                  type="button"
+                  className="font-medium text-primary underline underline-offset-2"
+                  onClick={() => {
+                    try {
+                      localStorage.removeItem(SUBMITTED_KEY);
+                      sessionStorage.removeItem(SUBMITTED_KEY);
+                    } catch {
+                      /* ignore */
+                    }
+                    setConcerns([]);
+                    setEmailError("");
+                    setStatus("idle");
+                  }}
+                >
+                  Start a new one
+                </button>
               </p>
             </div>
           ) : (
