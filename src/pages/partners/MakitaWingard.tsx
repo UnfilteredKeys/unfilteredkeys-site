@@ -248,7 +248,7 @@ export default function MakitaWingard() {
                 fontSize: 15,
               }}
             >
-              Start Your Application
+              Apply Now
             </a>
             <a
               href={calendly}
@@ -265,7 +265,7 @@ export default function MakitaWingard() {
                 border: `2px solid ${WHITE}`,
               }}
             >
-              Book a Strategy Call
+              Book a Free Call
             </a>
           </div>
         </div>

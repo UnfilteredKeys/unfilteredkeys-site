@@ -92,8 +92,8 @@ const ElPasoVALoan = () => {
             Fort Bliss is the second-largest Army installation in the country. El Paso is the only major Texas VA market where junior enlisted buyers can purchase at or near BAH without compromise — median home price is $240K–$260K, well below the national average.
           </p>
           <div className="kvl-hero-btns" style={{ display: "flex", gap: 12, marginBottom: 40, flexWrap: "wrap" }}>
-            <a href={apply} target="_blank" rel="noopener noreferrer" className="kvl-hero-btn" style={{ backgroundColor: copper, color: white, fontWeight: 600, fontSize: 15, padding: "14px 32px", borderRadius: radius, textDecoration: "none", textAlign: "center" }}>Get My VA Pre-Approval</a>
-            <a href={calendly} target="_blank" rel="noopener noreferrer" className="kvl-hero-btn" style={{ border: `1.5px solid rgba(250,248,244,0.4)`, color: white, fontWeight: 600, fontSize: 15, padding: "14px 32px", borderRadius: radius, textDecoration: "none", background: "transparent", textAlign: "center" }}>Schedule a Strategy Call</a>
+            <a href={apply} target="_blank" rel="noopener noreferrer" className="kvl-hero-btn" style={{ backgroundColor: copper, color: white, fontWeight: 600, fontSize: 15, padding: "14px 32px", borderRadius: radius, textDecoration: "none", textAlign: "center" }}>Apply Now</a>
+            <a href={calendly} target="_blank" rel="noopener noreferrer" className="kvl-hero-btn" style={{ border: `1.5px solid rgba(250,248,244,0.4)`, color: white, fontWeight: 600, fontSize: 15, padding: "14px 32px", borderRadius: radius, textDecoration: "none", background: "transparent", textAlign: "center" }}>Book a Free Call</a>
           </div>
           <hr style={{ border: "none", borderTop: "1px solid rgba(250,248,244,0.12)", marginBottom: 24 }} />
           <div className="kvl-trust-strip" style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
@@ -280,8 +280,8 @@ const ElPasoVALoan = () => {
             PCS orders to Fort Bliss in hand? Tell me your report date and your price range. We'll build the closing timeline backward from your deadline — not forward from when it's convenient.
           </p>
           <div className="kvl-hero-btns" style={{ display: "flex", gap: 12, justifyContent: "center", marginBottom: 20, flexWrap: "wrap" }}>
-            <a href={apply} target="_blank" rel="noopener noreferrer" className="kvl-hero-btn" style={{ backgroundColor: copper, color: white, fontWeight: 600, fontSize: 15, padding: "14px 32px", borderRadius: radius, textDecoration: "none" }}>Get My VA Pre-Approval</a>
-            <a href={calendly} target="_blank" rel="noopener noreferrer" className="kvl-hero-btn" style={{ border: "1.5px solid rgba(250,248,244,0.4)", color: white, fontWeight: 600, fontSize: 15, padding: "14px 32px", borderRadius: radius, textDecoration: "none", background: "transparent" }}>Schedule a Strategy Call</a>
+            <a href={apply} target="_blank" rel="noopener noreferrer" className="kvl-hero-btn" style={{ backgroundColor: copper, color: white, fontWeight: 600, fontSize: 15, padding: "14px 32px", borderRadius: radius, textDecoration: "none" }}>Apply Now</a>
+            <a href={calendly} target="_blank" rel="noopener noreferrer" className="kvl-hero-btn" style={{ border: "1.5px solid rgba(250,248,244,0.4)", color: white, fontWeight: 600, fontSize: 15, padding: "14px 32px", borderRadius: radius, textDecoration: "none", background: "transparent" }}>Book a Free Call</a>
           </div>
           <p style={{ fontSize: 14, color: "rgba(240,237,230,0.5)", margin: 0 }}>Or call/text: <a href="tel:2549359331" style={{ color: copper, textDecoration: "none", fontWeight: 600 }}>254-935-9331</a></p>
         </div>
@@ -291,12 +291,12 @@ const ElPasoVALoan = () => {
       <section style={{ backgroundColor: "#151e29", padding: "40px 0" }}>
         <div style={{ ...container, textAlign: "center" }}>
           <p style={{ fontSize: 11, color: "rgba(240,237,230,0.4)", lineHeight: 1.75, maxWidth: 800, margin: "0 auto", marginBottom: 16 }}>
-            Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Licensed in Texas · Equal Housing Lender · This page is for educational purposes only and does not constitute a loan commitment or rate guarantee. BAH figures based on 2026 DoD rates. El Paso County market data subject to change.
+            Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Licensed in Texas · Equal Housing Opportunity · This page is for educational purposes only and does not constitute a loan commitment or rate guarantee. BAH figures based on 2026 DoD rates. El Paso County market data subject to change.
           </p>
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap", fontSize: 12 }}>
             <Link to="/va-loan-texas" style={{ color: copper, textDecoration: "none" }}>VA Loans Texas</Link>
             <Link to="/killeen-va-loan" style={{ color: copper, textDecoration: "none" }}>Killeen VA Loan</Link>
-            <a href={calendly} target="_blank" rel="noopener noreferrer" style={{ color: copper, textDecoration: "none" }}>Schedule a Call</a>
+            <a href={calendly} target="_blank" rel="noopener noreferrer" style={{ color: copper, textDecoration: "none" }}>Book a Free Call</a>
             <a href={apply} target="_blank" rel="noopener noreferrer" style={{ color: copper, textDecoration: "none" }}>Apply Now</a>
           </div>
         </div>

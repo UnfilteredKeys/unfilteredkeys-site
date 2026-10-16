@@ -235,7 +235,7 @@ const BuyAHomePage = () => (
         <div className="wrap">
           <h2>Let’s build the plan before the house makes the decision for you.</h2>
           <p>A strategy call gives you a clear starting point, whether you are ready to buy now or preparing for later.</p>
-          <a className="primary" href={CALL_URL} target="_blank" rel="noopener noreferrer">Book a Strategy Call</a>
+          <a className="primary" href={CALL_URL} target="_blank" rel="noopener noreferrer">Book a Free Call</a>
         </div>
       </section>
     </main>

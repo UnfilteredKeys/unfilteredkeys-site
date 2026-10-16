@@ -493,7 +493,7 @@ export default function VaAppraisalChecklist() {
               textDecoration: "none",
             }}
           >
-            Book a Strategy Call
+            Book a Free Call
           </a>
         </div>
       </section>

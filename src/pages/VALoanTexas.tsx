@@ -371,7 +371,7 @@ export default function VALoanTexas() {
             </p>
             <div className="va-actions">
               <a className="va-primary" href={CALENDLY} target="_blank" rel="noopener noreferrer">
-                Book a Strategy Call
+                Book a Free Call
               </a>
               <Link className="va-text-link" to="/va-loan-faq-texas">
                 Read the VA loan FAQ
@@ -484,12 +484,12 @@ export default function VALoanTexas() {
             Start with a conversation about your goals, timing, entitlement, and comfortable monthly payment.
           </p>
           <a className="va-primary" href={CALENDLY} target="_blank" rel="noopener noreferrer">
-            Book a Strategy Call
+            Book a Free Call
           </a>
           <p style={{ marginTop: 18, marginBottom: 0, fontSize: 13 }}>
             Ready now?{" "}
             <a href={APPLY} target="_blank" rel="noopener noreferrer" style={{ color: "white", textUnderlineOffset: 4 }}>
-              Begin the secure application
+              Apply Now
             </a>
           </p>
         </div>

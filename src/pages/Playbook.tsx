@@ -705,7 +705,7 @@ const PlaybookPage = () => {
           <p>
             This guide is for educational purposes only and does not constitute a loan commitment, rate guarantee, or offer to lend. All loans subject to credit approval. Rates and terms subject to change without notice.<br />
             Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518<br />
-            Licensed by the Texas Department of Savings and Mortgage Lending · Equal Housing Lender<br />
+            Licensed by the Texas Department of Savings and Mortgage Lending · Equal Housing Opportunity<br />
             <a href="https://shalandasmith.com">shalandasmith.com</a> · <a href="tel:2549359331">254.935.9331</a> · <a href="mailto:shalanda@securechoicelending.com">shalanda@securechoicelending.com</a>
           </p>
         </footer>

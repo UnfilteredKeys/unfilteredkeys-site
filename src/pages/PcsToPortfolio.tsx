@@ -102,7 +102,7 @@ const toolCards: { title: string; desc: string }[] = [];
           </p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 48 }}>
             <a href={CALENDLY} target="_blank" rel="noopener noreferrer" style={btnPrimary}>Build My Strategy</a>
-            <a href={APPLY} target="_blank" rel="noopener noreferrer" style={btnOutline}>Start My Application</a>
+            <a href={APPLY} target="_blank" rel="noopener noreferrer" style={btnOutline}>Apply Now</a>
           </div>
           <div style={{ borderTop: "1px solid rgba(255,255,255,0.12)", paddingTop: 24, display: "flex", flexWrap: "wrap", gap: 8 }}>
             {branches.map((b) => (
@@ -325,8 +325,8 @@ const toolCards: { title: string; desc: string }[] = [];
             This isn't a standard mortgage conversation. Tell me where you're stationed, how long you plan to serve, and what you're trying to build. We'll map the whole strategy — not just the first loan.
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap", marginBottom: 24 }}>
-            <a href={CALENDLY} target="_blank" rel="noopener noreferrer" style={btnPrimary}>Schedule a Strategy Call</a>
-            <a href={APPLY} target="_blank" rel="noopener noreferrer" style={btnOutline}>Start My Application</a>
+            <a href={CALENDLY} target="_blank" rel="noopener noreferrer" style={btnPrimary}>Book a Free Call</a>
+            <a href={APPLY} target="_blank" rel="noopener noreferrer" style={btnOutline}>Apply Now</a>
           </div>
           <p style={{ fontSize: 14, color: "rgba(240,237,230,0.5)", margin: 0 }}>Or call/text: <a href="tel:2549359331" style={{ color: "rgba(240,237,230,0.7)", textDecoration: "underline" }}>254-935-9331</a></p>
         </div>
@@ -336,7 +336,7 @@ const toolCards: { title: string; desc: string }[] = [];
       <section style={{ backgroundColor: "#141c24", padding: "32px 0" }}>
         <div style={{ ...container, textAlign: "center" }}>
           <p style={{ fontSize: 12, color: "rgba(240,237,230,0.4)", lineHeight: 1.7, marginBottom: 0, maxWidth: 800, margin: "0 auto" }}>
-            Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Licensed in Texas · Equal Housing Lender · This page is for educational purposes only and does not constitute a loan commitment or rate guarantee. Secure Choice Lending is licensed in 49 states — contact us for state-specific licensing information.
+            Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Licensed in Texas · Equal Housing Opportunity · This page is for educational purposes only and does not constitute a loan commitment or rate guarantee. Secure Choice Lending is licensed in 49 states — contact us for state-specific licensing information.
           </p>
         </div>
       </section>

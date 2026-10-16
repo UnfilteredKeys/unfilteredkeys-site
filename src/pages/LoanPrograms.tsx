@@ -522,7 +522,7 @@ const LoanProgramsPage = () => {
                     ))}
                   </div>
                   <div className="lp-detail-cta">
-                    <a href="https://calendly.com/shalanda-securechoicelending/30min" className="lp-btn" target="_blank" rel="noopener noreferrer">Book a Strategy Call →</a>
+                    <a href="https://calendly.com/shalanda-securechoicelending/30min" className="lp-btn" target="_blank" rel="noopener noreferrer">Book a Free Call →</a>
                     <a href="/guide" className="lp-btn-ghost">Get the Free Guide</a>
                     <button
                       onClick={() => {
@@ -550,7 +550,7 @@ const LoanProgramsPage = () => {
           <div className="lp-cta-inner">
             <h2>Not sure which program fits?<em>That&apos;s exactly what the call is for.</em></h2>
             <p>Thirty minutes. We look at your credit profile, income structure, down payment position, and goals — and tell you which programs are actually available for your file.</p>
-            <a href="https://calendly.com/shalanda-securechoicelending/30min" className="lp-cta-btn" target="_blank" rel="noopener noreferrer">Book a Strategy Call →</a>
+            <a href="https://calendly.com/shalanda-securechoicelending/30min" className="lp-cta-btn" target="_blank" rel="noopener noreferrer">Book a Free Call →</a>
           </div>
         </section>
 
@@ -559,7 +559,7 @@ const LoanProgramsPage = () => {
           <p>
             This page is for educational purposes only and does not constitute a loan commitment, rate guarantee, or offer to lend. All loans subject to credit approval. Rates and terms subject to change without notice.<br />
             Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518<br />
-            Licensed by the Texas Department of Savings and Mortgage Lending · Equal Housing Lender<br />
+            Licensed by the Texas Department of Savings and Mortgage Lending · Equal Housing Opportunity<br />
             <a href="https://shalandasmith.com">shalandasmith.com</a> · <a href="tel:2549359331">254.935.9331</a> · <a href="mailto:shalanda@securechoicelending.com">shalanda@securechoicelending.com</a>
           </p>
         </footer>

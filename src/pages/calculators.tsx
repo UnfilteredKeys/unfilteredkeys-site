@@ -1111,7 +1111,7 @@ function BudgetCalc() {
                 </div>
                 <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer"
                   style={{ display: "inline-block", backgroundColor: copper, color: white, padding: "14px 32px", borderRadius: "6px", fontWeight: 700, fontSize: "15px", textDecoration: "none" }}>
-                  Book a Strategy Call →
+                  Book a Free Call →
                 </a>
                 <div style={{ marginTop: "12px", fontSize: "12px", color: "rgba(255,255,255,0.45)" }}>
                   30 minutes · No obligation · shalandasmith.com
@@ -2026,7 +2026,7 @@ export default function Calculators() {
           <p style={{ fontFamily: "'Lora', serif", fontSize: "20px", color: navy, marginBottom: "8px" }}>Numbers look right? <em>Let's make them official.</em></p>
           <p style={{ color: muted, fontSize: "14px", marginBottom: "20px" }}>A 30-minute strategy call turns estimates into a real pre-approval.</p>
           <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer"
-            style={{ ...S.cta, fontSize: "16px", padding: "16px 36px" }}>Book a Strategy Call →</a>
+            style={{ ...S.cta, fontSize: "16px", padding: "16px 36px" }}>Book a Free Call →</a>
         </div>
       </div>
     </div>

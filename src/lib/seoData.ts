@@ -49,7 +49,7 @@ export const seoMeta = {
   },
   killeenVaLoan: {
     title: "VA Loans Killeen TX | Fort Hood Home Buying Guide | Keys by Shalanda",
-    description: "Buying near Fort Hood? VA loan guide built for Killeen, TX service members. BAH vs. mortgage by pay grade, neighborhood prices, and PCS exit strategy. Free 15-min call.",
+    description: "Buying near Fort Hood? VA loan guide built for Killeen, TX service members. BAH vs. mortgage by pay grade, neighborhood prices, and PCS exit strategy. Free 30-min call.",
     canonical: "/killeen-va-loan",
   },
   copperasCoveVaLoan: {
@@ -104,7 +104,7 @@ export const seoMeta = {
   },
   firstTimeBuyers: {
     title: "First-Time Home Buyers in Texas | Down Payment Assistance & FHA Loans",
-    description: "First-time buyer guide for Texas: FHA, conventional, USDA, and TDHCA, TSAHC, SETH down payment assistance programs explained. Get pre-approved with Keys by Shalanda.",
+    description: "First-time buyer guide for Texas: FHA, conventional, USDA, and TDHCA, TSAHC, SETH down payment assistance programs explained. Apply now with Keys by Shalanda.",
     canonical: "/first-time-buyers",
   },
   investors: {

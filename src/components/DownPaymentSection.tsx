@@ -153,7 +153,7 @@ export default function DownPaymentSection() {
                 (e.target as HTMLElement).style.backgroundColor = "#b5621e";
               }}
             >
-              Get Pre-Approved
+              Apply Now
             </a>
             <p
               style={{

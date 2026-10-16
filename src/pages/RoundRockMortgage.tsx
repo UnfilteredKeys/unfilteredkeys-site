@@ -171,8 +171,8 @@ const RoundRockMortgage = () => {
             Old Town limestone bungalows. New subdivisions near Dell. A historic Main Street, Round Rock Donuts, and a 20-minute drive to downtown Austin. This city has a real identity — and a price point that makes sense. We close here regularly.
           </p>
           <div className="rrm-hero-btns" style={{ display: "flex", gap: 14, marginBottom: 32, flexWrap: "wrap" }}>
-            <a href={apply} target="_blank" rel="noopener noreferrer" className="rrm-btn" style={ctaPrimary}>Get Pre-Approved</a>
-            <a href={calendly} target="_blank" rel="noopener noreferrer" className="rrm-btn" style={ctaSecondary}>Book a Strategy Call</a>
+            <a href={apply} target="_blank" rel="noopener noreferrer" className="rrm-btn" style={ctaPrimary}>Apply Now</a>
+            <a href={calendly} target="_blank" rel="noopener noreferrer" className="rrm-btn" style={ctaSecondary}>Book a Free Call</a>
           </div>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
             {heroBadges.map((t) => (
@@ -423,8 +423,8 @@ const RoundRockMortgage = () => {
             Found an Old Town bungalow that needs love? Want to build on a lot? Relocating for Dell or BSW? Tell me your situation and your timeline. We'll match the right program to your file before you fall in love with a house — or a floor plan.
           </p>
           <div className="rrm-hero-btns" style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap", marginBottom: 16 }}>
-            <a href={apply} target="_blank" rel="noopener noreferrer" className="rrm-btn" style={ctaPrimary}>Get Pre-Approved</a>
-            <a href={calendly} target="_blank" rel="noopener noreferrer" className="rrm-btn" style={ctaSecondary}>Book a Strategy Call</a>
+            <a href={apply} target="_blank" rel="noopener noreferrer" className="rrm-btn" style={ctaPrimary}>Apply Now</a>
+            <a href={calendly} target="_blank" rel="noopener noreferrer" className="rrm-btn" style={ctaSecondary}>Book a Free Call</a>
           </div>
           <p style={{ fontSize: 13, color: "rgba(250,248,244,0.65)", fontFamily: "'Fira Mono', monospace" }}>Or call/text: 254-935-9331</p>
         </div>
@@ -434,14 +434,14 @@ const RoundRockMortgage = () => {
       <section style={{ background: soft, padding: "32px 0", borderTop: `1px solid ${border}` }}>
         <div style={container}>
           <p style={{ fontSize: 11.5, lineHeight: 1.7, color: textSecondary, marginBottom: 16 }}>
-            Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Licensed in Texas · Equal Housing Lender · This page is for educational purposes only and does not constitute a loan commitment or rate guarantee. Market data approximate and subject to change. Renovation and construction loan programs subject to lender guidelines, property eligibility, and contractor approval requirements. Down payment assistance program availability and credit score minimums subject to program rules in effect at time of application.
+            Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Licensed in Texas · Equal Housing Opportunity · This page is for educational purposes only and does not constitute a loan commitment or rate guarantee. Market data approximate and subject to change. Renovation and construction loan programs subject to lender guidelines, property eligibility, and contractor approval requirements. Down payment assistance program availability and credit score minimums subject to program rules in effect at time of application.
           </p>
           <div style={{ display: "flex", gap: 14, flexWrap: "wrap", fontSize: 12, fontFamily: "'Fira Mono', monospace" }}>
             <Link to="/va-loan-texas" style={{ color: copper, textDecoration: "none" }}>VA Loans Texas</Link>
             <Link to="/down-payment-assistance-texas" style={{ color: copper, textDecoration: "none" }}>Down Payment Assistance</Link>
             <Link to="/construction-renovation-loans-texas" style={{ color: copper, textDecoration: "none" }}>Renovation & Construction</Link>
             <Link to="/physician-loan-texas" style={{ color: copper, textDecoration: "none" }}>Physician Loans</Link>
-            <a href={calendly} target="_blank" rel="noopener noreferrer" style={{ color: copper, textDecoration: "none" }}>Schedule a Call</a>
+            <a href={calendly} target="_blank" rel="noopener noreferrer" style={{ color: copper, textDecoration: "none" }}>Book a Free Call</a>
             <a href={apply} target="_blank" rel="noopener noreferrer" style={{ color: copper, textDecoration: "none" }}>Apply Now</a>
           </div>
         </div>

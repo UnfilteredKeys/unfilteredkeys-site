@@ -138,8 +138,8 @@ const HoustonMortgage = () => {
             Houston is the fourth-largest city in the United States, the most diverse, and the most affordable of the major Texas metros. The Texas Medical Center employs 60,000+ people. The Energy Corridor houses the world's largest energy companies. NASA's Johnson Space Center is 25 miles southeast. No zoning laws means one of the most development-flexible housing markets in the country. And flood risk is a real conversation we have with every buyer here — upfront.
           </p>
           <div className="hou-hero-btns" style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 28 }}>
-            <a className="hou-btn" href={apply} target="_blank" rel="noreferrer" style={{ background: copper, color: white, padding: "14px 26px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15 }}>Get Pre-Approved</a>
-            <a className="hou-btn" href={calendly} target="_blank" rel="noreferrer" style={{ background: "transparent", color: ivory, padding: "14px 26px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15, border: `1px solid ${ivory}` }}>Book a Strategy Call</a>
+            <a className="hou-btn" href={apply} target="_blank" rel="noreferrer" style={{ background: copper, color: white, padding: "14px 26px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15 }}>Apply Now</a>
+            <a className="hou-btn" href={calendly} target="_blank" rel="noreferrer" style={{ background: "transparent", color: ivory, padding: "14px 26px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15, border: `1px solid ${ivory}` }}>Book a Free Call</a>
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
             {heroBadges.map((t) => (
@@ -350,8 +350,8 @@ const HoustonMortgage = () => {
             Relocating to the Texas Medical Center? Buying in Katy or Sugar Land for the schools? Using your VA benefit in the Houston metro? Tell me where you're going and your timeline. We'll run your real numbers — PITI, flood insurance, MUD overlay — before you make an offer.
           </p>
           <div className="hou-hero-btns" style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center", marginBottom: 16 }}>
-            <a className="hou-btn" href={apply} target="_blank" rel="noreferrer" style={{ background: copper, color: white, padding: "14px 26px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15 }}>Get Pre-Approved</a>
-            <a className="hou-btn" href={calendly} target="_blank" rel="noreferrer" style={{ background: "transparent", color: ivory, padding: "14px 26px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15, border: `1px solid ${ivory}` }}>Book a Strategy Call</a>
+            <a className="hou-btn" href={apply} target="_blank" rel="noreferrer" style={{ background: copper, color: white, padding: "14px 26px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15 }}>Apply Now</a>
+            <a className="hou-btn" href={calendly} target="_blank" rel="noreferrer" style={{ background: "transparent", color: ivory, padding: "14px 26px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15, border: `1px solid ${ivory}` }}>Book a Free Call</a>
           </div>
           <div style={{ fontSize: 14, opacity: 0.8 }}>Or call/text: 254-935-9331</div>
         </div>
@@ -361,14 +361,14 @@ const HoustonMortgage = () => {
       <section style={{ background: "#0f1722", color: "rgba(250,248,244,0.6)", padding: "32px 0" }}>
         <div style={container}>
           <p style={{ fontSize: 12, lineHeight: 1.7, margin: "0 0 16px" }}>
-            Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Licensed in Texas · Equal Housing Lender · This page is for educational purposes only and does not constitute a loan commitment or rate guarantee. Flood zone information is approximate — verify at msc.fema.gov and harriscountyfemt.org before making purchasing decisions. Flood insurance requirements and premium estimates subject to change under FEMA Risk Rating 2.0 and MAAPNext map updates. Property tax rates including MUD overlays vary by address — verify with your county appraisal district. Market data approximate and subject to change.
+            Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Licensed in Texas · Equal Housing Opportunity · This page is for educational purposes only and does not constitute a loan commitment or rate guarantee. Flood zone information is approximate — verify at msc.fema.gov and harriscountyfemt.org before making purchasing decisions. Flood insurance requirements and premium estimates subject to change under FEMA Risk Rating 2.0 and MAAPNext map updates. Property tax rates including MUD overlays vary by address — verify with your county appraisal district. Market data approximate and subject to change.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 16, fontSize: 12 }}>
             <Link to="/physician-loan-texas" style={{ color: copper, textDecoration: "none" }}>Physician Loans</Link>
             <Link to="/va-loan-texas" style={{ color: copper, textDecoration: "none" }}>VA Loans Texas</Link>
             <Link to="/down-payment-assistance-texas" style={{ color: copper, textDecoration: "none" }}>Down Payment Assistance</Link>
             <Link to="/conventional-loan-texas" style={{ color: copper, textDecoration: "none" }}>Conventional Loans</Link>
-            <a href={calendly} target="_blank" rel="noreferrer" style={{ color: copper, textDecoration: "none" }}>Schedule a Call</a>
+            <a href={calendly} target="_blank" rel="noreferrer" style={{ color: copper, textDecoration: "none" }}>Book a Free Call</a>
             <a href={apply} target="_blank" rel="noreferrer" style={{ color: copper, textDecoration: "none" }}>Apply Now</a>
           </div>
         </div>

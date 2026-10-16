@@ -45,7 +45,7 @@ const SiteFooter = () => (
               rel="noopener noreferrer"
               className="inline-flex min-h-11 items-center justify-center rounded-sm bg-[#1a3a5c] px-6 text-sm font-semibold text-white transition-colors hover:bg-[#122a43] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1a3a5c]"
             >
-              Apply Securely
+              Apply Now
             </a>
             <a
               href="https://calendly.com/shalanda-securechoicelending/30min"
@@ -53,7 +53,7 @@ const SiteFooter = () => (
               rel="noopener noreferrer"
               className="inline-flex min-h-11 items-center justify-center rounded-sm border border-[#b5621e] px-6 text-sm font-semibold text-[#9f5118] transition-colors hover:bg-[#f0e2d5] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#b5621e]"
             >
-              Schedule a Call
+              Book a Free Call
             </a>
           </div>
         </div>
@@ -84,7 +84,7 @@ const SiteFooter = () => (
             <p className="mt-2">
               Keys by Shalanda is the personal brand of Shalanda Smith, operating under Secure Choice Lending, NMLS #1689518. Licensed in Texas by the Texas Department of Savings and Mortgage Lending.
             </p>
-            <p className="mt-2">1650 Spruce St., Suite 500, Riverside, CA 92507</p>
+            <p className="mt-2">Company office: 1650 Spruce St., Suite 500, Riverside, CA 92507 · Serving homebuyers across all of Texas</p>
             <p className="mt-3 flex flex-wrap gap-x-3 gap-y-1">
               <a className="text-[#e1a06d] underline underline-offset-2 hover:text-white" href="https://www.sml.texas.gov" target="_blank" rel="noopener noreferrer">
                 Texas SML

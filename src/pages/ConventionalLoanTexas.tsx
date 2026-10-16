@@ -257,7 +257,7 @@ const ConventionalLoanTexasPage = () => (
           <p>
             We will review conventional, FHA, VA, or other appropriate options using your actual payment, cash, property, and timeline.
           </p>
-          <a className="primary" href={CALL_URL} target="_blank" rel="noopener noreferrer">Book a Strategy Call</a>
+          <a className="primary" href={CALL_URL} target="_blank" rel="noopener noreferrer">Book a Free Call</a>
         </div>
       </section>
     </main>

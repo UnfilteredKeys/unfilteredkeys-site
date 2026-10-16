@@ -200,8 +200,8 @@ const SanAntonioMortgage = () => {
             Joint Base San Antonio is one of the largest military installations in the DoD — 80,000+ active duty personnel across Lackland, Fort Sam Houston, and Randolph. Your BAH goes further here than almost anywhere in Texas. The missions are UNESCO World Heritage sites. The River Walk doesn't look like any other American city.
           </p>
           <div className="sa-hero-btns" style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 28 }}>
-            <a className="sa-btn" href={apply} target="_blank" rel="noopener noreferrer" style={{ background: copper, color: white, padding: "14px 28px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15 }}>Get Pre-Approved</a>
-            <a className="sa-btn" href={calendly} target="_blank" rel="noopener noreferrer" style={{ background: "transparent", color: ivory, padding: "14px 28px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15, border: `1px solid rgba(250,248,244,0.3)` }}>Book a Strategy Call</a>
+            <a className="sa-btn" href={apply} target="_blank" rel="noopener noreferrer" style={{ background: copper, color: white, padding: "14px 28px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15 }}>Apply Now</a>
+            <a className="sa-btn" href={calendly} target="_blank" rel="noopener noreferrer" style={{ background: "transparent", color: ivory, padding: "14px 28px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15, border: `1px solid rgba(250,248,244,0.3)` }}>Book a Free Call</a>
           </div>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
             {["JBSA Military Specialist", "VA · FHA · Conventional · DPA", "PCS Relocation", "Physician Loans", "Fast, Predictable Closings", "50+ Lender Network"].map((t) => (
@@ -448,8 +448,8 @@ const SanAntonioMortgage = () => {
             PCS orders just dropped? Retiring at JBSA and staying in San Antonio? First-time buyer at Lackland? Tell me your situation — your pay grade, your timeline, your installation. We'll run your real numbers, match the right program, and get you pre-approved before PCS season hits.
           </p>
           <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap", marginBottom: 18 }}>
-            <a className="sa-btn" href={apply} target="_blank" rel="noopener noreferrer" style={{ background: copper, color: white, padding: "14px 28px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15 }}>Get Pre-Approved</a>
-            <a className="sa-btn" href={calendly} target="_blank" rel="noopener noreferrer" style={{ background: "transparent", color: ivory, padding: "14px 28px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15, border: `1px solid rgba(250,248,244,0.3)` }}>Book a Strategy Call</a>
+            <a className="sa-btn" href={apply} target="_blank" rel="noopener noreferrer" style={{ background: copper, color: white, padding: "14px 28px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15 }}>Apply Now</a>
+            <a className="sa-btn" href={calendly} target="_blank" rel="noopener noreferrer" style={{ background: "transparent", color: ivory, padding: "14px 28px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15, border: `1px solid rgba(250,248,244,0.3)` }}>Book a Free Call</a>
           </div>
           <p style={{ color: "rgba(250,248,244,0.6)", fontSize: 14, fontFamily: "'Fira Mono', monospace" }}>
             Or call/text: 254-935-9331
@@ -461,7 +461,7 @@ const SanAntonioMortgage = () => {
       <section style={{ background: hero, padding: "32px 0", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
         <div style={container}>
           <p style={{ color: "rgba(250,248,244,0.55)", fontSize: 12, lineHeight: 1.7, marginBottom: 18 }}>
-            Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Licensed in Texas · Equal Housing Lender · This page is for educational purposes only and does not constitute a loan commitment or rate guarantee. BAH rates are approximate — verify at travel.dod.mil. VA loan limits and funding fees subject to change. Texas Veterans Land Board program availability subject to eligibility and program rules. Down payment assistance program credit score minimums subject to program rules in effect at time of application. Market data approximate and subject to change.
+            Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Licensed in Texas · Equal Housing Opportunity · This page is for educational purposes only and does not constitute a loan commitment or rate guarantee. BAH rates are approximate — verify at travel.dod.mil. VA loan limits and funding fees subject to change. Texas Veterans Land Board program availability subject to eligibility and program rules. Down payment assistance program credit score minimums subject to program rules in effect at time of application. Market data approximate and subject to change.
           </p>
           <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
             <Link to="/va-loan-texas" style={{ color: copper, fontSize: 12, textDecoration: "none", fontFamily: "'Fira Mono', monospace" }}>VA Loans Texas</Link>
@@ -469,7 +469,7 @@ const SanAntonioMortgage = () => {
             <Link to="/down-payment-assistance-texas" style={{ color: copper, fontSize: 12, textDecoration: "none", fontFamily: "'Fira Mono', monospace" }}>Down Payment Assistance</Link>
             <Link to="/physician-loan-texas" style={{ color: copper, fontSize: 12, textDecoration: "none", fontFamily: "'Fira Mono', monospace" }}>Physician Loans</Link>
             <Link to="/calculators" style={{ color: copper, fontSize: 12, textDecoration: "none", fontFamily: "'Fira Mono', monospace" }}>BAH Calculator</Link>
-            <a href={calendly} target="_blank" rel="noopener noreferrer" style={{ color: copper, fontSize: 12, textDecoration: "none", fontFamily: "'Fira Mono', monospace" }}>Schedule a Call</a>
+            <a href={calendly} target="_blank" rel="noopener noreferrer" style={{ color: copper, fontSize: 12, textDecoration: "none", fontFamily: "'Fira Mono', monospace" }}>Book a Free Call</a>
             <a href={apply} target="_blank" rel="noopener noreferrer" style={{ color: copper, fontSize: 12, textDecoration: "none", fontFamily: "'Fira Mono', monospace" }}>Apply Now</a>
           </div>
         </div>

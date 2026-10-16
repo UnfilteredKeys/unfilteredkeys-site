@@ -127,7 +127,7 @@ export default function ConstructionRenovationTexas() {
                 textDecoration: "none",
               }}
             >
-              Book a Strategy Call
+              Book a Free Call
             </a>
           </div>
         </section>
@@ -253,7 +253,7 @@ export default function ConstructionRenovationTexas() {
                 textDecoration: "none",
               }}
             >
-              Book a Strategy Call
+              Book a Free Call
             </a>
           </div>
         </section>

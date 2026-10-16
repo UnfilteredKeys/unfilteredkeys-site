@@ -203,7 +203,7 @@ const FirstTimeBuyersPage = () => (
           <p>
             A strategy call gives you a clear starting point, whether you are ready to buy now or need a plan for later.
           </p>
-          <a className="primary" href={CALL_URL} target="_blank" rel="noopener noreferrer">Book a Strategy Call</a>
+          <a className="primary" href={CALL_URL} target="_blank" rel="noopener noreferrer">Book a Free Call</a>
         </div>
       </section>
     </main>

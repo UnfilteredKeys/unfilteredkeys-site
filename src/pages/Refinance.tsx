@@ -240,7 +240,7 @@ const RefinancePage = () => (
         <div className="wrap">
           <h2>Let’s determine whether refinancing solves the problem or simply restarts the clock.</h2>
           <p>Bring the current mortgage statement and your goal. We will compare the available structure using the full cost, not a headline rate.</p>
-          <a className="primary" href={CALL_URL} target="_blank" rel="noopener noreferrer">Book a Strategy Call</a>
+          <a className="primary" href={CALL_URL} target="_blank" rel="noopener noreferrer">Book a Free Call</a>
         </div>
       </section>
     </main>
