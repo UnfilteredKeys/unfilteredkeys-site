@@ -264,7 +264,7 @@ export default function PartnerDemo() {
           {[
             { v: "50+", l: "Lender Network" },
             { v: "21 Days", l: "Average Close" },
-            { v: "5.0", l: "Google Rating" },
+            { v: "20+ Years", l: "Mortgage Experience" },
             { v: "All of Texas", l: "Licensed Statewide" },
           ].map((s) => (
             <div key={s.l}>

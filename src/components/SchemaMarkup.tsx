@@ -31,13 +31,7 @@ const SchemaMarkup = () => {
     ],
     "sameAs": [
       "https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/554554"
-    ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "bestRating": "5",
-      "ratingCount": "20"
-    }
+    ]
   };
 
   const person = {
