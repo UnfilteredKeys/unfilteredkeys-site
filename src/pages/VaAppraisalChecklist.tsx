@@ -375,8 +375,8 @@ export default function VaAppraisalChecklist() {
                   />
                 </button>
 
-                {isOpen && (
-                  <div style={{ padding: "0 24px 20px 24px" }}>
+                {(
+                  <div hidden={!isOpen} style={{ padding: "0 24px 20px 24px" }}>
                     {items.map((it) => (
                       <label
                         key={it.id}

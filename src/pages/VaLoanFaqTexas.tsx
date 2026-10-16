@@ -81,7 +81,7 @@ const categories: Category[] = [
       },
       {
         q: "How long does a VA loan take to close?",
-        a: "Our average is 21 days from contract to close. VA loans are not slower than conventional when handled by a broker who works VA files daily. Where deals stall is usually the appraisal queue or seller-side title issues — not the VA itself.",
+        a: "Every file is built upfront so your timeline stays predictable, including hard PCS report dates. VA loans are not slower than conventional when handled by a broker who works VA files daily. Where deals stall is usually the appraisal queue or seller-side title issues, not the VA itself.",
       },
       {
         q: "Can I buy a multi-family property with a VA loan?",
@@ -136,8 +136,10 @@ function FAQItem({ qa }: { qa: QA }) {
           {open ? "−" : "+"}
         </span>
       </button>
-      {open && (
+      {/* Always in the HTML so search engines can read every answer; hidden until opened. */}
+      {(
         <div
+          hidden={!open}
           style={{
             padding: "0 0 20px",
             fontSize: 16,
@@ -157,7 +159,7 @@ function FAQItem({ qa }: { qa: QA }) {
 export default function VaLoanFaqTexas() {
   return (
     <div style={{ fontFamily: "'Outfit', sans-serif", color: textPrimary }}>
-      <SEO {...seoMeta.vaLoanFaqTexas} />
+      <SEO {...seoMeta.vaLoanFaqTexas} faqs={categories.flatMap((c) => c.items)} />
 
       {/* HERO */}
       <section style={{ background: navy, color: ivory, padding: "96px 0 80px" }}>

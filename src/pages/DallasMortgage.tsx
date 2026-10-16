@@ -32,7 +32,7 @@ const stats = [
   { v: "Silicon Prairie", l: "Tech & Finance Capital of the South" },
 ];
 
-const heroBadges = ["Dallas & Fort Worth Specialist", "VA · FHA · Conventional · DPA", "Physician Loans", "Jumbo & Non-QM", "Dallas & Collin County", "21-Day Avg Close", "50+ Lender Network"];
+const heroBadges = ["Dallas & Fort Worth Specialist", "VA · FHA · Conventional · DPA", "Physician Loans", "Jumbo & Non-QM", "Dallas & Collin County", "Fast, Predictable Closings", "50+ Lender Network"];
 
 const marketStats = [
   { label: "DFW Metro Median", value: "~$425K", note: "Inner Dallas holding · suburbs correcting", valueColor: white },

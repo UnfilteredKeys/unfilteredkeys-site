@@ -245,7 +245,7 @@ const TempleTexasMortgage = () => {
             <a className="ttx-btn" href={calendly} target="_blank" rel="noopener noreferrer" style={{ background: "transparent", color: ivory, padding: "14px 28px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15, border: `1px solid rgba(250,248,244,0.3)` }}>Book a Strategy Call</a>
           </div>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-            {["BSW Physician Loan Specialist", "VA · FHA · Conventional · DPA", "Fort Hood Corridor", "Belton ISD Expertise", "21-Day Avg Close", "50+ Lender Network"].map((t) => (
+            {["BSW Physician Loan Specialist", "VA · FHA · Conventional · DPA", "Fort Hood Corridor", "Belton ISD Expertise", "Fast, Predictable Closings", "50+ Lender Network"].map((t) => (
               <span key={t} style={{ fontSize: 12, padding: "6px 12px", border: `1px solid rgba(250,248,244,0.2)`, borderRadius: 999, color: "rgba(250,248,244,0.8)", fontFamily: "'Fira Mono', monospace" }}>{t}</span>
             ))}
           </div>

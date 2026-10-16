@@ -110,7 +110,7 @@ const KilleenVaLoan = () => {
           </div>
           <hr style={{ border: "none", borderTop: "1px solid rgba(250,248,244,0.12)", marginBottom: 24 }} />
           <div className="kvl-trust-strip" style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-            {["VA Specialist · All Branches", "PCS Timeline Expert", "Bell County Market", "21-Day Avg Close", "50+ Lender Network"].map(t => (
+            {["VA Specialist · All Branches", "PCS Timeline Expert", "Bell County Market", "Fast, Predictable Closings", "50+ Lender Network"].map(t => (
               <span key={t} style={{ fontSize: 11, fontFamily: "'Fira Mono', monospace", color: "rgba(240,237,230,0.5)", border: "1px solid rgba(250,248,244,0.1)", borderRadius: 999, padding: "5px 14px", letterSpacing: "0.03em" }}>{t}</span>
             ))}
           </div>

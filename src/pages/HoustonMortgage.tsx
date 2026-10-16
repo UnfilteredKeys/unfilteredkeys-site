@@ -100,7 +100,7 @@ const compareRows = [
   { city: "Austin", price: "~$575K", note: "Post-correction" },
 ];
 
-const heroBadges = ["TMC Physician Loan Specialist", "VA · FHA · Conventional · DPA", "Flood Zone Guidance", "Jumbo & Non-QM", "Harris & Fort Bend Counties", "21-Day Avg Close", "50+ Lender Network"];
+const heroBadges = ["TMC Physician Loan Specialist", "VA · FHA · Conventional · DPA", "Flood Zone Guidance", "Jumbo & Non-QM", "Harris & Fort Bend Counties", "Fast, Predictable Closings", "50+ Lender Network"];
 
 const HoustonMortgage = () => {
 

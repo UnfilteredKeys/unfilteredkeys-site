@@ -93,7 +93,7 @@ const cityFeatures = [
   { icon: "#185FA5", label: "Georgetown ISD", body: "Consistently A-rated. Georgetown High School and East View High School serve the full city. Strong elementary campuses throughout, including in Wolf Ranch and the established resale neighborhoods. Always verify campus assignment for your specific address." },
 ];
 
-const heroChips = ["Williamson County Specialist", "VA · FHA · Conventional · DPA", "Sun City 55+ Eligible", "Physician Loans", "21-Day Avg Close", "50+ Lender Network"];
+const heroChips = ["Williamson County Specialist", "VA · FHA · Conventional · DPA", "Sun City 55+ Eligible", "Physician Loans", "Fast, Predictable Closings", "50+ Lender Network"];
 
 /* ── COMPONENT ───────────────────────────────────────────────────────────── */
 const GeorgetownMortgage = () => {
