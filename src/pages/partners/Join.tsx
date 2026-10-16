@@ -465,7 +465,7 @@ export default function PartnerJoinPage() {
           {[
             { t: "Your Name on the Page", b: "Every buyer you refer lands on a page that features you and your brokerage alongside Keys by Shalanda." },
             { t: "A Link You Can Share Anywhere", b: "Text it, email it, post it. One link does the work — buyers get educated and connected before the first showing." },
-            { t: "VA Loan Expertise Behind You", b: "We close VA loans in 21 days. Your buyers get answers fast and you get a lender who won't fumble the file." },
+            { t: "VA Loan Expertise Behind You", b: "Fast, predictable VA closings. Your buyers get answers fast and you get a lender who won't fumble the file." },
           ].map((c) => (
             <div key={c.t} style={{ background: WHITE, color: NAVY, borderTop: `3px solid ${COPPER}`, padding: 28, borderRadius: 4, boxShadow: "0 1px 2px rgba(0,0,0,0.04)" }}>
               <h3 style={{ fontFamily: heading, fontSize: "1.25rem", fontWeight: 700, marginBottom: 12, color: NAVY }}>{c.t}</h3>

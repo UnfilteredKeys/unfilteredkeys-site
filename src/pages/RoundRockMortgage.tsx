@@ -119,7 +119,7 @@ const whyCards = [
 
 const nationalBuilders = ["D.R. Horton", "Lennar", "Meritage Homes", "Taylor Morrison"];
 const localBuilders = ["Pacesetter Homes", "Scott Felder Homes", "Saratoga Homes", "Coventry Homes"];
-const heroBadges = ["Williamson County Specialist", "VA · FHA · Conventional · DPA", "Renovation Loans", "One-Time Close Construction", "Physician Loans", "21-Day Avg Close", "50+ Lender Network"];
+const heroBadges = ["Williamson County Specialist", "VA · FHA · Conventional · DPA", "Renovation Loans", "One-Time Close Construction", "Physician Loans", "Fast, Predictable Closings", "50+ Lender Network"];
 
 /* ── COMPONENT ───────────────────────────────────────────────────────────── */
 const RoundRockMortgage = () => {

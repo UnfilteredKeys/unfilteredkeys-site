@@ -32,7 +32,7 @@ const stats = [
   { v: "Silicon Hills", l: "Born Here — Dell, Whole Foods, Indeed" },
 ];
 
-const heroBadges = ["VA · FHA · Conventional · DPA", "Physician Loans", "Jumbo & Non-QM", "Travis & Hays Counties", "ADU Income Programs", "21-Day Avg Close", "50+ Lender Network"];
+const heroBadges = ["VA · FHA · Conventional · DPA", "Physician Loans", "Jumbo & Non-QM", "Travis & Hays Counties", "ADU Income Programs", "Fast, Predictable Closings", "50+ Lender Network"];
 
 const marketStats = [
   { label: "City of Austin Median", value: "~$550K", note: "Down 6.8% year over year · April 2026", valueColor: white },
