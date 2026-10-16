@@ -419,7 +419,7 @@ export default function RentalROICalculator() {
             display: "inline-block",
           }}
         >
-          Schedule a call →
+          Book a free call →
         </a>
       </div>
 

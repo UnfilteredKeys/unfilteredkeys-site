@@ -221,10 +221,10 @@ const InvestorsPage = () => {
             </p>
             <div className="investor-actions">
               <a className="investor-primary" href={CALL_URL} target="_blank" rel="noopener noreferrer">
-                Book a Strategy Call
+                Book a Free Call
               </a>
               <a className="investor-text-link" href={APPLY_URL} target="_blank" rel="noopener noreferrer">
-                Ready now? Start here
+                Ready now? Apply now
               </a>
             </div>
           </div>
@@ -309,7 +309,7 @@ const InvestorsPage = () => {
               the strongest path forward.
             </p>
             <a className="investor-primary" href={CALL_URL} target="_blank" rel="noopener noreferrer">
-              Book a Strategy Call
+              Book a Free Call
             </a>
           </div>
         </section>

@@ -225,10 +225,10 @@ export default function PhysicianLoanTexas() {
               </p>
               <div className="physician-actions">
                 <a className="physician-primary" href={CALL_URL} target="_blank" rel="noopener noreferrer">
-                  Book a Strategy Call
+                  Book a Free Call
                 </a>
                 <a className="physician-text-link" href={APPLY_URL} target="_blank" rel="noopener noreferrer">
-                  Ready now? Start here
+                  Ready now? Apply now
                 </a>
               </div>
             </div>
@@ -336,7 +336,7 @@ export default function PhysicianLoanTexas() {
               deserves your attention.
             </p>
             <a className="physician-primary" href={CALL_URL} target="_blank" rel="noopener noreferrer">
-              Book a Strategy Call
+              Book a Free Call
             </a>
           </div>
         </section>

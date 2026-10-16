@@ -180,7 +180,7 @@ export default function PartnerDemo() {
               },
               {
                 t: "50+ Lender Network",
-                b: "We shop your file across wholesale lenders to find the best rate and terms for your situation.",
+                b: "We shop your file across wholesale lenders to find the rate and terms that fit your situation.",
               },
               {
                 t: "One Team, One Transaction",
@@ -373,7 +373,7 @@ export default function PartnerDemo() {
             Ready to Talk Numbers?
           </h2>
           <p style={{ color: "rgba(255,255,255,0.85)", fontSize: 16.5, lineHeight: 1.65, marginBottom: 32 }}>
-            Book a free 15-minute call. We'll cover your entitlement status, BAH math, and max purchase price before you tour a single home.
+            Book a free 30-minute call. We'll cover your entitlement status, BAH math, and max purchase price before you tour a single home.
           </p>
           <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
             <a
@@ -390,7 +390,7 @@ export default function PartnerDemo() {
                 fontSize: 15,
               }}
             >
-              Book a Strategy Call
+              Book a Free Call
             </a>
             <a
               href={apply}
@@ -407,7 +407,7 @@ export default function PartnerDemo() {
                 border: `2px solid ${WHITE}`,
               }}
             >
-              Start Application
+              Apply Now
             </a>
           </div>
         </div>

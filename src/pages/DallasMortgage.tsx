@@ -126,8 +126,8 @@ const DallasMortgage = () => {
             DFW is the fourth-largest metro in America and home to 23 Fortune 500 companies. Dallas has the largest contiguous urban arts district in the country, a music district born in the 1920s, and walkable inner neighborhoods that rival any major city. Fort Worth is genuinely its own thing. The outer suburbs are correcting from 2022 overbuilding. The inner neighborhoods are holding. Your zip code matters more than the headline number right now.
           </p>
           <div className="dal-hero-btns" style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 28 }}>
-            <a className="dal-btn" href={apply} target="_blank" rel="noreferrer" style={{ background: copper, color: white, padding: "14px 26px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15 }}>Get Pre-Approved</a>
-            <a className="dal-btn" href={calendly} target="_blank" rel="noreferrer" style={{ background: "transparent", color: ivory, padding: "14px 26px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15, border: `1px solid ${ivory}` }}>Book a Strategy Call</a>
+            <a className="dal-btn" href={apply} target="_blank" rel="noreferrer" style={{ background: copper, color: white, padding: "14px 26px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15 }}>Apply Now</a>
+            <a className="dal-btn" href={calendly} target="_blank" rel="noreferrer" style={{ background: "transparent", color: ivory, padding: "14px 26px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15, border: `1px solid ${ivory}` }}>Book a Free Call</a>
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
             {heroBadges.map((t) => (
@@ -331,8 +331,8 @@ const DallasMortgage = () => {
             Relocating to DFW for a Fortune 500? Buying in a correcting suburb with a long time horizon? Targeting a Deep Ellum loft or a Lakewood bungalow? Tell me your situation and your target neighborhood. We'll run your real numbers — including the specific county tax rate — before you make an offer.
           </p>
           <div className="dal-hero-btns" style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center", marginBottom: 16 }}>
-            <a className="dal-btn" href={apply} target="_blank" rel="noreferrer" style={{ background: copper, color: white, padding: "14px 26px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15 }}>Get Pre-Approved</a>
-            <a className="dal-btn" href={calendly} target="_blank" rel="noreferrer" style={{ background: "transparent", color: ivory, padding: "14px 26px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15, border: `1px solid ${ivory}` }}>Book a Strategy Call</a>
+            <a className="dal-btn" href={apply} target="_blank" rel="noreferrer" style={{ background: copper, color: white, padding: "14px 26px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15 }}>Apply Now</a>
+            <a className="dal-btn" href={calendly} target="_blank" rel="noreferrer" style={{ background: "transparent", color: ivory, padding: "14px 26px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15, border: `1px solid ${ivory}` }}>Book a Free Call</a>
           </div>
           <div style={{ fontSize: 14, opacity: 0.8 }}>Or call/text: 254-935-9331</div>
         </div>
@@ -342,14 +342,14 @@ const DallasMortgage = () => {
       <section style={{ background: "#0f1722", color: "rgba(250,248,244,0.6)", padding: "32px 0" }}>
         <div style={container}>
           <p style={{ fontSize: 12, lineHeight: 1.7, margin: "0 0 16px" }}>
-            Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Licensed in Texas · Equal Housing Lender · This page is for educational purposes only and does not constitute a loan commitment or rate guarantee. Market data approximate and subject to change. Property tax rates vary by address and taxing entity — verify the specific rate before relying on payment estimates. Down payment assistance program availability and credit score minimums subject to program rules in effect at time of application.
+            Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Licensed in Texas · Equal Housing Opportunity · This page is for educational purposes only and does not constitute a loan commitment or rate guarantee. Market data approximate and subject to change. Property tax rates vary by address and taxing entity — verify the specific rate before relying on payment estimates. Down payment assistance program availability and credit score minimums subject to program rules in effect at time of application.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 16, fontSize: 12 }}>
             <Link to="/va-loan-texas" style={{ color: copper, textDecoration: "none" }}>VA Loans Texas</Link>
             <Link to="/physician-loan-texas" style={{ color: copper, textDecoration: "none" }}>Physician Loans</Link>
             <Link to="/down-payment-assistance-texas" style={{ color: copper, textDecoration: "none" }}>Down Payment Assistance</Link>
             <Link to="/conventional-loan-texas" style={{ color: copper, textDecoration: "none" }}>Conventional Loans</Link>
-            <a href={calendly} target="_blank" rel="noreferrer" style={{ color: copper, textDecoration: "none" }}>Schedule a Call</a>
+            <a href={calendly} target="_blank" rel="noreferrer" style={{ color: copper, textDecoration: "none" }}>Book a Free Call</a>
             <a href={apply} target="_blank" rel="noreferrer" style={{ color: copper, textDecoration: "none" }}>Apply Now</a>
           </div>
         </div>

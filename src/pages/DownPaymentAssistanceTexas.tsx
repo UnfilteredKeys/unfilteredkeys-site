@@ -148,7 +148,7 @@ const DownPaymentAssistanceTexasPage = () => {
             <p className="dpa-sub">
               Down payment assistance may reduce the cash needed to buy a home, but it is not automatically free money. The right comparison includes repayment terms, interest rate, fees, future plans, and total monthly payment.
             </p>
-            <a href={CALL_URL} target="_blank" rel="noopener noreferrer" className="dpa-btn">Book a Strategy Call</a>
+            <a href={CALL_URL} target="_blank" rel="noopener noreferrer" className="dpa-btn">Book a Free Call</a>
           </div>
         </section>
 
@@ -276,7 +276,7 @@ const DownPaymentAssistanceTexasPage = () => {
           <div className="wrap">
             <h2 className="dpa-h2">Find out whether assistance strengthens your plan.</h2>
             <p>We will compare the current options and explain the repayment terms before you build a purchase strategy around them.</p>
-            <a href={CALL_URL} target="_blank" rel="noopener noreferrer" className="dpa-btn">Book a Strategy Call</a>
+            <a href={CALL_URL} target="_blank" rel="noopener noreferrer" className="dpa-btn">Book a Free Call</a>
             <Link to="/first-time-buyers" className="dpa-text-link">Review the First-Time Buyer guide</Link>
           </div>
         </section>

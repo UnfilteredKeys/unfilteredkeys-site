@@ -261,7 +261,7 @@ export default function VaLoanFaqTexas() {
               color: "rgba(255,255,255,0.92)",
             }}
           >
-            Book a free 15-minute call — no pressure, no pitch. Just your file and a clear answer.
+            Book a free 30-minute call — no pressure, no pitch. Just your file and a clear answer.
           </p>
           <div
             style={{
@@ -287,7 +287,7 @@ export default function VaLoanFaqTexas() {
                 textDecoration: "none",
               }}
             >
-              Book a Strategy Call →
+              Book a Free Call →
             </a>
             <a
               href={APPLY}
@@ -305,7 +305,7 @@ export default function VaLoanFaqTexas() {
                 border: "1px solid rgba(255,255,255,0.6)",
               }}
             >
-              Start My Application
+              Apply Now
             </a>
           </div>
         </div>
@@ -324,7 +324,7 @@ export default function VaLoanFaqTexas() {
               fontFamily: "'Outfit', sans-serif",
             }}
           >
-            This page is for educational purposes only and does not constitute a loan commitment, rate guarantee, or offer to lend. All loans subject to credit approval. Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Equal Housing Lender.
+            This page is for educational purposes only and does not constitute a loan commitment, rate guarantee, or offer to lend. All loans subject to credit approval. Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Equal Housing Opportunity.
           </p>
         </div>
       </section>

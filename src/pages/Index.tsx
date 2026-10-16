@@ -326,9 +326,10 @@ const styles = `
       padding-top: 52px;
       background: #ffffff;
     }
-    .wm-hero-grid { grid-template-columns: 1fr; }
+    .wm-hero-grid { grid-template-columns: 1fr; gap: 28px; }
     .wm-portrait {
-      min-height: 420px;
+      order: -1;
+      min-height: 260px;
       max-width: 500px;
       width: 100%;
       margin: 0 auto;
@@ -358,7 +359,7 @@ const styles = `
     .wm-section { padding: 66px 0; }
     .wm-actions { flex-direction: column; }
     .wm-button { width: 100%; }
-    .wm-portrait { min-height: 380px; }
+    .wm-portrait { min-height: 230px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -385,14 +386,14 @@ export default function Index() {
         <section className="wm-hero" aria-labelledby="wm-hero-heading">
           <div className="wm-container wm-hero-grid">
             <div>
-              <p className="wm-kicker">Texas Mortgage Strategy</p>
+              <p className="wm-kicker">Shalanda Smith · Texas VA Loan Specialist</p>
               <h1 className="wm-heading" id="wm-hero-heading">
                 A mortgage should feel <em>clear.</em>
               </h1>
               <p className="wm-copy">
-                Thoughtful lending guidance for Texans who want honest numbers,
-                the right strategy, and no pressure to move before they are
-                ready.
+                I'm Shalanda Smith, a Texas mortgage broker with 20+ years in
+                the business and a focus on VA loans. Honest numbers, the right
+                strategy, and no pressure to move before you're ready.
               </p>
               <div className="wm-actions">
                 <a
@@ -401,14 +402,14 @@ export default function Index() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Book a Strategy Call
+                  Book a Free Call
                 </a>
               </div>
               <a className="wm-text-link" href="/guide">
                 Start with the free guide
               </a>
               <div className="wm-hero-note">
-                VA-focused · Independent Texas mortgage broker
+                NMLS #554554 · Independent Texas mortgage broker
               </div>
             </div>
 
@@ -438,6 +439,21 @@ export default function Index() {
               <h2>No one-size-fits-all.</h2>
               <p>Your loan should reflect your real financial picture.</p>
             </article>
+          </div>
+        </section>
+
+        <section
+          className="wm-section wm-testimonial"
+          aria-labelledby="wm-testimonial-heading"
+        >
+          <div className="wm-container">
+            <p className="wm-kicker">What Clients Say</p>
+            <h2 className="wm-quote" id="wm-testimonial-heading">
+              “Shalanda went above and beyond to ensure I received the best
+              possible outcome. It was clear she genuinely cared about helping
+              me make the right decisions, not just closing a deal.”
+            </h2>
+            <p className="wm-attribution">Thomas S. · Texas Homebuyer</p>
           </div>
         </section>
 
@@ -479,7 +495,7 @@ export default function Index() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Book a strategy call
+                  Book a free call
                 </a>
               </article>
               <article className="wm-path">
@@ -495,7 +511,7 @@ export default function Index() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Begin securely
+                  Apply now
                 </a>
               </article>
             </div>
@@ -573,21 +589,6 @@ export default function Index() {
           </div>
         </section>
 
-        <section
-          className="wm-section wm-testimonial"
-          aria-labelledby="wm-testimonial-heading"
-        >
-          <div className="wm-container">
-            <p className="wm-kicker">Client Experience</p>
-            <h2 className="wm-quote" id="wm-testimonial-heading">
-              “Shalanda went above and beyond to ensure I received the best
-              possible outcome. It was clear she genuinely cared about helping
-              me make the right decisions, not just closing a deal.”
-            </h2>
-            <p className="wm-attribution">Thomas S. · Texas Homebuyer</p>
-          </div>
-        </section>
-
         <section className="wm-final" aria-labelledby="wm-final-heading">
           <div className="wm-container">
             <p className="wm-kicker">Your Next Step</p>
@@ -605,7 +606,7 @@ export default function Index() {
                 target="_blank"
                 rel="noreferrer"
               >
-                Book a Strategy Call
+                Book a Free Call
               </a>
               <a
                 className="wm-button wm-button-secondary"
@@ -613,7 +614,7 @@ export default function Index() {
                 target="_blank"
                 rel="noreferrer"
               >
-                Begin the Secure Application
+                Apply Now
               </a>
             </div>
             <p className="wm-final-note">

@@ -491,7 +491,7 @@ export default function PartnerJulieJames() {
             Ready to Talk Numbers?
           </h2>
           <p style={{ color: "rgba(255,255,255,0.85)", fontSize: 16.5, lineHeight: 1.65, marginBottom: 32 }}>
-            Book a free 15-minute call. We'll cover your entitlement status, BAH math, and max purchase price before
+            Book a free 30-minute call. We'll cover your entitlement status, BAH math, and max purchase price before
             you tour a single home.
           </p>
           <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
@@ -509,7 +509,7 @@ export default function PartnerJulieJames() {
                 fontSize: 15,
               }}
             >
-              Book a Strategy Call
+              Book a Free Call
             </a>
             <a
               href={apply}
@@ -526,7 +526,7 @@ export default function PartnerJulieJames() {
                 border: `2px solid ${WHITE}`,
               }}
             >
-              Start Application
+              Apply Now
             </a>
           </div>
         </div>

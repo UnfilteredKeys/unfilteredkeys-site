@@ -137,8 +137,8 @@ const GeorgetownMortgage = () => {
             Georgetown was the fastest-growing city in America for two straight years and still has a courthouse square that looks like 1911. Three wineries. A Red Poppy Festival. Victorian storefronts that have been there since the cattle drives. That combination — real history plus real growth — is why buyers choose Georgetown over every other Williamson County option. And right now, it's a buyer's market.
           </p>
           <div className="gtx-hero-btns" style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 28 }}>
-            <a className="gtx-btn" href={apply} target="_blank" rel="noopener noreferrer" style={btnPrimary}>Get Pre-Approved</a>
-            <a className="gtx-btn" href={calendly} target="_blank" rel="noopener noreferrer" style={btnGhost}>Book a Strategy Call</a>
+            <a className="gtx-btn" href={apply} target="_blank" rel="noopener noreferrer" style={btnPrimary}>Apply Now</a>
+            <a className="gtx-btn" href={calendly} target="_blank" rel="noopener noreferrer" style={btnGhost}>Book a Free Call</a>
           </div>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
             {heroChips.map((t) => (
@@ -347,8 +347,8 @@ const GeorgetownMortgage = () => {
             Eyeing a Victorian near the square? Looking at Wolf Ranch new construction? Retiring to Sun City? Tell me your situation and we'll match the right program to your file — and give you the real payment number including property taxes, MUD overlay, and HOA before you fall in love with an address.
           </p>
           <div className="gtx-hero-btns" style={{ display: "flex", gap: 14, flexWrap: "wrap", justifyContent: "center", marginBottom: 16 }}>
-            <a className="gtx-btn" href={apply} target="_blank" rel="noopener noreferrer" style={btnPrimary}>Get Pre-Approved</a>
-            <a className="gtx-btn" href={calendly} target="_blank" rel="noopener noreferrer" style={btnGhost}>Book a Strategy Call</a>
+            <a className="gtx-btn" href={apply} target="_blank" rel="noopener noreferrer" style={btnPrimary}>Apply Now</a>
+            <a className="gtx-btn" href={calendly} target="_blank" rel="noopener noreferrer" style={btnGhost}>Book a Free Call</a>
           </div>
           <p style={{ fontSize: 14, opacity: 0.85 }}>Or call/text: 254-935-9331</p>
         </div>
@@ -358,14 +358,14 @@ const GeorgetownMortgage = () => {
       <section style={{ background: soft, padding: "32px 0", borderTop: `1px solid ${border}` }}>
         <div style={container}>
           <p style={{ fontSize: 12, lineHeight: 1.7, color: textSecondary, margin: "0 0 16px" }}>
-            Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Licensed in Texas · Equal Housing Lender · This page is for educational purposes only and does not constitute a loan commitment or rate guarantee. Market data approximate and subject to change. Property tax rates including MUD overlays vary by address and taxing entity — verify the specific rate for any property before relying on payment estimates. Down payment assistance program availability and credit score minimums subject to program rules in effect at time of application.
+            Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Licensed in Texas · Equal Housing Opportunity · This page is for educational purposes only and does not constitute a loan commitment or rate guarantee. Market data approximate and subject to change. Property tax rates including MUD overlays vary by address and taxing entity — verify the specific rate for any property before relying on payment estimates. Down payment assistance program availability and credit score minimums subject to program rules in effect at time of application.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 14, fontSize: 13, fontFamily: "'Fira Mono', monospace" }}>
             <Link to="/va-loan-texas" style={{ color: copper, textDecoration: "none" }}>VA Loans Texas</Link>
             <Link to="/down-payment-assistance-texas" style={{ color: copper, textDecoration: "none" }}>Down Payment Assistance</Link>
             <Link to="/physician-loan-texas" style={{ color: copper, textDecoration: "none" }}>Physician Loans</Link>
             <Link to="/conventional-loan-texas" style={{ color: copper, textDecoration: "none" }}>Conventional Loans</Link>
-            <a href={calendly} target="_blank" rel="noopener noreferrer" style={{ color: copper, textDecoration: "none" }}>Schedule a Call</a>
+            <a href={calendly} target="_blank" rel="noopener noreferrer" style={{ color: copper, textDecoration: "none" }}>Book a Free Call</a>
             <a href={apply} target="_blank" rel="noopener noreferrer" style={{ color: copper, textDecoration: "none" }}>Apply Now</a>
           </div>
         </div>

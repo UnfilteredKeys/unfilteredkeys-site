@@ -175,7 +175,7 @@ const FhaLoanTexasPage = () => (
         <div className="wrap">
           <h2>Let’s find the loan that fits the whole plan.</h2>
           <p>We will compare FHA with the appropriate Conventional, VA, or assistance options using your actual payment, cash, property, and timeline.</p>
-          <a className="primary" href={CALL_URL} target="_blank" rel="noopener noreferrer">Book a Strategy Call</a>
+          <a className="primary" href={CALL_URL} target="_blank" rel="noopener noreferrer">Book a Free Call</a>
         </div>
       </section>
     </main>

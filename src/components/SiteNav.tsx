@@ -182,13 +182,17 @@ const SiteNav = () => {
 
         {/* CTA */}
         <div className="site-nav-cta" style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-          <a href="https://scl.my1003app.com/554554/register" target="_blank" rel="noopener noreferrer" style={{
+          <a href="tel:+12549359331" style={{
+            color: NAVY, fontFamily: "'Outfit', sans-serif", fontSize: "14px",
+            fontWeight: 600, textDecoration: "none", whiteSpace: "nowrap",
+          }}>254-935-9331</a>
+          <a href="https://calendly.com/shalanda-securechoicelending/30min" target="_blank" rel="noopener noreferrer" style={{
             background: COPPER, color: "#fff",
             fontFamily: "'Outfit', sans-serif", fontSize: "13.5px", fontWeight: 600,
             padding: "10px 20px", borderRadius: "6px",
             textDecoration: "none", whiteSpace: "nowrap",
             transition: "background 0.2s"
-          }}>Start Here</a>
+          }}>Book a Free Call</a>
         </div>
 
         {/* Mobile hamburger */}

@@ -71,8 +71,8 @@ export default function PhysicianLoanSanAntonioTx() {
               Built for doctors, residents, and high-income medical professionals buying in Bexar County — including the largest military medical hub in the country.
             </p>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-              <a href={CALENDLY} target="_blank" rel="noopener noreferrer" style={primaryBtn}>Book a Strategy Call →</a>
-              <a href={APPLY} target="_blank" rel="noopener noreferrer" style={secondaryBtn}>Start My Application</a>
+              <a href={CALENDLY} target="_blank" rel="noopener noreferrer" style={primaryBtn}>Book a Free Call →</a>
+              <a href={APPLY} target="_blank" rel="noopener noreferrer" style={secondaryBtn}>Apply Now</a>
             </div>
           </div>
         </section>
@@ -192,11 +192,11 @@ export default function PhysicianLoanSanAntonioTx() {
           <div style={{ maxWidth: 760, margin: "0 auto" }}>
             <h2 style={{ ...headingFont, fontSize: "2rem", marginBottom: 14 }}>Ready to run your numbers?</h2>
             <p style={{ fontSize: "1.05rem", lineHeight: 1.6, marginBottom: 30, opacity: 0.95 }}>
-              We'll cover student loan treatment, down payment options, and max purchase price — in one 15-minute call.
+              We'll cover student loan treatment, down payment options, and max purchase price — in one 30-minute call.
             </p>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-              <a href={CALENDLY} target="_blank" rel="noopener noreferrer" style={{ ...primaryBtn, background: NAVY }}>Book a Strategy Call →</a>
-              <a href={APPLY} target="_blank" rel="noopener noreferrer" style={secondaryBtn}>Start My Application</a>
+              <a href={CALENDLY} target="_blank" rel="noopener noreferrer" style={{ ...primaryBtn, background: NAVY }}>Book a Free Call →</a>
+              <a href={APPLY} target="_blank" rel="noopener noreferrer" style={secondaryBtn}>Apply Now</a>
             </div>
           </div>
         </section>
@@ -205,7 +205,7 @@ export default function PhysicianLoanSanAntonioTx() {
         <section style={{ background: IVORY, padding: "40px 24px" }}>
           <div style={{ maxWidth: 980, margin: "0 auto" }}>
             <p style={{ fontSize: "0.82rem", lineHeight: 1.6, color: NAVY, opacity: 0.8 }}>
-              This page is for educational purposes only and does not constitute a loan commitment, rate guarantee, or offer to lend. All loans subject to credit approval. Rates, terms, and program availability subject to change without notice. Not all programs available in all areas. Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Equal Housing Lender · shalandasmith.com · 254.935.9331.
+              This page is for educational purposes only and does not constitute a loan commitment, rate guarantee, or offer to lend. All loans subject to credit approval. Rates, terms, and program availability subject to change without notice. Not all programs available in all areas. Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Equal Housing Opportunity · shalandasmith.com · 254.935.9331.
             </p>
           </div>
         </section>

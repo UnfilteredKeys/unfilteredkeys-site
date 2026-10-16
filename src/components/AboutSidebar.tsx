@@ -14,21 +14,27 @@ const specializations = [
   { label: "Physician & Professional Loans", detail: "Student debt flexibility, contract income, no PMI up to $2M." },
   { label: "Construction & Renovation", detail: "One-time close, VA renovation, FHA 203(k) — build or improve." },
   { label: "DSCR & Investor Loans", detail: "Rental income qualifies the property — no personal income needed." },
-  { label: "Jumbo Loans", detail: "Above conforming limits — competitive rates for high-value purchases." },
+  { label: "Jumbo Loans", detail: "Financing above conforming limits for high-value purchases." },
 ];
 
 export function AboutSpecializations() {
   return (
     <div style={{ backgroundColor: white, borderRadius: "12px", padding: "28px", boxShadow: "0 2px 16px rgba(26,58,92,0.08)" }}>
       <div style={{ fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase" as const, color: copper, fontWeight: 600, marginBottom: "6px", fontFamily: "'Outfit', sans-serif" }}>
-        What I Specialize In
+        Where I Go Deepest
       </div>
-      <div style={{ fontFamily: "'Lora', serif", fontSize: "17px", fontWeight: 700, color: navy, marginBottom: "24px", lineHeight: 1.3 }}>
-        Not a generalist.<br />A broker with specific depth.
+      <div style={{ fontFamily: "'Lora', serif", fontSize: "17px", fontWeight: 700, color: navy, marginBottom: "6px", lineHeight: 1.3 }}>
+        VA loans are about 75% of my business.
+      </div>
+      <div style={{ fontSize: "13px", color: muted, lineHeight: 1.6, marginBottom: "18px", fontFamily: "'Outfit', sans-serif" }}>
+        Active duty, veterans, and surviving spouses, from Fort Hood to Houston. Entitlement, BAH, and PCS timing are what I work through every day.
+      </div>
+      <div style={{ fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase" as const, color: copper, fontWeight: 600, marginBottom: "4px", fontFamily: "'Outfit', sans-serif" }}>
+        Also Available
       </div>
       <div style={{ display: "flex", flexDirection: "column" as const, gap: "0" }}>
-        {specializations.map((s, i) => (
-          <div key={s.label} style={{ display: "flex", gap: "14px", padding: "14px 0", borderBottom: i < specializations.length - 1 ? "1px solid rgba(26,58,92,0.08)" : "none", alignItems: "flex-start" }}>
+        {specializations.slice(1).map((s, i, list) => (
+          <div key={s.label} style={{ display: "flex", gap: "14px", padding: "14px 0", borderBottom: i < list.length - 1 ? "1px solid rgba(26,58,92,0.08)" : "none", alignItems: "flex-start" }}>
             <div style={{ width: "7px", height: "7px", borderRadius: "50%", backgroundColor: copper, marginTop: "6px", flexShrink: 0 }} />
             <div>
               <div style={{ fontWeight: 700, fontSize: "14px", color: navy, fontFamily: "'Outfit', sans-serif", marginBottom: "2px" }}>{s.label}</div>
@@ -52,7 +58,7 @@ const milestones = [
   { era: "Bank", years: "Early Career", title: "Bank Manager", body: "Learned operations, underwriting, and the internal rules that determine who gets approved — and why. Saw first-hand how product limitations shape outcomes." },
   { era: "Builder", years: "Mid Career", title: "National Builder Lender", body: "Specialized in government loans — VA, FHA, USDA — and discovered what down payment assistance could actually do for buyers who thought homeownership was years away." },
   { era: "Retail", years: "Mid–Late Career", title: "Retail Mortgage Lender", body: "Originated at national retail lending companies — one product shelf, one set of rates, one answer per file. Learned exactly what that structure costs borrowers, and why access to more options changes everything." },
-  { era: "Broker", years: "Now", title: "Mortgage Broker · Keys by Shalanda", body: "The broker model is structurally better. No single product shelf. No retail pricing. Just access to 50+ lenders and the right loan matched to the right file.", current: true },
+  { era: "Broker", years: "Now", title: "Mortgage Broker · Keys by Shalanda", body: "The broker model gives borrowers more choice. No single product shelf. Access to 50+ wholesale lenders and the right loan matched to the right file.", current: true },
 ];
 
 export function AboutTimeline() {

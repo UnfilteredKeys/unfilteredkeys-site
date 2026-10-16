@@ -241,8 +241,8 @@ const TempleTexasMortgage = () => {
             Temple started as a railroad town and grew into a healthcare anchor. Baylor Scott & White Medical Center has operated continuously since 1897 — 125+ years, 8,800+ employees, 42 residency programs, and Baylor College of Medicine affiliation. Fort Hood is 30 minutes west. Belton Lake is 15 minutes east. The price point is accessible. We close here regularly.
           </p>
           <div className="ttx-hero-btns" style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 36 }}>
-            <a className="ttx-btn" href={apply} target="_blank" rel="noopener noreferrer" style={{ background: copper, color: white, padding: "14px 28px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15 }}>Get Pre-Approved</a>
-            <a className="ttx-btn" href={calendly} target="_blank" rel="noopener noreferrer" style={{ background: "transparent", color: ivory, padding: "14px 28px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15, border: `1px solid rgba(250,248,244,0.3)` }}>Book a Strategy Call</a>
+            <a className="ttx-btn" href={apply} target="_blank" rel="noopener noreferrer" style={{ background: copper, color: white, padding: "14px 28px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15 }}>Apply Now</a>
+            <a className="ttx-btn" href={calendly} target="_blank" rel="noopener noreferrer" style={{ background: "transparent", color: ivory, padding: "14px 28px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15, border: `1px solid rgba(250,248,244,0.3)` }}>Book a Free Call</a>
           </div>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
             {["BSW Physician Loan Specialist", "VA · FHA · Conventional · DPA", "Fort Hood Corridor", "Belton ISD Expertise", "Fast, Predictable Closings", "50+ Lender Network"].map((t) => (
@@ -453,8 +453,8 @@ const TempleTexasMortgage = () => {
             Relocating to BSW for residency or an attending position? PCS orders to Fort Hood and considering Temple or Belton for schools? First-time buyer targeting Belton ISD? Tell me your situation and timeline — we'll match the right program and run your real numbers before you shop a single home.
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap", marginBottom: 18 }}>
-            <a className="ttx-btn" href={apply} target="_blank" rel="noopener noreferrer" style={{ background: copper, color: white, padding: "14px 28px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15 }}>Get Pre-Approved</a>
-            <a className="ttx-btn" href={calendly} target="_blank" rel="noopener noreferrer" style={{ background: "transparent", color: ivory, padding: "14px 28px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15, border: `1px solid rgba(250,248,244,0.3)` }}>Book a Strategy Call</a>
+            <a className="ttx-btn" href={apply} target="_blank" rel="noopener noreferrer" style={{ background: copper, color: white, padding: "14px 28px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15 }}>Apply Now</a>
+            <a className="ttx-btn" href={calendly} target="_blank" rel="noopener noreferrer" style={{ background: "transparent", color: ivory, padding: "14px 28px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15, border: `1px solid rgba(250,248,244,0.3)` }}>Book a Free Call</a>
           </div>
           <p style={{ fontSize: 13, color: "rgba(250,248,244,0.6)", fontFamily: "'Fira Mono', monospace" }}>
             Or call/text: 254-935-9331
@@ -466,14 +466,14 @@ const TempleTexasMortgage = () => {
       <section style={{ background: "#0f1822", color: "rgba(250,248,244,0.6)", padding: "40px 0" }}>
         <div style={container}>
           <p style={{ fontSize: 12, lineHeight: 1.7, marginBottom: 16 }}>
-            Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Licensed in Texas · Equal Housing Lender · This page is for educational purposes only and does not constitute a loan commitment or rate guarantee. Market data approximate and subject to change. Physician loan program availability, credit requirements, and income verification requirements vary by lender. Down payment assistance program availability and credit score minimums subject to program rules in effect at time of application.
+            Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Licensed in Texas · Equal Housing Opportunity · This page is for educational purposes only and does not constitute a loan commitment or rate guarantee. Market data approximate and subject to change. Physician loan program availability, credit requirements, and income verification requirements vary by lender. Down payment assistance program availability and credit score minimums subject to program rules in effect at time of application.
           </p>
           <div style={{ display: "flex", gap: 16, flexWrap: "wrap", fontSize: 12 }}>
             <Link to="/physician-loan-texas" style={{ color: copper, textDecoration: "none" }}>Physician Loans</Link>
             <Link to="/va-loan-texas" style={{ color: copper, textDecoration: "none" }}>VA Loans Texas</Link>
             <Link to="/down-payment-assistance-texas" style={{ color: copper, textDecoration: "none" }}>Down Payment Assistance</Link>
             <Link to="/killeen-va-loan" style={{ color: copper, textDecoration: "none" }}>Fort Hood VA Loans</Link>
-            <a href={calendly} target="_blank" rel="noopener noreferrer" style={{ color: copper, textDecoration: "none" }}>Schedule a Call</a>
+            <a href={calendly} target="_blank" rel="noopener noreferrer" style={{ color: copper, textDecoration: "none" }}>Book a Free Call</a>
             <a href={apply} target="_blank" rel="noopener noreferrer" style={{ color: copper, textDecoration: "none" }}>Apply Now</a>
           </div>
         </div>

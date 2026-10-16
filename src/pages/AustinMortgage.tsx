@@ -133,8 +133,8 @@ const AustinMortgage = () => {
             Austin is the Live Music Capital of the World, a state capital, and the city where Michael Dell started a computer company in a dorm room and John Mackey opened Whole Foods in a house and both changed their industries forever. The city's identity runs 150 years deep — Tarrytown, Bouldin Creek, Hyde Park, Allandale, East Austin. The market overshot by 50% during the pandemic. It's correcting. Buyers have more leverage right now than at any point since 2012.
           </p>
           <div className="atx-hero-btns" style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 28 }}>
-            <a className="atx-btn" href={apply} target="_blank" rel="noreferrer" style={{ background: copper, color: white, padding: "14px 26px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15 }}>Get Pre-Approved</a>
-            <a className="atx-btn" href={calendly} target="_blank" rel="noreferrer" style={{ background: "transparent", color: ivory, padding: "14px 26px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15, border: `1px solid ${ivory}` }}>Book a Strategy Call</a>
+            <a className="atx-btn" href={apply} target="_blank" rel="noreferrer" style={{ background: copper, color: white, padding: "14px 26px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15 }}>Apply Now</a>
+            <a className="atx-btn" href={calendly} target="_blank" rel="noreferrer" style={{ background: "transparent", color: ivory, padding: "14px 26px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15, border: `1px solid ${ivory}` }}>Book a Free Call</a>
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
             {heroBadges.map((t) => (
@@ -357,8 +357,8 @@ const AustinMortgage = () => {
             Targeting Bouldin Creek? Relocating for Dell Medical? First-time buyer looking at Kyle or Buda? Tell me your situation and your target. We'll run your real PITI — Travis or Hays County tax rate, program, honest case for buying in 2026 — before you fall in love with a house.
           </p>
           <div className="atx-hero-btns" style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center", marginBottom: 16 }}>
-            <a className="atx-btn" href={apply} target="_blank" rel="noreferrer" style={{ background: copper, color: white, padding: "14px 26px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15 }}>Get Pre-Approved</a>
-            <a className="atx-btn" href={calendly} target="_blank" rel="noreferrer" style={{ background: "transparent", color: ivory, padding: "14px 26px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15, border: `1px solid ${ivory}` }}>Book a Strategy Call</a>
+            <a className="atx-btn" href={apply} target="_blank" rel="noreferrer" style={{ background: copper, color: white, padding: "14px 26px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15 }}>Apply Now</a>
+            <a className="atx-btn" href={calendly} target="_blank" rel="noreferrer" style={{ background: "transparent", color: ivory, padding: "14px 26px", borderRadius: radius, fontWeight: 600, textDecoration: "none", fontSize: 15, border: `1px solid ${ivory}` }}>Book a Free Call</a>
           </div>
           <div style={{ fontSize: 14, opacity: 0.8 }}>Or call/text: 254-935-9331</div>
         </div>
@@ -368,7 +368,7 @@ const AustinMortgage = () => {
       <section style={{ background: "#0f1722", color: "rgba(250,248,244,0.6)", padding: "32px 0" }}>
         <div style={container}>
           <p style={{ fontSize: 12, lineHeight: 1.7, margin: "0 0 16px" }}>
-            Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Licensed in Texas · Equal Housing Lender · This page is for educational purposes only and does not constitute a loan commitment or rate guarantee. Market data approximate and subject to change. Travis and Hays County property tax rates vary by address — verify the specific rate before relying on payment estimates. FHA loan limits subject to annual adjustment by HUD. Down payment assistance program availability and credit score minimums subject to program rules in effect at time of application.
+            Shalanda Smith · NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · NMLS #1689518 · Licensed in Texas · Equal Housing Opportunity · This page is for educational purposes only and does not constitute a loan commitment or rate guarantee. Market data approximate and subject to change. Travis and Hays County property tax rates vary by address — verify the specific rate before relying on payment estimates. FHA loan limits subject to annual adjustment by HUD. Down payment assistance program availability and credit score minimums subject to program rules in effect at time of application.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 16, fontSize: 12 }}>
             <Link to="/physician-loan-texas" style={{ color: copper, textDecoration: "none" }}>Physician Loans</Link>
@@ -376,7 +376,7 @@ const AustinMortgage = () => {
             <Link to="/down-payment-assistance-texas" style={{ color: copper, textDecoration: "none" }}>Down Payment Assistance</Link>
             <Link to="/round-rock-tx-mortgage" style={{ color: copper, textDecoration: "none" }}>Round Rock</Link>
             <Link to="/georgetown-tx-mortgage" style={{ color: copper, textDecoration: "none" }}>Georgetown</Link>
-            <a href={calendly} target="_blank" rel="noreferrer" style={{ color: copper, textDecoration: "none" }}>Schedule a Call</a>
+            <a href={calendly} target="_blank" rel="noreferrer" style={{ color: copper, textDecoration: "none" }}>Book a Free Call</a>
             <a href={apply} target="_blank" rel="noreferrer" style={{ color: copper, textDecoration: "none" }}>Apply Now</a>
           </div>
         </div>
