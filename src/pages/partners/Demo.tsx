@@ -175,7 +175,7 @@ export default function PartnerDemo() {
           >
             {[
               {
-                t: "VA Loans Closed in 21 Days",
+                t: "Fast, Predictable VA Closings",
                 b: "PCS timelines respected, BAH math done upfront, no surprises at closing.",
               },
               {
@@ -263,7 +263,7 @@ export default function PartnerDemo() {
         >
           {[
             { v: "50+", l: "Lender Network" },
-            { v: "21 Days", l: "Average Close" },
+            { v: "Fast", l: "Predictable Closings" },
             { v: "20+ Years", l: "Mortgage Experience" },
             { v: "All of Texas", l: "Licensed Statewide" },
           ].map((s) => (
