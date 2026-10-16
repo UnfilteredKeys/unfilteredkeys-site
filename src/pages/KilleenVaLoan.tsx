@@ -73,7 +73,7 @@ const KilleenVaLoan = () => {
   return (
     <>
       <SEO {...seoMeta.killeenVaLoan} />
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .kvl-hero-btn:hover{opacity:.92}
         .kvl-table th,.kvl-table td{padding:14px 18px;text-align:left;font-size:14px}
         @media(max-width:768px){
@@ -88,7 +88,7 @@ const KilleenVaLoan = () => {
           .kvl-neighborhood-grid>div:last-child{grid-column:1!important}
           .kvl-builder-bar{flex-direction:column!important;align-items:flex-start!important;gap:12px!important}
         }
-      `}</style>
+      ` }} />
 
       {/* ── 1. HERO ─────────────────────────────────────────────────────────── */}
       <section className="kvl-hero" style={{ backgroundColor: hero, ...sectionPad, paddingBottom: 56 }}>

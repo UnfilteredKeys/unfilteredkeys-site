@@ -95,7 +95,7 @@ const DallasMortgage = () => {
   return (
     <>
       <SEO {...seoMeta.dallasMortgage} />
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .dal-btn:hover { opacity: 0.92; }
         .dal-faq summary {
           cursor: pointer; list-style: none; padding: 18px 0;
@@ -113,7 +113,7 @@ const DallasMortgage = () => {
           .dal-2col { grid-template-columns: 1fr !important; }
           .dal-3col { grid-template-columns: 1fr !important; }
         }
-      `}</style>
+      ` }} />
 
       {/* HERO */}
       <section style={{ background: hero, color: ivory, padding: "96px 0 80px" }} className="dal-hero">

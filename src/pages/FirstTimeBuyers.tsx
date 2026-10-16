@@ -47,7 +47,7 @@ const steps = [
 const FirstTimeBuyersPage = () => (
   <>
     <SEO {...seoMeta.firstTimeBuyers} />
-    <style>{`
+    <style dangerouslySetInnerHTML={{ __html: `
       .ftb { font-family: 'Outfit', sans-serif; background: ${IVORY}; color: ${INK}; line-height: 1.65; -webkit-font-smoothing: antialiased; }
       .ftb *, .ftb *::before, .ftb *::after { box-sizing: border-box; }
       .ftb h1, .ftb h2, .ftb h3 { font-family: 'Lora', Georgia, serif; letter-spacing: -0.02em; line-height: 1.12; }
@@ -105,7 +105,7 @@ const FirstTimeBuyersPage = () => (
         .ftb-hero-note { max-width: 560px; }
         .ftb-option-grid { grid-template-columns: 1fr; gap: 28px; }
       }
-    `}</style>
+    ` }} />
 
     <main className="ftb">
       <section className="ftb-hero">

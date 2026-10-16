@@ -88,7 +88,7 @@ const BuyAHomePage = () => (
       description="Plan your Texas home purchase with clear guidance on affordability, cash to close, loan options, pre-approval, and the contract-to-closing process."
       canonical="/buy"
     />
-    <style>{`
+    <style dangerouslySetInnerHTML={{ __html: `
       .buy { font-family: 'Outfit', sans-serif; background: ${IVORY}; color: ${INK}; line-height: 1.65; -webkit-font-smoothing: antialiased; }
       .buy *, .buy *::before, .buy *::after { box-sizing: border-box; }
       .buy h1, .buy h2, .buy h3 { font-family: 'Lora', Georgia, serif; letter-spacing: -.02em; line-height: 1.12; }
@@ -145,7 +145,7 @@ const BuyAHomePage = () => (
         .buy-hero-grid, .buy-card-grid, .buy-path-grid, .buy-step-grid, .buy-texas-grid { grid-template-columns: 1fr; gap: 28px; }
         .buy-hero-note { max-width: 560px; }
       }
-    `}</style>
+    ` }} />
 
     <main className="buy">
       <section className="buy-hero">

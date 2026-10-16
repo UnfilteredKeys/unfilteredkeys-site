@@ -137,7 +137,7 @@ const RoundRockMortgage = () => {
   return (
     <>
       <SEO {...seoMeta.roundRockMortgage} />
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .rrm-btn:hover { opacity: 0.92; }
         .rrm-faq summary {
           cursor: pointer; list-style: none; padding: 18px 0;
@@ -157,7 +157,7 @@ const RoundRockMortgage = () => {
           .rrm-4col { grid-template-columns: 1fr !important; }
           .rrm-compare th, .rrm-compare td { padding: 10px 8px !important; font-size: 12px !important; }
         }
-      `}</style>
+      ` }} />
 
       {/* HERO */}
       <section className="rrm-hero" style={{ background: hero, color: ivory, padding: "96px 0 80px" }}>

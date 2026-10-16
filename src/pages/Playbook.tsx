@@ -23,7 +23,7 @@ const PlaybookPage = () => {
       <meta name="description" content="The 90-Day Homebuyer Playbook walks Texas buyers from pre-approval to closing. Free download." />
       <link rel="canonical" href="https://shalandasmith.com/playbook" />
     </Helmet>  
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .guide-page {
           font-family: 'Outfit', sans-serif;
           background: #faf8f4;
@@ -545,7 +545,7 @@ const PlaybookPage = () => {
           .g-form-card { padding: 32px 24px; }
           .g-inside, .g-for, .g-about { padding: 60px 20px; }
         }
-      `}</style>
+      ` }} />
 
       <div className="guide-page">
 

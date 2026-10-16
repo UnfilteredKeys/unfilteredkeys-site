@@ -107,7 +107,7 @@ const HoustonMortgage = () => {
   return (
     <>
       <SEO {...seoMeta.houstonMortgage} />
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .hou-btn:hover { opacity: 0.92; }
         .hou-faq summary {
           cursor: pointer; list-style: none; padding: 18px 0;
@@ -125,7 +125,7 @@ const HoustonMortgage = () => {
           .hou-2col { grid-template-columns: 1fr !important; }
           .hou-3col { grid-template-columns: 1fr !important; }
         }
-      `}</style>
+      ` }} />
 
       {/* HERO */}
       <section style={{ background: hero, color: ivory, padding: "96px 0 80px" }} className="hou-hero">

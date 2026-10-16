@@ -23,7 +23,7 @@ const GuideePage = () => {
       <meta name="description" content="A practical homebuying overview for Texas buyers covering income, assets, credit, cash to close, priorities, and exit strategy." />
       <link rel="canonical" href="https://shalandasmith.com/guide" />
     </Helmet>  
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .guide-page {
           font-family: 'Outfit', sans-serif;
           background: #faf8f4;
@@ -545,7 +545,7 @@ const GuideePage = () => {
           .g-form-card { padding: 32px 24px; }
           .g-inside, .g-for, .g-about { padding: 60px 20px; }
         }
-      `}</style>
+      ` }} />
 
       <div className="guide-page">
 

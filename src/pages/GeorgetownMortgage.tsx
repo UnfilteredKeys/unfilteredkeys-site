@@ -104,7 +104,7 @@ const GeorgetownMortgage = () => {
   return (
     <>
       <SEO {...seoMeta.georgetownMortgage} />
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .gtx-btn:hover { opacity: 0.92; }
         .gtx-faq summary {
           cursor: pointer; list-style: none; padding: 18px 0;
@@ -123,7 +123,7 @@ const GeorgetownMortgage = () => {
           .gtx-3col { grid-template-columns: 1fr !important; }
           .gtx-compare th, .gtx-compare td { padding: 10px 8px !important; font-size: 12px !important; }
         }
-      `}</style>
+      ` }} />
 
       {/* ── 1. HERO ──────────────────────────────────────────────────────── */}
       <section className="gtx-hero" style={{ background: hero, color: ivory, padding: "96px 0 80px" }}>

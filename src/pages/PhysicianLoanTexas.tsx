@@ -65,7 +65,7 @@ export default function PhysicianLoanTexas() {
   return (
     <>
       <SEO {...seoMeta.physicianLoanTexas} />
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .physician-page {
           --navy: #1a3a5c;
           --copper: #b5621e;
@@ -211,7 +211,7 @@ export default function PhysicianLoanTexas() {
           .physician-primary { width: 100%; }
           .physician-guide { min-height: 90px; }
         }
-      `}</style>
+      ` }} />
 
       <main className="physician-page">
         <section className="physician-hero">

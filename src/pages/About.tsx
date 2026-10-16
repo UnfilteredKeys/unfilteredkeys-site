@@ -13,7 +13,7 @@ const AboutPage = () => {
 return (
   <>
     <SEO {...seoMeta.about} />
-<style>{`
+<style dangerouslySetInnerHTML={{ __html: `
     .about-page {
           font-family: 'Outfit', sans-serif;
           background: #faf8f4;
@@ -349,7 +349,7 @@ return (
         @media (max-width: 520px) {
           .ab-hero, .ab-story, .ab-broker, .ab-markets { padding: 60px 20px; }
         }
-      `}</style>
+      ` }} />
 
       <div className="about-page">
 

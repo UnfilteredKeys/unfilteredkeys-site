@@ -379,7 +379,7 @@ export default function Index() {
     <>
       <SEO {...seoMeta.home} />
       <SchemaMarkup />
-      <style>{styles}</style>
+      <style dangerouslySetInnerHTML={{ __html: styles }} />
 
       <main>
         <section className="wm-hero" aria-labelledby="wm-hero-heading">
@@ -418,7 +418,7 @@ export default function Index() {
                 alt="Shalanda Smith, Texas mortgage broker"
                 width="520"
                 height="620"
-                fetchPriority="high"
+                {...{ fetchpriority: "high" }}
               />
             </div>
           </div>

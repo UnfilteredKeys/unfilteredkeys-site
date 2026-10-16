@@ -11,12 +11,6 @@ const css = `
 .sticky-mobile-cta a:active { border-bottom: 2px solid #b5621e; }
 `;
 
-if (typeof document !== "undefined" && !document.getElementById(STYLE_ID)) {
-  const tag = document.createElement("style");
-  tag.id = STYLE_ID;
-  tag.innerHTML = css;
-  document.head.appendChild(tag);
-}
 
 const btnStyle: React.CSSProperties = {
   flex: 1,
@@ -38,6 +32,7 @@ const btnStyle: React.CSSProperties = {
 
 const StickyMobileCTA = () => (
   <>
+    <style id={STYLE_ID} dangerouslySetInnerHTML={{ __html: css }} />
     <div className="sticky-mobile-cta-spacer" style={{ height: "56px" }} aria-hidden="true" />
     <nav
       className="sticky-mobile-cta"

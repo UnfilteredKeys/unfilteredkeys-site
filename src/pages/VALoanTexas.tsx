@@ -65,7 +65,7 @@ export default function VALoanTexas() {
     <div className="va-page">
       <SEO {...seoMeta.vaLoanTexas} />
 
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .va-page {
           --navy: #1a3a5c;
           --deep: #172f48;
@@ -359,7 +359,7 @@ export default function VALoanTexas() {
             width: 100%;
           }
         }
-      `}</style>
+      ` }} />
 
       <section className="va-hero">
         <div className="va-wrap va-hero-grid">

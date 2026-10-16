@@ -69,7 +69,7 @@ const reviewItems = [
 const ConventionalLoanTexasPage = () => (
   <>
     <SEO {...seoMeta.conventionalLoanTexas} />
-    <style>{`
+    <style dangerouslySetInnerHTML={{ __html: `
       .conv { font-family: 'Outfit', sans-serif; background: ${IVORY}; color: ${INK}; line-height: 1.65; -webkit-font-smoothing: antialiased; }
       .conv *, .conv *::before, .conv *::after { box-sizing: border-box; }
       .conv h1, .conv h2, .conv h3 { font-family: 'Lora', Georgia, serif; letter-spacing: -0.02em; line-height: 1.12; }
@@ -135,7 +135,7 @@ const ConventionalLoanTexasPage = () => (
         .conv-hero-grid, .conv-card-grid, .conv-compare-grid, .conv-split, .conv-step-grid, .conv-options-grid { grid-template-columns: 1fr; gap: 28px; }
         .conv-hero-note { max-width: 560px; }
       }
-    `}</style>
+    ` }} />
 
     <main className="conv">
       <section className="conv-hero">

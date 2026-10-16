@@ -279,12 +279,12 @@ export default function PartnerDemo() {
 
       {/* Promo Banner */}
       <section style={{ background: IVORY, textAlign: "center" }}>
-        <style>{`
+        <style dangerouslySetInnerHTML={{ __html: `
           @keyframes marqueeScroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
           }
-        `}</style>
+        ` }} />
         <div style={{ background: COPPER, overflow: "hidden", whiteSpace: "nowrap", padding: "14px 0" }}>
           <div style={{ display: "inline-flex", animation: "marqueeScroll 25s linear infinite" }}>
             <span style={{ fontSize: 18, fontWeight: 700, color: WHITE, textTransform: "uppercase", letterSpacing: "1px", fontFamily: body, whiteSpace: "nowrap", paddingRight: 40 }}>
