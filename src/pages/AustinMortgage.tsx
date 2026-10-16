@@ -102,7 +102,7 @@ const AustinMortgage = () => {
   return (
     <>
       <SEO {...seoMeta.austinMortgage} />
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .atx-btn:hover { opacity: 0.92; }
         .atx-faq summary {
           cursor: pointer; list-style: none; padding: 18px 0;
@@ -120,7 +120,7 @@ const AustinMortgage = () => {
           .atx-2col { grid-template-columns: 1fr !important; }
           .atx-3col { grid-template-columns: 1fr !important; }
         }
-      `}</style>
+      ` }} />
 
       {/* HERO */}
       <section style={{ background: hero, color: ivory, padding: "96px 0 80px" }} className="atx-hero">

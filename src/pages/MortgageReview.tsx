@@ -15,6 +15,7 @@ import {
   Lock,
 } from "lucide-react";
 import headshot from "@/assets/headshot.png";
+import SEO from "@/components/SEO";
 
 const CONCERNS = [
   {
@@ -209,6 +210,11 @@ export default function MortgageReview() {
 
   return (
     <div className="mortgage-review min-h-screen overflow-x-hidden bg-background text-foreground">
+      <SEO
+        title="Free Mortgage Review for Texas Homeowners"
+        description="Complimentary mortgage checkup for Texas homeowners. See how taxes, insurance, escrow, and your current terms affect your payment. No credit pull, no obligation."
+        canonical="/mortgage-review"
+      />
       {/* HERO */}
       <section className="px-4 pt-14 pb-12 md:pt-24 md:pb-16">
         <div className="mx-auto max-w-3xl text-center">

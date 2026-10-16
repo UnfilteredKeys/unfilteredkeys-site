@@ -207,7 +207,7 @@ const TempleTexasMortgage = () => {
   return (
     <>
       <SEO {...seoMeta.templeTxMortgage} />
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .ttx-btn:hover { opacity: 0.92; }
         .ttx-faq summary {
           cursor: pointer; list-style: none; padding: 18px 0;
@@ -225,7 +225,7 @@ const TempleTexasMortgage = () => {
           .ttx-2col { grid-template-columns: 1fr !important; }
           .ttx-3col { grid-template-columns: 1fr !important; }
         }
-      `}</style>
+      ` }} />
 
       {/* ── 1. HERO ──────────────────────────────────────────────────────── */}
       <section className="ttx-hero" style={{ background: hero, color: ivory, padding: "96px 0 80px" }}>

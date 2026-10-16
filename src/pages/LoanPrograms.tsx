@@ -187,7 +187,7 @@ const LoanProgramsPage = () => {
   return (
     <>
       <SEO {...seoMeta.loanPrograms} />
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .lp-page {
           font-family: 'Outfit', sans-serif;
           background: #faf8f4;
@@ -439,7 +439,7 @@ const LoanProgramsPage = () => {
           .lp-hero, .lp-programs, .lp-detail { padding: 60px 20px; }
           .lp-detail-cta { flex-direction: column; }
         }
-      `}</style>
+      ` }} />
 
       <div className="lp-page">
 

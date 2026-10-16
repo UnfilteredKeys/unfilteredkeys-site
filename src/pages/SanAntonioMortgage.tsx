@@ -167,7 +167,7 @@ const SanAntonioMortgage = () => {
   return (
     <>
       <SEO {...seoMeta.sanAntonioMortgage} />
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .sa-btn:hover { opacity: 0.92; }
         .sa-faq summary {
           cursor: pointer; list-style: none; padding: 18px 0;
@@ -186,7 +186,7 @@ const SanAntonioMortgage = () => {
           .sa-3col { grid-template-columns: 1fr !important; }
           .sa-bah th, .sa-bah td { padding: 10px 8px !important; font-size: 12px !important; }
         }
-      `}</style>
+      ` }} />
 
       {/* ── 1. HERO ──────────────────────────────────────────────────────── */}
       <section className="sa-hero" style={{ background: hero, padding: "96px 0 80px" }}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import { HelmetProvider } from 'react-helmet-async';
 import App from './App';
 import './index.css';
@@ -9,10 +9,18 @@ const rootElement = document.getElementById('root')!;
 
 initializeAnalytics();
 
-createRoot(rootElement).render(
+const app = (
   <HelmetProvider>
     <React.StrictMode>
       <App />
     </React.StrictMode>
   </HelmetProvider>
 );
+
+// Pages are prerendered at build time (scripts/prerender.mjs). Hydrate that HTML
+// when it is there; fall back to a normal client render in dev.
+if (rootElement.hasChildNodes()) {
+  hydrateRoot(rootElement, app);
+} else {
+  createRoot(rootElement).render(app);
+}

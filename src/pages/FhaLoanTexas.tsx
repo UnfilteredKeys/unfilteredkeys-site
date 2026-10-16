@@ -47,7 +47,7 @@ const propertyItems = [
 const FhaLoanTexasPage = () => (
   <>
     <SEO {...seoMeta.fhaLoanTexas} />
-    <style>{`
+    <style dangerouslySetInnerHTML={{ __html: `
       .fha-new { font-family: 'Outfit', sans-serif; background: ${IVORY}; color: ${INK}; line-height: 1.65; -webkit-font-smoothing: antialiased; }
       .fha-new *, .fha-new *::before, .fha-new *::after { box-sizing: border-box; }
       .fha-new h1, .fha-new h2, .fha-new h3 { font-family: 'Lora', Georgia, serif; letter-spacing: -.02em; line-height: 1.12; }
@@ -105,7 +105,7 @@ const FhaLoanTexasPage = () => (
         .fha-new-hero-grid, .fha-new-card-grid, .fha-new-compare-grid, .fha-new-split, .fha-new-step-grid, .fha-new-options-grid { grid-template-columns: 1fr; gap: 28px; }
         .fha-new-hero-note { max-width: 560px; }
       }
-    `}</style>
+    ` }} />
     <main className="fha-new">
       <section className="fha-new-hero">
         <div className="wrap fha-new-hero-grid">

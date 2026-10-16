@@ -73,7 +73,7 @@ const InvestorsPage = () => {
   return (
     <>
       <SEO {...seoMeta.investors} />
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .investor-page {
           --navy: #1a3a5c;
           --copper: #b5621e;
@@ -208,7 +208,7 @@ const InvestorsPage = () => {
           .investor-note { padding: 34px 26px; }
           .investor-resource { min-height: 0; }
         }
-      `}</style>
+      ` }} />
 
       <main className="investor-page">
         <section className="investor-hero">

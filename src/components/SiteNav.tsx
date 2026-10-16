@@ -264,7 +264,7 @@ const SiteNav = () => {
         </div>
       )}
 
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 900px) {
           .site-nav-desktop { display: none !important; }
           .site-nav-cta { display: none !important; }
@@ -273,7 +273,7 @@ const SiteNav = () => {
         @media (min-width: 901px) {
           .site-nav-mobile { display: none !important; }
         }
-      `}</style>
+      ` }} />
     </nav>
   );
 };

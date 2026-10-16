@@ -182,7 +182,7 @@ export default function VaAppraisalChecklist() {
         canonical="/va-appraisal-checklist"
       />
 
-      <style media="print">{PRINT_CSS}</style>
+      <style media="print" dangerouslySetInnerHTML={{ __html: PRINT_CSS }} />
 
       {/* Hero */}
       <section className="no-print" style={{ background: NAVY, padding: "80px 24px", fontFamily: body }}>

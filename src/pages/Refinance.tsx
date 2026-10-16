@@ -62,7 +62,7 @@ const paths = [
 const RefinancePage = () => (
   <>
     <SEO {...seoMeta.refinance} />
-    <style>{`
+    <style dangerouslySetInnerHTML={{ __html: `
       .refi { font-family: 'Outfit', sans-serif; background: ${IVORY}; color: ${INK}; line-height: 1.65; -webkit-font-smoothing: antialiased; }
       .refi *, .refi *::before, .refi *::after { box-sizing: border-box; }
       .refi h1, .refi h2, .refi h3 { font-family: 'Lora', Georgia, serif; letter-spacing: -.02em; line-height: 1.12; }
@@ -125,7 +125,7 @@ const RefinancePage = () => (
         .refi-path { border-right: 0; border-bottom: 1px solid rgba(26,58,92,.18); }
         .refi-path:last-child { border-bottom: 0; }
       }
-    `}</style>
+    ` }} />
 
     <main className="refi">
       <section className="refi-hero">

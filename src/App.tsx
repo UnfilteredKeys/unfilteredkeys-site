@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
+import type { ReactNode } from "react";
 import ScrollToTop from "./components/ScrollToTop";
 import SiteLayout from "./components/SiteLayout";
 import Index from "./pages/Index";
@@ -57,12 +58,18 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
 
-const App = () => (
+export const AppShell = ({ children }: { children: ReactNode }) => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      {children}
+    </TooltipProvider>
+  </QueryClientProvider>
+);
+
+export const AppRoutes = () => (
+  <>
         <ScrollToTop />
         <Suspense fallback={<div className="min-h-[40vh]" aria-hidden="true" />}>
           <Routes>
@@ -121,9 +128,15 @@ const App = () => (
             </Route>
           </Routes>
         </Suspense>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+  </>
+);
+
+const App = () => (
+  <AppShell>
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
+  </AppShell>
 );
 
 export default App;

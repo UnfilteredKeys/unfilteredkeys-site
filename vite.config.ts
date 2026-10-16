@@ -15,6 +15,10 @@ export default defineConfig(({ mode }) => ({
   build: {
     target: "es2019",
   },
+  // Bundle dependencies into the build-time prerender so CommonJS packages load cleanly.
+  ssr: {
+    noExternal: true,
+  },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
     alias: {

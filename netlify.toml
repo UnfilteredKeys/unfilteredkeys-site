@@ -3,7 +3,7 @@ command = "npm run build"
 publish = "dist"
 
 [build.environment]
-NODE_VERSION = "18"
+NODE_VERSION = "20"
 
 [[headers]]
 for = "/sitemap.xml"
@@ -23,7 +23,20 @@ X-Frame-Options = "DENY"
 X-Content-Type-Options = "nosniff"
 Referrer-Policy = "strict-origin-when-cross-origin"
 
-# Canonical redirects — duplicate VA pages to canonical URLs
+# Old brand domain: send everything to the matching page on shalandasmith.com
+[[redirects]]
+from = "https://unfilteredkeys.com/*"
+to = "https://shalandasmith.com/:splat"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://www.unfilteredkeys.com/*"
+to = "https://shalandasmith.com/:splat"
+status = 301
+force = true
+
+# Canonical redirects: duplicate VA pages to canonical URLs
 [[redirects]]
 from = "/va-loan-killeen-tx"
 to = "/killeen-va-loan"
@@ -42,10 +55,47 @@ to = "/killeen-va-loan"
 status = 301
 force = true
 
-# VA calculator tab URLs redirect to dedicated pages
+[[redirects]]
+from = "/va-loans"
+to = "/va-loan-texas"
+status = 301
+force = true
+
+# Retired URLs
+[[redirects]]
+from = "/loan-programs"
+to = "/buy"
+status = 301
+force = true
+
+[[redirects]]
+from = "/apply"
+to = "/mortgage-review"
+status = 301
+force = true
+
+[[redirects]]
+from = "/va-funding-fee-calculator"
+to = "/calculators/va-funding-fee"
+status = 301
+force = true
+
+[[redirects]]
+from = "/va-loan-calculator-texas"
+to = "/calculators/texas-mortgage-payment"
+status = 301
+force = true
+
+[[redirects]]
+from = "/bah-calculator-killeen-tx"
+to = "/calculators/bah-housing-budget"
+status = 301
+force = true
+
+# Old calculator tab URLs go straight to the dedicated pages
 [[redirects]]
 from = "/calculators"
-to = "/va-funding-fee-calculator"
+to = "/calculators/va-funding-fee"
 status = 301
 force = true
 query = {tab = "va-funding-fee"}
@@ -58,20 +108,11 @@ force = true
 query = {tab = "bah-buying-power"}
 
 [[redirects]]
-from = "/bah-calculator-killeen-tx"
-to = "/calculators/bah-housing-budget"
-status = 301
-force = true
-
-[[redirects]]
 from = "/calculators"
-to = "/va-loan-calculator-texas"
+to = "/calculators/texas-mortgage-payment"
 status = 301
 force = true
 query = {tab = "va-loan"}
 
-# SPA fallback - serve index.html for all routes
-[[redirects]]
-from = "/*"
-to = "/index.html"
-status = 200
+# No catch-all. Every page is prerendered to its own HTML file
+# (scripts/prerender.mjs), and unknown URLs get dist/404.html with a real 404.

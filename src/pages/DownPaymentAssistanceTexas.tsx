@@ -65,7 +65,7 @@ const DownPaymentAssistanceTexasPage = () => {
     <>
       <SEO {...seoMeta.downPaymentAssistanceTexas} faqs={faqs} />
 
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .dpa { font-family: 'Outfit', sans-serif; background: ${IVORY}; color: ${INK}; line-height: 1.7; -webkit-font-smoothing: antialiased; }
         .dpa *, .dpa *::before, .dpa *::after { box-sizing: border-box; }
         .dpa h1, .dpa h2, .dpa h3 { font-family: 'Lora', Georgia, serif; letter-spacing: -0.01em; line-height: 1.15; }
@@ -138,7 +138,7 @@ const DownPaymentAssistanceTexasPage = () => {
           .dpa-section { padding: 68px 0; }
           .eligibility-grid { grid-template-columns: 1fr; }
         }
-      `}</style>
+      ` }} />
 
       <div className="dpa">
         <section className="dpa-hero">
