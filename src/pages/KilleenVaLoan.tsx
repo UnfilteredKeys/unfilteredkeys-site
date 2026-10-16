@@ -62,7 +62,7 @@ const texasItems = [
 
 /* ── LOAN PROGRAMS ─────────────────────────────────────────────────────────── */
 const loanPrograms = [
-  { badge: "VA Loan", color: copper, body: "Start here if you're eligible. Zero down. No PMI ever. Bell County limit $832,750 — well above any Killeen price point. COE: we pull it during your application. PCS timeline accommodated. We've closed VA loans in under 14 days when orders required it.", link: { text: "VA Loans in Texas →", to: "/va-loan-texas" } },
+  { badge: "VA Loan", color: copper, body: "Start here if you're eligible. Zero down. No PMI ever. Bell County limit $832,750 — well above any Killeen price point. COE: we pull it during your application. PCS timeline accommodated. Every file is built to hit hard PCS report dates.", link: { text: "VA Loans in Texas →", to: "/va-loan-texas" } },
   { badge: "FHA", color: "#3B6D11", body: "3.5% down with 580+ credit. On a $225,000 purchase that's $7,875 down. Texas DPA programs like TDHCA My First Texas Home (620 minimum) can layer on top with a silent second lien covering down payment and closing costs.", link: null },
   { badge: "Conventional", color: "#185FA5", body: "Strong credit, 10–20% down? Conventional avoids FHA mortgage insurance and makes strong financial sense at Killeen price points for buyers with reserves who don't qualify for VA.", link: null },
 ];
@@ -480,7 +480,7 @@ const KilleenVaLoan = () => {
           <div style={{ fontFamily: "'Lora', serif", fontSize: 22, fontWeight: 700, color: white, marginBottom: 6 }}>Shalanda Smith</div>
           <p style={{ fontSize: 13, color: "rgba(240,237,230,0.5)", marginBottom: 24, fontFamily: "'Fira Mono', monospace", letterSpacing: "0.03em" }}>NMLS #554554 · Keys by Shalanda · Powered by Secure Choice Lending · Licensed in Texas · All Branches Served</p>
           <p style={{ fontSize: 16, color: "rgba(240,237,230,0.75)", lineHeight: 1.7, marginBottom: 32, maxWidth: 560, margin: "0 auto 32px" }}>
-            PCS orders in hand? Tell me your report date and your price range. We'll build the closing timeline backward from your deadline — not forward from when it's convenient. We've closed VA loans in under 14 days when orders required it.
+            PCS orders in hand? Tell me your report date and your price range. We'll build the closing timeline backward from your deadline — not forward from when it's convenient. Every file is built to hit hard PCS report dates.
           </p>
           <div className="kvl-hero-btns" style={{ display: "flex", gap: 12, justifyContent: "center", marginBottom: 20, flexWrap: "wrap" }}>
             <a href={apply} target="_blank" rel="noopener noreferrer" className="kvl-hero-btn" style={{ backgroundColor: copper, color: white, fontWeight: 600, fontSize: 15, padding: "14px 32px", borderRadius: radius, textDecoration: "none" }}>Get My VA Pre-Approval</a>

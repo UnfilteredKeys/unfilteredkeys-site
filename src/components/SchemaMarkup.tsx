@@ -78,7 +78,7 @@ const SchemaMarkup = () => {
         "name": "How long does a VA loan take to close in Killeen, TX?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "With complete documentation, VA loans typically close in 21 to 30 days. If you have PCS orders with a hard report date, we build the timeline backward from your deadline. We have closed VA loans in under 14 days when orders required it."
+          "text": "With complete documentation, VA loans typically close in 21 to 30 days. If you have PCS orders with a hard report date, we build the timeline backward from your deadline. Every file is built to hit hard PCS report dates."
         }
       },
       {
