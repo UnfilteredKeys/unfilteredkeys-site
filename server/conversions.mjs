@@ -44,8 +44,15 @@ export async function deliver(config, event, fetcher = fetch, now = Date.now()) 
       headers: { Authorization: 'Bearer ' + config.env.OPENAI_CONVERSIONS_API_KEY, 'Content-Type': 'application/json' },
       body: JSON.stringify({ validate_only: config.mode !== 'live', events: [event] }),
     });
-    // Provider success semantics must be confirmed by the validation probe before live approval.
-    if (response.ok) return { outcome: 'sent', delay: 0 };
+    if (response.ok) {
+      let acknowledgement;
+      try { acknowledgement = await response.json(); } catch { /* never log raw response */ }
+      const accepted = acknowledgement?.accepted_events;
+      // A successful HTTP response must acknowledge the single submitted event.
+      return { outcome: accepted === 1 ? 'sent' : 'unverified', delay: 0,
+        http_status: response.status, accepted_events: typeof accepted === 'number' ? accepted : null,
+        acknowledgement_type: Array.isArray(accepted) ? 'array' : typeof accepted };
+    }
     if (response.status !== 429 && response.status !== 408 && response.status < 500) return { outcome: 'rejected', delay: 0 };
     const retry = response.headers.get('retry-after');
     const seconds = retry && /^\d+$/.test(retry) ? Number(retry) : Math.ceil((Date.parse(retry) - now) / 1000);
@@ -62,6 +69,8 @@ export async function drain(config, fetcher = fetch, storage = databaseCall) {
     const result = await deliver(config, row.event, fetcher);
     const delay = Math.max(result.delay, Math.min(21600, 60 * 2 ** Math.min(row.attempts, 8)) + Math.floor(Math.random() * 30));
     await storage(config, 'settle_mortgage_conversion', { p_mode: config.mode, p_id: row.event.id, p_lease: lease, p_status: result.outcome, p_delay: delay });
-    console.info(JSON.stringify({ component: 'mortgage_conversion', outcome: result.outcome }));
+    console.info(JSON.stringify({ component: 'mortgage_conversion', mode: config.mode,
+      outcome: result.outcome, http_status: result.http_status, accepted_events: result.accepted_events,
+      acknowledgement_type: result.acknowledgement_type, attempts: row.attempts }));
   }
 }

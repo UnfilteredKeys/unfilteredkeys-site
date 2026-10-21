@@ -47,7 +47,7 @@ test('validation and live send exact allowlisted body with server bearer', async
       assert.equal(url, endpoint);
       assert.equal(options.headers.Authorization, 'Bearer test');
       assert.deepEqual(JSON.parse(options.body), { validate_only: mode === 'validate', events: [event] });
-      return new Response(null, { status: 200 });
+      return Response.json({ accepted_events: 1 });
     });
     assert.equal(result.outcome, 'sent');
   }
@@ -61,4 +61,13 @@ test('transient errors retry, permanent errors stop, Retry-After respected', asy
   for (const status of [400,401,403]) assert.equal((await deliver(config, event, async () => new Response(null, { status }))).outcome, 'rejected');
   assert.equal((await deliver(config, event, async () => { throw new Error('private'); })).outcome, 'retry');
   assert.equal((await deliver(config, { ...event, timestamp_ms: now - 7 * 86400000 }, undefined, now)).outcome, 'expired');
+});
+
+test('HTTP success without acknowledgement of exactly one event is not marked sent', async () => {
+  const config = { mode: 'validate', env: {} }, event = conversion(payload, env, now);
+  for (const acknowledgement of [{ accepted_events: 0 }, {}, { accepted_events: 2 }, { accepted_events: '1' }]) {
+    const result = await deliver(config, event, async () => Response.json(acknowledgement));
+    assert.equal(result.outcome, 'unverified');
+  }
+  assert.equal((await deliver(config, event, async () => new Response('invalid json'))).outcome, 'unverified');
 });

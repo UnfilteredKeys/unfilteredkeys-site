@@ -34,7 +34,7 @@ test('PostgreSQL migration, duplicate enqueue, lease recovery, namespace isolati
     await drain(config, async (_url, options) => {
       sends++;
       assert.deepEqual(JSON.parse(options.body), { validate_only: true, events: [event] });
-      return new Response(null, { status: 200 });
+      return Response.json({ accepted_events: 1 });
     }, storage);
     await drain(config, async () => { sends++; throw new Error('should not send again'); }, storage);
     assert.equal(sends, 1);

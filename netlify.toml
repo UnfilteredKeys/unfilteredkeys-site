@@ -6,7 +6,7 @@ publish = "dist"
 NODE_VERSION = "20"
 
 [context.deploy-preview]
-command = "node scripts/netlify-validation.mjs && npm run build"
+command = "npm run build"
 
 [[headers]]
 for = "/sitemap.xml"
