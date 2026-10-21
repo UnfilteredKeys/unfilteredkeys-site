@@ -341,6 +341,7 @@ export default function MortgageReview() {
                     } catch {
                       /* ignore */
                     }
+                    submitting.current = false;
                     setConcerns([]);
                     setEmailError("");
                     setStatus("idle");

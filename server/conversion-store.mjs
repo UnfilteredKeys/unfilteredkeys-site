@@ -1,8 +1,13 @@
 // SQL and credentials are server-only. No database connections are opened in off mode.
 export async function databaseCall(config, operation, body) {
   const { default: pg } = await import('pg');
+  const connection = new URL(config.env.NETLIFY_DB_URL);
+  if (['prefer', 'require', 'verify-ca'].includes(connection.searchParams.get('sslmode'))) {
+    // Preserve pg 8's current certificate-verifying behavior across future driver upgrades.
+    connection.searchParams.set('sslmode', 'verify-full');
+  }
   const client = new pg.Client({
-    connectionString: config.env.NETLIFY_DB_URL,
+    connectionString: connection.toString(),
     connectionTimeoutMillis: 8000,
     query_timeout: 8000,
     statement_timeout: 8000,
