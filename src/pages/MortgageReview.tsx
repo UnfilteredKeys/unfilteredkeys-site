@@ -100,7 +100,7 @@ const FAQS = [
   },
   {
     q: "What happens to my information?",
-    a: "It's used only to respond to your review request. It's never sold, and you won't be added to ongoing marketing unless you choose to opt in. Please don't send financial documents through this form — if they're needed, I'll provide a secure way to share them.",
+    a: "Your contact details and review information are used to respond to your request. If you separately opt in to ad measurement, we may send OpenAI a random event identifier, submission time, and this page's address to measure advertising results. We do not include your contact details, financial information, or form answers in that event. You won't be added to ongoing marketing unless you choose to opt in. Please don't send financial documents through this form — if they're needed, I'll provide a secure way to share them.",
   },
 ];
 
@@ -178,6 +178,7 @@ export default function MortgageReview() {
     });
     data.concerns = concerns.join(", ") || "Not specified";
     data.marketingConsent = data.marketingConsent === "yes" ? "yes" : "no";
+    data.measurementConsent = data.measurementConsent === "yes" ? "yes" : "no";
     data.utm_source = campaign.utm_source || "";
     data.utm_medium = campaign.utm_medium || "";
     data.utm_campaign = campaign.utm_campaign || "";
@@ -461,6 +462,16 @@ export default function MortgageReview() {
                 <span>
                   <span className="font-medium text-foreground">Optional:</span> Also send me occasional
                   homeowner tips and mortgage updates. You can unsubscribe at any time.
+                </span>
+              </label>
+
+              <label className="flex gap-3 text-xs text-muted-foreground">
+                <input type="checkbox" name="measurementConsent" value="yes" className="mt-0.5 h-5 w-5 shrink-0" />
+                <span>
+                  <span className="font-medium text-foreground">Optional ad measurement:</span> Allow
+                  Keys by Shalanda to send OpenAI an event identifier, submission time, and this page's
+                  address to measure advertising results. Your contact details, financial information,
+                  and form answers are excluded. You can request your review without checking this box.
                 </span>
               </label>
 
