@@ -26,9 +26,10 @@ export async function handler(request) {
     stage = 'delivery';
     await drain(config);
     return { statusCode: 204 };
-  } catch {
+  } catch (error) {
     // Never log request bodies, provider bodies, exception messages, URLs or credentials.
-    console.error(JSON.stringify({ component: 'mortgage_conversion', outcome: 'processing_failed', stage }));
+    console.error(JSON.stringify({ component: 'mortgage_conversion', outcome: 'processing_failed', stage,
+      missing_keys: stage === 'configuration' ? error.missing : undefined }));
     throw new Error('conversion_enqueue_failed');
   }
 }

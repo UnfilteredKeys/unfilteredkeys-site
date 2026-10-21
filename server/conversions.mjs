@@ -1,14 +1,25 @@
 import { createHmac, randomUUID } from 'node:crypto';
 import { databaseCall } from './conversion-store.mjs';
+import { getConnectionString } from '@netlify/database';
 
 export const endpoint = 'https://bzr.openai.com/v1/events?pid=N2YqaSCgrmFviUbUKHXJ7b';
 const week = 7 * 86400000;
 export function settings(env = process.env) {
+  if (env === process.env && !env.NETLIFY_DB_URL) {
+    // Netlify's managed database value may be provided by its runtime environment API.
+    let connection;
+    try { connection = getConnectionString(); } catch { /* report missing key name below */ }
+    env = { ...env, NETLIFY_DB_URL: connection };
+  }
   const mode = env.OPENAI_CONVERSIONS_MODE || 'off';
   if (!['off', 'validate', 'live'].includes(mode)) throw new Error('configuration');
   if (mode === 'off') return { mode };
-  for (const key of ['OPENAI_CONVERSIONS_API_KEY', 'CONVERSIONS_ID_SECRET', 'NETLIFY_DB_URL', 'MORTGAGE_REVIEW_FORM_ID']) {
-    if (!env[key]) throw new Error('configuration');
+  const required = ['OPENAI_CONVERSIONS_API_KEY', 'CONVERSIONS_ID_SECRET', 'NETLIFY_DB_URL', 'MORTGAGE_REVIEW_FORM_ID'];
+  const missing = required.filter(key => !env[key]);
+  if (missing.length) {
+    const error = new Error('configuration');
+    error.missing = missing;
+    throw error;
   }
   if (mode === 'live' && env.OPENAI_CONVERSIONS_LIVE_APPROVED !== 'true') throw new Error('live_not_approved');
   if (mode === 'live' && env.OPENAI_CONVERSIONS_PROVIDER_VERIFIED !== 'true') throw new Error('provider_not_verified');
