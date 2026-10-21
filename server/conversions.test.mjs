@@ -18,9 +18,9 @@ test('off mode returns before opening database or parsing submissions', async ()
   const previous = process.env.OPENAI_CONVERSIONS_MODE;
   process.env.OPENAI_CONVERSIONS_MODE = 'off';
   try {
-    const { handler } = await import('../netlify/functions/submission-created.mjs');
+    const { default: handler } = await import('../netlify/functions/submission-created.mjs');
     const { default: worker } = await import('../netlify/functions/conversion-retry.mjs');
-    assert.equal((await handler({ body: 'invalid json' })).statusCode, 204);
+    assert.equal((await handler(new Request('https://example.test', { method: 'POST', body: 'invalid json' }))).status, 204);
     assert.equal((await worker()).status, 204);
   } finally {
     if (previous === undefined) delete process.env.OPENAI_CONVERSIONS_MODE;
