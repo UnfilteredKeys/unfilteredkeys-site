@@ -9,9 +9,10 @@ test('PostgreSQL migration, duplicate enqueue, lease recovery, namespace isolati
   const db = new PGlite();
   try {
     await db.exec(await readFile(new URL('../netlify/database/migrations/202610210001_mortgage_conversions.sql', import.meta.url), 'utf8'));
+    await db.exec(await readFile(new URL('../netlify/database/migrations/202610220001_attribution_retention.sql', import.meta.url), 'utf8'));
     const client = { connect: async () => {}, end: async () => {}, query: (...args) => db.query(...args) };
     const call = (operation, body) => runDatabaseCall(client, operation, body);
-    const event = { id: 'synthetic', type: 'lead_created', timestamp_ms: Date.now(), source_url: 'https://shalandasmith.com/mortgage-review', action_source: 'web', data: { type: 'customer_action' } };
+    const event = { id: 'synthetic', type: 'lead_created', timestamp_ms: Date.now(), source_url: 'https://shalandasmith.com/mortgage-review', action_source: 'web', data: { type: 'customer_action' }, oppref: 'synthetic-click', user: { obref: 'synthetic-browser' } };
     for (let i = 0; i < 2; i++) await call('enqueue_mortgage_conversion', { p_mode: 'validate', p_event: event });
     assert.equal((await db.query('select * from mortgage_conversion_outbox')).rows.length, 1);
     const lease = '00000000-0000-4000-8000-000000000001';
@@ -41,6 +42,9 @@ test('PostgreSQL migration, duplicate enqueue, lease recovery, namespace isolati
     row = (await db.query('select * from mortgage_conversion_outbox')).rows[0];
     assert.equal(row.status, 'sent');
     assert.equal(row.attempts, 3);
+    assert.equal(row.event.id, event.id);
+    assert.equal(row.event.oppref, undefined);
+    assert.equal(row.event.user, undefined);
   } finally {
     await db.close();
   }

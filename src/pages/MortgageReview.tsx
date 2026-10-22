@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import headshot from "@/assets/headshot.png";
 import SEO from "@/components/SEO";
+import { measurementOptOut, submissionAttribution } from "@/lib/ad-attribution";
 
 const CONCERNS = [
   {
@@ -100,7 +101,7 @@ const FAQS = [
   },
   {
     q: "What happens to my information?",
-    a: "Your contact details and review information are used to respond to your request. If you separately opt in to ad measurement, we may send OpenAI a random event identifier, submission time, and this page's address to measure advertising results. We do not include your contact details, financial information, or form answers in that event. You won't be added to ongoing marketing unless you choose to opt in. Please don't send financial documents through this form — if they're needed, I'll provide a secure way to share them.",
+    a: "Your contact details and review information are used to respond to your request. If you separately opt in to ad measurement, we may send OpenAI an event identifier, submission time, this page's address, and an ad-click identifier or existing OpenAI browser reference when available to connect your request to an ad. No new advertising cookies are created by this form. We do not include your contact details, financial information, or review answers in that event. Browser privacy opt-out signals disable measurement. You won't be added to ongoing marketing unless you choose to opt in. Please don't send financial documents through this form — if they're needed, I'll provide a secure way to share them.",
   },
 ];
 
@@ -121,10 +122,12 @@ export default function MortgageReview() {
   const [concerns, setConcerns] = useState<string[]>([]);
   const [campaign, setCampaign] = useState<Record<string, string>>({});
   const [emailError, setEmailError] = useState("");
+  const [adOptOut, setAdOptOut] = useState(false);
   const submitting = useRef(false);
 
   useEffect(() => {
     document.title = "Free Mortgage Review for Texas Homeowners | Keys by Shalanda";
+    setAdOptOut(measurementOptOut(navigator));
     // Capture only known campaign parameters (never personal info), keep them for the visit,
     // then strip them from the address bar so homeowners don't see tracking codes.
     const params = new URLSearchParams(window.location.search);
@@ -179,6 +182,14 @@ export default function MortgageReview() {
     data.concerns = concerns.join(", ") || "Not specified";
     data.marketingConsent = data.marketingConsent === "yes" ? "yes" : "no";
     data.measurementConsent = data.measurementConsent === "yes" ? "yes" : "no";
+    const optedOut = measurementOptOut(navigator);
+    data.measurementOptOut = optedOut ? "yes" : "no";
+    if (optedOut) data.measurementConsent = "no";
+    // Never accept attribution from form fields; gather only from the current browser.
+    delete data.openaiOppref;
+    delete data.openaiObref;
+    Object.assign(data, submissionAttribution(data.measurementConsent === "yes", optedOut,
+      () => window.location.href, () => document.cookie));
     data.sourceUrl = window.location.origin + window.location.pathname;
     data.utm_source = campaign.utm_source || "";
     data.utm_medium = campaign.utm_medium || "";
@@ -364,6 +375,9 @@ export default function MortgageReview() {
             >
               <input type="hidden" name="form-name" value="mortgage-review" />
               <input type="hidden" name="sourceUrl" value="" />
+              <input type="hidden" name="openaiOppref" value="" />
+              <input type="hidden" name="openaiObref" value="" />
+              <input type="hidden" name="measurementOptOut" value="" />
               <p className="hidden">
                 <label>
                   Don't fill this out: <input name="bot-field" tabIndex={-1} autoComplete="off" />
@@ -469,14 +483,17 @@ export default function MortgageReview() {
               </label>
 
               <label className="flex gap-3 text-xs text-muted-foreground">
-                <input type="checkbox" name="measurementConsent" value="yes" className="mt-0.5 h-5 w-5 shrink-0" />
+                <input type="checkbox" name="measurementConsent" value="yes" disabled={adOptOut} className="mt-0.5 h-5 w-5 shrink-0" />
                 <span>
                   <span className="font-medium text-foreground">Optional ad measurement:</span> Allow
                   Keys by Shalanda to send OpenAI an event identifier, submission time, and this page's
-                  address to measure advertising results. Your contact details, financial information,
+                  address, plus an ad-click identifier and existing OpenAI browser reference when available,
+                  to connect your request to an ad. Your contact details, financial information,
                   and form answers are excluded. You can request your review without checking this box.
                 </span>
               </label>
+
+              {adOptOut && <p className="text-xs text-muted-foreground">Your browser privacy preference is respected: ad measurement is off for this request.</p>}
 
               <p className="text-xs leading-5 text-muted-foreground">
                 Read the <a href="https://securechoicelending.com/privacy" target="_blank" rel="noopener noreferrer" className="underline">Secure Choice Lending Privacy Policy</a> and <a href="https://securechoicelending.com/cookies" target="_blank" rel="noopener noreferrer" className="underline">Cookie Policy</a> for information practices and privacy choices.
