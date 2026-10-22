@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { settings, conversion, deliver, endpoint } from './conversions.mjs';
 const env = { MORTGAGE_REVIEW_FORM_ID: 'form1', CONVERSIONS_ID_SECRET: 'test-secret' };
 const now = Date.now();
-const payload = { form_id: 'form1', id: 'submission1', created_at: new Date(now).toISOString(), data: { measurementConsent: 'yes', email: 'private@example.com', notes: 'private finances' } };
+const payload = { form_id: 'form1', id: 'submission1', created_at: new Date(now).toISOString(), data: { sourceUrl: 'https://shalandasmith.com/mortgage-review', measurementConsent: 'yes', email: 'private@example.com', notes: 'private finances' } };
 test('disabled by default and live requires explicit approval', () => {
   assert.equal(settings({}).mode, 'off');
   assert.throws(() => settings({ OPENAI_CONVERSIONS_MODE: 'live' }));
@@ -56,11 +56,44 @@ test('transient errors retry, permanent errors stop, Retry-After respected', asy
   const config = { mode: 'validate', env: {} }, event = conversion(payload, env, now);
   for (const status of [408,429,500,503]) {
     const result = await deliver(config, event, async () => new Response(null, { status, headers: { 'Retry-After': '600' } }));
-    assert.deepEqual(result, { outcome: 'retry', delay: 600 });
+    assert.deepEqual(result, { outcome: 'retry', delay: 600, http_status: status });
   }
   for (const status of [400,401,403]) assert.equal((await deliver(config, event, async () => new Response(null, { status }))).outcome, 'rejected');
   assert.equal((await deliver(config, event, async () => { throw new Error('private'); })).outcome, 'retry');
   assert.equal((await deliver(config, { ...event, timestamp_ms: now - 7 * 86400000 }, undefined, now)).outcome, 'expired');
+});
+
+test('source is the actual allowlisted page; missing, foreign, test and bot submissions are excluded', () => {
+  const withData = data => ({ ...payload, data: { ...payload.data, ...data } });
+  for (const sourceUrl of [undefined, 'https://evil.test/mortgage-review', 'https://shalandasmith.com/other', 'https://user:secret@shalandasmith.com/mortgage-review']) {
+    assert.equal(conversion(withData({ sourceUrl }), env, now), null);
+  }
+  assert.equal(conversion(withData({ testSubmission: 'yes' }), env, now), null);
+  assert.equal(conversion(withData({ 'bot-field': 'spam' }), env, now), null);
+  assert.equal(conversion(withData({ sourceUrl: payload.data.sourceUrl + '?email=private#private' }), env, now).source_url, payload.data.sourceUrl);
+  const preview = { ...env, CONTEXT: 'deploy-preview', DEPLOY_PRIME_URL: 'https://deploy-preview-23--example.netlify.app' };
+  const previewPayload = withData({ sourceUrl: preview.DEPLOY_PRIME_URL + '/mortgage-review' });
+  assert.equal(conversion(previewPayload, preview, now).source_url, previewPayload.data.sourceUrl);
+  assert.equal(conversion(previewPayload, { ...preview, OPENAI_CONVERSIONS_MODE: 'live' }, now), null);
+});
+
+test('live configuration cannot run outside production even with approval flags', () => {
+  const configured = { OPENAI_CONVERSIONS_MODE: 'live', OPENAI_CONVERSIONS_API_KEY: 'synthetic', CONVERSIONS_ID_SECRET: 'x'.repeat(32), NETLIFY_DB_URL: 'postgresql://test:test@localhost:5432/test', MORTGAGE_REVIEW_FORM_ID: 'form1', OPENAI_CONVERSIONS_LIVE_APPROVED: 'true', OPENAI_CONVERSIONS_PROVIDER_VERIFIED: 'true' };
+  assert.throws(() => settings({ ...configured, CONTEXT: 'deploy-preview' }), /live_requires_production/);
+  assert.equal(settings({ ...configured, CONTEXT: 'production' }).mode, 'live');
+});
+
+test('provider error diagnostics retain status and exclude response body and secrets', async () => {
+  const { drain } = await import('./conversions.mjs');
+  const logs = [], original = console.info;
+  console.info = value => logs.push(value);
+  try {
+    await drain({ mode: 'validate', env: { OPENAI_CONVERSIONS_API_KEY: 'secret-key' } }, async () => new Response('private-provider-body', { status: 401 }), async (_config, operation) => operation === 'claim_mortgage_conversion' ? [{ event: conversion(payload, env, now), attempts: 1 }] : []);
+    assert.equal(JSON.parse(logs[0]).http_status, 401);
+    assert.equal(JSON.parse(logs[0]).outcome, 'rejected');
+    assert.ok(!logs.join('').includes('private'));
+    assert.ok(!logs.join('').includes('secret-key'));
+  } finally { console.info = original; }
 });
 
 test('HTTP success without acknowledgement of exactly one event is not marked sent', async () => {

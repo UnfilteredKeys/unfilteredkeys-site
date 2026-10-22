@@ -1,5 +1,21 @@
 # Mortgage Review conversion tracking — preview validated, production disabled
 
+## October 22 continuation — local changes awaiting deployment approval
+
+Rechecked GitHub PR #23: open, draft, unmerged, head `e9a7777330e6fb46aea04e1d6699541359e83aef`. Netlify currently publishes `main@80088c6`; its latest existing preview is deployment `6ad9293c717a6cbea8d0c473`. The changes below are local only and have not been pushed (a push could automatically deploy a preview).
+
+Read-only dashboard inspection confirmed the saved secret `OPENAI_CONVERSIONS_API_KEY`, saved secret `CONVERSIONS_ID_SECRET` in one context, configured form ID, production `off`, Deploy Previews `validate`, and all other contexts `off`. Neither secret was revealed. Form detection is enabled, mortgage-review is collecting submissions, and its email notification to shalanda@securechoicelending.com remains configured. No notification was sent during this continuation.
+
+Fixed actual page source: the form now captures `sourceUrl` as the current origin and path; the detection form includes it. The server accepts only the production mortgage-review page or the exact Netlify deploy-preview origin in validate mode. Missing/foreign sources are excluded rather than assigned a fabricated production URL. Queries/fragments and credentials are never forwarded. Older submissions without sourceUrl are excluded. No-JavaScript submissions are excluded from measurement. The preview source can be checked only after an approved deployment of this revision.
+
+Live configuration now requires Netlify `CONTEXT=production` as well as both approval/verification flags. Preview URLs cannot produce live events. Explicitly marked synthetic form submissions (`testSubmission=yes`) and filled honeypots are excluded. All deliberate provider probes continue to use `validate_only:true`; do not test with fake data in live mode or treat an unmarked fake submission as detectable automatically.
+
+Provider failures now log the numeric HTTP status alongside the safe outcome, so authentication (401/403), validation (400), throttling (429) and server errors can be distinguished without logging provider bodies, credentials or lead answers. Local checks: 15 conversion/storage/probe tests passed, including redacted 401 logs and PostgreSQL retry/deduplication. The existing Vitest test and browser production build passed. No new hosted provider request was sent: this continuation did not retrieve the Netlify secret or deploy a test hook. Earlier hosted validation results below are historical evidence, not a fresh validation of these local changes.
+
+Before production, configure a persistent production `CONVERSIONS_ID_SECRET`, verify managed database/migration access, and obtain approval to deploy this revision first in validate mode. Verify the new sourceUrl field and provider acknowledgement there. Keep preview mode validate. After explicit live approval, set production mode live and the two approval/verification flags; no production configuration was changed here. Review the operational dependencies below, including outage reconciliation and monitoring. Without approved matching identifiers, accepted events may not attribute to an ad.
+
+The remaining sections record the earlier preview implementation and its validation history; references to a fixed source URL describe that older revision and are superseded above.
+
 The user-approved preview has been deployed and validated. Production was not deployed or enabled, and no ad spending was changed. The saved API key stayed inside Netlify. Real hosted form submissions produced HTTP 200 with `accepted_events:1` on their first attempt in validate mode; a no-measurement-consent submission succeeded and was excluded from tracking. The user separately confirmed their existing email notification arrived. No validate_only:false request has been sent.
 
 Runtime commit: `5b22ad8189b1eb0006787a99d97a5d2986d07b18`. Preview deployment: `6ad9280f4d0ad95e23f0a2bb`. PR: https://github.com/UnfilteredKeys/unfilteredkeys-site/pull/23. Preview: https://deploy-preview-23--euphonious-croquembouche-adc601.netlify.app/mortgage-review. Production remains on `80088c608a309188082ad37af04c68282c45ced1`.

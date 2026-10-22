@@ -179,6 +179,7 @@ export default function MortgageReview() {
     data.concerns = concerns.join(", ") || "Not specified";
     data.marketingConsent = data.marketingConsent === "yes" ? "yes" : "no";
     data.measurementConsent = data.measurementConsent === "yes" ? "yes" : "no";
+    data.sourceUrl = window.location.origin + window.location.pathname;
     data.utm_source = campaign.utm_source || "";
     data.utm_medium = campaign.utm_medium || "";
     data.utm_campaign = campaign.utm_campaign || "";
@@ -362,6 +363,7 @@ export default function MortgageReview() {
               className="mt-8 space-y-5 rounded-xl border bg-card p-5 shadow-sm sm:p-6"
             >
               <input type="hidden" name="form-name" value="mortgage-review" />
+              <input type="hidden" name="sourceUrl" value="" />
               <p className="hidden">
                 <label>
                   Don't fill this out: <input name="bot-field" tabIndex={-1} autoComplete="off" />
@@ -476,6 +478,12 @@ export default function MortgageReview() {
                 </span>
               </label>
 
+              <p className="text-xs leading-5 text-muted-foreground">
+                Read the <a href="https://securechoicelending.com/privacy" target="_blank" rel="noopener noreferrer" className="underline">Secure Choice Lending Privacy Policy</a> and <a href="https://securechoicelending.com/cookies" target="_blank" rel="noopener noreferrer" className="underline">Cookie Policy</a> for information practices and privacy choices.
+                Advertising privacy requests can be sent to <a href="mailto:info@securechoicelending.com" className="underline">info@securechoicelending.com</a>.
+                {" "}<a href="https://securechoicelending.com/terms" target="_blank" rel="noopener noreferrer" className="underline">Secure Choice Lending Terms and Conditions</a>.
+              </p>
+
               <button
                 type="submit"
                 disabled={status === "sending"}
@@ -569,7 +577,7 @@ export default function MortgageReview() {
           </p>
           {/* TODO: Paste the exact Texas Department of Savings and Mortgage Lending
               consumer complaint / recovery fund notice here, as supplied by compliance.
-              TODO: Link the privacy policy here once a privacy policy page exists. */}
+              */}
         </div>
       </footer>
     </div>

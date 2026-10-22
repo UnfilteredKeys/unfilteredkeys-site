@@ -23,6 +23,7 @@ export function settings(env = process.env) {
   }
   if (mode === 'live' && env.OPENAI_CONVERSIONS_LIVE_APPROVED !== 'true') throw new Error('live_not_approved');
   if (mode === 'live' && env.OPENAI_CONVERSIONS_PROVIDER_VERIFIED !== 'true') throw new Error('provider_not_verified');
+  if (mode === 'live' && env.CONTEXT !== 'production') throw new Error('live_requires_production');
   if (env.CONVERSIONS_ID_SECRET.length < 32) throw new Error('configuration');
   const db = new URL(env.NETLIFY_DB_URL);
   if (!['postgres:', 'postgresql:'].includes(db.protocol)) throw new Error('configuration');
@@ -34,13 +35,24 @@ export function settings(env = process.env) {
 export function conversion(payload, env, now = Date.now()) {
   if (payload?.form_id !== env.MORTGAGE_REVIEW_FORM_ID) return null;
   if (payload?.data?.measurementConsent !== 'yes') return null;
+  if (payload?.data?.testSubmission === 'yes' || payload?.data?.['bot-field']) return null;
+  // Capture the submitting page, but never forward query strings or fragments.
+  // Missing/foreign sources fail closed; do not label preview traffic as production.
+  let source;
+  try { source = new URL(payload?.data?.sourceUrl); } catch { return null; }
+  const production = source.origin === 'https://shalandasmith.com';
+  const preview = env.CONTEXT === 'deploy-preview' && env.DEPLOY_PRIME_URL
+    && source.origin === new URL(env.DEPLOY_PRIME_URL).origin;
+  if (source.username || source.password || source.pathname !== '/mortgage-review'
+    || (!production && !preview)) return null;
+  if (env.OPENAI_CONVERSIONS_MODE === 'live' && !production) return null;
   if (typeof payload.id !== 'string' || !payload.id || payload.id.length > 256) throw new Error('invalid_submission');
   const timestamp = Date.parse(payload.created_at);
   if (!Number.isFinite(timestamp) || timestamp < now - week || timestamp > now + 600000) throw new Error('invalid_timestamp');
   return {
     id: 'mr_' + createHmac('sha256', env.CONVERSIONS_ID_SECRET).update(payload.form_id + ':' + payload.id).digest('hex'),
     type: 'lead_created', timestamp_ms: timestamp,
-    source_url: 'https://shalandasmith.com/mortgage-review',
+    source_url: source.origin + source.pathname,
     action_source: 'web', data: { type: 'customer_action' },
   };
 }
@@ -64,10 +76,10 @@ export async function deliver(config, event, fetcher = fetch, now = Date.now()) 
         http_status: response.status, accepted_events: typeof accepted === 'number' ? accepted : null,
         acknowledgement_type: Array.isArray(accepted) ? 'array' : typeof accepted };
     }
-    if (response.status !== 429 && response.status !== 408 && response.status < 500) return { outcome: 'rejected', delay: 0 };
+    if (response.status !== 429 && response.status !== 408 && response.status < 500) return { outcome: 'rejected', delay: 0, http_status: response.status };
     const retry = response.headers.get('retry-after');
     const seconds = retry && /^\d+$/.test(retry) ? Number(retry) : Math.ceil((Date.parse(retry) - now) / 1000);
-    return { outcome: 'retry', delay: Number.isFinite(seconds) ? Math.max(60, Math.min(7 * 86400, seconds)) : 60 };
+    return { outcome: 'retry', delay: Number.isFinite(seconds) ? Math.max(60, Math.min(7 * 86400, seconds)) : 60, http_status: response.status };
   } catch {
     return { outcome: 'retry', delay: 60 };
   }
