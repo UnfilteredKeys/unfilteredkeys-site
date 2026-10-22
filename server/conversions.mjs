@@ -38,6 +38,7 @@ export function settings(env = process.env, context) {
 export function conversion(payload, env, now = Date.now()) {
   if (payload?.form_id !== env.MORTGAGE_REVIEW_FORM_ID) return null;
   if (payload?.data?.measurementConsent !== 'yes') return null;
+  if (payload?.data?.measurementOptOut === 'yes') return null;
   if (payload?.data?.testSubmission === 'yes' || payload?.data?.['bot-field']) return null;
   // Capture the submitting page, but never forward query strings or fragments.
   // Missing/foreign sources fail closed; do not label preview traffic as production.
@@ -53,11 +54,18 @@ export function conversion(payload, env, now = Date.now()) {
   if (typeof payload.id !== 'string' || !payload.id || payload.id.length > 256) throw new Error('invalid_submission');
   const timestamp = Date.parse(payload.created_at);
   if (!Number.isFinite(timestamp) || timestamp < now - week || timestamp > now + 600000) throw new Error('invalid_timestamp');
+  // Opaque matching references are passed unchanged; never include contact/form data.
+  const reference = value => typeof value === 'string' && value.length <= 2048
+    && /^[A-Za-z0-9._~+\/=\-]+$/.test(value) ? value : undefined;
+  const oppref = reference(payload.data.openaiOppref);
+  const obref = reference(payload.data.openaiObref);
   return {
     id: 'mr_' + createHmac('sha256', env.CONVERSIONS_ID_SECRET).update(payload.form_id + ':' + payload.id).digest('hex'),
     type: 'lead_created', timestamp_ms: timestamp,
     source_url: source.origin + source.pathname,
     action_source: 'web', data: { type: 'customer_action' },
+    ...(oppref ? { oppref } : {}),
+    ...(obref ? { user: { obref } } : {}),
   };
 }
 

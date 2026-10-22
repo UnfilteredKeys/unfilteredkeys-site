@@ -31,6 +31,20 @@ test('only matching verified form and separate measurement choice are eligible',
   assert.equal(conversion({ ...payload, form_id: 'other' }, env), null);
   assert.equal(conversion({ ...payload, data: { marketingConsent: 'yes' } }, env), null);
 });
+
+test('matching references require measurement consent and no privacy opt-out; values stay unchanged', () => {
+  const data = { ...payload.data, openaiOppref: 'click_ABC+123', openaiObref: 'browser_ABC', phone: 'private', arbitrary: 'private' };
+  const event = conversion({ ...payload, data }, env, now);
+  assert.equal(event.oppref, data.openaiOppref);
+  assert.deepEqual(event.user, { obref: data.openaiObref });
+  assert.equal(event.id, conversion(payload, env, now).id);
+  assert.ok(!JSON.stringify(event).includes('private'));
+  assert.equal(conversion({ ...payload, data: { ...data, measurementConsent: 'no' } }, env, now), null);
+  assert.equal(conversion({ ...payload, data: { ...data, measurementOptOut: 'yes' } }, env, now), null);
+  const invalid = conversion({ ...payload, data: { ...data, openaiOppref: 'private@example.com', openaiObref: 'x'.repeat(2049) } }, env, now);
+  assert.equal(invalid.oppref, undefined);
+  assert.equal(invalid.user, undefined);
+});
 test('stable ID, original time, different submissions differ, no PII', () => {
   const event = conversion(payload, env, now);
   assert.deepEqual(event, conversion(payload, env, now + 10000));

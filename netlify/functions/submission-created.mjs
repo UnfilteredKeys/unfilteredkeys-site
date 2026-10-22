@@ -21,7 +21,8 @@ export default async function handler(request, context) {
     }
     stage = 'enqueue';
     await rpc(config, 'enqueue_mortgage_conversion', { p_mode: config.mode, p_event: event });
-    console.info(JSON.stringify({ component: 'mortgage_conversion', outcome: 'queued', mode: config.mode }));
+    console.info(JSON.stringify({ component: 'mortgage_conversion', outcome: 'queued', mode: config.mode,
+      has_click_reference: Boolean(event.oppref), has_browser_reference: Boolean(event.user?.obref) }));
     // Queue is already durable if delivery/acknowledgement fails.
     stage = 'delivery';
     await drain(config);
