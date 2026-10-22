@@ -71,16 +71,19 @@ test('source is the actual allowlisted page; missing, foreign, test and bot subm
   assert.equal(conversion(withData({ testSubmission: 'yes' }), env, now), null);
   assert.equal(conversion(withData({ 'bot-field': 'spam' }), env, now), null);
   assert.equal(conversion(withData({ sourceUrl: payload.data.sourceUrl + '?email=private#private' }), env, now).source_url, payload.data.sourceUrl);
-  const preview = { ...env, CONTEXT: 'deploy-preview', DEPLOY_PRIME_URL: 'https://deploy-preview-23--example.netlify.app' };
-  const previewPayload = withData({ sourceUrl: preview.DEPLOY_PRIME_URL + '/mortgage-review' });
+  const preview = { ...env, CONTEXT: 'deploy-preview', SITE_NAME: 'example' };
+  const previewPayload = withData({ sourceUrl: 'https://deploy-preview-23--example.netlify.app/mortgage-review' });
   assert.equal(conversion(previewPayload, preview, now).source_url, previewPayload.data.sourceUrl);
   assert.equal(conversion(previewPayload, { ...preview, OPENAI_CONVERSIONS_MODE: 'live' }, now), null);
+  assert.equal(conversion(previewPayload, { ...preview, SITE_NAME: 'other' }, now), null);
 });
 
 test('live configuration cannot run outside production even with approval flags', () => {
   const configured = { OPENAI_CONVERSIONS_MODE: 'live', OPENAI_CONVERSIONS_API_KEY: 'synthetic', CONVERSIONS_ID_SECRET: 'x'.repeat(32), NETLIFY_DB_URL: 'postgresql://test:test@localhost:5432/test', MORTGAGE_REVIEW_FORM_ID: 'form1', OPENAI_CONVERSIONS_LIVE_APPROVED: 'true', OPENAI_CONVERSIONS_PROVIDER_VERIFIED: 'true' };
   assert.throws(() => settings({ ...configured, CONTEXT: 'deploy-preview' }), /live_requires_production/);
   assert.equal(settings({ ...configured, CONTEXT: 'production' }).mode, 'live');
+  assert.equal(settings(configured, { deploy: { context: 'production' } }).mode, 'live');
+  assert.throws(() => settings({ ...configured, CONTEXT: 'production' }, { deploy: { context: 'deploy-preview' } }), /live_requires_production/);
 });
 
 test('provider error diagnostics retain status and exclude response body and secrets', async () => {

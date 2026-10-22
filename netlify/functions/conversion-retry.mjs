@@ -1,8 +1,8 @@
 import { settings, drain } from '../../server/conversions.mjs';
 
-export default async function () {
+export default async function (_request, context) {
   try {
-    const config = settings();
+    const config = settings(process.env, context);
     if (config.mode !== 'off') await drain(config);
     return new Response(null, { status: 204 });
   } catch {

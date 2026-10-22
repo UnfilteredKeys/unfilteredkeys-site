@@ -1,10 +1,10 @@
 import { settings, conversion, rpc, drain } from '../../server/conversions.mjs';
 
 // Reserved Netlify platform event; do not expose through a redirect or call from the browser.
-export default async function handler(request) {
+export default async function handler(request, context) {
   let stage = 'configuration';
   try {
-    const config = settings();
+    const config = settings(process.env, context);
     if (config.mode === 'off') {
       console.info('{"component":"mortgage_conversion","outcome":"disabled"}');
       return new Response(null, { status: 204 });

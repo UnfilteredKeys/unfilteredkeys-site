@@ -4,13 +4,16 @@ import { getConnectionString } from '@netlify/database';
 
 export const endpoint = 'https://bzr.openai.com/v1/events?pid=N2YqaSCgrmFviUbUKHXJ7b';
 const week = 7 * 86400000;
-export function settings(env = process.env) {
+export function settings(env = process.env, context) {
   if (env === process.env && !env.NETLIFY_DB_URL) {
     // Netlify's managed database value may be provided by its runtime environment API.
     let connection;
     try { connection = getConnectionString(); } catch { /* report missing key name below */ }
     env = { ...env, NETLIFY_DB_URL: connection };
   }
+  // CONTEXT and DEPLOY_PRIME_URL are build variables, not function runtime variables.
+  // Netlify supplies trusted deployment metadata as the handler's second argument.
+  if (context?.deploy?.context) env = { ...env, CONTEXT: context.deploy.context };
   const mode = env.OPENAI_CONVERSIONS_MODE || 'off';
   if (!['off', 'validate', 'live'].includes(mode)) throw new Error('configuration');
   if (mode === 'off') return { mode };
@@ -41,8 +44,9 @@ export function conversion(payload, env, now = Date.now()) {
   let source;
   try { source = new URL(payload?.data?.sourceUrl); } catch { return null; }
   const production = source.origin === 'https://shalandasmith.com';
-  const preview = env.CONTEXT === 'deploy-preview' && env.DEPLOY_PRIME_URL
-    && source.origin === new URL(env.DEPLOY_PRIME_URL).origin;
+  const preview = env.CONTEXT === 'deploy-preview' && source.protocol === 'https:' && !source.port
+    && env.SITE_NAME && source.hostname.endsWith('--' + env.SITE_NAME + '.netlify.app')
+    && /^deploy-preview-\d+--/.test(source.hostname);
   if (source.username || source.password || source.pathname !== '/mortgage-review'
     || (!production && !preview)) return null;
   if (env.OPENAI_CONVERSIONS_MODE === 'live' && !production) return null;
