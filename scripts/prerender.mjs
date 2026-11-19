@@ -28,12 +28,32 @@ const build = (head, html) =>
     .replace("</head>", `  ${head}\n  </head>`)
     .replace('<div id="root"></div>', `<div id="root">${html}</div>`);
 
+const SITE = "https://shalandasmith.com";
 const problems = [];
+const seenTitles = new Map();
+const indexable = [];
+
 for (const route of routes) {
   const { html, head } = await render(route);
-  const text = html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-  if (!/<title/.test(head)) problems.push(`${route}: no <title>`);
-  if (text.length < 300) problems.push(`${route}: only ${text.length} chars of text`);
+  const text = html.replace(/<style[\s\S]*?<\/style>|<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  const title = head.match(/<title[^>]*>([\s\S]*?)<\/title>/)?.[1] ?? "";
+  const canonical = head.match(/rel="canonical" href="([^"]+)"/)?.[1] ?? "";
+  const noindex = /name="robots" content="noindex/.test(head);
+  const expected = route === "/" ? `${SITE}/` : `${SITE}${route}`;
+
+  if (!title) problems.push(`${route}: missing <title>`);
+  if (!/name="description"/.test(head)) problems.push(`${route}: missing meta description`);
+  if (!canonical) problems.push(`${route}: missing canonical tag`);
+  else if (canonical.replace(/\/$/, "") !== expected.replace(/\/$/, ""))
+    problems.push(`${route}: canonical points to ${canonical}, expected ${expected}`);
+  if (text.length < 300) problems.push(`${route}: only ${text.length} characters of readable text`);
+  if (!noindex && !text.includes("554554")) problems.push(`${route}: NMLS #554554 not on page`);
+  if (!noindex && title) {
+    if (seenTitles.has(title)) problems.push(`${route}: same title as ${seenTitles.get(title)}`);
+    seenTitles.set(title, route);
+  }
+  if (!noindex) indexable.push(route);
+
   const page = build(head, html);
   if (route === "/") {
     fs.writeFileSync(path.join(dist, "index.html"), page);
@@ -47,6 +67,21 @@ for (const route of routes) {
   }
 }
 
+// Sitemap is generated from the real pages on every build, so it can never
+// list a page that doesn't exist, miss a new one, or use the wrong domain.
+const today = new Date().toISOString().slice(0, 10);
+const priority = (r) => (r === "/" ? "1.0" : /va-loan|killeen|fort-hood|bah|va-/.test(r) ? "0.9" : "0.8");
+fs.writeFileSync(
+  path.join(dist, "sitemap.xml"),
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+    indexable
+      .map((r) => `  <url><loc>${r === "/" ? `${SITE}/` : SITE + r}</loc><lastmod>${today}</lastmod><priority>${priority(r)}</priority></url>`)
+      .join("\n") +
+    `\n</urlset>\n`
+);
+const robots = fs.readFileSync(path.join(dist, "robots.txt"), "utf8");
+if (!robots.includes(`Sitemap: ${SITE}/sitemap.xml`)) problems.push(`robots.txt must point to ${SITE}/sitemap.xml`);
+
 // Real 404 page, served by Netlify with a 404 status for unknown URLs.
 const nf = await render("/__not-found__");
 fs.writeFileSync(
@@ -54,7 +89,10 @@ fs.writeFileSync(
   build(nf.head.replace(/<meta[^>]*robots[^>]*>/, "") + '\n    <meta name="robots" content="noindex" />', nf.html)
 );
 
-console.log(`Prerendered ${routes.length} pages + 404.html`);
+console.log(`Prerendered ${routes.length} pages + 404.html; sitemap has ${indexable.length} URLs`);
 if (problems.length) {
-  console.warn("Prerender warnings:\n  " + problems.join("\n  "));
+  // Fail the build so Netlify keeps the last good version live instead of
+  // publishing pages Google can't use.
+  console.error("\nSEO CHECK FAILED. Fix these before this can go live:\n  " + problems.join("\n  "));
+  process.exit(1);
 }
