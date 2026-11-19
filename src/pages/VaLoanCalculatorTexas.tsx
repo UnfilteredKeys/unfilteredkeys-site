@@ -36,6 +36,7 @@ export default function VaLoanCalculatorTexasPage() {
   return (
     <>
       <SEO
+        faqs={FAQS}
         title="VA Loan Calculator Texas | Payment Estimator with Taxes & Funding Fee | Keys by Shalanda"
         description="Calculate your real VA loan payment in Texas — includes funding fee, property taxes by county, and no PMI. Built for Fort Hood, Killeen, Austin, and all Texas veterans."
         canonical="/va-loan-calculator-texas"

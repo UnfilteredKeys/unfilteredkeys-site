@@ -55,6 +55,7 @@ export default function VaEntitlementCalculatorPage() {
   return (
     <>
       <SEO
+        faqs={FAQS}
         title="VA Entitlement Calculator Texas | Keys by Shalanda"
         description="Estimate remaining VA entitlement, zero-down capacity, and an entitlement-based down payment using the 2026 Texas county loan limit and your COE."
         canonical="/calculators/va-entitlement"

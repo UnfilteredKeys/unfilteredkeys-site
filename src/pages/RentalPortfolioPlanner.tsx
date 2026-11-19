@@ -19,7 +19,7 @@ const FAQS = [
 export default function RentalPortfolioPlannerPage() {
   return (
     <>
-      <SEO title="Rental Portfolio Planner | Texas Real Estate Investors" description="Model rental purchase timing, operating expenses, debt service, projected equity, cash needed, and estimated pre-tax cash flow for a real estate portfolio." canonical="/calculators/rental-portfolio-planner" />
+      <SEO title="Rental Portfolio Planner | Texas Real Estate Investors" description="Model rental purchase timing, operating expenses, debt service, projected equity, cash needed, and estimated pre-tax cash flow for a real estate portfolio." canonical="/calculators/rental-portfolio-planner" faqs={FAQS.map(([q, a]) => ({ q, a }))} />
       <section style={{ backgroundColor: "#1a2535", padding: "72px 0 58px" }}>
         <div style={container}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, border: `1px solid ${copper}`, borderRadius: 999, padding: "6px 16px", marginBottom: 28 }}>

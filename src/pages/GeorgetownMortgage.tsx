@@ -103,7 +103,7 @@ const GeorgetownMortgage = () => {
 
   return (
     <>
-      <SEO {...seoMeta.georgetownMortgage} />
+      <SEO {...seoMeta.georgetownMortgage} faqs={faqs} />
       <style dangerouslySetInnerHTML={{ __html: `
         .gtx-btn:hover { opacity: 0.92; }
         .gtx-faq summary {

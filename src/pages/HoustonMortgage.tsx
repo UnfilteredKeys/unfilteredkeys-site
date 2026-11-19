@@ -106,7 +106,7 @@ const HoustonMortgage = () => {
 
   return (
     <>
-      <SEO {...seoMeta.houstonMortgage} />
+      <SEO {...seoMeta.houstonMortgage} faqs={faqs} />
       <style dangerouslySetInnerHTML={{ __html: `
         .hou-btn:hover { opacity: 0.92; }
         .hou-faq summary {

@@ -36,6 +36,7 @@ export default function BahCalculatorKilleenTxPage() {
   return (
     <>
       <SEO
+        faqs={FAQS}
         title="BAH Calculator Killeen TX | Fort Hood Housing Allowance | Keys by Shalanda"
         description="See exactly what your BAH covers near Fort Hood. Calculate your buying power by pay grade with real Killeen TX property taxes and 2026 BAH rates."
         canonical="/bah-calculator-killeen-tx"

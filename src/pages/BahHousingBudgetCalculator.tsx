@@ -47,6 +47,7 @@ export default function BahHousingBudgetCalculatorPage() {
   return (
     <>
       <SEO
+        faqs={FAQS}
         title="Texas BAH Housing Budget Calculator | Military Homebuyers"
         description="Compare your actual monthly BAH with an estimated Texas mortgage payment, utilities, maintenance, HOA dues, and other homeowner costs."
         canonical="/calculators/bah-housing-budget"

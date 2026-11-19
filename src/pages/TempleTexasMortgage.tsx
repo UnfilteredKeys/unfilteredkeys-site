@@ -206,7 +206,7 @@ const TempleTexasMortgage = () => {
 
   return (
     <>
-      <SEO {...seoMeta.templeTxMortgage} />
+      <SEO {...seoMeta.templeTxMortgage} faqs={faqs} />
       <style dangerouslySetInnerHTML={{ __html: `
         .ttx-btn:hover { opacity: 0.92; }
         .ttx-faq summary {

@@ -166,7 +166,7 @@ const SanAntonioMortgage = () => {
 
   return (
     <>
-      <SEO {...seoMeta.sanAntonioMortgage} />
+      <SEO {...seoMeta.sanAntonioMortgage} faqs={faqs} />
       <style dangerouslySetInnerHTML={{ __html: `
         .sa-btn:hover { opacity: 0.92; }
         .sa-faq summary {

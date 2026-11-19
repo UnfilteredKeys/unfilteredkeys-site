@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import SEO from "@/components/SEO";
-import SchemaMarkup from "@/components/SchemaMarkup";
 import { seoMeta } from "@/lib/seoData";
 
 const strategyCall =
@@ -379,7 +378,6 @@ export default function Index() {
   return (
     <>
       <SEO {...seoMeta.home} />
-      <SchemaMarkup />
       <style dangerouslySetInnerHTML={{ __html: styles }} />
 
       <main>

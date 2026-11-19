@@ -94,7 +94,7 @@ const DallasMortgage = () => {
 
   return (
     <>
-      <SEO {...seoMeta.dallasMortgage} />
+      <SEO {...seoMeta.dallasMortgage} faqs={faqs} />
       <style dangerouslySetInnerHTML={{ __html: `
         .dal-btn:hover { opacity: 0.92; }
         .dal-faq summary {

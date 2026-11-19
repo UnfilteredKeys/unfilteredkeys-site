@@ -37,6 +37,7 @@ export default function VaFundingFeeCalculatorPage() {
   return (
     <>
       <SEO
+        faqs={FAQS}
         title="VA Funding Fee Calculator | Texas Veterans | Keys by Shalanda"
         description="Estimate the VA funding fee for a Texas purchase, IRRRL, or refinance from a non-VA loan into VA. Compare exempt status and fee-payment choices."
         canonical="/calculators/va-funding-fee"

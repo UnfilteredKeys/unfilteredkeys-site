@@ -101,7 +101,7 @@ const AustinMortgage = () => {
 
   return (
     <>
-      <SEO {...seoMeta.austinMortgage} />
+      <SEO {...seoMeta.austinMortgage} faqs={faqs} />
       <style dangerouslySetInnerHTML={{ __html: `
         .atx-btn:hover { opacity: 0.92; }
         .atx-faq summary {

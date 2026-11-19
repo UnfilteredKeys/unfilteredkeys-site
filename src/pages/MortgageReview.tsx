@@ -224,6 +224,7 @@ export default function MortgageReview() {
   return (
     <div className="mortgage-review min-h-screen overflow-x-hidden bg-background text-foreground">
       <SEO
+        faqs={FAQS}
         title="Free Mortgage Review for Texas Homeowners"
         description="Complimentary mortgage checkup for Texas homeowners. See how taxes, insurance, escrow, and your current terms affect your payment. No credit pull, no obligation."
         canonical="/mortgage-review"

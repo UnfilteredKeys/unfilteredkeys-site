@@ -136,7 +136,7 @@ const RoundRockMortgage = () => {
 
   return (
     <>
-      <SEO {...seoMeta.roundRockMortgage} />
+      <SEO {...seoMeta.roundRockMortgage} faqs={faqs} />
       <style dangerouslySetInnerHTML={{ __html: `
         .rrm-btn:hover { opacity: 0.92; }
         .rrm-faq summary {
